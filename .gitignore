@@ -13,4 +13,4 @@ out/
 **/*.jar
 **/*.war
 **/*.ear
-!gradle-wrapper.jar
+
