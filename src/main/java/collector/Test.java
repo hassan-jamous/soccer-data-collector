@@ -10,6 +10,7 @@ public class Test {
         String ownGoal = "https://www.worldfootball.net/report/premier-league-2015-2016-arsenal-fc-aston-villa/";
         String individuallyGoal ="https://www.worldfootball.net/report/premier-league-2015-2016-sunderland-afc-chelsea-fc/";
         testObject.getEventsOfGame(individuallyGoal);
-        System.out.println("End Main");
+        System.out.println("End Main1");
+        System.out.println("End Main2");
     }
 }
