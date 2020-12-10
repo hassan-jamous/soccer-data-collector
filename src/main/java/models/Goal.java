@@ -7,4 +7,11 @@ public class Goal {
 	public String player ="";
 	public String information ="";
 	public String assest ="";
+	public Goal() {}
+	
+	public String toString() {
+		String goal ="";
+		goal = "(" + result + ")" + "  @  " + minute + " by " + player + "     " + information + "    " + assest ;
+		return goal;
+	}
 }

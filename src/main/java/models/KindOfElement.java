@@ -3,6 +3,6 @@ package models;
 import org.jsoup.nodes.Element;
 
 public class KindOfElement{
-	public Kind kindOfElement;
+	public KindOfRow kind;
 	public Element refrenceOfElement;
 }
