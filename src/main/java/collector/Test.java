@@ -9,23 +9,22 @@ public class Test {
         
         //test
        //testObject.getAllGamesOfLeague("","2015-2016"); test again with other years
-        
+        String zerotozero ="https://www.worldfootball.net/report/premier-league-2000-2001-leicester-city-aston-villa/";
         String ownGoal = "https://www.worldfootball.net/report/premier-league-2015-2016-arsenal-fc-aston-villa/";
         //String individuallyGoal ="https://www.worldfootball.net/report/premier-league-2015-2016-sunderland-afc-chelsea-fc/";
     //    System.out.println( testObject.getLastTable("", "1888-1889"));
-   //  System.out.println(testObject.getGamesTableOfCompetition("1888-1889"));
+    System.out.println(testObject.getGamesTableOfCompetition("2001-2002"));
     // System.out.println(testObject.getTableByRound("", "1999-2000", "5"));  
-        int number = 0;
-        String round ="1. Round";
-    	String numberAsString ="";
-    	
-    	numberAsString = round.substring(0 , round.indexOf("."));
-    	number = Integer.valueOf(numberAsString);
-    	System.out.println(number);
-        ArrayList goals = testObject.getEventsOfGame(ownGoal);
-for(int i =0 ; i<goals.size() ; i++) {
-	System.out.println(goals.get(i));
-}
+      
+/*        ArrayList goals = testObject.getEventsOfGame(zerotozero);
+        if(goals.isEmpty()) {
+        	System.out.println("0:0");
+        }
+        else {
+        	for(int i =0 ; i<goals.size() ; i++) {
+        		System.out.println(goals.get(i));
+        	}
+        }*/
         System.out.println("End Main");
     }
 }

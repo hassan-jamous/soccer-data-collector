@@ -10,6 +10,7 @@ public class Goal {
 	public Goal() {}
 	
 	public String toString() {
+		
 		String goal ="";
 		goal = "(" + result + ")" + "  @  " + minute + " by " + player + "     " + information + "    " + assest ;
 		return goal;

@@ -48,10 +48,10 @@ public class ScreenScraper {
         				}
         				if((tds.size() >= 6) && (kindOfElement(tds.get(2)).kind == KindOfRow.Team) && (kindOfElement(tds.get(4)).kind == KindOfRow.Team)){
         					game = new Game(date,
-        					time,
-        					kindOfElement(tds.get(2)).refrenceOfElement.text(),
-        					kindOfElement(tds.get(4)).refrenceOfElement.text(),
-        					kindOfElement(tds.get(5)).refrenceOfElement.text());
+        									time,
+        									kindOfElement(tds.get(2)).refrenceOfElement.text(),//first team
+        									kindOfElement(tds.get(4)).refrenceOfElement.text(),//second team
+        									kindOfElement(tds.get(5)).refrenceOfElement.text());//result
         					round.addGame(game);        					
         				}
         			}
@@ -100,7 +100,7 @@ public class ScreenScraper {
                 }//end team
 
                 //result of match
-                if (child.text().contains(":")) {
+                if (child.text().contains(":") && (child.hasAttr("href"))) {//game´s time has : in new leagues
                     result.refrenceOfElement = child;
                     result.kind = KindOfRow.Result;
                     return result;
@@ -110,10 +110,12 @@ public class ScreenScraper {
         }//end if element.childrenSize() > 0
 
         //result for old league
+        	//to distinguish  between time (hour) in new league
+        	//next element is team? then return error
         if (element.text().contains(":") && (element.childrenSize() == 0)) {
-            if ((element.nextElementSibling() != null) && (element.nextElementSibling().childrenSize() > 0)//to distinguish  between time (hour) in new league
-                    && (element.nextElementSibling().children().hasAttr("href"))) {
-                return result;
+            if ((element.nextElementSibling() != null) && (element.nextElementSibling().childrenSize() > 0)
+                    && (element.nextElementSibling().children().hasAttr("href"))) { 
+                return result;//return error
             } else {
                 result.refrenceOfElement = element;
                 result.kind = KindOfRow.Result;
@@ -141,7 +143,7 @@ public class ScreenScraper {
                     int i =0;
                     
                     for (Element row : rows) {
-                    if(i == 0) {i = 1;}
+                    if(i == 0) {i = 1;}//first element is the table´s header  
                     else {
                     
                             Club club = new Club();
@@ -189,7 +191,7 @@ public class ScreenScraper {
                     int i =0;
                     
                     for (Element row : rows) {
-                    if(i == 0) {i = 1;}
+                    if(i == 0) {i = 1;}//the header
                     else {
                     
                             Club club = new Club();
@@ -217,7 +219,7 @@ public class ScreenScraper {
 
     //###############################################################################################
 //###############################################################################################
-    boolean hasFirstHalf(String result) {
+    boolean hasResultForFirstHalf(String result) {
         if (result.contains("(")) {
             return true;
         }
@@ -236,7 +238,11 @@ public class ScreenScraper {
        
 
     }
-
+/***
+ * 
+ * @param game
+ * @return goals and if it empty that means the result is (0:0)
+ */
     ArrayList <Goal> getEventsOfGame(String game) {
 
         String gameURL;
@@ -249,11 +255,11 @@ public class ScreenScraper {
         Document doc;//select("td[text()*=goals]");
         doc = Jsoup.parse(htmlPage);
         Elements tables = doc.getElementsByClass("standard_tabelle");
-        Element tableOfGoals = getTable(tables);
+        Element tableOfGoals = getGoalsTable(tables);
         Elements rowOfGoals = tableOfGoals.select("tr");
         for (Element rowOfGoal : rowOfGoals) {
             if (rowOfGoal.text().contains("goals")) {//if the header
-               
+             
             }//if end the header
             else if (rowOfGoal.text().contains(":")) {//it is goal
             	goal = new Goal();
@@ -288,7 +294,7 @@ return goals;
 
     //###############################################################################################
 //##############################################################################################
-    Element getTable(Elements tables) {
+    Element getGoalsTable(Elements tables) {
         Element tableOfGoals = null;
         for (Element table : tables) {
             if (table.text().contains("goals")) {
