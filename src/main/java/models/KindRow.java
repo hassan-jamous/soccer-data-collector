@@ -1,6 +1,6 @@
 package models;
 
-public enum Kind{
+public enum KindRow{
 	Round,
 	Date,
 	Team,
