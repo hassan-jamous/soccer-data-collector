@@ -19,7 +19,7 @@ public class ScreenScraperTest {
     public void itShouldGetGamesTableOfLeague()  {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
         
-        GamesTableOfLeague gamesTableActualValue1960_1961 = screenScraperUnderTest.getGamesTableOfCompetition("1960-1961");
+        GamesTableOfLeague gamesTableActualValue1960_1961 = screenScraperUnderTest.getAllRounds("1960-1961");
            
         Round round4At1960_1961 = new Round();
         round4At1960_1961.setRoundNumber("4. Round");
@@ -37,22 +37,22 @@ public class ScreenScraperTest {
         Game game10 = new Game("31/08/1960","","Fulham FC","Newcastle United","4:3 (0:0)");
         Game game11 = new Game("31/08/1960","","Birmingham City","West Bromwich Albion","3:1 (0:0)");
        
-        round4At1960_1961.addGame(game1);
-        round4At1960_1961.addGame(game2);
-        round4At1960_1961.addGame(game3);
-        round4At1960_1961.addGame(game4);
-        round4At1960_1961.addGame(game5);
-        round4At1960_1961.addGame(game6);
-        round4At1960_1961.addGame(game7);
-        round4At1960_1961.addGame(game8);
-        round4At1960_1961.addGame(game9);
-        round4At1960_1961.addGame(game10);
-        round4At1960_1961.addGame(game11);
+        round4At1960_1961.games.add(game1);
+        round4At1960_1961.games.add(game2);
+        round4At1960_1961.games.add(game3);
+        round4At1960_1961.games.add(game4);
+        round4At1960_1961.games.add(game5);
+        round4At1960_1961.games.add(game6);
+        round4At1960_1961.games.add(game7);
+        round4At1960_1961.games.add(game8);
+        round4At1960_1961.games.add(game9);
+        round4At1960_1961.games.add(game10);
+        round4At1960_1961.games.add(game11);
                 
         Assert.assertEquals(round4At1960_1961.toString(), gamesTableActualValue1960_1961.getRoundObject(4).toString());
         
         
-        GamesTableOfLeague gamesTableActualValue1888_1889 = screenScraperUnderTest.getGamesTableOfCompetition("1888-1889");
+        GamesTableOfLeague gamesTableActualValue1888_1889 = screenScraperUnderTest.getAllRounds("1888-1889");
         
         Round round2At1888_1889 = new Round();
         round2At1888_1889.setRoundNumber("2. Round");
@@ -62,16 +62,16 @@ public class ScreenScraperTest {
         Game game15 = new Game("15/09/1888" ,"","Everton FC","Notts County","2:1");
         Game game16 = new Game("15/09/1888" ,"","Wolverhampton Wanderers","Preston North End","0:4");
         Game game17 = new Game("15/09/1888" ,"","Blackburn Rovers","Accrington FC","5:5");
-        round2At1888_1889.addGame(game12);
-        round2At1888_1889.addGame(game13);
-        round2At1888_1889.addGame(game14);
-        round2At1888_1889.addGame(game15);
-        round2At1888_1889.addGame(game16);
-        round2At1888_1889.addGame(game17);
+        round2At1888_1889.games.add(game12);
+        round2At1888_1889.games.add(game13);
+        round2At1888_1889.games.add(game14);
+        round2At1888_1889.games.add(game15);
+        round2At1888_1889.games.add(game16);
+        round2At1888_1889.games.add(game17);
         
         Assert.assertEquals(round2At1888_1889.toString(), gamesTableActualValue1888_1889.getRoundObject(2).toString());
        
-        GamesTableOfLeague gamesTableActualValue2015_2016 = screenScraperUnderTest.getGamesTableOfCompetition("2015-2016");
+        GamesTableOfLeague gamesTableActualValue2015_2016 = screenScraperUnderTest.getAllRounds("2015-2016");
 
         Round round9At2015_2016 = new Round();
         round9At2015_2016.setRoundNumber("9. Round");
@@ -89,16 +89,16 @@ public class ScreenScraperTest {
               
         Game game27 = new Game("19/10/2015","20:00","Swansea City","Stoke City","0:1 (0:1)");
              
-        round9At2015_2016.addGame(game18);
-        round9At2015_2016.addGame(game19);
-        round9At2015_2016.addGame(game20);
-        round9At2015_2016.addGame(game21);
-        round9At2015_2016.addGame(game22);
-        round9At2015_2016.addGame(game23);
-        round9At2015_2016.addGame(game24);
-        round9At2015_2016.addGame(game25);
-        round9At2015_2016.addGame(game26);
-        round9At2015_2016.addGame(game27);
+        round9At2015_2016.games.add(game18);
+        round9At2015_2016.games.add(game19);
+        round9At2015_2016.games.add(game20);
+        round9At2015_2016.games.add(game21);
+        round9At2015_2016.games.add(game22);
+        round9At2015_2016.games.add(game23);
+        round9At2015_2016.games.add(game24);
+        round9At2015_2016.games.add(game25);
+        round9At2015_2016.games.add(game26);
+        round9At2015_2016.games.add(game27);
         
         Assert.assertEquals(round9At2015_2016.toString(), gamesTableActualValue2015_2016.getRoundObject(9).toString());
           
