@@ -5,8 +5,10 @@ import models.Club;
 import models.Game;
 import models.GamesTableOfLeague;
 import models.Goal;
+import models.Player;
 import models.RankingTable;
 import models.Round;
+import models.Team;
 
 import java.util.ArrayList;
 
@@ -277,6 +279,314 @@ public class ScreenScraperTest {
        Assert.assertEquals(goalsExpectedNewGoalZerotoZero.toString(), goalsActualValuenewGoalZeroToZero.toString());
        
     
+   }
+   @Test
+   public void itShouldGetPlayersInTeam() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList <Player> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.getTeamPlayers("manchester-united","2015");
+       ArrayList <Player> manchesterUnitedExpectedplayers2015 = new ArrayList <>();
+       Player player1 = new Player("40","Ben Amos","England","10/04/1990","Goalkeeper");
+       Player player2 = new Player("1","De Gea","Spain","07/11/1990","Goalkeeper");
+       Player player3 = new Player("13","Anders Lindegaard","Denmark","13/04/1984","Goalkeeper");
+       Player player4 = new Player("32","Víctor Valdés","Spain","14/01/1982","Goalkeeper");
+       
+       Player player5 = new Player("42","Tyler Blackett","England","02/04/1994","Defender");
+       Player player6 = new Player("6","Jonny Evans","Northern Ireland","03/01/1988","Defender");
+       Player player7 = new Player("37","Saidy Janko","Switzerland","22/10/1995","Defender");
+       Player player8 = new Player("4","Phil Jones","England","21/02/1992","Defender");
+       Player player9 = new Player("","Andrew Kellett","England","10/11/1993","Defender");
+       Player player10 = new Player("33","Paddy McNair","Northern Ireland","27/04/1995","Defender");
+       Player player11 = new Player("2","Rafael","Brazil","09/07/1990","Defender");
+       Player player12 = new Player("5","Marcos Rojo","Argentina","20/03/1990","Defender");
+       Player player13 = new Player("3","Luke Shaw","England","12/07/1995","Defender");
+       Player player14 = new Player("12","Chris Smalling","England","22/11/1989","Defender");
+       Player player15 = new Player("39","Tom Thorpe","England","13/01/1993","Defender");
+       
+       Player player16 = new Player("21","Ander Herrera","Spain","14/08/1989","Midfielder");
+       Player player17 = new Player("44","Andreas Pereira","Brazil","01/01/1996","Midfielder");
+       Player player18 = new Player("17","Daley Blind","Netherlands","09/03/1990","Midfielder");
+       Player player19 = new Player("16","Michael Carrick","England","28/07/1981","Midfielder");
+       Player player20 = new Player("31","Marouane Fellaini","Belgium","22/11/1987","Midfielder");
+       Player player21 = new Player("11","Adnan Januzaj","Belgium","05/02/1995","Midfielder");
+       Player player22 = new Player("8","Mata","Spain","28/04/1988","Midfielder");
+       Player player23 = new Player("25","Antonio Valencia","Ecuador","04/08/1985","Midfielder");
+       Player player24 = new Player("18","Ashley Young","England","09/07/1985","Midfielder");
+       
+       Player player25 = new Player("7","Ángel Di María","Argentina","14/02/1988","Forward");
+       Player player26 = new Player("9","Radamel Falcao","Colombia","10/02/1986","Forward");
+       Player player27 = new Player("10","Wayne Rooney","England","24/10/1985","Forward");
+       Player player28 = new Player("20","Robin van Persie","Netherlands","06/08/1983","Forward");
+       Player player29 = new Player("49","James Wilson","England","01/12/1995","Forward");
+       
+       Player player30 = new Player("","Louis van Gaal","Netherlands","08/08/1951","Manager");
+       
+       Player player31 = new Player("","Marcel Bout","Netherlands","18/11/1962","Ass. Manager");
+       Player player32 = new Player("","Ryan Giggs","Wales","29/11/1973","Ass. Manager");
+       Player player33 = new Player("","Albert Stuivenberg","Netherlands","30/10/1970","Ass. Manager");
+       
+       Player player34 = new Player("","Frans Hoek","Netherlands","17/10/1956","Goalkeeper-Coach");
+       
+       manchesterUnitedExpectedplayers2015.add(player1);
+       manchesterUnitedExpectedplayers2015.add(player2);
+       manchesterUnitedExpectedplayers2015.add(player3);
+       manchesterUnitedExpectedplayers2015.add(player4);
+       manchesterUnitedExpectedplayers2015.add(player5);
+       manchesterUnitedExpectedplayers2015.add(player6);
+       manchesterUnitedExpectedplayers2015.add(player7);
+       manchesterUnitedExpectedplayers2015.add(player8);
+       manchesterUnitedExpectedplayers2015.add(player9);
+       manchesterUnitedExpectedplayers2015.add(player10);
+       manchesterUnitedExpectedplayers2015.add(player11);
+       manchesterUnitedExpectedplayers2015.add(player12);
+       manchesterUnitedExpectedplayers2015.add(player13);
+       manchesterUnitedExpectedplayers2015.add(player14);
+       manchesterUnitedExpectedplayers2015.add(player15);
+       manchesterUnitedExpectedplayers2015.add(player16);
+       manchesterUnitedExpectedplayers2015.add(player17);
+       manchesterUnitedExpectedplayers2015.add(player18);
+       manchesterUnitedExpectedplayers2015.add(player19);
+       manchesterUnitedExpectedplayers2015.add(player20);
+       manchesterUnitedExpectedplayers2015.add(player21);
+       manchesterUnitedExpectedplayers2015.add(player22);
+       manchesterUnitedExpectedplayers2015.add(player23);
+       manchesterUnitedExpectedplayers2015.add(player24);
+       manchesterUnitedExpectedplayers2015.add(player25);
+       manchesterUnitedExpectedplayers2015.add(player26);
+       manchesterUnitedExpectedplayers2015.add(player27);
+       manchesterUnitedExpectedplayers2015.add(player28);
+       manchesterUnitedExpectedplayers2015.add(player29);
+       manchesterUnitedExpectedplayers2015.add(player30);
+       manchesterUnitedExpectedplayers2015.add(player31);
+       manchesterUnitedExpectedplayers2015.add(player32);
+       manchesterUnitedExpectedplayers2015.add(player33);
+       manchesterUnitedExpectedplayers2015.add(player34);
+       
+       Assert.assertEquals(manchesterUnitedExpectedplayers2015.toString(), manchesterUnitedActualValueplayers2015.toString());
+       
+       
+       ArrayList <Player> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getTeamPlayers("manchester-united","1950");
+       ArrayList <Player> manchesterUnitedExpectedplayers1950 = new ArrayList <>();
+       Player player40 = new Player("","Jack Crompton","England","18/12/1921","Goalkeeper");
+       Player player41 = new Player("","Sonny Feehan","Ireland","17/09/1926","Goalkeeper");
+       Player player42 = new Player("","Joe Lancaster","England","28/04/1926","Goalkeeper");
+       Player player43 = new Player("","Ray Wood","England","11/06/1931","Goalkeeper");
+       
+       Player player44 = new Player("","John Aston","England","03/09/1921","Defender");
+       Player player45 = new Player("","John Ball","England","13/03/1925","Defender");
+       Player player46 = new Player("","Johnny Carey","Ireland","23/02/1919","Defender");
+       Player player47 = new Player("","Sammy Lynn","England","25/12/1920","Defender");
+       Player player48 = new Player("","Tommy McNulty","England","30/12/1929","Defender");
+       Player player49 = new Player("","Billy Redman","England","29/01/1928","Defender");
+       Player player50 = new Player("","John Warner","Wales","21/09/1911","Defender");
+       
+       Player player51 = new Player("","Allenby Chilton","England","16/09/1918","Midfielder");
+       Player player52 = new Player("","Henry Cockburn","England","14/09/1923","Midfielder");
+       Player player53 = new Player("","Don Gibson","England","12/05/1929","Midfielder");
+       Player player54 = new Player("","Tommy Lowrie","Scotland","14/01/1928","Midfielder");
+       Player player55 = new Player("","Billy McGlen","England","27/04/1921","Midfielder");
+       Player player56 = new Player("","Jeff Whitefoot","England","31/12/1933","Midfielder");
+       
+       Player player57 = new Player("","Brian Birch","England","18/11/1931","Forward");
+       Player player58 = new Player("","Tommy Bogan","Scotland","18/05/1920","Forward");
+       Player player59 = new Player("","Laurie Cassidy","England","10/03/1923","Forward");
+       Player player60 = new Player("","Frank Clempson","England","27/05/1930","Forward");
+       Player player61 = new Player("","Jimmy Delaney","Scotland","03/09/1914","Forward");
+       Player player62 = new Player("","Johnny Downie","Scotland","19/07/1925","Forward");
+       Player player63 = new Player("","Charlie Mitten","England","17/01/1921","Forward");
+       Player player64 = new Player("","Stan Pearson","England","11/01/1919","Forward");
+       Player player65 = new Player("","Jack Rowley","England","07/10/1920","Forward");
+       
+       Player player66 = new Player("","Matt Busby","Scotland","26/05/1909","Manager");
+       
+       Player player67 = new Player("","Jimmy Murphy","Wales","27/10/1910","Ass. Manager");
+       
+
+       manchesterUnitedExpectedplayers1950.add(player40);
+       manchesterUnitedExpectedplayers1950.add(player41);
+       manchesterUnitedExpectedplayers1950.add(player42);
+       manchesterUnitedExpectedplayers1950.add(player43);
+       manchesterUnitedExpectedplayers1950.add(player44);
+       manchesterUnitedExpectedplayers1950.add(player45);
+       manchesterUnitedExpectedplayers1950.add(player46);
+       manchesterUnitedExpectedplayers1950.add(player47);
+       manchesterUnitedExpectedplayers1950.add(player48);
+       manchesterUnitedExpectedplayers1950.add(player49);
+       manchesterUnitedExpectedplayers1950.add(player50);
+       manchesterUnitedExpectedplayers1950.add(player51);
+       manchesterUnitedExpectedplayers1950.add(player52);
+       manchesterUnitedExpectedplayers1950.add(player53);
+       manchesterUnitedExpectedplayers1950.add(player54);
+       manchesterUnitedExpectedplayers1950.add(player55);
+       manchesterUnitedExpectedplayers1950.add(player56);
+       manchesterUnitedExpectedplayers1950.add(player57);
+       manchesterUnitedExpectedplayers1950.add(player58);
+       manchesterUnitedExpectedplayers1950.add(player59);
+       manchesterUnitedExpectedplayers1950.add(player60);
+       manchesterUnitedExpectedplayers1950.add(player61);
+       manchesterUnitedExpectedplayers1950.add(player62);
+       manchesterUnitedExpectedplayers1950.add(player63);
+       manchesterUnitedExpectedplayers1950.add(player64);
+       manchesterUnitedExpectedplayers1950.add(player65);
+       manchesterUnitedExpectedplayers1950.add(player66);
+       manchesterUnitedExpectedplayers1950.add(player67);
+              
+       Assert.assertEquals(manchesterUnitedActualValueplayers1950.toString(), manchesterUnitedExpectedplayers1950.toString());
+       
+       
+       ArrayList <Player> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.getTeamPlayers("manchester-united","1890");
+       ArrayList <Player> manchesterUnitedExpectedplayers1890 = new ArrayList <>();
+       
+       Player player70 = new Player("","Tom Burke","Wales","1862","Midfielder");
+       Player player71 = new Player("","Joe Davies","Wales","12/07/1864","Midfielder");
+       Player player72 = new Player("","Roger Doughty","Wales","1868","Midfielder");
+       
+       Player player73 = new Player("","Thomas Craig","England","","Forward");
+       Player player74 = new Player("","Jack Doughty","England","10/1865","Forward");
+       
+       manchesterUnitedExpectedplayers1890.add(player70);
+       manchesterUnitedExpectedplayers1890.add(player71);
+       manchesterUnitedExpectedplayers1890.add(player72);
+       manchesterUnitedExpectedplayers1890.add(player73);
+       manchesterUnitedExpectedplayers1890.add(player74);
+
+       Assert.assertEquals(manchesterUnitedActualValueplayers1890.toString(), manchesterUnitedExpectedplayers1890.toString());
+       
+       System.out.println("test team has not players like Accrington FC, url=https://www.worldfootball.net/teams/accrington-fc/");
+       //test team has not players!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+   }
+   
+   @Test
+   public void itShouldGetTeamsInLeague() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       
+       ArrayList<Team> teamsAt2015_2016ActualValue = screenScraperUnderTest.getTeamsAtSeason("2015-2016");
+       ArrayList<Team> teamsAt2015_2016Expected = new ArrayList<>();
+       Team team1 = new Team("AFC Bournemouth");
+       Team team2 = new Team("Arsenal FC");
+       Team team3 = new Team("Aston Villa");
+       Team team4 = new Team("Chelsea FC");
+       Team team5 = new Team("Crystal Palace");
+       Team team6 = new Team("Everton FC");
+       Team team7 = new Team("Leicester City");
+       Team team8 = new Team("Liverpool FC");
+       Team team9 = new Team("Manchester City");
+       Team team10 = new Team("Manchester United");
+       Team team11 = new Team("Newcastle United");
+       Team team12 = new Team("Norwich City");
+       Team team13 = new Team("Southampton FC");
+       Team team14 = new Team("Stoke City");
+       Team team15 = new Team("Sunderland AFC");
+       Team team16 = new Team("Swansea City");
+       Team team17 = new Team("Tottenham Hotspur");
+       Team team18 = new Team("Watford FC");
+       Team team19 = new Team("West Bromwich Albion");
+       Team team20 = new Team("West Ham United");
+       teamsAt2015_2016Expected.add(team1);
+       teamsAt2015_2016Expected.add(team2);
+       teamsAt2015_2016Expected.add(team3);
+       teamsAt2015_2016Expected.add(team4);
+       teamsAt2015_2016Expected.add(team5);
+       teamsAt2015_2016Expected.add(team6);
+       teamsAt2015_2016Expected.add(team7);
+       teamsAt2015_2016Expected.add(team8);
+       teamsAt2015_2016Expected.add(team9);
+       teamsAt2015_2016Expected.add(team10);
+       teamsAt2015_2016Expected.add(team11);
+       teamsAt2015_2016Expected.add(team12);
+       teamsAt2015_2016Expected.add(team13);
+       teamsAt2015_2016Expected.add(team14);
+       teamsAt2015_2016Expected.add(team15);
+       teamsAt2015_2016Expected.add(team16);
+       teamsAt2015_2016Expected.add(team17);
+       teamsAt2015_2016Expected.add(team18);
+       teamsAt2015_2016Expected.add(team19);
+       teamsAt2015_2016Expected.add(team20);
+       Assert.assertEquals(teamsAt2015_2016Expected.toString(), teamsAt2015_2016ActualValue.toString());
+
+       
+       
+       ArrayList<Team> teamsAt1967_1968ActualValue = screenScraperUnderTest.getTeamsAtSeason("1967-1968");
+       ArrayList<Team> teamsAt1967_1968Expected = new ArrayList<>();
+       Team team30 = new Team("Arsenal FC");
+       Team team31 = new Team("Burnley FC");
+       Team team32 = new Team("Chelsea FC");
+       Team team33 = new Team("Coventry City");
+       Team team34 = new Team("Everton FC");
+       Team team35 = new Team("Fulham FC");
+       Team team36 = new Team("Leeds United");
+       Team team37 = new Team("Leicester City");
+       Team team38 = new Team("Liverpool FC");
+       Team team39 = new Team("Manchester City");
+       Team team40 = new Team("Manchester United");
+       Team team41 = new Team("Newcastle United");
+       Team team42 = new Team("Nottingham Forest");
+       Team team43 = new Team("Sheffield United");
+       Team team44 = new Team("Sheffield Wednesday");
+       Team team45 = new Team("Southampton FC");
+       Team team46 = new Team("Stoke City");
+       Team team47 = new Team("Sunderland AFC");
+       Team team48 = new Team("Tottenham Hotspur");
+       Team team49 = new Team("West Bromwich Albion");
+       Team team50 = new Team("West Ham United");
+       Team team51 = new Team("Wolverhampton Wanderers");
+       teamsAt1967_1968Expected.add(team30);
+       teamsAt1967_1968Expected.add(team31);
+       teamsAt1967_1968Expected.add(team32);
+       teamsAt1967_1968Expected.add(team33);
+       teamsAt1967_1968Expected.add(team34);
+       teamsAt1967_1968Expected.add(team35);
+       teamsAt1967_1968Expected.add(team36);
+       teamsAt1967_1968Expected.add(team37);
+       teamsAt1967_1968Expected.add(team38);
+       teamsAt1967_1968Expected.add(team39);
+       teamsAt1967_1968Expected.add(team40);
+       teamsAt1967_1968Expected.add(team41);
+       teamsAt1967_1968Expected.add(team42);
+       teamsAt1967_1968Expected.add(team43);
+       teamsAt1967_1968Expected.add(team44);
+       teamsAt1967_1968Expected.add(team45);
+       teamsAt1967_1968Expected.add(team46);
+       teamsAt1967_1968Expected.add(team47);
+       teamsAt1967_1968Expected.add(team48);
+       teamsAt1967_1968Expected.add(team49);
+       teamsAt1967_1968Expected.add(team50);
+       teamsAt1967_1968Expected.add(team51);
+       
+       Assert.assertEquals(teamsAt1967_1968Expected.toString(), teamsAt1967_1968ActualValue.toString());
+       
+       
+       
+       ArrayList<Team> teamsAt1889_1890ActualValue = screenScraperUnderTest.getTeamsAtSeason("1889-1890");
+       ArrayList<Team> teamsAt1889_1890Expected = new ArrayList<>();
+       Team team60 = new Team("Accrington FC");
+       Team team61 = new Team("Aston Villa");
+       Team team62 = new Team("Blackburn Rovers");
+       Team team63 = new Team("Bolton Wanderers");
+       Team team64 = new Team("Burnley FC");
+       Team team65 = new Team("Derby County");
+       Team team66 = new Team("Everton FC");
+       Team team67 = new Team("Notts County");
+       Team team68 = new Team("Preston North End");
+       Team team69 = new Team("Stoke City");
+       Team team70 = new Team("West Bromwich Albion");
+       Team team71 = new Team("Wolverhampton Wanderers");
+       teamsAt1889_1890Expected.add(team60);
+       teamsAt1889_1890Expected.add(team61);
+       teamsAt1889_1890Expected.add(team62);
+       teamsAt1889_1890Expected.add(team63);
+       teamsAt1889_1890Expected.add(team64);
+       teamsAt1889_1890Expected.add(team65);
+       teamsAt1889_1890Expected.add(team66);
+       teamsAt1889_1890Expected.add(team67);
+       teamsAt1889_1890Expected.add(team68);
+       teamsAt1889_1890Expected.add(team69);
+       teamsAt1889_1890Expected.add(team70);
+       teamsAt1889_1890Expected.add(team71);
+       
+       
+       Assert.assertEquals(teamsAt1889_1890Expected.toString(), teamsAt1889_1890ActualValue.toString());
+
    }
 
 }

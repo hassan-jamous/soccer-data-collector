@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 
 import models.*;
+
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -299,7 +301,6 @@ public class ScreenScraper {
 return goals;
     }
 
-
     Element getGoalsTable(Elements tables) {
         Element tableOfGoals = null;
         for (Element table : tables) {
@@ -348,5 +349,106 @@ return goals;
 		String url = WORLD_FOOTBALL_MATCHES_URL + "eng-premier-league-" + years + "/";
 		return url;
 	}
+	
+	public ArrayList<Team> getTeamsAtSeason(String competitionYears) {
+		
+		ArrayList <Team> teamsInLeague = new ArrayList<>();
+		Team teamInLeague ;
+		String url = "https://www.worldfootball.net/players/eng-premier-league-"+competitionYears+"/";
+		String htmlPage = httpUtil.sendGetHttpRequest(url);
+		Document doc = Jsoup.parse(htmlPage);
+		
+		Elements  tables = doc.getElementsByClass("standard_tabelle");
+		Elements teams = tables.select("tr:has(td:has(a[href*=/teams/]))");
+		for (Element team : teams) {
+			teamInLeague = new Team();
+			teamInLeague.setName(team.child(1).child(0).ownText());			
+			teamsInLeague.add(teamInLeague);
+		}
+		return teamsInLeague;
+		
+		
+	}
+	
+	
+	public ArrayList<Player> getTeamPlayers(String url) {
+		
+		ArrayList <Player> players = new ArrayList <>();
+		Player player;
+		String information ="";
+		
+		String htmlPage = httpUtil.sendGetHttpRequest(url);
+		Document doc = Jsoup.parse(htmlPage);
+		
+		Elements  tables = doc.getElementsByClass("standard_tabelle");
+		Elements rows = tables.select("tr");
+		
+		for(Element row : rows) {	
+			
+			if(kindHeaderOfPlayer(row) == KindOfPlayer.Goalkeeper) {
+				information = "Goalkeeper" ;
+				
+			}
+			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Defender) {
+				information = "Defender" ;
+				
+			}
+			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Midfielder) {
+				information = "Midfielder" ;
+				
+			}
+			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Forward) {
+				information = "Forward" ;				
+			}
+			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Manager) {
+				information = "Manager" ;				
+			}
+			else if(kindHeaderOfPlayer(row) == KindOfPlayer.AssistantManager) {
+				information = "Ass. Manager" ;				
+			}
+			else if(kindHeaderOfPlayer(row) == KindOfPlayer.GoalkeeperCoach) {
+				information = "Goalkeeper-Coach" ;				
+			}
+			
+			
+			else if(!(row.select("a[href*=/player_summary/]").isEmpty())) {
+				player = new Player(row.child(1).text() , row.child(2).text(),row.child(4).text() , row.child(5).text(),information);
+				players.add(player);
+			} 
+		}
+		return players;
+		
+	}
+	public ArrayList<Player> getTeamPlayers(String teamName , String year) {
+		String url = "https://www.worldfootball.net/teams/"+teamName + "/" + year +"/2/";
+		return getTeamPlayers(url);
+	}
+
+	public KindOfPlayer kindHeaderOfPlayer(Element row) {
+		KindOfPlayer result = KindOfPlayer.Error;
+		if(row.getElementsByTag("b").text().equals("Goalkeeper")) {
+			return KindOfPlayer.Goalkeeper;
+		}
+		if(row.getElementsByTag("b").text().equals("Defender")) {
+			return KindOfPlayer.Defender;
+		}
+		if(row.getElementsByTag("b").text().equals("Midfielder")) {
+			return KindOfPlayer.Midfielder;
+		}
+		if(row.getElementsByTag("b").text().equals("Forward")) {
+			return KindOfPlayer.Forward;
+		}
+		if(row.getElementsByTag("b").text().equals("Manager")) {
+			return KindOfPlayer.Manager;
+		}
+		if(row.getElementsByTag("b").text().equals("Ass. Manager")) {
+			return KindOfPlayer.AssistantManager;
+		}
+		if(row.getElementsByTag("b").text().equals("Goalkeeper-Coach")) {
+			return KindOfPlayer.GoalkeeperCoach;
+		}
+		return  result;
+	}
+	
 }//end ScreenScraper
 
