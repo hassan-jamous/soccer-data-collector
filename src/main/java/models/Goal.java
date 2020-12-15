@@ -8,6 +8,15 @@ public class Goal {
 	public String information ="";
 	public String assester ="";
 	public Goal() {}
+	public Goal(String result , String player , String information) {
+		this.result = result;
+		this.player = player;
+		this.information = information;
+		if(information.equals("0.")) {
+			this.kind = KindOfGoal.OldGoal; 
+		}
+		
+	}
 	public Goal(String result , String minute , String player , String information) {
 		this.result = result;
 		this.minute = minute;

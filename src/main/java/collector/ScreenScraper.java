@@ -217,8 +217,7 @@ public class ScreenScraper {
                     return rankingTable;
                 }
 
-    //###############################################################################################
-//###############################################################################################
+ 
     boolean hasResultForFirstHalf(String game) {
         if (game.contains("(")) {
             return true;
@@ -226,8 +225,6 @@ public class ScreenScraper {
         return false;
     }
 
-    //###############################################################################################
-//##############################################################################################
   
     ArrayList <Goal> getEventsOfGame(Element game) {
 
@@ -263,37 +260,46 @@ public class ScreenScraper {
             }//if end the header
             else if (rowOfGoal.text().contains(":")) {//it is goal
             	goal = new Goal();
-                if (kindOfGoal(rowOfGoal).equals(KindOfGoal.HasAssister)) {
-                    goal.kind = KindOfGoal.HasAssister;
-                    goal.result = rowOfGoal.child(0).text();
-                    goal.player = rowOfGoal.child(1).child(0).attr("title");
-                    goal.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
-                    goal.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(")-1);
-                    goal.assester = rowOfGoal.child(1).child(1).attr("title");
-                    goals.add(goal);
-                } else if (kindOfGoal(rowOfGoal).equals(KindOfGoal.Individually)) {
-                    goal.kind = KindOfGoal.Individually;
-                    goal.result = rowOfGoal.child(0).text();
-                    goal.player = rowOfGoal.child(1).child(0).attr("title");
-                    goal.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
-                    goal.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2);
-                    goals.add(goal);
-                } else if (kindOfGoal(rowOfGoal).equals(KindOfGoal.Reverse)) {
-                    goal.kind = KindOfGoal.Reverse;
-                    goal.result = rowOfGoal.child(0).text();
-                    goal.player = rowOfGoal.child(1).child(0).attr("title");
-                    goal.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
-                    goal.information = "own goal";
-                    goals.add(goal);
-                    //goal.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/")+1);
-                }
+            	if(rowOfGoal.child(1).ownText().equals("0.")) {//old league has not informations
+            		goal.kind = KindOfGoal.OldGoal;
+            		goal.result = rowOfGoal.child(0).text();
+            		goal.player = rowOfGoal.child(1).child(0).attr("title");
+            		goal.information ="0.";
+            		goals.add(goal);
+            	}
+            	else {//new league
+            		if (kindOfGoal(rowOfGoal).equals(KindOfGoal.HasAssister)) {
+            			goal.kind = KindOfGoal.HasAssister;
+            			goal.result = rowOfGoal.child(0).text();
+            			goal.player = rowOfGoal.child(1).child(0).attr("title");
+            			goal.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
+            			goal.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(")-1);
+            			goal.assester = rowOfGoal.child(1).child(1).attr("title");
+            			goals.add(goal);
+            			} 
+            		else if (kindOfGoal(rowOfGoal).equals(KindOfGoal.Individually)) {
+            			goal.kind = KindOfGoal.Individually;
+            			goal.result = rowOfGoal.child(0).text();
+            			goal.player = rowOfGoal.child(1).child(0).attr("title");
+            			goal.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
+            			goal.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2);
+            			goals.add(goal);
+            		} 
+            		else if (kindOfGoal(rowOfGoal).equals(KindOfGoal.Reverse)) {
+            			goal.kind = KindOfGoal.Reverse;
+            			goal.result = rowOfGoal.child(0).text();
+            			goal.player = rowOfGoal.child(1).child(0).attr("title");
+            			goal.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
+            			goal.information = "own goal";
+            			goals.add(goal);
+                    }
+            	}//end new league
             }//end it is goal
         }
 return goals;
     }
 
-    //###############################################################################################
-//##############################################################################################
+
     Element getGoalsTable(Elements tables) {
         Element tableOfGoals = null;
         for (Element table : tables) {
@@ -304,8 +310,6 @@ return goals;
         return tableOfGoals;
     }
 
-    //###############################################################################################
-//##############################################################################################
     KindOfGoal kindOfGoal(Element goal) {
         int numberOfPlayer = 0;
 
