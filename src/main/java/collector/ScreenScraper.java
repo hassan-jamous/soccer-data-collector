@@ -17,38 +17,38 @@ public class ScreenScraper {
         String htmlPage = httpUtil.sendGetHttpRequest(buildGetEnglishPremierLeagueSeasonUrl(competitionYears));
         Document doc = Jsoup.parse(htmlPage);
         Elements League = doc.getElementsByClass("standard_tabelle");
-        Elements rows = League.select("tr");
+        Elements trs = League.select("tr");
 
         GamesTableOfLeague gamesTable = new GamesTableOfLeague(competitionYears);
-        for (int i = 0; i < rows.size(); i++) {
-            Element row = rows.get(i);
-            if (isRound(row)) {
+        for (int i = 0; i < trs.size(); i++) {
+            Element tr = trs.get(i);
+            if (isRound(tr)) {
                 Round round = new Round();
-                round.setRoundNumber(getRoundAndGameElementValues(row));
-                round.games.addAll(ParseGamesInRound(rows, i));
+                round.setRoundNumber(getRoundValues(tr));
+                round.games.addAll(ParseGamesInRound(trs, i));
                 gamesTable.addRound(round);
             }
         }
         return gamesTable;
     }
 
-    private List<Game> ParseGamesInRound(Elements rows, int startFromIndex) {
+    private List<Game> ParseGamesInRound(Elements trs, int startFromIndex) {
         int j = startFromIndex + 1;
         List<Game> output = new ArrayList<>();
 
         //In some cases game's date is mentioned only once for multiple games
         //that is why we need to keep the date in a variable and use it for each game.
         String date = "";
-        while ((j < rows.size()) && (!isRound(rows.get(j)))) {
-            Elements tds = rows.get(j).children();
-            if (isGame(rows.get(j))) {
-                String currentDate = getRoundAndGameElementValues(tds.get(0));
+        while ((j < trs.size()) && (!isRound(trs.get(j))) && (isGame((trs.get(j))))) {
+            Elements tds = trs.get(j).children();
+            if (isGame(trs.get(j))) {
+                String currentDate = getGameValues(tds.get(0) , GameIformationInTDs.Date);
                 date = currentDate == null ? date : currentDate;
                 Game game = new Game(date,
-                        tds.get(1).text(),
-                        getRoundAndGameElementValues(tds.get(2)),
-                        getRoundAndGameElementValues(tds.get(4)),
-                        getRoundAndGameElementValues(tds.get(5)));
+                		getGameValues(tds.get(1) , GameIformationInTDs.Time       ),
+                		getGameValues(tds.get(2) , GameIformationInTDs.FirstTeam ),
+                        getGameValues(tds.get(4) , GameIformationInTDs.SecondTeam),
+                        getGameValues(tds.get(5) , GameIformationInTDs.Result    ));
                 output.add(game);
             }
             j++;
@@ -56,10 +56,10 @@ public class ScreenScraper {
         return output;
     }
 
-    private boolean isRound(Element row) {
-        if (row != null) {
-            for (Element child : row.children()) {
-                if (child.text().contains("Round")) {
+    private boolean isRound(Element tr) {
+        if (tr != null) {
+            for (Element td : tr.children()) {
+                if (td.text().contains("Round")) {
                     return true;
                 }
             }
@@ -67,10 +67,10 @@ public class ScreenScraper {
         return false;
     }
 
-    private boolean isGame(Element row) {
-        if (row != null) {
+    private boolean isGame(Element tr) {
+        if (tr != null) {
             int numberOfTeams = 0;
-            for (Element td : row.select("td")) {
+            for (Element td : tr.select("td")) {
                 for (Element child : td.children()) {
                     if (child.attr("href").contains("teams")) {
                         numberOfTeams++;
@@ -81,127 +81,108 @@ public class ScreenScraper {
         }
         return false;
     }
+    public String getRoundValues(Element tr) {
+    	
+    	return tr.child(0).child(0).text();//tr.child(0) is <th> , tr.child(0).child(0) is <a> i do it {if we want to get the round큦 url , and to follow table큦tructural}
+    }
 
-
-    public String getRoundAndGameElementValues(Element element) {
-        if ((element != null) && (element.childrenSize() > 0)) {
-            Elements children = element.children();
-            for (Element child : children) {
-                if (child.text().contains("Round")) {
-                    return child.text();
-                } else if (child.attr("href").contains("matches_today")) {
-                    return child.text();
-                } else if (child.attr("href").contains("teams")) {
-                    return child.text();
-                } else if (child.text().contains(":") && (child.hasAttr("href"))) {//this is game result
-                    return child.text();
-                }
-            }
-        }
-
-        //result for old league
-        //to distinguish  between time (hour) in new league
-        //next element is team? then return error
-        if (element.text().contains(":") && (element.childrenSize() == 0)) {
-            if ((element.nextElementSibling() != null) && (element.nextElementSibling().childrenSize() > 0)
-                    && (element.nextElementSibling().children().hasAttr("href"))) {
-                return null;//return error
-            } else {
-                return element.text();
-            }
-        }////result for old league
+    public String getGameValues(Element td , GameIformationInTDs type) {
+    	if(type == GameIformationInTDs.Date) {
+    		if(td.childrenSize() > 0) {//the game has date, maybe it does not have because it큦 date is the same to previous game큦 date     	
+    			return td.child(0).text();
+    		}
+    		return null;
+    	}
+    	if(type == GameIformationInTDs.Time) {
+    		return td.text();
+    	}
+    	if(type == GameIformationInTDs.FirstTeam) {
+    		return td.child(0).text();//td.child(0) is <a> , i do it {if we want to get the first team큦 url , and to follow table큦tructural}
+    	}
+    	if(type == GameIformationInTDs.SecondTeam) {
+    		return td.child(0).text();//td.child(0) is <a> , i do it {if we want to get the second team큦 url , and to follow table큦tructural}
+    	}
+    	if(type == GameIformationInTDs.Result) {
+    		if(td.childrenSize() > 0) {
+    			return td.child(0).text();//td.child(0) is <a> , i do it {if we want to get the result큦 url , and to follow table큦tructural}
+    		}
+    		return td.text();//old leagues
+    	}
         return null;
     }
 
-    RankingTable getLastTable(String years) {
-        RankingTable rankingTable = new RankingTable();
-        //build url
-        String competitionName = "eng-premier-league-";
-        String url = "https://www.worldfootball.net/schedule/" + competitionName + years + "/";
-
+    RankingTable getLastTable(String years) {        
+       
+        String url = "https://www.worldfootball.net/schedule/eng-premier-league-" + years + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
-
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.getElementsByClass("standard_tabelle");
+        RankingTable rankingTable = new RankingTable();
         for (Element table : tables) {
             if (table.childrenSize() > 0) {
-                if (table.children().text().contains("#")) {//ranking table
-
-                    Elements rows = table.select("tr");
+            	//there are many tables have (class is standard_tabelle)
+            	//only ranking table has this mark (#)
+                if (table.children().text().contains("#")) {
+                    Elements trs = table.select("tr");
                     int i = 0;
-
-                    for (Element row : rows) {
-                        if (i == 0) {
+                    for (Element tr : trs) {
+                        if (i == 0) {//first element is the table큦 header
                             i = 1;
-                        }//first element is the table占퐏 header
+                        }
                         else {
-
                             Club club = new Club();
-
-                            club.setPosition(row.child(0).text());
-                            club.setName(row.child(2).text());
-                            club.setPlayedGames(row.child(3).text());
-                            club.setWinGames(row.child(4).text());
-                            club.setDrawGames(row.child(5).text());
-                            club.setLostGames(row.child(6).text());
-                            club.setGoals(row.child(7).text());
-                            club.setDifGoals(row.child(8).text());
-                            club.setPoints(row.child(9).text());
-
+                            club.setPosition(tr.child(0).text());
+                            club.setName(tr.child(2).text());
+                            club.setPlayedGames(tr.child(3).text());
+                            club.setWinGames(tr.child(4).text());
+                            club.setDrawGames(tr.child(5).text());
+                            club.setLostGames(tr.child(6).text());
+                            club.setGoals(tr.child(7).text());
+                            club.setDifGoals(tr.child(8).text());
+                            club.setPoints(tr.child(9).text());
                             rankingTable.addClub(club);
                         }
-
                     }
                 }
-
             }
         }
-
-
         return rankingTable;
     }
 
     RankingTable getTableByRound(String years, String round) {
 
-        RankingTable rankingTable = new RankingTable();
-        String competition = "eng-premier-league-";
-        String url = "https://www.worldfootball.net/schedule/" + competition + years + "-spieltag/" + round + "/";
-
+        
+        String url = "https://www.worldfootball.net/schedule/eng-premier-league-" + years + "-spieltag/" + round + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
-
         Document doc = Jsoup.parse(htmlPage);
-
         Elements tables = doc.getElementsByClass("standard_tabelle");
+        RankingTable rankingTable = new RankingTable();
         for (Element table : tables) {
             if (table.childrenSize() > 0) {
-                if (table.children().text().contains("#")) {//ranking table
-
-                    Elements rows = table.select("tr");
+            	//there are many tables have (class is standard_tabelle)
+            	//only ranking table has this mark (#)
+                if (table.children().text().contains("#")) {
+                    Elements trs = table.select("tr");
                     int i = 0;
-
-                    for (Element row : rows) {
+                    for (Element tr : trs) {//the header
                         if (i == 0) {
                             i = 1;
-                        }//the header
+                        }
                         else {
-
                             Club club = new Club();
-
-                            club.setPosition(row.child(0).text());
-                            club.setName(row.child(2).text());
-                            club.setPlayedGames(row.child(3).text());
-                            club.setWinGames(row.child(4).text());
-                            club.setDrawGames(row.child(5).text());
-                            club.setLostGames(row.child(6).text());
-                            club.setGoals(row.child(7).text());
-                            club.setDifGoals(row.child(8).text());
-                            club.setPoints(row.child(9).text());
+                            club.setPosition(tr.child(0).text());
+                            club.setName(tr.child(2).text());
+                            club.setPlayedGames(tr.child(3).text());
+                            club.setWinGames(tr.child(4).text());
+                            club.setDrawGames(tr.child(5).text());
+                            club.setLostGames(tr.child(6).text());
+                            club.setGoals(tr.child(7).text());
+                            club.setDifGoals(tr.child(8).text());
+                            club.setPoints(tr.child(9).text());
 
                             rankingTable.addClub(club);
                         }
-
                     }
-
                 }
             }
         }
@@ -232,27 +213,21 @@ public class ScreenScraper {
      * @param game
      * @return goals and if it empty that means the result is (0:0)
      */
-    public ArrayList<Goal> getEventsOfGame(String game) {
+    public ArrayList<Goal> getEventsOfGame(String gameURL) {
 
-        String gameURL;
-        Goal goal;
-        ArrayList<Goal> goals = new ArrayList<>();
-        gameURL = game;
-        String htmlPage;
-        htmlPage = httpUtil.sendGetHttpRequest(gameURL);
-
-        Document doc;//select("td[text()*=goals]");
-        doc = Jsoup.parse(htmlPage);
+        
+        String htmlPage = httpUtil.sendGetHttpRequest(gameURL);
+        Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.getElementsByClass("standard_tabelle");
         Element tableOfGoals = getGoalsTable(tables);
         Elements rowOfGoals = tableOfGoals.select("tr");
+        Goal goal;
+        ArrayList<Goal> goals = new ArrayList<>();
         for (Element rowOfGoal : rowOfGoals) {
-            if (rowOfGoal.text().contains("goals")) {//if the header
-
-            }//if end the header
+            if (rowOfGoal.text().contains("goals")) {}//if the header           
             else if (rowOfGoal.text().contains(":")) {//it is goal
                 goal = new Goal();
-                if (rowOfGoal.child(1).ownText().equals("0.")) {//old league has not informations
+                if (rowOfGoal.child(1).ownText().equals("0.")) {//old league does not have any informations
                     goal.kind = KindOfGoal.OldGoal;
                     goal.result = rowOfGoal.child(0).text();
                     goal.player = rowOfGoal.child(1).child(0).attr("title");
@@ -282,8 +257,8 @@ public class ScreenScraper {
                         goal.information = "own goal";
                         goals.add(goal);
                     }
-                }//end new league
-            }//end it is goal
+                }
+            }
         }
         return goals;
     }
@@ -301,29 +276,24 @@ public class ScreenScraper {
 
     KindOfGoal kindOfGoal(Element goal) {
         int numberOfPlayer = 0;
-
-        if (goal.childrenSize() == 2) {
-
+        if (goal.childrenSize() == 2) {//goal has two children the first is the result and the second  who has the informations
             for (Element grandson : goal.child(1).children()) {
                 if (grandson.hasAttr("href")) {
                     numberOfPlayer++;
                 }
             }
-            if (numberOfPlayer == 2) {//to do
+            if (numberOfPlayer == 2) {
                 return KindOfGoal.HasAssister;
             }
-
             if (goal.text().contains("own")) {
                 return KindOfGoal.Reverse;
-            } else {
+            } 
+            else {
                 return KindOfGoal.Individually;
-
             }
-
         }
-        //to ask hassan is better to throw error or !!!!!!!!!!!!!!!!!!!!!!
+        //to ask hassan is better to throw error or !!!!!!!!!!!!!!!!!!!!!! if some thing is wrong
         return KindOfGoal.Error;
-
     }
 
 	/***
@@ -338,52 +308,48 @@ public class ScreenScraper {
 		return url;
 	}
 	
-	public ArrayList<Team> getTeamsAtSeason(String competitionYears) {
+	public ArrayList<Team> getTeamsAtSeason(String competitionYears) {		
 		
-		ArrayList <Team> teamsInLeague = new ArrayList<>();
-		Team teamInLeague ;
 		String url = "https://www.worldfootball.net/players/eng-premier-league-"+competitionYears+"/";
 		String htmlPage = httpUtil.sendGetHttpRequest(url);
 		Document doc = Jsoup.parse(htmlPage);
 		
 		Elements  tables = doc.getElementsByClass("standard_tabelle");
 		Elements teams = tables.select("tr:has(td:has(a[href*=/teams/]))");
+		ArrayList <Team> teamsInLeague = new ArrayList<>();
+		Team teamInLeague ;
 		for (Element team : teams) {
 			teamInLeague = new Team();
 			teamInLeague.setName(team.child(1).child(0).ownText());			
 			teamsInLeague.add(teamInLeague);
 		}
-		return teamsInLeague;
-		
-		
+		return teamsInLeague;		
 	}
-	
-	
-	public ArrayList<Player> getTeamPlayers(String url) {
-		
-		ArrayList <Player> players = new ArrayList <>();
-		Player player;
-		String information ="";
+	public ArrayList<Player> getTeamPlayers(String teamName , String year) {
+		String url = "https://www.worldfootball.net/teams/"+teamName + "/" + year +"/2/";
+		return getTeamPlayers(url);
+	}
+	//if i want to call it from squad
+	public ArrayList<Player> getTeamPlayers(String url) {		
 		
 		String htmlPage = httpUtil.sendGetHttpRequest(url);
-		Document doc = Jsoup.parse(htmlPage);
-		
+		Document doc = Jsoup.parse(htmlPage);		
 		Elements  tables = doc.getElementsByClass("standard_tabelle");
 		Elements rows = tables.select("tr");
-		
+		ArrayList <Player> players = new ArrayList <>();
+		//They organize players in groups (Goal keeper, Defender , Midfielder , ......)
+		//so player큦 information is mentioned only once for multiple players
+        //that is why we need to keep the information in a variable and use it for each player
+		String information ="";
 		for(Element row : rows) {	
-			
 			if(kindHeaderOfPlayer(row) == KindOfPlayer.Goalkeeper) {
 				information = "Goalkeeper" ;
-				
 			}
 			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Defender) {
 				information = "Defender" ;
-				
 			}
 			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Midfielder) {
 				information = "Midfielder" ;
-				
 			}
 			else if(kindHeaderOfPlayer(row) == KindOfPlayer.Forward) {
 				information = "Forward" ;				
@@ -397,20 +363,15 @@ public class ScreenScraper {
 			else if(kindHeaderOfPlayer(row) == KindOfPlayer.GoalkeeperCoach) {
 				information = "Goalkeeper-Coach" ;				
 			}
-			
-			
-			else if(!(row.select("a[href*=/player_summary/]").isEmpty())) {
-				player = new Player(row.child(1).text() , row.child(2).text(),row.child(4).text() , row.child(5).text(),information);
+			else if(!(row.select("a[href*=/player_summary/]").isEmpty())) {//link to player summary
+				Player player = new Player(row.child(1).text() , row.child(2).text(),row.child(4).text() , row.child(5).text(),information);
 				players.add(player);
 			} 
 		}
 		return players;
 		
 	}
-	public ArrayList<Player> getTeamPlayers(String teamName , String year) {
-		String url = "https://www.worldfootball.net/teams/"+teamName + "/" + year +"/2/";
-		return getTeamPlayers(url);
-	}
+	
 
 	public KindOfPlayer kindHeaderOfPlayer(Element row) {
 		KindOfPlayer result = KindOfPlayer.Error;

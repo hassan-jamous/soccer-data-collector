@@ -451,8 +451,12 @@ public class ScreenScraperTest {
 
        Assert.assertEquals(manchesterUnitedActualValueplayers1890.toString(), manchesterUnitedExpectedplayers1890.toString());
        
-       System.out.println("test team has not players like Accrington FC, url=https://www.worldfootball.net/teams/accrington-fc/");
-       //test team has not players!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+       
+       
+       ArrayList <Player> AccringtonActualValueplayers1890 = screenScraperUnderTest.getTeamPlayers("Accrington","1890");
+       ArrayList <Player> AccringtonExpectedplayers1890 = new ArrayList <>();
+       Assert.assertEquals(AccringtonActualValueplayers1890.toString(), AccringtonExpectedplayers1890.toString());
+       // Accrington FC´s URL is https://www.worldfootball.net/teams/accrington-fc/"
 
    }
    

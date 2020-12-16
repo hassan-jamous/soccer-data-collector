@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Round {
-    public String roundNumber;
+    public String roundNumberAsString;
     public int roundNumberAsInt;
     public List<Game> games;
 
     public Round() {
-        roundNumber = "";
+        roundNumberAsString = "";
         games = new ArrayList<>();
     }
     
     public void setRoundNumber(String numberAsString) {
-    	roundNumber = numberAsString;
+    	roundNumberAsString = numberAsString;
 		String actualNumber = numberAsString.substring(0 ,numberAsString.indexOf('.') );
     	roundNumberAsInt = Integer.parseInt(actualNumber);
     }
@@ -24,11 +24,11 @@ public class Round {
     	return number;
     }
     public String getRoundNumber() {
-    	return roundNumber;
+    	return roundNumberAsString;
     }
     public String toString() {
     	String round = "";
-    	round = round + roundNumber +"\n";
+    	round = round + roundNumberAsString +"\n";
     	for(int i =0 ; i<games.size() ;i++) {
     		round = round + games.get(i).toString() +"\n";
     	}
