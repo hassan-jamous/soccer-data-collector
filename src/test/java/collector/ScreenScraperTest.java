@@ -21,7 +21,7 @@ public class ScreenScraperTest {
     public void itShouldGetGamesTableOfLeague()  {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
         
-        GamesTableOfLeague gamesTableActualValue1960_1961 = screenScraperUnderTest.getAllRounds("1960-1961");
+        GamesTableOfLeague gamesTableActualValue1960_1961 = screenScraperUnderTest.getAllRounds("eng-premier-league","1960-1961");
            
         Round round4At1960_1961 = new Round();
         round4At1960_1961.setRoundNumber("4. Round");
@@ -54,7 +54,7 @@ public class ScreenScraperTest {
         Assert.assertEquals(round4At1960_1961.toString(), gamesTableActualValue1960_1961.getRoundObject(4).toString());
         
         
-        GamesTableOfLeague gamesTableActualValue1888_1889 = screenScraperUnderTest.getAllRounds("1888-1889");
+        GamesTableOfLeague gamesTableActualValue1888_1889 = screenScraperUnderTest.getAllRounds("eng-premier-league","1888-1889");
         
         Round round2At1888_1889 = new Round();
         round2At1888_1889.setRoundNumber("2. Round");
@@ -73,7 +73,7 @@ public class ScreenScraperTest {
         
         Assert.assertEquals(round2At1888_1889.toString(), gamesTableActualValue1888_1889.getRoundObject(2).toString());
        
-        GamesTableOfLeague gamesTableActualValue2015_2016 = screenScraperUnderTest.getAllRounds("2015-2016");
+        GamesTableOfLeague gamesTableActualValue2015_2016 = screenScraperUnderTest.getAllRounds("eng-premier-league","2015-2016");
 
         Round round9At2015_2016 = new Round();
         round9At2015_2016.setRoundNumber("9. Round");
@@ -109,7 +109,7 @@ public class ScreenScraperTest {
    @Test 
    public void itShouldGetLastRankingTableOfLeague() {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
-	   RankingTable rankingTableActualValue1889_1890 = screenScraperUnderTest.getLastTable("1889-1890");
+	   RankingTable rankingTableActualValue1889_1890 = screenScraperUnderTest.getLastTable("eng-premier-league","1889-1890");
        RankingTable rankingTableExpectedValue1889_1890 = new RankingTable();
        
        Club club1 = new Club("1","Preston North End","22","15","3","4","71:30","41","33:11");
@@ -141,7 +141,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(rankingTableExpectedValue1889_1890.toString(), rankingTableActualValue1889_1890.toString());
       
        
-       RankingTable rankingTableActualValue2012_2013ByRound14 = screenScraperUnderTest.getTableByRound("2012-2013","14");
+       RankingTable rankingTableActualValue2012_2013ByRound14 = screenScraperUnderTest.getTableByRound("eng-premier-league","2012-2013","14");
        RankingTable rankingTableExpectedValue2012_2013ByRound14 = new RankingTable();
        
        Club club20 = new Club("1","Manchester United","14","11","0","3","33:18","15","33");
