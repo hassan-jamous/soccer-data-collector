@@ -7,7 +7,8 @@ public class Test {
         
         //new player cedric-soares
         //old player tony-adams
-        testObject.getAllInformationAboutPlayer("cedric-soares");
+        //new player eric-bailly
+        testObject.getAllInformationAboutPlayer("eric-bailly");
         System.out.println("End Main###");
     }
 }

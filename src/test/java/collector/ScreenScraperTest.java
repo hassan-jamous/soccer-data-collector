@@ -6,6 +6,11 @@ import models.Game;
 import models.GamesTableOfLeague;
 import models.Goal;
 import models.Player;
+import models.PlayerClubCareer;
+import models.PlayerCompetitionsInformation;
+import models.PlayerInformation;
+import models.PlayerPersonalInformation;
+import models.PlayerTeamManaged;
 import models.RankingTable;
 import models.Round;
 import models.Team;
@@ -17,8 +22,8 @@ import org.junit.Test;
 
 public class ScreenScraperTest {
 
-    @Test
-    public void itShouldGetGamesTableOfLeague()  {
+   @Test
+   public void itShouldGetGamesTableOfLeague()  {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
         
         GamesTableOfLeague gamesTableActualValue1960_1961 = screenScraperUnderTest.getAllRounds("eng-premier-league","1960-1961");
@@ -195,7 +200,7 @@ public class ScreenScraperTest {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
 	   	   	   
 	   String ownGoal = "https://www.worldfootball.net/report/premier-league-2015-2016-arsenal-fc-aston-villa/";   
-       ArrayList <Goal> goalsOwnGoalActualValue = screenScraperUnderTest.getEventsOfGame(ownGoal);
+       ArrayList <Goal> goalsOwnGoalActualValue = screenScraperUnderTest.getGoalsOfGame(ownGoal);
               
        Goal goal1 = new Goal("1 : 0","5","Olivier Giroud","header","Nacho Monreal" );
        Goal goal2 = new Goal("2 : 0","78","Olivier Giroud","left-footed shot","Mesut Özil" );
@@ -210,7 +215,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(goalsOwnGoalExpected.toString(), goalsOwnGoalActualValue.toString());
 
        String individuallyGoal ="https://www.worldfootball.net/report/premier-league-2015-2016-sunderland-afc-chelsea-fc/";
-       ArrayList <Goal> goalsActualValueIndividuallyGoal = screenScraperUnderTest.getEventsOfGame(individuallyGoal);
+       ArrayList <Goal> goalsActualValueIndividuallyGoal = screenScraperUnderTest.getGoalsOfGame(individuallyGoal);
        
        Goal goal10 = new Goal("0 : 1","14","Diego Costa","right-footed shot");
        Goal goal11 = new Goal("1 : 1","41","Wahbi Khazri","right-footed shot" );
@@ -227,7 +232,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(goalsExpectedIndividuallyGoal.toString(), goalsActualValueIndividuallyGoal.toString());
        
        String oldGame1 = "https://www.worldfootball.net/report/premier-league-1956-1957-sheffield-wednesday-chelsea-fc/";
-       ArrayList <Goal> goalsActualValueoldGoal1 = screenScraperUnderTest.getEventsOfGame(oldGame1);
+       ArrayList <Goal> goalsActualValueoldGoal1 = screenScraperUnderTest.getGoalsOfGame(oldGame1);
        
        ArrayList <Goal> goalsExpectedOldGoal1 = new ArrayList <>();
        Goal goal20 = new Goal("1 : 0","Roy Shiner", "0.");
@@ -243,7 +248,7 @@ public class ScreenScraperTest {
        
        
        String oldGame2 = "https://www.worldfootball.net/report/premier-league-1956-1957-tottenham-hotspur-leeds-united/";
-       ArrayList <Goal> goalsActualValueoldGoal2 = screenScraperUnderTest.getEventsOfGame(oldGame2);
+       ArrayList <Goal> goalsActualValueoldGoal2 = screenScraperUnderTest.getGoalsOfGame(oldGame2);
        
        ArrayList <Goal> goalsExpectedOldGoal2 = new ArrayList <>();
        Goal goal30 = new Goal("1 : 0","Bobby Smith", "0." );
@@ -263,7 +268,7 @@ public class ScreenScraperTest {
        
 
        String oldGameZeroToZero = "https://www.worldfootball.net/report/premier-league-1956-1957-aston-villa-west-bromwich-albion/";
-       ArrayList <Goal> goalsActualValueoldGoalZeroToZero = screenScraperUnderTest.getEventsOfGame(oldGameZeroToZero);
+       ArrayList <Goal> goalsActualValueoldGoalZeroToZero = screenScraperUnderTest.getGoalsOfGame(oldGameZeroToZero);
        
        ArrayList <Goal> goalsExpectedOldGoalZerotoZero = new ArrayList <>();
       
@@ -272,7 +277,7 @@ public class ScreenScraperTest {
        
        
        String newGameZeroToZero = "https://www.worldfootball.net/report/premier-league-2020-2021-brighton-hove-albion-burnley-fc/";
-       ArrayList <Goal> goalsActualValuenewGoalZeroToZero = screenScraperUnderTest.getEventsOfGame(newGameZeroToZero);
+       ArrayList <Goal> goalsActualValuenewGoalZeroToZero = screenScraperUnderTest.getGoalsOfGame(newGameZeroToZero);
        
        ArrayList <Goal> goalsExpectedNewGoalZerotoZero = new ArrayList <>();
       
@@ -283,7 +288,7 @@ public class ScreenScraperTest {
    @Test
    public void itShouldGetPlayersSummuryInTeam() {
        ScreenScraper screenScraperUnderTest = new ScreenScraper();
-       ArrayList <Player> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.getTeamPlayersSummury("manchester-united","2015");
+       ArrayList <Player> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.getPlayersSummuryOfTeam("manchester-united","2015");
        ArrayList <Player> manchesterUnitedExpectedplayers2015 = new ArrayList <>();
        Player player1 = new Player("40","Ben Amos","England","10/04/1990","Goalkeeper");
        Player player2 = new Player("1","De Gea","Spain","07/11/1990","Goalkeeper");
@@ -364,7 +369,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(manchesterUnitedExpectedplayers2015.toString(), manchesterUnitedActualValueplayers2015.toString());
        
        
-       ArrayList <Player> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getTeamPlayersSummury("manchester-united","1950");
+       ArrayList <Player> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getPlayersSummuryOfTeam("manchester-united","1950");
        ArrayList <Player> manchesterUnitedExpectedplayers1950 = new ArrayList <>();
        Player player40 = new Player("","Jack Crompton","England","18/12/1921","Goalkeeper");
        Player player41 = new Player("","Sonny Feehan","Ireland","17/09/1926","Goalkeeper");
@@ -433,7 +438,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(manchesterUnitedActualValueplayers1950.toString(), manchesterUnitedExpectedplayers1950.toString());
        
        
-       ArrayList <Player> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.getTeamPlayersSummury("manchester-united","1890");
+       ArrayList <Player> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.getPlayersSummuryOfTeam("manchester-united","1890");
        ArrayList <Player> manchesterUnitedExpectedplayers1890 = new ArrayList <>();
        
        Player player70 = new Player("","Tom Burke","Wales","1862","Midfielder");
@@ -453,7 +458,7 @@ public class ScreenScraperTest {
        
        
        
-       ArrayList <Player> AccringtonActualValueplayers1890 = screenScraperUnderTest.getTeamPlayersSummury("Accrington","1890");
+       ArrayList <Player> AccringtonActualValueplayers1890 = screenScraperUnderTest.getPlayersSummuryOfTeam("Accrington","1890");
        ArrayList <Player> AccringtonExpectedplayers1890 = new ArrayList <>();
        Assert.assertEquals(AccringtonActualValueplayers1890.toString(), AccringtonExpectedplayers1890.toString());
        // Accrington FC´s URL is https://www.worldfootball.net/teams/accrington-fc/"
@@ -593,4 +598,204 @@ public class ScreenScraperTest {
 
    }
 
+   
+   @Test
+   public void itShouldGetPlayerInformation() {
+	  
+	   ScreenScraper screenScraperTest = new ScreenScraper();
+	   
+	   PlayerInformation player1ActualValueInfo = new PlayerInformation();
+	   PlayerInformation player1ExpectedValueInfo = new PlayerInformation();
+	   player1ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("eric-bailly");
+	   
+	   
+	   PlayerPersonalInformation player1ExpectedValuePersonalInfo = new PlayerPersonalInformation("Eric Bailly","Eric Bertrand Bailly",
+			   "12.04.1994","Bingerville, Ivory Coast","Ivory Coast","187 cm","77 kg","Centre Back","right");
+	   player1ExpectedValueInfo.personalInfo = player1ExpectedValuePersonalInfo;
+	   
+	   
+	   ArrayList <PlayerClubCareer> palyer1ExpectedValueClubCareer = new ArrayList <>();
+	   PlayerClubCareer player1ClubCareer1 = new PlayerClubCareer("07/2016 - 06/2022", "Manchester United"          ,"England" ,"Defender" ,"#3" );
+	   PlayerClubCareer player1ClubCareer2 = new PlayerClubCareer("01/2020 - 01/2020" ,"Manchester United U23"      ,"England" ,"Defender" ,null   );
+	   PlayerClubCareer player1ClubCareer3 = new PlayerClubCareer("01/2017 - 01/2017" ,"Manchester United U23"      ,"England" ,"Defender" ,null   );
+	   PlayerClubCareer player1ClubCareer4 = new PlayerClubCareer("01/2015 - 06/2016" ,"Villarreal CF"              ,"Spain"   ,"Defender" ,null   );
+	   PlayerClubCareer player1ClubCareer5 = new PlayerClubCareer("09/2014 - 01/2015" ,"Espanyol Barcelona"         ,"Spain"   ,"Defender" ,null   );
+	   PlayerClubCareer player1ClubCareer6 = new PlayerClubCareer("03/2013 - 01/2015" , "Espanyol Barcelona B"       ,"Spain"   ,"Defender" ,null  );
+	   PlayerClubCareer player1ClubCareer7 = new PlayerClubCareer("07/2012 - 06/2013" ,"Espanyol Barcelona [Youth]" ,"Spain"   ,"Defender" ,null   );
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer1);
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer2);
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer3);
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer4);
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer5);
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer6);
+	   palyer1ExpectedValueClubCareer.add(player1ClubCareer7);
+	   player1ExpectedValueInfo.clubsCareer = palyer1ExpectedValueClubCareer;
+	   
+	   
+	   ArrayList <PlayerCompetitionsInformation> player1ExpectedValueClubMatchesInfo = new ArrayList<>();
+	   PlayerCompetitionsInformation player1ClubMatches1 = new PlayerCompetitionsInformation("Champions League",         "UEFA"   ,"7","0","7","0","1","2","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches2 = new PlayerCompetitionsInformation("Europa League"   ,         "UEFA"   ,"24","1","24","0","2","4","2","1");
+	   PlayerCompetitionsInformation player1ClubMatches3 = new PlayerCompetitionsInformation("Premier League",           "England","56","1","45","11","5","7","0","1");
+	   PlayerCompetitionsInformation player1ClubMatches4 = new PlayerCompetitionsInformation("FA Cup"      , 	         "England","6","0","5","1","2","1","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches5 = new PlayerCompetitionsInformation("League Cup", 	             "England","4","0","4","0","0","0","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches6 = new PlayerCompetitionsInformation("FA Community Shield",      "England","1","0","1","0","0","1","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches7 = new PlayerCompetitionsInformation("U23 Premier League Div. 1","England","1","0","1","0","1","0","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches8 = new PlayerCompetitionsInformation("U23 Premier League Div. 2","England","1","0","1","0","1","0","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches9 = new PlayerCompetitionsInformation("Primera División"	    ,"Spanien","40","0","39","1","10","15","1","0");
+	   PlayerCompetitionsInformation player1ClubMatches10 = new PlayerCompetitionsInformation("Copa del Rey"         	,"Spanien","3","0","3","0","0","2","0","0");
+	   PlayerCompetitionsInformation player1ClubMatches11 = new PlayerCompetitionsInformation("Segunda B Grupo 3",     	 "Spanien","22","0","19","3","2","6","1","0");
+	   PlayerCompetitionsInformation player1ClubMatches12 = new PlayerCompetitionsInformation("∑",null,"165","2","149","16","24","38","4","2");
+
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches1);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches2);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches3);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches4);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches5);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches6);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches7);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches8);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches9);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches10);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches11);
+	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches12);
+	   player1ExpectedValueInfo.clubMatches = player1ExpectedValueClubMatchesInfo;
+	   
+	   
+	   ArrayList <PlayerCompetitionsInformation> player1ExpectedValueInternationalInfo = new ArrayList<>();
+	   PlayerCompetitionsInformation player1International1 = new PlayerCompetitionsInformation("WC Qualifiers Africa","FIFA","4","0","4","0","0","2","0","0");
+	   PlayerCompetitionsInformation player1International2 = new PlayerCompetitionsInformation("Friendlies", 	"FIFA","14","0","13","1","2","1","0","0");
+	   PlayerCompetitionsInformation player1International3 = new PlayerCompetitionsInformation("Africa Cup", 	"CAF","9","0","9","0","1","3","0","0");
+	   PlayerCompetitionsInformation player1International4 = new PlayerCompetitionsInformation("Africa Cup Qual.","CAF","9","2","9","0","2","1","0","0");
+	   PlayerCompetitionsInformation player1International5 = new PlayerCompetitionsInformation("∑",null,"36","2","35","1","5","7","0","0");
+	   player1ExpectedValueInternationalInfo.add(player1International1);
+	   player1ExpectedValueInternationalInfo.add(player1International2);
+	   player1ExpectedValueInternationalInfo.add(player1International3);
+	   player1ExpectedValueInternationalInfo.add(player1International4);
+	   player1ExpectedValueInternationalInfo.add(player1International5);
+	   
+	   player1ExpectedValueInfo.internationalCopmetitionsInfo = player1ExpectedValueInternationalInfo;
+	   
+	   Assert.assertEquals(player1ExpectedValueInfo.toString(), player1ActualValueInfo.toString());
+	   
+	   
+	   
+	   PlayerInformation player2ActualValueInfo = new PlayerInformation();
+	   PlayerInformation player2ExpectedValueInfo = new PlayerInformation();
+	   player2ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("tony-adams");
+	   
+	    	
+	   PlayerPersonalInformation player2ExpectedValuePersonalInfo = new PlayerPersonalInformation("Tony Adams","Anthony Alexander Adams",
+			   "10.10.1966","Romford, England","England","191 cm","87 kg","Centre Back","right");
+	   player2ExpectedValueInfo.personalInfo = player2ExpectedValuePersonalInfo;
+	   
+	   ArrayList <PlayerTeamManaged> player2ExpectedValueTeamManaged = new ArrayList <>();
+	   PlayerTeamManaged palyer2TeamManged1 = new PlayerTeamManaged("04/2017 - 06/2017","Granada CF","Spain","Manager");
+	   PlayerTeamManaged palyer2TeamManged2 = new PlayerTeamManaged("07/2010 - 06/2012","Gabala FK","Azerbaijan","Manager");
+	   PlayerTeamManaged palyer2TeamManged3 = new PlayerTeamManaged("10/2008 - 02/2009","Portsmouth FC","England","Manager");
+	   player2ExpectedValueTeamManaged.add(palyer2TeamManged1);
+	   player2ExpectedValueTeamManaged.add(palyer2TeamManged2);
+	   player2ExpectedValueTeamManaged.add(palyer2TeamManged3);
+	   player2ExpectedValueInfo.teamsManaged = player2ExpectedValueTeamManaged;
+	   
+	   ArrayList <PlayerClubCareer> palyer2ExpectedValueClubCareer = new ArrayList <>();
+	   PlayerClubCareer player2ClubCareer1 = new PlayerClubCareer("07/1983 - 06/2002","Arsenal FC","England","Defender",null);
+	   PlayerClubCareer player2ClubCareer2 = new PlayerClubCareer("07/1982 - 06/1983","Arsenal FC [U18]","England","Defender",null);
+	   palyer2ExpectedValueClubCareer.add(player2ClubCareer1);
+	   palyer2ExpectedValueClubCareer.add(player2ClubCareer2);
+	   player2ExpectedValueInfo.clubsCareer = palyer2ExpectedValueClubCareer;
+	   
+	   ArrayList <PlayerCompetitionsInformation> player2ExpectedValueClubMatchesInfo = new ArrayList<>();
+	   PlayerCompetitionsInformation player2ClubMatches1 = new PlayerCompetitionsInformation("Champions League","UEFA","21","1","21","0","1","3","0","0");
+	   PlayerCompetitionsInformation player2ClubMatches2 = new PlayerCompetitionsInformation("Europa League","UEFA","9","0","9","0","2","2","0","0");
+	   PlayerCompetitionsInformation player2ClubMatches3 = new PlayerCompetitionsInformation("UEFA Super Cup", 	"UEFA","2","0","2","0","0","0","0","0");
+	   PlayerCompetitionsInformation player2ClubMatches4 = new PlayerCompetitionsInformation("Cup Winners Cup","UEFA","16","2","16","0","0","2","0","0");
+	   PlayerCompetitionsInformation player2ClubMatches5 = new PlayerCompetitionsInformation("Premier League", 	"England", "504","32","500","4","19","37","1","4");
+	   PlayerCompetitionsInformation player2ClubMatches6 = new PlayerCompetitionsInformation("FA Cup", 	"England" 	,"33", 	"7", 	"32", 	"1", 	"0", 	"2" ,	"0", 	"0");
+	   PlayerCompetitionsInformation player2ClubMatches7 = new PlayerCompetitionsInformation("League Cup", 	"England", 	"17","3","17","0","0","1","0","0");
+	   PlayerCompetitionsInformation player2ClubMatches8 = new PlayerCompetitionsInformation("FA Community Shield" 	,"England","4","0","4","0","1","0","0","0");
+	   PlayerCompetitionsInformation player2ClubMatches9 = new PlayerCompetitionsInformation("∑",null, 	"606" 	,"45","601","5","23","47","1","4");
+	   
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches1);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches2);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches3);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches4);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches5);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches6);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches7);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches8);
+	   player2ExpectedValueClubMatchesInfo.add(player2ClubMatches9);
+	  
+	   player2ExpectedValueInfo.clubMatches = player2ExpectedValueClubMatchesInfo;
+	   
+	   ArrayList <PlayerCompetitionsInformation> player2ExpectedValueInternationalInfo = new ArrayList<>();
+	   PlayerCompetitionsInformation player2International1 = new PlayerCompetitionsInformation("World Cup","FIFA","4","0","4","0","0","0","0","0");
+	   PlayerCompetitionsInformation player2International2 = new PlayerCompetitionsInformation("WC Qualifiers Europe", 	"FIFA","14","0","14","0","2","2","0","0");
+	   PlayerCompetitionsInformation player2International3 = new PlayerCompetitionsInformation("Friendlies", 	"FIFA","29","3","29","0","4","0","0","0");
+	   PlayerCompetitionsInformation player2International4 = new PlayerCompetitionsInformation("EURO","UEFA","9","1","9","0","1","1","0","0");
+	   PlayerCompetitionsInformation player2International5 = new PlayerCompetitionsInformation("EURO Qualifiers", "UEFA","10","1","10","0","2","1","0","0");
+	   PlayerCompetitionsInformation player2International6 = new PlayerCompetitionsInformation("∑",null,"66","5","66","0","9","4","0","0");
+	   PlayerCompetitionsInformation player2International7 = new PlayerCompetitionsInformation("EURO [U21]","UEFA","1","0","1","0","0","0","0","0");
+	   PlayerCompetitionsInformation player2International8 = new PlayerCompetitionsInformation("∑ U21",null,"1","0","1","0","0","0","0","0");
+
+	   player2ExpectedValueInternationalInfo.add(player2International1);
+	   player2ExpectedValueInternationalInfo.add(player2International2);
+	   player2ExpectedValueInternationalInfo.add(player2International3);
+	   player2ExpectedValueInternationalInfo.add(player2International4);
+	   player2ExpectedValueInternationalInfo.add(player2International5);
+	   player2ExpectedValueInternationalInfo.add(player2International6);
+	   player2ExpectedValueInternationalInfo.add(player2International7);
+	   player2ExpectedValueInternationalInfo.add(player2International8);
+
+	   player2ExpectedValueInfo.internationalCopmetitionsInfo = player2ExpectedValueInternationalInfo;
+	   
+	   Assert.assertEquals(player2ExpectedValueInfo.toString(), player2ActualValueInfo.toString());
+	   
+	   
+	   
+	   
+	   
+	  
+	   
+	   
+	   PlayerInformation player3ActualValueInfo = new PlayerInformation();
+	   PlayerInformation player3ExpectedValueInfo = new PlayerInformation();
+	   player3ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("walter-aitkenhead");
+	   
+	   
+	   PlayerPersonalInformation player3ExpectedValuePersonalInfo = new PlayerPersonalInformation("Walter Aitkenhead","Walter Campbell Allison Aitkenhead",
+			   "21.05.1887 † 19.07.1966","Glasgow, Scotland","Scotland",null,null,null,null);	  
+	   player3ExpectedValueInfo.personalInfo = player3ExpectedValuePersonalInfo;
+	   
+	
+	  
+	   
+	   ArrayList <PlayerClubCareer> palyer3ExpectedValueClubCareer = new ArrayList <>();
+	   PlayerClubCareer player3ClubCareer1 = new PlayerClubCareer("01/1906 - 12/1918","Blackburn Rovers","England","Forward",null);
+	   PlayerClubCareer player3ClubCareer2 = new PlayerClubCareer("01/1905 - 12/1905","Partick Thistle","Scotland","Forward",null);
+	   palyer3ExpectedValueClubCareer.add(player3ClubCareer1);
+	   palyer3ExpectedValueClubCareer.add(player3ClubCareer2);
+	   player3ExpectedValueInfo.clubsCareer = palyer3ExpectedValueClubCareer;
+	   
+	   
+	   
+	   ArrayList <PlayerCompetitionsInformation> player3ExpectedValueInternationalInfo = new ArrayList<>();
+	   PlayerCompetitionsInformation player3International1 = new PlayerCompetitionsInformation("Friendlies","FIFA","1","2","1","0","0","0","0","0");
+	   PlayerCompetitionsInformation player3International2 = new PlayerCompetitionsInformation("∑", 	null,"1","2","1","0","0","0","0","0");
+	   
+
+	   player3ExpectedValueInternationalInfo.add(player3International1);
+	   player3ExpectedValueInternationalInfo.add(player3International2);
+	   
+
+	   player3ExpectedValueInfo.internationalCopmetitionsInfo = player3ExpectedValueInternationalInfo;
+	   
+	   
+	  
+	   
+	   Assert.assertEquals(player3ExpectedValueInfo.toString(), player3ActualValueInfo.toString());
+   
+   
+   
+   
+   }
 }
