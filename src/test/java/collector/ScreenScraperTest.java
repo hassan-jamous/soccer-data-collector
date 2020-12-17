@@ -281,9 +281,9 @@ public class ScreenScraperTest {
     
    }
    @Test
-   public void itShouldGetPlayersInTeam() {
+   public void itShouldGetPlayersSummuryInTeam() {
        ScreenScraper screenScraperUnderTest = new ScreenScraper();
-       ArrayList <Player> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.getTeamPlayers("manchester-united","2015");
+       ArrayList <Player> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.getTeamPlayersSummury("manchester-united","2015");
        ArrayList <Player> manchesterUnitedExpectedplayers2015 = new ArrayList <>();
        Player player1 = new Player("40","Ben Amos","England","10/04/1990","Goalkeeper");
        Player player2 = new Player("1","De Gea","Spain","07/11/1990","Goalkeeper");
@@ -364,7 +364,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(manchesterUnitedExpectedplayers2015.toString(), manchesterUnitedActualValueplayers2015.toString());
        
        
-       ArrayList <Player> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getTeamPlayers("manchester-united","1950");
+       ArrayList <Player> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getTeamPlayersSummury("manchester-united","1950");
        ArrayList <Player> manchesterUnitedExpectedplayers1950 = new ArrayList <>();
        Player player40 = new Player("","Jack Crompton","England","18/12/1921","Goalkeeper");
        Player player41 = new Player("","Sonny Feehan","Ireland","17/09/1926","Goalkeeper");
@@ -433,7 +433,7 @@ public class ScreenScraperTest {
        Assert.assertEquals(manchesterUnitedActualValueplayers1950.toString(), manchesterUnitedExpectedplayers1950.toString());
        
        
-       ArrayList <Player> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.getTeamPlayers("manchester-united","1890");
+       ArrayList <Player> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.getTeamPlayersSummury("manchester-united","1890");
        ArrayList <Player> manchesterUnitedExpectedplayers1890 = new ArrayList <>();
        
        Player player70 = new Player("","Tom Burke","Wales","1862","Midfielder");
@@ -453,7 +453,7 @@ public class ScreenScraperTest {
        
        
        
-       ArrayList <Player> AccringtonActualValueplayers1890 = screenScraperUnderTest.getTeamPlayers("Accrington","1890");
+       ArrayList <Player> AccringtonActualValueplayers1890 = screenScraperUnderTest.getTeamPlayersSummury("Accrington","1890");
        ArrayList <Player> AccringtonExpectedplayers1890 = new ArrayList <>();
        Assert.assertEquals(AccringtonActualValueplayers1890.toString(), AccringtonExpectedplayers1890.toString());
        // Accrington FC´s URL is https://www.worldfootball.net/teams/accrington-fc/"
