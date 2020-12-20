@@ -591,5 +591,368 @@ public class ScreenScraper {
 			return result;
 			
 		}
+	public MatchDetails matchesDetails(String matchAsURL) {
+		
+		MatchDetails result = new MatchDetails();
+		String htmlPage = httpUtil.sendGetHttpRequest(matchAsURL);
+        Document doc = Jsoup.parse(htmlPage);
+        Elements tables = doc.getElementsByClass("standard_tabelle");
+        
+        Elements elementBasicInfo = tables.select("table:has(th:has(a[href*=/teams/]))");
+        Elements elementGoalsInfo = tables.select("table:has(td:contains(goals))");
+        Elements elementClubsInfo  = tables.select("table:has(td[width=10%],[width=72%],[width=18%])");
+        Elements elementManagersInfo = tables.select("table:has(th:contains(Manager:))");
+        Elements elementMatchLocationRefeersAndOtherInfo = tables.select("table:has(img[title=stadium])");
+        
+        MatchDetails resultSummary = new MatchDetails();
+        resultSummary  =getMatchSummry(elementBasicInfo);
+        
+        MatchDetails resultLocationAndRefereesAndOther = new MatchDetails();        
+        resultLocationAndRefereesAndOther = getMatchLocationRefereesAndOtherInfo(elementMatchLocationRefeersAndOtherInfo);
+        
+        ArrayList <MatchDetailsClub> resultTeams = new ArrayList<>();
+        resultTeams = getClubAtMatch(elementGoalsInfo,elementClubsInfo,elementManagersInfo);
+        
+        result.firstClub = resultTeams.get(0);
+       
+        result.firstClub.clubName = resultSummary.firstClub.clubName;
+        result.secondClub = resultTeams.get(1);
+        result.secondClub.clubName = resultSummary.secondClub.clubName;
+        
+        result.date = resultSummary.date;
+        result.time = resultSummary.time;
+        result.resultSummary = resultSummary.resultSummary;
+        
+        result.referees = resultLocationAndRefereesAndOther.referees;
+        result.staduim  = resultLocationAndRefereesAndOther.staduim;
+        result.attendance =resultLocationAndRefereesAndOther.attendance;
+        
+        System.out.println(result);
+		return result;
+	}
+	 
+	public ArrayList <MatchDetailsClub> getClubAtMatch(Elements tableGoals , Elements tableClubs , Elements tablesManager ) {
+		ArrayList <MatchDetailsClub> result = new ArrayList<>();
+		
+		//player#############################################
+		for(int clubIndex = 0 ; clubIndex < tableClubs.size() ; clubIndex++) {
+			MatchDetailsClub club = new MatchDetailsClub();
+			Elements trsTeam = tableClubs.get(clubIndex).select("tr");
+			
+			int indexOfSub = indexOfSubstiute(trsTeam);
+			
+			for(int i =0 ; i < trsTeam.size() ; i++) {
+				
+				if(i != indexOfSub) {
+					if((i < indexOfSub) || (indexOfSub == -1)) { //indexOfSub ==-1 (i.e old league)
+						PlayerAtMatch player = new PlayerAtMatch();
+						                                         //----------td----------
+						player.playerNumberAsString              = trsTeam.get(i).child(0).text();
+						player.playerName                        = trsTeam.get(i).child(1).text();
+						
+						player.playerType = PlayerTypeAtMatch.Essential;
+						//to get events     -------------td--------
+						Elements elementPlayerEvents = trsTeam.get(i).select(" img , span[title*=at]");
+						if(!(elementPlayerEvents.isEmpty())) {
+							for(int eventIndex = 0 ; eventIndex <  elementPlayerEvents.size() ; eventIndex= eventIndex+2) {
+								PlayerEventAtMatch event1 = new PlayerEventAtMatch();
+								event1.event = elementPlayerEvents.get(eventIndex).attr("title");
+								event1.minute  = elementPlayerEvents.get(eventIndex+1).attr("title").replace("at ", "");
+								player.events.add(event1);
+							}
+						}
+						
+						if(trsTeam.get(i).child(2).hasText()) {
+							PlayerEventAtMatch event1 = new PlayerEventAtMatch();
+							event1.event = "out";
+							event1.minute = trsTeam.get(i).child(2).text();
+							player.events.add(event1);
+						}
+						club.players.add(player);
+					}
+					else {
+						PlayerAtMatch player = new PlayerAtMatch();
+		                                                         //----------td----------
+						player.playerNumberAsString              = trsTeam.get(i).child(0).text();
+						
+						player.playerName                        = trsTeam.get(i).child(1).child(0).attr("title");
+						player.playerType = PlayerTypeAtMatch.Substitute;
+						//to get events     -------------td--------
+						for(int j = 1 ; j < trsTeam.get(i).child(1).childrenSize() ; j=j+2) {//first child is his name
+							PlayerEventAtMatch event1 = new PlayerEventAtMatch();
+							event1.event = trsTeam.get(i).child(1).child(j).attr("title");
+							event1.minute  = trsTeam.get(i).child(1).child(j+1).attr("title");
+							player.events.add(event1);
+						}
+						if(trsTeam.get(i).child(2).hasText()) {
+							PlayerEventAtMatch event1 = new PlayerEventAtMatch();
+							event1.event = "in";
+							event1.minute = trsTeam.get(i).child(2).text();
+							player.events.add(event1);
+						}
+						club.players.add(player);
+					}
+				}
+				
+			}
+			result.add(club);
+		}
+		//end player#############################################
+		
+		Elements thsManager = tablesManager.select("th");
+		if(result.size()  == 2) {
+			result.get(0).manager = thsManager.get(0).child(0).attr("title");
+			result.get(1).manager = thsManager.get(1).child(0).attr("title");
+		}
+		
+		//goals
+		Elements trsGoals = tableGoals.select("tr");
+		
+		if(trsGoals.get(1).text().equals("none")) {
+			
+		}
+		else {
+			for(int ii =1 ; ii < trsGoals.size() ; ii++) {//we do not need the header
+				Goal goal = new Goal();
+				if(trsGoals.get(ii).child(1).attr("style").contains("padding-left: 50px")) {//second team
+					
+					if (trsGoals.get(ii).child(1).ownText().equals("0.")) {//old league does not have any informations only has 0.
+	                   	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.OldGoal );
+	                   	result.get(1).goals.add(goal);
+	                } else {//new league
+	                    if (kindOfGoal(trsGoals.get(ii)) == KindOfGoal.HasAssister) {
+	                    	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.HasAssister );
+	                    	result.get(1).goals.add(goal);
+	                    } 
+	                    else if (kindOfGoal(trsGoals.get(ii)) == KindOfGoal.Individually) {
+	                    	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.Individually );
+	                    	result.get(1).goals.add(goal);
+	                    } 
+	                    else if (kindOfGoal(trsGoals.get(ii)) == KindOfGoal.Reverse) {
+	                    	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.Reverse );
+	                    	result.get(1).goals.add(goal);
+	                    }
+	                }
+					
+			            
+					
+				}//end second team
+				else {//first team
+					if (trsGoals.get(ii).child(1).ownText().equals("0.")) {//old league does not have any informations only has 0.
+	                   	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.OldGoal );
+	                   	result.get(0).goals.add(goal);
+	                } else {//new league
+	                    if (kindOfGoal(trsGoals.get(ii)) == KindOfGoal.HasAssister) {
+	                    	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.HasAssister );
+	                    	result.get(0).goals.add(goal);
+	                    } 
+	                    else if (kindOfGoal(trsGoals.get(ii)) == KindOfGoal.Individually) {
+	                    	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.Individually );
+	                    	result.get(0).goals.add(goal);
+	                    } 
+	                    else if (kindOfGoal(trsGoals.get(ii)) == KindOfGoal.Reverse) {
+	                    	goal = getGoal(trsGoals.get(ii) ,KindOfGoal.Reverse );
+	                    	result.get(0).goals.add(goal);
+	                    }
+	                }
+				}//end first team
+			}
+		}
+		return result;
+		
+	}
+	public int indexOfSubstiute(Elements trs) {
+		for(int i =0; i <trs.size() ; i++) {
+			if(trs.get(i).html().contains("Substitutes")) {
+				return i;
+			}
+		}
+		
+			return -1;// no sub
+		
+	}
+	//get hour date result and clubs
+	public MatchDetails  getMatchSummry(Elements tableBasicInfo) {
+		MatchDetails result = new MatchDetails();
+		if(tableBasicInfo.size() > 0) {//not null
+			Elements trs = tableBasicInfo.get(0).select("tr");
+			if(trs.size() == 2) {
+				result.firstClub.clubName  = trs.get(0).child(0).text();
+				if(trs.get(0).child(1).html().contains("<")) {
+					result.date                = trs.get(0).child(1).html().substring(0, trs.get(0).child(1).html().indexOf('<'));
+					result.time                = trs.get(0).child(1).html().substring(trs.get(0).child(1).html().indexOf('>')+1);
+					result.resultSummary =     trs.get(0).child(1).text();
+				}
+				else {
+					result.date                = trs.get(0).child(1).text();
+					result.resultSummary =     trs.get(1).child(1).text();
+				}
+				result.secondClub.clubName = trs.get(0).child(2).text();
+				
+			}
+		}
+		return result;
+	}
+	public MatchDetails  getMatchLocationRefereesAndOtherInfo(Elements table) {
+		MatchDetails result = new MatchDetails();
+		if(table.size() == 1) {
+			Elements elementStadium = table.get(0).select("tr:has(td:has(img[title=stadium]))");
+			if(elementStadium != null) {result.staduim = elementStadium.text();}			
+			
+			Elements elementAttendance = table.get(0).select("tr:has(td:has(img[title=Attendance]))");
+			if(elementAttendance != null) {result.attendance = elementAttendance.text();}
+			
+			Elements elementReferees = table.get(0).select("tr:has(td:has(img[title=Referee]))");
+			if(elementReferees.size() > 0) {
+				Referee referee = new Referee();
+				referee.kind =  KindOfReferee.Referee;				
+				referee.name =  elementReferees.text().substring(0, elementReferees.text().indexOf("(")-1);
+				referee.nation =  elementReferees.text().substring(elementReferees.text().indexOf("(")+1 ,elementReferees.text().indexOf(")"));
+				
+				result.referees.add(referee);
+			}
+			Elements elementAssistantRefereeses = table.get(0).select("tr:has(td:has(img[title=Assistant Referee]))");
+			if(elementAssistantRefereeses.size() > 0) {
+				for(Element assistantRefere : elementAssistantRefereeses ) {
+					Referee referee = new Referee();
+					referee.kind =  KindOfReferee.AssistantReferee;				
+					referee.name =  assistantRefere.text().substring(0, assistantRefere.text().indexOf("(")-1);
+					referee.nation =  assistantRefere.text().substring(assistantRefere.text().indexOf("(")+1 ,assistantRefere.text().indexOf(")"));
+					
+					result.referees.add(referee);
+				}
+			}
+			
+			/*System.out.println(result.staduim);
+			System.out.println(result.attendance);			
+			for(int i =0; i<result.referees.size() ; i++) {
+				System.out.println(result.referees.get(i));
+			}*/
+		}
+
+		return result;
+	}
+	public ArrayList <ClubTansferTable> getTransferTableForAllClubs(String competitionYears) {
+		
+		String url = "https://www.worldfootball.net/transfers/eng-premier-league-" + competitionYears + "/";
+		String htmlPage = httpUtil.sendGetHttpRequest(url);
+        Document doc = Jsoup.parse(htmlPage);
+        //,width=30%,width=5%,width=10%,width=7%,width=38%]
+        Elements divs1 = doc.select("div:has(div:has(h2))");
+        ArrayList <ClubTansferTable> result = new ArrayList<>(); 
+        ArrayList <Element> divs = getTransferDivs(divs1);
+        for(Element div : divs) {
+        	ClubTansferTable clubTransferTable = new ClubTansferTable();
+        	clubTransferTable.clubName = div.child(0).child(0).ownText().substring(0, div.child(0).child(0).ownText().indexOf("»")-1);
+        	clubTransferTable.season = competitionYears;        	
+        	Elements trs = div.getElementsByTag("tr");
+        	
+        	TransferPlayerInformation playerTransfer;
+        	for(int i=0; i<trs.size();i++ ) {//i=1 the header
+        		Element tr = trs.get(i);
+        		
+        		
+        		if(tr.text().equals("In")) {
+        			int j=i+1;
+        			
+        			while(!(trs.get(j).text().equals("Out"))) {
+        				playerTransfer = new TransferPlayerInformation();
+        				playerTransfer.toClub = clubTransferTable.clubName ;
+                                                       //-------td---------        				
+        				playerTransfer.date            = trs.get(j).child(0).text();
+        				playerTransfer.playerName      = trs.get(j).child(1).text();
+        				
+        				playerTransfer.playerNation    = trs.get(j).child(2).child(0).attr("title");
+        				playerTransfer.playerPosition        = trs.get(j).child(3).text();
+        				playerTransfer.fromClub        = trs.get(j).child(5).text();
+        				j++;
+        				clubTransferTable.transferPlayers.add(playerTransfer);
+        				
+        			}
+        		}
+        		else if(tr.text().equals("Out")) {
+        			int j=i+1;
+        			while(j < trs.size()) {
+        			playerTransfer = new TransferPlayerInformation();
+        			playerTransfer.toClub =  trs.get(j).child(5).text();
+                                                   //-------td---------        				
+					playerTransfer.date            = trs.get(j).child(0).text();
+					playerTransfer.playerName      = trs.get(j).child(1).text();
+					playerTransfer.playerNation    = trs.get(j).child(2).child(0).attr("title");
+					playerTransfer.playerPosition        = trs.get(j).child(3).text();
+					playerTransfer.fromClub        = clubTransferTable.clubName;
+					j++;
+					clubTransferTable.transferPlayers.add(playerTransfer);
+        			}
+        		}
+        	}
+       result.add(clubTransferTable);
+        }
+        
+	return result;
+	}
+	public ArrayList<Element> getTransferDivs(Elements divs) {
+		ArrayList <Element> result = new ArrayList<>();
+		for(Element div : divs) {
+			if(div.childrenSize() >= 2) {				
+				if(div.child(0).tagName().equals("div") && (div.child(1).tagName().equals("div"))) {
+					if(div.child(0).childrenSize() > 0) {
+						if((div.child(0).child(0).tagName().equals("h2")) && (div.child(0).child(0).ownText().contains("Transfers"))) {
+					
+						result.add(div);
+						}
+						
+					}
+					
+				}
+				
+			}
+			}
+		
+		return result;
+	}
+	public ArrayList <PlayerTopSoccer> getTopSoccer(String competitionYears ) {
+		
+		String url = "https://www.worldfootball.net/goalgetter/eng-premier-league-" + competitionYears + "/";
+		String htmlPage = httpUtil.sendGetHttpRequest(url);
+        Document doc = Jsoup.parse(htmlPage);
+        Elements tables = doc.select("table[class=standard_tabelle]");
+        Elements table =getTopSoccerTable(tables); 
+        Elements trs =table.select("tr");
+        ArrayList <PlayerTopSoccer>  result = new ArrayList<>();
+        String ranking="";
+        for(int i = 1 ; i<trs.size() ; i++) {
+        	PlayerTopSoccer player = new PlayerTopSoccer();
+        	if((trs.get(i).child(0).hasText())) {
+        		ranking = trs.get(i).child(0).text();
+        	}
+        	                    //-------td----------
+        	player.playerRanking =  ranking;
+        	player.playerName    = trs.get(i).child(1).text();
+        	player.playerNation  = trs.get(i).child(3).text();
+        	player.playerClubName= trs.get(i).child(4).text();
+        	player.goals         = trs.get(i).child(5).text().substring(0, trs.get(i).child(5).text().indexOf('(')-1);
+        	player.penalty = trs.get(i).child(5).text().substring(trs.get(i).child(5).text().indexOf('(')+1,trs.get(i).child(5).text().indexOf(')'));
+       
+        	result.add(player);
+        
+                }
+       
+           return result;
+	}
+	public Elements getTopSoccerTable(Elements tables) {
+		Elements result = new Elements();
+		for(Element table : tables) {
+			if(table.childrenSize() > 0) {
+				
+				if(table.child(0).childrenSize()>0) {
+					if((table.child(0).child(0).child(0).tagName().equals("th")) &&(table.child(0).child(0).child(0).ownText().equals("#"))) {
+						result.add(table);
+					}
+				}
+			}
+		}
+		return result;
+	}
 }//end ScreenScraper
 

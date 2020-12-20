@@ -41,7 +41,7 @@ public class Goal {
 	public String toString() {
 		
 		String goal ="";
-		goal = "(" + result + ")" + "  @  " + minute + " by " + player + "     " + information + "    " + assester ;
+		goal = "(" + result + ")" + "  @  " + minute + " by " + player + "     " + information + ((kind == KindOfGoal.HasAssister) ?  "  Assisted by  " :  "" ) + assester ;
 		return goal;
 	}
 }
