@@ -2,13 +2,15 @@ package collector;
 
 import java.util.ArrayList;
 
-import models.ClubTansferTable;
+
+import models.ClubTransferTable;
 import models.PlayerTopSoccer;
 
 public class Test {
     public static void main(String[] args) {
         System.out.println("Hello From Hassan###");
         ScreenScraper testObject = new ScreenScraper();
+        
         
         //new player cedric-soares
         //old player tony-adams
@@ -17,11 +19,9 @@ public class Test {
         String matchNew = "https://www.worldfootball.net/report/premier-league-2020-2021-wolverhampton-wanderers-chelsea-fc/";
         //first competition has match details 1946
       //  testObject.matchesDetails(matchOld);
+       
         
-        String tranferNew ="https://www.worldfootball.net/transfers/eng-premier-league-2019-2020/";
-        String transferOld ="https://www.worldfootball.net/transfers/eng-premier-league-1891-1892/";
-        
-        ArrayList <ClubTansferTable>  result = testObject.getTransferTableForAllClubs("2019-2020");
+        ArrayList <ClubTransferTable>  result = testObject.getClubsTransferTable("2015-2016");
         for (int i =0 ; i< result.size()  ; i++) {
         	//System.out.println(result.get(i));
         	}
@@ -29,7 +29,7 @@ public class Test {
         
         topSoccer = testObject.getTopSoccer("2019-2020");
         for(int i =0 ; i< topSoccer.size() ; i++) {
-        	System.out.println(topSoccer.get(i));
+       // 	System.out.println(topSoccer.get(i));
         }
         System.out.println("End Main###");
     }

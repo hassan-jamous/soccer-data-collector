@@ -9,8 +9,9 @@ public class TransferPlayerInformation {
 	public String fromClub;
 	public String toClub;
 	
+	
 	public TransferPlayerInformation() {}
-	public TransferPlayerInformation(String playerName, String date, String playerNation ,
+	public TransferPlayerInformation( String date, String playerName, String playerNation ,
 	 String position,  String fromClub, String toClub) {
 		 this.playerName =playerName;
 		 this.date = date;
@@ -25,4 +26,5 @@ public class TransferPlayerInformation {
 		+ fromClub + " TO " + toClub; 
 		return result;
 	}
+	
 }

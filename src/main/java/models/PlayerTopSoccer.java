@@ -9,6 +9,7 @@ public class PlayerTopSoccer {
 	public String goals;
 	public String penalty;
 	
+	
 	public PlayerTopSoccer() {}
 	
 	public PlayerTopSoccer(String playerRanking,  String playerName, String playerNation,String playerClubName,

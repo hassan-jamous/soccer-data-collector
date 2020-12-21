@@ -12,18 +12,21 @@ public class PlayerAtMatch {
 	public PlayerAtMatch() {
 		events = new ArrayList<>();
 	}
-	public PlayerAtMatch(String playerName , String playerNumberSsString , PlayerTypeAtMatch playerPosition , ArrayList<PlayerEventAtMatch> events) {
+	public PlayerAtMatch(String playerNumberAsString ,String playerName  , PlayerTypeAtMatch playerPosition , ArrayList<PlayerEventAtMatch> events) {
 		this.playerName = playerName;
-		this.playerNumberAsString = playerNumberSsString;
+		this.playerNumberAsString = playerNumberAsString;
 		this.playerType = playerPosition;
-		this.events = events;
+		this.events = new ArrayList<>();
+		this.events= events;
 		
 	}
 	public String toString() {
 		String result = "";
 		result = "#" + playerNumberAsString + "  " + playerName + " (" + (playerType == PlayerTypeAtMatch.Essential ? "Essential" : "Substitute")+ " )  " ;
-		for(int i = 0 ; i < events.size() ; i++) {
-			result = result + events.get(i).toString() + "    ";
+		if((events != null)&&!(events.isEmpty())) {
+			for(int i = 0 ; i < events.size() ; i++) {
+				result = result + events.get(i).toString() + "    ";
+			}
 		}
 		return result;
 	}

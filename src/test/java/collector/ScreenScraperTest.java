@@ -2,18 +2,29 @@ package collector;
 
 
 import models.Club;
+
+import models.ClubTransferTable;
 import models.Game;
 import models.GamesTableOfLeague;
 import models.Goal;
+import models.KindOfReferee;
+import models.MatchDetails;
+import models.MatchDetailsClub;
 import models.Player;
+import models.PlayerAtMatch;
 import models.PlayerClubCareer;
 import models.PlayerCompetitionsInformation;
+import models.PlayerEventAtMatch;
 import models.PlayerInformation;
 import models.PlayerPersonalInformation;
 import models.PlayerTeamManaged;
+import models.PlayerTopSoccer;
+import models.PlayerTypeAtMatch;
 import models.RankingTable;
+import models.Referee;
 import models.Round;
 import models.Team;
+import models.TransferPlayerInformation;
 
 import java.util.ArrayList;
 
@@ -786,16 +797,450 @@ public class ScreenScraperTest {
 	   player3ExpectedValueInternationalInfo.add(player3International1);
 	   player3ExpectedValueInternationalInfo.add(player3International2);
 	   
-
 	   player3ExpectedValueInfo.internationalCopmetitionsInfo = player3ExpectedValueInternationalInfo;
+   
+	   Assert.assertEquals(player3ExpectedValueInfo.toString(), player3ActualValueInfo.toString());
+  
+   }
+   @Test 
+   public void itShouldMatchDetails(){
 	   
+	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
+	   String match1URL ="https://www.worldfootball.net/report/premier-league-2019-2020-brighton-hove-albion-everton-fc/";
+	   MatchDetails match1ActualValue = screenScraperUnderTest.matchesDetails(match1URL);
 	   
+	    
+	   
+	   ArrayList <Goal> match1Club1Goals = new ArrayList<>();
+	   Goal match1Club1Goal1 = new Goal("1 : 0", "15",	"Pascal Groß","free kick" );
+	   Goal match1Club1Goal2 = new Goal("2 : 2", "80",  "Neal Maupay","penalty"  );
+	   Goal match1Club1Goal3 = new Goal("3 : 2", "90",  "Lucas Digne","own goal"  );
+	   match1Club1Goals.add(match1Club1Goal1);
+	   match1Club1Goals.add(match1Club1Goal2);
+	   match1Club1Goals.add(match1Club1Goal3);
+	   
+	   ArrayList <PlayerAtMatch> match1Club1Players = new ArrayList<>();
+	   PlayerAtMatch match1Club1Player1 = new PlayerAtMatch("1","Mathew Ryan",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club1Player2 = new PlayerAtMatch("5","Lewis Dunk" ,PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club1Player3 = new PlayerAtMatch("15","Adam Webster",PlayerTypeAtMatch.Essential,null);
+	   PlayerEventAtMatch match1Club1Player4Event1 = new PlayerEventAtMatch("66","out"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player4Events = new ArrayList<>();
+	   match1Club1Player4Events.add(match1Club1Player4Event1);
+	   PlayerAtMatch match1Club1Player4 = new PlayerAtMatch("22","Martín Montoya",PlayerTypeAtMatch.Essential,match1Club1Player4Events);
+	   PlayerAtMatch match1Club1Player5 = new PlayerAtMatch("33","Dan Burn",PlayerTypeAtMatch.Essential,null);
+	   PlayerEventAtMatch match1Club1Player6Event1 = new PlayerEventAtMatch("33","Yellow card"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player6Events = new ArrayList<>();
+	   match1Club1Player6Events.add(match1Club1Player6Event1);
+	   PlayerAtMatch match1Club1Player6 = new PlayerAtMatch("6","Dale Stephens",PlayerTypeAtMatch.Essential,match1Club1Player6Events);
+	   PlayerEventAtMatch match1Club1Player7Event1 = new PlayerEventAtMatch("65","out"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player7Events = new ArrayList<>();
+	   match1Club1Player7Events.add(match1Club1Player7Event1);
+	   PlayerAtMatch match1Club1Player7 = new PlayerAtMatch("13", 	"Pascal Groß",PlayerTypeAtMatch.Essential,match1Club1Player7Events);
+	   PlayerEventAtMatch match1Club1Player8Event1 = new PlayerEventAtMatch("90","Yellow card"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player8Events = new ArrayList<>();
+	   match1Club1Player8Events.add(match1Club1Player8Event1);
+	   PlayerAtMatch match1Club1Player8 = new PlayerAtMatch("24", 	"Davy Pröpper",PlayerTypeAtMatch.Essential,match1Club1Player8Events);
+	   PlayerAtMatch match1Club1Player9 = new PlayerAtMatch("46", 	"Steven Alzate",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club1Player10 = new PlayerAtMatch("7", 	"Neal Maupay",PlayerTypeAtMatch.Essential,null);
+	   PlayerEventAtMatch match1Club1Player11Event1 = new PlayerEventAtMatch("80","out"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player11Events = new ArrayList<>();
+	   match1Club1Player11Events.add(match1Club1Player11Event1);
+	   PlayerAtMatch match1Club1Player11= new PlayerAtMatch("44", 	"Aaron Connolly",PlayerTypeAtMatch.Essential,match1Club1Player11Events);
+	   PlayerEventAtMatch match1Club1Player12Event1 = new PlayerEventAtMatch("66","in"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player12Events = new ArrayList<>();
+	   match1Club1Player12Events.add(match1Club1Player12Event1);
+	   PlayerAtMatch match1Club1Player12= new PlayerAtMatch("21", 	"Ezequiel Schelotto",PlayerTypeAtMatch.Substitute,match1Club1Player12Events);
+	   PlayerEventAtMatch match1Club1Player13Event1 = new PlayerEventAtMatch("65","in"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player13Events = new ArrayList<>();
+	   match1Club1Player13Events.add(match1Club1Player13Event1);
+	   PlayerAtMatch match1Club1Player13= new PlayerAtMatch("11", 	"Leandro Trossard" ,PlayerTypeAtMatch.Substitute,match1Club1Player13Events);
+	   PlayerEventAtMatch match1Club1Player14Event1 = new PlayerEventAtMatch("80","in"); 
+	   ArrayList <PlayerEventAtMatch> match1Club1Player14Events = new ArrayList<>();
+	   match1Club1Player14Events.add(match1Club1Player14Event1);
+	   PlayerAtMatch match1Club1Player14= new PlayerAtMatch("17", 	"Glenn Murray",PlayerTypeAtMatch.Substitute,match1Club1Player14Events );
+	   PlayerAtMatch match1Club1Player15= new PlayerAtMatch("27", 	"David Button",PlayerTypeAtMatch.Substitute,null);
+	   PlayerAtMatch match1Club1Player16= new PlayerAtMatch("14", 	"Leon Balogun",PlayerTypeAtMatch.Substitute,null);
+	   PlayerAtMatch match1Club1Player17= new PlayerAtMatch("8", 	"Yves Bissouma",PlayerTypeAtMatch.Substitute,null);
+	   PlayerAtMatch match1Club1Player18= new PlayerAtMatch("20", 	"Solly March",PlayerTypeAtMatch.Substitute,null);
+	   match1Club1Players.add(match1Club1Player1);
+	   match1Club1Players.add(match1Club1Player2);
+	   match1Club1Players.add(match1Club1Player3);
+	   match1Club1Players.add(match1Club1Player4);
+	   match1Club1Players.add(match1Club1Player5);
+	   match1Club1Players.add(match1Club1Player6);
+	   match1Club1Players.add(match1Club1Player7);
+	   match1Club1Players.add(match1Club1Player8);
+	   match1Club1Players.add(match1Club1Player9);
+	   match1Club1Players.add(match1Club1Player10);
+	   match1Club1Players.add(match1Club1Player11);
+	   match1Club1Players.add(match1Club1Player12);
+	   match1Club1Players.add(match1Club1Player13);
+	   match1Club1Players.add(match1Club1Player14);
+	   match1Club1Players.add(match1Club1Player15);
+	   match1Club1Players.add(match1Club1Player16);
+	   match1Club1Players.add(match1Club1Player17);
+	   match1Club1Players.add(match1Club1Player18);
+	   MatchDetailsClub match1Club1 = new MatchDetailsClub("Brighton & Hove Albion","Graham Potter" ,match1Club1Goals,match1Club1Players);
+	   
+	   ArrayList <Goal> match1Club2Goals = new ArrayList<>();
+	   Goal match1Club2Goal1 = new Goal("1 : 1","20", 	"Adam Webster","own goal"  );
+	   Goal match1Club2Goal2 = new Goal("1 : 2","74", 	"Dominic Calvert-Lewin","left-footed shot",  "Mason Holgate"  );
+	   match1Club2Goals.add(match1Club2Goal1);
+	   match1Club2Goals.add(match1Club2Goal2);
+	
+	   
+	   ArrayList <PlayerAtMatch> match1Club2Players = new ArrayList<>();
+	   PlayerAtMatch match1Club2Player1 = new PlayerAtMatch("1", 	"Jordan Pickford",PlayerTypeAtMatch.Essential,null);
+	   PlayerEventAtMatch match1Club2Player2Event1 = new PlayerEventAtMatch("86","Yellow card"); 
+	   ArrayList <PlayerEventAtMatch> match1Club2Player2Events = new ArrayList<>();
+	   match1Club2Player2Events.add(match1Club2Player2Event1);
+	   PlayerAtMatch match1Club2Player2 = new PlayerAtMatch("2", 	"Mason Holgate" ,PlayerTypeAtMatch.Essential ,match1Club2Player2Events);
+	   PlayerAtMatch match1Club2Player3 = new PlayerAtMatch("5", 	"Michael Keane",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club2Player4 = new PlayerAtMatch("12", 	"Lucas Digne",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club2Player5 = new PlayerAtMatch("19", 	"Djibril Sidibé",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club2Player6 = new PlayerAtMatch("21", 	"André Gomes",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club2Player7 = new PlayerAtMatch("26", 	"Tom Davies",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match1Club2Player8 = new PlayerAtMatch("7", 	"Richarlison",PlayerTypeAtMatch.Essential,null);
+	   ArrayList <PlayerEventAtMatch> match1Club2Player9Events = new ArrayList<>();
+	   PlayerEventAtMatch match1Club2Player9Event1 = new PlayerEventAtMatch("72","out");
+	   match1Club2Player9Events.add(match1Club2Player9Event1);	   
+	   PlayerAtMatch match1Club2Player9 = new PlayerAtMatch("11", 	"Theo Walcott",PlayerTypeAtMatch.Essential,match1Club2Player9Events);
+	   ArrayList <PlayerEventAtMatch> match1Club2Player10Events = new ArrayList<>();
+	   PlayerEventAtMatch match1Club2Player10Event1 = new PlayerEventAtMatch("72","out");
+	   match1Club2Player10Events.add(match1Club2Player10Event1);
+	   PlayerAtMatch match1Club2Player10 = new PlayerAtMatch("17" 	,"Alex Iwobi",PlayerTypeAtMatch.Essential,match1Club2Player10Events);
+	   PlayerEventAtMatch match1Club2Player11Event1 = new PlayerEventAtMatch("30","out"); 
+	   ArrayList <PlayerEventAtMatch> match1Club2Player11Events = new ArrayList<>();
+	   match1Club2Player11Events.add(match1Club2Player11Event1);
+	   PlayerAtMatch match1Club2Player11 = new PlayerAtMatch("20", 	"Bernard",PlayerTypeAtMatch.Essential,match1Club2Player11Events);
+	   PlayerEventAtMatch match1Club2Player12Event1 = new PlayerEventAtMatch("72","in"); 
+	   ArrayList <PlayerEventAtMatch> match1Club2Player12Events = new ArrayList<>();
+	   match1Club2Player12Events.add(match1Club2Player12Event1);
+	   PlayerAtMatch match1Club2Player12= new PlayerAtMatch("8", 	"Fabian Delph",PlayerTypeAtMatch.Substitute,match1Club2Player12Events);
+	   PlayerEventAtMatch match1Club2Player13Event1 = new PlayerEventAtMatch("30","in"); 
+	   ArrayList <PlayerEventAtMatch> match1Club2Player13Events = new ArrayList<>();
+	   match1Club2Player13Events.add(match1Club2Player13Event1);
+	   PlayerAtMatch match1Club2Player13= new PlayerAtMatch("10", 	"Gylfi Sigurðsson" ,PlayerTypeAtMatch.Substitute,match1Club2Player13Events);
+	   PlayerEventAtMatch match1Club2Player14Event1 = new PlayerEventAtMatch("72","in"); 
+	   ArrayList <PlayerEventAtMatch> match1Club2Player14Events = new ArrayList<>();
+	   match1Club2Player14Events.add(match1Club2Player14Event1);
+	   PlayerAtMatch match1Club2Player14= new PlayerAtMatch("9", 	"Dominic Calvert-Lewin",PlayerTypeAtMatch.Substitute,match1Club2Player14Events );
+	   PlayerAtMatch match1Club2Player15= new PlayerAtMatch("49", 	"Jonas Lössl",PlayerTypeAtMatch.Substitute,null);
+	   PlayerAtMatch match1Club2Player16= new PlayerAtMatch("23", 	"Séamus Coleman",PlayerTypeAtMatch.Substitute,null);
+	   PlayerAtMatch match1Club2Player17= new PlayerAtMatch("18", 	"Morgan Schneiderlin",PlayerTypeAtMatch.Substitute,null);
+	   PlayerAtMatch match1Club2Player18= new PlayerAtMatch("27", 	"Moise Kean",PlayerTypeAtMatch.Substitute,null);
+	   match1Club2Players.add(match1Club2Player1);
+	   match1Club2Players.add(match1Club2Player2);
+	   match1Club2Players.add(match1Club2Player3);
+	   match1Club2Players.add(match1Club2Player4);
+	   match1Club2Players.add(match1Club2Player5);
+	   match1Club2Players.add(match1Club2Player6);
+	   match1Club2Players.add(match1Club2Player7);
+	   match1Club2Players.add(match1Club2Player8);
+	   match1Club2Players.add(match1Club2Player9);
+	   match1Club2Players.add(match1Club2Player10);
+	   match1Club2Players.add(match1Club2Player11);
+	   match1Club2Players.add(match1Club2Player12);
+	   match1Club2Players.add(match1Club2Player13);
+	   match1Club2Players.add(match1Club2Player14);
+	   match1Club2Players.add(match1Club2Player15);
+	   match1Club2Players.add(match1Club2Player16);
+	   match1Club2Players.add(match1Club2Player17);
+	   match1Club2Players.add(match1Club2Player18);
+	   
+	   MatchDetailsClub match1Club2 = new MatchDetailsClub("Everton FC","Marco Silva" ,match1Club2Goals,match1Club2Players);
+	   
+	   ArrayList <Referee> match1Referees = new ArrayList<>();
+	   Referee match1Referee1 = new Referee("Andy Madley","England",KindOfReferee.Referee);
+	   Referee match1Referee2 = new Referee("Edward Smart", "England",KindOfReferee.AssistantReferee);
+	   Referee match1Referee3 = new Referee("Derek Eaton", "England",KindOfReferee.AssistantReferee);
+	   match1Referees.add(match1Referee1);
+	   match1Referees.add(match1Referee2);
+	   match1Referees.add(match1Referee3);
+	   MatchDetails match1ExpectedValue = new MatchDetails(match1Club1,match1Club2,"3:2","Saturday, 26. October 2019","15:00 Clock"
+			   							,"Amex Stadium (Brighton / England)","30.529",match1Referees);
+	   
+	   Assert.assertEquals(match1ExpectedValue.toString(), match1ActualValue.toString());
+	   
+	   String match2URL ="https://www.worldfootball.net/report/premier-league-1946-1947-brentford-fc-middlesbrough-fc/";
+	   MatchDetails match2ActualValue = screenScraperUnderTest.matchesDetails(match2URL);
+	   
+	    
+	   
+	   ArrayList <Goal> match2Club1Goals = new ArrayList<>();
 	  
 	   
-	   Assert.assertEquals(player3ExpectedValueInfo.toString(), player3ActualValueInfo.toString());
+	   ArrayList <PlayerAtMatch> match2Club1Players = new ArrayList<>();
+	   PlayerAtMatch match2Club1Player1 = new PlayerAtMatch("","Joe Crozier",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player2 = new PlayerAtMatch("","Harry Oliver" ,PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player3 = new PlayerAtMatch("","Roddie Munro",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player4 = new PlayerAtMatch("","George Smith",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player5 = new PlayerAtMatch("","Cyril Toulouse",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player6 = new PlayerAtMatch("","Dai Hopkins",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player7 = new PlayerAtMatch("", 	"George Paterson",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player8 = new PlayerAtMatch("", 	"Len Townsend",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player9 = new PlayerAtMatch("", 	"George Stewart",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player10 = new PlayerAtMatch("", 	"Dickie Girling",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club1Player11= new PlayerAtMatch("", 	"Malky MacDonald",PlayerTypeAtMatch.Essential,null);
+	 
+	   match2Club1Players.add(match2Club1Player1);
+	   match2Club1Players.add(match2Club1Player2);
+	   match2Club1Players.add(match2Club1Player3);
+	   match2Club1Players.add(match2Club1Player4);
+	   match2Club1Players.add(match2Club1Player5);
+	   match2Club1Players.add(match2Club1Player6);
+	   match2Club1Players.add(match2Club1Player7);
+	   match2Club1Players.add(match2Club1Player8);
+	   match2Club1Players.add(match2Club1Player9);
+	   match2Club1Players.add(match2Club1Player10);
+	   match2Club1Players.add(match2Club1Player11);
+	  
+	   MatchDetailsClub match2Club1 = new MatchDetailsClub("Brentford FC","Jimmy Hogan" ,match2Club1Goals,match2Club1Players);
+	   
+	   ArrayList <Goal> match2Club2Goals = new ArrayList<>();
+	   
+	   
+	   ArrayList <PlayerAtMatch> match2Club2Players = new ArrayList<>();
+	   PlayerAtMatch match2Club2Player1 = new PlayerAtMatch("", 	"Paddy Nash",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player2 = new PlayerAtMatch("", 	"Bobby Stuart" ,PlayerTypeAtMatch.Essential ,null);
+	   PlayerAtMatch match2Club2Player3 = new PlayerAtMatch("", 	"Dicky Robinson",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player4 = new PlayerAtMatch("", 	"George Hardwick",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player5 = new PlayerAtMatch("", 	"Harry Bell",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player6 = new PlayerAtMatch("", 	"Geoff Walker",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player7 = new PlayerAtMatch("", 	"Johnny Spuhler",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player8 = new PlayerAtMatch("", 	"Jimmy Gordon",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player9 = new PlayerAtMatch("", 	"Alec Linwood",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player10 = new PlayerAtMatch("" 	,"Micky Fenton",PlayerTypeAtMatch.Essential,null);
+	   PlayerAtMatch match2Club2Player11 = new PlayerAtMatch("", 	"Wilf Mannion",PlayerTypeAtMatch.Essential,null);
+
+
+	   match2Club2Players.add(match2Club2Player1);
+	   match2Club2Players.add(match2Club2Player2);
+	   match2Club2Players.add(match2Club2Player3);
+	   match2Club2Players.add(match2Club2Player4);
+	   match2Club2Players.add(match2Club2Player5);
+	   match2Club2Players.add(match2Club2Player6);
+	   match2Club2Players.add(match2Club2Player7);
+	   match2Club2Players.add(match2Club2Player8);
+	   match2Club2Players.add(match2Club2Player9);
+	   match2Club2Players.add(match2Club2Player10);
+	   match2Club2Players.add(match2Club2Player11);
+	   
+	   
+	   MatchDetailsClub match2Club2 = new MatchDetailsClub("Middlesbrough FC","David Jack" ,match2Club2Goals,match2Club2Players);
+	   
+	   ArrayList <Referee> match2Referees = new ArrayList<>();
+	   
+	   MatchDetails match2ExpectedValue = new MatchDetails(match2Club1,match2Club2,"0:0","Saturday, 26. April 1947",null
+			   							,"Griffin Park (London / England)","19.020",match2Referees);
+	  
+	   Assert.assertEquals(match2ExpectedValue.toString(), match2ActualValue.toString());
+	   
+   }
    
+   @Test
+   public void itShouldGetTransferTable() {
+	   
+	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
+	    
+	   ArrayList <ClubTransferTable> clubTransferTable2015_2016 = new ArrayList<>();
+	   clubTransferTable2015_2016 = screenScraperUnderTest.getClubsTransferTable("2015-2016");
+	   ClubTransferTable astonVillaTransferTable2015_2016ActualValue = new ClubTransferTable();	
+	  
+	   astonVillaTransferTable2015_2016ActualValue = screenScraperUnderTest.getTransferTableByNameClub(clubTransferTable2015_2016 ,"Aston Villa");
+	   ClubTransferTable AstonVillatransferTable2015_2016_5IN5Out_ActualValue = new ClubTransferTable();
+	   AstonVillatransferTable2015_2016_5IN5Out_ActualValue.clubName = astonVillaTransferTable2015_2016ActualValue.clubName;
+	   AstonVillatransferTable2015_2016_5IN5Out_ActualValue.season=astonVillaTransferTable2015_2016ActualValue.season;
+	   for(int i=0 ; i < 5 ; i++) {
+		  
+		   AstonVillatransferTable2015_2016_5IN5Out_ActualValue.intable.add(astonVillaTransferTable2015_2016ActualValue.intable.get(i));  
+		   AstonVillatransferTable2015_2016_5IN5Out_ActualValue.outtable.add(astonVillaTransferTable2015_2016ActualValue.outtable.get(i)); 
+	   }
+	   //Aston Villa 2015-2016
+	   ClubTransferTable AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue = new ClubTransferTable();
+	   
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.clubName ="Aston Villa";
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.season ="2015-2016";
+	   // first 5 in	   
+	   TransferPlayerInformation playerIn1 = new TransferPlayerInformation("05/16","Lewis Kinsella", 	"England", 	"DF" 	,"Kidderminster Harriers","Aston Villa");
+	   TransferPlayerInformation playerIn2 = new TransferPlayerInformation("01/16", 	"Joe Cole","England","MF", "Coventry City","Aston Villa");
+	   TransferPlayerInformation playerIn3 = new TransferPlayerInformation("01/16","Aly Cissokho", 	"France","DF","FC Porto","Aston Villa");
+	   TransferPlayerInformation playerIn4 = new TransferPlayerInformation("01/16", 	"Callum Robinson", 	"Ireland", 	"MF", 	"Bristol City", 	"Aston Villa");
+	   TransferPlayerInformation playerIn5 = new TransferPlayerInformation("11/15", 	"Bradley Watkins", 	"England", 	"GK", 	"Wolverhampton Wanderers U21" 	,"Aston Villa");
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.intable.add(playerIn1);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.intable.add(playerIn2);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.intable.add(playerIn3);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.intable.add(playerIn4);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.intable.add(playerIn5);
+	   //first 5 out
+	   TransferPlayerInformation playerOut1 = new TransferPlayerInformation("03/16", "Jerell Sellars", 	 "England",	   "MF","Aston Villa","Wycombe Wanderers");
+	   TransferPlayerInformation playerOut2 = new TransferPlayerInformation("02/16", "Lewis Kinsella", 	 "England",    "DF","Aston Villa","Kidderminster Harriers");
+	   TransferPlayerInformation playerOut3 = new TransferPlayerInformation("01/16", "Philippe Senderos","Switzerland","DF","Aston Villa","Grasshopper Club Zürich");
+	   TransferPlayerInformation playerOut4 = new TransferPlayerInformation("01/16", "Ángel Crespo", 	 "Spain", 	   "DF","Aston Villa","Rayo Vallecano");
+	   TransferPlayerInformation playerOut5 = new TransferPlayerInformation("01/16", "Gary Gardner",     "England",    "MF","Aston Villa","Nottingham Forest");
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.outtable.add(playerOut1);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.outtable.add(playerOut2);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.outtable.add(playerOut3);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.outtable.add(playerOut4);
+	   AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.outtable.add(playerOut5);   
+
+	   
+	   Assert.assertEquals(AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.toString(), AstonVillatransferTable2015_2016_5IN5Out_ActualValue.toString());
+	   
+	   
+	   
+	   ArrayList <ClubTransferTable> clubTransferTable1889_1890 = new ArrayList<>();	   
+	   clubTransferTable1889_1890 = screenScraperUnderTest.getClubsTransferTable("1889-1890");
+	   
+	   ClubTransferTable AstonVillaTransferTable1889_1890ActualValue = new ClubTransferTable();		  
+	   AstonVillaTransferTable1889_1890ActualValue = screenScraperUnderTest.getTransferTableByNameClub(clubTransferTable1889_1890 ,"Aston Villa");
+	   
+	  
+	   //Aston Villa 1889-1890
+	   ClubTransferTable AstonVillatransferTable1889_1890ExpectedValue = new ClubTransferTable();
+	   
+	   AstonVillatransferTable1889_1890ExpectedValue.clubName ="Aston Villa";
+	   AstonVillatransferTable1889_1890ExpectedValue.season ="1889-1890";
+	   //  in	   
+	   TransferPlayerInformation playerIn10 = new TransferPlayerInformation("07/89","Albert Aldridge","England","DF","Swifts FC","Aston Villa");
+	   TransferPlayerInformation playerIn11 = new TransferPlayerInformation("07/89","William Dickson","Scotland","FW","Sunderland AFC","Aston Villa");
+	  
+	   AstonVillatransferTable1889_1890ExpectedValue.intable.add(playerIn10);
+	   AstonVillatransferTable1889_1890ExpectedValue.intable.add(playerIn11);
+	   
+	   //out
+	   TransferPlayerInformation playerOut10 = new TransferPlayerInformation("06/89", "Archie Goodall", 	 "Northern Ireland", 	"MF",	"Aston Villa","Derby County");
+	    
+	   AstonVillatransferTable1889_1890ExpectedValue.outtable.add(playerOut10);
+	   
+	  
+	   Assert.assertEquals(AstonVillatransferTable1889_1890ExpectedValue.toString(), AstonVillaTransferTable1889_1890ActualValue.toString());
+	   
+	   
+	   ClubTransferTable AccringtonFCTransferTable1889_1890ActualValue = new ClubTransferTable();		  
+	   AccringtonFCTransferTable1889_1890ActualValue = screenScraperUnderTest.getTransferTableByNameClub(clubTransferTable1889_1890 ,"Accrington FC");
+	   
+	  
+	   //Aston Villa 1889-1890
+	   ClubTransferTable AccringtonFCtransferTable1889_1890ExpectedValue = new ClubTransferTable();
+	   
+	   AccringtonFCtransferTable1889_1890ExpectedValue.clubName ="Accrington FC";
+	   AccringtonFCtransferTable1889_1890ExpectedValue.season ="1889-1890";
+	   //  in	   
+	   
+	   
+	   //out
+	   TransferPlayerInformation playerOut20 = new TransferPlayerInformation("06/89", 	"Joe Lofthouse", 	"England" 	,"FW","Accrington FC", 	"Blackburn Rovers");
+	    
+	   AccringtonFCtransferTable1889_1890ExpectedValue.outtable.add(playerOut20);
+	   
+	  
+	   Assert.assertEquals(AccringtonFCtransferTable1889_1890ExpectedValue.toString(), AccringtonFCTransferTable1889_1890ActualValue.toString());
+	   
+	   ClubTransferTable DerbyCountyTransferTable1889_1890ActualValue = new ClubTransferTable();		  
+	   DerbyCountyTransferTable1889_1890ActualValue = screenScraperUnderTest.getTransferTableByNameClub(clubTransferTable1889_1890 ,"Derby County");
+	   
+	  
+	   //Derby County 1889-1890
+	   ClubTransferTable DerbyCountytransferTable1889_1890ExpectedValue = new ClubTransferTable();
+	   
+	   DerbyCountytransferTable1889_1890ExpectedValue.clubName ="Derby County";
+	   DerbyCountytransferTable1889_1890ExpectedValue.season ="1889-1890";
+	   //  in	   
+	   TransferPlayerInformation playerIn30 = new TransferPlayerInformation("07/89","Charlie Bunyan","England","GK","Hyde FC","Derby County");
+	   TransferPlayerInformation playerIn31 = new TransferPlayerInformation("07/89","Archie Goodall","Northern Ireland","MF","Aston Villa","Derby County");
+	   TransferPlayerInformation playerIn32 = new TransferPlayerInformation("07/89","John Goodall","England","FW","Preston North End","Derby County");
+	   DerbyCountytransferTable1889_1890ExpectedValue.intable.add(playerIn30);
+	   DerbyCountytransferTable1889_1890ExpectedValue.intable.add(playerIn31);	   
+	   DerbyCountytransferTable1889_1890ExpectedValue.intable.add(playerIn32);
+	   
+	  
+	  
+	   Assert.assertEquals(DerbyCountytransferTable1889_1890ExpectedValue.toString(), DerbyCountyTransferTable1889_1890ActualValue.toString());
+	   
+	   ClubTransferTable BurnleyFCTransferTable1889_1890ActualValue = new ClubTransferTable();		  
+	   BurnleyFCTransferTable1889_1890ActualValue = screenScraperUnderTest.getTransferTableByNameClub(clubTransferTable1889_1890 ,"Burnley FC");
+	   
+	  
+	   //Derby County 1889-1890
+	   ClubTransferTable BurnleyFCtransferTable1889_1890ExpectedValue = new ClubTransferTable();
+	   
+	   BurnleyFCtransferTable1889_1890ExpectedValue.clubName ="Burnley FC";
+	   BurnleyFCtransferTable1889_1890ExpectedValue.season ="1889-1890";
+	  
+	  
+	   Assert.assertEquals(BurnleyFCtransferTable1889_1890ExpectedValue.toString(), BurnleyFCTransferTable1889_1890ActualValue.toString());
+
+   }
    
-   
-   
+   @Test
+   public void itShouldGetTopSoccer() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+
+       ArrayList <PlayerTopSoccer> table2019_2020ActualValue = new ArrayList<>();
+       table2019_2020ActualValue = screenScraperUnderTest.getTopSoccer("2019-2020");
+       ArrayList <PlayerTopSoccer> table2019_2020player0TO4ActualValue = new ArrayList<>();
+       for(int i =0 ; i<5 ;i++) {
+    	   table2019_2020player0TO4ActualValue.add(table2019_2020ActualValue.get(i));
+       }
+       
+       ArrayList <PlayerTopSoccer> table2019_2020player0TO4ExpectedValue = new ArrayList<>();
+       PlayerTopSoccer player1 = new PlayerTopSoccer("1.", 	"Jamie Vardy", 	            "England", 	"Leicester City","23","4");
+       PlayerTopSoccer player2 = new PlayerTopSoccer("2.", 	"Pierre-Emerick Aubameyang","Gabon", 	"Arsenal FC", "22", "2");
+       PlayerTopSoccer player3 = new PlayerTopSoccer("2.",	"Danny Ings",	            "England", 	"Southampton FC", "22","1");
+       PlayerTopSoccer player4 = new PlayerTopSoccer("4.", 	"Raheem Sterling",	        "England", 	"Manchester City","20", "0");
+       PlayerTopSoccer player5 = new PlayerTopSoccer("5.", 	"Mohamed Salah", 	 	    "Egypt", 	"Liverpool FC","19", "3");
+       table2019_2020player0TO4ExpectedValue.add(player1);
+       table2019_2020player0TO4ExpectedValue.add(player2);
+       table2019_2020player0TO4ExpectedValue.add(player3);
+       table2019_2020player0TO4ExpectedValue.add(player4);
+       table2019_2020player0TO4ExpectedValue.add(player5);
+       
+	   Assert.assertEquals(table2019_2020player0TO4ExpectedValue.toString(), table2019_2020player0TO4ActualValue.toString());
+
+
+	   ArrayList <PlayerTopSoccer> table2009_2010ActualValue = new ArrayList<>();
+	   table2009_2010ActualValue = screenScraperUnderTest.getTopSoccer("2009-2010");
+       ArrayList <PlayerTopSoccer> table2009_2010player4TO9ActualValue = new ArrayList<>();
+       for(int i =4 ; i<9 ;i++) {
+    	   table2009_2010player4TO9ActualValue.add(table2009_2010ActualValue.get(i));
+       }
+       
+       ArrayList <PlayerTopSoccer> table2009_2010player4TO9ExpectedValue = new ArrayList<>();
+       PlayerTopSoccer player11 = new PlayerTopSoccer("5.",	"Frank Lampard",    "England",	"Chelsea FC",        "22","10");
+       PlayerTopSoccer player12 = new PlayerTopSoccer("6.", "Jermain Defoe",    "England", 	"Tottenham Hotspur", "18","1");
+       PlayerTopSoccer player13 = new PlayerTopSoccer("6.",	"Fernando Torres",  "Spain", 	"Liverpool FC", 	 "18","0");
+       PlayerTopSoccer player14 = new PlayerTopSoccer("8.", "Cesc Fàbregas",    "Spain", 	"Arsenal FC",   	 "15","3");
+       PlayerTopSoccer player15 = new PlayerTopSoccer("9.", "Emmanuel Adebayor", "Togo", 	"Manchester City", 	 "14","0");
+       table2009_2010player4TO9ExpectedValue.add(player11);
+       table2009_2010player4TO9ExpectedValue.add(player12);
+       table2009_2010player4TO9ExpectedValue.add(player13);
+       table2009_2010player4TO9ExpectedValue.add(player14);
+       table2009_2010player4TO9ExpectedValue.add(player15);
+       
+	   Assert.assertEquals(table2009_2010player4TO9ExpectedValue.toString(), table2009_2010player4TO9ActualValue.toString());
+       
+	   ArrayList <PlayerTopSoccer> table1946_1947ActualValue = new ArrayList<>();
+	   table1946_1947ActualValue = screenScraperUnderTest.getTopSoccer("1946-1947");
+       ArrayList <PlayerTopSoccer> table1946_1947player0TO4ActualValue = new ArrayList<>();
+       for(int i =0 ; i<5 ;i++) {
+    	   table1946_1947player0TO4ActualValue.add(table1946_1947ActualValue.get(i));
+       }
+       
+       ArrayList <PlayerTopSoccer> table1946_1947player0TO4ExpectedValue = new ArrayList<>();
+       PlayerTopSoccer player20 = new PlayerTopSoccer("1.", "Dennis Westcott", 	"England",	"Wolverhampton Wanderers","36", "0");
+       PlayerTopSoccer player21 = new PlayerTopSoccer("2.", "Reg Lewis",        "England", 	"Arsenal FC", "28", "3");
+       PlayerTopSoccer player22 = new PlayerTopSoccer("2.",	"Stan Mortensen",	"England", 	"Blackpool FC",  "28","1");
+       PlayerTopSoccer player23 = new PlayerTopSoccer("2.", "Freddie Steele",	"England", 	"Stoke City",	 "28","0");
+       PlayerTopSoccer player24 = new PlayerTopSoccer("5.", "Duggie Reid", 	 	"Scotland", "Portsmouth FC", "27","1");
+       table1946_1947player0TO4ExpectedValue.add(player20);
+       table1946_1947player0TO4ExpectedValue.add(player21);
+       table1946_1947player0TO4ExpectedValue.add(player22);
+       table1946_1947player0TO4ExpectedValue.add(player23);
+       table1946_1947player0TO4ExpectedValue.add(player24);
+       
+	   Assert.assertEquals(table1946_1947player0TO4ExpectedValue.toString(), table1946_1947player0TO4ActualValue.toString());
+       
+       
    }
 }
