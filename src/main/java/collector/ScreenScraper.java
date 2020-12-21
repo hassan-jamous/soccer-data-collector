@@ -670,7 +670,7 @@ public class ScreenScraper {
 								player.events.add(event1);
 							}
 						}
-						//System.out.println("Essential  "+ player.playerName + " "  + i);
+						
 						if(trsTeam.get(i).child(2).hasText()) {
 							PlayerEventAtMatch event1 = new PlayerEventAtMatch();
 							event1.event = "out";
@@ -687,7 +687,7 @@ public class ScreenScraper {
 						player.playerNumberAsString              = trsTeam.get(i).child(0).text();						
 						player.playerName                        = trsTeam.get(i).child(1).child(0).attr("title");
 						player.playerType = PlayerTypeAtMatch.Substitute;
-						//System.out.println("Substitute  " + player.playerName + " "+ i);
+						
 						///to get events     
 						//image contains  the name of event (red card  , yellow card ,....) and the next span contains the time
 						//eventIndex+2 (i.e) event's name and it's time
