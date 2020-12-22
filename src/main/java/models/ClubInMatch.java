@@ -2,18 +2,18 @@ package models;
 
 import java.util.ArrayList;
 
-public class MatchDetailsClub{
+public class ClubInMatch{
 	public String clubName;//may we delete it? class match contains it
 		
 	public ArrayList <Goal> goals;//total goal is size of the array goals
 	public ArrayList <PlayerAtMatch> players;
 	public String manager;
 	
-	public MatchDetailsClub() {
+	public ClubInMatch() {
 		goals = new ArrayList<>();
 		players = new ArrayList<>();
 	}
-	public MatchDetailsClub(String clubName , String manager  , ArrayList<Goal> goal, ArrayList <PlayerAtMatch> players) {
+	public ClubInMatch(String clubName , String manager  , ArrayList<Goal> goal, ArrayList <PlayerAtMatch> players) {
 		this.clubName = clubName;
 		this.manager = manager;
 		this.goals = goal;

@@ -30,4 +30,8 @@ public class PlayerAtMatch {
 		}
 		return result;
 	}
+	public int compare(PlayerAtMatch player1, PlayerAtMatch player2) {
+		if(player1.playerName.compareTo(player2.playerName) >= 0) {return 1;}
+		else {return -1;}
+	}
 }

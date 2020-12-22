@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class MatchDetails {
 
-	public MatchDetailsClub firstClub;
-	public MatchDetailsClub secondClub;
+	public ClubInMatch firstClub;
+	public ClubInMatch secondClub;
 	public String resultSummary;
 	public String date;
 	public String time;
@@ -14,12 +14,12 @@ public class MatchDetails {
 	public ArrayList <Referee> referees;
 	
 	public MatchDetails() {
-		firstClub = new MatchDetailsClub();
-		secondClub = new MatchDetailsClub();
+		firstClub = new ClubInMatch();
+		secondClub = new ClubInMatch();
 		referees = new ArrayList<>();
 	}
 	
-	public MatchDetails(MatchDetailsClub firstClub ,MatchDetailsClub secondClub , String resultSummary ,
+	public MatchDetails(ClubInMatch firstClub ,ClubInMatch secondClub , String resultSummary ,
 			String date , String time,  String staduim , String attendance, ArrayList <Referee> referees) {
 		
 		this.firstClub = firstClub;		
@@ -38,8 +38,8 @@ public class MatchDetails {
 		(date == null ? "NO DATE" : date) + "  " + (time == null ? "NO TIME" : time) + "\n" +
 		"IN  " + staduim + "\n" 
 		+"Result Summary is " + resultSummary + "\n" 
-		+(firstClub.goals.isEmpty() ? "" : "First Team Goal " + "\n" +firstClub.goals + "\n") 
-		+(secondClub.goals.isEmpty() ? "" : "Second Team Goal " + "\n" +secondClub.goals +"\n");
+		+(firstClub.goals==null ? "" : "First Team Goal " + "\n" +firstClub.goals + "\n") 
+		+(secondClub.goals== null ? "" : "Second Team Goal " + "\n" +secondClub.goals +"\n");
 		result = result +  "First Team" + "\n";
 		for(int ifirst = 0 ; ifirst < firstClub.players.size() ; ifirst++) {
 			result = result + firstClub.players.get(ifirst).toString()+"\n";

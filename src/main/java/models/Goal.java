@@ -2,18 +2,22 @@ package models;
 
 public class Goal {
 	public KindOfGoal kind = KindOfGoal.Error;
-	public String result ="";
-	public String minute ="";
-	public String player ="";
-	public String information ="";
-	public String assester ="";
+	public String result ;
+	public String minute ;
+	public String player ;
+	public String information ;
+	public String assester ;
 	public Goal() {}
 	public Goal(String result , String player , String information) {
 		this.result = result;
 		this.player = player;
-		this.information = information;
+		
 		if(information.equals("0.")) {
-			this.kind = KindOfGoal.OldGoal; 
+			this.kind = KindOfGoal.OldGoal;
+			this.information = null;
+		}
+		else {
+			this.information = information;
 		}
 		
 	}

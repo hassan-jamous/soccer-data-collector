@@ -11,14 +11,18 @@ import java.util.ArrayList;
 
 public class GoalsCollector {
     private HttpUtil httpUtil = new HttpUtil();
-    //TODO, game url as constant,
-    //getGoalsofGame, LeagueName, firstteam ...
+   
+    private static final String WORLD_FOOTBALL_GAMES_URL = "https://www.worldfootball.net/report/";
 
-    public ArrayList<Goal> getGoalsOfGame(String gameURL) {
+    public ArrayList<Goal> getGoalsOfGame(String competitionName, String competitionYears ,String fisrtTeam , String secondTeam) {
+    	String gameURL = WORLD_FOOTBALL_GAMES_URL + competitionName +"-" +competitionYears +"-"+ fisrtTeam +"-"+ secondTeam +"/";
+    	
         String htmlPage = httpUtil.sendGetHttpRequest(gameURL);
         Document doc = Jsoup.parse(htmlPage);
+
         Elements tables = doc.getElementsByClass("standard_tabelle");
         Element tableOfGoals = getGoalsTable(tables);
+        
         Elements rowsOfGoals = tableOfGoals.select("tr");
         ArrayList<Goal> goals = new ArrayList<>();
         //the first row is the header, this is why i = 1;
@@ -75,7 +79,7 @@ public class GoalsCollector {
             result.kind = kind;
             result.result = rowOfGoal.child(0).text();
             result.player = rowOfGoal.child(1).child(0).attr("title");
-            result.information = "0.";
+            result.information = null;
         } else if (kind == KindOfGoal.HasAssister) {
             result.kind = kind;
             result.result = rowOfGoal.child(0).text();
