@@ -1,6 +1,6 @@
 package models;
 
-public class Club{
+public class ClubForRankingTable{
 	String position;
 	String name;
 	String playedGames;
@@ -11,8 +11,8 @@ public class Club{
 	String diffirentGoals;
 	String points;
 	
-	public Club() {}
-	public Club(String position , String name , String playedGames , String winGames,
+	public ClubForRankingTable() {}
+	public ClubForRankingTable(String position , String name , String playedGames , String winGames,
 			String drawGames, String lostGames , String goals , String diffirentGoals ,
 			String points) {
 		this.position = position;

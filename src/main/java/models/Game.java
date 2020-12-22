@@ -7,6 +7,8 @@ public class Game {
     public String resultOfFirstHalf;
     public String date;
     public String time;// new leagues use it so do we want it???
+    
+    public Game() {}
 
     public Game(String date, String time, String firstTeam, String secondTeam, String result) {
         this.date = date;
@@ -24,7 +26,8 @@ public class Game {
 
     public String toString() {
         String game = "";
-        game = date + "   " + time + "  " + firstTeam + "  vs  " + secondTeam + "  " + finalResult + "  (" + resultOfFirstHalf + ")" + "\n";
+        game = date + "   " + ((time != null) ?  time : "") + "  " + firstTeam + "  vs  " + secondTeam + "  " + finalResult + 
+        ((resultOfFirstHalf != null) ? "(" + resultOfFirstHalf +")": "");
         return game;
     }
 }

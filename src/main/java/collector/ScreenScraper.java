@@ -15,7 +15,7 @@ public class ScreenScraper {
 	MatchCollector matchCollector = new MatchCollector();
 	TransferCollector transferCollector = new TransferCollector();
 	TopScoreCollector topScoreCollector = new TopScoreCollector();
-    
+	StatisticsCollector statisticsCollector = new StatisticsCollector();
 
     public GamesTableOfLeague getAllRounds(String leagueName, String competitionYears) {
        return roundCollector.getAllRounds(leagueName, competitionYears);
@@ -64,9 +64,34 @@ public class ScreenScraper {
 		return topScoreCollector.getTopSoccerAtSeason(competitionYears);
 	}
 
+	public ArrayList <StatisticsGoalsPerSeason> getStatisticsGoalsPerSeason(String competitionName) {
+		return statisticsCollector.getStatisticsGoalsPerSeason(competitionName);
+	}
+	public ArrayList <StatisticsGoalsPerRound> getStatisticsGoalsPerRound(String competitionName) {
+		return statisticsCollector.getStatisticsGoalsPerRound(competitionName);
+
+	}
+	
+	//3 is record wins or 4 is most goals in game 
+	public ArrayList <StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName , int kindOfRequest) {
+		return statisticsCollector.getStatisticsRecordWinsOrMostGoalInGame(competitionName , kindOfRequest);
+	}
 		
-		
-		
+	public ArrayList <StatisticsMostGoalsInGame> getStatisticsMostGoalsInGameInCompetetion(String competitionName){
+		return 	statisticsCollector.getStatisticsMostGoalsInGameInCompetetion(competitionName);
+	}
+ 	public ArrayList<DirtyGame> getStatisticsDirtiesGamesForCompetition(String competitionName){
+ 		return statisticsCollector.getStatisticsDirtiesGamesForCompetition(competitionName);
+ 	}
+
+ 	public ArrayList<StatisticsBestPlayerInYear> getStatisticsBestPlayerInYear(String country){
+ 		return statisticsCollector.getStatisticsBestPlayerInYear(country);
+ 	}
+	public ArrayList<Staduim> getCompetitionSatuims (String competitionName , String competitionYears){
+
+		return 	statisticsCollector.getCompetitionSatuims (competitionName , competitionYears);
+
+	}	
 	
 	
 	

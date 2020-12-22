@@ -1,5 +1,7 @@
 package models;
 
+import java.awt.Image;
+
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //to ask hassan , will we replace string player and assister (attributes of class goal) by this class (Player class)
 public class Player {
@@ -9,6 +11,8 @@ public class Player {
 	String nation;
 	String birthDate;//or date instead of string
 	String information;
+	String url;
+	Image img;
 	
 	public Player() {}//may we will delete it later
 	public Player(String number , String name , String nation , String birthDate , String information) {

@@ -1,11 +1,12 @@
 package collector;
 
 
-import models.Club;
+import models.ClubForRankingTable;
 
 
 
 import models.ClubTransferTable;
+import models.DirtyGame;
 import models.Game;
 import models.GamesTableOfLeague;
 import models.Goal;
@@ -25,6 +26,11 @@ import models.PlayerTypeAtMatch;
 import models.RankingTable;
 import models.Referee;
 import models.Round;
+import models.Staduim;
+import models.StatisticsBestPlayerInYear;
+import models.StatisticsGoalsPerRound;
+import models.StatisticsGoalsPerSeason;
+import models.StatisticsRecordWinsAndMostGoalInGame;
 import models.Team;
 import models.TransferPlayerInformation;
 
@@ -117,73 +123,73 @@ public class ScreenScraperTest {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
 	   RankingTable rankingTableActualValue1889_1890 = screenScraperUnderTest.getLastTable("eng-premier-league","1889-1890");
        RankingTable rankingTableExpectedValue1889_1890 = new RankingTable();       
-       Club club1 = new Club("1","Preston North End","22","15","3","4","71:30","41","33:11");
+       ClubForRankingTable club1 = new ClubForRankingTable("1","Preston North End","22","15","3","4","71:30","41","33:11");
        rankingTableExpectedValue1889_1890.addClub(club1);
-       Club club2 = new Club("2","Everton FC","22","14","3","5","65:40","25","31:13");
+       ClubForRankingTable club2 = new ClubForRankingTable("2","Everton FC","22","14","3","5","65:40","25","31:13");
        rankingTableExpectedValue1889_1890.addClub(club2);
-       Club club3 = new Club("3","Blackburn Rovers","22","12","3","7","78:41","37","27:17");
+       ClubForRankingTable club3 = new ClubForRankingTable("3","Blackburn Rovers","22","12","3","7","78:41","37","27:17");
        rankingTableExpectedValue1889_1890.addClub(club3);
-       Club club4 = new Club("4","Wolverhampton Wanderers","22","10","5","7","51:38","13","25:19");
+       ClubForRankingTable club4 = new ClubForRankingTable("4","Wolverhampton Wanderers","22","10","5","7","51:38","13","25:19");
        rankingTableExpectedValue1889_1890.addClub(club4);
-       Club club5 = new Club("5","West Bromwich Albion","22","11","3","8","47:50","-3","25:19");
+       ClubForRankingTable club5 = new ClubForRankingTable("5","West Bromwich Albion","22","11","3","8","47:50","-3","25:19");
        rankingTableExpectedValue1889_1890.addClub(club5);
-       Club club6 = new Club("6","Accrington FC","22","9","6","7","53:56","-3","24:20");
+       ClubForRankingTable club6 = new ClubForRankingTable("6","Accrington FC","22","9","6","7","53:56","-3","24:20");
        rankingTableExpectedValue1889_1890.addClub(club6);
-       Club club7 = new Club("7","Derby County","22","9","3","10","43:55","-12","21:23");
+       ClubForRankingTable club7 = new ClubForRankingTable("7","Derby County","22","9","3","10","43:55","-12","21:23");
        rankingTableExpectedValue1889_1890.addClub(club7);
-       Club club8 = new Club("8","Aston Villa","22","7","5","10","43:51","-8","19:25");
+       ClubForRankingTable club8 = new ClubForRankingTable("8","Aston Villa","22","7","5","10","43:51","-8","19:25");
        rankingTableExpectedValue1889_1890.addClub(club8);
-       Club club9 = new Club("9","Bolton Wanderers","22","9","1","12","54:65","-11","19:25");
+       ClubForRankingTable club9 = new ClubForRankingTable("9","Bolton Wanderers","22","9","1","12","54:65","-11","19:25");
        rankingTableExpectedValue1889_1890.addClub(club9);
-       Club club10 = new Club("10","Notts County","22","6","5","11","43:51","-8","17:27");
+       ClubForRankingTable club10 = new ClubForRankingTable("10","Notts County","22","6","5","11","43:51","-8","17:27");
        rankingTableExpectedValue1889_1890.addClub(club10);
-       Club club11 = new Club("11","Burnley FC","22","4","5","13","36:65","-29","13:31");
+       ClubForRankingTable club11 = new ClubForRankingTable("11","Burnley FC","22","4","5","13","36:65","-29","13:31");
        rankingTableExpectedValue1889_1890.addClub(club11);
-       Club club12 = new Club("12","Stoke City","22","3","4","15","27:69","-42","10:34");
+       ClubForRankingTable club12 = new ClubForRankingTable("12","Stoke City","22","3","4","15","27:69","-42","10:34");
        rankingTableExpectedValue1889_1890.addClub(club12);       
        Assert.assertEquals(rankingTableExpectedValue1889_1890.toString(), rankingTableActualValue1889_1890.toString());      
        
        RankingTable rankingTableActualValue2012_2013ByRound14 = screenScraperUnderTest.getTableByRound("eng-premier-league","2012-2013","14");
        RankingTable rankingTableExpectedValue2012_2013ByRound14 = new RankingTable();       
-       Club club20 = new Club("1","Manchester United","14","11","0","3","33:18","15","33");
+       ClubForRankingTable club20 = new ClubForRankingTable("1","Manchester United","14","11","0","3","33:18","15","33");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club20);
-       Club club21 = new Club("2","Manchester City","14","9","5","0","27:10","17","32");
+       ClubForRankingTable club21 = new ClubForRankingTable("2","Manchester City","14","9","5","0","27:10","17","32");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club21);
-       Club club22 = new Club("3","Chelsea FC","14","7","5","2","24:13","11","26");
+       ClubForRankingTable club22 = new ClubForRankingTable("3","Chelsea FC","14","7","5","2","24:13","11","26");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club22);
-       Club club23 = new Club("4","West Bromwich Albion","14","8","2","4","24:18","6","26");
+       ClubForRankingTable club23 = new ClubForRankingTable("4","West Bromwich Albion","14","8","2","4","24:18","6","26");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club23);
-       Club club24 = new Club("5","Tottenham Hotspur","14","7","2","5","25:23","2","23");
+       ClubForRankingTable club24 = new ClubForRankingTable("5","Tottenham Hotspur","14","7","2","5","25:23","2","23");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club24);
-       Club club25 = new Club("6","Everton FC","14","5","7","2","24:18","6","22");
+       ClubForRankingTable club25 = new ClubForRankingTable("6","Everton FC","14","5","7","2","24:18","6","22");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club25);
-       Club club26 = new Club("7","Arsenal FC","14","5","6","3","24:14","10","21");
+       ClubForRankingTable club26 = new ClubForRankingTable("7","Arsenal FC","14","5","6","3","24:14","10","21");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club26);
-       Club club27 = new Club("8","Swansea City","14","5","5","4","21:17","4","20");
+       ClubForRankingTable club27 = new ClubForRankingTable("8","Swansea City","14","5","5","4","21:17","4","20");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club27);
-       Club club28 = new Club("9","Stoke City","14","4","7","3","13:12","1","19");
+       ClubForRankingTable club28 = new ClubForRankingTable("9","Stoke City","14","4","7","3","13:12","1","19");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club28);
-       Club club29 = new Club("10","West Ham United","14","5","4","5","16:16","0","19");
+       ClubForRankingTable club29 = new ClubForRankingTable("10","West Ham United","14","5","4","5","16:16","0","19");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club29);
-       Club club30 = new Club("11","Fulham FC","14","4","5","5","25:23","2","17");
+       ClubForRankingTable club30 = new ClubForRankingTable("11","Fulham FC","14","4","5","5","25:23","2","17");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club30);
-       Club club31 = new Club("12","Liverpool FC","14","3","7","4","18:18","0","16");
+       ClubForRankingTable club31 = new ClubForRankingTable("12","Liverpool FC","14","3","7","4","18:18","0","16");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club31);
-       Club club32 = new Club("13","Sunderland AFC","14","3","7","4","15:16","-1","16");
+       ClubForRankingTable club32 = new ClubForRankingTable("13","Sunderland AFC","14","3","7","4","15:16","-1","16");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club32);
-       Club club33 = new Club("14","Norwich City","14","3","7","4","11:20","-9","16");
+       ClubForRankingTable club33 = new ClubForRankingTable("14","Norwich City","14","3","7","4","11:20","-9","16");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club33);
-       Club club34 = new Club("15","Newcastle United","14","3","5","6","14:21","-7","14");
+       ClubForRankingTable club34 = new ClubForRankingTable("15","Newcastle United","14","3","5","6","14:21","-7","14");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club34);
-       Club club35 = new Club("16","Wigan Athletic","14","4","2","8","15:25","-10","14");
+       ClubForRankingTable club35 = new ClubForRankingTable("16","Wigan Athletic","14","4","2","8","15:25","-10","14");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club35);
-       Club club36 = new Club("17","Aston Villa","14","3","4","7","11:22","-11","13");
+       ClubForRankingTable club36 = new ClubForRankingTable("17","Aston Villa","14","3","4","7","11:22","-11","13");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club36);
-       Club club37 = new Club("18","Southampton FC","14","3","3","8","21:31","-10","12");
+       ClubForRankingTable club37 = new ClubForRankingTable("18","Southampton FC","14","3","3","8","21:31","-10","12");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club37);
-       Club club38 = new Club("19","Reading FC","14","1","6","7","16:26","-10","9");
+       ClubForRankingTable club38 = new ClubForRankingTable("19","Reading FC","14","1","6","7","16:26","-10","9");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club38);
-       Club club39 = new Club("20","Queens Park Rangers","14","0","5","9","10:26","-16","5");
+       ClubForRankingTable club39 = new ClubForRankingTable("20","Queens Park Rangers","14","0","5","9","10:26","-16","5");
        rankingTableExpectedValue2012_2013ByRound14.addClub(club39);       
        Assert.assertEquals(rankingTableExpectedValue2012_2013ByRound14.toString(), rankingTableActualValue2012_2013ByRound14.toString());
        
@@ -342,7 +348,7 @@ public class ScreenScraperTest {
        Player player47 = new Player("","Sammy Lynn","England","25/12/1920","Defender");
        Player player48 = new Player("","Tommy McNulty","England","30/12/1929","Defender");
        Player player49 = new Player("","Billy Redman","England","29/01/1928","Defender");
-       Player player50 = new Player("","John Warner","Wales","21/09/1911","Defender");
+       Player player50 = new Player("","Jack Warner","Wales","21/09/1911","Defender");
        Player player51 = new Player("","Allenby Chilton","England","16/09/1918","Midfielder");
        Player player52 = new Player("","Henry Cockburn","England","14/09/1923","Midfielder");
        Player player53 = new Player("","Don Gibson","England","12/05/1929","Midfielder");
@@ -388,6 +394,7 @@ public class ScreenScraperTest {
        manchesterUnitedExpectedplayers1950.add(player65);
        manchesterUnitedExpectedplayers1950.add(player66);
        manchesterUnitedExpectedplayers1950.add(player67);
+       
        Assert.assertEquals(manchesterUnitedActualValueplayers1950.toString(), manchesterUnitedExpectedplayers1950.toString());
               
        ArrayList <Player> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.teamsCollector.getAllPlayersSummuryInTeam("manchester-united","1890");
@@ -1059,5 +1066,237 @@ public class ScreenScraperTest {
        table1946_1947player0TO4ExpectedValue.add(player24);
 	   Assert.assertEquals(table1946_1947player0TO4ExpectedValue.toString(), table1946_1947player0TO4ActualValue.toString());
      
+   }
+   @Test
+   public void itShouldGetStatisticsGoalsPerSeason() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList <StatisticsGoalsPerSeason> actualValue = new ArrayList<>();
+       actualValue = screenScraperUnderTest.getStatisticsGoalsPerSeason("eng-championship");
+       ArrayList <StatisticsGoalsPerSeason> actualValue0To9 = new ArrayList<>();
+       for(int i = 0 ; i < 9 ; i++ ) {
+    	   actualValue0To9.add(actualValue.get(i));
+       }
+       ArrayList <StatisticsGoalsPerSeason> expectedValue0To9 = new ArrayList<>();
+       StatisticsGoalsPerSeason season0 = new StatisticsGoalsPerSeason("1","1892/1893","591","132","4.4773");
+       StatisticsGoalsPerSeason season1 = new StatisticsGoalsPerSeason("2","1894/1895","1019","239","4.2636");
+       StatisticsGoalsPerSeason season2 = new StatisticsGoalsPerSeason("3","1893/1894","894","210","4.2571");
+       StatisticsGoalsPerSeason season3 = new StatisticsGoalsPerSeason("4","1895/1896","943","240","3.9292");
+       StatisticsGoalsPerSeason season4 = new StatisticsGoalsPerSeason("5","1896/1897","907","240","3.7792");
+       StatisticsGoalsPerSeason season5 = new StatisticsGoalsPerSeason("6","1926/1927","1668","462","3.6104");
+       StatisticsGoalsPerSeason season6 = new StatisticsGoalsPerSeason("7","1898/1899","1103","306","3.6046");
+       StatisticsGoalsPerSeason season7 = new StatisticsGoalsPerSeason("8","1897/1898","860","240","3.5833");
+       StatisticsGoalsPerSeason season8 = new StatisticsGoalsPerSeason("9","1956/1957","1644","462","3.5584");
+       expectedValue0To9.add(season0);
+       expectedValue0To9.add(season1);
+       expectedValue0To9.add(season2);
+       expectedValue0To9.add(season3);
+       expectedValue0To9.add(season4);
+       expectedValue0To9.add(season5);
+       expectedValue0To9.add(season6);
+       expectedValue0To9.add(season7);
+       expectedValue0To9.add(season8);
+	   Assert.assertEquals(expectedValue0To9.toString(), actualValue0To9.toString());    
+       
+   }
+   @Test
+   public void itShouldGetStatisticsGoalsPerRound() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList <StatisticsGoalsPerRound> actualValue = new ArrayList<>();
+       actualValue  = screenScraperUnderTest.getStatisticsGoalsPerRound("eng-championship");
+       ArrayList <StatisticsGoalsPerRound> actualValue0To9 = new ArrayList<>();
+       for(int i = 0 ; i < 9 ; i++ ) {
+    	   actualValue0To9.add(actualValue.get(i));
+       }
+       ArrayList <StatisticsGoalsPerRound> expectedlValue0To9 = new ArrayList<>();
+       StatisticsGoalsPerRound round0 =  new StatisticsGoalsPerRound("1","1892/1893","11. Round","39","6","6.5000");
+       StatisticsGoalsPerRound round1 =  new StatisticsGoalsPerRound("2","1892/1893","20. Round","38","6","6.3333");
+       StatisticsGoalsPerRound round2 =  new StatisticsGoalsPerRound("3","1892/1893","7. Round", "36","6","6.0000");                                                                    
+       StatisticsGoalsPerRound round3 =  new StatisticsGoalsPerRound("4","1893/1894","10. Round","40","7","5.7143");
+       StatisticsGoalsPerRound round4 =  new StatisticsGoalsPerRound("5","1893/1894","21. Round","40","7","5.7143");
+       StatisticsGoalsPerRound round5 =  new StatisticsGoalsPerRound("6","1892/1893","8. Round", "34","6","5.6667");
+       StatisticsGoalsPerRound round6 =  new StatisticsGoalsPerRound("7","1892/1893","17. Round","33","6","5.5000");
+       StatisticsGoalsPerRound round7 =  new StatisticsGoalsPerRound("8","1892/1893","1. Round", "33","6","5.5000");
+       StatisticsGoalsPerRound round8 =  new StatisticsGoalsPerRound("9","1893/1894","15. Round","38","7","5.4286");
+       expectedlValue0To9.add(round0);
+       expectedlValue0To9.add(round1);
+       expectedlValue0To9.add(round2);
+       expectedlValue0To9.add(round3);
+       expectedlValue0To9.add(round4);
+       expectedlValue0To9.add(round5);
+       expectedlValue0To9.add(round6);
+       expectedlValue0To9.add(round7);
+       expectedlValue0To9.add(round8);
+      
+	   Assert.assertEquals(expectedlValue0To9.toString(), actualValue0To9.toString());    
+
+   }
+   @Test
+   public void itShouldGetStatisticsRecordWins() {
+   ScreenScraper screenScraperUnderTest = new ScreenScraper();
+   ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue = new ArrayList<>();
+   actualValue = screenScraperUnderTest.getStatisticsRecordWinsOrMostGoalInGame("eng-championship", 3);
+   ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue0To9 = new ArrayList<>();
+   for(int i =0 ; i < 10 ; i++) {
+	   actualValue0To9.add(actualValue.get(i));
+   }
+   ArrayList<StatisticsRecordWinsAndMostGoalInGame> expectedValue0To9 = new ArrayList<>();
+   StatisticsRecordWinsAndMostGoalInGame game1 = new StatisticsRecordWinsAndMostGoalInGame ("1946/1947","3. Round","05/10/1946","Newcastle United",       "13:0",  "Newport County");
+   StatisticsRecordWinsAndMostGoalInGame game2 = new StatisticsRecordWinsAndMostGoalInGame ("1902/1903","8. Round","11/04/1903","Small Heath Birmingham", "12:0",  "Doncaster Rovers");
+   StatisticsRecordWinsAndMostGoalInGame game3 = new StatisticsRecordWinsAndMostGoalInGame ("1899/1900","7. Round","12/03/1900","Woolwich Arsenal",       "12:0",  "Loughborough United");
+   StatisticsRecordWinsAndMostGoalInGame game4 = new StatisticsRecordWinsAndMostGoalInGame ("1896/1897","4. Round","26/12/1896","Darwen",                 "12:0",  "Walsall FC");
+   StatisticsRecordWinsAndMostGoalInGame game5 = new StatisticsRecordWinsAndMostGoalInGame ("1892/1893","7. Round","17/12/1892","Small Heath Birmingham", "12:0", 	"Walsall Town Swifts");
+   StatisticsRecordWinsAndMostGoalInGame game6 = new StatisticsRecordWinsAndMostGoalInGame ("1959/1960","4. Round","14/11/1959","Aston Villa", 	 	      "11:1", 	"Charlton Athletic" 	);
+   StatisticsRecordWinsAndMostGoalInGame game7 = new StatisticsRecordWinsAndMostGoalInGame ("1914/1915","5. Round","23/01/1915","Birmingham FC", 	 	  "11:1", 	"Glossop North End");
+   StatisticsRecordWinsAndMostGoalInGame game8 = new StatisticsRecordWinsAndMostGoalInGame ("1902/1903","5. Round","17/01/1903","Chesterfield FC", 	      "10:0", 	"Glossop North End");
+   StatisticsRecordWinsAndMostGoalInGame game9 = new StatisticsRecordWinsAndMostGoalInGame ("1898/1899","8. Round","01/04/1899","Loughborough United", 	  "10:0", 	"Darwen");
+   StatisticsRecordWinsAndMostGoalInGame game10 = new StatisticsRecordWinsAndMostGoalInGame("1898/1899","7. Round","04/03/1899","Walsall FC", 	          "10:0", 	"Darwen");
+   expectedValue0To9.add(game1);
+   expectedValue0To9.add(game2);
+   expectedValue0To9.add(game3);
+   expectedValue0To9.add(game4);
+   expectedValue0To9.add(game5);
+   expectedValue0To9.add(game6);
+   expectedValue0To9.add(game7);
+   expectedValue0To9.add(game8);
+   expectedValue0To9.add(game9);
+   expectedValue0To9.add(game10);
+   Assert.assertEquals(expectedValue0To9.toString(), actualValue0To9.toString());    
+
+
+   }
+   @Test
+   public void itShouldGetStatisticsMostGoalInGame() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue = new ArrayList<>();
+       actualValue = screenScraperUnderTest.getStatisticsRecordWinsOrMostGoalInGame("eng-championship", 4);
+       ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue0To9 = new ArrayList<>();
+       for(int i =0 ; i < 10 ; i++) {
+    	   actualValue0To9.add(actualValue.get(i));
+       }
+       ArrayList<StatisticsRecordWinsAndMostGoalInGame> expectedValue0To9 = new ArrayList<>();
+       StatisticsRecordWinsAndMostGoalInGame game1 = new StatisticsRecordWinsAndMostGoalInGame ("1894/1895", "7. Round",   "23/03/1895", 	"Manchester City",	 "11:3","Lincoln City");
+       StatisticsRecordWinsAndMostGoalInGame game2 = new StatisticsRecordWinsAndMostGoalInGame ("1957/1958", "5. Round",   "21/12/1957", 	"Charlton Athletic",  "7:6","Huddersfield Town");
+       StatisticsRecordWinsAndMostGoalInGame game3 = new StatisticsRecordWinsAndMostGoalInGame ("1946/1947", "3. Round",   "05/10/1946", 	"Newcastle United",   "13:0","Newport County");
+       StatisticsRecordWinsAndMostGoalInGame game4 = new StatisticsRecordWinsAndMostGoalInGame ("1919/1920", "4. Round",   "27/12/1919", 	"Hull City" ,		  "10:3",  	"Wolverhampton Wanderers");
+       StatisticsRecordWinsAndMostGoalInGame game5 = new StatisticsRecordWinsAndMostGoalInGame ("1893/1894", "27. Round",  "24/02/1894", 	"Burton Swifts", 	  "8:5","Walsall Town Swifts");
+       StatisticsRecordWinsAndMostGoalInGame game6 = new StatisticsRecordWinsAndMostGoalInGame ("1965/1966", "2. Round",   "18/09/1965", 	"Southampton FC" ,	  "9:3",  	"Wolverhampton Wanderers");
+       StatisticsRecordWinsAndMostGoalInGame game7 = new StatisticsRecordWinsAndMostGoalInGame ("1960/1961", "3. Round",   "22/10/1960", 	"Charlton Athletic",  "6:6", 	"Middlesbrough FC");
+       StatisticsRecordWinsAndMostGoalInGame game8 = new StatisticsRecordWinsAndMostGoalInGame ("1959/1960", "4. Round",   "14/11/1959", 	"Aston Villa", 	      "11:1", 	"Charlton Athletic");
+       StatisticsRecordWinsAndMostGoalInGame game9 = new StatisticsRecordWinsAndMostGoalInGame ("1953/1954", "7. Round",   "27/02/1954", 	"Everton FC", 	      "8:4","Plymouth Argyle");
+       StatisticsRecordWinsAndMostGoalInGame game10 = new StatisticsRecordWinsAndMostGoalInGame("1938/1939", "5. Round",   "26/12/1938", 	"Tranmere Rovers", 	  "3:9","Manchester City");
+       expectedValue0To9.add(game1);
+       expectedValue0To9.add(game2);
+       expectedValue0To9.add(game3);
+       expectedValue0To9.add(game4);
+       expectedValue0To9.add(game5);
+       expectedValue0To9.add(game6);
+       expectedValue0To9.add(game7);
+       expectedValue0To9.add(game8);
+       expectedValue0To9.add(game9);
+       expectedValue0To9.add(game10);
+       Assert.assertEquals(expectedValue0To9.toString(), actualValue0To9.toString());    
+
+
+   }
+   
+   @Test
+   public void itShouldGetStatisticsDirtiesGamesForCompetition() {
+	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList<DirtyGame> actualValue = new ArrayList<>();
+       actualValue = screenScraperUnderTest.getStatisticsDirtiesGamesForCompetition("eng-championship");
+       ArrayList<DirtyGame> actualValue0To9 = new ArrayList<>();
+       for(int i =0 ; i < 10 ; i++) {
+    	   actualValue0To9.add(actualValue.get(i));
+       }
+       ArrayList<DirtyGame> expectedValue0To9 = new ArrayList<>();
+       DirtyGame game1 = new DirtyGame ("14/04/2007", 	"Ipswich Town", 	 	   "2:1", "Derby County", 	     "2","0","10","16");
+       DirtyGame game2 = new DirtyGame ("14/04/2015", 	"Millwall FC", 	 	       "2:0", "Wigan Athletic",      "3","0","6","15");
+       DirtyGame game3 = new DirtyGame ("17/10/1997", 	"Wolverhampton Wanderers", "3:1", "Swindon Town", 	     "3","0","4","13");
+       DirtyGame game4 = new DirtyGame ("04/03/2008", 	"Hull City", 	 	       "2:0", "Burnley FC", 	     "2","2","3","13");
+       DirtyGame game5 = new DirtyGame ("01/11/2005", 	"Burnley FC", 		       "2:1", "Millwall FC","2", 	"1", 	"5", 	"13");
+       DirtyGame game6 = new DirtyGame ("10/04/2001", 	"Crewe Alexandra", 		   "2:2", "Queens Park Rangers","2", 	"1", 	"5", 	"13");
+       DirtyGame game7 = new DirtyGame ("21/11/2015", 	"Leeds United", 	       "0:1", "Rotherham United", 	 	"2", 	"0", 	"7", 	"13");
+       DirtyGame game8 = new DirtyGame ("21/12/2002", 	"Gillingham FC", 	       "4:2", "Burnley FC", 		"2","0","7","13");
+       DirtyGame game9 = new DirtyGame ("04/11/2000", 	"Nottingham Forest", 	   "3:1", "Preston North End", 	"2","0","7","13");
+       DirtyGame game10 = new DirtyGame ("19/12/1997", 	"Reading FC", 	           "0:0", "Wolverhampton Wanderers", 	"2","0","7","13");
+       expectedValue0To9.add(game1);
+       expectedValue0To9.add(game2);
+       expectedValue0To9.add(game3);
+       expectedValue0To9.add(game4);
+       expectedValue0To9.add(game5);
+       expectedValue0To9.add(game6);
+       expectedValue0To9.add(game7);
+       expectedValue0To9.add(game8);
+       expectedValue0To9.add(game9);
+       expectedValue0To9.add(game10);
+       
+       Assert.assertEquals(expectedValue0To9.toString(), actualValue0To9.toString());    
+
+   }
+   @Test
+   public void itShouldGetStatisticsBestPlayerInYear() {
+       ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList<StatisticsBestPlayerInYear> actualValue = new ArrayList<>();
+       actualValue = screenScraperUnderTest.getStatisticsBestPlayerInYear("england");
+       ArrayList<StatisticsBestPlayerInYear> actualValue0To9 = new ArrayList<>();
+       for(int i =0 ; i < 10 ; i++) {
+    	   actualValue0To9.add(actualValue.get(i));
+       }
+       ArrayList<StatisticsBestPlayerInYear> expectedValue0To9 = new ArrayList<>();
+       StatisticsBestPlayerInYear game1  = new StatisticsBestPlayerInYear ("2020", 	"Jordan Henderson");
+       StatisticsBestPlayerInYear game2  = new StatisticsBestPlayerInYear ("2019", 	"Raheem Sterling");
+       StatisticsBestPlayerInYear game3  = new StatisticsBestPlayerInYear ("2018", 	"Mohamed Salah");
+       StatisticsBestPlayerInYear game4  = new StatisticsBestPlayerInYear ("2017", 	"N'Golo Kanté");
+       StatisticsBestPlayerInYear game5  = new StatisticsBestPlayerInYear ("2016", 	"Jamie Vardy");
+       StatisticsBestPlayerInYear game6  = new StatisticsBestPlayerInYear ("2015", 	"Eden Hazard");
+       StatisticsBestPlayerInYear game7  = new StatisticsBestPlayerInYear ("2014", 	"Luis Suárez");
+       StatisticsBestPlayerInYear game8  = new StatisticsBestPlayerInYear ("2013", 	"Gareth Bale");
+       StatisticsBestPlayerInYear game9  = new StatisticsBestPlayerInYear ("2012", 	"Robin van Persie");
+       StatisticsBestPlayerInYear game10 = new StatisticsBestPlayerInYear ("2011", 	"Scott Parker");
+       expectedValue0To9.add(game1);
+       expectedValue0To9.add(game2);
+       expectedValue0To9.add(game3);
+       expectedValue0To9.add(game4);
+       expectedValue0To9.add(game5);
+       expectedValue0To9.add(game6);
+       expectedValue0To9.add(game7);
+       expectedValue0To9.add(game8);
+       expectedValue0To9.add(game9);
+       expectedValue0To9.add(game10);
+       
+       Assert.assertEquals(expectedValue0To9.toString(), actualValue0To9.toString());   
+
+   }
+   @Test 
+   public void itShouldGetStaduim() {
+	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
+       ArrayList<Staduim> actualValue2020_2021 = new ArrayList<>();
+       actualValue2020_2021 = screenScraperUnderTest.getCompetitionSatuims("eng-championship","2020-2021");
+       ArrayList<Staduim> actualValue2020_2021Just0To5 = new ArrayList<>();
+       for(int i =0 ; i < 5 ; i++) {
+    	   actualValue2020_2021Just0To5.add(actualValue2020_2021.get(i));
+       }
+       ArrayList<Staduim> expectedValue2020_2021Just0To5 = new ArrayList<>();
+       Staduim staduim1 = new Staduim ("Adams Park", 	              "Wycombe", 	   "England",  "10.000");
+       Staduim staduim2 = new Staduim ("Ashton Gate", 	              "Bristol", 	   "England",  "27.000");
+       Staduim staduim3 = new Staduim ("bet365 Stadium", 	          "Stoke-on-Trent","England",  "30.089");
+       Staduim staduim4 = new Staduim ("Brentford Community Stadium", "Brentford", 	   "England",  "17.250");
+       Staduim staduim5 = new Staduim ("Cardiff City Stadium",        "Cardiff", 	   "Wales",    "33.000");
+       expectedValue2020_2021Just0To5.add(staduim1);
+       expectedValue2020_2021Just0To5.add(staduim2);
+       expectedValue2020_2021Just0To5.add(staduim3);
+       expectedValue2020_2021Just0To5.add(staduim4);
+       expectedValue2020_2021Just0To5.add(staduim5);
+       
+
+       Assert.assertEquals(expectedValue2020_2021Just0To5.toString(), actualValue2020_2021Just0To5.toString());   
+       
+       ArrayList<Staduim> actualValue1950_1951 = new ArrayList<>();
+       actualValue1950_1951 = screenScraperUnderTest.getCompetitionSatuims("eng-championship","1950-1951");
+       ArrayList<Staduim> actualValue1950_1951Just0To5 = actualValue1950_1951;       
+       ArrayList<Staduim> expectedValue1950_1951Just0To5 = new ArrayList<>();       
+       Assert.assertEquals(expectedValue1950_1951Just0To5.toString(), actualValue1950_1951Just0To5.toString());   
+
+
    }
 }

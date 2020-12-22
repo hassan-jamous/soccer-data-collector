@@ -1,6 +1,6 @@
 package collector;
 
-import models.Club;
+import models.ClubForRankingTable;
 import models.RankingTable;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,7 +35,7 @@ public class TableCollector {
                     //the first row is the header, this is why i = 1;
                     for (int i = 1; i < trs.size(); i++) {
                         Element tr = trs.get(i);
-                        Club club = new Club();
+                        ClubForRankingTable club = new ClubForRankingTable();
                         club.setPosition(tr.child(0).text());
                         club.setName(tr.child(2).text());
                         club.setPlayedGames(tr.child(3).text());
