@@ -2,6 +2,7 @@ package collector;
 
 
 import models.Club;
+import models.ClubForRankingTable;
 
 import models.ClubForRankingTable;
 
@@ -338,6 +339,7 @@ public class ScreenScraperTest {
        manchesterUnitedExpectedplayers2015.add(player34);
        Assert.assertEquals(manchesterUnitedExpectedplayers2015.toString(), manchesterUnitedActualValueplayers2015.toString());
        
+
        ArrayList <PlayerSummary> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getAllPlayersSummuryInClub("manchester-united","1950");
        ArrayList <PlayerSummary> manchesterUnitedExpectedplayers1950 = new ArrayList <>();
        PlayerSummary player40 = new PlayerSummary("","Jack Crompton","England","18/12/1921","Goalkeeper");
@@ -368,6 +370,7 @@ public class ScreenScraperTest {
        PlayerSummary player65 = new PlayerSummary("","Jack Rowley","England","07/10/1920","Forward");
        PlayerSummary player66 = new PlayerSummary("","Matt Busby","Scotland","26/05/1909","Manager");
        PlayerSummary player67 = new PlayerSummary("","Jimmy Murphy","Wales","27/10/1910","Ass. Manager");
+
        manchesterUnitedExpectedplayers1950.add(player40);
        manchesterUnitedExpectedplayers1950.add(player41);
        manchesterUnitedExpectedplayers1950.add(player42);

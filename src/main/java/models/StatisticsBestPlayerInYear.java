@@ -17,6 +17,8 @@ public class StatisticsBestPlayerInYear {
 	public String toString() {
 		String result ="";
 		result = "(" + year + ")  " + playerBasicInfo.name; 
+
 		return result;
+
 	}
 }

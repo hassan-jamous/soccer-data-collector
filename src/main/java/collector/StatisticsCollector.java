@@ -54,12 +54,15 @@ public class StatisticsCollector {
         	roundInfo.roundRankingNumber  = (trs.get(i).child(0).text().equals("∑")) ? "TOTAL" : trs.get(i).child(0).text();
         	if(!(trs.get(i).child(0).text().equals("∑"))) {
 	        	roundInfo.seasonYears         = trs.get(i).child(1).child(0).text().substring(0,trs.get(i).child(1).text().indexOf("| ")-1);
+
 	        	roundInfo.round.roundNumberAsString               = trs.get(i).child(1).text().substring(trs.get(i).child(1).text().indexOf("| ")+2);
         	}
         	else {
 	        	roundInfo.seasonYears         = trs.get(i).child(1).child(0).text();
 	        	roundInfo.round.roundNumberAsString              ="all season";
+
         	}
+
         	roundInfo.goals               = trs.get(i).child(2).text();
         	roundInfo.matchesNumber       = trs.get(i).child(3).text();
         	roundInfo.goalsPerMatch       = trs.get(i).child(4).text();
@@ -85,9 +88,11 @@ public class StatisticsCollector {
         	winInfo.seasonYears           = trs.get(i).child(0).text();
         	winInfo.round                 = trs.get(i).child(1).text();
         	winInfo.matchDate             = trs.get(i).child(2).text();
+
         	winInfo.homeClubBasicInfo.name              = trs.get(i).child(3).text();
         	winInfo.matchResult           = trs.get(i).child(5).text();
         	winInfo.guestClubBasicInfo.name             = trs.get(i).child(7).text();
+
         	
         	result.add(winInfo);
         }
@@ -114,11 +119,13 @@ public class StatisticsCollector {
 	        	if(trs.get(i).childrenSize() ==7) {//we do not need the header  the header contains 6 children
 		        	StatisticsMostGoalsInGame gameInfo = new StatisticsMostGoalsInGame();
 		        	                              //----------td-------
+
 		        	gameInfo.playerBasicInfo.name           = trs.get(i).child(0).text();
 		        	gameInfo.matchDate            = trs.get(i).child(1).text();
 		        	gameInfo.homeClubBasicInfo.name             = trs.get(i).child(2).text();
 		        	gameInfo.matchResult          = trs.get(i).child(4).text();
 		        	gameInfo.guestClubBasicInfo.name            = trs.get(i).child(6).text();
+
 		        	gameInfo.playerGoalsNumber    = maxNumberOfGoals;
 		        	
 		        	result.add(gameInfo);
@@ -143,9 +150,11 @@ public class StatisticsCollector {
         	DirtyGame dirtyGameInfo = new DirtyGame();
         	                                                       //--------td--------
         	dirtyGameInfo.gameNormalInfo.date                      = trs.get(i).child(0).text();
+
         	dirtyGameInfo.gameNormalInfo.firstTeamBasicInfo.name                 = trs.get(i).child(1).text();
         	dirtyGameInfo.gameNormalInfo.finalResult               = trs.get(i).child(3).text();
         	dirtyGameInfo.gameNormalInfo.secondTeamBasicInfo.name               = trs.get(i).child(5).text();
+
         	dirtyGameInfo.redCards                                 = trs.get(i).child(6).text();
         	dirtyGameInfo.secondYellowCards                        = trs.get(i).child(7).text();
         	dirtyGameInfo.yellowCards                              = trs.get(i).child(8).text();
@@ -172,7 +181,9 @@ public class StatisticsCollector {
         	
 			                           //--------td--------
         	bestPlayerInfo.year        = trs.get(i).child(0).text();
+
         	bestPlayerInfo.playerBasicInfo.name  = trs.get(i).child(1).text(); 
+
         	
         	result.add(bestPlayerInfo);
         }

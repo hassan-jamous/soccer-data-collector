@@ -1,5 +1,6 @@
 package models;
 
+
 public class ClubForRankingTable{
 	public String position;
 	public Club clubBasicInfo;
@@ -7,10 +8,11 @@ public class ClubForRankingTable{
 	public String winGames;
 	public String drawGames;
 	public String lostGames;
-	String goals;
-	String diffirentGoals;
-	String points;
+	public String goals;
+	public String diffirentGoals;
+	public String points;
 	
+
 	public ClubForRankingTable() {
 		clubBasicInfo = new Club();
 	}
@@ -29,7 +31,9 @@ public class ClubForRankingTable{
 		this.points = points;
 	}
 	public void setName(String name) {
+
 		this.clubBasicInfo.name = name;
+
 	}
 	
 	public void setPlayedGames(String games) {
@@ -55,15 +59,16 @@ public class ClubForRankingTable{
 		this.position = position;
 	}
 
+
 	public void setPoints(String points) {
 		this.points =points;
 	}
 	public String toString() {
-		String club ="";
-		 club = "# " + position + "   " + clubBasicInfo.name +"   played games " + playedGames + " win  " + winGames + " Draw " 
+		String result ="";
+		 result = "# " + position + "   " + clubBasicInfo.name +"   played games " + playedGames + " win  " + winGames + " Draw " 
 		+ drawGames + " lose " + lostGames + " goals " + goals + "  dif  " + diffirentGoals + " points "
         + points + "\n";
-		 return club;
+		 return result;
 	}
-	
 }
+	

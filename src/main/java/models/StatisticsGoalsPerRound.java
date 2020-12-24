@@ -8,7 +8,7 @@ public class StatisticsGoalsPerRound {
 		public String goals;
 		public String matchesNumber;
 		public String goalsPerMatch;
-		
+
 		public StatisticsGoalsPerRound() {
 			round = new Round();
 		}
@@ -23,7 +23,9 @@ public class StatisticsGoalsPerRound {
 		}
 		public String toString() {
 			String result="";
+
 			result =  "(" + roundRankingNumber + ")  " + seasonYears + "  | " + round.roundNumberAsString +  "  goals: " + goals + "  matches: " + matchesNumber + "  goals per match " + goalsPerMatch;
+
 			return result;
 		}
 
