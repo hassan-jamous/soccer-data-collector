@@ -2,7 +2,7 @@ package models;
 
 public class TransferPlayerInformation {
 
-	public String playerName;
+	public Player playerBasicInfo;
 	public String date;
 	public String playerNation;
 	public String playerPosition;
@@ -10,10 +10,13 @@ public class TransferPlayerInformation {
 	public String toClub;
 	
 	
-	public TransferPlayerInformation() {}
+	public TransferPlayerInformation() {
+		playerBasicInfo = new Player();
+	}
 	public TransferPlayerInformation( String date, String playerName, String playerNation ,
 	 String position,  String fromClub, String toClub) {
-		 this.playerName =playerName;
+		 this.playerBasicInfo = new Player();
+		 this.playerBasicInfo.name =playerName;
 		 this.date = date;
 		 this.playerNation= playerNation;
 		 this.playerPosition = position;
@@ -22,7 +25,7 @@ public class TransferPlayerInformation {
 	}
 	public String toString() {
 		String result="";
-		result = date + "  " + playerName + "  " + playerNation + "  " + playerPosition + "  From  "
+		result = date + "  " + playerBasicInfo.name + "  " + playerNation + "  " + playerPosition + "  From  "
 		+ fromClub + " TO " + toClub; 
 		return result;
 	}

@@ -33,7 +33,7 @@ public class TopScoreCollector {
         	}
         	                    //-------td----------
         	player.playerRanking =  ranking;
-        	player.playerName    = trs.get(i).child(1).text();
+        	player.playerBasicInfo.name    = trs.get(i).child(1).text();
         	player.playerNation  = trs.get(i).child(3).text();
         	player.playerClubName= trs.get(i).child(4).text();
         	player.goals         = trs.get(i).child(5).text().substring(0, trs.get(i).child(5).text().indexOf('(')-1);

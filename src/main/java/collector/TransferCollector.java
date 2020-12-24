@@ -27,7 +27,7 @@ public class TransferCollector {
         for(Element div :divs) {
         	
         	ClubTransferTable clubTransferTable = new ClubTransferTable();
-        	clubTransferTable.clubName = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("»")-1);
+        	clubTransferTable.clubBasicInfo.name = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("»")-1);
         	clubTransferTable.season = competiotionYears;
         	             //    div        table  tbody
         	Elements trs = div.child(1).getElementsByTag("tr");
@@ -39,11 +39,11 @@ public class TransferCollector {
 	        			TransferPlayerInformation player = new TransferPlayerInformation();
 	        			player.date = trs.get(j).child(0).text();
 	        			
-	        			player.playerName = trs.get(j).child(1).text();
+	        			player.playerBasicInfo.name = trs.get(j).child(1).text();
 	        			player.playerNation = trs.get(j).child(2).child(0).attr("title");
 	        			player.playerPosition = trs.get(j).child(3).text();
 	        			player.fromClub = trs.get(j).child(5).text();
-	        			player.toClub = clubTransferTable.clubName;
+	        			player.toClub = clubTransferTable.clubBasicInfo.name;
 	        			clubTransferTable.intable.add(player);
 	        			
 	        			j++;
@@ -54,12 +54,12 @@ public class TransferCollector {
 	        		while ((j<trs.size())){
 	        			TransferPlayerInformation player = new TransferPlayerInformation();
 	        			player.date = trs.get(j).child(0).text();
-	        			player.playerName = trs.get(j).child(1).text();
+	        			player.playerBasicInfo.name = trs.get(j).child(1).text();
 	        			player.playerNation = trs.get(j).child(2).child(0).attr("title");
 	        			player.playerPosition = trs.get(j).child(3).text();
 	        			player.toClub = trs.get(j).child(5).text();
 	        			
-	        			player.fromClub = clubTransferTable.clubName;
+	        			player.fromClub = clubTransferTable.clubBasicInfo.name;
 	        			clubTransferTable.outtable.add(player);
 	        			j++;
 	        		}
@@ -90,7 +90,7 @@ public class TransferCollector {
 	public ClubTransferTable getTransferTableByClubName(ArrayList <ClubTransferTable> table ,String ClubName ) {
 		
 		for(int i =0; i <table.size() ; i++) {
-			if(table.get(i).clubName.contains(ClubName)) {				
+			if(table.get(i).clubBasicInfo.name.contains(ClubName)) {				
 					return table.get(i);
 				} 
 				

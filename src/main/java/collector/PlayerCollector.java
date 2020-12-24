@@ -7,10 +7,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import models.PlayerAllInformation;
 import models.PlayerClubCareer;
 
 import models.PlayerCompetitionsInformation;
-import models.PlayerInformation;
+
 import models.PlayerPersonalInformation;
 import models.PlayerTeamManaged;
 
@@ -21,7 +22,7 @@ public class PlayerCollector {
 	
 	//look to bruno-fernandes at manchester  united 2020 (url is bruno-fernandes_2) 
 	//not just name
-	 public PlayerInformation getAllInformationAboutPlayer(String nameAsInURL) {
+	 public PlayerAllInformation getAllInformationAboutPlayer(String nameAsInURL) {
 			
 			String url = WORLD_FOOTBALL_PLAYERS_SUMMARY_URL + nameAsInURL +"/";
 			
@@ -35,7 +36,7 @@ public class PlayerCollector {
 	        Elements divInternationals = divs.select("div:has(div:has(h2:contains(Internationals)))");
 	        Elements divPersonalInformation = divs.select("div:has(div:has(h2[itemprop=name]))");
 	        
-	        PlayerInformation playerTotalInfo = new PlayerInformation();
+	        PlayerAllInformation playerTotalInfo = new PlayerAllInformation();
 	        playerTotalInfo.teamsManaged = getPlayerTeamManaged(divTeamsManaged);
 	        playerTotalInfo.clubsCareer = getClubCarrer(divClubCareer);
 	        playerTotalInfo.clubMatches = getPlayerClubsMatch(divClubMatches);
@@ -53,7 +54,7 @@ public class PlayerCollector {
 				palyerTeamManaged = new PlayerTeamManaged();
 				
 				palyerTeamManaged.date = trs.get(i).child(0).text();
-				palyerTeamManaged.clubName = trs.get(i).child(2).text();
+				palyerTeamManaged.clubBasicInfo.name = trs.get(i).child(2).text();
 				palyerTeamManaged.clubNation = trs.get(i).child(3).child(0).attr("title");
 				palyerTeamManaged.position = trs.get(i).child(4).text();
 				
@@ -72,7 +73,7 @@ public class PlayerCollector {
 				if((i == 0) && (trClubs.get(0).child(1).attr("width").equals("60%"))) {//new version
 					club = new PlayerClubCareer();
 						                                 
-					club.clubName = trClubs.get(0).child(1).child(0).child(0).text();
+					club.clubBasicInfo.name= trClubs.get(0).child(1).child(0).child(0).text();
 				
 					club.clubNation = trClubs.get(0).child(1).child(1).child(0).attr("title");
 					String playerPositionAndContract = trClubs.get(0).child(1).child(1).text(); 			
@@ -86,7 +87,7 @@ public class PlayerCollector {
 				else if( (trClubs.get(i).childrenSize() > 4)){
 					club = new PlayerClubCareer();
 					club.years = trClubs.get(i).child(0).text();
-					club.clubName = trClubs.get(i).child(2).text();
+					club.clubBasicInfo.name = trClubs.get(i).child(2).text();
 					club.clubNation = trClubs.get(i).child(3).child(0).attr("title");
 					club.playerPosition = trClubs.get(i).child(4).text();
 					result.add(club);
@@ -102,7 +103,7 @@ public class PlayerCollector {
 			PlayerPersonalInformation info = new PlayerPersonalInformation();
 			
 			
-			info.name = div.child(1).text();
+			info.playerBasicInfo.name = div.child(1).text();
 			//image child 2
 			Elements tds = div.child(3).select("td");
 			if(tds.size() >=15) {//new 

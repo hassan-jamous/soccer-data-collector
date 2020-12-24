@@ -12,7 +12,7 @@ import models.Goal;
 import models.KindOfGoal;
 import models.KindOfReferee;
 import models.MatchDetails;
-import models.ClubInMatch;
+
 import models.PlayerAtMatch;
 import models.PlayerEventAtMatch;
 import models.PlayerTypeAtMatch;
@@ -49,7 +49,7 @@ public class MatchCollector {
     	   result.firstClub.manager = result.firstClub.manager.substring(1);
        }
        result.firstClub.goals = getGoalsInMatch(elementGoalsInfo ,0 );
-       result.firstClub.clubName = matchSummary.firstClub;
+       result.firstClub.clubBasicInfo.name = matchSummary.firstClub;
        
        result.secondClub.players = getClubPlayersInMatch(elementClubsInfo.get(1));
        result.secondClub.manager =  elementManagersInfo.get(0).select("a").get(1).attr("title");
@@ -57,7 +57,7 @@ public class MatchCollector {
     	   result.secondClub.manager = result.secondClub.manager.substring(1);
        }
        result.secondClub.goals = getGoalsInMatch(elementGoalsInfo ,1);
-       result.secondClub.clubName = matchSummary.secondClub;
+       result.secondClub.clubBasicInfo.name = matchSummary.secondClub;
        
        result.date = matchSummary.date;
        result.time = matchSummary.time;
@@ -125,7 +125,7 @@ public class MatchCollector {
 	 
 
 	private ArrayList<PlayerAtMatch> getClubPlayersInMatch(Element tableClubPlayer) {
-		ArrayList<PlayerAtMatch> result = new ArrayList();
+		ArrayList<PlayerAtMatch> result = new ArrayList<>();
 		Elements trsTeam = tableClubPlayer.select("tr");
 		//less than indexOfSub that means the player is Essential  
 		//bigger than indexOfSub that  means the player is sub
@@ -140,9 +140,9 @@ public class MatchCollector {
 					                                         //----------td----------
 					player.playerNumberAsString              = trsTeam.get(i).child(0).text();
 				
-					player.playerName                        = trsTeam.get(i).child(1).child(0).text();
-					if(player.playerName.startsWith(" ")) {//some names begin with space
-						player.playerName = player.playerName.substring(1);
+					player.playerBasicInfo.name                         = trsTeam.get(i).child(1).child(0).text();
+					if(player.playerBasicInfo.name .startsWith(" ")) {//some names begin with space
+						player.playerBasicInfo.name  = player.playerBasicInfo.name .substring(1);
 					}
 					
 					player.playerType = PlayerTypeAtMatch.Essential;
@@ -162,7 +162,7 @@ public class MatchCollector {
 					PlayerAtMatch player = new PlayerAtMatch();
 	                                                         //----------td----------
 					player.playerNumberAsString              = trsTeam.get(i).child(0).text();						
-					player.playerName                        = trsTeam.get(i).child(1).child(0).attr("title");
+					player.playerBasicInfo.name                         = trsTeam.get(i).child(1).child(0).attr("title");
 					player.playerType = PlayerTypeAtMatch.Substitute;
 					
 					player.events = getPlayerEventsInMtach(trsTeam.get(i).child(1));

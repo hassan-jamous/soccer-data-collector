@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 
 public class RankingTable {
-	ArrayList <Club> table = new ArrayList<>();
+	ArrayList <ClubForRankingTable> table = new ArrayList<>();
 
 	public String toString() {
 		String result ="";
@@ -12,10 +12,10 @@ public class RankingTable {
 		}
 		return result;
 	}
-	public void addClub(Club club) {
+	public void addClub(ClubForRankingTable club) {
 		table.add(club);
 	}
-	public ArrayList<Club> getTable() {
+	public ArrayList<ClubForRankingTable> getTable() {
 		return table;
 	}
 }

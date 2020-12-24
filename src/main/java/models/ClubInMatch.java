@@ -3,25 +3,29 @@ package models;
 import java.util.ArrayList;
 
 public class ClubInMatch{
-	public String clubName;//may we delete it? class match contains it
+	public Club clubBasicInfo;//may we delete it? class match contains it
 		
 	public ArrayList <Goal> goals;//total goal is size of the array goals
 	public ArrayList <PlayerAtMatch> players;
 	public String manager;
 	
 	public ClubInMatch() {
+		clubBasicInfo = new Club();
 		goals = new ArrayList<>();
 		players = new ArrayList<>();
 	}
 	public ClubInMatch(String clubName , String manager  , ArrayList<Goal> goal, ArrayList <PlayerAtMatch> players) {
-		this.clubName = clubName;
+		this.clubBasicInfo = new Club();
+		this.goals = new ArrayList<>();
+		this.players = new ArrayList<>();
+		this.clubBasicInfo.name = clubName;
 		this.manager = manager;
 		this.goals = goal;
 		this.players = players;
 	}
 	public String toString() {
 		String result = "";
-		result = clubName + "\n";
+		result = clubBasicInfo.name + "\n";
 		
 		if(goals.size() == 0) {
 			result =result + "GOALS ARE ZERO" + "\n";

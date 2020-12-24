@@ -34,7 +34,7 @@ public class MatchDetails {
 	
 	public String toString() {
 		String result ="";
-		result = firstClub.clubName + "  vs  " + secondClub.clubName +"\n" +
+		result = firstClub.clubBasicInfo.name + "  vs  " + secondClub.clubBasicInfo.name +"\n" +
 		(date == null ? "NO DATE" : date) + "  " + (time == null ? "NO TIME" : time) + "\n" +
 		"IN  " + staduim + "\n" 
 		+"Result Summary is " + resultSummary + "\n" 

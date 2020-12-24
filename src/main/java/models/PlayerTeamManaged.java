@@ -2,20 +2,23 @@ package models;
 
 public class PlayerTeamManaged {
 	public String date;
-	public String clubName ;
+	public Club clubBasicInfo ;
 	public String clubNation;
 	public String position;//manager or assestant manager
 	
-	public PlayerTeamManaged() {}
+	public PlayerTeamManaged() {
+		clubBasicInfo = new Club();
+	}
 	public PlayerTeamManaged(String date , String clubName , String clubNation , String position) {
+		this.clubBasicInfo = new Club();
 		this.date = date;
-		this.clubName = clubName;
+		this.clubBasicInfo.name = clubName;
 		this.clubNation = clubNation;
 		this.position = position;
 	}
 	public String toString() {
 		String result ="";
-		result = date + "    " + clubName + "   "+ clubNation    + "  AS  " + position; 
+		result = date + "    " + clubBasicInfo.name + "   "+ clubNation    + "  AS  " + position; 
 		return result;
 	}
 }

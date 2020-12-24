@@ -4,13 +4,19 @@ public class Goal {
 	public KindOfGoal kind = KindOfGoal.Error;
 	public String result ;
 	public String minute ;
-	public String player ;
+	public Player playerBasicInfo ;
 	public String information ;
-	public String assester ;
-	public Goal() {}
+	public Player assesterBasicInfo ;
+	public Goal() {
+		playerBasicInfo = new Player();
+		assesterBasicInfo =new Player();
+		
+	}
 	public Goal(String result , String player , String information) {
+		playerBasicInfo = new Player();
+		assesterBasicInfo =new Player();
 		this.result = result;
-		this.player = player;
+		this.playerBasicInfo.name = player;
 		
 		if(information.equals("0.")) {
 			this.kind = KindOfGoal.OldGoal;
@@ -22,9 +28,11 @@ public class Goal {
 		
 	}
 	public Goal(String result , String minute , String player , String information) {
+		playerBasicInfo = new Player();
+		assesterBasicInfo =new Player();
 		this.result = result;
 		this.minute = minute;
-		this.player = player;
+		this.playerBasicInfo.name = player;
 		this.information = information;
 		if(information.contains("own")) {
 			kind = KindOfGoal.Reverse;
@@ -35,17 +43,19 @@ public class Goal {
 		
 	}
 	public Goal(String result , String minute , String player , String information , String assester) {
+		playerBasicInfo = new Player();
+		assesterBasicInfo =new Player();
 		this.result = result;
 		this.minute = minute;
-		this.player = player;
+		this.playerBasicInfo.name = player;
 		this.information = information;
-		this.assester = assester;
+		this.assesterBasicInfo.name = assester;
 		this.kind = KindOfGoal.HasAssister;
 	}
 	public String toString() {
 		
 		String goal ="";
-		goal = "(" + result + ")" + "  @  " + minute + " by " + player + "     " + information + ((kind == KindOfGoal.HasAssister) ?  "  Assisted by  " :  "" ) + assester ;
+		goal = "(" + result + ")" + "  @  " + minute + " by " + playerBasicInfo.name + "     " + information + ((kind == KindOfGoal.HasAssister) ?  "  Assisted by  " :  "" ) + assesterBasicInfo.name ;
 		return goal;
 	}
 }

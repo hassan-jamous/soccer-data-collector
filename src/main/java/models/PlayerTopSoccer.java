@@ -3,19 +3,22 @@ package models;
 public class PlayerTopSoccer {
 
 	public String playerRanking;
-	public String playerName;
+	public Player playerBasicInfo;
 	public String playerNation;
 	public String playerClubName;
 	public String goals;
 	public String penalty;
 	
 	
-	public PlayerTopSoccer() {}
+	public PlayerTopSoccer() {
+		playerBasicInfo = new Player();
+	}
 	
 	public PlayerTopSoccer(String playerRanking,  String playerName, String playerNation,String playerClubName,
 	                       String goals, String penalty) {
+		this.playerBasicInfo = new Player();
 		this.playerRanking = playerRanking;
-		this.playerName =playerName;
+		this.playerBasicInfo.name =playerName;
 		this.playerNation =playerNation;
 		this.playerClubName=playerClubName;
 		this.goals =goals;
@@ -24,7 +27,7 @@ public class PlayerTopSoccer {
 	}
 	public String toString() {
 		String result="";
-		result ="#" + playerRanking + "   " + playerName + "  {" + playerNation +"} " + playerClubName + "  " + goals + "("+ penalty + ")";
+		result ="#" + playerRanking + "   " + playerBasicInfo.name + "  {" + playerNation +"} " + playerClubName + "  " + goals + "("+ penalty + ")";
 		return result;
 	}
 }

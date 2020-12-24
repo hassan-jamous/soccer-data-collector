@@ -2,7 +2,7 @@ package models;
 
 import java.util.ArrayList;
 
-public class PlayerInformation {
+public class PlayerAllInformation {
 	public PlayerPersonalInformation personalInfo ;
 	public ArrayList <PlayerTeamManaged> teamsManaged;
 	public ArrayList <PlayerClubCareer> clubsCareer;
@@ -11,7 +11,7 @@ public class PlayerInformation {
 	
 	
 	 
-	public PlayerInformation() {
+	public PlayerAllInformation() {
 		clubsCareer = new ArrayList<>();
 		clubMatches = new ArrayList <>();
 		personalInfo = new PlayerPersonalInformation();

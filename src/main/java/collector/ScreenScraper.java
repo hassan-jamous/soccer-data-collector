@@ -10,12 +10,12 @@ public class ScreenScraper {
 	RoundCollector roundCollector = new RoundCollector();
 	TableCollector tableCollector = new TableCollector();
 	GoalsCollector goalsCollector = new GoalsCollector();
-	TeamsCollector teamsCollector = new TeamsCollector();
+	ClubsCollector clubsCollector = new ClubsCollector();
 	PlayerCollector playerCollector = new PlayerCollector();
 	MatchCollector matchCollector = new MatchCollector();
 	TransferCollector transferCollector = new TransferCollector();
 	TopScoreCollector topScoreCollector = new TopScoreCollector();
-    
+	StatisticsCollector statisticsCollector = new StatisticsCollector();
 
     public GamesTableOfLeague getAllRounds(String leagueName, String competitionYears) {
        return roundCollector.getAllRounds(leagueName, competitionYears);
@@ -33,21 +33,21 @@ public class ScreenScraper {
     	return goalsCollector.getGoalsOfGame(competitionName, competitionYears , fisrtTeam ,  secondTeam);
 	}
 
-	public ArrayList<Player> getAllPlayersSummuryInCompetition(String competitionName , String competitionYears) {
-		return teamsCollector.getAllPlayersSummuryInCompetition(competitionName, competitionYears);
+	public ArrayList<PlayerSummary> getAllPlayersSummuryInCompetition(String competitionName , String competitionYears) {
+		return clubsCollector.getAllPlayersSummuryInCompetition(competitionName, competitionYears);
 	}
  
-	public ArrayList<Player> getAllPlayersSummuryInTeam(String teamName, String year) {
-		return teamsCollector.getAllPlayersSummuryInTeam(teamName, year);
+	public ArrayList<PlayerSummary> getAllPlayersSummuryInClub(String clubName, String year) {
+		return clubsCollector.getAllPlayersSummuryInClub(clubName, year);
 
 	}
 
-	public ArrayList<Team> getAllTeamsInSeason(String competitionYears) {
-		return teamsCollector.getAllTeamsInSeason(competitionYears);
+	public ArrayList<Club> getAllClubsInSeason(String competitionYears) {
+		return clubsCollector.getAllClubsInSeason(competitionYears);
 
 	}
 
-	 public PlayerInformation getAllInformationAboutPlayer(String nameAsInURL) {
+	 public PlayerAllInformation getAllInformationAboutPlayer(String nameAsInURL) {
 		 return playerCollector.getAllInformationAboutPlayer(nameAsInURL);
 	 }
     
@@ -64,9 +64,34 @@ public class ScreenScraper {
 		return topScoreCollector.getTopSoccerAtSeason(competitionYears);
 	}
 
+	public ArrayList <StatisticsGoalsPerSeason> getStatisticsGoalsPerSeason(String competitionName) {
+		return statisticsCollector.getStatisticsGoalsPerSeason(competitionName);
+	}
+	public ArrayList <StatisticsGoalsPerRound> getStatisticsGoalsPerRound(String competitionName) {
+		return statisticsCollector.getStatisticsGoalsPerRound(competitionName);
+
+	}
+	
+	//3 is record wins or 4 is most goals in game 
+	public ArrayList <StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName , int kindOfRequest) {
+		return statisticsCollector.getStatisticsRecordWinsOrMostGoalInGame(competitionName , kindOfRequest);
+	}
 		
-		
-		
+	public ArrayList <StatisticsMostGoalsInGame> getStatisticsMostGoalsInGameInCompetetion(String competitionName){
+		return 	statisticsCollector.getStatisticsMostGoalsInGameInCompetetion(competitionName);
+	}
+ 	public ArrayList<DirtyGame> getStatisticsDirtiesGamesForCompetition(String competitionName){
+ 		return statisticsCollector.getStatisticsDirtiesGamesForCompetition(competitionName);
+ 	}
+
+ 	public ArrayList<StatisticsBestPlayerInYear> getStatisticsBestPlayerInYear(String country){
+ 		return statisticsCollector.getStatisticsBestPlayerInYear(country);
+ 	}
+	public ArrayList<Staduim> getCompetitionSatuims (String competitionName , String competitionYears){
+
+		return 	statisticsCollector.getCompetitionSatuims (competitionName , competitionYears);
+
+	}	
 	
 	
 	

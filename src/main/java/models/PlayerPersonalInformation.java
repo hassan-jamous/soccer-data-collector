@@ -4,7 +4,7 @@ package models;
 
 public class PlayerPersonalInformation {
 
-	public String name;
+	public Player playerBasicInfo;
 	public String fullName;
 	public String born;
 	public String birthPlace;
@@ -14,10 +14,13 @@ public class PlayerPersonalInformation {
 	public String positions;//or array
 	public String foot;
 	
-	public PlayerPersonalInformation() {}
+	public PlayerPersonalInformation() {
+		playerBasicInfo = new Player();
+	}
 	public PlayerPersonalInformation(String name , String fullName , String birthDate , String birthPlace , String nationality
 			,String height ,  String weight , String position , String foot) {
-		this.name = name;
+		this.playerBasicInfo = new Player();
+		this.playerBasicInfo.name = name;
 		this.fullName = fullName;
 		this.born = birthDate;
 		this.birthPlace = birthPlace;
@@ -32,7 +35,7 @@ public class PlayerPersonalInformation {
 	public String toString() {
 		String result ="";
 		result = "Personal Information are \n"+
-				name + "\n" +
+				playerBasicInfo.name + "\n" +
 				fullName +"\n" +
 				born + "\n" +
 				birthPlace + "\n" +
