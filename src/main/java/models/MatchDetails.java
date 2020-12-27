@@ -6,27 +6,20 @@ public class MatchDetails {
 
 	public ClubInMatch firstClub;
 	public ClubInMatch secondClub;
-	public String resultSummary;
-	public String date;
-	public String time;
 	public String staduim;
 	public String attendance;
 	public ArrayList <Referee> referees;
-	
+	public MatchSummary matchSummary;
+
 	public MatchDetails() {
 		firstClub = new ClubInMatch();
 		secondClub = new ClubInMatch();
 		referees = new ArrayList<>();
 	}
 	
-	public MatchDetails(ClubInMatch firstClub ,ClubInMatch secondClub , String resultSummary ,
-			String date , String time,  String staduim , String attendance, ArrayList <Referee> referees) {
-		
+	public MatchDetails(ClubInMatch firstClub ,ClubInMatch secondClub ,  String staduim , String attendance, ArrayList <Referee> referees) {
 		this.firstClub = firstClub;		
 		this.secondClub = secondClub;
-		this.resultSummary = resultSummary;
-		this.date = date;
-		this.time = time;
 		this.staduim = staduim;
 		this.attendance =  attendance;
 		this.referees = referees;
@@ -35,9 +28,9 @@ public class MatchDetails {
 	public String toString() {
 		String result ="";
 		result = firstClub.clubName + "  vs  " + secondClub.clubName +"\n" +
-		(date == null ? "NO DATE" : date) + "  " + (time == null ? "NO TIME" : time) + "\n" +
+		(this.matchSummary.date == null ? "NO DATE" : this.matchSummary.date) + "  " + (this.matchSummary.time == null ? "NO TIME" : this.matchSummary.time) + "\n" +
 		"IN  " + staduim + "\n" 
-		+"Result Summary is " + resultSummary + "\n" 
+		+"Result Summary is " + this.matchSummary.resultSummary + "\n"
 		+(firstClub.goals==null ? "" : "First Team Goal " + "\n" +firstClub.goals + "\n") 
 		+(secondClub.goals== null ? "" : "Second Team Goal " + "\n" +secondClub.goals +"\n");
 		result = result +  "First Team" + "\n";
