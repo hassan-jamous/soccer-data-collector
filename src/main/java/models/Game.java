@@ -27,7 +27,7 @@ public class Game {
             resultOfFirstHalf = result.substring(result.indexOf("(") + 1, result.indexOf(")"));
         } else {
             finalResult = result;
-            resultOfFirstHalf = "#";
+            resultOfFirstHalf = null;
         }
     }
 

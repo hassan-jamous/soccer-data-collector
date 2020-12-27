@@ -5,10 +5,10 @@ public class Club {
 	
 	public Club() {}
 
-
 	public Club (String clubName) {
 		this.name = clubName;
 	}
+	
 	public String toString() {
 		String result ="";
 		result = name;

@@ -16,12 +16,12 @@ public class ClubForRankingTable{
 	public ClubForRankingTable() {
 		clubBasicInfo = new Club();
 	}
-	public ClubForRankingTable(String position , String name , String playedGames , String winGames,
+	public ClubForRankingTable(String clubPosition , String clubName , String playedGames , String winGames,
 			String drawGames, String lostGames , String goals , String diffirentGoals ,
 			String points) {
 		this.clubBasicInfo = new Club();
-		this.position = position;
-		this.clubBasicInfo.name =  name;
+		this.position = clubPosition;
+		this.clubBasicInfo.name =  clubName;
 		this.playedGames =playedGames;
 		this.winGames = winGames;
 		this.drawGames = drawGames;
