@@ -34,11 +34,11 @@ public class ScreenScraper {
 	}
 
 	public ArrayList<PlayerSummary> getAllPlayersSummuryInCompetition(String competitionName , String competitionYears) {
-		return clubsCollector.getAllPlayersSummuryInCompetition(competitionName, competitionYears);
+		return clubsCollector.getAllPlayersSummaryInCompetition(competitionName, competitionYears);
 	}
  
 	public ArrayList<PlayerSummary> getAllPlayersSummuryInClub(String clubName, String year) {
-		return clubsCollector.getAllPlayersSummuryInClub(clubName, year);
+		return clubsCollector.getAllPlayersSummaryInClub(clubName, year);
 
 	}
 

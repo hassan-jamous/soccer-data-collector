@@ -10,9 +10,7 @@ public class Club {
 	}
 	
 	public String toString() {
-		String result ="";
-		result = name;
-		return result;
+		return name;
 	}
 
 }

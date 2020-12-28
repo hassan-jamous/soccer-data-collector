@@ -2,36 +2,29 @@ package collector;
 
 import java.util.ArrayList;
 
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import models.Club;
 import models.KindOfPlayer;
-
 import models.PlayerSummary;
-//import models.Team;
 
 public class ClubsCollector {
+    private HttpUtil httpUtil = new HttpUtil();
+    private static final String WORLD_FOOTBALL_PLAYERS_URL = "https://www.worldfootball.net/players/";
 
-	private HttpUtil httpUtil = new HttpUtil();
-	private static final String WORLD_FOOTBALL_PLAYERS_URL ="https://www.worldfootball.net/players/";
-	
-	public ArrayList<PlayerSummary> getAllPlayersSummuryInCompetition(String competitionName , String competitionYears) {
-		String url =WORLD_FOOTBALL_PLAYERS_URL + competitionName +"-" + competitionYears;
-		return getAllPlayersFromPage(url);
-        
+    public ArrayList<PlayerSummary> getAllPlayersSummaryInCompetition(String competitionName, String competitionYears) {
+        String url = WORLD_FOOTBALL_PLAYERS_URL + competitionName + "-" + competitionYears;
+        return getAllPlayersFromPage(url);
     }
 
-	public ArrayList<PlayerSummary> getAllPlayersSummuryInClub(String clubName, String year) {
+    public ArrayList<PlayerSummary> getAllPlayersSummaryInClub(String clubName, String year) {
         String url = "https://www.worldfootball.net/teams/" + clubName + "/" + year + "/2/";
         return getAllPlayersFromPage(url);
     }
 
-	public ArrayList<Club> getAllClubsInSeason(String competitionYears) {
-
+    public ArrayList<Club> getAllClubsInSeason(String competitionYears) {
         String url = "https://www.worldfootball.net/players/eng-premier-league-" + competitionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
@@ -42,22 +35,21 @@ public class ClubsCollector {
         Club clubInLeague;
         for (Element tr : clubs) {
             clubInLeague = new Club();
-            
+
             clubInLeague.name = tr.child(1).child(0).ownText();
             result.add(clubInLeague);
         }
         return result;
     }
-	
-	
+
     private ArrayList<PlayerSummary> getAllPlayersFromPage(String url) {
-    	String htmlPage = httpUtil.sendGetHttpRequest(url);
+        String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.getElementsByClass("standard_tabelle");
         Elements rows = tables.select("tr");
         ArrayList<PlayerSummary> players = new ArrayList<>();
-        //They organize players in groups (Goal keeper, Defender , Midfielder , ......)
-        //so player´s information is mentioned only once for multiple players
+        //They organize players in groups (Goal keeper, Defender, Midfielder, ......)
+        //so player's information is mentioned only once for multiple players
         //that is why we need to keep the information in a variable and use it for each player
         String information = "";
         for (Element row : rows) {
@@ -81,34 +73,25 @@ public class ClubsCollector {
             }
         }
         return players;
-
     }
-    
-    
+
     private KindOfPlayer kindHeaderOfPlayer(Element row) {
         KindOfPlayer result = KindOfPlayer.Error;
         if (row.getElementsByTag("b").text().equals("Goalkeeper")) {
             return KindOfPlayer.Goalkeeper;
-        }
-        else if (row.getElementsByTag("b").text().equals("Defender")) {
+        } else if (row.getElementsByTag("b").text().equals("Defender")) {
             return KindOfPlayer.Defender;
-        }
-        else if (row.getElementsByTag("b").text().equals("Midfielder")) {
+        } else if (row.getElementsByTag("b").text().equals("Midfielder")) {
             return KindOfPlayer.Midfielder;
-        }
-        else if (row.getElementsByTag("b").text().equals("Forward")) {
+        } else if (row.getElementsByTag("b").text().equals("Forward")) {
             return KindOfPlayer.Forward;
-        }
-        else if (row.getElementsByTag("b").text().equals("Manager")) {
+        } else if (row.getElementsByTag("b").text().equals("Manager")) {
             return KindOfPlayer.Manager;
-        }
-        else if (row.getElementsByTag("b").text().equals("Ass. Manager")) {
+        } else if (row.getElementsByTag("b").text().equals("Ass. Manager")) {
             return KindOfPlayer.AssistantManager;
-        }
-        else if (row.getElementsByTag("b").text().equals("Goalkeeper-Coach")) {
+        } else if (row.getElementsByTag("b").text().equals("Goalkeeper-Coach")) {
             return KindOfPlayer.GoalkeeperCoach;
         }
         return result;
     }
-
 }

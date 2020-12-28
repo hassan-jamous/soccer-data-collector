@@ -70,28 +70,19 @@ public class GoalsCollector {
 
     public Goal getGoal(Element rowOfGoal, KindOfGoal kind) {
         Goal result = new Goal();
+        result.kind = kind;
+        result.result = rowOfGoal.child(0).text();
+        result.playerBasicInfo.name = rowOfGoal.child(1).child(0).attr("title");
         if (kind == KindOfGoal.OldGoal) {
-            result.kind = kind;
-            result.result = rowOfGoal.child(0).text();
-            result.playerBasicInfo.name = rowOfGoal.child(1).child(0).attr("title");
             result.information = null;
         } else if (kind == KindOfGoal.HasAssister) {
-            result.kind = kind;
-            result.result = rowOfGoal.child(0).text();
-            result.playerBasicInfo.name = rowOfGoal.child(1).child(0).attr("title");
             result.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
             result.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(") - 1);
             result.assesterBasicInfo.name = rowOfGoal.child(1).child(1).attr("title");
         } else if (kind == KindOfGoal.Individually) {
-            result.kind = kind;
-            result.result = rowOfGoal.child(0).text();
-            result.playerBasicInfo.name = rowOfGoal.child(1).child(0).attr("title");
             result.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
             result.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2);
         } else if (kind == KindOfGoal.Reverse) {
-            result.kind = kind;
-            result.result = rowOfGoal.child(0).text();
-            result.playerBasicInfo.name = rowOfGoal.child(1).child(0).attr("title");
             result.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
             result.information = "own goal";
         }

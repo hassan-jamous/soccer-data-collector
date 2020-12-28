@@ -27,7 +27,7 @@ public class TransferCollector {
         for(Element div :divs) {
         	
         	ClubTransferTable clubTransferTable = new ClubTransferTable();
-        	clubTransferTable.clubBasicInfo.name = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("»")-1);
+        	clubTransferTable.clubBasicInfo.name = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("'")-1);
         	clubTransferTable.season = competiotionYears;
         	             //    div        table  tbody
         	Elements trs = div.child(1).getElementsByTag("tr");

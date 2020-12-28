@@ -264,7 +264,7 @@ public class ScreenScraperTest {
    @Test
    public void itShouldGetPlayersSummuryInTeam() {
        ScreenScraper screenScraperUnderTest = new ScreenScraper();
-       ArrayList <PlayerSummary> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.clubsCollector.getAllPlayersSummuryInClub("manchester-united","2015");
+       ArrayList <PlayerSummary> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united","2015");
        ArrayList <PlayerSummary> manchesterUnitedExpectedplayers2015 = new ArrayList <>();
        PlayerSummary player1 = new PlayerSummary("40","Ben Amos","England","10/04/1990","Goalkeeper");
        PlayerSummary player2 = new PlayerSummary("1","De Gea","Spain","07/11/1990","Goalkeeper");
@@ -399,7 +399,7 @@ public class ScreenScraperTest {
        
        Assert.assertEquals(manchesterUnitedActualValueplayers1950.toString(), manchesterUnitedExpectedplayers1950.toString());
               
-       ArrayList <PlayerSummary> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.clubsCollector.getAllPlayersSummuryInClub("manchester-united","1890");
+       ArrayList <PlayerSummary> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united","1890");
        ArrayList <PlayerSummary> manchesterUnitedExpectedplayers1890 = new ArrayList <>();
        PlayerSummary player70 = new PlayerSummary("","Tom Burke","Wales","1862","Midfielder");
        PlayerSummary player71 = new PlayerSummary("","Joe Davies","Wales","12/07/1864","Midfielder");
@@ -413,7 +413,7 @@ public class ScreenScraperTest {
        manchesterUnitedExpectedplayers1890.add(player74);
        Assert.assertEquals(manchesterUnitedActualValueplayers1890.toString(), manchesterUnitedExpectedplayers1890.toString());
        
-       ArrayList <PlayerSummary> AccringtonActualValueplayers1890 = screenScraperUnderTest.clubsCollector.getAllPlayersSummuryInClub("Accrington","1890");
+       ArrayList <PlayerSummary> AccringtonActualValueplayers1890 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("Accrington","1890");
        ArrayList <PlayerSummary> AccringtonExpectedplayers1890 = new ArrayList <>();
        Assert.assertEquals(AccringtonActualValueplayers1890.toString(), AccringtonExpectedplayers1890.toString());
 
