@@ -23,7 +23,7 @@ public class MatchSummary {
 	}
 	public String toString() {
 		String result ="";
-		result =firstClubInfo.name + "  vs  " + secondClubInfo.name +  "  (" + resultSummary  + ")" + " AT " + date + "  ON " + time;
+		result =firstClubInfo.name + "  vs  " + secondClubInfo.name +  "  (" + resultSummary  + ")" + " AT " + date +( (time != null) ? "  ON "+ time : null);
 		return result;
 	} 
 	

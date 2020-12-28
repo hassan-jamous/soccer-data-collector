@@ -9,10 +9,11 @@ import models.DirtyGame;
 import models.Game;
 import models.GamesTableOfLeague;
 import models.Goal;
+import models.GoalInMatchDetails;
 import models.KindOfReferee;
 import models.MatchDetails;
 import models.MatchSummary;
-import models.ClubInMatch;
+import models.ClubInMatchDetails;
 import models.PlayerAllInformation;
 import models.PlayerAtMatch;
 import models.PlayerClubCareer;
@@ -699,13 +700,18 @@ public class ScreenScraperTest {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
 
 	   MatchDetails match1ActualValue = screenScraperUnderTest.getMatchDetails("premier-league","2019-2020","brighton-hove-albion","everton-fc");
-	   ArrayList <Goal> match1Club1Goals = new ArrayList<>();
-	   Goal match1Club1Goal1 = new Goal("1 : 0", "15",	"Pascal Groß","free kick" );
-	   Goal match1Club1Goal2 = new Goal("2 : 2", "80",  "Neal Maupay","penalty"  );
-	   Goal match1Club1Goal3 = new Goal("3 : 2", "90",  "Lucas Digne","own goal"  );
-	   match1Club1Goals.add(match1Club1Goal1);
-	   match1Club1Goals.add(match1Club1Goal2);
-	   match1Club1Goals.add(match1Club1Goal3);
+	   	   
+	   ArrayList <GoalInMatchDetails> match1Goals = new ArrayList<>();	  
+	   GoalInMatchDetails match1Goal1 = new GoalInMatchDetails("Brighton & Hove Albion",new Goal("1 : 0", "15",	"Pascal Groß","free kick" ));
+	   GoalInMatchDetails match1Goal2 = new GoalInMatchDetails("Everton FC",            new Goal("1 : 1","20", 	"Adam Webster","own goal"  ));
+	   GoalInMatchDetails match1Goal3 = new GoalInMatchDetails("Everton FC",            new Goal("1 : 2","74", 	"Dominic Calvert-Lewin","left-footed shot",  "Mason Holgate"  ));
+	   GoalInMatchDetails match1Goal4 = new GoalInMatchDetails("Brighton & Hove Albion",new Goal("2 : 2", "80",  "Neal Maupay","penalty"  ));
+	   GoalInMatchDetails match1Goal5 = new GoalInMatchDetails("Brighton & Hove Albion",new Goal("3 : 2", "90",  "Lucas Digne","own goal"  ));
+	   match1Goals.add(match1Goal1);
+	   match1Goals.add(match1Goal2);
+	   match1Goals.add(match1Goal3);
+	   match1Goals.add(match1Goal4);
+	   match1Goals.add(match1Goal5);
 	   ArrayList <PlayerAtMatch> match1Club1Players = new ArrayList<>();
 	   PlayerAtMatch match1Club1Player1 = new PlayerAtMatch("1","Mathew Ryan",PlayerTypeAtMatch.Essential,null);
 	   PlayerAtMatch match1Club1Player2 = new PlayerAtMatch("5","Lewis Dunk" ,PlayerTypeAtMatch.Essential,null);
@@ -767,13 +773,9 @@ public class ScreenScraperTest {
 	   match1Club1Players.add(match1Club1Player16);
 	   match1Club1Players.add(match1Club1Player17);
 	   match1Club1Players.add(match1Club1Player18);
-	   ClubInMatch match1Club1 = new ClubInMatch("Brighton & Hove Albion","Graham Potter" ,match1Club1Goals,match1Club1Players);
+	   ClubInMatchDetails match1Club1 = new ClubInMatchDetails("Brighton & Hove Albion","Graham Potter" ,match1Club1Players);
 	   
-	   ArrayList <Goal> match1Club2Goals = new ArrayList<>();
-	   Goal match1Club2Goal1 = new Goal("1 : 1","20", 	"Adam Webster","own goal"  );
-	   Goal match1Club2Goal2 = new Goal("1 : 2","74", 	"Dominic Calvert-Lewin","left-footed shot",  "Mason Holgate"  );
-	   match1Club2Goals.add(match1Club2Goal1);
-	   match1Club2Goals.add(match1Club2Goal2);
+	  
 	   ArrayList <PlayerAtMatch> match1Club2Players = new ArrayList<>();
 	   PlayerAtMatch match1Club2Player1 = new PlayerAtMatch("1", 	"Jordan Pickford",PlayerTypeAtMatch.Essential,null);
 	   PlayerEventAtMatch match1Club2Player2Event1 = new PlayerEventAtMatch("86","Yellow card"); 
@@ -832,7 +834,7 @@ public class ScreenScraperTest {
 	   match1Club2Players.add(match1Club2Player16);
 	   match1Club2Players.add(match1Club2Player17);
 	   match1Club2Players.add(match1Club2Player18);
-	   ClubInMatch match1Club2 = new ClubInMatch("Everton FC","Marco Silva" ,match1Club2Goals,match1Club2Players);
+	   ClubInMatchDetails match1Club2 = new ClubInMatchDetails("Everton FC","Marco Silva" ,match1Club2Players);
 	   ArrayList <Referee> match1Referees = new ArrayList<>();
 	   Referee match1Referee1 = new Referee("Andy Madley","England",KindOfReferee.Referee);
 	   Referee match1Referee2 = new Referee("Edward Smart", "England",KindOfReferee.AssistantReferee);
@@ -842,12 +844,11 @@ public class ScreenScraperTest {
 	   match1Referees.add(match1Referee3);
 	   MatchSummary match1ExpectedSummary = new MatchSummary(match1Club1.clubBasicInfo.name , match1Club2.clubBasicInfo.name ,"3:2", "Saturday, 26. October 2019","15:00 Clock");
 	   
-	   MatchDetails match1ExpectedValue = new MatchDetails(match1Club1,match1Club2, match1ExpectedSummary ,"Amex Stadium (Brighton / England)","30.529",match1Referees);
-	   
+	   MatchDetails match1ExpectedValue = new MatchDetails(match1Club1,match1Club2, match1ExpectedSummary ,"Amex Stadium (Brighton / England)","30.529",match1Referees, match1Goals);
+	
 	   Assert.assertEquals(match1ExpectedValue.toString(), match1ActualValue.toString());
 
 	   MatchDetails match2ActualValue = screenScraperUnderTest.getMatchDetails("premier-league","1946-1947","brentford-fc","middlesbrough-fc");
-	   ArrayList <Goal> match2Club1Goals = new ArrayList<>();
 	   ArrayList <PlayerAtMatch> match2Club1Players = new ArrayList<>();
 	   PlayerAtMatch match2Club1Player1 = new PlayerAtMatch("","Joe Crozier",PlayerTypeAtMatch.Essential,null);
 	   PlayerAtMatch match2Club1Player2 = new PlayerAtMatch("","Harry Oliver" ,PlayerTypeAtMatch.Essential,null);
@@ -871,8 +872,7 @@ public class ScreenScraperTest {
 	   match2Club1Players.add(match2Club1Player9);
 	   match2Club1Players.add(match2Club1Player10);
 	   match2Club1Players.add(match2Club1Player11);
-	   ClubInMatch match2Club1 = new ClubInMatch("Brentford FC","Jimmy Hogan" ,match2Club1Goals,match2Club1Players);
-	   ArrayList <Goal> match2Club2Goals = new ArrayList<>();
+	   ClubInMatchDetails match2Club1 = new ClubInMatchDetails("Brentford FC","Jimmy Hogan" ,match2Club1Players);
 	   ArrayList <PlayerAtMatch> match2Club2Players = new ArrayList<>();
 	   PlayerAtMatch match2Club2Player1 = new PlayerAtMatch("", 	"Paddy Nash",PlayerTypeAtMatch.Essential,null);
 	   PlayerAtMatch match2Club2Player2 = new PlayerAtMatch("", 	"Bobby Stuart" ,PlayerTypeAtMatch.Essential ,null);
@@ -896,20 +896,39 @@ public class ScreenScraperTest {
 	   match2Club2Players.add(match2Club2Player9);
 	   match2Club2Players.add(match2Club2Player10);
 	   match2Club2Players.add(match2Club2Player11);
-	   ClubInMatch match2Club2 = new ClubInMatch("Middlesbrough FC","David Jack" ,match2Club2Goals,match2Club2Players);
+	   ClubInMatchDetails match2Club2 = new ClubInMatchDetails("Middlesbrough FC","David Jack" ,match2Club2Players);
 	   ArrayList <Referee> match2Referees = new ArrayList<>();
-	   MatchSummary match2ExpectedSummary = new MatchSummary(match2Club1.clubBasicInfo.name , match2Club2.clubBasicInfo.name ,"0:0", "Saturday, 26. April 1947","null");
+	   MatchSummary match2ExpectedSummary = new MatchSummary(match2Club1.clubBasicInfo.name , match2Club2.clubBasicInfo.name ,"0:0", "Saturday, 26. April 1947",null);
 
 	   MatchDetails match2ExpectedValue = new MatchDetails(match2Club1,match2Club2,match2ExpectedSummary
-			   							,"Griffin Park (London / England)","19.020",match2Referees);
+			   							,"Griffin Park (London / England)","19.020",match2Referees , null);
 	   //sorting the players
 	   ComparePlayerNames playerComparator = new ComparePlayerNames();
 	   Collections.sort(match2ActualValue.firstClub.players , playerComparator );
 	   Collections.sort(match2ActualValue.secondClub.players , playerComparator );
 	   Collections.sort(match2ExpectedValue.firstClub.players , playerComparator );
 	   Collections.sort(match2ExpectedValue.secondClub.players , playerComparator );
-  
-	   //Assert.assertEquals(match2ExpectedValue.toString(), match2ActualValue.toString());
+ 	   Assert.assertEquals(match2ExpectedValue.toString(), match2ActualValue.toString());
+ 	   
+ 	   
+ 	   //just to test goals with result (1:0)
+ 	   MatchDetails match3ActualValue = screenScraperUnderTest.getMatchDetails("premier-league","2020-2021","Leeds-United","Burnley-FC");
+  	   
+	   ArrayList <GoalInMatchDetails> match3Goals = new ArrayList<>();	  
+	   GoalInMatchDetails match3Goal1 = new GoalInMatchDetails("Leeds United",new Goal("1 : 0", "5",	"Patrick Bamford","penalty" ));
+	  
+	   match3Goals.add(match3Goal1);
+ 	   Assert.assertEquals(match3Goals.toString(), match3ActualValue.goals.toString());
+ 	   
+ 	  //just to test goals with result (0:1)
+ 	  MatchDetails match4ActualValue = screenScraperUnderTest.getMatchDetails("premier-league","2020-2021","sheffield-united","everton-fc");
+ 	   
+	   ArrayList <GoalInMatchDetails> match4Goals = new ArrayList<>();	  
+	   GoalInMatchDetails match4Goal1 = new GoalInMatchDetails("Everton FC",new Goal("0 : 1", "80",	"Gylfi Sigurðsson","right-footed shot" ,"Abdoulaye Doucouré"));
+	  
+	   match4Goals.add(match4Goal1);
+	   Assert.assertEquals(match4Goals.toString(), match4ActualValue.goals.toString());
+
   
    }
    
@@ -1127,12 +1146,14 @@ public class ScreenScraperTest {
        for(int i = 0 ; i < 5 ; i++ ) {
     	   actualValue0To9.add(actualValue.get(i));
        }
-       CompareRoundByGoals_Statistics roundComparator = new CompareRoundByGoals_Statistics();
+      
+       CompareStatisticsGoalsPerRound roundComparator = new CompareStatisticsGoalsPerRound();
 	   Collections.sort(actualValue0To9 , roundComparator );
 	   Collections.sort(expectedlValue0To9, roundComparator );
-	  
- 	   Assert.assertEquals(expectedlValue0To9.toString(), actualValue0To9.toString());    
-
+	   
+ 	   Assert.assertEquals(expectedlValue0To9.toString(), actualValue0To9.toString()); 
+ 	   
+ 	   
    }
    
    @Test
@@ -1271,7 +1292,7 @@ public class ScreenScraperTest {
 
    }
    @Test 
-   public void itShouldGetStaduim() {
+   public void itShouldGetAllClubStaduimsForCompetition() {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
        ArrayList<Staduim> actualValue2020_2021 = new ArrayList<>();
        actualValue2020_2021 = screenScraperUnderTest.getCompetitionSatuims("eng-championship","2020-2021");

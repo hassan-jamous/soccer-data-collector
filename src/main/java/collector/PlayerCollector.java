@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 
 import models.PlayerAllInformation;
 import models.PlayerClubCareer;
-
+import models.PlayerCompetitionInformationOverall;
 import models.PlayerCompetitionsInformation;
 
 import models.PlayerPersonalInformation;
@@ -39,9 +39,12 @@ public class PlayerCollector {
 	        PlayerAllInformation playerTotalInfo = new PlayerAllInformation();
 	        playerTotalInfo.teamsManaged = getPlayerTeamManaged(divTeamsManaged);
 	        playerTotalInfo.clubsCareer = getClubCarrer(divClubCareer);
+	        playerTotalInfo.personalInfo = getPlayerPersonalInformation(divPersonalInformation);
+	        
+	        //to do if the functions are same
 	        playerTotalInfo.clubMatches = getPlayerClubsMatch(divClubMatches);
 	        playerTotalInfo.internationalCopmetitionsInfo = getPlayerInternatiols(divInternationals);
-	        playerTotalInfo.personalInfo = getPlayerPersonalInformation(divPersonalInformation);
+	        
 	        
 	        return playerTotalInfo;
 	    }
@@ -70,22 +73,20 @@ public class PlayerCollector {
 			ArrayList <PlayerClubCareer>result = new ArrayList<>();
 			PlayerClubCareer club ; 
 			for(int i =0 ; i < trClubs.size() ;i++) {
-				if((i == 0) && (trClubs.get(0).child(1).attr("width").equals("60%"))) {//new version
-					club = new PlayerClubCareer();
-						                                 
+				club = new PlayerClubCareer();
+				if((i == 0) && (trClubs.get(0).child(1).attr("width").equals("60%"))) {//new league has a different style
+										                                 
 					club.clubBasicInfo.name= trClubs.get(0).child(1).child(0).child(0).text();
-				
 					club.clubNation = trClubs.get(0).child(1).child(1).child(0).attr("title");
 					String playerPositionAndContract = trClubs.get(0).child(1).child(1).text(); 			
 					club.playerPosition = playerPositionAndContract.substring(club.clubNation.length()+1, playerPositionAndContract.indexOf('/')-3);
-						
 					club.years = playerPositionAndContract.substring(playerPositionAndContract.indexOf('/')-2);
 					club.playerNumber = trClubs.get(0).child(2).child(0).text();
 					result.add(club);
 					}
 
 				else if( (trClubs.get(i).childrenSize() > 4)){
-					club = new PlayerClubCareer();
+					
 					club.years = trClubs.get(i).child(0).text();
 					club.clubBasicInfo.name = trClubs.get(i).child(2).text();
 					club.clubNation = trClubs.get(i).child(3).child(0).attr("title");
@@ -97,20 +98,18 @@ public class PlayerCollector {
 			return result;
 		}
 		
-		private PlayerPersonalInformation  getPlayerPersonalInformation(Elements divinfo) {
-			Elements divs = divinfo.select("div");
-			Element div = divs.get(0);
+		private PlayerPersonalInformation  getPlayerPersonalInformation(Elements divInfo) {
+			
+			Element div = divInfo.get(0);
 			PlayerPersonalInformation info = new PlayerPersonalInformation();
-			
-			
 			info.playerBasicInfo.name = div.child(1).text();
-			//image child 2
 			Elements tds = div.child(3).select("td");
-			if(tds.size() >=15) {//new 
+			if(tds.size() >=15) {//new style for modern player
 				info.fullName = tds.get(0).text();
 				info.born = tds.get(3).text();
 				info.birthPlace = tds.get(5).text();
 				info.nationality = tds.get(7).text();
+				
 				info.height = tds.get(9).text();
 				info.weight = tds.get(11).text();
 				info.positions = tds.get(13).text();
@@ -130,7 +129,7 @@ public class PlayerCollector {
 			Elements trs = div.select("tr");
 			PlayerCompetitionsInformation palyerInfoInternational;
 			ArrayList <PlayerCompetitionsInformation> result = new ArrayList<>();
-			for(int i = 1 ; i <trs.size() ; i++) {//header 
+			for(int i = 1 ; i <trs.size() ; i++) { 
 				palyerInfoInternational = new PlayerCompetitionsInformation();
 				if(trs.get(i).child(0).text().contains("∑")) {
 					palyerInfoInternational.competitionName = trs.get(i).child(0).text().replace("∑", "Total");
@@ -170,11 +169,8 @@ public class PlayerCollector {
 			Elements trs = div.select("tr");
 			PlayerCompetitionsInformation palyerInfoCompetition;
 			ArrayList <PlayerCompetitionsInformation> result = new ArrayList<>();
-			//if(!(getOverallIndexes(div).isEmpty())) {//has more information i.e {Overall international matches}
-				//go to new url
-			//}
-			//else {
-				for(int i = 1 ; i <trs.size() ; i++) {//we do not need the header ,because it does not have any information 
+			
+				for(int i = 1 ; i <trs.size() ; i++) {
 					palyerInfoCompetition = new PlayerCompetitionsInformation();
 					if(trs.get(i).child(0).text().contains("∑")) {
 						palyerInfoCompetition.competitionName = trs.get(i).child(0).text().replace("∑", "Total");
@@ -204,24 +200,14 @@ public class PlayerCollector {
 						result.add(palyerInfoCompetition);
 					}
 				}
-			//}end else
+
 			return result;		
 			
 		} 
-		/*
-		private  ArrayList<Integer> getOverallIndexes(Elements div) {
-			ArrayList<Integer> result = new ArrayList<>();
-			Elements trs = div.select("tr");
-			for(int i = 0 ; i < trs.size() ; i++) {
-				if(trs.get(i).child(trs.get(i).childrenSize() -1).text().contains("Overall")) {
-					result.add(i);
-				}
-			}
-			return result;
-		}
-		*/
-		/*
-		 * public ArrayList <PlayerCompetitionInformationOverall > getOverallCompetitionInformation(String url) {
+		
+		
+//to check if it is right
+		private ArrayList <PlayerCompetitionInformationOverall > getOverallCompetitionWithClubsInformation(String url) {
 			String htmlPage = httpUtil.sendGetHttpRequest(url);
 	        Document doc = Jsoup.parse(htmlPage);	        
 	        Elements trs = doc.select("tr");
@@ -229,19 +215,19 @@ public class PlayerCollector {
 	        PlayerCompetitionInformationOverall info ;
 	        for(int i =1 ; i < trs.size() ; i++) {
 	        	info = new PlayerCompetitionInformationOverall();
-	        	                                  //---------td--------
-	        	info.competitionNation             = trs.get(i).child(0).child(0).attr("title");
-	        	info.competitionName               = trs.get(i).child(1).text();
-	        	info.season                        = trs.get(i).child(2).text();
-	        	info.team                          = trs.get(i).child(3).text();
-	        	info.matches                       = trs.get(i).child(4).text();
-	        	info.goals                         = trs.get(i).child(5).text();
-	        	info.startingLineUp                = trs.get(i).child(6).text();
-	        	info.substitueIn                   = trs.get(i).child(7).text();
-	        	info.substituOut                   = trs.get(i).child(8).text();
-	        	info.yellowCards                   = trs.get(i).child(9).text();
-	        	info.secondYellowCards             = trs.get(i).child(10).text();
-	        	info.redCards                      = trs.get(i).child(11).text();
+	        	
+	        	info.competitionInfo.competitionNation             = trs.get(i).child(0).child(0).attr("title");
+	        	info.competitionInfo.competitionName               = trs.get(i).child(1).text();
+	        	info.competitionYears                        = trs.get(i).child(2).text();
+	        	info.clubInfo.name                          = trs.get(i).child(3).text();
+	        	info.competitionInfo.matchesNumber                       = trs.get(i).child(4).text();
+	        	info.competitionInfo.goalsNumber                         = trs.get(i).child(5).text();
+	        	info.competitionInfo.startingLineUp                = trs.get(i).child(6).text();
+	        	info.competitionInfo.substitueIn                   = trs.get(i).child(7).text();
+	        	info.competitionInfo.substitueOut                   = trs.get(i).child(8).text();
+	        	info.competitionInfo.yellowCards                   = trs.get(i).child(9).text();
+	        	info.competitionInfo.secondYellowCards             = trs.get(i).child(10).text();
+	        	info.competitionInfo.redCards                      = trs.get(i).child(11).text();
 	        	
 	        	result.add(info);
 	        	
@@ -249,7 +235,7 @@ public class PlayerCollector {
 			return result;
 			
 		}
-		*/
+		
 		 
 		
 }

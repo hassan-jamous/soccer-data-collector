@@ -3,7 +3,7 @@ package collector;
 import java.util.Comparator;
 import models.StatisticsGoalsPerRound;
 
-public class CompareRoundByGoals_Statistics implements Comparator<StatisticsGoalsPerRound>{
+public class CompareStatisticsGoalsPerRound implements Comparator<StatisticsGoalsPerRound>{
 
 		@Override
 		public int compare(StatisticsGoalsPerRound round1, StatisticsGoalsPerRound round2) {

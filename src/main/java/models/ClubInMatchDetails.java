@@ -2,40 +2,27 @@ package models;
 
 import java.util.ArrayList;
 
-public class ClubInMatch{
+public class ClubInMatchDetails{
 	public Club clubBasicInfo;//may we delete it? class match contains it
 		
-	public ArrayList <Goal> goals;//total goal is size of the array goals
 	public ArrayList <PlayerAtMatch> players;
 	public String manager;
 	
-	public ClubInMatch() {
+	public ClubInMatchDetails() {
 		clubBasicInfo = new Club();
-		goals = new ArrayList<>();
 		players = new ArrayList<>();
 	}
-	public ClubInMatch(String clubName , String manager  , ArrayList<Goal> goal, ArrayList <PlayerAtMatch> players) {
+	public ClubInMatchDetails(String clubName , String manager  , ArrayList <PlayerAtMatch> players) {
 		this.clubBasicInfo = new Club();
-		this.goals = new ArrayList<>();
 		this.players = new ArrayList<>();
 		this.clubBasicInfo.name = clubName;
 		this.manager = manager;
-		this.goals = goal;
 		this.players = players;
 	}
 	public String toString() {
 		String result = "";
 		result = clubBasicInfo.name + "\n";
 		
-		if(goals.size() == 0) {
-			result =result + "GOALS ARE ZERO" + "\n";
-		}
-		else {
-			for(int i = 0; i < goals.size() ; i++) {
-			result = result + goals.get(i).toString() + "\n";
-			}
-		}
-	
 		if(players.size() == 0) {
 			result =result + "NO PLAYERS !!!" + "\n";
 		}
