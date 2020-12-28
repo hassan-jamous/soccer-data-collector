@@ -23,11 +23,9 @@ public class StatisticsGoalsPerRound {
 		}
 		public String toString() {
 			String result="";
-
 			result =  "(" + roundRankingNumber + ")  " + seasonYears + "  | " + round.roundNumberAsString +  "  goals: " + goals + "  matches: " + matchesNumber + "  goals per match " + goalsPerMatch;
-
 			return result;
 		}
-
-	}
+		
+}
 

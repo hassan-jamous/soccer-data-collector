@@ -6,27 +6,31 @@ public class TransferPlayerInformation {
 	public String date;
 	public String playerNation;
 	public String playerPosition;
-	public String fromClub;
-	public String toClub;
+	public Club fromClub;
+	public Club toClub;
 	
 	
 	public TransferPlayerInformation() {
 		playerBasicInfo = new Player();
+		fromClub = new Club();
+		toClub = new Club();
 	}
 	public TransferPlayerInformation( String date, String playerName, String playerNation ,
 	 String position,  String fromClub, String toClub) {
 		 this.playerBasicInfo = new Player();
+		 this.toClub = new Club();
+		 this.fromClub = new Club();
 		 this.playerBasicInfo.name =playerName;
 		 this.date = date;
 		 this.playerNation= playerNation;
 		 this.playerPosition = position;
-		 this.fromClub = fromClub;
-		 this.toClub = toClub;
+		 this.fromClub.name = fromClub;
+		 this.toClub.name = toClub;
 	}
 	public String toString() {
 		String result="";
 		result = date + "  " + playerBasicInfo.name + "  " + playerNation + "  " + playerPosition + "  From  "
-		+ fromClub + " TO " + toClub; 
+		+ fromClub.name + " TO " + toClub.name; 
 		return result;
 	}
 	

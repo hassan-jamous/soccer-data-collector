@@ -42,8 +42,8 @@ public class TransferCollector {
 	        			player.playerBasicInfo.name = trs.get(j).child(1).text();
 	        			player.playerNation = trs.get(j).child(2).child(0).attr("title");
 	        			player.playerPosition = trs.get(j).child(3).text();
-	        			player.fromClub = trs.get(j).child(5).text();
-	        			player.toClub = clubTransferTable.clubBasicInfo.name;
+	        			player.fromClub.name = trs.get(j).child(5).text();
+	        			player.toClub.name = clubTransferTable.clubBasicInfo.name;
 	        			clubTransferTable.intable.add(player);
 	        			
 	        			j++;
@@ -57,9 +57,9 @@ public class TransferCollector {
 	        			player.playerBasicInfo.name = trs.get(j).child(1).text();
 	        			player.playerNation = trs.get(j).child(2).child(0).attr("title");
 	        			player.playerPosition = trs.get(j).child(3).text();
-	        			player.toClub = trs.get(j).child(5).text();
+	        			player.toClub.name = trs.get(j).child(5).text();
 	        			
-	        			player.fromClub = clubTransferTable.clubBasicInfo.name;
+	        			player.fromClub.name = clubTransferTable.clubBasicInfo.name;
 	        			clubTransferTable.outtable.add(player);
 	        			j++;
 	        		}

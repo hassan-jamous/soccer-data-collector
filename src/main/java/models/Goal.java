@@ -1,7 +1,8 @@
+
 package models;
 
 public class Goal {
-	public KindOfGoal kind = KindOfGoal.Error;
+	public KindOfGoal kind;
 	public String result ;
 	public String minute ;
 	public Player playerBasicInfo ;
@@ -55,7 +56,9 @@ public class Goal {
 	public String toString() {
 		
 		String goal ="";
-		goal = "(" + result + ")" + "  @  " + minute + " by " + playerBasicInfo.name + "     " + information + ((kind == KindOfGoal.HasAssister) ?  "  Assisted by  " :  "" ) + assesterBasicInfo.name ;
+		goal = "(" + result + ")" + "  @  " + minute + " by " + playerBasicInfo.name +
+				"   " + information +
+				((kind == KindOfGoal.HasAssister) ?  "  Assisted by  "+ assesterBasicInfo.name :  "" ) ;
 		return goal;
 	}
 }

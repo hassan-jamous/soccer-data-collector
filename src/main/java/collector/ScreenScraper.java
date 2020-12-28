@@ -72,7 +72,7 @@ public class ScreenScraper {
 
 	}
 	
-	//3 is record wins or 4 is most goals in game 
+	//3 is the request for record wins or 4 is the request for most goals in game 
 	public ArrayList <StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName , int kindOfRequest) {
 		return statisticsCollector.getStatisticsRecordWinsOrMostGoalInGame(competitionName , kindOfRequest);
 	}

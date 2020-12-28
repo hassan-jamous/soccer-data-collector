@@ -26,9 +26,9 @@ public class StatisticsCollector {
         
         Elements tables = doc.select("table:eq(0):has(th:contains(Ø goals))");
         Elements trs = tables.select("tr");
-        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the header
+        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the header contains names of columns
         	StatisticsGoalsPerSeason clubInfo = new StatisticsGoalsPerSeason();
-        	                       //--------td--------
+
         	clubInfo.seasonRankingNumber  = (trs.get(i).child(0).text().equals("∑")) ? "TOTAL" : trs.get(i).child(0).text();
         	clubInfo.seasonYears   = trs.get(i).child(1).text();
         	clubInfo.goals         = trs.get(i).child(2).text();
@@ -48,9 +48,9 @@ public class StatisticsCollector {
         
         Elements tables = doc.select("table:eq(0):has(th:contains(Ø goals))");
         Elements trs = tables.select("tr");
-        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the header
+        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the the header contains names of columns
         	StatisticsGoalsPerRound roundInfo = new StatisticsGoalsPerRound();
-        	                              //--------td--------
+        	                             
         	roundInfo.roundRankingNumber  = (trs.get(i).child(0).text().equals("∑")) ? "TOTAL" : trs.get(i).child(0).text();
         	if(!(trs.get(i).child(0).text().equals("∑"))) {
 	        	roundInfo.seasonYears         = trs.get(i).child(1).child(0).text().substring(0,trs.get(i).child(1).text().indexOf("| ")-1);
@@ -66,7 +66,7 @@ public class StatisticsCollector {
         	roundInfo.goals               = trs.get(i).child(2).text();
         	roundInfo.matchesNumber       = trs.get(i).child(3).text();
         	roundInfo.goalsPerMatch       = trs.get(i).child(4).text();
-
+            
         	result.add(roundInfo);
         }
 		return result;
@@ -75,18 +75,18 @@ public class StatisticsCollector {
 	public ArrayList <StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName , int kindOfRequest) {
 		ArrayList <StatisticsRecordWinsAndMostGoalInGame> result = new ArrayList <>();
 		String requestAsString= String.valueOf(kindOfRequest) ;
-		//3 is record wins or 4 is most goals in game 
+		//3 is the request for record wins or 4 is the request for most goals in game 
 		String url ="https://www.worldfootball.net/stats/" +competitionName +"/"+ requestAsString +"/";
 		String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
 
         Elements tables = doc.select("table:eq(0):has(th:contains(guest)) , table:eq(0):has(th:contains(Season))");
         Elements trs = tables.select("tr");
-        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the header
+        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the the header contains names of columns
         	StatisticsRecordWinsAndMostGoalInGame winInfo = new StatisticsRecordWinsAndMostGoalInGame();
-        	                              //--------td--------
+        	                              
         	winInfo.seasonYears           = trs.get(i).child(0).text();
-        	winInfo.round                 = trs.get(i).child(1).text();
+        	winInfo.round.roundNumberAsString                 = trs.get(i).child(1).text();
         	winInfo.matchDate             = trs.get(i).child(2).text();
 
         	winInfo.homeClubBasicInfo.name              = trs.get(i).child(3).text();
@@ -118,8 +118,7 @@ public class StatisticsCollector {
 	        	
 	        	if(trs.get(i).childrenSize() ==7) {//we do not need the header  the header contains 6 children
 		        	StatisticsMostGoalsInGame gameInfo = new StatisticsMostGoalsInGame();
-		        	                              //----------td-------
-
+		        	                    
 		        	gameInfo.playerBasicInfo.name           = trs.get(i).child(0).text();
 		        	gameInfo.matchDate            = trs.get(i).child(1).text();
 		        	gameInfo.homeClubBasicInfo.name             = trs.get(i).child(2).text();
@@ -146,9 +145,9 @@ public class StatisticsCollector {
         Elements tables = doc.select("table.standard_tabelle:has(tbody:has(tr:has(th:has(img[alt*=Red cards]))))");
         Elements trs = tables.select("tr");
         
-        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the header
+        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the the header contains names of columns
         	DirtyGame dirtyGameInfo = new DirtyGame();
-        	                                                       //--------td--------
+        	                                                       
         	dirtyGameInfo.gameNormalInfo.date                      = trs.get(i).child(0).text();
 
         	dirtyGameInfo.gameNormalInfo.firstTeamBasicInfo.name                 = trs.get(i).child(1).text();
@@ -176,10 +175,9 @@ public class StatisticsCollector {
         Elements tables = doc.select("table.standard_tabelle:has(tbody:has(tr:contains(Year))),table.standard_tabelle:has(tbody:has(tr:contains(Player)))");
         Elements trs = tables.select("tr");
        
-        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the header
+        for (int i = 1 ; i < trs.size() ; i++) {//i=1 the the header contains names of columns
             StatisticsBestPlayerInYear bestPlayerInfo = new StatisticsBestPlayerInYear();
         	
-			                           //--------td--------
         	bestPlayerInfo.year        = trs.get(i).child(0).text();
 
         	bestPlayerInfo.playerBasicInfo.name  = trs.get(i).child(1).text(); 
@@ -198,9 +196,8 @@ public class StatisticsCollector {
         
         Elements tables = doc.select("table:has(tbody:has(tr:has(th:contains(stadium)))) , table:has(tbody:has(tr:has(th:contains(Country))))");
         Elements trs = tables.select("tr");
-        for(int i =1 ; i < trs.size() ; i++) {//we do not need the header
+        for(int i =1 ; i < trs.size() ; i++) {//i=1 the the header contains names of columns
         	Staduim staduimInfo = new Staduim();
-        	                       //-----td-----------
         	staduimInfo.name       = trs.get(i).child(1).text();
         	staduimInfo.city       = trs.get(i).child(2).text();
         	staduimInfo.country    = trs.get(i).child(4).text();

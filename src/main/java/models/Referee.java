@@ -16,7 +16,7 @@ public class Referee {
 	public String toString() {
 		String result = "";
 		
-		result = (this.kind == KindOfReferee.Referee ? "Referee" :"Assiatant Referee") + name + "  {" + nation + "} " ; 
+		result = (this.kind == KindOfReferee.Referee ? "Referee  " :"Assiatant Referee  ") + name + "  {" + nation + "} " ; 
 		return result;
 	}
 }

@@ -3,7 +3,7 @@ package models;
 public class StatisticsRecordWinsAndMostGoalInGame {
 
 	public String seasonYears;
-	public String round;
+	public Round round;
 	public String matchDate;
 
 	public Club homeClubBasicInfo;
@@ -11,14 +11,16 @@ public class StatisticsRecordWinsAndMostGoalInGame {
 	public Club guestClubBasicInfo;
 	
 	public StatisticsRecordWinsAndMostGoalInGame() {
+		round = new Round();
 		homeClubBasicInfo = new Club();
 		guestClubBasicInfo = new Club();
 	}
 	public StatisticsRecordWinsAndMostGoalInGame(String seasonYear, String round, String matchDate ,String homeClub , String result, String guestClub) {
+		this.round = new Round();
 		this.homeClubBasicInfo = new Club();
 		this.guestClubBasicInfo = new Club();
 		this.seasonYears = seasonYear;
-		this.round = round;
+		this.round.roundNumberAsString = round;
 		this.matchDate = matchDate;
 		this.homeClubBasicInfo.name  = homeClub;
 		this.matchResult = result;
@@ -28,7 +30,7 @@ public class StatisticsRecordWinsAndMostGoalInGame {
 	public String toString() {
 		String result="";
 
-		result = seasonYears + "   " + round + " AT " + matchDate + "  " + homeClubBasicInfo.name + "  vs  " + guestClubBasicInfo.name + " (" + matchResult + ")";
+		result = seasonYears + "   " + round.roundNumberAsString + " AT " + matchDate + "  " + homeClubBasicInfo.name + "  vs  " + guestClubBasicInfo.name + " (" + matchResult + ")";
 
 		return result;
 	}

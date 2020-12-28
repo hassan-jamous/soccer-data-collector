@@ -11,18 +11,17 @@ import java.util.ArrayList;
 
 public class GoalsCollector {
     private HttpUtil httpUtil = new HttpUtil();
-   
     private static final String WORLD_FOOTBALL_GAMES_URL = "https://www.worldfootball.net/report/";
 
-    public ArrayList<Goal> getGoalsOfGame(String competitionName, String competitionYears ,String fisrtTeam , String secondTeam) {
-    	String gameURL = WORLD_FOOTBALL_GAMES_URL + competitionName +"-" +competitionYears +"-"+ fisrtTeam +"-"+ secondTeam +"/";
-    	
+    public ArrayList<Goal> getGoalsOfGame(String competitionName, String competitionYears, String firstClub, String secondClub) {
+        String gameURL = WORLD_FOOTBALL_GAMES_URL + competitionName + "-" + competitionYears + "-" + firstClub + "-" + secondClub + "/";
+
         String htmlPage = httpUtil.sendGetHttpRequest(gameURL);
         Document doc = Jsoup.parse(htmlPage);
 
         Elements tables = doc.getElementsByClass("standard_tabelle");
         Element tableOfGoals = getGoalsTable(tables);
-        
+
         Elements rowsOfGoals = tableOfGoals.select("tr");
         ArrayList<Goal> goals = new ArrayList<>();
         //the first row is the header, this is why i = 1;
@@ -46,7 +45,6 @@ public class GoalsCollector {
             }
         }
         return goals;
-
     }
 
     public KindOfGoal kindOfGoal(Element goal) {
@@ -70,10 +68,7 @@ public class GoalsCollector {
         throw new RuntimeException("Unknown Kind of Goal");
     }
 
-    //todo
-    //information should be null for old league goals
     public Goal getGoal(Element rowOfGoal, KindOfGoal kind) {
-
         Goal result = new Goal();
         if (kind == KindOfGoal.OldGoal) {
             result.kind = kind;
@@ -104,12 +99,11 @@ public class GoalsCollector {
     }
 
     private Element getGoalsTable(Elements tables) {
-        Element tableOfGoals = null;
         for (Element table : tables) {
             if (table.text().contains("goals")) {
                 return table;
             }
         }
-        return tableOfGoals;
+        throw new RuntimeException("Unexpected input, there is no table");
     }
 }
