@@ -24,6 +24,9 @@ public class ClubsCollector {
         return getAllPlayersFromPage(url);
     }
 
+    //todo
+    //move the url like WORLD_FOOTBALL_PLAYERS_URL
+    //competition name is parameter
     public ArrayList<Club> getAllClubsInSeason(String competitionYears) {
         String url = "https://www.worldfootball.net/players/eng-premier-league-" + competitionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
