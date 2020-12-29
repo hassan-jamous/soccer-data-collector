@@ -16,7 +16,7 @@ public class TransferCollector {
 	    private static final String WORLD_FOOTBALL_TRANSFER_URL = "https://www.worldfootball.net/transfers/";
 
 	public ArrayList<ClubTransferTable> getClubsTransferTableAtSeason( String competitionName,String competiotionYears) {
-		String url = WORLD_FOOTBALL_TRANSFER_URL + competitionName + "-league-"+competiotionYears + "/";
+		String url = WORLD_FOOTBALL_TRANSFER_URL + competitionName + "-"+competiotionYears + "/";
 		
 		String htmlPage = httpUtil.sendGetHttpRequest(url);
 	

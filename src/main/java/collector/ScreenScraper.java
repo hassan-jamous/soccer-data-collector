@@ -17,16 +17,16 @@ public class ScreenScraper {
 	TopScoreCollector topScoreCollector = new TopScoreCollector();
 	StatisticsCollector statisticsCollector = new StatisticsCollector();
 
-    public GamesTableOfLeague getAllRounds(String leagueName, String competitionYears) {
-       return roundCollector.getAllRounds(leagueName, competitionYears);
+    public GamesTableOfLeague getAllRounds(String competitionName, String competitionYears) {
+       return roundCollector.getAllRounds(competitionName, competitionYears);
     }
 
-    public RankingTable getLastTable(String leagueName, String years) {
-		return tableCollector.getLastTable(leagueName, years);
+    public RankingTable getLastTable(String competitionName, String years) {
+		return tableCollector.getLastTable(competitionName, years);
 	}
 
-    public RankingTable getTableByRound(String leagueName, String years, String round) {
-		return tableCollector.getTableByRound(leagueName, years, round);
+    public RankingTable getTableByRound(String competitionName, String years, String round) {
+		return tableCollector.getTableByRound(competitionName, years, round);
 	}
 
 	public ArrayList<Goal> getGoalsOfGame(String competitionName, String competitionYears ,String fisrtTeam , String secondTeam) {
@@ -60,8 +60,8 @@ public class ScreenScraper {
 		return transferCollector.getClubsTransferTableAtSeason(competitionName , competiotionYears);
 	}
 
-	public ArrayList <PlayerTopSoccer> getTopSoccerAtSeason(String competitionYears ) {
-		return topScoreCollector.getTopSoccerAtSeason(competitionYears);
+	public ArrayList <PlayerTopSoccer> getTopSoccerAtSeason(String competitionName ,String competitionYears ) {
+		return topScoreCollector.getTopSoccerAtSeason(competitionName , competitionYears);
 	}
 
 	public ArrayList <StatisticsGoalsPerSeason> getStatisticsGoalsPerSeason(String competitionName) {

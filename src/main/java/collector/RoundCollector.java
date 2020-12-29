@@ -16,8 +16,8 @@ public class RoundCollector {
     private static final String WORLD_FOOTBALL_MATCHES_URL = "https://www.worldfootball.net/all_matches/";
     private HttpUtil httpUtil = new HttpUtil();
 
-    public GamesTableOfLeague getAllRounds(String leagueName, String competitionYears) {
-        String url = WORLD_FOOTBALL_MATCHES_URL + leagueName + "-" + competitionYears + "/";
+    public GamesTableOfLeague getAllRounds(String competitoinName, String competitionYears) {
+        String url = WORLD_FOOTBALL_MATCHES_URL + competitoinName + "-" + competitionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
         Elements League = doc.getElementsByClass("standard_tabelle");

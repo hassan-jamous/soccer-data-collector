@@ -19,7 +19,7 @@ public class PlayerCollector {
 
 	private HttpUtil httpUtil = new HttpUtil();
 	private static final String WORLD_FOOTBALL_PLAYERS_SUMMARY_URL ="https://www.worldfootball.net/player_summary/";
-	
+	private static final String WORLD_FOOTBALL_SITE_URL = "https://www.worldfootball.net/";
 	//look to bruno-fernandes at manchester  united 2020 (url is bruno-fernandes_2) 
 	//not just name
 	 public PlayerAllInformation getAllInformationAboutPlayer(String nameAsInURL) {
@@ -39,13 +39,15 @@ public class PlayerCollector {
 	        PlayerAllInformation playerTotalInfo = new PlayerAllInformation();
 	        playerTotalInfo.teamsManaged = getPlayerTeamManaged(divTeamsManaged);
 	        playerTotalInfo.clubsCareer = getClubCarrer(divClubCareer);
-	        playerTotalInfo.personalInfo = getPlayerPersonalInformation(divPersonalInformation);
-	        
-	        //to do if the functions are same
-	        playerTotalInfo.clubMatches = getPlayerClubsMatch(divClubMatches);
-	        playerTotalInfo.internationalCopmetitionsInfo = getPlayerInternatiols(divInternationals);
-	        
-	        
+	        playerTotalInfo.personalInfo = getPlayerPersonalInformation(divPersonalInformation);	        
+	        playerTotalInfo.clubMatches = getPlayerClubsAndInternatiolsCompetitions(divClubMatches);
+	        playerTotalInfo.internationalCopmetitionsInfo = getPlayerClubsAndInternatiolsCompetitions(divInternationals);
+	        if(getOverallURL(divClubMatches) != null) {
+	        	playerTotalInfo.clubsMatchesOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divClubMatches));
+	        }
+	        if(getOverallURL(divInternationals) != null) {
+	        	playerTotalInfo.internationalCopmetitionsOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divInternationals));
+	        }
 	        return playerTotalInfo;
 	    }
 	 
@@ -104,28 +106,23 @@ public class PlayerCollector {
 			PlayerPersonalInformation info = new PlayerPersonalInformation();
 			info.playerBasicInfo.name = div.child(1).text();
 			Elements tds = div.child(3).select("td");
+			info.fullName = tds.get(0).text();
+			info.born = tds.get(3).text();
+			info.birthPlace = tds.get(5).text();
+			info.nationality = tds.get(7).text();
+			
 			if(tds.size() >=15) {//new style for modern player
-				info.fullName = tds.get(0).text();
-				info.born = tds.get(3).text();
-				info.birthPlace = tds.get(5).text();
-				info.nationality = tds.get(7).text();
-				
 				info.height = tds.get(9).text();
 				info.weight = tds.get(11).text();
 				info.positions = tds.get(13).text();
 				info.foot = tds.get(15).text();
 			}
-			else {
-				info.fullName = tds.get(0).text();
-				info.born = tds.get(3).text();
-				info.birthPlace = tds.get(5).text();
-				info.nationality = tds.get(7).text();
-			}
+			
 			return info;
 			
 			}
 		
-		private ArrayList <PlayerCompetitionsInformation> getPlayerInternatiols(Elements div) {
+		private ArrayList <PlayerCompetitionsInformation> getPlayerClubsAndInternatiolsCompetitions(Elements div) {
 			Elements trs = div.select("tr");
 			PlayerCompetitionsInformation palyerInfoInternational;
 			ArrayList <PlayerCompetitionsInformation> result = new ArrayList<>();
@@ -145,8 +142,7 @@ public class PlayerCollector {
 					result.add(palyerInfoInternational);
 				}
 				else {
-					palyerInfoInternational.competitionName = trs.get(i).child(0).text();
-				
+					palyerInfoInternational.competitionName = trs.get(i).child(0).text();				
 					palyerInfoInternational.competitionNation = trs.get(i).child(1).child(0).attr("title");
 					palyerInfoInternational.matchesNumber = trs.get(i).child(2).text();
 					palyerInfoInternational.goalsNumber = trs.get(i).child(3).text();
@@ -164,70 +160,42 @@ public class PlayerCollector {
 			
 			
 		}
-		
-		private ArrayList <PlayerCompetitionsInformation> getPlayerClubsMatch(Elements div) {
-			Elements trs = div.select("tr");
-			PlayerCompetitionsInformation palyerInfoCompetition;
-			ArrayList <PlayerCompetitionsInformation> result = new ArrayList<>();
-			
-				for(int i = 1 ; i <trs.size() ; i++) {
-					palyerInfoCompetition = new PlayerCompetitionsInformation();
-					if(trs.get(i).child(0).text().contains("∑")) {
-						palyerInfoCompetition.competitionName = trs.get(i).child(0).text().replace("∑", "Total");
-						palyerInfoCompetition.competitionNation = null;
-						palyerInfoCompetition.matchesNumber = trs.get(i).child(1).text();
-						
-						palyerInfoCompetition.goalsNumber = trs.get(i).child(2).text();
-						palyerInfoCompetition.startingLineUp = trs.get(i).child(3).text();
-						palyerInfoCompetition.substitueIn = trs.get(i).child(4).text();
-						palyerInfoCompetition.substitueOut = trs.get(i).child(5).text();
-						palyerInfoCompetition.yellowCards = trs.get(i).child(6).text();
-						palyerInfoCompetition.secondYellowCards = trs.get(i).child(7).text();
-						palyerInfoCompetition.redCards = trs.get(i).child(8).text();
-						result.add(palyerInfoCompetition);
-					}
-					else {
-						palyerInfoCompetition.competitionName = trs.get(i).child(0).text();
-						palyerInfoCompetition.competitionNation = trs.get(i).child(1).child(0).attr("title");				
-						palyerInfoCompetition.matchesNumber = trs.get(i).child(2).text();
-						palyerInfoCompetition.goalsNumber = trs.get(i).child(3).text();
-						palyerInfoCompetition.startingLineUp = trs.get(i).child(4).text();
-						palyerInfoCompetition.substitueIn = trs.get(i).child(5).text();
-						palyerInfoCompetition.substitueOut = trs.get(i).child(6).text();
-						palyerInfoCompetition.yellowCards = trs.get(i).child(7).text();
-						palyerInfoCompetition.secondYellowCards = trs.get(i).child(8).text();
-						palyerInfoCompetition.redCards = trs.get(i).child(9).text();
-						result.add(palyerInfoCompetition);
-					}
-				}
-
-			return result;		
-			
-		} 
-		
+	
 		
 //to check if it is right
+		
+		private String getOverallURL(Elements div) {
+			Elements trs = div.select("tr:contains(∑)");
+			Elements link = trs.select("a:contains(Overall)");
+			if(!(link.isEmpty())) {
+				return link.attr("href");
+			}	
+			
+			return null;
+		}
 		private ArrayList <PlayerCompetitionInformationOverall > getOverallCompetitionWithClubsInformation(String url) {
 			String htmlPage = httpUtil.sendGetHttpRequest(url);
 	        Document doc = Jsoup.parse(htmlPage);	        
-	        Elements trs = doc.select("tr");
+	        Elements table = doc.select("table:has(tbody:has(tr:has(th:contains(Team)))),table:has(tbody:has(tr:has(th:contains(Season))))");
+	        Elements trs= table.select("tr");
+	       
 	        ArrayList <PlayerCompetitionInformationOverall >result = new ArrayList <>();
 	        PlayerCompetitionInformationOverall info ;
 	        for(int i =1 ; i < trs.size() ; i++) {
 	        	info = new PlayerCompetitionInformationOverall();
 	        	
-	        	info.competitionInfo.competitionNation             = trs.get(i).child(0).child(0).attr("title");
-	        	info.competitionInfo.competitionName               = trs.get(i).child(1).text();
-	        	info.competitionYears                        = trs.get(i).child(2).text();
-	        	info.clubInfo.name                          = trs.get(i).child(3).text();
-	        	info.competitionInfo.matchesNumber                       = trs.get(i).child(4).text();
-	        	info.competitionInfo.goalsNumber                         = trs.get(i).child(5).text();
-	        	info.competitionInfo.startingLineUp                = trs.get(i).child(6).text();
-	        	info.competitionInfo.substitueIn                   = trs.get(i).child(7).text();
-	        	info.competitionInfo.substitueOut                   = trs.get(i).child(8).text();
-	        	info.competitionInfo.yellowCards                   = trs.get(i).child(9).text();
-	        	info.competitionInfo.secondYellowCards             = trs.get(i).child(10).text();
-	        	info.competitionInfo.redCards                      = trs.get(i).child(11).text();
+	        	info.competitionInfo.competitionNation = trs.get(i).child(0).child(0).attr("title");
+	        	info.competitionInfo.competitionName   = trs.get(i).child(1).text();
+	        	info.competitionYears                  = trs.get(i).child(2).text();
+	        	info.clubInfo.name                     = trs.get(i).child(3).text();
+	        	info.competitionInfo.matchesNumber     = trs.get(i).child(4).text();
+	        	info.competitionInfo.goalsNumber       = trs.get(i).child(5).text();
+	        	info.competitionInfo.startingLineUp    = trs.get(i).child(6).text();
+	        	info.competitionInfo.substitueIn       = trs.get(i).child(7).text();
+	        	info.competitionInfo.substitueOut      = trs.get(i).child(8).text();
+	        	info.competitionInfo.yellowCards       = trs.get(i).child(9).text();
+	        	info.competitionInfo.secondYellowCards = trs.get(i).child(10).text();
+	        	info.competitionInfo.redCards          = trs.get(i).child(11).text();
 	        	
 	        	result.add(info);
 	        	

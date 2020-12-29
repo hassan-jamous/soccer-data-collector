@@ -17,6 +17,7 @@ import models.ClubInMatchDetails;
 import models.PlayerAllInformation;
 import models.PlayerAtMatch;
 import models.PlayerClubCareer;
+import models.PlayerCompetitionInformationOverall;
 import models.PlayerCompetitionsInformation;
 import models.PlayerEventAtMatch;
 import models.PlayerPersonalInformation;
@@ -573,6 +574,7 @@ public class ScreenScraperTest {
 	   palyer1ExpectedValueClubCareer.add(player1ClubCareer6);
 	   palyer1ExpectedValueClubCareer.add(player1ClubCareer7);
 	   player1ExpectedValueInfo.clubsCareer = palyer1ExpectedValueClubCareer;
+
 	   ArrayList <PlayerCompetitionsInformation> player1ExpectedValueClubMatchesInfo = new ArrayList<>();
 	   PlayerCompetitionsInformation player1ClubMatches1 = new PlayerCompetitionsInformation("Champions League",         "UEFA"   ,"7","0","7","0","1","2","0","0");
 	   PlayerCompetitionsInformation player1ClubMatches2 = new PlayerCompetitionsInformation("Europa League"   ,         "UEFA"   ,"24","1","24","0","2","4","2","1");
@@ -599,6 +601,84 @@ public class ScreenScraperTest {
 	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches11);
 	   player1ExpectedValueClubMatchesInfo.add(player1ClubMatches12);
 	   player1ExpectedValueInfo.clubMatches = player1ExpectedValueClubMatchesInfo;
+	   
+	   ArrayList <PlayerCompetitionInformationOverall> palyer1ExpectedValueClubMatchesOverall = new ArrayList <>();
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall1 = new PlayerCompetitionInformationOverall ("England", "Pr. League",    "2020/2021", "Manchester United",   "3", "0","2", "1","0","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall2 = new PlayerCompetitionInformationOverall ("England", "League Cup",    "2020/2021", "Manchester United",   "3", "0","3", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall3 = new PlayerCompetitionInformationOverall ("UEFA", 	 "EL",            "2019/2020","Manchester United",    "4", "0","4", "0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall4 = new PlayerCompetitionInformationOverall ("England", "FA Cup",        "2019/2020","Manchester United",    "3", "0","3", "0","2","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall5 = new PlayerCompetitionInformationOverall ("England", "Pr. League",    "2019/2020","Manchester United",    "4", "0","1", "3","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall6 = new PlayerCompetitionInformationOverall ("England", "U23 PL Div.2",  "2019/2020","Manchester United U23","1" ,"0","1", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall7 = new PlayerCompetitionInformationOverall ("England", "Pr. League",    "2018/2019","Manchester United",    "12","0","8", "4","2","0","0","1");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall8 = new PlayerCompetitionInformationOverall ("UEFA",    "Ch. League",    "2018/2019","Manchester United",    "4", "0","4", "0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall9 = new PlayerCompetitionInformationOverall ("England", "FA Cup",        "2018/2019","Manchester United",    "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall10 = new PlayerCompetitionInformationOverall("England", "League Cup",    "2018/2019","Manchester United",    "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall11 = new PlayerCompetitionInformationOverall("England", "Pr. League",    "2017/2018","Manchester United",    "13","1","11","2","0","2","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall12 = new PlayerCompetitionInformationOverall("England", "FA Cup",        "2017/2018","Manchester United",    "2", "0","1", "1","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall13 = new PlayerCompetitionInformationOverall("UEFA",    "Ch. League",    "2017/2018","Manchester United",    "3", "0","3", "0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall14 = new PlayerCompetitionInformationOverall("England", "Pr. League",    "2016/2017","Manchester United",    "25","0","24","1","3","4","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall15 = new PlayerCompetitionInformationOverall("UEFA",    "EL",            "2016/2017","Manchester United",    "11","0","11","0","0","2","1","1");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall16 = new PlayerCompetitionInformationOverall("England", "League Cup",    "2016/2017","Manchester United",    "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall17 = new PlayerCompetitionInformationOverall("England", "U23 PL Div.1",  "2016/2017","Manchester United U23","1", "0","1", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall18 = new PlayerCompetitionInformationOverall("England", "Com. Shield",   "2016",     "Manchester United",    "1", "0","1", "0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall19 = new PlayerCompetitionInformationOverall("Spanien", "Pr. División",  "2015/2016","Villarreal CF",        "25","0","25","0","6","9","1","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall20 = new PlayerCompetitionInformationOverall("UEFA",    "EL",            "2015/2016","Villarreal CF",        "7", "1","7", "0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall21 = new PlayerCompetitionInformationOverall("Spanien", "Copa del Rey",  "2015/2016","Villarreal CF",        "3", "0","3", "0","0","2","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall22 = new PlayerCompetitionInformationOverall("Spanien", "Pr. División",  "2014/2015","Villarreal CF",        "10","0","10","0","3","5","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall23 = new PlayerCompetitionInformationOverall("UEFA",    "EL",            "2014/2015","Villarreal CF",        "2", "0","2", "0","0","0","1","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall24 = new PlayerCompetitionInformationOverall("Spanien", "Pr. División",  "2014/2015","Espanyol Barcelona",   "5", "0","4" ,"1","1","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall25 = new PlayerCompetitionInformationOverall("Spanien", "2ª B G3",       "2014/2015","Espanyol Barcelona B", "1", "0","1", "0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall26 = new PlayerCompetitionInformationOverall("Spanien", "2ª B G3",       "2013/2014","Espanyol Barcelona B", "21","0","18","3","2","5","1","0");
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall1);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall2);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall3);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall4);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall5);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall6);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall7);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall8);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall9);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall10);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall11);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall12);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall13);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall14);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall15);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall16);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall17);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall18);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall19);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall20);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall21);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall22);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall23);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall24);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall25);
+	   palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall26);
+	   player1ExpectedValueInfo.clubsMatchesOverall =palyer1ExpectedValueClubMatchesOverall;
+
+	   ArrayList <PlayerCompetitionInformationOverall> palyer1ExpectedValueInternationalOverall = new ArrayList <>();
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall1 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies", "2020",                  "Ivory Coast",   "2", "0","2", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall2 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies", "2018",                  "Ivory Coast",   "2", "0","2", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall3 = new PlayerCompetitionInformationOverall  ("CAF",  "Afr. Cup QF","2017-2019",             "Ivory Coast",   "5", "2","5", "0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall4 = new PlayerCompetitionInformationOverall  ("CAF",  "Africa Cup", "2017 Gabun",            "Ivory Coast",   "3", "0","3", "0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall5 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies", "2017",                  "Ivory Coast",   "4", "0","3", "1","0","1","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall6 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies", "2016",                  "Ivory Coast",   "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall7 = new PlayerCompetitionInformationOverall  ("CAF",  "Afr. Cup QF","2015/2016",             "Ivory Coast",   "4", "0","4", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall8 = new PlayerCompetitionInformationOverall  ("FIFA", "WCQ Africa", "2015-2017",             "Ivory Coast",   "4", "0","4", "0","0","2","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall9 = new PlayerCompetitionInformationOverall  ("CAF",  "Africa Cup", "2015 Equatorial Guinea","Ivory Coast",   "6", "0","6", "0","1","2","0","0");
+	   PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall10 = new PlayerCompetitionInformationOverall ("FIFA", "Friendlies", "2015",                  "Ivory Coast",   "5", "0","5", "0","1","0","0","0");
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall1);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall2);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall3);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall4);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall5);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall6);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall7);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall8);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall9);
+	   palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall10);
+	   player1ExpectedValueInfo.internationalCopmetitionsOverall = palyer1ExpectedValueInternationalOverall;
 	   ArrayList <PlayerCompetitionsInformation> player1ExpectedValueInternationalInfo = new ArrayList<>();
 	   PlayerCompetitionsInformation player1International1 = new PlayerCompetitionsInformation("WC Qualifiers Africa","FIFA","4","0","4","0","0","2","0","0");
 	   PlayerCompetitionsInformation player1International2 = new PlayerCompetitionsInformation("Friendlies", 	"FIFA","14","0","13","1","2","1","0","0");
@@ -611,6 +691,7 @@ public class ScreenScraperTest {
 	   player1ExpectedValueInternationalInfo.add(player1International4);
 	   player1ExpectedValueInternationalInfo.add(player1International5);
 	   player1ExpectedValueInfo.internationalCopmetitionsInfo = player1ExpectedValueInternationalInfo;
+	   
 	   Assert.assertEquals(player1ExpectedValueInfo.toString(), player1ActualValueInfo.toString());
 	   
 	   PlayerAllInformation player2ActualValueInfo = new PlayerAllInformation();
@@ -671,6 +752,154 @@ public class ScreenScraperTest {
 	   player2ExpectedValueInternationalInfo.add(player2International7);
 	   player2ExpectedValueInternationalInfo.add(player2International8);
 	   player2ExpectedValueInfo.internationalCopmetitionsInfo = player2ExpectedValueInternationalInfo;
+	   
+	   ArrayList <PlayerCompetitionInformationOverall> palyer2ExpectedValueClubMatchesOverall = new ArrayList <>();
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall1 = new PlayerCompetitionInformationOverall  ("England", "FA Cup",     "2001/2002", "Arsenal FC",   "3",  "1", "3", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall2 = new PlayerCompetitionInformationOverall  ("England", "Pr. League", "2001/2002", "Arsenal FC",   "10", "0","10", "0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall3 = new PlayerCompetitionInformationOverall  ("England", "Pr. League", "2000/2001", "Arsenal FC",   "26", "1","26", "0","0","7","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall4 = new PlayerCompetitionInformationOverall  ("England", "FA Cup",     "2000/2001", "Arsenal FC",   "4", "1", "4",  "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall5 = new PlayerCompetitionInformationOverall  ("UEFA",    "Ch. League", "2000/2001", "Arsenal FC",   "8", "0","8",   "0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall6 = new PlayerCompetitionInformationOverall  ("UEFA",    "EL",         "1999/2000", "Arsenal FC",   "6", "0","6",   "0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall7 = new PlayerCompetitionInformationOverall  ("England", "Pr. League", "1999/2000", "Arsenal FC",   "21", "0","21", "0","0","2","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall8 = new PlayerCompetitionInformationOverall  ("England", "FA Cup",     "1999/2000", "Arsenal FC",   "1", "1","1",   "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall9 = new PlayerCompetitionInformationOverall  ("UEFA",    "Ch. League", "1999/2000", "Arsenal FC",   "5", "0","5",   "0","0","2","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall10 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1998/1999", "Arsenal FC",   "26", "1","26", "0","0","4","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall11 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1998/1999", "Arsenal FC",   "5", "0","5","0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall12 = new PlayerCompetitionInformationOverall ("UEFA",    "Ch. League", "1998/1999", "Arsenal FC",   "4", "1","4", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall13 = new PlayerCompetitionInformationOverall ("England", "Com. Shield", "1998",     "Arsenal FC",   "1", "0","1", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall14 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1997/1998", "Arsenal FC",   "6", "0","6", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall15 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1997/1998", "Arsenal FC",   "26", "3","26", "0","0","6","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall16 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1997/1998", "Arsenal FC",   "2",  "0","2",  "0","0","1","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall17 = new PlayerCompetitionInformationOverall ("UEFA",    "EL",         "1997/1998", "Arsenal FC",   "2", "0","2", "0","0","0","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall18 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1996/1997", "Arsenal FC",   "28","3","27", "1","2","5","1","1");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall19 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1996/1997", "Arsenal FC",   "3", "0","3", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall20 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1996/1997", "Arsenal FC",   "3", "0","3", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall21 = new PlayerCompetitionInformationOverall ("UEFA",    "EL",         "1996/1997", "Arsenal FC",   "1", "0","1", "0","1","1","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall22 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1995/1996", "Arsenal FC",   "2", "0","2", "0","0","1","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall23 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1995/1996", "Arsenal FC",   "21", "1","21", "0","0","2","0","1");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall24 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1995/1996", "Arsenal FC",   "5", "2","5", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall25 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1994/1995", "Arsenal FC",   "27", "3","27", "0","3","4","0","1");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall26 = new PlayerCompetitionInformationOverall ("UEFA",    "CWC",        "1994/1995", "Arsenal FC",   "8", "0","8", "0","0","1","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall27 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1994/1995", "Arsenal FC",   "1", "0","0", "1","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall28 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1994/1995", "Arsenal FC",   "4", "1","4", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall29 = new PlayerCompetitionInformationOverall ("UEFA",    "UEFA Sup.Cup", "1994",    "Arsenal FC",   "2", "0","2", "0","0","0","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall30 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1993/1994", "Arsenal FC",   "35", "0","35", "0","3","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall31 = new PlayerCompetitionInformationOverall ("UEFA",    "CWC",        "1993/1994", "Arsenal FC",   "8", "2","8", "0","0","1","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall32 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1993/1994", "Arsenal FC",   "3", "2","3", "0","0","0","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall33 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1993/1994", "Arsenal FC",   "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall34 = new PlayerCompetitionInformationOverall ("England", "Com. Shield", "1993",     "Arsenal FC",   "1", "0","1", "0","0","0","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall35 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1992/1993", "Arsenal FC",   "4", "2","4", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall36 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1992/1993", "Arsenal FC",   "35", "0","33", "2","2","4","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall37 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1992/1993", "Arsenal FC",   "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall38 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1991/1992", "Arsenal FC",   "35", "2","35", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall39 = new PlayerCompetitionInformationOverall ("UEFA",    "Ch. League", "1991/1992", "Arsenal FC",   "4", "0","4", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall40 = new PlayerCompetitionInformationOverall ("England", "Com. Shield","1991",      "Arsenal FC",   "1", "0","1", "0","0","0","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall41 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1990/1991", "Arsenal FC",   "30", "1","30", "0","2","1","0","1");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall42 = new PlayerCompetitionInformationOverall ("England", "FA Cup",     "1990/1991", "Arsenal FC",   "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall43 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1989/1990", "Arsenal FC",   "38", "5","38", "0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall44 = new PlayerCompetitionInformationOverall ("England", "Com. Shield","1989",      "Arsenal FC",   "1", "0","1", "0","0","0","0","0");	   
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall45 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1988/1989", "Arsenal FC",   "36", "4","36", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall46 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1987/1988", "Arsenal FC",   "39", "2","39", "0","3","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall47 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1986/1987", "Arsenal FC",   "42", "6","42", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall48 = new PlayerCompetitionInformationOverall ("England", "League Cup", "1986/1987", "Arsenal FC",   "1", "0","1", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall49 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1985/1986", "Arsenal FC",   "10", "0","10", "0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall50 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1984/1985", "Arsenal FC",   "16", "0","15", "1","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall51 = new PlayerCompetitionInformationOverall ("England", "Pr. League", "1983/1984", "Arsenal FC",   "3", "0","3", "0","1","0","0","0");
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall1);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall2);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall3);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall4);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall5);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall6);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall7);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall8);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall9);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall10);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall11);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall12);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall13);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall14);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall15);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall16);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall17);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall18);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall19);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall20);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall21);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall22);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall23);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall24);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall25);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall26);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall27);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall28);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall29);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall30);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall31);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall32);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall33);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall34);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall35);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall36);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall37);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall38);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall39);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall40);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall41);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall42);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall43);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall44);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall45);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall46);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall47);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall48);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall49);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall50);
+	   palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall51);
+	   player2ExpectedValueInfo.clubsMatchesOverall = palyer2ExpectedValueClubMatchesOverall;
+	   
+	   ArrayList <PlayerCompetitionInformationOverall> palyer2ExpectedValueInternationalOverall = new ArrayList <>();
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall1 = new PlayerCompetitionInformationOverall   ("FIFA", "WCQ Europe",  "2000/2001",           "England",   "1","0","1","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall2 = new PlayerCompetitionInformationOverall   ("UEFA", "EURO",        "2000 Holland/Belgium","England",   "1","0","1","0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall3 = new PlayerCompetitionInformationOverall   ("FIFA", "Friendlies",  "2000",                "England",   "2","1","2","0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall4 = new PlayerCompetitionInformationOverall   ("FIFA", "Friendlies",  "1999",                "England",   "2","0","2","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall5 = new PlayerCompetitionInformationOverall   ("UEFA", "EURO Qualif.","1998/1999",           "England",   "5","0","5","0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall6 = new PlayerCompetitionInformationOverall   ("FIFA", "World Cup",   "1998 France",         "England",   "4","0","4","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall7 = new PlayerCompetitionInformationOverall   ("FIFA", "Friendlies",  "1998",                "England",   "3","0","3","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall8 = new PlayerCompetitionInformationOverall   ("FIFA", "WCQ Europe",  "1996/1997",           "England",   "3","0","3","0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall9 = new PlayerCompetitionInformationOverall   ("UEFA", "EURO",        "1996 England",        "England",   "5","0","5","0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall10 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies",  "1996",                "England",   "1","0","1","0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall11 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies",  "1995",                "England",   "6","0","6","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall12 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies",  "1994",                "England",   "5","0","5","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall13 = new PlayerCompetitionInformationOverall  ("FIFA", "WCQ Europe",  "1992/1993",           "England",   "9","0","9","0","0","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall14 = new PlayerCompetitionInformationOverall  ("UEFA", "EURO Qualif.","1990/1991",           "England",   "2","0","2","0","1","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall15 = new PlayerCompetitionInformationOverall  ("FIFA", "WCQ Europe",  "1988/1989",           "England",   "1","0","1","0","1","1","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall16 = new PlayerCompetitionInformationOverall  ("UEFA", "EURO",        "1988 Germany",        "England",   "3","1","3","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall17 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies",  "1988",                "England",   "7","2","7","0","2","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall18 = new PlayerCompetitionInformationOverall  ("FIFA", "Friendlies",  "1987",                "England",   "3","0","3","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall19 = new PlayerCompetitionInformationOverall  ("UEFA", "EURO Qualif.","1986/1987",           "England",   "3","1", "3","0","0","0","0","0");
+	   PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall20 = new PlayerCompetitionInformationOverall ("UEFA", "EURO [U21]",  "1986",                "England",   "1","0","1","0","0","0","0","0");
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall1);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall2);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall3);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall4);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall5);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall6);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall7);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall8);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall9);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall10);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall11);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall12);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall13);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall14);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall15);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall16);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall17);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall18);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall19);
+	   palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall20);
+	   player2ExpectedValueInfo.internationalCopmetitionsOverall = palyer2ExpectedValueInternationalOverall;
 	   Assert.assertEquals(player2ExpectedValueInfo.toString(), player2ActualValueInfo.toString());
 
 	   PlayerAllInformation player3ActualValueInfo = new PlayerAllInformation();
@@ -690,7 +919,11 @@ public class ScreenScraperTest {
 	   PlayerCompetitionsInformation player3International2 = new PlayerCompetitionsInformation("∑", 	null,"1","2","1","0","0","0","0","0");
 	   player3ExpectedValueInternationalInfo.add(player3International1);
 	   player3ExpectedValueInternationalInfo.add(player3International2);
+	   ArrayList <PlayerCompetitionInformationOverall> palyer3ExpectedValueClubMatchesOverall = new ArrayList <>();
+	   PlayerCompetitionInformationOverall player3ExpectedValueClubMatchesOverall1 = new PlayerCompetitionInformationOverall ("FIFA", "Friendlies",    "1912", "Scotland",   "1","2","1","0","0","0","0","0");
+	   palyer3ExpectedValueClubMatchesOverall.add(player3ExpectedValueClubMatchesOverall1);
 	   player3ExpectedValueInfo.internationalCopmetitionsInfo = player3ExpectedValueInternationalInfo;
+	   player3ExpectedValueInfo.internationalCopmetitionsOverall = palyer3ExpectedValueClubMatchesOverall;
    	   Assert.assertEquals(player3ExpectedValueInfo.toString(), player3ActualValueInfo.toString());
   
    }
@@ -938,7 +1171,7 @@ public class ScreenScraperTest {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
 
 	   ArrayList <ClubTransferTable> clubTransferTable2015_2016 = new ArrayList<>();
-	   clubTransferTable2015_2016 = screenScraperUnderTest.getClubsTransferTableAtSeason("eng-premier","2015-2016");
+	   clubTransferTable2015_2016 = screenScraperUnderTest.getClubsTransferTableAtSeason("eng-premier-league","2015-2016");
 	   ClubTransferTable astonVillaTransferTable2015_2016ActualValue = new ClubTransferTable();//
 	   astonVillaTransferTable2015_2016ActualValue = screenScraperUnderTest.transferCollector.getTransferTableByClubName(clubTransferTable2015_2016 ,"Aston Villa");
 	   ClubTransferTable AstonVillatransferTable2015_2016_5IN5Out_ActualValue = new ClubTransferTable();
@@ -977,7 +1210,7 @@ public class ScreenScraperTest {
 	   Assert.assertEquals(AstonVillatransferTable2015_2016_5IN5Out_ExpectedValue.toString(), AstonVillatransferTable2015_2016_5IN5Out_ActualValue.toString());
 	   
 	   ArrayList <ClubTransferTable> clubTransferTable1889_1890 = new ArrayList<>();
-	   clubTransferTable1889_1890 = screenScraperUnderTest.getClubsTransferTableAtSeason("eng-premier","1889-1890");
+	   clubTransferTable1889_1890 = screenScraperUnderTest.getClubsTransferTableAtSeason("eng-premier-league","1889-1890");
 	   ClubTransferTable AstonVillaTransferTable1889_1890ActualValue = new ClubTransferTable();
 	   AstonVillaTransferTable1889_1890ActualValue = screenScraperUnderTest.transferCollector.getTransferTableByClubName(clubTransferTable1889_1890 ,"Aston Villa");
 	   //Aston Villa 1889-1890
@@ -1035,7 +1268,7 @@ public class ScreenScraperTest {
        ScreenScraper screenScraperUnderTest = new ScreenScraper();
 
        ArrayList <PlayerTopSoccer> table2019_2020ActualValue = new ArrayList<>();
-       table2019_2020ActualValue = screenScraperUnderTest.getTopSoccerAtSeason("2019-2020");
+       table2019_2020ActualValue = screenScraperUnderTest.getTopSoccerAtSeason("eng-premier-league","2019-2020");
        ArrayList <PlayerTopSoccer> table2019_2020player0TO4ActualValue = new ArrayList<>();
        for(int i =0 ; i<5 ;i++) {
     	   table2019_2020player0TO4ActualValue.add(table2019_2020ActualValue.get(i));
@@ -1054,7 +1287,7 @@ public class ScreenScraperTest {
 	   Assert.assertEquals(table2019_2020player0TO4ExpectedValue.toString(), table2019_2020player0TO4ActualValue.toString());
 
 	   ArrayList <PlayerTopSoccer> table2009_2010ActualValue = new ArrayList<>();
-	   table2009_2010ActualValue = screenScraperUnderTest.getTopSoccerAtSeason("2009-2010");
+	   table2009_2010ActualValue = screenScraperUnderTest.getTopSoccerAtSeason("eng-premier-league","2009-2010");
        ArrayList <PlayerTopSoccer> table2009_2010player4TO9ActualValue = new ArrayList<>();
        for(int i =4 ; i<9 ;i++) {
     	   table2009_2010player4TO9ActualValue.add(table2009_2010ActualValue.get(i));
@@ -1073,7 +1306,7 @@ public class ScreenScraperTest {
 	   Assert.assertEquals(table2009_2010player4TO9ExpectedValue.toString(), table2009_2010player4TO9ActualValue.toString());
        
 	   ArrayList <PlayerTopSoccer> table1946_1947ActualValue = new ArrayList<>();
-	   table1946_1947ActualValue = screenScraperUnderTest.getTopSoccerAtSeason("1946-1947");
+	   table1946_1947ActualValue = screenScraperUnderTest.getTopSoccerAtSeason("eng-premier-league","1946-1947");
        ArrayList <PlayerTopSoccer> table1946_1947player0TO4ActualValue = new ArrayList<>();
        for(int i =0 ; i<5 ;i++) {
     	   table1946_1947player0TO4ActualValue.add(table1946_1947ActualValue.get(i));
@@ -1096,21 +1329,21 @@ public class ScreenScraperTest {
    public void itShouldGetStatisticsGoalsPerSeason() {
        ScreenScraper screenScraperUnderTest = new ScreenScraper();
        ArrayList <StatisticsGoalsPerSeason> actualValue = new ArrayList<>();
-       actualValue = screenScraperUnderTest.getStatisticsGoalsPerSeason("eng-championship");
+       actualValue = screenScraperUnderTest.getStatisticsGoalsPerSeason("eng-premier-league");
        ArrayList <StatisticsGoalsPerSeason> actualValue0To9 = new ArrayList<>();
        for(int i = 0 ; i < 9 ; i++ ) {
     	   actualValue0To9.add(actualValue.get(i));
        }
        ArrayList <StatisticsGoalsPerSeason> expectedValue0To9 = new ArrayList<>();
-       StatisticsGoalsPerSeason season0 = new StatisticsGoalsPerSeason("1","1892/1893","591","132","4.4773");
-       StatisticsGoalsPerSeason season1 = new StatisticsGoalsPerSeason("2","1894/1895","1019","239","4.2636");
-       StatisticsGoalsPerSeason season2 = new StatisticsGoalsPerSeason("3","1893/1894","894","210","4.2571");
-       StatisticsGoalsPerSeason season3 = new StatisticsGoalsPerSeason("4","1895/1896","943","240","3.9292");
-       StatisticsGoalsPerSeason season4 = new StatisticsGoalsPerSeason("5","1896/1897","907","240","3.7792");
-       StatisticsGoalsPerSeason season5 = new StatisticsGoalsPerSeason("6","1926/1927","1668","462","3.6104");
-       StatisticsGoalsPerSeason season6 = new StatisticsGoalsPerSeason("7","1898/1899","1103","306","3.6046");
-       StatisticsGoalsPerSeason season7 = new StatisticsGoalsPerSeason("8","1897/1898","860","240","3.5833");
-       StatisticsGoalsPerSeason season8 = new StatisticsGoalsPerSeason("9","1956/1957","1644","462","3.5584");
+       StatisticsGoalsPerSeason season0 = new StatisticsGoalsPerSeason("1","1889/1890","611","132","4.6288");
+       StatisticsGoalsPerSeason season1 = new StatisticsGoalsPerSeason("2","1888/1889","586","132","4.4394");
+       StatisticsGoalsPerSeason season2 = new StatisticsGoalsPerSeason("3","1891/1892","777","182","4.2692");
+       StatisticsGoalsPerSeason season3 = new StatisticsGoalsPerSeason("4","1890/1891","554","132","4.1970");
+       StatisticsGoalsPerSeason season4 = new StatisticsGoalsPerSeason("5","1930/1931","1823","462","3.9459");
+       StatisticsGoalsPerSeason season5 = new StatisticsGoalsPerSeason("6","1893/1894","939","240","3.9125");
+       StatisticsGoalsPerSeason season6 = new StatisticsGoalsPerSeason("7","1892/1893","936","240","3.9000");
+       StatisticsGoalsPerSeason season7 = new StatisticsGoalsPerSeason("8","1894/1895","917","240","3.8208");
+       StatisticsGoalsPerSeason season8 = new StatisticsGoalsPerSeason("9","1927/1928","1765","462","3.8203");
        expectedValue0To9.add(season0);
        expectedValue0To9.add(season1);
        expectedValue0To9.add(season2);
@@ -1160,22 +1393,22 @@ public class ScreenScraperTest {
    public void itShouldGetStatisticsRecordWins() {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
 	   ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue = new ArrayList<>();
-	   actualValue = screenScraperUnderTest.getStatisticsRecordWinsOrMostGoalInGame("eng-championship", 3);
+	   actualValue = screenScraperUnderTest.getStatisticsRecordWinsOrMostGoalInGame("eng-premier-league", 3);
 	   ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue0To9 = new ArrayList<>();
 	   for(int i =0 ; i < 10 ; i++) {
 		   actualValue0To9.add(actualValue.get(i));
 	   }
 	   ArrayList<StatisticsRecordWinsAndMostGoalInGame> expectedValue0To9 = new ArrayList<>();
-	   StatisticsRecordWinsAndMostGoalInGame game1 = new StatisticsRecordWinsAndMostGoalInGame ("1946/1947","3. Round","05/10/1946","Newcastle United",       "13:0",  "Newport County");
-	   StatisticsRecordWinsAndMostGoalInGame game2 = new StatisticsRecordWinsAndMostGoalInGame ("1902/1903","8. Round","11/04/1903","Small Heath Birmingham", "12:0",  "Doncaster Rovers");
-	   StatisticsRecordWinsAndMostGoalInGame game3 = new StatisticsRecordWinsAndMostGoalInGame ("1899/1900","7. Round","12/03/1900","Woolwich Arsenal",       "12:0",  "Loughborough United");
-	   StatisticsRecordWinsAndMostGoalInGame game4 = new StatisticsRecordWinsAndMostGoalInGame ("1896/1897","4. Round","26/12/1896","Darwen",                 "12:0",  "Walsall FC");
-	   StatisticsRecordWinsAndMostGoalInGame game5 = new StatisticsRecordWinsAndMostGoalInGame ("1892/1893","7. Round","17/12/1892","Small Heath Birmingham", "12:0", 	"Walsall Town Swifts");
-	   StatisticsRecordWinsAndMostGoalInGame game6 = new StatisticsRecordWinsAndMostGoalInGame ("1959/1960","4. Round","14/11/1959","Aston Villa", 	 	      "11:1", 	"Charlton Athletic" 	);
-	   StatisticsRecordWinsAndMostGoalInGame game7 = new StatisticsRecordWinsAndMostGoalInGame ("1914/1915","5. Round","23/01/1915","Birmingham FC", 	 	  "11:1", 	"Glossop North End");
-	   StatisticsRecordWinsAndMostGoalInGame game8 = new StatisticsRecordWinsAndMostGoalInGame ("1902/1903","5. Round","17/01/1903","Chesterfield FC", 	      "10:0", 	"Glossop North End");
-	   StatisticsRecordWinsAndMostGoalInGame game9 = new StatisticsRecordWinsAndMostGoalInGame ("1898/1899","8. Round","01/04/1899","Loughborough United", 	  "10:0", 	"Darwen");
-	   StatisticsRecordWinsAndMostGoalInGame game10 = new StatisticsRecordWinsAndMostGoalInGame("1898/1899","7. Round","04/03/1899","Walsall FC", 	          "10:0", 	"Darwen");
+	   StatisticsRecordWinsAndMostGoalInGame game1 = new StatisticsRecordWinsAndMostGoalInGame ("1908/1909","36. Round", "21/04/1909","Nottingham Forest",       "12:0",  "Leicester Fosse");
+	   StatisticsRecordWinsAndMostGoalInGame game2 = new StatisticsRecordWinsAndMostGoalInGame ("1891/1892","23. Round", "04/04/1892","West Bromwich Albion",    "12:0",  "Darwen");
+	   StatisticsRecordWinsAndMostGoalInGame game3 = new StatisticsRecordWinsAndMostGoalInGame ("1891/1892","23. Round", "12/03/1892","Aston Villa",             "12:2",  "Accrington FC");
+	   StatisticsRecordWinsAndMostGoalInGame game4 = new StatisticsRecordWinsAndMostGoalInGame ("1928/1929","26. Round", "19/01/1929","Sheffield United",        "10:0",  "Burnley FC");
+	   StatisticsRecordWinsAndMostGoalInGame game5 = new StatisticsRecordWinsAndMostGoalInGame ("1928/1929","11. Round", "20/10/1928","Leicester City",          "10:0",  "Portsmouth FC");
+	   StatisticsRecordWinsAndMostGoalInGame game6 = new StatisticsRecordWinsAndMostGoalInGame ("1925/1926","1. Round",  "29/08/1925","Aston Villa", 	 	     "10:0",  "Burnley FC" 	);
+	   StatisticsRecordWinsAndMostGoalInGame game7 = new StatisticsRecordWinsAndMostGoalInGame ("1912/1913","8. Round",  "05/10/1912","Aston Villa", 	 	     "10:0",  "The Wednesday FC");
+	   StatisticsRecordWinsAndMostGoalInGame game8 = new StatisticsRecordWinsAndMostGoalInGame ("1889/1890","1. Round",  "14/09/1889","Preston North End", 	     "10:0",  "Stoke City");
+	   StatisticsRecordWinsAndMostGoalInGame game9 = new StatisticsRecordWinsAndMostGoalInGame ("1925/1926","24. Round", "01/01/1926","Sheffield United", 	     "11:2",  "Cardiff City");
+	   StatisticsRecordWinsAndMostGoalInGame game10 = new StatisticsRecordWinsAndMostGoalInGame("1963/1964","24. Round", "26/12/1963","Fulham FC", 	             "10:1",  "Ipswich Town");
 	   expectedValue0To9.add(game1);
 	   expectedValue0To9.add(game2);
 	   expectedValue0To9.add(game3);
@@ -1192,22 +1425,22 @@ public class ScreenScraperTest {
    public void itShouldGetStatisticsMostGoalInGame() {
        ScreenScraper screenScraperUnderTest = new ScreenScraper();
        ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue = new ArrayList<>();
-       actualValue = screenScraperUnderTest.getStatisticsRecordWinsOrMostGoalInGame("eng-championship", 4);
+       actualValue = screenScraperUnderTest.getStatisticsRecordWinsOrMostGoalInGame("eng-premier-league", 4);
        ArrayList<StatisticsRecordWinsAndMostGoalInGame> actualValue0To9 = new ArrayList<>();
        for(int i =0 ; i < 10 ; i++) {
     	   actualValue0To9.add(actualValue.get(i));
        }
        ArrayList<StatisticsRecordWinsAndMostGoalInGame> expectedValue0To9 = new ArrayList<>();
-       StatisticsRecordWinsAndMostGoalInGame game1 = new StatisticsRecordWinsAndMostGoalInGame ("1894/1895", "7. Round",   "23/03/1895", 	"Manchester City",	 "11:3","Lincoln City");
-       StatisticsRecordWinsAndMostGoalInGame game2 = new StatisticsRecordWinsAndMostGoalInGame ("1957/1958", "5. Round",   "21/12/1957", 	"Charlton Athletic",  "7:6","Huddersfield Town");
-       StatisticsRecordWinsAndMostGoalInGame game3 = new StatisticsRecordWinsAndMostGoalInGame ("1946/1947", "3. Round",   "05/10/1946", 	"Newcastle United",   "13:0","Newport County");
-       StatisticsRecordWinsAndMostGoalInGame game4 = new StatisticsRecordWinsAndMostGoalInGame ("1919/1920", "4. Round",   "27/12/1919", 	"Hull City" ,		  "10:3",  	"Wolverhampton Wanderers");
-       StatisticsRecordWinsAndMostGoalInGame game5 = new StatisticsRecordWinsAndMostGoalInGame ("1893/1894", "27. Round",  "24/02/1894", 	"Burton Swifts", 	  "8:5","Walsall Town Swifts");
-       StatisticsRecordWinsAndMostGoalInGame game6 = new StatisticsRecordWinsAndMostGoalInGame ("1965/1966", "2. Round",   "18/09/1965", 	"Southampton FC" ,	  "9:3",  	"Wolverhampton Wanderers");
-       StatisticsRecordWinsAndMostGoalInGame game7 = new StatisticsRecordWinsAndMostGoalInGame ("1960/1961", "3. Round",   "22/10/1960", 	"Charlton Athletic",  "6:6", 	"Middlesbrough FC");
-       StatisticsRecordWinsAndMostGoalInGame game8 = new StatisticsRecordWinsAndMostGoalInGame ("1959/1960", "4. Round",   "14/11/1959", 	"Aston Villa", 	      "11:1", 	"Charlton Athletic");
-       StatisticsRecordWinsAndMostGoalInGame game9 = new StatisticsRecordWinsAndMostGoalInGame ("1953/1954", "7. Round",   "27/02/1954", 	"Everton FC", 	      "8:4","Plymouth Argyle");
-       StatisticsRecordWinsAndMostGoalInGame game10 = new StatisticsRecordWinsAndMostGoalInGame("1938/1939", "5. Round",   "26/12/1938", 	"Tranmere Rovers", 	  "3:9","Manchester City");
+       StatisticsRecordWinsAndMostGoalInGame game1 = new StatisticsRecordWinsAndMostGoalInGame ("1958/1959", "12. Round",   "11/10/1958", 	"Tottenham Hotspur", "10:4", "Everton FC");
+       StatisticsRecordWinsAndMostGoalInGame game2 = new StatisticsRecordWinsAndMostGoalInGame ("1891/1892", "23. Round",   "12/03/1892", 	"Aston Villa",       "12:2", "Accrington FC");
+       StatisticsRecordWinsAndMostGoalInGame game3 = new StatisticsRecordWinsAndMostGoalInGame ("1936/1937", "26. Round",   "04/02/1937", 	"Stoke City",        "10:3", "West Bromwich Albion");
+       StatisticsRecordWinsAndMostGoalInGame game4 = new StatisticsRecordWinsAndMostGoalInGame ("1933/1934", "14. Round",   "18/11/1933", 	"Middlesbrough FC" , "10:3", "Sheffield United");
+       StatisticsRecordWinsAndMostGoalInGame game5 = new StatisticsRecordWinsAndMostGoalInGame ("1925/1926", "24. Round",   "01/01/1926", 	"Sheffield United",  "11:2", "Cardiff City");
+       StatisticsRecordWinsAndMostGoalInGame game6 = new StatisticsRecordWinsAndMostGoalInGame ("1890/1891", "1. Round",    "06/09/1890", 	"Derby County" ,	 "8:5",  "Blackburn Rovers");
+       StatisticsRecordWinsAndMostGoalInGame game7 = new StatisticsRecordWinsAndMostGoalInGame ("1957/1958", "31. Round",   "22/02/1958", 	"Leicester City",    "8:4",  "Manchester City");
+       StatisticsRecordWinsAndMostGoalInGame game8 = new StatisticsRecordWinsAndMostGoalInGame ("1952/1953", "10. Round",   "27/09/1952", 	"Blackpool FC", 	 "8:4",  "Charlton Athletic");
+       StatisticsRecordWinsAndMostGoalInGame game9 = new StatisticsRecordWinsAndMostGoalInGame ("1934/1935", "18. Round",   "08/12/1934", 	"Derby County", 	 "9:3",  "West Bromwich Albion");
+       StatisticsRecordWinsAndMostGoalInGame game10 = new StatisticsRecordWinsAndMostGoalInGame("1931/1932", "11. Round",   "17/10/1931", 	"Everton FC", 	     "9:3",  "Sheffield Wednesday");
        expectedValue0To9.add(game1);
        expectedValue0To9.add(game2);
        expectedValue0To9.add(game3);
@@ -1227,22 +1460,22 @@ public class ScreenScraperTest {
    public void itShouldGetStatisticsDirtiesGamesForCompetition() {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
        ArrayList<DirtyGame> actualValue = new ArrayList<>();
-       actualValue = screenScraperUnderTest.getStatisticsDirtiesGamesForCompetition("eng-championship");
+       actualValue = screenScraperUnderTest.getStatisticsDirtiesGamesForCompetition("eng-premier-league");
        ArrayList<DirtyGame> actualValue0To9 = new ArrayList<>();
        for(int i =0 ; i < 10 ; i++) {
     	   actualValue0To9.add(actualValue.get(i));
        }
        ArrayList<DirtyGame> expectedValue0To9 = new ArrayList<>();
-       DirtyGame game1 = new DirtyGame ("14/04/2007", 	"Ipswich Town", 	 	   "2:1", "Derby County", 	     "2","0","10","16");
-       DirtyGame game2 = new DirtyGame ("14/04/2015", 	"Millwall FC", 	 	       "2:0", "Wigan Athletic",      "3","0","6","15");
-       DirtyGame game3 = new DirtyGame ("17/10/1997", 	"Wolverhampton Wanderers", "3:1", "Swindon Town", 	     "3","0","4","13");
-       DirtyGame game4 = new DirtyGame ("04/03/2008", 	"Hull City", 	 	       "2:0", "Burnley FC", 	     "2","2","3","13");
-       DirtyGame game5 = new DirtyGame ("01/11/2005", 	"Burnley FC", 		       "2:1", "Millwall FC","2", 	"1", 	"5", 	"13");
-       DirtyGame game6 = new DirtyGame ("10/04/2001", 	"Crewe Alexandra", 		   "2:2", "Queens Park Rangers","2", 	"1", 	"5", 	"13");
-       DirtyGame game7 = new DirtyGame ("21/11/2015", 	"Leeds United", 	       "0:1", "Rotherham United", 	 	"2", 	"0", 	"7", 	"13");
-       DirtyGame game8 = new DirtyGame ("21/12/2002", 	"Gillingham FC", 	       "4:2", "Burnley FC", 		"2","0","7","13");
-       DirtyGame game9 = new DirtyGame ("04/11/2000", 	"Nottingham Forest", 	   "3:1", "Preston North End", 	"2","0","7","13");
-       DirtyGame game10 = new DirtyGame ("19/12/1997", 	"Reading FC", 	           "0:0", "Wolverhampton Wanderers", 	"2","0","7","13");
+       DirtyGame game1 = new DirtyGame  ("01/05/1999", 	"West Ham United", 	 	"1:5", "Leeds United", 	   "2","1","7","15");
+       DirtyGame game2 = new DirtyGame  ("23/10/2011", 	"Queens Park Rangers", 	"1:0", "Chelsea FC",       "2","0","9","15");
+       DirtyGame game3 = new DirtyGame  ("27/09/1999", 	"Liverpool FC",         "0:1", "Everton FC", 	   "3","0","5","14");
+       DirtyGame game4 = new DirtyGame  ("18/09/2004", 	"West Bromwich Albion", "1:1", "Fulham FC", 	   "2","1","6","14");
+       DirtyGame game5 = new DirtyGame  ("25/03/2006", 	"Liverpool FC", 		"3:1", "Everton FC",       "1","1","9","14");
+       DirtyGame game6 = new DirtyGame  ("07/11/1999", 	"Tottenham Hotspur", 	"2:1", "Arsenal FC",       "1","1","9","14");
+       DirtyGame game7 = new DirtyGame  ("09/02/2010", 	"Portsmouth FC", 	    "1:1", "Sunderland AFC",   "3","0","4","13");
+       DirtyGame game8 = new DirtyGame  ("17/02/1999", 	"Chelsea FC", 	        "1:1", "Blackburn Rovers", "2","0","7","13");
+       DirtyGame game9 = new DirtyGame  ("13/09/2003", 	"Everton FC", 	        "2:2", "Newcastle United", "1","0","10","13");
+       DirtyGame game10 = new DirtyGame ("25/10/1998", 	"Leeds United", 	    "0:0", "Chelsea FC", 	   "0","1","11","13");
        expectedValue0To9.add(game1);
        expectedValue0To9.add(game2);
        expectedValue0To9.add(game3);
@@ -1295,17 +1528,17 @@ public class ScreenScraperTest {
    public void itShouldGetAllClubStaduimsForCompetition() {
 	   ScreenScraper screenScraperUnderTest = new ScreenScraper();
        ArrayList<Staduim> actualValue2020_2021 = new ArrayList<>();
-       actualValue2020_2021 = screenScraperUnderTest.getCompetitionSatuims("eng-championship","2020-2021");
+       actualValue2020_2021 = screenScraperUnderTest.getCompetitionSatuims("eng-premier-league","2020-2021");
        ArrayList<Staduim> actualValue2020_2021Just0To5 = new ArrayList<>();
        for(int i =0 ; i < 5 ; i++) {
     	   actualValue2020_2021Just0To5.add(actualValue2020_2021.get(i));
        }
        ArrayList<Staduim> expectedValue2020_2021Just0To5 = new ArrayList<>();
-       Staduim staduim1 = new Staduim ("Adams Park", 	              "Wycombe", 	   "England",  "10.000");
-       Staduim staduim2 = new Staduim ("Ashton Gate", 	              "Bristol", 	   "England",  "27.000");
-       Staduim staduim3 = new Staduim ("bet365 Stadium", 	          "Stoke-on-Trent","England",  "30.089");
-       Staduim staduim4 = new Staduim ("Brentford Community Stadium", "Brentford", 	   "England",  "17.250");
-       Staduim staduim5 = new Staduim ("Cardiff City Stadium",        "Cardiff", 	   "Wales",    "33.000");
+       Staduim staduim1 = new Staduim ("Amex Stadium", 	"Brighton",  "England",  "30.750");
+       Staduim staduim2 = new Staduim ("Anfield", 	    "Liverpool", "England",  "54.074");
+       Staduim staduim3 = new Staduim ("Bramall Lane", 	"Sheffield", "England",  "33.000");
+       Staduim staduim4 = new Staduim ("Craven Cottage","London", 	 "England",  "25.700");
+       Staduim staduim5 = new Staduim ("Elland Road",   "Leeds", 	 "England",  "37.890");
        expectedValue2020_2021Just0To5.add(staduim1);
        expectedValue2020_2021Just0To5.add(staduim2);
        expectedValue2020_2021Just0To5.add(staduim3);

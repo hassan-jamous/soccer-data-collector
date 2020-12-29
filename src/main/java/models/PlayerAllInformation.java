@@ -8,8 +8,8 @@ public class PlayerAllInformation {
 	public ArrayList <PlayerClubCareer> clubsCareer;
 	public ArrayList <PlayerCompetitionsInformation> clubMatches;
 	public ArrayList <PlayerCompetitionsInformation> internationalCopmetitionsInfo;
-	
-	
+	public ArrayList <PlayerCompetitionInformationOverall> clubsMatchesOverall;
+	public ArrayList <PlayerCompetitionInformationOverall> internationalCopmetitionsOverall;
 	 
 	public PlayerAllInformation() {
 		clubsCareer = new ArrayList<>();
@@ -17,6 +17,8 @@ public class PlayerAllInformation {
 		personalInfo = new PlayerPersonalInformation();
 		teamsManaged = new ArrayList <>();
 		internationalCopmetitionsInfo = new ArrayList <>(); 
+		clubsMatchesOverall = new ArrayList <>();
+		internationalCopmetitionsOverall = new ArrayList <>();
 	}
 	public String toString() {
 		String result="";
@@ -37,7 +39,14 @@ public class PlayerAllInformation {
 		for(int i =0; i<internationalCopmetitionsInfo.size() ;i++) {
 				result = result + internationalCopmetitionsInfo.get(i).toString() + "\n";
 		}
-		
+		result = result + "OVERALL CLUBS INFO" + "\n";
+		for(int i =0; i<clubsMatchesOverall.size() ;i++) {
+			result = result + clubsMatchesOverall.get(i).toString() + "\n";
+		}
+		result = result + "OVERALL CLUBS INFO" + "\n";
+		for(int i =0; i<internationalCopmetitionsOverall.size() ;i++) {
+			result = result + internationalCopmetitionsOverall.get(i).toString() + "\n";
+		}
 		return result;
 	}
 }

@@ -1,13 +1,11 @@
 package collector;
 
 import java.util.ArrayList;
-
 import models.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import models.Goal;
 import models.KindOfGoal;
 import models.KindOfReferee;
 import models.MatchDetails;
@@ -57,16 +55,14 @@ public class MatchCollector {
     }
 
     private ClubInMatchDetails getClubInformation(Elements allTablesInPage, int teamNumber, String clubName) {
-        Elements elementClubsInfo = allTablesInPage.select("table:has(td[width=10%],[width=72%],[width=18%])");
-        Elements elementManagersInfo = allTablesInPage.select("table:has(th:contains(Manager:))");
         
-
+    	Elements elementClubsInfo = allTablesInPage.select("table:has(td[width=10%],[width=72%],[width=18%])");
+        Elements elementManagersInfo = allTablesInPage.select("table:has(th:contains(Manager:))");
         ClubInMatchDetails result = new ClubInMatchDetails();
         result.players = getClubPlayersInMatch(elementClubsInfo.get(teamNumber));
         result.manager = elementManagersInfo.get(0).select("a").get(teamNumber).attr("title").trim();
         result.clubBasicInfo.name = clubName;
-        
-        
+                
         return result;
     }
 
