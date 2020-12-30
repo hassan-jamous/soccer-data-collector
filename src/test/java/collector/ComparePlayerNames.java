@@ -10,6 +10,4 @@ public class ComparePlayerNames implements Comparator<PlayerAtMatch>{
 		if(player1.playerBasicInfo.name .compareTo(player2.playerBasicInfo.name ) >= 0) {return 1;}
 		else {return -1;}
 	}
-	
-	
 }

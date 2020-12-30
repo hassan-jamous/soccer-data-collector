@@ -1,6 +1,7 @@
 package collector;
 
 import java.util.ArrayList;
+
 import models.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -55,14 +56,13 @@ public class MatchCollector {
     }
 
     private ClubInMatchDetails getClubInformation(Elements allTablesInPage, int teamNumber, String clubName) {
-        
-    	Elements elementClubsInfo = allTablesInPage.select("table:has(td[width=10%],[width=72%],[width=18%])");
+        Elements elementClubsInfo = allTablesInPage.select("table:has(td[width=10%],[width=72%],[width=18%])");
         Elements elementManagersInfo = allTablesInPage.select("table:has(th:contains(Manager:))");
         ClubInMatchDetails result = new ClubInMatchDetails();
         result.players = getClubPlayersInMatch(elementClubsInfo.get(teamNumber));
         result.manager = elementManagersInfo.get(0).select("a").get(teamNumber).attr("title").trim();
         result.clubBasicInfo.name = clubName;
-                
+
         return result;
     }
 
@@ -70,7 +70,6 @@ public class MatchCollector {
         Elements elementBasicInfo = allTablesInPage.select("table:has(th:has(a[href*=/teams/]))");
         MatchSummary result = new MatchSummary();
         if (elementBasicInfo.size() > 0) {
-
             Elements trs = elementBasicInfo.get(0).select("tr");
             if (trs.size() == 2) {
                 result.firstClubInfo.name = trs.get(0).child(0).text();
@@ -90,7 +89,6 @@ public class MatchCollector {
     }
 
     private ArrayList<Referee> getRefereesInMatch(Elements allTablesInPage) {
-
         Elements refereesElement = allTablesInPage.select("tr:has(td:has(img[title=Referee]))");
         ArrayList<Referee> result = new ArrayList<>();
 
@@ -118,37 +116,32 @@ public class MatchCollector {
         ArrayList<PlayerAtMatch> result = new ArrayList<>();
         Elements trsTeam = table.select("tr");
         int indexOfRowWithSubstitutesTitle = getIndexOfRowWithSubstitutesTitle(trsTeam);
-        for (int i = 0; i < trsTeam.size() ; i++) {
-        	//Hassan wrote for (int i = 0; i < trsTeam.size() && i != indexOfRowWithSubstitutesTitle; i++)
-        	//out loop when i == indexOfRowWithSubstitutesTitle {wrong}
-        	if(i != indexOfRowWithSubstitutesTitle) {
-	            PlayerAtMatch player = new PlayerAtMatch();
-	            player.playerNumberAsString = trsTeam.get(i).child(0).text();
-	            player.playerBasicInfo.name = trsTeam.get(i).child(1).child(0).text().trim();
-	            player.events = getPlayerEventsInMatch(trsTeam.get(i).child(1));
-	            if ((indexOfRowWithSubstitutesTitle != -1 && i < indexOfRowWithSubstitutesTitle) || indexOfRowWithSubstitutesTitle == -1) {
-	                player.playerType = PlayerTypeAtMatch.Essential;
-	                
-	            } else if (indexOfRowWithSubstitutesTitle != -1 && i > indexOfRowWithSubstitutesTitle) {
-	                player.playerType = PlayerTypeAtMatch.Substitute;
-	                
-	            }
-	            if (trsTeam.get(i).child(2).hasText()) {
-	                PlayerEventAtMatch event = new PlayerEventAtMatch();
-	                event.event = (player.playerType == PlayerTypeAtMatch.Essential)? "out" : "in";
-	                event.minute = trsTeam.get(i).child(2).text().substring(0, trsTeam.get(i).child(2).text().length() - 1);
-	                player.events.add(event);
-	            }
-	            
-	            result.add(player);
-        	}
-        }
+        for (int i = 0; i < trsTeam.size(); i++) {
+            if (i != indexOfRowWithSubstitutesTitle) {
+                PlayerAtMatch player = new PlayerAtMatch();
+                player.playerNumberAsString = trsTeam.get(i).child(0).text();
+                player.playerBasicInfo.name = trsTeam.get(i).child(1).child(0).text().trim();
+                player.events = getPlayerEventsInMatch(trsTeam.get(i).child(1));
+                if ((indexOfRowWithSubstitutesTitle != -1 && i < indexOfRowWithSubstitutesTitle) || indexOfRowWithSubstitutesTitle == -1) {
+                    player.playerType = PlayerTypeAtMatch.Essential;
 
+                } else if (indexOfRowWithSubstitutesTitle != -1 && i > indexOfRowWithSubstitutesTitle) {
+                    player.playerType = PlayerTypeAtMatch.Substitute;
+                }
+                if (trsTeam.get(i).child(2).hasText()) {
+                    PlayerEventAtMatch event = new PlayerEventAtMatch();
+                    event.event = (player.playerType == PlayerTypeAtMatch.Essential) ? "out" : "in";
+                    event.minute = trsTeam.get(i).child(2).text().substring(0, trsTeam.get(i).child(2).text().length() - 1);
+                    player.events.add(event);
+                }
+                result.add(player);
+            }
+        }
         return result;
     }
 
-   ///to get events
-    //image contains  the name of event (red card  , yellow card ,....) and the next span contains the time
+    ///to get events
+    //image contains  the name of event (red card , yellow card,....) and the next span contains the time
     //eventIndex+2 (i.e) event's name and it's time
     private ArrayList<PlayerEventAtMatch> getPlayerEventsInMatch(Element TdPlayer) {
         ArrayList<PlayerEventAtMatch> result = new ArrayList<>();
@@ -173,41 +166,41 @@ public class MatchCollector {
         return -1;// no sub (i.e old league)
     }
 
-    private ArrayList<GoalInMatchDetails> getMatchGoals (Elements allTablesInPage ,String firstClub , String secondClub){
-    	Elements goalsTable = allTablesInPage.select("table:has(tbody:has(tr:has(td:contains(goals))))");
-    	Elements trs = goalsTable.select("tr");
-    	if(trs.get(1).text().equals("none")) {// the result is 0:0
-    		return null; 
-    	}
-    	ArrayList<GoalInMatchDetails>  result = new ArrayList<>();
-    	for(int i = 1 ; i <trs.size() ; i++ ) {
-    		GoalInMatchDetails goal = new GoalInMatchDetails();
-    		if(trs.get(i).child(1).hasAttr("style")) {//second club
-    			goal.clubInfo.name = secondClub;
-    		}else {
-    			goal.clubInfo.name = firstClub;
-    		}
-    		
-    		if (trs.get(i).child(1).ownText().equals("0.")) {//old league does not have any information, it only has 0.
-    			goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.OldGoal);
-    			
+    private ArrayList<GoalInMatchDetails> getMatchGoals(Elements allTablesInPage, String firstClub, String secondClub) {
+        Elements goalsTable = allTablesInPage.select("table:has(tbody:has(tr:has(td:contains(goals))))");
+        Elements trs = goalsTable.select("tr");
+        if (trs.get(1).text().equals("none")) {// the result is 0:0
+            return null;
+        }
+        ArrayList<GoalInMatchDetails> result = new ArrayList<>();
+        for (int i = 1; i < trs.size(); i++) {
+            GoalInMatchDetails goal = new GoalInMatchDetails();
+            if (trs.get(i).child(1).hasAttr("style")) {//second club
+                goal.clubInfo.name = secondClub;
+            } else {
+                goal.clubInfo.name = firstClub;
+            }
+
+            if (trs.get(i).child(1).ownText().equals("0.")) {//old league does not have any information, it only has 0.
+                goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.OldGoal);
+
             } else {//new league
                 if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.HasAssister) {
-        			goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.HasAssister);
-                    
+                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.HasAssister);
+
                 } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Individually) {
-        			goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Individually);
-                    
+                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Individually);
+
                 } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Reverse) {
-        			goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Reverse);
-                   
+                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Reverse);
+
                 }
             }
-    		result.add(goal);
-    	}
-    	
-    	return result;
+            result.add(goal);
+        }
+
+        return result;
     }
- 
+
 
 }

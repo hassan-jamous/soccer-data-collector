@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GamesTableOfLeague {
-    String years;
-    List<Round> rounds;
+    public String years;
+    public List<Round> rounds;
 
     public GamesTableOfLeague(String years) {
         this.years = years;
