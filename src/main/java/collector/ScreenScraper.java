@@ -19,12 +19,12 @@ public class ScreenScraper {
         return roundCollector.getAllRounds(competitionName, competitionYears);
     }
 
-    public RankingTable getLastTable(String competitionName, String years) {
-        return tableCollector.getLastTable(competitionName, years);
+    public RankingTable getLastTable(String competitionName, String competitionYears) {
+        return tableCollector.getLastTable(competitionName, competitionYears);
     }
 
-    public RankingTable getTableByRound(String competitionName, String years, String round) {
-        return tableCollector.getTableByRound(competitionName, years, round);
+    public RankingTable getTableByRound(String competitionName, String competitionYears, String round) {
+        return tableCollector.getTableByRound(competitionName, competitionYears, round);
     }
 
     public ArrayList<Goal> getGoalsOfGame(String competitionName, String competitionYears, String fisrtTeam, String secondTeam) {
@@ -39,8 +39,8 @@ public class ScreenScraper {
         return clubsCollector.getAllPlayersSummaryInClub(clubName, year);
     }
 
-    public ArrayList<Club> getAllClubsInSeason(String competitionYears) {
-        return clubsCollector.getAllClubsInSeason(competitionYears);
+    public ArrayList<Club> getAllClubsInSeason(String competitionName, String competitionYears) {
+        return clubsCollector.getAllClubsInSeason(competitionName ,competitionYears);
     }
 
     public PlayerAllInformation getAllInformationAboutPlayer(String nameAsInURL) {
@@ -67,15 +67,13 @@ public class ScreenScraper {
         return statisticsCollector.getStatisticsGoalsPerRound(competitionName);
     }
 
-    //todo
-	//this should be enum
-    //3 is the request for record wins or 4 is the request for most goals in game
-    public ArrayList<StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName, int kindOfRequest) {
+    
+    public ArrayList<StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName, StatisticsRequestKind kindOfRequest) {
         return statisticsCollector.getStatisticsRecordWinsOrMostGoalInGame(competitionName, kindOfRequest);
     }
 
-    public ArrayList<StatisticsMostGoalsInGame> getStatisticsMostGoalsInGameInCompetition(String competitionName) {
-        return statisticsCollector.getStatisticsMostGoalsInGameInCompetition(competitionName);
+    public ArrayList<StatisticsMostGoalsByPlayerPerGame> getStatisticsMostGoalsByPlayerInGameInCompetition(String competitionName) {
+        return statisticsCollector.getStatisticsMostGoalsByPlayerInGameInCompetition(competitionName);
     }
 
     public ArrayList<DirtyGame> getStatisticsDirtiesGamesForCompetition(String competitionName) {

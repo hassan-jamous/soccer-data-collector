@@ -11,13 +11,13 @@ public class TableCollector {
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_SCHEDULE_URL = "https://www.worldfootball.net/schedule/";
 
-    public RankingTable getLastTable(String leagueName, String years) {
-        String url = WORLD_FOOTBALL_SCHEDULE_URL + leagueName + "-" + years + "/";
+    public RankingTable getLastTable(String competitionName, String competitionYears) {
+        String url = WORLD_FOOTBALL_SCHEDULE_URL + competitionName + "-" + competitionYears + "/";
         return getRankingTable(url);
     }
 
-    public RankingTable getTableByRound(String leagueName, String years, String round) {
-        String url = WORLD_FOOTBALL_SCHEDULE_URL + leagueName + "-" + years + "-spieltag/" + round + "/";
+    public RankingTable getTableByRound(String competitionName, String competitionYears, String round) {
+        String url = WORLD_FOOTBALL_SCHEDULE_URL + competitionName + "-" + competitionYears + "-spieltag/" + round + "/";
         return getRankingTable(url);
     }
 
@@ -36,16 +36,16 @@ public class TableCollector {
                     for (int i = 1; i < trs.size(); i++) {
                         Element tr = trs.get(i);
                         ClubForRankingTable club = new ClubForRankingTable();
-                        club.setPosition(tr.child(0).text());
-                        club.setName(tr.child(2).text());
-                        club.setPlayedGames(tr.child(3).text());
-                        club.setWinGames(tr.child(4).text());
-                        club.setDrawGames(tr.child(5).text());
-                        club.setLostGames(tr.child(6).text());
-                        club.setGoals(tr.child(7).text());
-                        club.setDifGoals(tr.child(8).text());
-                        club.setPoints(tr.child(9).text());
-                        rankingTable.addClub(club);
+                        club.position = tr.child(0).text();
+                        club.clubBasicInfo.name = tr.child(2).text();
+                        club.playedGames = tr.child(3).text();
+                        club.winGames = tr.child(4).text();
+                        club.drawGames = tr.child(5).text();
+                        club.lostGames = tr.child(6).text();
+                        club.goals = tr.child(7).text();
+                        club.diffirentGoals =tr.child(8).text();
+                        club.points = tr.child(9).text();
+                        rankingTable.table.add(club);
                     }
                 }
             }

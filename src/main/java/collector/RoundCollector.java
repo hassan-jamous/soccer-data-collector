@@ -28,9 +28,9 @@ public class RoundCollector {
             Element tr = trs.get(i);
             if (isRound(tr)) {
                 Round round = new Round();
-                round.setRoundNumber(tr.child(0).child(0).text());
+                round.roundNumberAsString = tr.child(0).child(0).text();
                 round.games.addAll(ParseGamesInRound(trs, i));
-                gamesTable.addRound(round);
+                gamesTable.rounds.add(round);
             }
         }
         return gamesTable;

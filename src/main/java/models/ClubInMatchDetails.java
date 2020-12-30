@@ -6,7 +6,7 @@ public class ClubInMatchDetails{
 	public Club clubBasicInfo;//may we delete it? class match contains it
 		
 	public ArrayList <PlayerAtMatch> players;
-	public String manager;
+	public String manager;//is it better to convert (class)String to (class)Player some (old) players are managers now (tony adams arsenal2002)
 	
 	public ClubInMatchDetails() {
 		clubBasicInfo = new Club();

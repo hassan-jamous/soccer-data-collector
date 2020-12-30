@@ -6,12 +6,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import models.PlayerAllInformation;
 import models.PlayerClubCareer;
 import models.PlayerCompetitionInformationOverall;
 import models.PlayerCompetitionsInformation;
-
+import models.PlayerInformationRequest;
 import models.PlayerPersonalInformation;
 import models.PlayerTeamManaged;
 
@@ -28,30 +27,24 @@ public class PlayerCollector {
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
         Elements divs = doc.getElementsByClass("box");
-
-        Elements divTeamsManaged = divs.select("div:has(div:has(h2:contains(Teams managed)))");
-        Elements divClubCareer = divs.select("div:has(div:has(h2:contains(Club career)))");
-        Elements divClubMatches = divs.select("div:has(div:has(h2:contains(Club matches)))");
-        Elements divInternationals = divs.select("div:has(div:has(h2:contains(Internationals)))");
-        Elements divPersonalInformation = divs.select("div:has(div:has(h2[itemprop=name]))");
-
         PlayerAllInformation playerTotalInfo = new PlayerAllInformation();
-        playerTotalInfo.teamsManaged = getPlayerTeamManaged(divTeamsManaged);
-        playerTotalInfo.clubsCareer = getClubCareer(divClubCareer);
-        playerTotalInfo.personalInfo = getPlayerPersonalInformation(divPersonalInformation);
-        playerTotalInfo.clubMatches = getPlayerClubsAndInternatiolsCompetitions(divClubMatches);
-        playerTotalInfo.internationalCopmetitionsInfo = getPlayerClubsAndInternatiolsCompetitions(divInternationals);
-        if (getOverallURL(divClubMatches) != null) {
-            playerTotalInfo.clubsMatchesOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divClubMatches));
+        playerTotalInfo.teamsManaged = getPlayerTeamManaged(divs);
+        playerTotalInfo.clubsCareer = getClubCareer(divs);
+        playerTotalInfo.personalInfo = getPlayerPersonalInformation(divs);
+        playerTotalInfo.clubMatches = getPlayerClubsAndInternatiolsCompetitions(divs , PlayerInformationRequest.Clubs);
+        playerTotalInfo.internationalCopmetitionsInfo = getPlayerClubsAndInternatiolsCompetitions(divs , PlayerInformationRequest.International);
+        if (getOverallURL(divs , PlayerInformationRequest.Clubs) != null) {
+            playerTotalInfo.clubsMatchesOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divs , PlayerInformationRequest.Clubs));
         }
-        if (getOverallURL(divInternationals) != null) {
-            playerTotalInfo.internationalCopmetitionsOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divInternationals));
+        if (getOverallURL(divs , PlayerInformationRequest.International) != null) {
+            playerTotalInfo.internationalCopmetitionsOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divs ,PlayerInformationRequest.International));
         }
         return playerTotalInfo;
     }
 
-    private ArrayList<PlayerTeamManaged> getPlayerTeamManaged(Elements div) {
-        Elements trs = div.select("tr");
+    private ArrayList<PlayerTeamManaged> getPlayerTeamManaged(Elements divs) {
+    	Elements divTeamsManaged = divs.select("div:has(div:has(h2:contains(Teams managed)))");
+        Elements trs = divTeamsManaged.select("tr");
         PlayerTeamManaged palyerTeamManaged;
         ArrayList<PlayerTeamManaged> result = new ArrayList<>();
         for (int i = 0; i < trs.size(); i++) {
@@ -65,8 +58,9 @@ public class PlayerCollector {
         return result;
     }
 
-    private ArrayList<PlayerClubCareer> getClubCareer(Elements div) {
-        Elements trClubs = div.select("tr");
+    private ArrayList<PlayerClubCareer> getClubCareer(Elements divs) {
+    	 Elements divClubCareer = divs.select("div:has(div:has(h2:contains(Club career)))");
+        Elements trClubs = divClubCareer.select("tr");
         ArrayList<PlayerClubCareer> result = new ArrayList<>();
         PlayerClubCareer club;
         for (int i = 0; i < trClubs.size(); i++) {
@@ -90,8 +84,10 @@ public class PlayerCollector {
         return result;
     }
 
-    private PlayerPersonalInformation getPlayerPersonalInformation(Elements divInfo) {
-        Element div = divInfo.get(0);
+    private PlayerPersonalInformation getPlayerPersonalInformation(Elements divs) {
+        Elements divPersonalInformation = divs.select("div:has(div:has(h2[itemprop=name]))");
+
+        Element div = divPersonalInformation.get(0);
         PlayerPersonalInformation info = new PlayerPersonalInformation();
         info.playerBasicInfo.name = div.child(1).text();
         Elements tds = div.child(3).select("td");
@@ -109,7 +105,15 @@ public class PlayerCollector {
         return info;
     }
 
-    private ArrayList<PlayerCompetitionsInformation> getPlayerClubsAndInternatiolsCompetitions(Elements div) {
+    private ArrayList<PlayerCompetitionsInformation> getPlayerClubsAndInternatiolsCompetitions(Elements divs , PlayerInformationRequest requerstInfo ) {
+    	Elements div;
+    	if(requerstInfo == PlayerInformationRequest.Clubs) {
+        	div = divs.select("div:has(div:has(h2:contains(Club matches)))");
+    	}
+    	else {
+    		div = divs.select("div:has(div:has(h2:contains(Internationals)))");
+    	}
+        
         Elements trs = div.select("tr");
         PlayerCompetitionsInformation palyerInfoInternational;
         ArrayList<PlayerCompetitionsInformation> result = new ArrayList<>();
@@ -137,7 +141,14 @@ public class PlayerCollector {
         return result;
     }
 
-    private String getOverallURL(Elements div) {
+    private String getOverallURL(Elements divs ,PlayerInformationRequest requestInfo) {
+    	Elements div;
+    	if(requestInfo == PlayerInformationRequest.Clubs) {
+        	div = divs.select("div:has(div:has(h2:contains(Club matches)))");
+    	}
+    	else {
+    		div = divs.select("div:has(div:has(h2:contains(Internationals)))");
+    	}
         Elements trs = div.select("tr:contains(∑)");
         Elements link = trs.select("a:contains(Overall)");
         if (!(link.isEmpty())) {

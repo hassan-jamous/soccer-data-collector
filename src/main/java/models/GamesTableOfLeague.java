@@ -7,35 +7,14 @@ public class GamesTableOfLeague {
     public String years;
     public List<Round> rounds;
 
+    public GamesTableOfLeague() {        
+        rounds = new ArrayList<>();
+    }
     public GamesTableOfLeague(String years) {
         this.years = years;
         rounds = new ArrayList<>();
     }
-
-    public int getRoundIndex(String roundName) {
-        for (Round round : rounds) {
-            if (round.getRoundNumber().equals(roundName)) {
-                return rounds.indexOf(round);
-            }
-        }
-        throw new RuntimeException("Round Not Found");
-    }
-
-    public Round getRoundObject(int roundNumber)   {
-    	for(Round round : rounds) {
-    		if(round.roundNumberAsInt == roundNumber) {
-    			return round;
-    		}
-    		
-    	}
-    	throw new RuntimeException("Round Not Found");
-    	
-    }
-    public void addRound(Round round) {
-        rounds.add(rounds.size(), round);
-    }
-  
-    
+   
     public String toString() {
     	String table = "";
     	table = this.years;

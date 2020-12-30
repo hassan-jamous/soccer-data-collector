@@ -11,8 +11,9 @@ import models.Staduim;
 import models.StatisticsBestPlayerInYear;
 import models.StatisticsGoalsPerRound;
 import models.StatisticsGoalsPerSeason;
-import models.StatisticsMostGoalsInGame;
+import models.StatisticsMostGoalsByPlayerPerGame;
 import models.StatisticsRecordWinsAndMostGoalInGame;
+import models.StatisticsRequestKind;
 
 public class StatisticsCollector {
     private HttpUtil httpUtil = new HttpUtil();
@@ -67,11 +68,9 @@ public class StatisticsCollector {
         return result;
     }
 
-    //todo
-    // make kindof request enum
-    public ArrayList<StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName, int kindOfRequest) {
+    public ArrayList<StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName, StatisticsRequestKind  kindOfRequest) {
         ArrayList<StatisticsRecordWinsAndMostGoalInGame> result = new ArrayList<>();
-        String url = WORLDFOOTBALL_STATS_URL + competitionName + "/" + kindOfRequest + "/";
+        String url = WORLDFOOTBALL_STATS_URL + competitionName + "/" + kindOfRequest.value() + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
 
@@ -92,29 +91,30 @@ public class StatisticsCollector {
 
     //todo
     //there is a problem
-    public ArrayList<StatisticsMostGoalsInGame> getStatisticsMostGoalsInGameInCompetition(String competitionName) {
-        ArrayList<StatisticsMostGoalsInGame> result = new ArrayList<>();
+    public ArrayList<StatisticsMostGoalsByPlayerPerGame> getStatisticsMostGoalsByPlayerInGameInCompetition(String competitionName) {
+        ArrayList<StatisticsMostGoalsByPlayerPerGame> result = new ArrayList<>();
         String url = WORLDFOOTBALL_STATS_URL + competitionName + "/5/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
-        Elements divs = doc.select("div:has(div:has(table:eq(0):has(th:contains(Player)))) , div:has(div:has(table:eq(0):has(th:contains(date))))");
-
+        
+        Elements divsA = doc.select("div.box");//there is anther solution
+        Elements divs = divsA.select("div:has(div:has(table:has(tbody:has(tr:has(th:contains(Player)))))) , div:has(div:has(table:has(tbody:has(tr:has(th:contains(Guest))))))");
         //we have one table for each number of goals    
-        //table for number of goals 4 contain every player who scored 4 goals in one match
-        //table for number of goals 3 contain every player who scored 3 goals in one match
         for (int divIndex = 0; divIndex < divs.size(); divIndex++) {
-            String maxNumberOfGoals = divs.get(divIndex).getElementsByTag("h2").text().substring(divs.get(divIndex).getElementsByTag("h2").text().indexOf("» ") + 2, divs.get(divIndex).getElementsByTag("h2").text().indexOf("Goals") - 1);
+        	
+            String maxNumberOfGoals = divs.get(divIndex).child(0).child(0).text().substring(divs.get(divIndex).child(0).child(0).text().indexOf("»") +2 , divs.get(divIndex).child(0).child(0).text().indexOf("Goals")-1);
             Elements trs = divs.get(divIndex).select("tr");
             for (int i = 0; i < trs.size(); i++) {
-                if (trs.get(i).childrenSize() == 7) {//we do not need the header, the header contains 6 children
-                    StatisticsMostGoalsInGame gameInfo = new StatisticsMostGoalsInGame();
-                    gameInfo.playerBasicInfo.name = trs.get(i).child(0).text();
-                    gameInfo.matchDate = trs.get(i).child(1).text();
-                    gameInfo.homeClubBasicInfo.name = trs.get(i).child(2).text();
-                    gameInfo.matchResult = trs.get(i).child(4).text();
-                    gameInfo.guestClubBasicInfo.name = trs.get(i).child(6).text();
-                    gameInfo.playerGoalsNumber = maxNumberOfGoals;
-                    result.add(gameInfo);
+                if (trs.get(i).childrenSize() == 7) {
+                	StatisticsMostGoalsByPlayerPerGame gameAndPlayer = new StatisticsMostGoalsByPlayerPerGame();
+                	gameAndPlayer.playerInfo.name = trs.get(i).child(0).text();
+                    gameAndPlayer.gameInfo.date = trs.get(i).child(1).text();
+                    gameAndPlayer.gameInfo.firstTeamBasicInfo.name = trs.get(i).child(2).text();
+                    gameAndPlayer.gameInfo.finalResult = trs.get(i).child(4).text();
+                    gameAndPlayer.gameInfo.secondTeamBasicInfo.name = trs.get(i).child(6).text();
+                    gameAndPlayer.numberOfGoal = maxNumberOfGoals;
+                    
+                    result.add(gameAndPlayer);
                 }
             }
         }

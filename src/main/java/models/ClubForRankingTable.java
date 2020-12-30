@@ -30,15 +30,8 @@ public class ClubForRankingTable{
 		this.diffirentGoals = diffirentGoals;
 		this.points = points;
 	}
-	public void setName(String name) {
-
-		this.clubBasicInfo.name = name;
-
-	}
 	
-	public void setPlayedGames(String games) {
-		this.playedGames = games;
-	}
+	
 	public void setWinGames(String games) {
 		this.winGames = games;
 	}

@@ -5,27 +5,12 @@ import java.util.List;
 
 public class Round {
     public String roundNumberAsString;
-    public int roundNumberAsInt;
     public List<Game> games;
 
-    public Round() {
-        roundNumberAsString = "";
+    public Round() {        
         games = new ArrayList<>();
     }
-    
-    public void setRoundNumber(String numberAsString) {
-    	roundNumberAsString = numberAsString;
-		String actualNumber = numberAsString.substring(0 ,numberAsString.indexOf('.') );
-    	roundNumberAsInt = Integer.parseInt(actualNumber);
-    }
-    public int getRoundNumber(String round) {
-		String numberAsString = round.substring(0 , round.indexOf(".")-1);
-		int number = Integer.valueOf(numberAsString);
-    	return number;
-    }
-    public String getRoundNumber() {
-    	return roundNumberAsString;
-    }
+
     public String toString() {
     	String round = "";
     	round = round + roundNumberAsString +"\n";

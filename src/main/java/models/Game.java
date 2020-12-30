@@ -6,7 +6,7 @@ public class Game {
     public String finalResult;
     public String resultOfFirstHalf;
     public String date;
-    public String time;// new leagues use it so do we want it???
+    public String time;
     
 
     public Game() {

@@ -2,11 +2,11 @@ package models;
 
 public class PlayerSummary {
 
-	String number;//is it better int or no?
+	public String number;
 	public Player playerBasicInfo;
-	String nation;
-	String birthDate;//or date instead of string
-	String information;
+	public String nation;
+	public String birthDate;
+	public String information;
 
 	
 	public PlayerSummary() {
