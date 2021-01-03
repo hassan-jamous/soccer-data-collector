@@ -23,8 +23,8 @@ public class ScreenScraper {
         return tableCollector.getLastTable(competitionName, competitionYears);
     }
 
-    public RankingTable getTableByRound(String competitionName, String competitionYears, String round) {
-        return tableCollector.getTableByRound(competitionName, competitionYears, round);
+    public RankingTable getTableByRound(String competitionName, String competitionYears, String round ,RankingTableRequest requestKind) {
+        return tableCollector.getTableByRound(competitionName, competitionYears, round , requestKind);
     }
 
     public ArrayList<Goal> getGoalsOfGame(String competitionName, String competitionYears, String fisrtTeam, String secondTeam) {

@@ -18,8 +18,11 @@ public class Goal {
 		assesterBasicInfo =new Player();
 		this.result = result;
 		this.playerBasicInfo.name = player;
-		
-		if(information.equals("0.")) {
+		if(information == null) {
+			this.information = null;
+			this.kind = KindOfGoal.NoInformation;
+		}
+		else if(information.equals("0.")) {
 			this.kind = KindOfGoal.OldGoal;
 			this.information = null;
 		}
@@ -35,7 +38,11 @@ public class Goal {
 		this.minute = minute;
 		this.playerBasicInfo.name = player;
 		this.information = information;
-		if(information.contains("own")) {
+		if(information == null) {
+			this.information = null;
+			this.kind = KindOfGoal.NoInformation;
+		}
+		else if(information.contains("own goal")) {
 			kind = KindOfGoal.Reverse;
 		}
 		else {

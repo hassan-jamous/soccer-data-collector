@@ -23,6 +23,9 @@ public class GoalsCollector {
         Element tableOfGoals = getGoalsTable(tables);
 
         Elements rowsOfGoals = tableOfGoals.select("tr");
+        if((rowsOfGoals != null)&&(rowsOfGoals.size() ==2 )&&(rowsOfGoals.get(1).text().contains("none"))) {
+        	return null;
+        }
         ArrayList<Goal> goals = new ArrayList<>();
         //the first row is the header, this is why i = 1;
         for (int i = 1; i < rowsOfGoals.size(); i++) {//
@@ -34,8 +37,8 @@ public class GoalsCollector {
                     if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.HasAssister) {
                         Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.HasAssister);
                         goals.add(goal);
-                    } else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.Individually) {
-                        Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.Individually);
+                    } else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.NoInformationOrIndividually) {
+                        Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.NoInformationOrIndividually);
                         goals.add(goal);
                     } else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.Reverse) {
                         Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.Reverse);
@@ -59,10 +62,10 @@ public class GoalsCollector {
             if (numberOfPlayer == 2) {
                 return KindOfGoal.HasAssister;
             }
-            if (goal.text().contains("own")) {
+            if (goal.text().contains("own goal")) {
                 return KindOfGoal.Reverse;
             } else {
-                return KindOfGoal.Individually;
+                return KindOfGoal.NoInformationOrIndividually;
             }
         }
         throw new RuntimeException("Unknown Kind of Goal");
@@ -79,9 +82,16 @@ public class GoalsCollector {
             result.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
             result.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(") - 1);
             result.assesterBasicInfo.name = rowOfGoal.child(1).child(1).attr("title");
-        } else if (kind == KindOfGoal.Individually) {
+        } else if (kind == KindOfGoal.NoInformationOrIndividually) {
             result.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
-            result.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2);
+            if(rowOfGoal.child(1).ownText().equals(result.minute+".")) {
+            	result.information = null;
+            	result.kind = KindOfGoal.NoInformation;
+            }
+            else{
+            	result.information = rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2);
+            	result.kind = KindOfGoal.Individually;
+            }
         } else if (kind == KindOfGoal.Reverse) {
             result.minute = rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf("."));
             result.information = "own goal";

@@ -89,15 +89,14 @@ public class StatisticsCollector {
         return result;
     }
 
-    //todo
-    //there is a problem
+
     public ArrayList<StatisticsMostGoalsByPlayerPerGame> getStatisticsMostGoalsByPlayerInGameInCompetition(String competitionName) {
         ArrayList<StatisticsMostGoalsByPlayerPerGame> result = new ArrayList<>();
         String url = WORLDFOOTBALL_STATS_URL + competitionName + "/5/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
         
-        Elements divsA = doc.select("div.box");//there is anther solution
+        Elements divsA = doc.select("div.box");
         Elements divs = divsA.select("div:has(div:has(table:has(tbody:has(tr:has(th:contains(Player)))))) , div:has(div:has(table:has(tbody:has(tr:has(th:contains(Guest))))))");
         //we have one table for each number of goals    
         for (int divIndex = 0; divIndex < divs.size(); divIndex++) {

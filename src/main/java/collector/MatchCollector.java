@@ -188,8 +188,8 @@ public class MatchCollector {
                 if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.HasAssister) {
                     goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.HasAssister);
 
-                } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Individually) {
-                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Individually);
+                } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.NoInformationOrIndividually) {
+                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.NoInformationOrIndividually);
 
                 } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Reverse) {
                     goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Reverse);

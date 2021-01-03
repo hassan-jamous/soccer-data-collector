@@ -8,14 +8,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import models.ClubTransferTable;
+import models.TransferDestination;
 import models.TransferPlayerInformation;
 
 public class TransferCollector {
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_TRANSFER_URL = "https://www.worldfootball.net/transfers/";
 
-    //todo
-	//no copy paste
+
     public ArrayList<ClubTransferTable> getClubsTransferTableAtSeason(String competitionName, String competiotionYears) {
         String url = WORLD_FOOTBALL_TRANSFER_URL + competitionName + "-" + competiotionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
@@ -34,28 +34,16 @@ public class TransferCollector {
                 if (trs.get(i).text().equals("In")) {
                     int j = i + 1;
                     while ((j < trs.size()) && (!(trs.get(j).text().equals("Out")))) {
-                        TransferPlayerInformation player = new TransferPlayerInformation();
-                        player.date = trs.get(j).child(0).text();
-                        player.playerBasicInfo.name = trs.get(j).child(1).text();
-                        player.playerNation = trs.get(j).child(2).child(0).attr("title");
-                        player.playerPosition = trs.get(j).child(3).text();
-                        player.fromClub.name = trs.get(j).child(5).text();
-                        player.toClub.name = clubTransferTable.clubBasicInfo.name;
-                        clubTransferTable.intable.add(player);
+                        
+                        clubTransferTable.intable.add(getPlayerTransferInformation(trs.get(j) ,clubTransferTable.clubBasicInfo.name ,TransferDestination.In) );
 
                         j++;
                     }
                 } else if (trs.get(i).text().equals("Out")) {
                     int j = i + 1;
                     while ((j < trs.size())) {
-                        TransferPlayerInformation player = new TransferPlayerInformation();
-                        player.date = trs.get(j).child(0).text();
-                        player.playerBasicInfo.name = trs.get(j).child(1).text();
-                        player.playerNation = trs.get(j).child(2).child(0).attr("title");
-                        player.playerPosition = trs.get(j).child(3).text();
-                        player.toClub.name = trs.get(j).child(5).text();
-                        player.fromClub.name = clubTransferTable.clubBasicInfo.name;
-                        clubTransferTable.outtable.add(player);
+                        
+                        clubTransferTable.outtable.add(getPlayerTransferInformation(trs.get(j) ,clubTransferTable.clubBasicInfo.name ,TransferDestination.Out));
                         j++;
                     }
                 }
@@ -65,6 +53,24 @@ public class TransferCollector {
         return result;
     }
 
+    //may we change TransferPlayerInformation to contain one club, table in the destination club is the same club , table out out from is the same club
+    private TransferPlayerInformation getPlayerTransferInformation(Element tr ,String clubName ,TransferDestination kindOfTransfer) {
+    	TransferPlayerInformation player = new TransferPlayerInformation();
+
+    	player.date =                 tr.child(0).text();
+        player.playerBasicInfo.name = tr.child(1).text();
+        player.playerNation =         tr.child(2).child(0).attr("title");
+        player.playerPosition =       tr.child(3).text();
+        if(kindOfTransfer == TransferDestination.In) {
+	        player.fromClub.name = tr.child(5).text();
+	        player.toClub.name   = clubName;
+        }
+        else {
+        	player.toClub.name   = tr.child(5).text();
+            player.fromClub.name = clubName;
+        }
+        return player;
+    }
     private ArrayList<Element> getTransferDivs(Elements divs) {
         ArrayList<Element> result = new ArrayList<>();
         for (Element div : divs) {

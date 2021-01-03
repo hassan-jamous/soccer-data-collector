@@ -2,6 +2,8 @@ package collector;
 
 import models.ClubForRankingTable;
 import models.RankingTable;
+import models.RankingTableRequest;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -16,8 +18,8 @@ public class TableCollector {
         return getRankingTable(url);
     }
 
-    public RankingTable getTableByRound(String competitionName, String competitionYears, String round) {
-        String url = WORLD_FOOTBALL_SCHEDULE_URL + competitionName + "-" + competitionYears + "-spieltag/" + round + "/";
+    public RankingTable getTableByRound(String competitionName, String competitionYears, String round , RankingTableRequest requestKind) {
+        String url = WORLD_FOOTBALL_SCHEDULE_URL + competitionName + "-" + competitionYears + "-spieltag/" + round + requestKind.value() + "/";
         return getRankingTable(url);
     }
 

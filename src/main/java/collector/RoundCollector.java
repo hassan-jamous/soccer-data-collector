@@ -14,6 +14,7 @@ import java.util.List;
 
 public class RoundCollector {
     private static final String WORLD_FOOTBALL_MATCHES_URL = "https://www.worldfootball.net/all_matches/";
+    private static final String WORLD_FOOTBALL_SITE_URL = "https://www.worldfootball.net/";
     private HttpUtil httpUtil = new HttpUtil();
 
     public GamesTableOfLeague getAllRounds(String competitoinName, String competitionYears) {
@@ -29,14 +30,18 @@ public class RoundCollector {
             if (isRound(tr)) {
                 Round round = new Round();
                 round.roundNumberAsString = tr.child(0).child(0).text();
-                round.games.addAll(ParseGamesInRound(trs, i));
+                Elements link = tr.select("a[href*=/schedule/]");
+                if((link != null) && !(link.isEmpty()) ) {
+                	
+                }
+                round.games.addAll(ParseGamesInRound(trs, i , link ));
                 gamesTable.rounds.add(round);
             }
         }
         return gamesTable;
     }
 
-    private List<Game> ParseGamesInRound(Elements trs, int startFromIndex) {
+    private List<Game> ParseGamesInRound(Elements trs, int startFromIndex , Elements link) {
         int j = startFromIndex + 1;
         List<Game> output = new ArrayList<>();
 
@@ -47,7 +52,11 @@ public class RoundCollector {
         while ((j < trs.size()) && (!isRound(trs.get(j))) && (isGame((trs.get(j))))) {
             if (isGame(trs.get(j))) {
                 String currentDate = getGameValues(trs.get(j), GameIformationInTDs.Date);
+               
                 date = currentDate == null ? date : currentDate;
+                if(date.equals("")) {//in the first game the date =="" like 3.Round in 1925-1926
+                	date = getRoundDate(WORLD_FOOTBALL_SITE_URL+ link.get(0).attr("href"));
+                }
                 Game game = new Game(date,
                         getGameValues(trs.get(j), GameIformationInTDs.Time),
                         getGameValues(trs.get(j), GameIformationInTDs.FirstTeam),
@@ -104,5 +113,20 @@ public class RoundCollector {
             return tds.get(5).text();
         }
         return null;
+    }
+    
+    private String getRoundDate(String roundURL) {
+        String htmlPage = httpUtil.sendGetHttpRequest(roundURL);
+        Document doc = Jsoup.parse(htmlPage);
+        Elements tables = doc.select("table.standard_tabelle");
+        Elements roundTable = tables.select("table:has(tbody:has(tr:has(td[nowrap=nowrap]):contains(/)))");
+
+        Elements trs =roundTable.select("tr");
+
+        if (isGame(trs.get(0))) {
+        	return trs.get(0).child(0).text();
+        }
+        
+        throw new RuntimeException();
     }
 }
