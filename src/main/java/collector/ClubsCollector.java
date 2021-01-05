@@ -70,7 +70,8 @@ public class ClubsCollector {
             } else if (kindHeaderOfPlayer(row) == KindOfPlayer.GoalkeeperCoach) {
                 information = "Goalkeeper-Coach";
             } else if (!(row.select("a[href*=/player_summary/]").isEmpty())) {//link to player summary
-                PlayerSummary player = new PlayerSummary(row.child(1).text(), row.child(2).text(), row.child(4).text(), row.child(5).text(), information);
+            	String playerNumber = (row.child(1).text().equals(""))? null : row.child(1).text() ;
+                PlayerSummary player = new PlayerSummary(playerNumber, row.child(2).text(), row.child(4).text(), row.child(5).text(), information);
                 players.add(player);
             }
         }

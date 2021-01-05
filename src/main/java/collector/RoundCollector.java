@@ -101,7 +101,10 @@ public class RoundCollector {
         if (type == GameIformationInTDs.Date && tds.get(0).childrenSize() > 0) {
             return tds.get(0).child(0).text();
         } else if (type == GameIformationInTDs.Time) {
-            return tds.get(1).text();
+            if(tds.get(1).text().equals("")) {
+            	return null;
+            }
+        	return tds.get(1).text();
         } else if (type == GameIformationInTDs.FirstTeam) {
             return tds.get(2).child(0).text();
         } else if (type == GameIformationInTDs.SecondTeam) {

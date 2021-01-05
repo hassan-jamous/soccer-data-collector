@@ -31,7 +31,7 @@ public class Game {
         }
     }
 
-    public String toString() {
+  public String toString() {
         String game = "";
 
         game = date + "   " + ((time != null) ?  time : "") + "  " + firstTeamBasicInfo.name + "  vs  " + secondTeamBasicInfo.name + "  " + finalResult + 

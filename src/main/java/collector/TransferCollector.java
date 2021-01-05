@@ -34,15 +34,12 @@ public class TransferCollector {
                 if (trs.get(i).text().equals("In")) {
                     int j = i + 1;
                     while ((j < trs.size()) && (!(trs.get(j).text().equals("Out")))) {
-                        
                         clubTransferTable.intable.add(getPlayerTransferInformation(trs.get(j) ,clubTransferTable.clubBasicInfo.name ,TransferDestination.In) );
-
                         j++;
                     }
                 } else if (trs.get(i).text().equals("Out")) {
                     int j = i + 1;
                     while ((j < trs.size())) {
-                        
                         clubTransferTable.outtable.add(getPlayerTransferInformation(trs.get(j) ,clubTransferTable.clubBasicInfo.name ,TransferDestination.Out));
                         j++;
                     }
