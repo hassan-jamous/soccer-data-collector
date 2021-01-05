@@ -6,6 +6,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import models.PlayerTopSoccer;
+import util.HttpUtil;
 
 public class TopScoreCollector {
     private HttpUtil httpUtil = new HttpUtil();

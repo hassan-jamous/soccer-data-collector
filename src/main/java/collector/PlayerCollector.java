@@ -13,6 +13,7 @@ import models.PlayerCompetitionsInformation;
 import models.PlayerInformationRequest;
 import models.PlayerPersonalInformation;
 import models.PlayerTeamManaged;
+import util.HttpUtil;
 
 public class PlayerCollector {
     private HttpUtil httpUtil = new HttpUtil();

@@ -10,6 +10,7 @@ import org.jsoup.select.Elements;
 import models.ClubTransferTable;
 import models.TransferDestination;
 import models.TransferPlayerInformation;
+import util.HttpUtil;
 
 public class TransferCollector {
     private HttpUtil httpUtil = new HttpUtil();
@@ -26,7 +27,7 @@ public class TransferCollector {
         ArrayList<ClubTransferTable> result = new ArrayList<>();
         for (Element div : divs) {
             ClubTransferTable clubTransferTable = new ClubTransferTable();
-            clubTransferTable.clubBasicInfo.name = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("» ") - 1);
+            clubTransferTable.clubBasicInfo.name = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("ï¿½ ") - 1);
             clubTransferTable.season = competiotionYears;
             Elements trs = div.child(1).getElementsByTag("tr");
 

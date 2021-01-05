@@ -14,6 +14,7 @@ import models.PlayerAtMatch;
 import models.PlayerEventAtMatch;
 import models.PlayerTypeAtMatch;
 import models.Referee;
+import util.HttpUtil;
 
 public class MatchCollector {
     private HttpUtil httpUtil = new HttpUtil();

@@ -34,19 +34,26 @@ import models.StatisticsMostGoalsByPlayerPerGame;
 import models.StatisticsRecordWinsAndMostGoalInGame;
 import models.StatisticsRequestKind;
 import models.TransferPlayerInformation;
-import topScore.TopScoreCollector;
-import topScoreModels.GameStatisticTopScore;
-import topScoreModels.StatisticsItemsGameTopScore;
+import sofaScore.SofaScoreCollector;
+import sofaScoreModels.GameStatistic;
+import sofaScoreModels.StatisticsItemsGameTopScore;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Collections;
 
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class ScreenScraperTest {
+
+    public void assertGameInRound(GamesTableOfLeague gamesTableActualValue2015_2016, List<Game> games, List<Integer> gamesIds, int roundNumber) {
+        for (int i = 0; i < games.size(); i++) {
+            assertThat(games.get(i)).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(roundNumber - 1).games.get(gamesIds.get(i)));
+        }
+    }
 
     @Test
     public void itShouldGetGamesTableOfLeague() {
@@ -54,14 +61,13 @@ public class ScreenScraperTest {
 
         GamesTableOfLeague gamesTableActualValue2015_2016 = screenScraperUnderTest.getAllRounds("eng-premier-league", "2015-2016");
 
-        Game game0Atround4At2015_2016 = new Game("29/08/2015","12:45","Newcastle United","Arsenal FC","0:1 (0:0)");
-        Game game1Atround4At2015_2016 = new Game("29/08/2015","15:00","AFC Bournemouth","Leicester City","1:1 (1:0)");
-        Game game8Atround4At2015_2016 = new Game("30/08/2015","13:30","Southampton FC","Norwich City","3:0 (1:0)");
-        assertThat(game0Atround4At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(3).games.get(0));
-        assertThat(game1Atround4At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(3).games.get(1));
-        assertThat(game8Atround4At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(3).games.get(8));
+        List<Game> games = Arrays.asList(new Game("29/08/2015", "12:45", "Newcastle United", "Arsenal FC", "0:1 (0:0)"),
+                new Game("29/08/2015", "15:00", "AFC Bournemouth", "Leicester City", "1:1 (1:0)"),
+                new Game("30/08/2015", "13:30", "Southampton FC", "Norwich City", "3:0 (1:0)"));
+        List<Integer> gamesIds = Arrays.asList(0, 1, 8);
+        assertGameInRound(gamesTableActualValue2015_2016, games, gamesIds, 4);
         Assert.assertEquals(10, gamesTableActualValue2015_2016.rounds.get(3).games.size());
-          
+
         Game game0Atround9At2015_2016 = new Game("17/10/2015", "12:45", "Tottenham Hotspur", "Liverpool FC", "0:0 (0:0)");
         Game game3Atround9At2015_2016 = new Game("17/10/2015", "15:00", "Everton FC", "Manchester United", "0:3 (0:2)");
         Game game8Atround9At2015_2016 = new Game("18/10/2015", "16:00", "Newcastle United", "Norwich City", "6:2 (3:2)");
@@ -71,7 +77,7 @@ public class ScreenScraperTest {
         assertThat(game8Atround9At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(8).games.get(8));
         assertThat(game9Atround9At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(8).games.get(9));
         Assert.assertEquals(10, gamesTableActualValue2015_2016.rounds.get(8).games.size());
-        
+
         Game game1Atround14At2015_2016 = new Game("28/11/2015", "15:00", "Aston Villa", "Watford FC", "2:3 (1:1)");
         Game game5Atround14At2015_2016 = new Game("28/11/2015", "17:30", "Leicester City", "Manchester United", "1:1 (1:1)");
         Game game7Atround14At2015_2016 = new Game("29/11/2015", "14:05", "West Ham United", "West Bromwich Albion", "1:1 (1:0)");
@@ -81,7 +87,7 @@ public class ScreenScraperTest {
         assertThat(game7Atround14At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(13).games.get(7));
         assertThat(game8Atround14At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(13).games.get(8));
         Assert.assertEquals(10, gamesTableActualValue2015_2016.rounds.get(13).games.size());
-        
+
         Game game0Atround21At2015_2016 = new Game("12/01/2016", "19:45", "AFC Bournemouth", "West Ham United", "1:3 (1:0)");
         Game game2Atround21At2015_2016 = new Game("12/01/2016", "19:45", "Newcastle United", "Manchester United", "3:3 (1:2)");
         Game game9Atround21At2015_2016 = new Game("13/01/2016", "20:00", "Tottenham Hotspur", "Leicester City", "0:1 (0:0)");
@@ -89,7 +95,7 @@ public class ScreenScraperTest {
         assertThat(game2Atround21At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(20).games.get(2));
         assertThat(game9Atround21At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(20).games.get(9));
         Assert.assertEquals(10, gamesTableActualValue2015_2016.rounds.get(20).games.size());
-        
+
         Game game6Atround27At2015_2016 = new Game("28/02/2016", "14:05", "Manchester United", "Arsenal FC", "3:2 (2:1)");
         Game game7Atround27At2015_2016 = new Game("28/02/2016", "14:05", "Tottenham Hotspur", "Swansea City", "2:1 (0:1)");
         Game game9Atround27At2015_2016 = new Game("20/04/2016", "20:00", "Liverpool FC", "Everton FC", "4:0 (2:0)");
@@ -97,7 +103,7 @@ public class ScreenScraperTest {
         assertThat(game7Atround27At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(26).games.get(7));
         assertThat(game9Atround27At2015_2016).usingRecursiveComparison().isEqualTo(gamesTableActualValue2015_2016.rounds.get(26).games.get(9));
         Assert.assertEquals(10, gamesTableActualValue2015_2016.rounds.get(26).games.size());
-        
+
         Game game0Atround35At2015_2016 = new Game("13/04/2016", "20:00", "Crystal Palace", "Everton FC", "0:0 (0:0)");
         Game game4Atround35At2015_2016 = new Game("23/04/2016", "15:00", "Liverpool FC", "Newcastle United", "2:2 (2:0)");
         Game game8Atround35At2015_2016 = new Game("10/05/2016", "20:30", "West Ham United", "Manchester United", "3:2 (1:0)");
@@ -107,9 +113,9 @@ public class ScreenScraperTest {
         Assert.assertEquals(10, gamesTableActualValue2015_2016.rounds.get(34).games.size());
         Assert.assertEquals(38, gamesTableActualValue2015_2016.rounds.size());
 
-        
+
         GamesTableOfLeague gamesTableActualValue2005_2006 = screenScraperUnderTest.getAllRounds("eng-premier-league", "2005-2006");
-        
+
         Game game0Atround2At2005_2006 = new Game("20/08/2005", "12:45", "Manchester United", "Aston Villa", "1:0 (0:0)");
         Game game1Atround2At2005_2006 = new Game("20/08/2005", "15:00", "Blackburn Rovers", "Fulham FC", "2:1 (1:0)");
         Game game6Atround2At2005_2006 = new Game("20/08/2005", "15:15", "Liverpool FC", "Sunderland AFC", "1:0 (1:0)");
@@ -119,7 +125,7 @@ public class ScreenScraperTest {
         assertThat(game6Atround2At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(1).games.get(6));
         assertThat(game8Atround2At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(1).games.get(8));
         Assert.assertEquals(10, gamesTableActualValue2005_2006.rounds.get(1).games.size());
-        
+
         Game game2Atround12At2005_2006 = new Game("05/11/2005", "15:00", "Blackburn Rovers", "Charlton Athletic", "4:1 (2:1)");
         Game game6Atround12At2005_2006 = new Game("05/11/2005", "17:15", "Portsmouth FC", "Wigan Athletic", "0:2 (0:0)");
         Game game8Atround12At2005_2006 = new Game("06/11/2005", "16:00", "Manchester United", "Chelsea FC", "1:0 (1:0)");
@@ -127,7 +133,7 @@ public class ScreenScraperTest {
         assertThat(game6Atround12At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(11).games.get(6));
         assertThat(game8Atround12At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(11).games.get(8));
         Assert.assertEquals(10, gamesTableActualValue2005_2006.rounds.get(11).games.size());
-        
+
         Game game0Atround20At2005_2006 = new Game("31/12/2005", "12:45", "Aston Villa", "Arsenal FC", "0:0 (0:0)");
         Game game3Atround20At2005_2006 = new Game("31/12/2005", "13:00", "Tottenham Hotspur", "Newcastle United", "2:0 (1:0)");
         Game game9Atround20At2005_2006 = new Game("31/12/2005", "15:00", "Wigan Athletic", "Blackburn Rovers", "0:3 (0:1)");
@@ -135,7 +141,7 @@ public class ScreenScraperTest {
         assertThat(game3Atround20At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(19).games.get(3));
         assertThat(game9Atround20At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(19).games.get(9));
         Assert.assertEquals(10, gamesTableActualValue2005_2006.rounds.get(19).games.size());
-        
+
         Game game0Atround32At2005_2006 = new Game("01/04/2006", "12:45", "Birmingham City", "Chelsea FC", "0:0 (0:0)");
         Game game1Atround32At2005_2006 = new Game("01/04/2006", "15:00", "Arsenal FC", "Aston Villa", "5:0 (2:0)");
         Game game7Atround32At2005_2006 = new Game("02/04/2006", "15:00", "Manchester City", "Middlesbrough FC", "0:1 (0:1)");
@@ -145,11 +151,11 @@ public class ScreenScraperTest {
         assertThat(game7Atround32At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(31).games.get(7));
         assertThat(game9Atround32At2005_2006).usingRecursiveComparison().isEqualTo(gamesTableActualValue2005_2006.rounds.get(31).games.get(9));
         Assert.assertEquals(10, gamesTableActualValue2005_2006.rounds.get(31).games.size());
-        
+
         Assert.assertEquals(38, gamesTableActualValue2005_2006.rounds.size());
-        
+
         GamesTableOfLeague gamesTableActualValue1960_1961 = screenScraperUnderTest.getAllRounds("eng-premier-league", "1960-1961");
-        
+
         Game game0Atround1At1960_1961 = new Game("20/08/1960", null, "Aston Villa", "Chelsea FC", "3:2 (0:0)");
         Game game5Atround1At1960_1961 = new Game("20/08/1960", null, "Manchester United", "Blackburn Rovers", "1:3 (0:1)");
         Game game8Atround1At1960_1961 = new Game("20/08/1960", null, "Burnley FC", "Arsenal FC", "3:2 (1:1)");
@@ -159,7 +165,7 @@ public class ScreenScraperTest {
         assertThat(game8Atround1At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(0).games.get(8));
         assertThat(game10Atround1At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(0).games.get(10));
         Assert.assertEquals(11, gamesTableActualValue1960_1961.rounds.get(0).games.size());
-        
+
         Game game1Atround4At1960_1961 = new Game("30/08/1960", null, "Burnley FC", "Manchester City", "1:3 (0:0)");
         Game game2Atround4At1960_1961 = new Game("30/08/1960", null, "Preston North End", "Arsenal FC", "2:0 (0:0)");
         Game game3Atround4At1960_1961 = new Game("31/08/1960", null, "Manchester United", "Everton FC", "4:0 (2:0)");
@@ -169,8 +175,8 @@ public class ScreenScraperTest {
         assertThat(game3Atround4At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(3).games.get(3));
         assertThat(game9Atround4At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(3).games.get(9));
         Assert.assertEquals(11, gamesTableActualValue1960_1961.rounds.get(3).games.size());
-        
-        
+
+
         Game game0Atround16At1960_1961 = new Game("04/11/1960", null, "Leicester City", "Preston North End", "5:2 (0:0)");
         Game game1Atround16At1960_1961 = new Game("05/11/1960", null, "Chelsea FC", "Newcastle United", "4:2 (0:0)");
         Game game9Atround16At1960_1961 = new Game("05/11/1960", null, "Blackburn Rovers", "Birmingham City", "2:0 (0:0)");
@@ -180,7 +186,7 @@ public class ScreenScraperTest {
         assertThat(game9Atround16At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(15).games.get(9));
         assertThat(game10Atround16At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(15).games.get(10));
         Assert.assertEquals(11, gamesTableActualValue1960_1961.rounds.get(15).games.size());
-        
+
         Game game2Atround27At1960_1961 = new Game("21/01/1961", null, "West Ham United", "Chelsea FC", "3:1 (0:0)");
         Game game5Atround27At1960_1961 = new Game("21/01/1961", null, "Bolton Wanderers", "Blackpool FC", "3:1 (0:0)");
         Game game8Atround27At1960_1961 = new Game("21/01/1961", null, "Leicester City", "Manchester United", "6:0 (2:0)");
@@ -190,7 +196,7 @@ public class ScreenScraperTest {
         assertThat(game8Atround27At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(26).games.get(8));
         assertThat(game10Atround27At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(26).games.get(10));
         Assert.assertEquals(11, gamesTableActualValue1960_1961.rounds.get(26).games.size());
-        
+
         Game game0Atround36At1960_1961 = new Game("28/01/1961", null, "Wolverhampton Wanderers", "West Bromwich Albion", "4:2 (0:0)");
         Game game1Atround36At1960_1961 = new Game("31/03/1961", null, "Burnley FC", "Nottingham Forest", "4:1 (0:0)");
         Game game7Atround36At1960_1961 = new Game("31/03/1961", null, "Blackpool FC", "Manchester United", "2:0 (1:0)");
@@ -200,12 +206,12 @@ public class ScreenScraperTest {
         assertThat(game7Atround36At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(35).games.get(7));
         assertThat(game9Atround36At1960_1961).usingRecursiveComparison().isEqualTo(gamesTableActualValue1960_1961.rounds.get(35).games.get(9));
         Assert.assertEquals(11, gamesTableActualValue1960_1961.rounds.get(35).games.size());
-        
+
         Assert.assertEquals(42, gamesTableActualValue1960_1961.rounds.size());
 
 
         GamesTableOfLeague gamesTableActualValue1925_1926 = screenScraperUnderTest.getAllRounds("eng-premier-league", "1925-1926");
-        
+
         Game game1Atround3At1925_1926 = new Game("05/09/1925", null, "West Bromwich Albion", "Sunderland AFC", "2:5");
         Game game3Atround3At1925_1926 = new Game("05/09/1925", null, "Newcastle United", "Notts County", "6:3");
         Game game10Atround3At1925_1926 = new Game("08/09/1925", null, "Huddersfield Town", "Bury FC", "2:1");
@@ -221,7 +227,7 @@ public class ScreenScraperTest {
         assertThat(game3Atround35At1925_1926).usingRecursiveComparison().isEqualTo(gamesTableActualValue1925_1926.rounds.get(34).games.get(1));
         assertThat(game5Atround35At1925_1926).usingRecursiveComparison().isEqualTo(gamesTableActualValue1925_1926.rounds.get(34).games.get(5));
         Assert.assertEquals(8, gamesTableActualValue1925_1926.rounds.get(34).games.size());
-        
+
         Game game0Atround36At1925_1926 = new Game("20/03/1926", null, "Leeds United", "Blackburn Rovers", "2:1");
         Game game2Atround36At1925_1926 = new Game("20/03/1926", null, "Manchester United", "Everton FC", "0:0");
         Game game7Atround36At1925_1926 = new Game("03/04/1926", null, "Arsenal FC", "Blackburn Rovers", "4:2");
@@ -231,10 +237,10 @@ public class ScreenScraperTest {
         assertThat(game7Atround36At1925_1926).usingRecursiveComparison().isEqualTo(gamesTableActualValue1925_1926.rounds.get(35).games.get(7));
         assertThat(game11Atround36At1925_1926).usingRecursiveComparison().isEqualTo(gamesTableActualValue1925_1926.rounds.get(35).games.get(11));
         Assert.assertEquals(13, gamesTableActualValue1925_1926.rounds.get(35).games.size());
-        
+
         Assert.assertEquals(42, gamesTableActualValue1925_1926.rounds.size());
-            
-        
+
+
         GamesTableOfLeague gamesTableActualValue1891_1892 = screenScraperUnderTest.getAllRounds("eng-premier-league", "1891-1892");
         Game game1Atround1At1891_1892 = new Game("05/09/1891", null, "Aston Villa", "Blackburn Rovers", "5:1");
         Game game4Atround1At1891_1892 = new Game("05/09/1891", null, "Stoke City", "Derby County", "2:1");
@@ -264,7 +270,7 @@ public class ScreenScraperTest {
         assertThat(game6Atround14At1891_1892).usingRecursiveComparison().isEqualTo(gamesTableActualValue1891_1892.rounds.get(13).games.get(6));
         Assert.assertEquals(7, gamesTableActualValue1891_1892.rounds.get(13).games.size());
 
-        
+
         Game game3Atround23At1891_1892 = new Game("26/03/1892", null, "Sunderland AFC", "Aston Villa", "2:1");
         Game game4Atround23At1891_1892 = new Game("02/04/1892", null, "Wolverhampton Wanderers", "Preston North End", "3:0");
         Game game5Atround23At1891_1892 = new Game("04/04/1892", null, "West Bromwich Albion", "Darwen", "12:0");
@@ -290,10 +296,10 @@ public class ScreenScraperTest {
         assertThat(game4Atround2At1888_1889).usingRecursiveComparison().isEqualTo(gamesTableActualValue1888_1889.rounds.get(2).games.get(4));
         assertThat(game5Atround2At1888_1889).usingRecursiveComparison().isEqualTo(gamesTableActualValue1888_1889.rounds.get(2).games.get(5));
         Assert.assertEquals(6, gamesTableActualValue1888_1889.rounds.get(2).games.size());
-        
+
         Assert.assertEquals(23, gamesTableActualValue1888_1889.rounds.size());
 
-        
+
     }
 
     @Test
@@ -326,7 +332,7 @@ public class ScreenScraperTest {
         ClubForRankingTable club12 = new ClubForRankingTable("12", "Stoke City", "22", "3", "4", "15", "27:69", "-42", "10:34");
         rankingTableExpectedValue1889_1890.table.add(club12);
         assertThat(rankingTableExpectedValue1889_1890).usingRecursiveComparison().isEqualTo(rankingTableActualValue1889_1890);
-        
+
         RankingTable rankingTableActualValue1906_1907 = screenScraperUnderTest.getLastTable("eng-premier-league", "1906-1907");
         ClubForRankingTable club0_1906_1907 = new ClubForRankingTable("1", "Newcastle United", "38", "22", "7", "9", "74:46", "28", "51:25");
         assertThat(club0_1906_1907).usingRecursiveComparison().isEqualTo(rankingTableActualValue1906_1907.table.get(0));
@@ -341,7 +347,7 @@ public class ScreenScraperTest {
         ClubForRankingTable club18_1906_1907 = new ClubForRankingTable("18", "Notts County", "38", "8", "15", "15", "46:50", "-4", "31:45");
         assertThat(club18_1906_1907).usingRecursiveComparison().isEqualTo(rankingTableActualValue1906_1907.table.get(17));
         Assert.assertEquals(20, rankingTableActualValue1906_1907.table.size());
-        
+
         RankingTable rankingTableActualValue1959_1960 = screenScraperUnderTest.getLastTable("eng-premier-league", "1959-1960");
         ClubForRankingTable club1_1959_1960 = new ClubForRankingTable("2", "Wolverhampton Wanderers", "42", "24", "6", "12", "106:67", "39", "54:30");
         assertThat(club1_1959_1960).usingRecursiveComparison().isEqualTo(rankingTableActualValue1959_1960.table.get(1));
@@ -350,7 +356,7 @@ public class ScreenScraperTest {
         ClubForRankingTable club20_1959_1960 = new ClubForRankingTable("21", "Leeds United", "42", "12", "10", "20", "65:92", "-27", "34:50");
         assertThat(club20_1959_1960).usingRecursiveComparison().isEqualTo(rankingTableActualValue1959_1960.table.get(20));
         Assert.assertEquals(22, rankingTableActualValue1959_1960.table.size());
-        
+
         RankingTable rankingTableActualValue2007_2008 = screenScraperUnderTest.getLastTable("eng-premier-league", "2007-2008");
         ClubForRankingTable club0_2007_2008 = new ClubForRankingTable("1", "Manchester United", "38", "27", "6", "5", "80:22", "58", "87");
         assertThat(club0_2007_2008).usingRecursiveComparison().isEqualTo(rankingTableActualValue2007_2008.table.get(0));
@@ -369,14 +375,14 @@ public class ScreenScraperTest {
         assertThat(club18_2017_2018).usingRecursiveComparison().isEqualTo(rankingTableActualValue2017_2018.table.get(18));
         Assert.assertEquals(20, rankingTableActualValue2017_2018.table.size());
 
-        
+
     }
-    
+
     @Test
-    public void itShouldGetRankingTableByRound(){
+    public void itShouldGetRankingTableByRound() {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
 
-        RankingTable rankingTableActualValue2012_2013ByRound14Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "2012-2013", "14" , RankingTableRequest.Normal);
+        RankingTable rankingTableActualValue2012_2013ByRound14Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "2012-2013", "14", RankingTableRequest.Normal);
         RankingTable rankingTableExpectedValue2012_2013ByRound14Normal = new RankingTable();
         ClubForRankingTable club20 = new ClubForRankingTable("1", "Manchester United", "14", "11", "0", "3", "33:18", "15", "33");
         rankingTableExpectedValue2012_2013ByRound14Normal.table.add(club20);
@@ -420,74 +426,74 @@ public class ScreenScraperTest {
         rankingTableExpectedValue2012_2013ByRound14Normal.table.add(club39);
         assertThat(rankingTableExpectedValue2012_2013ByRound14Normal).usingRecursiveComparison().isEqualTo(rankingTableActualValue2012_2013ByRound14Normal);
 
-        RankingTable rankingTableActualValue2018_2019ByRound21Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "2018-2019", "21" , RankingTableRequest.Away);
+        RankingTable rankingTableActualValue2018_2019ByRound21Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "2018-2019", "21", RankingTableRequest.Away);
         ClubForRankingTable club0_2018_2019ByRound11Normal = new ClubForRankingTable("1", "Tottenham Hotspur", "12", "10", "0", "2", "28:12", "16", "30");
         assertThat(club0_2018_2019ByRound11Normal).usingRecursiveComparison().isEqualTo(rankingTableActualValue2018_2019ByRound21Away.table.get(0));
         Assert.assertEquals(20, rankingTableActualValue2018_2019ByRound21Away.table.size());
-        
-        RankingTable rankingTableActualValue2013_2014ByRound27Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "2013-2014", "27" , RankingTableRequest.Home);
+
+        RankingTable rankingTableActualValue2013_2014ByRound27Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "2013-2014", "27", RankingTableRequest.Home);
         ClubForRankingTable club0_2013_2014ByRound11Home = new ClubForRankingTable("1", "Chelsea FC", "14", "12", "2", "0", "29:9", "20", "38");
         assertThat(club0_2013_2014ByRound11Home).usingRecursiveComparison().isEqualTo(rankingTableActualValue2013_2014ByRound27Home.table.get(0));
         ClubForRankingTable club5_2013_2014ByRound11Home = new ClubForRankingTable("6", "Manchester United", "13", "6", "3", "4", "18:12", "6", "21");
         assertThat(club5_2013_2014ByRound11Home).usingRecursiveComparison().isEqualTo(rankingTableActualValue2013_2014ByRound27Home.table.get(5));
         Assert.assertEquals(20, rankingTableActualValue2013_2014ByRound27Home.table.size());
-        
-        RankingTable rankingTableActualValue2000_2001ByRound11Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "2000-2001", "11" , RankingTableRequest.Normal);
+
+        RankingTable rankingTableActualValue2000_2001ByRound11Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "2000-2001", "11", RankingTableRequest.Normal);
         ClubForRankingTable club0_2000_2001ByRound11Normal = new ClubForRankingTable("1", "Manchester United", "11", "7", "3", "1", "31:8", "23", "24");
         assertThat(club0_2000_2001ByRound11Normal).usingRecursiveComparison().isEqualTo(rankingTableActualValue2000_2001ByRound11Normal.table.get(0));
         Assert.assertEquals(20, rankingTableActualValue2000_2001ByRound11Normal.table.size());
-        
-        RankingTable rankingTableActualValue2000_2001ByRound11Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "2000-2001", "11" , RankingTableRequest.Away);
+
+        RankingTable rankingTableActualValue2000_2001ByRound11Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "2000-2001", "11", RankingTableRequest.Away);
         ClubForRankingTable club0_2000_2001ByRound11Away = new ClubForRankingTable("1", "Ipswich Town", "5", "3", "0", "2", "9:6", "3", "9");
         assertThat(club0_2000_2001ByRound11Away).usingRecursiveComparison().isEqualTo(rankingTableActualValue2000_2001ByRound11Away.table.get(0));
         Assert.assertEquals(20, rankingTableActualValue2000_2001ByRound11Away.table.size());
-        
-        RankingTable rankingTableActualValue2000_2001ByRound11Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "2000-2001", "11" , RankingTableRequest.Home);
+
+        RankingTable rankingTableActualValue2000_2001ByRound11Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "2000-2001", "11", RankingTableRequest.Home);
         ClubForRankingTable club0_2000_2001ByRound11Home = new ClubForRankingTable("1", "Arsenal FC", "6", "6", "0", "0", "16:4", "12", "18");
         assertThat(club0_2000_2001ByRound11Home).usingRecursiveComparison().isEqualTo(rankingTableActualValue2000_2001ByRound11Home.table.get(0));
         Assert.assertEquals(20, rankingTableActualValue2000_2001ByRound11Home.table.size());
-          
-        RankingTable rankingTableActualValue1955_1956ByRound20Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "1955-1956", "20" , RankingTableRequest.Normal);
+
+        RankingTable rankingTableActualValue1955_1956ByRound20Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "1955-1956", "20", RankingTableRequest.Normal);
         ClubForRankingTable club0_1955_1956ByRound20Normal = new ClubForRankingTable("1", "Manchester United", "20", "10", "6", "4", "38:28", "10", "26:14");
         assertThat(club0_1955_1956ByRound20Normal).usingRecursiveComparison().isEqualTo(rankingTableActualValue1955_1956ByRound20Normal.table.get(0));
         Assert.assertEquals(22, rankingTableActualValue1955_1956ByRound20Normal.table.size());
-          
-        RankingTable rankingTableActualValue1977_1978ByRound37Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "1977-1978", "37" , RankingTableRequest.Away);
+
+        RankingTable rankingTableActualValue1977_1978ByRound37Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "1977-1978", "37", RankingTableRequest.Away);
         ClubForRankingTable club0_1977_1978ByRound37Away = new ClubForRankingTable("1", "Nottingham Forest", "18", "9", "6", "3", "28:14", "14", "24:12");
         assertThat(club0_1977_1978ByRound37Away).usingRecursiveComparison().isEqualTo(rankingTableActualValue1977_1978ByRound37Away.table.get(0));
         Assert.assertEquals(22, rankingTableActualValue1977_1978ByRound37Away.table.size());
-        
-        RankingTable rankingTableActualValue1985_1986ByRound26Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "1985-1986", "26" , RankingTableRequest.Home);
+
+        RankingTable rankingTableActualValue1985_1986ByRound26Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "1985-1986", "26", RankingTableRequest.Home);
         ClubForRankingTable club0_1985_1986ByRound26Home = new ClubForRankingTable("1", "Liverpool FC", "14", "11", "3", "0", "38:9", "29", "36");
         assertThat(club0_1985_1986ByRound26Home).usingRecursiveComparison().isEqualTo(rankingTableActualValue1985_1986ByRound26Home.table.get(0));
         Assert.assertEquals(22, rankingTableActualValue1985_1986ByRound26Home.table.size());
-        
-        RankingTable rankingTableActualValue1948_1949ByRound27Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "1948-1949", "27" , RankingTableRequest.Normal);
+
+        RankingTable rankingTableActualValue1948_1949ByRound27Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "1948-1949", "27", RankingTableRequest.Normal);
         ClubForRankingTable club0_1948_1949ByRound27Normal = new ClubForRankingTable("1", "Portsmouth FC", "27", "15", "8", "4", "48:23", "25", "38:16");
         assertThat(club0_1948_1949ByRound27Normal).usingRecursiveComparison().isEqualTo(rankingTableActualValue1948_1949ByRound27Normal.table.get(0));
         Assert.assertEquals(22, rankingTableActualValue1948_1949ByRound27Normal.table.size());
-        
-        RankingTable rankingTableActualValue1930_1931ByRound8Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "1930-1931", "8" , RankingTableRequest.Away);
+
+        RankingTable rankingTableActualValue1930_1931ByRound8Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "1930-1931", "8", RankingTableRequest.Away);
         ClubForRankingTable club0_1930_1931ByRound8Away = new ClubForRankingTable("1", "Arsenal FC", "5", "4", "1", "0", "18:7", "11", "9:1");
         assertThat(club0_1930_1931ByRound8Away).usingRecursiveComparison().isEqualTo(rankingTableActualValue1930_1931ByRound8Away.table.get(0));
         Assert.assertEquals(22, rankingTableActualValue1930_1931ByRound8Away.table.size());
-        
-        RankingTable rankingTableActualValue1925_1926ByRound12Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "1925-1926", "12" , RankingTableRequest.Home);
+
+        RankingTable rankingTableActualValue1925_1926ByRound12Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "1925-1926", "12", RankingTableRequest.Home);
         ClubForRankingTable club0_1925_1926ByRound12Home = new ClubForRankingTable("1", "Sunderland AFC", "6", "6", "0", "0", "26:7", "19", "12:0");
         assertThat(club0_1925_1926ByRound12Home).usingRecursiveComparison().isEqualTo(rankingTableActualValue1925_1926ByRound12Home.table.get(0));
         Assert.assertEquals(22, rankingTableActualValue1925_1926ByRound12Home.table.size());
-        
-        RankingTable rankingTableActualValue1898_1899ByRound18Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "1898-1899", "18" , RankingTableRequest.Normal);
+
+        RankingTable rankingTableActualValue1898_1899ByRound18Normal = screenScraperUnderTest.getTableByRound("eng-premier-league", "1898-1899", "18", RankingTableRequest.Normal);
         ClubForRankingTable club0_1898_1899ByRound18Normal = new ClubForRankingTable("1", "Aston Villa", "17", "12", "3", "2", "40:14", "26", "27:7");
         assertThat(club0_1898_1899ByRound18Normal).usingRecursiveComparison().isEqualTo(rankingTableActualValue1898_1899ByRound18Normal.table.get(0));
         Assert.assertEquals(18, rankingTableActualValue1898_1899ByRound18Normal.table.size());
-        
-        RankingTable rankingTableActualValue1888_1889ByRound10Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "1888-1889", "10" , RankingTableRequest.Away);
+
+        RankingTable rankingTableActualValue1888_1889ByRound10Away = screenScraperUnderTest.getTableByRound("eng-premier-league", "1888-1889", "10", RankingTableRequest.Away);
         ClubForRankingTable club0_1888_1889ByRound10Away = new ClubForRankingTable("1", "Preston North End", "6", "5", "1", "0", "22:2", "20", "11:1");
         assertThat(club0_1888_1889ByRound10Away).usingRecursiveComparison().isEqualTo(rankingTableActualValue1888_1889ByRound10Away.table.get(0));
         Assert.assertEquals(12, rankingTableActualValue1888_1889ByRound10Away.table.size());
-        
-        RankingTable rankingTableActualValue1891_1892ByRound18Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "1891-1892", "18" , RankingTableRequest.Home);
+
+        RankingTable rankingTableActualValue1891_1892ByRound18Home = screenScraperUnderTest.getTableByRound("eng-premier-league", "1891-1892", "18", RankingTableRequest.Home);
         ClubForRankingTable club0_1891_1892ByRound18Home = new ClubForRankingTable("1", "Sunderland AFC", "9", "9", "0", "0", "39:7", "32", "18:0");
         assertThat(club0_1891_1892ByRound18Home).usingRecursiveComparison().isEqualTo(rankingTableActualValue1891_1892ByRound18Home.table.get(0));
         Assert.assertEquals(14, rankingTableActualValue1891_1892ByRound18Home.table.size());
@@ -501,13 +507,13 @@ public class ScreenScraperTest {
         ArrayList<Goal> goalsActualValuenewGoalZeroToZero = screenScraperUnderTest.getGoalsOfGame("premier-league", "2020-2021", "brighton-hove-albion", "burnley-fc");
         ArrayList<Goal> goalsExpectedNewGoalZerotoZero = null;
         Assert.assertEquals(goalsExpectedNewGoalZerotoZero, goalsActualValuenewGoalZeroToZero);
-        
-        ArrayList<Goal> goals2017_2018LiverpoolFcBrightonHoveAlbionActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2017-2018", "liverpool-fc","brighton-hove-albion");
+
+        ArrayList<Goal> goals2017_2018LiverpoolFcBrightonHoveAlbionActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2017-2018", "liverpool-fc", "brighton-hove-albion");
         ArrayList<Goal> goals2017_2018LiverpoolFcBrightonHoveAlbionEcpectedValue = new ArrayList<>();
-        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion1 = new Goal("1 : 0", "26" ,"Mohamed Salah","left-footed shot" );
-        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion2 = new Goal("2 : 0", "40" ,"Dejan Lovren" ,"header",          "Andrew Robertson");
-        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion3 = new Goal("3 : 0", "53" ,"Dominic Solanke","right-footed shot","Mohamed Salah" );
-        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion4 = new Goal("4 : 0", "85" ,"Andrew Robertson","left-footed shot" );
+        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion1 = new Goal("1 : 0", "26", "Mohamed Salah", "left-footed shot");
+        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion2 = new Goal("2 : 0", "40", "Dejan Lovren", "header", "Andrew Robertson");
+        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion3 = new Goal("3 : 0", "53", "Dominic Solanke", "right-footed shot", "Mohamed Salah");
+        Goal goal2017_2018LiverpoolFcBrightonHoveAlbion4 = new Goal("4 : 0", "85", "Andrew Robertson", "left-footed shot");
         goals2017_2018LiverpoolFcBrightonHoveAlbionEcpectedValue.add(goal2017_2018LiverpoolFcBrightonHoveAlbion1);
         goals2017_2018LiverpoolFcBrightonHoveAlbionEcpectedValue.add(goal2017_2018LiverpoolFcBrightonHoveAlbion2);
         goals2017_2018LiverpoolFcBrightonHoveAlbionEcpectedValue.add(goal2017_2018LiverpoolFcBrightonHoveAlbion3);
@@ -543,67 +549,67 @@ public class ScreenScraperTest {
         ArrayList<Goal> goals2000_2001BradfordCityLeicesterCityActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2000-2001", "bradford-city", "leicester-city");
         Assert.assertEquals(null, goals2000_2001BradfordCityLeicesterCityActualValue);
 
-        ArrayList<Goal> goals2000_2001LeedsUnitedEvertonFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2000-2001", "leeds-united","everton-fc");
+        ArrayList<Goal> goals2000_2001LeedsUnitedEvertonFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2000-2001", "leeds-united", "everton-fc");
         ArrayList<Goal> goals2000_2001LeedsUnitedEvertonFcExpectedValue = new ArrayList<>();
-        Goal goals2000_2001LeedsUnitedEvertonFc1 = new Goal("1 : 0","16","Alan Smith",null);
-        Goal goals2000_2001LeedsUnitedEvertonFc2 = new Goal("2 : 0","37","Alan Smith",null);
+        Goal goals2000_2001LeedsUnitedEvertonFc1 = new Goal("1 : 0", "16", "Alan Smith", null);
+        Goal goals2000_2001LeedsUnitedEvertonFc2 = new Goal("2 : 0", "37", "Alan Smith", null);
         goals2000_2001LeedsUnitedEvertonFcExpectedValue.add(goals2000_2001LeedsUnitedEvertonFc1);
         goals2000_2001LeedsUnitedEvertonFcExpectedValue.add(goals2000_2001LeedsUnitedEvertonFc2);
         Assert.assertEquals(goals2000_2001LeedsUnitedEvertonFcActualValue.toString(), goals2000_2001LeedsUnitedEvertonFcExpectedValue.toString());
 
-        ArrayList<Goal> goals1998_1999ArsenalFcAstonVillaActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1998-1999", "arsenal-fc","aston-villa");
+        ArrayList<Goal> goals1998_1999ArsenalFcAstonVillaActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1998-1999", "arsenal-fc", "aston-villa");
         ArrayList<Goal> goals1998_1999ArsenalFcAstonVillaExpected = new ArrayList<>();
-        Goal goals1998_1999ArsenalFcAstonVilla1 = new Goal("1 : 0","66","Nwankwo Kanu",null);
-        goals1998_1999ArsenalFcAstonVillaExpected.add(goals1998_1999ArsenalFcAstonVilla1);        
+        Goal goals1998_1999ArsenalFcAstonVilla1 = new Goal("1 : 0", "66", "Nwankwo Kanu", null);
+        goals1998_1999ArsenalFcAstonVillaExpected.add(goals1998_1999ArsenalFcAstonVilla1);
         Assert.assertEquals(goals1998_1999ArsenalFcAstonVillaExpected.toString(), goals1998_1999ArsenalFcAstonVillaActualValue.toString());
 
-        ArrayList<Goal> goals1996_1997ManchesterUnitedWestHamUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1996-1997", "manchester-united","west-ham-united");
+        ArrayList<Goal> goals1996_1997ManchesterUnitedWestHamUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1996-1997", "manchester-united", "west-ham-united");
         ArrayList<Goal> goals1996_1997ManchesterUnitedWestHamUnitedExpected = new ArrayList<>();
-        Goal goals1996_1997ManchesterUnitedWestHamUnited1 = new Goal("1 : 0","11","Ole Gunnar Solskjær",null);
-        Goal goals1996_1997ManchesterUnitedWestHamUnited2 = new Goal("2 : 0","84","Jordi Cruyff",null);
+        Goal goals1996_1997ManchesterUnitedWestHamUnited1 = new Goal("1 : 0", "11", "Ole Gunnar Solskjær", null);
+        Goal goals1996_1997ManchesterUnitedWestHamUnited2 = new Goal("2 : 0", "84", "Jordi Cruyff", null);
         goals1996_1997ManchesterUnitedWestHamUnitedExpected.add(goals1996_1997ManchesterUnitedWestHamUnited1);
         goals1996_1997ManchesterUnitedWestHamUnitedExpected.add(goals1996_1997ManchesterUnitedWestHamUnited2);
         Assert.assertEquals(goals1996_1997ManchesterUnitedWestHamUnitedExpected.toString(), goals1996_1997ManchesterUnitedWestHamUnitedActualValue.toString());
 
-        ArrayList<Goal> goals1992_1993LiverpoolFcNottinghamForestActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1992-1993","liverpool-fc","nottingham-forest");
+        ArrayList<Goal> goals1992_1993LiverpoolFcNottinghamForestActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1992-1993", "liverpool-fc", "nottingham-forest");
         Assert.assertEquals(null, goals1992_1993LiverpoolFcNottinghamForestActualValue);
 
-        ArrayList<Goal> goals1992_1993ChelseaFcSheffieldUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1992-1993","chelsea-fc","sheffield-united");
+        ArrayList<Goal> goals1992_1993ChelseaFcSheffieldUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1992-1993", "chelsea-fc", "sheffield-united");
         ArrayList<Goal> goals1992_1993ChelseaFcSheffieldUnitedExpected = new ArrayList<>();
-        Goal goals1992_1993ChelseaFcSheffieldUnited1 = new Goal("0 : 1","40","Adrian Littlejohn",null);
-        Goal goals1992_1993ChelseaFcSheffieldUnited2 = new Goal("1 : 1","41","Andy Townsend",null);
-        Goal goals1992_1993ChelseaFcSheffieldUnited3 = new Goal("1 : 2","57","Brian Deane",null);
+        Goal goals1992_1993ChelseaFcSheffieldUnited1 = new Goal("0 : 1", "40", "Adrian Littlejohn", null);
+        Goal goals1992_1993ChelseaFcSheffieldUnited2 = new Goal("1 : 1", "41", "Andy Townsend", null);
+        Goal goals1992_1993ChelseaFcSheffieldUnited3 = new Goal("1 : 2", "57", "Brian Deane", null);
         goals1992_1993ChelseaFcSheffieldUnitedExpected.add(goals1992_1993ChelseaFcSheffieldUnited1);
         goals1992_1993ChelseaFcSheffieldUnitedExpected.add(goals1992_1993ChelseaFcSheffieldUnited2);
         goals1992_1993ChelseaFcSheffieldUnitedExpected.add(goals1992_1993ChelseaFcSheffieldUnited3);
         Assert.assertEquals(goals1992_1993ChelseaFcSheffieldUnitedExpected.toString(), goals1992_1993ChelseaFcSheffieldUnitedActualValue.toString());
-        
-        ArrayList<Goal> goals1983_1984TottenhamHotspurManchesterUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1983-1984","tottenham-hotspur","manchester-united");
+
+        ArrayList<Goal> goals1983_1984TottenhamHotspurManchesterUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1983-1984", "tottenham-hotspur", "manchester-united");
         ArrayList<Goal> goals1983_1984TottenhamHotspurManchesterUnitedExpected = new ArrayList<>();
-        Goal goals1983_1984TottenhamHotspurManchesterUnited1 = new Goal("1 : 0","90","Steve Archibald",null);
-        Goal goals1983_1984TottenhamHotspurManchesterUnited2 = new Goal("1 : 1","90","Norman Whiteside",null);
+        Goal goals1983_1984TottenhamHotspurManchesterUnited1 = new Goal("1 : 0", "90", "Steve Archibald", null);
+        Goal goals1983_1984TottenhamHotspurManchesterUnited2 = new Goal("1 : 1", "90", "Norman Whiteside", null);
         goals1983_1984TottenhamHotspurManchesterUnitedExpected.add(goals1983_1984TottenhamHotspurManchesterUnited1);
         goals1983_1984TottenhamHotspurManchesterUnitedExpected.add(goals1983_1984TottenhamHotspurManchesterUnited2);
         Assert.assertEquals(goals1983_1984TottenhamHotspurManchesterUnitedExpected.toString(), goals1983_1984TottenhamHotspurManchesterUnitedActualValue.toString());
 
-        ArrayList<Goal> goals1976_1977LeedsUnitedCoventryCityActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1976-1977","leeds-united","coventry-city");
+        ArrayList<Goal> goals1976_1977LeedsUnitedCoventryCityActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1976-1977", "leeds-united", "coventry-city");
         ArrayList<Goal> goals1976_1977LeedsUnitedCoventryCityExpected = new ArrayList<>();
-        Goal goals1976_1977LeedsUnitedCoventryCity1 = new Goal("0 : 1","45","Alan Green",null);
-        Goal goals1976_1977LeedsUnitedCoventryCity2 = new Goal("1 : 1","45","Joe Jordan",null);
-        Goal goals1976_1977LeedsUnitedCoventryCity3 = new Goal("1 : 2","90","Donal Murphy",null);
+        Goal goals1976_1977LeedsUnitedCoventryCity1 = new Goal("0 : 1", "45", "Alan Green", null);
+        Goal goals1976_1977LeedsUnitedCoventryCity2 = new Goal("1 : 1", "45", "Joe Jordan", null);
+        Goal goals1976_1977LeedsUnitedCoventryCity3 = new Goal("1 : 2", "90", "Donal Murphy", null);
         goals1976_1977LeedsUnitedCoventryCityExpected.add(goals1976_1977LeedsUnitedCoventryCity1);
         goals1976_1977LeedsUnitedCoventryCityExpected.add(goals1976_1977LeedsUnitedCoventryCity2);
         goals1976_1977LeedsUnitedCoventryCityExpected.add(goals1976_1977LeedsUnitedCoventryCity3);
         Assert.assertEquals(goals1976_1977LeedsUnitedCoventryCityExpected.toString(), goals1976_1977LeedsUnitedCoventryCityActualValue.toString());
 
-        ArrayList<Goal> goals1963_1964SheffieldUnitedBurnleyFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1963-1964","sheffield-united","burnley-fc");
+        ArrayList<Goal> goals1963_1964SheffieldUnitedBurnleyFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1963-1964", "sheffield-united", "burnley-fc");
         ArrayList<Goal> goals1963_1964SheffieldUnitedBurnleyFcExpected = new ArrayList<>();
-        Goal goals1963_1964SheffieldUnitedBurnleyFc1 = new Goal("1 : 0","90","Tony Wagstaff",null);
-        Goal goals1963_1964SheffieldUnitedBurnleyFc2 = new Goal("2 : 0","90","Mick Jones",null);
+        Goal goals1963_1964SheffieldUnitedBurnleyFc1 = new Goal("1 : 0", "90", "Tony Wagstaff", null);
+        Goal goals1963_1964SheffieldUnitedBurnleyFc2 = new Goal("2 : 0", "90", "Mick Jones", null);
         goals1963_1964SheffieldUnitedBurnleyFcExpected.add(goals1963_1964SheffieldUnitedBurnleyFc1);
         goals1963_1964SheffieldUnitedBurnleyFcExpected.add(goals1963_1964SheffieldUnitedBurnleyFc2);
         Assert.assertEquals(goals1963_1964SheffieldUnitedBurnleyFcExpected.toString(), goals1963_1964SheffieldUnitedBurnleyFcActualValue.toString());
-        
+
         ArrayList<Goal> goalsActualValueoldGoal1 = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "sheffield-wednesday", "chelsea-fc");
         ArrayList<Goal> goalsExpectedOldGoal1 = new ArrayList<>();
         Goal goal20 = new Goal("1 : 0", "Roy Shiner", "0.");
@@ -635,10 +641,10 @@ public class ScreenScraperTest {
         ArrayList<Goal> goalsActualValueoldGoalZeroToZero = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "aston-villa", "west-bromwich-albion");
         Assert.assertEquals(null, goalsActualValueoldGoalZeroToZero);
 
-        ArrayList<Goal> goals1946_1947LeedsUnitedSunderlandAfcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1946-1947","leeds-united","sunderland-afc");
+        ArrayList<Goal> goals1946_1947LeedsUnitedSunderlandAfcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1946-1947", "leeds-united", "sunderland-afc");
         ArrayList<Goal> goals1946_1947LeedsUnitedSunderlandAfcExpected = new ArrayList<>();
-        Goal goals1946_1947LeedsUnitedSunderlandAfc1 = new Goal("1 : 0","90", "Davy Cochrane", null);
-        Goal goals1946_1947LeedsUnitedSunderlandAfc2 = new Goal("1 : 1","90","Jackie Robinson", null);
+        Goal goals1946_1947LeedsUnitedSunderlandAfc1 = new Goal("1 : 0", "90", "Davy Cochrane", null);
+        Goal goals1946_1947LeedsUnitedSunderlandAfc2 = new Goal("1 : 1", "90", "Jackie Robinson", null);
         goals1946_1947LeedsUnitedSunderlandAfcExpected.add(goals1946_1947LeedsUnitedSunderlandAfc1);
         goals1946_1947LeedsUnitedSunderlandAfcExpected.add(goals1946_1947LeedsUnitedSunderlandAfc2);
         Assert.assertEquals(goals1946_1947LeedsUnitedSunderlandAfcExpected.toString(), goals1946_1947LeedsUnitedSunderlandAfcActualValue.toString());
@@ -739,7 +745,7 @@ public class ScreenScraperTest {
         PlayerSummary player39ManchesterUnited2001 = new PlayerSummary(null, "Steve McClaren", "England", "03/05/1961", "Ass. Manager");
         assertThat(player39ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(39));
 
-        
+
         ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1991 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1991");
         PlayerSummary player0ManchesterUnited1991 = new PlayerSummary(null, "Mark Bosnich", "Australia", "13/01/1972", "Goalkeeper");
         assertThat(player0ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(0));
@@ -780,7 +786,7 @@ public class ScreenScraperTest {
         PlayerSummary player12ManchesterUnited1966 = new PlayerSummary(null, "Bobby Charlton", "England", "11/10/1937", "Midfielder");
         assertThat(player12ManchesterUnited1966).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1966.get(12));
 
-        
+
         ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getAllPlayersSummaryInClub("manchester-united", "1950");
         ArrayList<PlayerSummary> manchesterUnitedExpectedplayers1950 = new ArrayList<>();
         PlayerSummary player40 = new PlayerSummary(null, "Jack Crompton", "England", "18/12/1921", "Goalkeeper");
@@ -867,7 +873,7 @@ public class ScreenScraperTest {
     public void itShouldGetClubsInLeague() {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
 
-        ArrayList<Club> teamsAt2015_2016ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league","2015-2016");
+        ArrayList<Club> teamsAt2015_2016ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "2015-2016");
         ArrayList<Club> teamsAt2015_2016Expected = new ArrayList<>();
         Club team1 = new Club("AFC Bournemouth");
         Club team2 = new Club("Arsenal FC");
@@ -911,7 +917,7 @@ public class ScreenScraperTest {
         teamsAt2015_2016Expected.add(team20);
         Assert.assertEquals(teamsAt2015_2016Expected.toString(), teamsAt2015_2016ActualValue.toString());
 
-        ArrayList<Club> teamsAt1967_1968ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league","1967-1968");
+        ArrayList<Club> teamsAt1967_1968ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1967-1968");
         ArrayList<Club> teamsAt1967_1968Expected = new ArrayList<>();
         Club team30 = new Club("Arsenal FC");
         Club team31 = new Club("Burnley FC");
@@ -959,7 +965,7 @@ public class ScreenScraperTest {
         teamsAt1967_1968Expected.add(team51);
         Assert.assertEquals(teamsAt1967_1968Expected.toString(), teamsAt1967_1968ActualValue.toString());
 
-        ArrayList<Club> teamsAt1889_1890ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league","1889-1890");
+        ArrayList<Club> teamsAt1889_1890ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1889-1890");
         ArrayList<Club> teamsAt1889_1890Expected = new ArrayList<>();
         Club team60 = new Club("Accrington FC");
         Club team61 = new Club("Aston Villa");
@@ -2004,74 +2010,77 @@ public class ScreenScraperTest {
 
 
     }
+
     @Test
     public void itShouldGetMostGoalsByPlayerPerGame() {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
         ArrayList<StatisticsMostGoalsByPlayerPerGame> mostGoalsByPlayerPerGameEngPremierLeagueActualValue = new ArrayList<>();
         mostGoalsByPlayerPerGameEngPremierLeagueActualValue = screenScraperUnderTest.getStatisticsMostGoalsByPlayerInGameInCompetition("eng-premier-league");
-        
+
         StatisticsMostGoalsByPlayerPerGame mostGoalsByPlayer1PerGameEngPremierLeagueExpectedValue = new StatisticsMostGoalsByPlayerPerGame(
-        		"Geoff Hurst","19/10/1968","West Ham United","8:0","Sunderland AFC","6");
+                "Geoff Hurst", "19/10/1968", "West Ham United", "8:0", "Sunderland AFC", "6");
         Assert.assertEquals(mostGoalsByPlayer1PerGameEngPremierLeagueExpectedValue.toString(), mostGoalsByPlayerPerGameEngPremierLeagueActualValue.get(0).toString());
 
         StatisticsMostGoalsByPlayerPerGame mostGoalsByPlayer2PerGameEngPremierLeagueExpectedValue = new StatisticsMostGoalsByPlayerPerGame(
-        		"Kun Agüero","03/10/2015","Manchester City","6:1","Newcastle United","5");
+                "Kun Agüero", "03/10/2015", "Manchester City", "6:1", "Newcastle United", "5");
         Assert.assertEquals(mostGoalsByPlayer2PerGameEngPremierLeagueExpectedValue.toString(), mostGoalsByPlayerPerGameEngPremierLeagueActualValue.get(1).toString());
 
         StatisticsMostGoalsByPlayerPerGame mostGoalsByPlayer3PerGameEngPremierLeagueExpectedValue = new StatisticsMostGoalsByPlayerPerGame(
-        		"Heung-min Son","20/09/2020","Southampton FC","2:5","Tottenham Hotspur","4");
+                "Heung-min Son", "20/09/2020", "Southampton FC", "2:5", "Tottenham Hotspur", "4");
         Assert.assertEquals(mostGoalsByPlayer3PerGameEngPremierLeagueExpectedValue.toString(), mostGoalsByPlayerPerGameEngPremierLeagueActualValue.get(22).toString());
 
     }
+
     //to do################################################################################
     @Test
     public void itShouldGetRoundInfoTopScore() {
-    	TopScoreCollector topScoreCollectorTest  = new TopScoreCollector();
-    	topScoreCollectorTest.getGamesIdInRound("Premier League", "20/21", "3");
+        SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
+        sofaScoreCollectorTest.getGamesIdInRound("Premier League", "20/21", "3");
     }
-  //to do################################################################################
+
+    //to do################################################################################
     @Test
     public void itShouldGetGameStatisticTopScore() {
-    	
-    	TopScoreCollector topScoreCollectorTest  = new TopScoreCollector();
-    	
-    	GameStatisticTopScore game1Atround3At19_20StatisticTopScoreActualValue = topScoreCollectorTest.getGameStatistic("Premier League", "19/20", "3" , 1);
-    	
-    	assertThat("ALL").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(0).period);
-    	assertThat("1ST").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(1).period);
-    	assertThat("TVData").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(2).groups.get(2).groupName);
 
-    	StatisticsItemsGameTopScore game1Atround3At19_20_ALL_Possession_Info= new StatisticsItemsGameTopScore("Ball possession","46%","54%");
-    	assertThat(game1Atround3At19_20_ALL_Possession_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(0).groups.get(0).statisticsItems.get(0));
+        SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
 
-    	StatisticsItemsGameTopScore game1Atround3At19_20_ALL_Total_Shots_Info= new StatisticsItemsGameTopScore("Total shots","6","23");
+        GameStatistic game1Atround3At19_20StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameStatistic("Premier League", "19/20", "3", 1);
+
+        assertThat("ALL").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(0).period);
+        assertThat("1ST").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(1).period);
+        assertThat("TVData").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(2).groups.get(2).groupName);
+
+        StatisticsItemsGameTopScore game1Atround3At19_20_ALL_Possession_Info = new StatisticsItemsGameTopScore("Ball possession", "46%", "54%");
+        assertThat(game1Atround3At19_20_ALL_Possession_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(0).groups.get(0).statisticsItems.get(0));
+
+        StatisticsItemsGameTopScore game1Atround3At19_20_ALL_Total_Shots_Info = new StatisticsItemsGameTopScore("Total shots", "6", "23");
         assertThat(game1Atround3At19_20_ALL_Total_Shots_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(0).groups.get(1).statisticsItems.get(0));
 
-    	StatisticsItemsGameTopScore game1Atround3At19_20_1ST_Blocked_Shots_Info= new StatisticsItemsGameTopScore("Blocked shots","0","5");
+        StatisticsItemsGameTopScore game1Atround3At19_20_1ST_Blocked_Shots_Info = new StatisticsItemsGameTopScore("Blocked shots", "0", "5");
         assertThat(game1Atround3At19_20_1ST_Blocked_Shots_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(1).groups.get(1).statisticsItems.get(3));
-     
-        StatisticsItemsGameTopScore game1Atround3At19_20_1ST_Goalkeeper_Saves_Info= new StatisticsItemsGameTopScore("Goalkeeper saves","2","2");
+
+        StatisticsItemsGameTopScore game1Atround3At19_20_1ST_Goalkeeper_Saves_Info = new StatisticsItemsGameTopScore("Goalkeeper saves", "2", "2");
         assertThat(game1Atround3At19_20_1ST_Goalkeeper_Saves_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(1).groups.get(3).statisticsItems.get(6));
 
-        StatisticsItemsGameTopScore game1Atround3At19_20_2ND_Long_Balls_Info= new StatisticsItemsGameTopScore("Long balls","5/28 (18%)","11/23 (48%)");
+        StatisticsItemsGameTopScore game1Atround3At19_20_2ND_Long_Balls_Info = new StatisticsItemsGameTopScore("Long balls", "5/28 (18%)", "11/23 (48%)");
         assertThat(game1Atround3At19_20_2ND_Long_Balls_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(2).groups.get(4).statisticsItems.get(2));
 
-    	GameStatisticTopScore game5Atround8At20_21StatisticTopScoreActualValue = topScoreCollectorTest.getGameStatistic("Premier League", "20/21", "8" , 5);
-    	
-    	assertThat("2ND").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).period);
-    	assertThat("Shots extra").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(1).groups.get(3).groupName);
-    	assertThat("TVData").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(2).groupName);
+        GameStatistic game5Atround8At20_21StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameStatistic("Premier League", "20/21", "8", 5);
 
-    	StatisticsItemsGameTopScore game5Atround8At20_21_ALL_Possession_Info= new StatisticsItemsGameTopScore("Ball possession","53%","47%");
-    	assertThat(game5Atround8At20_21_ALL_Possession_Info).usingRecursiveComparison().isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(0).groups.get(0).statisticsItems.get(0));
+        assertThat("2ND").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).period);
+        assertThat("Shots extra").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(1).groups.get(3).groupName);
+        assertThat("TVData").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(2).groupName);
 
-    	StatisticsItemsGameTopScore game5Atround8At20_21_ALL_Shots_Off_Target_Info= new StatisticsItemsGameTopScore("Shots off target","8","4");
-    	assertThat(game5Atround8At20_21_ALL_Shots_Off_Target_Info).usingRecursiveComparison().isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(0).groups.get(1).statisticsItems.get(2));
-    
+        StatisticsItemsGameTopScore game5Atround8At20_21_ALL_Possession_Info = new StatisticsItemsGameTopScore("Ball possession", "53%", "47%");
+        assertThat(game5Atround8At20_21_ALL_Possession_Info).usingRecursiveComparison().isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(0).groups.get(0).statisticsItems.get(0));
+
+        StatisticsItemsGameTopScore game5Atround8At20_21_ALL_Shots_Off_Target_Info = new StatisticsItemsGameTopScore("Shots off target", "8", "4");
+        assertThat(game5Atround8At20_21_ALL_Shots_Off_Target_Info).usingRecursiveComparison().isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(0).groups.get(1).statisticsItems.get(2));
+
         Assert.assertEquals(7, game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.size());
 
         Assert.assertEquals(4, game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(5).statisticsItems.size());
 
     }
-    
+
 }

@@ -1,4 +1,4 @@
-package topScoreModels;
+package sofaScoreModels;
 
 import java.util.HashMap;
 
@@ -7,7 +7,7 @@ public class HashMapLeaguesID {
 	public HashMap<String, String> LeaguesID ;
 
 	public HashMapLeaguesID() {	
-		LeaguesID = new HashMap<String, String>();
+		LeaguesID = new HashMap<>();
 		LeaguesID.put("Premier League 20/21","29415");
 		LeaguesID.put("Premier League 19/20","23776");
 		LeaguesID.put("Premier League 18/19","17359");

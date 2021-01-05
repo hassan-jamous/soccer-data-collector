@@ -1,4 +1,4 @@
-package topScoreModels;
+package sofaScoreModels;
 
 public class StatisticsItemsGameTopScore {
 

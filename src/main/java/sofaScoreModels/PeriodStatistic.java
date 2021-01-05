@@ -1,13 +1,13 @@
-package topScoreModels;
+package sofaScoreModels;
 
 import java.util.ArrayList;
 
-public class PeriodStatisticTopScore {
+public class PeriodStatistic {
 
 	public String period;
-	public ArrayList<GameStatisticInformationTopScore> groups;
+	public ArrayList<GameStatisticInformation> groups;
 	
-	public PeriodStatisticTopScore() {
+	public PeriodStatistic() {
 		groups = new ArrayList<>();
 	}
 	

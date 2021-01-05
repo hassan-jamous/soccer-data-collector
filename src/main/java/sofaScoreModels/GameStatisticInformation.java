@@ -1,13 +1,13 @@
-package topScoreModels;
+package sofaScoreModels;
 
 import java.util.ArrayList;
 
-public class GameStatisticInformationTopScore {
+public class GameStatisticInformation {
 
 	public String groupName;
 	public ArrayList<StatisticsItemsGameTopScore> statisticsItems;
 	
-	public GameStatisticInformationTopScore() {
+	public GameStatisticInformation() {
 		statisticsItems = new ArrayList<>();
 	}
 	public String toString() {

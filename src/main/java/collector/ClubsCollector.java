@@ -9,6 +9,7 @@ import org.jsoup.select.Elements;
 import models.Club;
 import models.KindOfPlayer;
 import models.PlayerSummary;
+import util.HttpUtil;
 
 public class ClubsCollector {
     private HttpUtil httpUtil = new HttpUtil();

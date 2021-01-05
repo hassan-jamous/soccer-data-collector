@@ -1,10 +1,10 @@
-package topScoreModels;
+package sofaScoreModels;
 
 import java.util.ArrayList;
 
 public class RoundTopScore {
 
-	public ArrayList<GameIDTopScore> events;
+	public ArrayList<GameID> events;
 	public RoundTopScore() {
 		events = new ArrayList<>();
 	}

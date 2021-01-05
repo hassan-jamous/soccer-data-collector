@@ -1,12 +1,12 @@
-package topScore;
+package sofaScore;
 
-import topScoreModels.GameStatisticTopScore;
-import topScoreModels.RoundTopScore;
+import sofaScoreModels.GameStatistic;
+import sofaScoreModels.RoundTopScore;
 
-public class TopScoreCollector{
+public class SofaScoreCollector {
 
-	TopScoreRoundCollector roundCollerctor = new TopScoreRoundCollector();
-	TopScoreGameCollector gameCollector = new TopScoreGameCollector();
+	SofaScoreRoundCollector roundCollerctor = new SofaScoreRoundCollector();
+	SofaScoreGameCollector gameCollector = new SofaScoreGameCollector();
 	
 	/***
 	 * 
@@ -18,7 +18,7 @@ public class TopScoreCollector{
 		return roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round);
 	}
 	
-	public GameStatisticTopScore getGameStatistic (String competitionName, String competitionYears , String round ,int gameIndex) {
+	public GameStatistic getGameStatistic (String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getTopScoreGamegetStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 }

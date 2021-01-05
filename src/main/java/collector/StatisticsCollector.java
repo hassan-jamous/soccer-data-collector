@@ -14,6 +14,7 @@ import models.StatisticsGoalsPerSeason;
 import models.StatisticsMostGoalsByPlayerPerGame;
 import models.StatisticsRecordWinsAndMostGoalInGame;
 import models.StatisticsRequestKind;
+import util.HttpUtil;
 
 public class StatisticsCollector {
     private HttpUtil httpUtil = new HttpUtil();

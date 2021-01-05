@@ -1,12 +1,12 @@
-package topScoreModels;
+package sofaScoreModels;
 
 import java.util.ArrayList;
 
-public class GameStatisticTopScore {
+public class GameStatistic {
 
-	public ArrayList<PeriodStatisticTopScore> statistics;
+	public ArrayList<PeriodStatistic> statistics;
 	
-	public GameStatisticTopScore() {
+	public GameStatistic() {
 		statistics = new ArrayList<>();
 	}
 	public String toString() {
