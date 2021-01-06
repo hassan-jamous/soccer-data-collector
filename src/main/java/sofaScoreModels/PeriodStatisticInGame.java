@@ -2,12 +2,12 @@ package sofaScoreModels;
 
 import java.util.ArrayList;
 
-public class PeriodStatistic {
+public class PeriodStatisticInGame {
 
 	public String period;
-	public ArrayList<GameStatisticInformation> groups;
+	public ArrayList<GroupInformationInPeriod> groups;
 	
-	public PeriodStatistic() {
+	public PeriodStatisticInGame() {
 		groups = new ArrayList<>();
 	}
 	

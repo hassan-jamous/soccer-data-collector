@@ -1,12 +1,12 @@
 package sofaScore;
 
 import sofaScoreModels.GameStatistic;
-import sofaScoreModels.RoundTopScore;
+import sofaScoreModels.RoundGamesID;
 
 public class SofaScoreCollector {
 
-	SofaScoreRoundCollector roundCollerctor = new SofaScoreRoundCollector();
-	SofaScoreGameCollector gameCollector = new SofaScoreGameCollector();
+	RoundCollector roundCollerctor = new RoundCollector();
+	GameCollector gameCollector = new GameCollector();
 	
 	/***
 	 * 
@@ -14,11 +14,11 @@ public class SofaScoreCollector {
 	 * @param competitionYears example 05/06
 	 * @param round
 	 */
-	public RoundTopScore getGamesIdInRound (String competitionName, String competitionYears , String round) {
+	public RoundGamesID getGamesIdInRound (String competitionName, String competitionYears , String round) {
 		return roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round);
 	}
 	
 	public GameStatistic getGameStatistic (String competitionName, String competitionYears , String round , int gameIndex) {
-		return gameCollector.getTopScoreGamegetStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+		return gameCollector.getGamegetStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 }

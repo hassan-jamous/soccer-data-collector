@@ -2,10 +2,10 @@ package sofaScoreModels;
 
 import java.util.ArrayList;
 
-public class RoundTopScore {
+public class RoundGamesID {
 
 	public ArrayList<GameID> events;
-	public RoundTopScore() {
+	public RoundGamesID() {
 		events = new ArrayList<>();
 	}
 

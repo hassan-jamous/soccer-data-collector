@@ -1,13 +1,13 @@
 package sofaScoreModels;
 
-public class StatisticsItemsGameTopScore {
+public class ItemStatisticsInGroup {
 
 	public String name;
 	public String home;
 	public String away;
 
-	public StatisticsItemsGameTopScore(){}
-	public StatisticsItemsGameTopScore(String name , String home , String away){
+	public ItemStatisticsInGroup(){}
+	public ItemStatisticsInGroup(String name , String home , String away){
 		this.away = away;
 		this.home = home;
 		this.name = name;

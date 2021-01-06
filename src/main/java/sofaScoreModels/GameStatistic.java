@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GameStatistic {
 
-	public ArrayList<PeriodStatistic> statistics;
+	public ArrayList<PeriodStatisticInGame> statistics;
 	
 	public GameStatistic() {
 		statistics = new ArrayList<>();
