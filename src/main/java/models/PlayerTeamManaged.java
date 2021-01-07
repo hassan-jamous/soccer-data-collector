@@ -10,7 +10,7 @@ public class PlayerTeamManaged {
 		clubBasicInfo = new Club();
 	}
 	public PlayerTeamManaged(String date , String clubName , String clubNation , String position) {
-		this.clubBasicInfo = new Club();
+		this();
 		this.date = date;
 		this.clubBasicInfo.name = clubName;
 		this.clubNation = clubNation;

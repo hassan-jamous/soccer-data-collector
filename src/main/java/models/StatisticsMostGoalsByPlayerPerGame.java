@@ -13,9 +13,8 @@ public class StatisticsMostGoalsByPlayerPerGame {
 	
 	public StatisticsMostGoalsByPlayerPerGame(String playerName , String gameDate , String firstClub , String result , 
 			String secondClub , String numberOfGoal) {
-		this.playerInfo = new Player();
+		this();
 		playerInfo.name = playerName;
-		this.gameInfo = new Game();
 		gameInfo.date = gameDate;
 		gameInfo.firstTeamBasicInfo.name = firstClub;
 		gameInfo.finalResult  = result;

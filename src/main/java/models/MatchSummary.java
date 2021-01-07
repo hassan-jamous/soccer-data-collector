@@ -13,8 +13,7 @@ public class MatchSummary {
 	}
 	
 	public MatchSummary(String firstClub , String  secondClub ,String resultSummary,String date , String time ) {
-		this.firstClubInfo = new Club();
-		this.secondClubInfo = new Club();
+		this();
 		this.firstClubInfo.name = firstClub;
 		this.secondClubInfo.name = secondClub;
 		this.date = date;

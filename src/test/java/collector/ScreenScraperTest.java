@@ -16,7 +16,7 @@ import models.PlayerAllInformation;
 import models.PlayerAtMatch;
 import models.PlayerClubCareer;
 import models.PlayerCompetitionInformationOverall;
-import models.PlayerCompetitionsInformation;
+import models.PlayerCompetitionInformation;
 import models.PlayerEventAtMatch;
 import models.PlayerPersonalInformation;
 import models.PlayerSummary;
@@ -39,8 +39,6 @@ import sofaScoreModels.GameStatistic;
 import sofaScoreModels.ItemStatisticsInGroup;
 
 import java.util.*;
-import java.util.Collections;
-
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -527,7 +525,7 @@ public class ScreenScraperTest {
         		new Goal("1 : 0", "26", "Mohamed Salah", "left-footed shot"),
         		new Goal("2 : 0", "40", "Dejan Lovren", "header", "Andrew Robertson"),
         		new Goal("3 : 0", "53", "Dominic Solanke", "right-footed shot", "Mohamed Salah"),
-        		new Goal("4 : 0", "85", "Andrew Robertson", "left-footed shot"));
+        		new Goal("4 : 0", "85", "Andrew Robertson", "left-footed shot"));       
         assertGameGoal(goals2017_2018LiverpoolFcBrightonHoveAlbionActualValue,goals2017_2018LiverpoolFcBrightonHoveAlbionExpectedValue);
        
         ArrayList<Goal> goals2015_2016ArsenalFcAstonVillaActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2015-2016", "arsenal-fc", "aston-villa");
@@ -538,847 +536,602 @@ public class ScreenScraperTest {
         		new Goal("4 : 0", "90", "Mark Bunn", "own goal"));
         assertGameGoal(goals2015_2016ArsenalFcAstonVillaActualValue,goals2015_2016ArsenalFcAstonVillaExpectedValue);
 
-        ArrayList<Goal> goalsActualValueIndividuallyGoal = screenScraperUnderTest.getGoalsOfGame("premier-league", "2015-2016", "sunderland-afc", "chelsea-fc");
-        Goal goal10 = new Goal("0 : 1", "14", "Diego Costa", "right-footed shot");
-        Goal goal11 = new Goal("1 : 1", "41", "Wahbi Khazri", "right-footed shot");
-        Goal goal12 = new Goal("1 : 2", "45", "Nemanja Matić", "left-footed shot", "Azpilicueta");
-        Goal goal13 = new Goal("2 : 2", "67", "Fabio Borini", "right-footed shot", "Patrick van Aanholt");
-        Goal goal14 = new Goal("3 : 2", "70", "Jermain Defoe", "right-footed shot");
-        ArrayList<Goal> goalsExpectedIndividuallyGoal = new ArrayList<>();
-        goalsExpectedIndividuallyGoal.add(goal10);
-        goalsExpectedIndividuallyGoal.add(goal11);
-        goalsExpectedIndividuallyGoal.add(goal12);
-        goalsExpectedIndividuallyGoal.add(goal13);
-        goalsExpectedIndividuallyGoal.add(goal14);
-        Assert.assertEquals(goalsExpectedIndividuallyGoal.toString(), goalsActualValueIndividuallyGoal.toString());
-
+        ArrayList<Goal> goals2015_2016SunderlandAfcChelseaFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2015-2016", "sunderland-afc", "chelsea-fc");
+        List<Goal> goals2015_2016SunderlandAfcChelseaFcExpectedValue = Arrays.asList(
+        		new Goal("0 : 1", "14", "Diego Costa", "right-footed shot"),
+        		new Goal("1 : 1", "41", "Wahbi Khazri", "right-footed shot"),
+        		new Goal("1 : 2", "45", "Nemanja Matić", "left-footed shot", "Azpilicueta"),
+        		new Goal("2 : 2", "67", "Fabio Borini", "right-footed shot", "Patrick van Aanholt"),
+        		new Goal("3 : 2", "70", "Jermain Defoe", "right-footed shot"));
+        assertGameGoal(goals2015_2016SunderlandAfcChelseaFcActualValue,goals2015_2016SunderlandAfcChelseaFcExpectedValue);
+ 
         ArrayList<Goal> goals2000_2001BradfordCityLeicesterCityActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2000-2001", "bradford-city", "leicester-city");
         Assert.assertEquals(null, goals2000_2001BradfordCityLeicesterCityActualValue);
 
         ArrayList<Goal> goals2000_2001LeedsUnitedEvertonFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "2000-2001", "leeds-united", "everton-fc");
-        ArrayList<Goal> goals2000_2001LeedsUnitedEvertonFcExpectedValue = new ArrayList<>();
-        Goal goals2000_2001LeedsUnitedEvertonFc1 = new Goal("1 : 0", "16", "Alan Smith", null);
-        Goal goals2000_2001LeedsUnitedEvertonFc2 = new Goal("2 : 0", "37", "Alan Smith", null);
-        goals2000_2001LeedsUnitedEvertonFcExpectedValue.add(goals2000_2001LeedsUnitedEvertonFc1);
-        goals2000_2001LeedsUnitedEvertonFcExpectedValue.add(goals2000_2001LeedsUnitedEvertonFc2);
-        Assert.assertEquals(goals2000_2001LeedsUnitedEvertonFcActualValue.toString(), goals2000_2001LeedsUnitedEvertonFcExpectedValue.toString());
-
+        List<Goal> goals2000_2001LeedsUnitedEvertonFcExpectedValue = Arrays.asList(
+        		new Goal("1 : 0", "16", "Alan Smith"),
+        		new Goal("2 : 0", "37", "Alan Smith"));
+        assertGameGoal(goals2000_2001LeedsUnitedEvertonFcActualValue, goals2000_2001LeedsUnitedEvertonFcExpectedValue);
+ 
         ArrayList<Goal> goals1998_1999ArsenalFcAstonVillaActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1998-1999", "arsenal-fc", "aston-villa");
-        ArrayList<Goal> goals1998_1999ArsenalFcAstonVillaExpected = new ArrayList<>();
-        Goal goals1998_1999ArsenalFcAstonVilla1 = new Goal("1 : 0", "66", "Nwankwo Kanu", null);
-        goals1998_1999ArsenalFcAstonVillaExpected.add(goals1998_1999ArsenalFcAstonVilla1);
-        Assert.assertEquals(goals1998_1999ArsenalFcAstonVillaExpected.toString(), goals1998_1999ArsenalFcAstonVillaActualValue.toString());
+        List<Goal> goals1998_1999ArsenalFcAstonVillaExpected = Arrays.asList(
+        		new Goal("1 : 0", "66", "Nwankwo Kanu"));
+        assertGameGoal(goals1998_1999ArsenalFcAstonVillaActualValue ,goals1998_1999ArsenalFcAstonVillaExpected);
 
         ArrayList<Goal> goals1996_1997ManchesterUnitedWestHamUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1996-1997", "manchester-united", "west-ham-united");
-        ArrayList<Goal> goals1996_1997ManchesterUnitedWestHamUnitedExpected = new ArrayList<>();
-        Goal goals1996_1997ManchesterUnitedWestHamUnited1 = new Goal("1 : 0", "11", "Ole Gunnar Solskjær", null);
-        Goal goals1996_1997ManchesterUnitedWestHamUnited2 = new Goal("2 : 0", "84", "Jordi Cruyff", null);
-        goals1996_1997ManchesterUnitedWestHamUnitedExpected.add(goals1996_1997ManchesterUnitedWestHamUnited1);
-        goals1996_1997ManchesterUnitedWestHamUnitedExpected.add(goals1996_1997ManchesterUnitedWestHamUnited2);
-        Assert.assertEquals(goals1996_1997ManchesterUnitedWestHamUnitedExpected.toString(), goals1996_1997ManchesterUnitedWestHamUnitedActualValue.toString());
+        List<Goal> goals1996_1997ManchesterUnitedWestHamUnitedExpected = Arrays.asList(
+        		new Goal("1 : 0", "11", "Ole Gunnar Solskjær"),
+        		new Goal("2 : 0", "84", "Jordi Cruyff"));
+        assertGameGoal(goals1996_1997ManchesterUnitedWestHamUnitedActualValue , goals1996_1997ManchesterUnitedWestHamUnitedExpected );
 
         ArrayList<Goal> goals1992_1993LiverpoolFcNottinghamForestActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1992-1993", "liverpool-fc", "nottingham-forest");
         Assert.assertEquals(null, goals1992_1993LiverpoolFcNottinghamForestActualValue);
 
         ArrayList<Goal> goals1992_1993ChelseaFcSheffieldUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1992-1993", "chelsea-fc", "sheffield-united");
-        ArrayList<Goal> goals1992_1993ChelseaFcSheffieldUnitedExpected = new ArrayList<>();
-        Goal goals1992_1993ChelseaFcSheffieldUnited1 = new Goal("0 : 1", "40", "Adrian Littlejohn", null);
-        Goal goals1992_1993ChelseaFcSheffieldUnited2 = new Goal("1 : 1", "41", "Andy Townsend", null);
-        Goal goals1992_1993ChelseaFcSheffieldUnited3 = new Goal("1 : 2", "57", "Brian Deane", null);
-        goals1992_1993ChelseaFcSheffieldUnitedExpected.add(goals1992_1993ChelseaFcSheffieldUnited1);
-        goals1992_1993ChelseaFcSheffieldUnitedExpected.add(goals1992_1993ChelseaFcSheffieldUnited2);
-        goals1992_1993ChelseaFcSheffieldUnitedExpected.add(goals1992_1993ChelseaFcSheffieldUnited3);
-        Assert.assertEquals(goals1992_1993ChelseaFcSheffieldUnitedExpected.toString(), goals1992_1993ChelseaFcSheffieldUnitedActualValue.toString());
+        List<Goal> goals1992_1993ChelseaFcSheffieldUnitedExpected = Arrays.asList(
+        		new Goal("0 : 1", "40", "Adrian Littlejohn"),
+        		new Goal("1 : 1", "41", "Andy Townsend"),
+        		new Goal("1 : 2", "57", "Brian Deane"));
+        assertGameGoal(goals1992_1993ChelseaFcSheffieldUnitedActualValue , goals1992_1993ChelseaFcSheffieldUnitedExpected );
 
         ArrayList<Goal> goals1983_1984TottenhamHotspurManchesterUnitedActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1983-1984", "tottenham-hotspur", "manchester-united");
-        ArrayList<Goal> goals1983_1984TottenhamHotspurManchesterUnitedExpected = new ArrayList<>();
-        Goal goals1983_1984TottenhamHotspurManchesterUnited1 = new Goal("1 : 0", "90", "Steve Archibald", null);
-        Goal goals1983_1984TottenhamHotspurManchesterUnited2 = new Goal("1 : 1", "90", "Norman Whiteside", null);
-        goals1983_1984TottenhamHotspurManchesterUnitedExpected.add(goals1983_1984TottenhamHotspurManchesterUnited1);
-        goals1983_1984TottenhamHotspurManchesterUnitedExpected.add(goals1983_1984TottenhamHotspurManchesterUnited2);
-        Assert.assertEquals(goals1983_1984TottenhamHotspurManchesterUnitedExpected.toString(), goals1983_1984TottenhamHotspurManchesterUnitedActualValue.toString());
+        List<Goal> goals1983_1984TottenhamHotspurManchesterUnitedExpected = Arrays.asList(
+        		new Goal("1 : 0", "90", "Steve Archibald"),
+        		new Goal("1 : 1", "90", "Norman Whiteside"));
+        assertGameGoal(goals1983_1984TottenhamHotspurManchesterUnitedActualValue , goals1983_1984TottenhamHotspurManchesterUnitedExpected );
 
         ArrayList<Goal> goals1976_1977LeedsUnitedCoventryCityActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1976-1977", "leeds-united", "coventry-city");
-        ArrayList<Goal> goals1976_1977LeedsUnitedCoventryCityExpected = new ArrayList<>();
-        Goal goals1976_1977LeedsUnitedCoventryCity1 = new Goal("0 : 1", "45", "Alan Green", null);
-        Goal goals1976_1977LeedsUnitedCoventryCity2 = new Goal("1 : 1", "45", "Joe Jordan", null);
-        Goal goals1976_1977LeedsUnitedCoventryCity3 = new Goal("1 : 2", "90", "Donal Murphy", null);
-        goals1976_1977LeedsUnitedCoventryCityExpected.add(goals1976_1977LeedsUnitedCoventryCity1);
-        goals1976_1977LeedsUnitedCoventryCityExpected.add(goals1976_1977LeedsUnitedCoventryCity2);
-        goals1976_1977LeedsUnitedCoventryCityExpected.add(goals1976_1977LeedsUnitedCoventryCity3);
-        Assert.assertEquals(goals1976_1977LeedsUnitedCoventryCityExpected.toString(), goals1976_1977LeedsUnitedCoventryCityActualValue.toString());
+        List<Goal> goals1976_1977LeedsUnitedCoventryCityExpected = Arrays.asList(
+        		new Goal("0 : 1", "45", "Alan Green"),
+        		new Goal("1 : 1", "45", "Joe Jordan"),
+        		new Goal("1 : 2", "90", "Donal Murphy"));
+        assertGameGoal(goals1976_1977LeedsUnitedCoventryCityActualValue , goals1976_1977LeedsUnitedCoventryCityExpected );
 
         ArrayList<Goal> goals1963_1964SheffieldUnitedBurnleyFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1963-1964", "sheffield-united", "burnley-fc");
-        ArrayList<Goal> goals1963_1964SheffieldUnitedBurnleyFcExpected = new ArrayList<>();
-        Goal goals1963_1964SheffieldUnitedBurnleyFc1 = new Goal("1 : 0", "90", "Tony Wagstaff", null);
-        Goal goals1963_1964SheffieldUnitedBurnleyFc2 = new Goal("2 : 0", "90", "Mick Jones", null);
-        goals1963_1964SheffieldUnitedBurnleyFcExpected.add(goals1963_1964SheffieldUnitedBurnleyFc1);
-        goals1963_1964SheffieldUnitedBurnleyFcExpected.add(goals1963_1964SheffieldUnitedBurnleyFc2);
-        Assert.assertEquals(goals1963_1964SheffieldUnitedBurnleyFcExpected.toString(), goals1963_1964SheffieldUnitedBurnleyFcActualValue.toString());
+        List<Goal> goals1963_1964SheffieldUnitedBurnleyFcExpected = Arrays.asList(
+        		new Goal("1 : 0", "90", "Tony Wagstaff"),
+        		new Goal("2 : 0", "90", "Mick Jones"));
+        assertGameGoal(goals1963_1964SheffieldUnitedBurnleyFcActualValue , goals1963_1964SheffieldUnitedBurnleyFcExpected );
 
-        ArrayList<Goal> goalsActualValueoldGoal1 = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "sheffield-wednesday", "chelsea-fc");
-        ArrayList<Goal> goalsExpectedOldGoal1 = new ArrayList<>();
-        Goal goal20 = new Goal("1 : 0", "Roy Shiner", "0.");
-        Goal goal21 = new Goal("2 : 0", "Roy Shiner", "0.");
-        Goal goal22 = new Goal("3 : 0", "Albert Quixall", "0.");
-        Goal goal23 = new Goal("4 : 0", "Albert Quixall", "0.");
-        goalsExpectedOldGoal1.add(goal20);
-        goalsExpectedOldGoal1.add(goal21);
-        goalsExpectedOldGoal1.add(goal22);
-        goalsExpectedOldGoal1.add(goal23);
-        Assert.assertEquals(goalsExpectedOldGoal1.toString(), goalsActualValueoldGoal1.toString());
+        ArrayList<Goal> goals1956_1957SheffieldWednesdayChelseaFcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "sheffield-wednesday", "chelsea-fc");
+        List<Goal> goals1956_1957SheffieldWednesdayChelseaFcExpectedValue = Arrays.asList(
+        		new Goal("1 : 0", "0","Roy Shiner" ),
+        		new Goal("2 : 0", "0","Roy Shiner"),
+        		new Goal("3 : 0", "0","Albert Quixall"),
+        		new Goal("4 : 0", "0","Albert Quixall"));
+        assertGameGoal(goals1956_1957SheffieldWednesdayChelseaFcActualValue , goals1956_1957SheffieldWednesdayChelseaFcExpectedValue );
 
-        ArrayList<Goal> goalsActualValueoldGoal2 = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "tottenham-hotspur", "leeds-united");
-        ArrayList<Goal> goalsExpectedOldGoal2 = new ArrayList<>();
-        Goal goal30 = new Goal("1 : 0", "Bobby Smith", "0.");
-        Goal goal31 = new Goal("2 : 0", "George Robb", "0.");
-        Goal goal32 = new Goal("3 : 0", "Terry Medwin", "0.");
-        Goal goal33 = new Goal("4 : 0", "John Brooks", "0.");
-        Goal goal34 = new Goal("5 : 0", "Danny Blanchflower", "0.");
-        Goal goal35 = new Goal("5 : 1", "Keith Ripley", "0.");
-        goalsExpectedOldGoal2.add(goal30);
-        goalsExpectedOldGoal2.add(goal31);
-        goalsExpectedOldGoal2.add(goal32);
-        goalsExpectedOldGoal2.add(goal33);
-        goalsExpectedOldGoal2.add(goal34);
-        goalsExpectedOldGoal2.add(goal35);
-        Assert.assertEquals(goalsExpectedOldGoal2.toString(), goalsActualValueoldGoal2.toString());
+        ArrayList<Goal> goals1956_1957TottenhamHotspurLeedsUnitedActualVlaue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "tottenham-hotspur", "leeds-united");
+        List<Goal> goals1956_1957TottenhamHotspurLeedsUnitedExpectedVlaue = Arrays.asList(
+        		new Goal("1 : 0", "0","Bobby Smith"),
+        		new Goal("2 : 0", "0","George Robb"),
+        		new Goal("3 : 0", "0","Terry Medwin"),
+        		new Goal("4 : 0", "0","John Brooks"),
+        		new Goal("5 : 0", "0","Danny Blanchflower"),
+        		new Goal("5 : 1", "0","Keith Ripley"));
+        assertGameGoal(goals1956_1957TottenhamHotspurLeedsUnitedActualVlaue , goals1956_1957TottenhamHotspurLeedsUnitedExpectedVlaue );
 
         ArrayList<Goal> goalsActualValueoldGoalZeroToZero = screenScraperUnderTest.getGoalsOfGame("premier-league", "1956-1957", "aston-villa", "west-bromwich-albion");
         Assert.assertEquals(null, goalsActualValueoldGoalZeroToZero);
 
         ArrayList<Goal> goals1946_1947LeedsUnitedSunderlandAfcActualValue = screenScraperUnderTest.getGoalsOfGame("premier-league", "1946-1947", "leeds-united", "sunderland-afc");
-        ArrayList<Goal> goals1946_1947LeedsUnitedSunderlandAfcExpected = new ArrayList<>();
-        Goal goals1946_1947LeedsUnitedSunderlandAfc1 = new Goal("1 : 0", "90", "Davy Cochrane", null);
-        Goal goals1946_1947LeedsUnitedSunderlandAfc2 = new Goal("1 : 1", "90", "Jackie Robinson", null);
-        goals1946_1947LeedsUnitedSunderlandAfcExpected.add(goals1946_1947LeedsUnitedSunderlandAfc1);
-        goals1946_1947LeedsUnitedSunderlandAfcExpected.add(goals1946_1947LeedsUnitedSunderlandAfc2);
-        Assert.assertEquals(goals1946_1947LeedsUnitedSunderlandAfcExpected.toString(), goals1946_1947LeedsUnitedSunderlandAfcActualValue.toString());
+        List<Goal> goals1946_1947LeedsUnitedSunderlandAfcExpected = Arrays.asList(
+        		new Goal("1 : 0", "90", "Davy Cochrane"),
+        		new Goal("1 : 1", "90", "Jackie Robinson"));
+        assertGameGoal(goals1946_1947LeedsUnitedSunderlandAfcActualValue , goals1946_1947LeedsUnitedSunderlandAfcExpected );
 
 
+    }
+    
+    public void assertPlayersSummaryInTeam(ArrayList<PlayerSummary> playersClubActualValue, List<PlayerSummary> playersInClubExpectedValue , List<Integer> playersIds) {
+        for (int i = 0; i < playersInClubExpectedValue.size(); i++) {
+            assertThat(playersInClubExpectedValue.get(i)).usingRecursiveComparison().isEqualTo(playersClubActualValue.get(playersIds.get(i)));
+        }
     }
 
     @Test
     public void itShouldGetPlayersSummuryInTeam() {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
-        ArrayList<PlayerSummary> manchesterUnitedActualValueplayers2015 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "2015");
-        ArrayList<PlayerSummary> manchesterUnitedExpectedplayers2015 = new ArrayList<>();
-        PlayerSummary player1 = new PlayerSummary("40", "Ben Amos", "England", "10/04/1990", "Goalkeeper");
-        PlayerSummary player2 = new PlayerSummary("1", "De Gea", "Spain", "07/11/1990", "Goalkeeper");
-        PlayerSummary player3 = new PlayerSummary("13", "Anders Lindegaard", "Denmark", "13/04/1984", "Goalkeeper");
-        PlayerSummary player4 = new PlayerSummary("32", "Víctor Valdés", "Spain", "14/01/1982", "Goalkeeper");
-        PlayerSummary player5 = new PlayerSummary("42", "Tyler Blackett", "England", "02/04/1994", "Defender");
-        PlayerSummary player6 = new PlayerSummary("6", "Jonny Evans", "Northern Ireland", "03/01/1988", "Defender");
-        PlayerSummary player7 = new PlayerSummary("37", "Saidy Janko", "Switzerland", "22/10/1995", "Defender");
-        PlayerSummary player8 = new PlayerSummary("4", "Phil Jones", "England", "21/02/1992", "Defender");
-        PlayerSummary player9 = new PlayerSummary(null, "Andrew Kellett", "England", "10/11/1993", "Defender");
-        PlayerSummary player10 = new PlayerSummary("33", "Paddy McNair", "Northern Ireland", "27/04/1995", "Defender");
-        PlayerSummary player11 = new PlayerSummary("2", "Rafael", "Brazil", "09/07/1990", "Defender");
-        PlayerSummary player12 = new PlayerSummary("5", "Marcos Rojo", "Argentina", "20/03/1990", "Defender");
-        PlayerSummary player13 = new PlayerSummary("3", "Luke Shaw", "England", "12/07/1995", "Defender");
-        PlayerSummary player14 = new PlayerSummary("12", "Chris Smalling", "England", "22/11/1989", "Defender");
-        PlayerSummary player15 = new PlayerSummary("39", "Tom Thorpe", "England", "13/01/1993", "Defender");
-        PlayerSummary player16 = new PlayerSummary("21", "Ander Herrera", "Spain", "14/08/1989", "Midfielder");
-        PlayerSummary player17 = new PlayerSummary("44", "Andreas Pereira", "Brazil", "01/01/1996", "Midfielder");
-        PlayerSummary player18 = new PlayerSummary("17", "Daley Blind", "Netherlands", "09/03/1990", "Midfielder");
-        PlayerSummary player19 = new PlayerSummary("16", "Michael Carrick", "England", "28/07/1981", "Midfielder");
-        PlayerSummary player20 = new PlayerSummary("31", "Marouane Fellaini", "Belgium", "22/11/1987", "Midfielder");
-        PlayerSummary player21 = new PlayerSummary("11", "Adnan Januzaj", "Belgium", "05/02/1995", "Midfielder");
-        PlayerSummary player22 = new PlayerSummary("8", "Mata", "Spain", "28/04/1988", "Midfielder");
-        PlayerSummary player23 = new PlayerSummary("25", "Antonio Valencia", "Ecuador", "04/08/1985", "Midfielder");
-        PlayerSummary player24 = new PlayerSummary("18", "Ashley Young", "England", "09/07/1985", "Midfielder");
-        PlayerSummary player25 = new PlayerSummary("7", "Ángel Di María", "Argentina", "14/02/1988", "Forward");
-        PlayerSummary player26 = new PlayerSummary("9", "Radamel Falcao", "Colombia", "10/02/1986", "Forward");
-        PlayerSummary player27 = new PlayerSummary("10", "Wayne Rooney", "England", "24/10/1985", "Forward");
-        PlayerSummary player28 = new PlayerSummary("20", "Robin van Persie", "Netherlands", "06/08/1983", "Forward");
-        PlayerSummary player29 = new PlayerSummary("49", "James Wilson", "England", "01/12/1995", "Forward");
-        PlayerSummary player30 = new PlayerSummary(null, "Louis van Gaal", "Netherlands", "08/08/1951", "Manager");
-        PlayerSummary player31 = new PlayerSummary(null, "Marcel Bout", "Netherlands", "18/11/1962", "Ass. Manager");
-        PlayerSummary player32 = new PlayerSummary(null, "Ryan Giggs", "Wales", "29/11/1973", "Ass. Manager");
-        PlayerSummary player33 = new PlayerSummary(null, "Albert Stuivenberg", "Netherlands", "30/10/1970", "Ass. Manager");
-        PlayerSummary player34 = new PlayerSummary(null, "Frans Hoek", "Netherlands", "17/10/1956", "Goalkeeper-Coach");
-        manchesterUnitedExpectedplayers2015.add(player1);
-        manchesterUnitedExpectedplayers2015.add(player2);
-        manchesterUnitedExpectedplayers2015.add(player3);
-        manchesterUnitedExpectedplayers2015.add(player4);
-        manchesterUnitedExpectedplayers2015.add(player5);
-        manchesterUnitedExpectedplayers2015.add(player6);
-        manchesterUnitedExpectedplayers2015.add(player7);
-        manchesterUnitedExpectedplayers2015.add(player8);
-        manchesterUnitedExpectedplayers2015.add(player9);
-        manchesterUnitedExpectedplayers2015.add(player10);
-        manchesterUnitedExpectedplayers2015.add(player11);
-        manchesterUnitedExpectedplayers2015.add(player12);
-        manchesterUnitedExpectedplayers2015.add(player13);
-        manchesterUnitedExpectedplayers2015.add(player14);
-        manchesterUnitedExpectedplayers2015.add(player15);
-        manchesterUnitedExpectedplayers2015.add(player16);
-        manchesterUnitedExpectedplayers2015.add(player17);
-        manchesterUnitedExpectedplayers2015.add(player18);
-        manchesterUnitedExpectedplayers2015.add(player19);
-        manchesterUnitedExpectedplayers2015.add(player20);
-        manchesterUnitedExpectedplayers2015.add(player21);
-        manchesterUnitedExpectedplayers2015.add(player22);
-        manchesterUnitedExpectedplayers2015.add(player23);
-        manchesterUnitedExpectedplayers2015.add(player24);
-        manchesterUnitedExpectedplayers2015.add(player25);
-        manchesterUnitedExpectedplayers2015.add(player26);
-        manchesterUnitedExpectedplayers2015.add(player27);
-        manchesterUnitedExpectedplayers2015.add(player28);
-        manchesterUnitedExpectedplayers2015.add(player29);
-        manchesterUnitedExpectedplayers2015.add(player30);
-        manchesterUnitedExpectedplayers2015.add(player31);
-        manchesterUnitedExpectedplayers2015.add(player32);
-        manchesterUnitedExpectedplayers2015.add(player33);
-        manchesterUnitedExpectedplayers2015.add(player34);
-        assertThat(manchesterUnitedExpectedplayers2015).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2015);
+        
+        ArrayList<PlayerSummary> playersManchesterUnited2015ActualValue = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "2015");
+        List<PlayerSummary> playersManchesterUnited2015Expected = Arrays.asList(
+        		new PlayerSummary("40", "Ben Amos", "England", "10/04/1990", "Goalkeeper"),
+        		new PlayerSummary("1", "De Gea", "Spain", "07/11/1990", "Goalkeeper"),
+        		new PlayerSummary("13", "Anders Lindegaard", "Denmark", "13/04/1984", "Goalkeeper"),
+        		new PlayerSummary("32", "Víctor Valdés", "Spain", "14/01/1982", "Goalkeeper"),
+        		new PlayerSummary("42", "Tyler Blackett", "England", "02/04/1994", "Defender"),
+        		new PlayerSummary("6", "Jonny Evans", "Northern Ireland", "03/01/1988", "Defender"),
+        		new PlayerSummary("37", "Saidy Janko", "Switzerland", "22/10/1995", "Defender"),
+        		new PlayerSummary("4", "Phil Jones", "England", "21/02/1992", "Defender"),
+        		new PlayerSummary(null, "Andrew Kellett", "England", "10/11/1993", "Defender"),
+        		new PlayerSummary("33", "Paddy McNair", "Northern Ireland", "27/04/1995", "Defender"),
+        		new PlayerSummary("2", "Rafael", "Brazil", "09/07/1990", "Defender"),
+        		new PlayerSummary("5", "Marcos Rojo", "Argentina", "20/03/1990", "Defender"),
+        		new PlayerSummary("3", "Luke Shaw", "England", "12/07/1995", "Defender"),
+        		new PlayerSummary("12", "Chris Smalling", "England", "22/11/1989", "Defender"),
+        		new PlayerSummary("39", "Tom Thorpe", "England", "13/01/1993", "Defender"),
+        		new PlayerSummary("21", "Ander Herrera", "Spain", "14/08/1989", "Midfielder"),
+        		new PlayerSummary("44", "Andreas Pereira", "Brazil", "01/01/1996", "Midfielder"),
+        		new PlayerSummary("17", "Daley Blind", "Netherlands", "09/03/1990", "Midfielder"),
+        		new PlayerSummary("16", "Michael Carrick", "England", "28/07/1981", "Midfielder"),
+        		new PlayerSummary("31", "Marouane Fellaini", "Belgium", "22/11/1987", "Midfielder"),
+        		new PlayerSummary("11", "Adnan Januzaj", "Belgium", "05/02/1995", "Midfielder"),
+        		new PlayerSummary("8", "Mata", "Spain", "28/04/1988", "Midfielder"),
+        		new PlayerSummary("25", "Antonio Valencia", "Ecuador", "04/08/1985", "Midfielder"),
+        		new PlayerSummary("18", "Ashley Young", "England", "09/07/1985", "Midfielder"),
+        		new PlayerSummary("7", "Ángel Di María", "Argentina", "14/02/1988", "Forward"),
+        		new PlayerSummary("9", "Radamel Falcao", "Colombia", "10/02/1986", "Forward"),
+        		new PlayerSummary("10", "Wayne Rooney", "England", "24/10/1985", "Forward"),
+        		new PlayerSummary("20", "Robin van Persie", "Netherlands", "06/08/1983", "Forward"),
+        		new PlayerSummary("49", "James Wilson", "England", "01/12/1995", "Forward"),
+        		new PlayerSummary(null, "Louis van Gaal", "Netherlands", "08/08/1951", "Manager"),
+        		new PlayerSummary(null, "Marcel Bout", "Netherlands", "18/11/1962", "Ass. Manager"),
+        		new PlayerSummary(null, "Ryan Giggs", "Wales", "29/11/1973", "Ass. Manager"),
+        		new PlayerSummary(null, "Albert Stuivenberg", "Netherlands", "30/10/1970", "Ass. Manager"),
+        		new PlayerSummary(null, "Frans Hoek", "Netherlands", "17/10/1956", "Goalkeeper-Coach"));
+        List<Integer> playersIdManchesterUnited2015 = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+        		,21,22,23,24,25,26,27,28,29,30,31,32,33,34);    
+        
+        assertPlayersSummaryInTeam(playersManchesterUnited2015ActualValue,playersManchesterUnited2015Expected,playersIdManchesterUnited2015);
 
-        ArrayList<PlayerSummary> manchesterUnitedActualValueplayers2001 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "2001");
-        PlayerSummary player0ManchesterUnited2001 = new PlayerSummary("1", "Fabien Barthez", "France", "28/06/1971", "Goalkeeper");
-        assertThat(player0ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(0));
-        PlayerSummary player3ManchesterUnited2001 = new PlayerSummary("17", "Raimond van der Gouw", "Netherlands", "24/03/1963", "Goalkeeper");
-        assertThat(player3ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(3));
-        PlayerSummary player4ManchesterUnited2001 = new PlayerSummary("24", "Wes Brown", "England", "13/10/1979", "Defender");
-        assertThat(player4ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(4));
-        PlayerSummary player8ManchesterUnited2001 = new PlayerSummary(null, "Mark Lynch", "England", "02/09/1981", "Defender");
-        assertThat(player8ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(8));
-        PlayerSummary player15ManchesterUnited2001 = new PlayerSummary("7", "David Beckham", "England", "02/05/1975", "Midfielder");
-        assertThat(player15ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(15));
-        PlayerSummary player32ManchesterUnited2001 = new PlayerSummary("9", "Andy Cole", "England", "15/10/1971", "Forward");
-        assertThat(player32ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(32));
-        PlayerSummary player38ManchesterUnited2001 = new PlayerSummary(null, "Alex Ferguson", "Scotland", "31/12/1941", "Manager");
-        assertThat(player38ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(38));
-        PlayerSummary player39ManchesterUnited2001 = new PlayerSummary(null, "Steve McClaren", "England", "03/05/1961", "Ass. Manager");
-        assertThat(player39ManchesterUnited2001).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers2001.get(39));
+        ArrayList<PlayerSummary> playersManchesterUnited2001ActualValue = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "2001");
+        List<Integer> playersIdManchesterUnited2001 = Arrays.asList(0,3,4,8,15,32,38,39); 
+        List<PlayerSummary> playersManchesterUnited2001Expected = Arrays.asList(
+        		new PlayerSummary("1", "Fabien Barthez", "France", "28/06/1971", "Goalkeeper"),
+        		new PlayerSummary("17", "Raimond van der Gouw", "Netherlands", "24/03/1963", "Goalkeeper"),
+        		new PlayerSummary("24", "Wes Brown", "England", "13/10/1979", "Defender"),
+        		new PlayerSummary(null, "Mark Lynch", "England", "02/09/1981", "Defender"),
+        		new PlayerSummary("7", "David Beckham", "England", "02/05/1975", "Midfielder"),
+        		new PlayerSummary("9", "Andy Cole", "England", "15/10/1971", "Forward"),
+        		new PlayerSummary(null, "Alex Ferguson", "Scotland", "31/12/1941", "Manager"),
+        		new PlayerSummary(null, "Steve McClaren", "England", "03/05/1961", "Ass. Manager"));
+        assertPlayersSummaryInTeam(playersManchesterUnited2001ActualValue,playersManchesterUnited2001Expected,playersIdManchesterUnited2001);
 
+        ArrayList<PlayerSummary> playersManchesterUnited1991ActualValue = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1991");
+        List<Integer> playersIdManchesterUnited1991 = Arrays.asList(0,3,4,8,15,23,29); 
+        List<PlayerSummary> playersManchesterUnited1991Expected = Arrays.asList(
+        		new PlayerSummary(null, "Mark Bosnich", "Australia", "13/01/1972", "Goalkeeper"),
+        		new PlayerSummary("25", "Gary Walsh", "England", "21/03/1968", "Goalkeeper"),
+        		new PlayerSummary("15", "Clayton Blackmore", "Wales", "23/09/1964", "Defender"),
+        		new PlayerSummary(null, "Lee Martin", "England", "05/02/1968", "Defender"),
+        		new PlayerSummary(null, "Andrey Kanchelskis", "Russia", "23/01/1969", "Midfielder"),
+        		new PlayerSummary(null, "Jeff Baicher", "USA", "16/11/1968", "Forward"),
+        		new PlayerSummary(null, "Alex Ferguson", "Scotland", "31/12/1941", "Manager"));
+        assertPlayersSummaryInTeam(playersManchesterUnited1991ActualValue,playersManchesterUnited1991Expected,playersIdManchesterUnited1991);
 
-        ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1991 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1991");
-        PlayerSummary player0ManchesterUnited1991 = new PlayerSummary(null, "Mark Bosnich", "Australia", "13/01/1972", "Goalkeeper");
-        assertThat(player0ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(0));
-        PlayerSummary player3ManchesterUnited1991 = new PlayerSummary("25", "Gary Walsh", "England", "21/03/1968", "Goalkeeper");
-        assertThat(player3ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(3));
-        PlayerSummary player4ManchesterUnited1991 = new PlayerSummary("15", "Clayton Blackmore", "Wales", "23/09/1964", "Defender");
-        assertThat(player4ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(4));
-        PlayerSummary player8ManchesterUnited1991 = new PlayerSummary(null, "Lee Martin", "England", "05/02/1968", "Defender");
-        assertThat(player8ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(8));
-        PlayerSummary player15ManchesterUnited1991 = new PlayerSummary(null, "Andrey Kanchelskis", "Russia", "23/01/1969", "Midfielder");
-        assertThat(player15ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(15));
-        PlayerSummary player23ManchesterUnited1991 = new PlayerSummary(null, "Jeff Baicher", "USA", "16/11/1968", "Forward");
-        assertThat(player23ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(23));
-        PlayerSummary player29ManchesterUnited1991 = new PlayerSummary(null, "Alex Ferguson", "Scotland", "31/12/1941", "Manager");
-        assertThat(player29ManchesterUnited1991).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1991.get(29));
+        ArrayList<PlayerSummary> playersManchesterUnited1970ActualValue = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1970");
+        List<Integer> playersIdManchesterUnited1970 = Arrays.asList(0,2,11,17,18,24,26);
+        List<PlayerSummary> playersManchesterUnited1970Expected = Arrays.asList(
+        		new PlayerSummary(null, "Jimmy Rimmer", "England", "10/02/1948", "Goalkeeper"),
+        		new PlayerSummary(null, "Shay Brennan", "Ireland", "06/05/1937", "Defender"),
+        		new PlayerSummary(null, "Bobby Charlton", "England", "11/10/1937", "Midfielder"),
+        		new PlayerSummary(null, "John Aston", "England", "28/07/1947", "Forward"),
+        		new PlayerSummary("7", "George Best", "Northern Ireland", "22/05/1946", "Forward"),
+        		new PlayerSummary(null, "Wilf McGuinness", "England", "25/10/1937", "Manager"),
+        		new PlayerSummary(null, "Jimmy Murphy", "Wales", "27/10/1910", "Ass. Manager"));
+        assertPlayersSummaryInTeam(playersManchesterUnited1970ActualValue,playersManchesterUnited1970Expected,playersIdManchesterUnited1970);
 
-        ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1970 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1970");
-        PlayerSummary player0ManchesterUnited1970 = new PlayerSummary(null, "Jimmy Rimmer", "England", "10/02/1948", "Goalkeeper");
-        assertThat(player0ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(0));
-        PlayerSummary player2ManchesterUnited1970 = new PlayerSummary(null, "Shay Brennan", "Ireland", "06/05/1937", "Defender");
-        assertThat(player2ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(2));
-        PlayerSummary player11ManchesterUnited1970 = new PlayerSummary(null, "Bobby Charlton", "England", "11/10/1937", "Midfielder");
-        assertThat(player11ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(11));
-        PlayerSummary player17ManchesterUnited1970 = new PlayerSummary(null, "John Aston", "England", "28/07/1947", "Forward");
-        assertThat(player17ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(17));
-        PlayerSummary player18ManchesterUnited1970 = new PlayerSummary("7", "George Best", "Northern Ireland", "22/05/1946", "Forward");
-        assertThat(player18ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(18));
-        PlayerSummary player24ManchesterUnited1970 = new PlayerSummary(null, "Wilf McGuinness", "England", "25/10/1937", "Manager");
-        assertThat(player24ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(24));
-        PlayerSummary player26ManchesterUnited1970 = new PlayerSummary(null, "Jimmy Murphy", "Wales", "27/10/1910", "Ass. Manager");
-        assertThat(player26ManchesterUnited1970).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1970.get(26));
-
+        
         ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1966 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1966");
-        PlayerSummary player0ManchesterUnited1966 = new PlayerSummary(null, "Pat Dunne", "Ireland", "09/02/1943", "Goalkeeper");
-        assertThat(player0ManchesterUnited1966).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1966.get(0));
-        PlayerSummary player4ManchesterUnited1966 = new PlayerSummary(null, "Shay Brennan", "Ireland", "06/05/1937", "Defender");
-        assertThat(player4ManchesterUnited1966).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1966.get(4));
-        PlayerSummary player12ManchesterUnited1966 = new PlayerSummary(null, "Bobby Charlton", "England", "11/10/1937", "Midfielder");
-        assertThat(player12ManchesterUnited1966).usingRecursiveComparison().isEqualTo(manchesterUnitedActualValueplayers1966.get(12));
+        List<Integer> playersIdManchesterUnited1966 = Arrays.asList(0,4,12);
+        List<PlayerSummary> playersManchesterUnited1966Expected = Arrays.asList(
+        		new PlayerSummary(null, "Pat Dunne", "Ireland", "09/02/1943", "Goalkeeper"),
+        		new PlayerSummary(null, "Shay Brennan", "Ireland", "06/05/1937", "Defender"),
+        		new PlayerSummary(null, "Bobby Charlton", "England", "11/10/1937", "Midfielder"));
+        assertPlayersSummaryInTeam(manchesterUnitedActualValueplayers1966,playersManchesterUnited1966Expected,playersIdManchesterUnited1966);
 
+        ArrayList<PlayerSummary> playersManchesterUnited1950ActualValue = screenScraperUnderTest.getAllPlayersSummaryInClub("manchester-united", "1950");
+        List<Integer> playersIdManchesterUnited1950 = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27);
+        List<PlayerSummary> playersManchesterUnited1950Expected = Arrays.asList(
+        		new PlayerSummary(null, "Jack Crompton", "England", "18/12/1921", "Goalkeeper"),
+        		new PlayerSummary(null, "Sonny Feehan", "Ireland", "17/09/1926", "Goalkeeper"),
+        		new PlayerSummary(null, "Joe Lancaster", "England", "28/04/1926", "Goalkeeper"),
+        		new PlayerSummary(null, "Ray Wood", "England", "11/06/1931", "Goalkeeper"),        		
+        		new PlayerSummary(null, "John Aston", "England", "03/09/1921", "Defender"),
+        		new PlayerSummary(null, "John Ball", "England", "13/03/1925", "Defender"),
+        		new PlayerSummary(null, "Johnny Carey", "Ireland", "23/02/1919", "Defender"),
+        		new PlayerSummary(null, "Sammy Lynn", "England", "25/12/1920", "Defender"),
+        		new PlayerSummary(null, "Tommy McNulty", "England", "30/12/1929", "Defender"),
+        		new PlayerSummary(null, "Billy Redman", "England", "29/01/1928", "Defender"),
+        		new PlayerSummary(null, "Jack Warner", "Wales", "21/09/1911", "Defender"),        		
+        		new PlayerSummary(null, "Allenby Chilton", "England", "16/09/1918", "Midfielder"),
+        		new PlayerSummary(null, "Henry Cockburn", "England", "14/09/1923", "Midfielder"),
+        		new PlayerSummary(null, "Don Gibson", "England", "12/05/1929", "Midfielder"),
+        		new PlayerSummary(null, "Tommy Lowrie", "Scotland", "14/01/1928", "Midfielder"),
+        		new PlayerSummary(null, "Billy McGlen", "England", "27/04/1921", "Midfielder"),
+        		new PlayerSummary(null, "Jeff Whitefoot", "England", "31/12/1933", "Midfielder"),        		
+        		new PlayerSummary(null, "Brian Birch", "England", "18/11/1931", "Forward"),
+        		new PlayerSummary(null, "Tommy Bogan", "Scotland", "18/05/1920", "Forward"),
+        		new PlayerSummary(null, "Laurie Cassidy", "England", "10/03/1923", "Forward"),
+        		new PlayerSummary(null, "Frank Clempson", "England", "27/05/1930", "Forward"),
+        		new PlayerSummary(null, "Jimmy Delaney", "Scotland", "03/09/1914", "Forward"),
+        		new PlayerSummary(null, "Johnny Downie", "Scotland", "19/07/1925", "Forward"),
+        		new PlayerSummary(null, "Charlie Mitten", "England", "17/01/1921", "Forward"),
+        		new PlayerSummary(null, "Stan Pearson", "England", "11/01/1919", "Forward"),
+        		new PlayerSummary(null, "Jack Rowley", "England", "07/10/1920", "Forward"),
+        		new PlayerSummary(null, "Matt Busby", "Scotland", "26/05/1909", "Manager"),
+        		new PlayerSummary(null, "Jimmy Murphy", "Wales", "27/10/1910", "Ass. Manager"));
+        assertPlayersSummaryInTeam(playersManchesterUnited1950ActualValue,playersManchesterUnited1950Expected,playersIdManchesterUnited1950);
 
-        ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1950 = screenScraperUnderTest.getAllPlayersSummaryInClub("manchester-united", "1950");
-        ArrayList<PlayerSummary> manchesterUnitedExpectedplayers1950 = new ArrayList<>();
-        PlayerSummary player40 = new PlayerSummary(null, "Jack Crompton", "England", "18/12/1921", "Goalkeeper");
-        PlayerSummary player41 = new PlayerSummary(null, "Sonny Feehan", "Ireland", "17/09/1926", "Goalkeeper");
-        PlayerSummary player42 = new PlayerSummary(null, "Joe Lancaster", "England", "28/04/1926", "Goalkeeper");
-        PlayerSummary player43 = new PlayerSummary(null, "Ray Wood", "England", "11/06/1931", "Goalkeeper");
-        PlayerSummary player44 = new PlayerSummary(null, "John Aston", "England", "03/09/1921", "Defender");
-        PlayerSummary player45 = new PlayerSummary(null, "John Ball", "England", "13/03/1925", "Defender");
-        PlayerSummary player46 = new PlayerSummary(null, "Johnny Carey", "Ireland", "23/02/1919", "Defender");
-        PlayerSummary player47 = new PlayerSummary(null, "Sammy Lynn", "England", "25/12/1920", "Defender");
-        PlayerSummary player48 = new PlayerSummary(null, "Tommy McNulty", "England", "30/12/1929", "Defender");
-        PlayerSummary player49 = new PlayerSummary(null, "Billy Redman", "England", "29/01/1928", "Defender");
-        PlayerSummary player50 = new PlayerSummary(null, "Jack Warner", "Wales", "21/09/1911", "Defender");
-        PlayerSummary player51 = new PlayerSummary(null, "Allenby Chilton", "England", "16/09/1918", "Midfielder");
-        PlayerSummary player52 = new PlayerSummary(null, "Henry Cockburn", "England", "14/09/1923", "Midfielder");
-        PlayerSummary player53 = new PlayerSummary(null, "Don Gibson", "England", "12/05/1929", "Midfielder");
-        PlayerSummary player54 = new PlayerSummary(null, "Tommy Lowrie", "Scotland", "14/01/1928", "Midfielder");
-        PlayerSummary player55 = new PlayerSummary(null, "Billy McGlen", "England", "27/04/1921", "Midfielder");
-        PlayerSummary player56 = new PlayerSummary(null, "Jeff Whitefoot", "England", "31/12/1933", "Midfielder");
-        PlayerSummary player57 = new PlayerSummary(null, "Brian Birch", "England", "18/11/1931", "Forward");
-        PlayerSummary player58 = new PlayerSummary(null, "Tommy Bogan", "Scotland", "18/05/1920", "Forward");
-        PlayerSummary player59 = new PlayerSummary(null, "Laurie Cassidy", "England", "10/03/1923", "Forward");
-        PlayerSummary player60 = new PlayerSummary(null, "Frank Clempson", "England", "27/05/1930", "Forward");
-        PlayerSummary player61 = new PlayerSummary(null, "Jimmy Delaney", "Scotland", "03/09/1914", "Forward");
-        PlayerSummary player62 = new PlayerSummary(null, "Johnny Downie", "Scotland", "19/07/1925", "Forward");
-        PlayerSummary player63 = new PlayerSummary(null, "Charlie Mitten", "England", "17/01/1921", "Forward");
-        PlayerSummary player64 = new PlayerSummary(null, "Stan Pearson", "England", "11/01/1919", "Forward");
-        PlayerSummary player65 = new PlayerSummary(null, "Jack Rowley", "England", "07/10/1920", "Forward");
-        PlayerSummary player66 = new PlayerSummary(null, "Matt Busby", "Scotland", "26/05/1909", "Manager");
-        PlayerSummary player67 = new PlayerSummary(null, "Jimmy Murphy", "Wales", "27/10/1910", "Ass. Manager");
+        ArrayList<PlayerSummary> playersManchesterUnited1890ActualValue = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1890");
+        List<Integer> playersIdManchesterUnited1890 = Arrays.asList(0,1,2,3,4);
+        List<PlayerSummary> playersManchesterUnited1890Expected = Arrays.asList(
+        		new PlayerSummary(null, "Tom Burke", "Wales", "1862", "Midfielder"),
+        		new PlayerSummary(null, "Joe Davies", "Wales", "12/07/1864", "Midfielder"),
+        		new PlayerSummary(null, "Roger Doughty", "Wales", "1868", "Midfielder"),
+        		new PlayerSummary(null, "Thomas Craig", "England", "", "Forward"),
+        		new PlayerSummary(null, "Jack Doughty", "England", "10/1865", "Forward"));
+        assertPlayersSummaryInTeam(playersManchesterUnited1890ActualValue,playersManchesterUnited1890Expected,playersIdManchesterUnited1890);
 
-        manchesterUnitedExpectedplayers1950.add(player40);
-        manchesterUnitedExpectedplayers1950.add(player41);
-        manchesterUnitedExpectedplayers1950.add(player42);
-        manchesterUnitedExpectedplayers1950.add(player43);
-        manchesterUnitedExpectedplayers1950.add(player44);
-        manchesterUnitedExpectedplayers1950.add(player45);
-        manchesterUnitedExpectedplayers1950.add(player46);
-        manchesterUnitedExpectedplayers1950.add(player47);
-        manchesterUnitedExpectedplayers1950.add(player48);
-        manchesterUnitedExpectedplayers1950.add(player49);
-        manchesterUnitedExpectedplayers1950.add(player50);
-        manchesterUnitedExpectedplayers1950.add(player51);
-        manchesterUnitedExpectedplayers1950.add(player52);
-        manchesterUnitedExpectedplayers1950.add(player53);
-        manchesterUnitedExpectedplayers1950.add(player54);
-        manchesterUnitedExpectedplayers1950.add(player55);
-        manchesterUnitedExpectedplayers1950.add(player56);
-        manchesterUnitedExpectedplayers1950.add(player57);
-        manchesterUnitedExpectedplayers1950.add(player58);
-        manchesterUnitedExpectedplayers1950.add(player59);
-        manchesterUnitedExpectedplayers1950.add(player60);
-        manchesterUnitedExpectedplayers1950.add(player61);
-        manchesterUnitedExpectedplayers1950.add(player62);
-        manchesterUnitedExpectedplayers1950.add(player63);
-        manchesterUnitedExpectedplayers1950.add(player64);
-        manchesterUnitedExpectedplayers1950.add(player65);
-        manchesterUnitedExpectedplayers1950.add(player66);
-        manchesterUnitedExpectedplayers1950.add(player67);
+        ArrayList<PlayerSummary> playersAccrington1890ActualValue = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("Accrington", "1890");
+        Assert.assertEquals(null,playersAccrington1890ActualValue);
 
-        assertThat(manchesterUnitedActualValueplayers1950).usingRecursiveComparison().isEqualTo(manchesterUnitedExpectedplayers1950);
-
-        ArrayList<PlayerSummary> manchesterUnitedActualValueplayers1890 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("manchester-united", "1890");
-        ArrayList<PlayerSummary> manchesterUnitedExpectedplayers1890 = new ArrayList<>();
-        PlayerSummary player70 = new PlayerSummary(null, "Tom Burke", "Wales", "1862", "Midfielder");
-        PlayerSummary player71 = new PlayerSummary(null, "Joe Davies", "Wales", "12/07/1864", "Midfielder");
-        PlayerSummary player72 = new PlayerSummary(null, "Roger Doughty", "Wales", "1868", "Midfielder");
-        PlayerSummary player73 = new PlayerSummary(null, "Thomas Craig", "England", "", "Forward");
-        PlayerSummary player74 = new PlayerSummary(null, "Jack Doughty", "England", "10/1865", "Forward");
-        manchesterUnitedExpectedplayers1890.add(player70);
-        manchesterUnitedExpectedplayers1890.add(player71);
-        manchesterUnitedExpectedplayers1890.add(player72);
-        manchesterUnitedExpectedplayers1890.add(player73);
-        manchesterUnitedExpectedplayers1890.add(player74);
-        assertThat(manchesterUnitedActualValueplayers1890).usingRecursiveComparison().isEqualTo(manchesterUnitedExpectedplayers1890);
-
-        ArrayList<PlayerSummary> AccringtonActualValueplayers1890 = screenScraperUnderTest.clubsCollector.getAllPlayersSummaryInClub("Accrington", "1890");
-        ArrayList<PlayerSummary> AccringtonExpectedplayers1890 = new ArrayList<>();
-        assertThat(AccringtonActualValueplayers1890).usingRecursiveComparison().isEqualTo(AccringtonExpectedplayers1890);
-
+    }
+    
+    public void assertClubsInSeason(ArrayList<Club> clubsInSeasonActualValue, List<Club> clubsInSeasonExpectedValue, List<Integer> clubsIdSeason ) {
+    	for (int i = 0; i < clubsInSeasonExpectedValue.size(); i++) {
+    		assertThat(clubsInSeasonActualValue.get(i)).usingRecursiveComparison().isEqualTo(clubsInSeasonExpectedValue.get(clubsIdSeason.get(i)));
+    	}
     }
 
     @Test
-    public void itShouldGetClubsInLeague() {
+    public void itShouldGetClubsInSeason() {
         ScreenScraper screenScraperUnderTest = new ScreenScraper();
 
-        ArrayList<Club> teamsAt2015_2016ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "2015-2016");
-        ArrayList<Club> teamsAt2015_2016Expected = new ArrayList<>();
-        Club team1 = new Club("AFC Bournemouth");
-        Club team2 = new Club("Arsenal FC");
-        Club team3 = new Club("Aston Villa");
-        Club team4 = new Club("Chelsea FC");
-        Club team5 = new Club("Crystal Palace");
-        Club team6 = new Club("Everton FC");
-        Club team7 = new Club("Leicester City");
-        Club team8 = new Club("Liverpool FC");
-        Club team9 = new Club("Manchester City");
-        Club team10 = new Club("Manchester United");
-        Club team11 = new Club("Newcastle United");
-        Club team12 = new Club("Norwich City");
-        Club team13 = new Club("Southampton FC");
-        Club team14 = new Club("Stoke City");
-        Club team15 = new Club("Sunderland AFC");
-        Club team16 = new Club("Swansea City");
-        Club team17 = new Club("Tottenham Hotspur");
-        Club team18 = new Club("Watford FC");
-        Club team19 = new Club("West Bromwich Albion");
-        Club team20 = new Club("West Ham United");
-        teamsAt2015_2016Expected.add(team1);
-        teamsAt2015_2016Expected.add(team2);
-        teamsAt2015_2016Expected.add(team3);
-        teamsAt2015_2016Expected.add(team4);
-        teamsAt2015_2016Expected.add(team5);
-        teamsAt2015_2016Expected.add(team6);
-        teamsAt2015_2016Expected.add(team7);
-        teamsAt2015_2016Expected.add(team8);
-        teamsAt2015_2016Expected.add(team9);
-        teamsAt2015_2016Expected.add(team10);
-        teamsAt2015_2016Expected.add(team11);
-        teamsAt2015_2016Expected.add(team12);
-        teamsAt2015_2016Expected.add(team13);
-        teamsAt2015_2016Expected.add(team14);
-        teamsAt2015_2016Expected.add(team15);
-        teamsAt2015_2016Expected.add(team16);
-        teamsAt2015_2016Expected.add(team17);
-        teamsAt2015_2016Expected.add(team18);
-        teamsAt2015_2016Expected.add(team19);
-        teamsAt2015_2016Expected.add(team20);
-        Assert.assertEquals(teamsAt2015_2016Expected.toString(), teamsAt2015_2016ActualValue.toString());
+        ArrayList<Club> clubsAt2015_2016ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "2015-2016");
+        List<Integer> clubsIdAtSeason2015_2016 = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19); 
+        List<Club> clubsAt2015_2016Expected = Arrays.asList(
+        		new Club("AFC Bournemouth"),
+        		new Club("Arsenal FC"),
+        		new Club("Aston Villa"),
+        		new Club("Chelsea FC"),
+        		new Club("Crystal Palace"),
+        		new Club("Everton FC"),
+        		new Club("Leicester City"),
+        		new Club("Liverpool FC"),
+        		new Club("Manchester City"),
+        		new Club("Manchester United"),
+        		new Club("Newcastle United"),
+        		new Club("Norwich City"),
+        		new Club("Southampton FC"),
+        		new Club("Stoke City"),
+        		new Club("Sunderland AFC"),
+        		new Club("Swansea City"),
+        		new Club("Tottenham Hotspur"),
+        		new Club("Watford FC"),
+        		new Club("West Bromwich Albion"),
+        		new Club("West Ham United"));      
+        assertClubsInSeason(clubsAt2015_2016ActualValue,clubsAt2015_2016Expected,clubsIdAtSeason2015_2016);
 
-        ArrayList<Club> teamsAt1967_1968ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1967-1968");
-        ArrayList<Club> teamsAt1967_1968Expected = new ArrayList<>();
-        Club team30 = new Club("Arsenal FC");
-        Club team31 = new Club("Burnley FC");
-        Club team32 = new Club("Chelsea FC");
-        Club team33 = new Club("Coventry City");
-        Club team34 = new Club("Everton FC");
-        Club team35 = new Club("Fulham FC");
-        Club team36 = new Club("Leeds United");
-        Club team37 = new Club("Leicester City");
-        Club team38 = new Club("Liverpool FC");
-        Club team39 = new Club("Manchester City");
-        Club team40 = new Club("Manchester United");
-        Club team41 = new Club("Newcastle United");
-        Club team42 = new Club("Nottingham Forest");
-        Club team43 = new Club("Sheffield United");
-        Club team44 = new Club("Sheffield Wednesday");
-        Club team45 = new Club("Southampton FC");
-        Club team46 = new Club("Stoke City");
-        Club team47 = new Club("Sunderland AFC");
-        Club team48 = new Club("Tottenham Hotspur");
-        Club team49 = new Club("West Bromwich Albion");
-        Club team50 = new Club("West Ham United");
-        Club team51 = new Club("Wolverhampton Wanderers");
-        teamsAt1967_1968Expected.add(team30);
-        teamsAt1967_1968Expected.add(team31);
-        teamsAt1967_1968Expected.add(team32);
-        teamsAt1967_1968Expected.add(team33);
-        teamsAt1967_1968Expected.add(team34);
-        teamsAt1967_1968Expected.add(team35);
-        teamsAt1967_1968Expected.add(team36);
-        teamsAt1967_1968Expected.add(team37);
-        teamsAt1967_1968Expected.add(team38);
-        teamsAt1967_1968Expected.add(team39);
-        teamsAt1967_1968Expected.add(team40);
-        teamsAt1967_1968Expected.add(team41);
-        teamsAt1967_1968Expected.add(team42);
-        teamsAt1967_1968Expected.add(team43);
-        teamsAt1967_1968Expected.add(team44);
-        teamsAt1967_1968Expected.add(team45);
-        teamsAt1967_1968Expected.add(team46);
-        teamsAt1967_1968Expected.add(team47);
-        teamsAt1967_1968Expected.add(team48);
-        teamsAt1967_1968Expected.add(team49);
-        teamsAt1967_1968Expected.add(team50);
-        teamsAt1967_1968Expected.add(team51);
-        Assert.assertEquals(teamsAt1967_1968Expected.toString(), teamsAt1967_1968ActualValue.toString());
+        ArrayList<Club> clubsAt1967_1968ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1967-1968");
+        List<Integer> clubsIdAtSeason1967_1968 = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21); 
+        List<Club> clubsAt1967_1968Expected = Arrays.asList(
+        		new Club("Arsenal FC"),
+        		new Club("Burnley FC"),
+        		new Club("Chelsea FC"),
+        		new Club("Coventry City"),
+        		new Club("Everton FC"),
+        		new Club("Fulham FC"),
+        		new Club("Leeds United"),
+        		new Club("Leicester City"),
+        		new Club("Liverpool FC"),
+        		new Club("Manchester City"),
+        		new Club("Manchester United"),
+        		new Club("Newcastle United"),
+        		new Club("Nottingham Forest"),
+        		new Club("Sheffield United"),
+        		new Club("Sheffield Wednesday"),
+        		new Club("Southampton FC"),
+        		new Club("Stoke City"),
+        		new Club("Sunderland AFC"),
+        		new Club("Tottenham Hotspur"),
+        		new Club("West Bromwich Albion"),
+        		new Club("West Ham United"),
+        		new Club("Wolverhampton Wanderers"));
+        assertClubsInSeason(clubsAt1967_1968ActualValue,clubsAt1967_1968Expected,clubsIdAtSeason1967_1968);
 
-        ArrayList<Club> teamsAt1889_1890ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1889-1890");
-        ArrayList<Club> teamsAt1889_1890Expected = new ArrayList<>();
-        Club team60 = new Club("Accrington FC");
-        Club team61 = new Club("Aston Villa");
-        Club team62 = new Club("Blackburn Rovers");
-        Club team63 = new Club("Bolton Wanderers");
-        Club team64 = new Club("Burnley FC");
-        Club team65 = new Club("Derby County");
-        Club team66 = new Club("Everton FC");
-        Club team67 = new Club("Notts County");
-        Club team68 = new Club("Preston North End");
-        Club team69 = new Club("Stoke City");
-        Club team70 = new Club("West Bromwich Albion");
-        Club team71 = new Club("Wolverhampton Wanderers");
-        teamsAt1889_1890Expected.add(team60);
-        teamsAt1889_1890Expected.add(team61);
-        teamsAt1889_1890Expected.add(team62);
-        teamsAt1889_1890Expected.add(team63);
-        teamsAt1889_1890Expected.add(team64);
-        teamsAt1889_1890Expected.add(team65);
-        teamsAt1889_1890Expected.add(team66);
-        teamsAt1889_1890Expected.add(team67);
-        teamsAt1889_1890Expected.add(team68);
-        teamsAt1889_1890Expected.add(team69);
-        teamsAt1889_1890Expected.add(team70);
-        teamsAt1889_1890Expected.add(team71);
-        Assert.assertEquals(teamsAt1889_1890Expected.toString(), teamsAt1889_1890ActualValue.toString());
+        ArrayList<Club> clubsAt1889_1890ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1889-1890");
+        List<Integer> clubsIdAtSeason1890_1891 = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11); 
+        List<Club> clubsAt1889_1890Expected = Arrays.asList(
+        		new Club("Accrington FC"),
+        		new Club("Aston Villa"),
+        		new Club("Blackburn Rovers"),
+        		new Club("Bolton Wanderers"),
+        		new Club("Burnley FC"),
+        		new Club("Derby County"),
+        		new Club("Everton FC"),
+        		new Club("Notts County"),
+        		new Club("Preston North End"),
+        		new Club("Stoke City"),
+        		new Club("West Bromwich Albion"),
+        		new Club("Wolverhampton Wanderers"));
+        assertClubsInSeason(clubsAt1889_1890ActualValue,clubsAt1889_1890Expected,clubsIdAtSeason1890_1891);
 
+    }
+   
+    public void assertPlayerInformation(PlayerAllInformation playerInfoActualValue, List<String> attributeList , PlayerAllInformation playerInformationExpectedValue) {
+    	try {
+    		for(int i =0 ; i<attributeList.size() ; i++) {
+    			 assertThat(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i)).get(playerInfoActualValue)).
+    			usingRecursiveComparison().isEqualTo(
+    			   playerInformationExpectedValue.getClass().getDeclaredField(attributeList.get(i)).get(playerInformationExpectedValue));
+    		}
+		} catch (Exception e) {
+			System.out.println("No Attribute Found");
+			e.printStackTrace();
+		}
+    }
+    
+    public void assertPlayerInformationWithIndexes(PlayerAllInformation playerInfoActualValue, List<PlayerAttributeToForComparison_TEST> attributeList , PlayerAllInformation playerInfoExpectedValue) {
+    	for(int i =0 ; i<attributeList.size() ; i++) {
+    	try {    			
+    			if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("personalInfo")) {
+	    			assertThat(playerInfoActualValue.personalInfo).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.personalInfo);
+    			}
+    			else if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("teamsManaged")) {
+    				for(int j =0 ; j<attributeList.get(i).indexes.size(); j++) {
+    					assertThat(playerInfoActualValue.teamsManaged.get(attributeList.get(i).indexes.get(j))).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.teamsManaged.get(j)); 
+    				}
+    			}
+    			else if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("clubsCareer")) {
+    				for(int j =0 ; j<attributeList.get(i).indexes.size(); j++) {
+    					assertThat(playerInfoActualValue.clubsCareer.get(attributeList.get(i).indexes.get(j))).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.clubsCareer.get(j)); 
+    				}
+    			}    			
+        		else if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("clubMatches")) {
+        			for(int j =0 ; j<attributeList.get(i).indexes.size(); j++) {
+    					assertThat(playerInfoActualValue.clubMatches.get(attributeList.get(i).indexes.get(j))).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.clubMatches.get(j)); 
+    				}
+        		}
+            			
+        		else if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("internationalCopmetitionsInfo")) {
+        			for(int j =0 ; j<attributeList.get(i).indexes.size(); j++) {
+    					assertThat(playerInfoActualValue.internationalCopmetitionsInfo.get(attributeList.get(i).indexes.get(j))).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.internationalCopmetitionsInfo.get(j)); 
+    				}
+        		}                			
+        		else if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("clubsMatchesOverall")) {
+        			for(int j =0 ; j<attributeList.get(i).indexes.size(); j++) {
+    					assertThat(playerInfoActualValue.clubsMatchesOverall.get(attributeList.get(i).indexes.get(j))).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.clubsMatchesOverall.get(j)); 
+    				}
+        		}                    			
+        		else if(playerInfoActualValue.getClass().getDeclaredField(attributeList.get(i).attributeName).toString().contains("internationalCopmetitionsOverall")) {
+        			for(int j =0 ; j<attributeList.get(i).indexes.size(); j++) {
+    					assertThat(playerInfoActualValue.internationalCopmetitionsOverall.get(attributeList.get(i).indexes.get(j))).usingRecursiveComparison().isEqualTo(playerInfoExpectedValue.internationalCopmetitionsOverall.get(j)); 
+    				}
+        		}
+    		}
+    	
+		 catch (Exception e) {
+			System.out.println("No Attribute Found  " + attributeList.get(i).attributeName);
+			e.printStackTrace();
+		}
+    }
     }
 
     @Test
     public void itShouldGetPlayerInformation() {
 
-        ScreenScraper screenScraperTest = new ScreenScraper();
-
-        PlayerAllInformation player1ActualValueInfo = new PlayerAllInformation();
+        ScreenScraper screenScraperTest = new ScreenScraper();        
+        
+        //https://www.worldfootball.net/player_summary/eric-bailly/
+        PlayerAllInformation player1ActualValueInfo = screenScraperTest.playerCollector.getAllInformationAboutPlayer("eric-bailly");        
         PlayerAllInformation player1ExpectedValueInfo = new PlayerAllInformation();
-        player1ActualValueInfo = screenScraperTest.playerCollector.getAllInformationAboutPlayer("eric-bailly");
-        PlayerPersonalInformation player1ExpectedValuePersonalInfo = new PlayerPersonalInformation("Eric Bailly", "Eric Bertrand Bailly",
+        player1ExpectedValueInfo.personalInfo = new PlayerPersonalInformation("Eric Bailly", "Eric Bertrand Bailly",
                 "12.04.1994", "Bingerville, Ivory Coast", "Ivory Coast", "187 cm", "77 kg", "Centre Back", "right");
-        player1ExpectedValueInfo.personalInfo = player1ExpectedValuePersonalInfo;
-        ArrayList<PlayerClubCareer> palyer1ExpectedValueClubCareer = new ArrayList<>();
-        PlayerClubCareer player1ClubCareer1 = new PlayerClubCareer("07/2016 - 06/2022", "Manchester United", "England", "Defender", "#3");
-        PlayerClubCareer player1ClubCareer2 = new PlayerClubCareer("01/2020 - 01/2020", "Manchester United U23", "England", "Defender", null);
-        PlayerClubCareer player1ClubCareer3 = new PlayerClubCareer("01/2017 - 01/2017", "Manchester United U23", "England", "Defender", null);
-        PlayerClubCareer player1ClubCareer4 = new PlayerClubCareer("01/2015 - 06/2016", "Villarreal CF", "Spain", "Defender", null);
-        PlayerClubCareer player1ClubCareer5 = new PlayerClubCareer("09/2014 - 01/2015", "Espanyol Barcelona", "Spain", "Defender", null);
-        PlayerClubCareer player1ClubCareer6 = new PlayerClubCareer("03/2013 - 01/2015", "Espanyol Barcelona B", "Spain", "Defender", null);
-        PlayerClubCareer player1ClubCareer7 = new PlayerClubCareer("07/2012 - 06/2013", "Espanyol Barcelona [Youth]", "Spain", "Defender", null);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer1);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer2);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer3);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer4);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer5);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer6);
-        palyer1ExpectedValueClubCareer.add(player1ClubCareer7);
-        player1ExpectedValueInfo.clubsCareer = palyer1ExpectedValueClubCareer;
-
-        ArrayList<PlayerCompetitionsInformation> player1ExpectedValueClubMatchesInfo = new ArrayList<>();
-        PlayerCompetitionsInformation player1ClubMatches1 = new PlayerCompetitionsInformation("Champions League", "UEFA", "7", "0", "7", "0", "1", "2", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches2 = new PlayerCompetitionsInformation("Europa League", "UEFA", "24", "1", "24", "0", "2", "4", "2", "1");
-        PlayerCompetitionsInformation player1ClubMatches3 = new PlayerCompetitionsInformation("Premier League", "England", "59", "1", "48", "11", "5", "8", "0", "1");
-        PlayerCompetitionsInformation player1ClubMatches4 = new PlayerCompetitionsInformation("FA Cup", "England", "6", "0", "5", "1", "2", "1", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches5 = new PlayerCompetitionsInformation("League Cup", "England", "5", "0", "5", "0", "0", "0", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches6 = new PlayerCompetitionsInformation("FA Community Shield", "England", "1", "0", "1", "0", "0", "1", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches7 = new PlayerCompetitionsInformation("U23 Premier League Div. 1", "England", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches8 = new PlayerCompetitionsInformation("U23 Premier League Div. 2", "England", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches9 = new PlayerCompetitionsInformation("Primera División", "Spanien", "40", "0", "39", "1", "10", "15", "1", "0");
-        PlayerCompetitionsInformation player1ClubMatches10 = new PlayerCompetitionsInformation("Copa del Rey", "Spanien", "3", "0", "3", "0", "0", "2", "0", "0");
-        PlayerCompetitionsInformation player1ClubMatches11 = new PlayerCompetitionsInformation("Segunda B Grupo 3", "Spanien", "22", "0", "19", "3", "2", "6", "1", "0");
-        PlayerCompetitionsInformation player1ClubMatches12 = new PlayerCompetitionsInformation("∑", null, "169", "2", "153", "16", "24", "39", "4", "2");
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches1);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches2);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches3);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches4);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches5);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches6);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches7);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches8);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches9);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches10);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches11);
-        player1ExpectedValueClubMatchesInfo.add(player1ClubMatches12);
-        player1ExpectedValueInfo.clubMatches = player1ExpectedValueClubMatchesInfo;
-
-        ArrayList<PlayerCompetitionInformationOverall> palyer1ExpectedValueClubMatchesOverall = new ArrayList<>();
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall1 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2020/2021", "Manchester United", "5", "0", "4", "1", "0", "2", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall2 = new PlayerCompetitionInformationOverall("England", "League Cup", "2020/2021", "Manchester United", "3", "0", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall3 = new PlayerCompetitionInformationOverall("UEFA", "EL", "2019/2020", "Manchester United", "4", "0", "4", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall4 = new PlayerCompetitionInformationOverall("England", "FA Cup", "2019/2020", "Manchester United", "3", "0", "3", "0", "2", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall5 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2019/2020", "Manchester United", "4", "0", "1", "3", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall6 = new PlayerCompetitionInformationOverall("England", "U23 PL Div.2", "2019/2020", "Manchester United U23", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall7 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2018/2019", "Manchester United", "12", "0", "8", "4", "2", "0", "0", "1");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall8 = new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "2018/2019", "Manchester United", "4", "0", "4", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall9 = new PlayerCompetitionInformationOverall("England", "FA Cup", "2018/2019", "Manchester United", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall10 = new PlayerCompetitionInformationOverall("England", "League Cup", "2018/2019", "Manchester United", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall11 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2017/2018", "Manchester United", "13", "1", "11", "2", "0", "2", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall12 = new PlayerCompetitionInformationOverall("England", "FA Cup", "2017/2018", "Manchester United", "2", "0", "1", "1", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall13 = new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "2017/2018", "Manchester United", "3", "0", "3", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall14 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2016/2017", "Manchester United", "25", "0", "24", "1", "3", "4", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall15 = new PlayerCompetitionInformationOverall("UEFA", "EL", "2016/2017", "Manchester United", "11", "0", "11", "0", "0", "2", "1", "1");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall16 = new PlayerCompetitionInformationOverall("England", "League Cup", "2016/2017", "Manchester United", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall17 = new PlayerCompetitionInformationOverall("England", "U23 PL Div.1", "2016/2017", "Manchester United U23", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall18 = new PlayerCompetitionInformationOverall("England", "Com. Shield", "2016", "Manchester United", "1", "0", "1", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall19 = new PlayerCompetitionInformationOverall("Spanien", "Pr. División", "2015/2016", "Villarreal CF", "25", "0", "25", "0", "6", "9", "1", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall20 = new PlayerCompetitionInformationOverall("UEFA", "EL", "2015/2016", "Villarreal CF", "7", "1", "7", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall21 = new PlayerCompetitionInformationOverall("Spanien", "Copa del Rey", "2015/2016", "Villarreal CF", "3", "0", "3", "0", "0", "2", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall22 = new PlayerCompetitionInformationOverall("Spanien", "Pr. División", "2014/2015", "Villarreal CF", "10", "0", "10", "0", "3", "5", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall23 = new PlayerCompetitionInformationOverall("UEFA", "EL", "2014/2015", "Villarreal CF", "2", "0", "2", "0", "0", "0", "1", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall24 = new PlayerCompetitionInformationOverall("Spanien", "Pr. División", "2014/2015", "Espanyol Barcelona", "5", "0", "4", "1", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall25 = new PlayerCompetitionInformationOverall("Spanien", "2ª B G3", "2014/2015", "Espanyol Barcelona B", "1", "0", "1", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueClubMatchesOverall26 = new PlayerCompetitionInformationOverall("Spanien", "2ª B G3", "2013/2014", "Espanyol Barcelona B", "21", "0", "18", "3", "2", "5", "1", "0");
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall1);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall2);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall3);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall4);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall5);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall6);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall7);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall8);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall9);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall10);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall11);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall12);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall13);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall14);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall15);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall16);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall17);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall18);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall19);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall20);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall21);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall22);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall23);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall24);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall25);
-        palyer1ExpectedValueClubMatchesOverall.add(player1ExpectedValueClubMatchesOverall26);
-        player1ExpectedValueInfo.clubsMatchesOverall = palyer1ExpectedValueClubMatchesOverall;
-
-        ArrayList<PlayerCompetitionInformationOverall> palyer1ExpectedValueInternationalOverall = new ArrayList<>();
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall1 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2020", "Ivory Coast", "2", "0", "2", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall2 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2018", "Ivory Coast", "2", "0", "2", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall3 = new PlayerCompetitionInformationOverall("CAF", "Afr. Cup QF", "2017-2019", "Ivory Coast", "5", "2", "5", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall4 = new PlayerCompetitionInformationOverall("CAF", "Africa Cup", "2017 Gabun", "Ivory Coast", "3", "0", "3", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall5 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2017", "Ivory Coast", "4", "0", "3", "1", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall6 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2016", "Ivory Coast", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall7 = new PlayerCompetitionInformationOverall("CAF", "Afr. Cup QF", "2015/2016", "Ivory Coast", "4", "0", "4", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall8 = new PlayerCompetitionInformationOverall("FIFA", "WCQ Africa", "2015-2017", "Ivory Coast", "4", "0", "4", "0", "0", "2", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall9 = new PlayerCompetitionInformationOverall("CAF", "Africa Cup", "2015 Equatorial Guinea", "Ivory Coast", "6", "0", "6", "0", "1", "2", "0", "0");
-        PlayerCompetitionInformationOverall player1ExpectedValueInternationalOverall10 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2015", "Ivory Coast", "5", "0", "5", "0", "1", "0", "0", "0");
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall1);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall2);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall3);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall4);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall5);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall6);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall7);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall8);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall9);
-        palyer1ExpectedValueInternationalOverall.add(player1ExpectedValueInternationalOverall10);
-        player1ExpectedValueInfo.internationalCopmetitionsOverall = palyer1ExpectedValueInternationalOverall;
-        ArrayList<PlayerCompetitionsInformation> player1ExpectedValueInternationalInfo = new ArrayList<>();
-        PlayerCompetitionsInformation player1International1 = new PlayerCompetitionsInformation("WC Qualifiers Africa", "FIFA", "4", "0", "4", "0", "0", "2", "0", "0");
-        PlayerCompetitionsInformation player1International2 = new PlayerCompetitionsInformation("Friendlies", "FIFA", "14", "0", "13", "1", "2", "1", "0", "0");
-        PlayerCompetitionsInformation player1International3 = new PlayerCompetitionsInformation("Africa Cup", "CAF", "9", "0", "9", "0", "1", "3", "0", "0");
-        PlayerCompetitionsInformation player1International4 = new PlayerCompetitionsInformation("Africa Cup Qual.", "CAF", "9", "2", "9", "0", "2", "1", "0", "0");
-        PlayerCompetitionsInformation player1International5 = new PlayerCompetitionsInformation("∑", null, "36", "2", "35", "1", "5", "7", "0", "0");
-        player1ExpectedValueInternationalInfo.add(player1International1);
-        player1ExpectedValueInternationalInfo.add(player1International2);
-        player1ExpectedValueInternationalInfo.add(player1International3);
-        player1ExpectedValueInternationalInfo.add(player1International4);
-        player1ExpectedValueInternationalInfo.add(player1International5);
-        player1ExpectedValueInfo.internationalCopmetitionsInfo = player1ExpectedValueInternationalInfo;
-
-        Assert.assertEquals(player1ExpectedValueInfo.toString(), player1ActualValueInfo.toString());
-
-        PlayerAllInformation player2ActualValueInfo = new PlayerAllInformation();
+        player1ExpectedValueInfo.clubsCareer = new ArrayList<>(Arrays.asList(
+        		new PlayerClubCareer("07/2016 - 06/2022", "Manchester United", "England", "Defender", "#3"),
+        		new PlayerClubCareer("01/2020 - 01/2020", "Manchester United U23", "England", "Defender", null),
+        		new PlayerClubCareer("01/2017 - 01/2017", "Manchester United U23", "England", "Defender", null),
+        		new PlayerClubCareer("01/2015 - 06/2016", "Villarreal CF", "Spain", "Defender", null),
+        		new PlayerClubCareer("09/2014 - 01/2015", "Espanyol Barcelona", "Spain", "Defender", null),
+        		new PlayerClubCareer("03/2013 - 01/2015", "Espanyol Barcelona B", "Spain", "Defender", null),
+        		new PlayerClubCareer("07/2012 - 06/2013", "Espanyol Barcelona [Youth]", "Spain", "Defender", null)));
+        player1ExpectedValueInfo.clubMatches = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformation("Champions League", "UEFA", "7", "0", "7", "0", "1", "2", "0", "0"),
+        		new PlayerCompetitionInformation("Europa League", "UEFA", "24", "1", "24", "0", "2", "4", "2", "1"),
+        		new PlayerCompetitionInformation("Premier League", "England", "59", "1", "48", "11", "5", "8", "0", "1"),
+        		new PlayerCompetitionInformation("FA Cup", "England", "6", "0", "5", "1", "2", "1", "0", "0"),
+        		new PlayerCompetitionInformation("League Cup", "England", "5", "0", "5", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformation("FA Community Shield", "England", "1", "0", "1", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformation("U23 Premier League Div. 1", "England", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformation("U23 Premier League Div. 2", "England", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformation("Primera División", "Spanien", "40", "0", "39", "1", "10", "15", "1", "0"),
+        		new PlayerCompetitionInformation("Copa del Rey", "Spanien", "3", "0", "3", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformation("Segunda B Grupo 3", "Spanien", "22", "0", "19", "3", "2", "6", "1", "0"),
+        		new PlayerCompetitionInformation("∑", null, "169", "2", "153", "16", "24", "39", "4", "2")));
+        player1ExpectedValueInfo.clubsMatchesOverall = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2020/2021", "Manchester United", "5", "0", "4", "1", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "2020/2021", "Manchester United", "3", "0", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "2019/2020", "Manchester United", "4", "0", "4", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "2019/2020", "Manchester United", "3", "0", "3", "0", "2", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2019/2020", "Manchester United", "4", "0", "1", "3", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "U23 PL Div.2", "2019/2020", "Manchester United U23", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2018/2019", "Manchester United", "12", "0", "8", "4", "2", "0", "0", "1"),
+        		new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "2018/2019", "Manchester United", "4", "0", "4", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "2018/2019", "Manchester United", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "2018/2019", "Manchester United", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2017/2018", "Manchester United", "13", "1", "11", "2", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "2017/2018", "Manchester United", "2", "0", "1", "1", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "2017/2018", "Manchester United", "3", "0", "3", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2016/2017", "Manchester United", "25", "0", "24", "1", "3", "4", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "2016/2017", "Manchester United", "11", "0", "11", "0", "0", "2", "1", "1"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "2016/2017", "Manchester United", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "U23 PL Div.1", "2016/2017", "Manchester United U23", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Com. Shield", "2016", "Manchester United", "1", "0", "1", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("Spanien", "Pr. División", "2015/2016", "Villarreal CF", "25", "0", "25", "0", "6", "9", "1", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "2015/2016", "Villarreal CF", "7", "1", "7", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("Spanien", "Copa del Rey", "2015/2016", "Villarreal CF", "3", "0", "3", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("Spanien", "Pr. División", "2014/2015", "Villarreal CF", "10", "0", "10", "0", "3", "5", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "2014/2015", "Villarreal CF", "2", "0", "2", "0", "0", "0", "1", "0"),
+        		new PlayerCompetitionInformationOverall("Spanien", "Pr. División", "2014/2015", "Espanyol Barcelona", "5", "0", "4", "1", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("Spanien", "2ª B G3", "2014/2015", "Espanyol Barcelona B", "1", "0", "1", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("Spanien", "2ª B G3", "2013/2014", "Espanyol Barcelona B", "21", "0", "18", "3", "2", "5", "1", "0")));
+        player1ExpectedValueInfo.internationalCopmetitionsOverall = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2020", "Ivory Coast", "2", "0", "2", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2018", "Ivory Coast", "2", "0", "2", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("CAF", "Afr. Cup QF", "2017-2019", "Ivory Coast", "5", "2", "5", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("CAF", "Africa Cup", "2017 Gabun", "Ivory Coast", "3", "0", "3", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2017", "Ivory Coast", "4", "0", "3", "1", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2016", "Ivory Coast", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("CAF", "Afr. Cup QF", "2015/2016", "Ivory Coast", "4", "0", "4", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "WCQ Africa", "2015-2017", "Ivory Coast", "4", "0", "4", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("CAF", "Africa Cup", "2015 Equatorial Guinea", "Ivory Coast", "6", "0", "6", "0", "1", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2015", "Ivory Coast", "5", "0", "5", "0", "1", "0", "0", "0")));
+        player1ExpectedValueInfo.internationalCopmetitionsInfo = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformation("WC Qualifiers Africa", "FIFA", "4", "0", "4", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformation("Friendlies", "FIFA", "14", "0", "13", "1", "2", "1", "0", "0"),
+        		new PlayerCompetitionInformation("Africa Cup", "CAF", "9", "0", "9", "0", "1", "3", "0", "0"),
+        		new PlayerCompetitionInformation("Africa Cup Qual.", "CAF", "9", "2", "9", "0", "2", "1", "0", "0"),
+        		new PlayerCompetitionInformation("∑", null, "36", "2", "35", "1", "5", "7", "0", "0")));
+        List<String> player1AttributeList = Arrays.asList("personalInfo","teamsManaged" , "clubsCareer","clubMatches",
+        		"internationalCopmetitionsInfo","clubsMatchesOverall","internationalCopmetitionsOverall");
+        assertPlayerInformation(player1ActualValueInfo,player1AttributeList, player1ExpectedValueInfo);
+        //https://www.worldfootball.net/player_summary/tony-adams/
+        PlayerAllInformation player2ActualValueInfo  = screenScraperTest.getAllInformationAboutPlayer("tony-adams");
         PlayerAllInformation player2ExpectedValueInfo = new PlayerAllInformation();
-        player2ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("tony-adams");
-        PlayerPersonalInformation player2ExpectedValuePersonalInfo = new PlayerPersonalInformation("Tony Adams", "Anthony Alexander Adams",
+
+        player2ExpectedValueInfo.personalInfo = new PlayerPersonalInformation("Tony Adams", "Anthony Alexander Adams",
                 "10.10.1966", "Romford, England", "England", "191 cm", "87 kg", "Centre Back", "right");
-        player2ExpectedValueInfo.personalInfo = player2ExpectedValuePersonalInfo;
-        ArrayList<PlayerTeamManaged> player2ExpectedValueTeamManaged = new ArrayList<>();
-        PlayerTeamManaged palyer2TeamManged1 = new PlayerTeamManaged("04/2017 - 06/2017", "Granada CF", "Spain", "Manager");
-        PlayerTeamManaged palyer2TeamManged2 = new PlayerTeamManaged("07/2010 - 06/2012", "Gabala FK", "Azerbaijan", "Manager");
-        PlayerTeamManaged palyer2TeamManged3 = new PlayerTeamManaged("10/2008 - 02/2009", "Portsmouth FC", "England", "Manager");
-        player2ExpectedValueTeamManaged.add(palyer2TeamManged1);
-        player2ExpectedValueTeamManaged.add(palyer2TeamManged2);
-        player2ExpectedValueTeamManaged.add(palyer2TeamManged3);
-        player2ExpectedValueInfo.teamsManaged = player2ExpectedValueTeamManaged;
-        ArrayList<PlayerClubCareer> palyer2ExpectedValueClubCareer = new ArrayList<>();
-        PlayerClubCareer player2ClubCareer1 = new PlayerClubCareer("07/1983 - 06/2002", "Arsenal FC", "England", "Defender", null);
-        PlayerClubCareer player2ClubCareer2 = new PlayerClubCareer("07/1982 - 06/1983", "Arsenal FC [U18]", "England", "Defender", null);
-        palyer2ExpectedValueClubCareer.add(player2ClubCareer1);
-        palyer2ExpectedValueClubCareer.add(player2ClubCareer2);
-        player2ExpectedValueInfo.clubsCareer = palyer2ExpectedValueClubCareer;
-        ArrayList<PlayerCompetitionsInformation> player2ExpectedValueClubMatchesInfo = new ArrayList<>();
-        PlayerCompetitionsInformation player2ClubMatches1 = new PlayerCompetitionsInformation("Champions League", "UEFA", "21", "1", "21", "0", "1", "3", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches2 = new PlayerCompetitionsInformation("Europa League", "UEFA", "9", "0", "9", "0", "2", "2", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches3 = new PlayerCompetitionsInformation("UEFA Super Cup", "UEFA", "2", "0", "2", "0", "0", "0", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches4 = new PlayerCompetitionsInformation("Cup Winners Cup", "UEFA", "16", "2", "16", "0", "0", "2", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches5 = new PlayerCompetitionsInformation("Premier League", "England", "504", "32", "500", "4", "19", "37", "1", "4");
-        PlayerCompetitionsInformation player2ClubMatches6 = new PlayerCompetitionsInformation("FA Cup", "England", "33", "7", "32", "1", "0", "2", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches7 = new PlayerCompetitionsInformation("League Cup", "England", "17", "3", "17", "0", "0", "1", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches8 = new PlayerCompetitionsInformation("FA Community Shield", "England", "4", "0", "4", "0", "1", "0", "0", "0");
-        PlayerCompetitionsInformation player2ClubMatches9 = new PlayerCompetitionsInformation("∑", null, "606", "45", "601", "5", "23", "47", "1", "4");
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches1);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches2);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches3);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches4);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches5);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches6);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches7);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches8);
-        player2ExpectedValueClubMatchesInfo.add(player2ClubMatches9);
-        player2ExpectedValueInfo.clubMatches = player2ExpectedValueClubMatchesInfo;
-        ArrayList<PlayerCompetitionsInformation> player2ExpectedValueInternationalInfo = new ArrayList<>();
-        PlayerCompetitionsInformation player2International1 = new PlayerCompetitionsInformation("World Cup", "FIFA", "4", "0", "4", "0", "0", "0", "0", "0");
-        PlayerCompetitionsInformation player2International2 = new PlayerCompetitionsInformation("WC Qualifiers Europe", "FIFA", "14", "0", "14", "0", "2", "2", "0", "0");
-        PlayerCompetitionsInformation player2International3 = new PlayerCompetitionsInformation("Friendlies", "FIFA", "29", "3", "29", "0", "4", "0", "0", "0");
-        PlayerCompetitionsInformation player2International4 = new PlayerCompetitionsInformation("EURO", "UEFA", "9", "1", "9", "0", "1", "1", "0", "0");
-        PlayerCompetitionsInformation player2International5 = new PlayerCompetitionsInformation("EURO Qualifiers", "UEFA", "10", "1", "10", "0", "2", "1", "0", "0");
-        PlayerCompetitionsInformation player2International6 = new PlayerCompetitionsInformation("∑", null, "66", "5", "66", "0", "9", "4", "0", "0");
-        PlayerCompetitionsInformation player2International7 = new PlayerCompetitionsInformation("EURO [U21]", "UEFA", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionsInformation player2International8 = new PlayerCompetitionsInformation("∑ U21", null, "1", "0", "1", "0", "0", "0", "0", "0");
-        player2ExpectedValueInternationalInfo.add(player2International1);
-        player2ExpectedValueInternationalInfo.add(player2International2);
-        player2ExpectedValueInternationalInfo.add(player2International3);
-        player2ExpectedValueInternationalInfo.add(player2International4);
-        player2ExpectedValueInternationalInfo.add(player2International5);
-        player2ExpectedValueInternationalInfo.add(player2International6);
-        player2ExpectedValueInternationalInfo.add(player2International7);
-        player2ExpectedValueInternationalInfo.add(player2International8);
-        player2ExpectedValueInfo.internationalCopmetitionsInfo = player2ExpectedValueInternationalInfo;
+        player2ExpectedValueInfo.teamsManaged = new ArrayList<>(Arrays.asList(
+        		new PlayerTeamManaged("04/2017 - 06/2017", "Granada CF", "Spain", "Manager"),
+        		new PlayerTeamManaged("07/2010 - 06/2012", "Gabala FK", "Azerbaijan", "Manager"),
+        		new PlayerTeamManaged("10/2008 - 02/2009", "Portsmouth FC", "England", "Manager")));
+        player2ExpectedValueInfo.clubsCareer = new ArrayList<>(Arrays.asList(
+        		new PlayerClubCareer("07/1983 - 06/2002", "Arsenal FC", "England", "Defender", null),
+        		new PlayerClubCareer("07/1982 - 06/1983", "Arsenal FC [U18]", "England", "Defender", null)));
+        player2ExpectedValueInfo.clubMatches = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformation("Champions League", "UEFA", "21", "1", "21", "0", "1", "3", "0", "0"),
+        		new PlayerCompetitionInformation("Europa League", "UEFA", "9", "0", "9", "0", "2", "2", "0", "0"),
+        		new PlayerCompetitionInformation("UEFA Super Cup", "UEFA", "2", "0", "2", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformation("Cup Winners Cup", "UEFA", "16", "2", "16", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformation("Premier League", "England", "504", "32", "500", "4", "19", "37", "1", "4"),
+        		new PlayerCompetitionInformation("FA Cup", "England", "33", "7", "32", "1", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformation("League Cup", "England", "17", "3", "17", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformation("FA Community Shield", "England", "4", "0", "4", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformation("∑", null, "606", "45", "601", "5", "23", "47", "1", "4")));
+        player2ExpectedValueInfo.internationalCopmetitionsInfo = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformation("World Cup", "FIFA", "4", "0", "4", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformation("WC Qualifiers Europe", "FIFA", "14", "0", "14", "0", "2", "2", "0", "0"),
+        		new PlayerCompetitionInformation("Friendlies", "FIFA", "29", "3", "29", "0", "4", "0", "0", "0"),
+        		new PlayerCompetitionInformation("EURO", "UEFA", "9", "1", "9", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformation("EURO Qualifiers", "UEFA", "10", "1", "10", "0", "2", "1", "0", "0"),
+        		new PlayerCompetitionInformation("∑", null, "66", "5", "66", "0", "9", "4", "0", "0"),
+        		new PlayerCompetitionInformation("EURO [U21]", "UEFA", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformation("∑ U21", null, "1", "0", "1", "0", "0", "0", "0", "0")));
+        player2ExpectedValueInfo.clubsMatchesOverall = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "2001/2002", "Arsenal FC", "3", "1", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2001/2002", "Arsenal FC", "10", "0", "10", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "2000/2001", "Arsenal FC", "26", "1", "26", "0", "0", "7", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "2000/2001", "Arsenal FC", "4", "1", "4", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "2000/2001", "Arsenal FC", "8", "0", "8", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "1999/2000", "Arsenal FC", "6", "0", "6", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1999/2000", "Arsenal FC", "21", "0", "21", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1999/2000", "Arsenal FC", "1", "1", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "1999/2000", "Arsenal FC", "5", "0", "5", "0", "0", "2", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1998/1999", "Arsenal FC", "26", "1", "26", "0", "0", "4", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1998/1999", "Arsenal FC", "5", "0", "5", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "1998/1999", "Arsenal FC", "4", "1", "4", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Com. Shield", "1998", "Arsenal FC", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1997/1998", "Arsenal FC", "6", "0", "6", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1997/1998", "Arsenal FC", "26", "3", "26", "0", "0", "6", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1997/1998", "Arsenal FC", "2", "0", "2", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "1997/1998", "Arsenal FC", "2", "0", "2", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1996/1997", "Arsenal FC", "28", "3", "27", "1", "2", "5", "1", "1"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1996/1997", "Arsenal FC", "3", "0", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1996/1997", "Arsenal FC", "3", "0", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EL", "1996/1997", "Arsenal FC", "1", "0", "1", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1995/1996", "Arsenal FC", "2", "0", "2", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1995/1996", "Arsenal FC", "21", "1", "21", "0", "0", "2", "0", "1"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1995/1996", "Arsenal FC", "5", "2", "5", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1994/1995", "Arsenal FC", "27", "3", "27", "0", "3", "4", "0", "1"),
+        		new PlayerCompetitionInformationOverall("UEFA", "CWC", "1994/1995", "Arsenal FC", "8", "0", "8", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1994/1995", "Arsenal FC", "1", "0", "0", "1", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1994/1995", "Arsenal FC", "4", "1", "4", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "UEFA Sup.Cup", "1994", "Arsenal FC", "2", "0", "2", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1993/1994", "Arsenal FC", "35", "0", "35", "0", "3", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "CWC", "1993/1994", "Arsenal FC", "8", "2", "8", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1993/1994", "Arsenal FC", "3", "2", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1993/1994", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Com. Shield", "1993", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1992/1993", "Arsenal FC", "4", "2", "4", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1992/1993", "Arsenal FC", "35", "0", "33", "2", "2", "4", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1992/1993", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1991/1992", "Arsenal FC", "35", "2", "35", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "1991/1992", "Arsenal FC", "4", "0", "4", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Com. Shield", "1991", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1990/1991", "Arsenal FC", "30", "1", "30", "0", "2", "1", "0", "1"),
+        		new PlayerCompetitionInformationOverall("England", "FA Cup", "1990/1991", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1989/1990", "Arsenal FC", "38", "5", "38", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Com. Shield", "1989", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1988/1989", "Arsenal FC", "36", "4", "36", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1987/1988", "Arsenal FC", "39", "2", "39", "0", "3", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1986/1987", "Arsenal FC", "42", "6", "42", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "League Cup", "1986/1987", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1985/1986", "Arsenal FC", "10", "0", "10", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1984/1985", "Arsenal FC", "16", "0", "15", "1", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("England", "Pr. League", "1983/1984", "Arsenal FC", "3", "0", "3", "0", "1", "0", "0", "0")));
+        player2ExpectedValueInfo.internationalCopmetitionsOverall = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "2000/2001", "England", "1", "0", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO", "2000 Holland/Belgium", "England", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2000", "England", "2", "1", "2", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1999", "England", "2", "0", "2", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO Qualif.", "1998/1999", "England", "5", "0", "5", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "World Cup", "1998 France", "England", "4", "0", "4", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1998", "England", "3", "0", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "1996/1997", "England", "3", "0", "3", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO", "1996 England", "England", "5", "0", "5", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1996", "England", "1", "0", "1", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1995", "England", "6", "0", "6", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1994", "England", "5", "0", "5", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "1992/1993", "England", "9", "0", "9", "0", "0", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO Qualif.", "1990/1991", "England", "2", "0", "2", "0", "1", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "1988/1989", "England", "1", "0", "1", "0", "1", "1", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO", "1988 Germany", "England", "3", "1", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1988", "England", "7", "2", "7", "0", "2", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1987", "England", "3", "0", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO Qualif.", "1986/1987", "England", "3", "1", "3", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformationOverall("UEFA", "EURO [U21]", "1986", "England", "1", "0", "1", "0", "0", "0", "0", "0")));
+        List<String> player2AttributeList = Arrays.asList("personalInfo","teamsManaged" , "clubsCareer","clubMatches",
+        		"internationalCopmetitionsInfo","clubsMatchesOverall","internationalCopmetitionsOverall");
+        assertPlayerInformation(player2ActualValueInfo,player2AttributeList, player2ExpectedValueInfo);
 
-        ArrayList<PlayerCompetitionInformationOverall> palyer2ExpectedValueClubMatchesOverall = new ArrayList<>();
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall1 = new PlayerCompetitionInformationOverall("England", "FA Cup", "2001/2002", "Arsenal FC", "3", "1", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall2 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2001/2002", "Arsenal FC", "10", "0", "10", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall3 = new PlayerCompetitionInformationOverall("England", "Pr. League", "2000/2001", "Arsenal FC", "26", "1", "26", "0", "0", "7", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall4 = new PlayerCompetitionInformationOverall("England", "FA Cup", "2000/2001", "Arsenal FC", "4", "1", "4", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall5 = new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "2000/2001", "Arsenal FC", "8", "0", "8", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall6 = new PlayerCompetitionInformationOverall("UEFA", "EL", "1999/2000", "Arsenal FC", "6", "0", "6", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall7 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1999/2000", "Arsenal FC", "21", "0", "21", "0", "0", "2", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall8 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1999/2000", "Arsenal FC", "1", "1", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall9 = new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "1999/2000", "Arsenal FC", "5", "0", "5", "0", "0", "2", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall10 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1998/1999", "Arsenal FC", "26", "1", "26", "0", "0", "4", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall11 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1998/1999", "Arsenal FC", "5", "0", "5", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall12 = new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "1998/1999", "Arsenal FC", "4", "1", "4", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall13 = new PlayerCompetitionInformationOverall("England", "Com. Shield", "1998", "Arsenal FC", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall14 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1997/1998", "Arsenal FC", "6", "0", "6", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall15 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1997/1998", "Arsenal FC", "26", "3", "26", "0", "0", "6", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall16 = new PlayerCompetitionInformationOverall("England", "League Cup", "1997/1998", "Arsenal FC", "2", "0", "2", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall17 = new PlayerCompetitionInformationOverall("UEFA", "EL", "1997/1998", "Arsenal FC", "2", "0", "2", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall18 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1996/1997", "Arsenal FC", "28", "3", "27", "1", "2", "5", "1", "1");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall19 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1996/1997", "Arsenal FC", "3", "0", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall20 = new PlayerCompetitionInformationOverall("England", "League Cup", "1996/1997", "Arsenal FC", "3", "0", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall21 = new PlayerCompetitionInformationOverall("UEFA", "EL", "1996/1997", "Arsenal FC", "1", "0", "1", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall22 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1995/1996", "Arsenal FC", "2", "0", "2", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall23 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1995/1996", "Arsenal FC", "21", "1", "21", "0", "0", "2", "0", "1");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall24 = new PlayerCompetitionInformationOverall("England", "League Cup", "1995/1996", "Arsenal FC", "5", "2", "5", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall25 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1994/1995", "Arsenal FC", "27", "3", "27", "0", "3", "4", "0", "1");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall26 = new PlayerCompetitionInformationOverall("UEFA", "CWC", "1994/1995", "Arsenal FC", "8", "0", "8", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall27 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1994/1995", "Arsenal FC", "1", "0", "0", "1", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall28 = new PlayerCompetitionInformationOverall("England", "League Cup", "1994/1995", "Arsenal FC", "4", "1", "4", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall29 = new PlayerCompetitionInformationOverall("UEFA", "UEFA Sup.Cup", "1994", "Arsenal FC", "2", "0", "2", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall30 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1993/1994", "Arsenal FC", "35", "0", "35", "0", "3", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall31 = new PlayerCompetitionInformationOverall("UEFA", "CWC", "1993/1994", "Arsenal FC", "8", "2", "8", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall32 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1993/1994", "Arsenal FC", "3", "2", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall33 = new PlayerCompetitionInformationOverall("England", "League Cup", "1993/1994", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall34 = new PlayerCompetitionInformationOverall("England", "Com. Shield", "1993", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall35 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1992/1993", "Arsenal FC", "4", "2", "4", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall36 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1992/1993", "Arsenal FC", "35", "0", "33", "2", "2", "4", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall37 = new PlayerCompetitionInformationOverall("England", "League Cup", "1992/1993", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall38 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1991/1992", "Arsenal FC", "35", "2", "35", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall39 = new PlayerCompetitionInformationOverall("UEFA", "Ch. League", "1991/1992", "Arsenal FC", "4", "0", "4", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall40 = new PlayerCompetitionInformationOverall("England", "Com. Shield", "1991", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall41 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1990/1991", "Arsenal FC", "30", "1", "30", "0", "2", "1", "0", "1");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall42 = new PlayerCompetitionInformationOverall("England", "FA Cup", "1990/1991", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall43 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1989/1990", "Arsenal FC", "38", "5", "38", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall44 = new PlayerCompetitionInformationOverall("England", "Com. Shield", "1989", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall45 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1988/1989", "Arsenal FC", "36", "4", "36", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall46 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1987/1988", "Arsenal FC", "39", "2", "39", "0", "3", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall47 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1986/1987", "Arsenal FC", "42", "6", "42", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall48 = new PlayerCompetitionInformationOverall("England", "League Cup", "1986/1987", "Arsenal FC", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall49 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1985/1986", "Arsenal FC", "10", "0", "10", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall50 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1984/1985", "Arsenal FC", "16", "0", "15", "1", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueClubMatchesOverall51 = new PlayerCompetitionInformationOverall("England", "Pr. League", "1983/1984", "Arsenal FC", "3", "0", "3", "0", "1", "0", "0", "0");
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall1);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall2);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall3);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall4);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall5);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall6);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall7);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall8);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall9);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall10);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall11);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall12);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall13);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall14);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall15);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall16);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall17);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall18);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall19);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall20);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall21);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall22);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall23);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall24);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall25);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall26);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall27);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall28);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall29);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall30);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall31);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall32);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall33);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall34);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall35);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall36);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall37);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall38);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall39);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall40);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall41);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall42);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall43);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall44);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall45);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall46);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall47);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall48);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall49);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall50);
-        palyer2ExpectedValueClubMatchesOverall.add(player2ExpectedValueClubMatchesOverall51);
-        player2ExpectedValueInfo.clubsMatchesOverall = palyer2ExpectedValueClubMatchesOverall;
-
-        ArrayList<PlayerCompetitionInformationOverall> palyer2ExpectedValueInternationalOverall = new ArrayList<>();
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall1 = new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "2000/2001", "England", "1", "0", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall2 = new PlayerCompetitionInformationOverall("UEFA", "EURO", "2000 Holland/Belgium", "England", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall3 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "2000", "England", "2", "1", "2", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall4 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1999", "England", "2", "0", "2", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall5 = new PlayerCompetitionInformationOverall("UEFA", "EURO Qualif.", "1998/1999", "England", "5", "0", "5", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall6 = new PlayerCompetitionInformationOverall("FIFA", "World Cup", "1998 France", "England", "4", "0", "4", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall7 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1998", "England", "3", "0", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall8 = new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "1996/1997", "England", "3", "0", "3", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall9 = new PlayerCompetitionInformationOverall("UEFA", "EURO", "1996 England", "England", "5", "0", "5", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall10 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1996", "England", "1", "0", "1", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall11 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1995", "England", "6", "0", "6", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall12 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1994", "England", "5", "0", "5", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall13 = new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "1992/1993", "England", "9", "0", "9", "0", "0", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall14 = new PlayerCompetitionInformationOverall("UEFA", "EURO Qualif.", "1990/1991", "England", "2", "0", "2", "0", "1", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall15 = new PlayerCompetitionInformationOverall("FIFA", "WCQ Europe", "1988/1989", "England", "1", "0", "1", "0", "1", "1", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall16 = new PlayerCompetitionInformationOverall("UEFA", "EURO", "1988 Germany", "England", "3", "1", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall17 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1988", "England", "7", "2", "7", "0", "2", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall18 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1987", "England", "3", "0", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall19 = new PlayerCompetitionInformationOverall("UEFA", "EURO Qualif.", "1986/1987", "England", "3", "1", "3", "0", "0", "0", "0", "0");
-        PlayerCompetitionInformationOverall player2ExpectedValueInternationalOverall20 = new PlayerCompetitionInformationOverall("UEFA", "EURO [U21]", "1986", "England", "1", "0", "1", "0", "0", "0", "0", "0");
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall1);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall2);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall3);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall4);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall5);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall6);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall7);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall8);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall9);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall10);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall11);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall12);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall13);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall14);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall15);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall16);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall17);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall18);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall19);
-        palyer2ExpectedValueInternationalOverall.add(player2ExpectedValueInternationalOverall20);
-        player2ExpectedValueInfo.internationalCopmetitionsOverall = palyer2ExpectedValueInternationalOverall;
-        Assert.assertEquals(player2ExpectedValueInfo.toString(), player2ActualValueInfo.toString());
-
-        PlayerAllInformation player3ActualValueInfo = new PlayerAllInformation();
+        //https://www.worldfootball.net/player_summary/walter-aitkenhead/
+        PlayerAllInformation player3ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("walter-aitkenhead");
         PlayerAllInformation player3ExpectedValueInfo = new PlayerAllInformation();
-        player3ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("walter-aitkenhead");
-        PlayerPersonalInformation player3ExpectedValuePersonalInfo = new PlayerPersonalInformation("Walter Aitkenhead", "Walter Campbell Allison Aitkenhead",
+        player3ExpectedValueInfo.personalInfo = new PlayerPersonalInformation("Walter Aitkenhead", "Walter Campbell Allison Aitkenhead",
                 "21.05.1887 † 19.07.1966", "Glasgow, Scotland", "Scotland", null, null, null, null);
-        player3ExpectedValueInfo.personalInfo = player3ExpectedValuePersonalInfo;
-        ArrayList<PlayerClubCareer> palyer3ExpectedValueClubCareer = new ArrayList<>();
-        PlayerClubCareer player3ClubCareer1 = new PlayerClubCareer("01/1906 - 12/1918", "Blackburn Rovers", "England", "Forward", null);
-        PlayerClubCareer player3ClubCareer2 = new PlayerClubCareer("01/1905 - 12/1905", "Partick Thistle", "Scotland", "Forward", null);
-        palyer3ExpectedValueClubCareer.add(player3ClubCareer1);
-        palyer3ExpectedValueClubCareer.add(player3ClubCareer2);
-        player3ExpectedValueInfo.clubsCareer = palyer3ExpectedValueClubCareer;
-        ArrayList<PlayerCompetitionsInformation> player3ExpectedValueInternationalInfo = new ArrayList<>();
-        PlayerCompetitionsInformation player3International1 = new PlayerCompetitionsInformation("Friendlies", "FIFA", "1", "2", "1", "0", "0", "0", "0", "0");
-        PlayerCompetitionsInformation player3International2 = new PlayerCompetitionsInformation("∑", null, "1", "2", "1", "0", "0", "0", "0", "0");
-        player3ExpectedValueInternationalInfo.add(player3International1);
-        player3ExpectedValueInternationalInfo.add(player3International2);
-        ArrayList<PlayerCompetitionInformationOverall> palyer3ExpectedValueClubMatchesOverall = new ArrayList<>();
-        PlayerCompetitionInformationOverall player3ExpectedValueClubMatchesOverall1 = new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1912", "Scotland", "1", "2", "1", "0", "0", "0", "0", "0");
-        palyer3ExpectedValueClubMatchesOverall.add(player3ExpectedValueClubMatchesOverall1);
-        player3ExpectedValueInfo.internationalCopmetitionsInfo = player3ExpectedValueInternationalInfo;
-        player3ExpectedValueInfo.internationalCopmetitionsOverall = palyer3ExpectedValueClubMatchesOverall;
-        Assert.assertEquals(player3ExpectedValueInfo.toString(), player3ActualValueInfo.toString());
+        player3ExpectedValueInfo.clubsCareer = new ArrayList<>(Arrays.asList(
+        		new PlayerClubCareer("01/1906 - 12/1918", "Blackburn Rovers", "England", "Forward", null),
+        		new PlayerClubCareer("01/1905 - 12/1905", "Partick Thistle", "Scotland", "Forward", null)));
+        player3ExpectedValueInfo.internationalCopmetitionsInfo = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformation("Friendlies", "FIFA", "1", "2", "1", "0", "0", "0", "0", "0"),
+        		new PlayerCompetitionInformation("∑", null, "1", "2", "1", "0", "0", "0", "0", "0")));
+        player3ExpectedValueInfo.internationalCopmetitionsOverall = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformationOverall("FIFA", "Friendlies", "1912", "Scotland", "1", "2", "1", "0", "0", "0", "0", "0")));
+        List<String> player3AttributeList = Arrays.asList("personalInfo","teamsManaged" , "clubsCareer","clubMatches",
+        		"internationalCopmetitionsInfo","clubsMatchesOverall","internationalCopmetitionsOverall");
+        assertPlayerInformation(player3ActualValueInfo,player3AttributeList, player3ExpectedValueInfo);
+
+        //https://www.worldfootball.net/player_summary/sam-johnstone/
+        PlayerAllInformation player4ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("sam-johnstone");
+        PlayerAllInformation player4ExpectedValueInfo = new PlayerAllInformation();
+        player4ExpectedValueInfo.clubsCareer = new ArrayList<>(Arrays.asList(
+        		new PlayerClubCareer("07/2018 - 07/2018", "Manchester United U23", "England", "Goalkeeper", null),
+         		new PlayerClubCareer("01/2016 - 01/2016", "Preston North End", "England", "Goalkeeper", null)));
+
+        player4ExpectedValueInfo.clubMatches = new ArrayList<>(Arrays.asList(
+        		new PlayerCompetitionInformation("Premier League","England","17","0","17","0","0","0","0","0"),
+        		new PlayerCompetitionInformation("League One","England","51","0","51","0","0","4","0","0"),
+        		new PlayerCompetitionInformation("∑",null,"273","0","273","0","0","14","0","0")));
+        
+        List<PlayerAttributeToForComparison_TEST> player4AttributesToTest = new ArrayList<>(Arrays.asList(
+        		new PlayerAttributeToForComparison_TEST("clubsCareer",  new ArrayList<Integer> (Arrays.asList(1,5))),
+				new PlayerAttributeToForComparison_TEST("clubMatches",  new ArrayList<Integer> (Arrays.asList(0,3,6)))
+				));
+        
+        assertPlayerInformationWithIndexes(player4ActualValueInfo,player4AttributesToTest,player4ExpectedValueInfo);
+
 
     }
 
@@ -1534,7 +1287,7 @@ public class ScreenScraperTest {
 
         MatchDetails match1ExpectedValue = new MatchDetails(match1Club1, match1Club2, match1ExpectedSummary, "Amex Stadium (Brighton / England)", "30.529", match1Referees, match1Goals);
 
-        Assert.assertEquals(match1ExpectedValue.toString(), match1ActualValue.toString());
+         Assert.assertEquals(match1ExpectedValue.toString(), match1ActualValue.toString());
 
         MatchDetails match2ActualValue = screenScraperUnderTest.getMatchDetails("premier-league", "1946-1947", "brentford-fc", "middlesbrough-fc");
         ArrayList<PlayerAtMatch> match2Club1Players = new ArrayList<>();

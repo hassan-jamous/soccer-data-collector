@@ -6,10 +6,13 @@ public class PlayerAllInformation {
 	public PlayerPersonalInformation personalInfo ;
 	public ArrayList <PlayerTeamManaged> teamsManaged;
 	public ArrayList <PlayerClubCareer> clubsCareer;
-	public ArrayList <PlayerCompetitionsInformation> clubMatches;
-	public ArrayList <PlayerCompetitionsInformation> internationalCopmetitionsInfo;
+	public ArrayList <PlayerCompetitionInformation> clubMatches;
+	public ArrayList <PlayerCompetitionInformation> internationalCopmetitionsInfo;
 	public ArrayList <PlayerCompetitionInformationOverall> clubsMatchesOverall;
 	public ArrayList <PlayerCompetitionInformationOverall> internationalCopmetitionsOverall;
+	public ArrayList<PlayerRefereeRecordInformation> recordReferee;
+	public ArrayList<PlayerOpponentRecordInformation> recordOpponent;
+
 	 
 	public PlayerAllInformation() {
 		clubsCareer = new ArrayList<>();
@@ -19,6 +22,9 @@ public class PlayerAllInformation {
 		internationalCopmetitionsInfo = new ArrayList <>(); 
 		clubsMatchesOverall = new ArrayList <>();
 		internationalCopmetitionsOverall = new ArrayList <>();
+		recordReferee = new ArrayList<>();
+		recordOpponent = new ArrayList<>();
+
 	}
 	public String toString() {
 		String result="";
@@ -43,9 +49,17 @@ public class PlayerAllInformation {
 		for(int i =0; i<clubsMatchesOverall.size() ;i++) {
 			result = result + clubsMatchesOverall.get(i).toString() + "\n";
 		}
-		result = result + "OVERALL CLUBS INFO" + "\n";
+		result = result + "OVERALL International " + "\n";
 		for(int i =0; i<internationalCopmetitionsOverall.size() ;i++) {
 			result = result + internationalCopmetitionsOverall.get(i).toString() + "\n";
+		}
+		result = result + "record Referee" + "\n";
+		for(int i =0; i<recordReferee.size() ;i++) {
+			result = result + recordReferee.get(i).toString() + "\n";
+		}
+		result = result + "OVERALL CLUBS INFO" + "\n";
+		for(int i =0; i<recordOpponent.size() ;i++) {
+			result = result + recordOpponent.get(i).toString() + "\n";
 		}
 		return result;
 	}

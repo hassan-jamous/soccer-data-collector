@@ -11,8 +11,9 @@ public class GamesTableOfLeague {
         rounds = new ArrayList<>();
     }
     public GamesTableOfLeague(String years) {
-        this.years = years;
-        rounds = new ArrayList<>();
+    	this();
+    	this.years = years;
+        
     }
    
     public String toString() {

@@ -23,11 +23,7 @@ public class MatchDetails {
 	
 	public MatchDetails(ClubInMatchDetails firstClub ,ClubInMatchDetails secondClub ,  MatchSummary matchSummary , 
 			String staduim , String attendance, ArrayList <Referee> referees , ArrayList <GoalInMatchDetails> goals) {
-		this.matchSummary = new MatchSummary();
-		this.firstClub = new ClubInMatchDetails();
-		this.secondClub = new ClubInMatchDetails();
-		this.goals = new ArrayList<>();
-		this.referees = new ArrayList<>();
+		this();
 		this.matchSummary= matchSummary;
 		this.firstClub = firstClub;		
 		this.secondClub = secondClub;

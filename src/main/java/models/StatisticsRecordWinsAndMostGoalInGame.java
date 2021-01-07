@@ -16,9 +16,7 @@ public class StatisticsRecordWinsAndMostGoalInGame {
 		guestClubBasicInfo = new Club();
 	}
 	public StatisticsRecordWinsAndMostGoalInGame(String seasonYear, String round, String matchDate ,String homeClub , String result, String guestClub) {
-		this.round = new Round();
-		this.homeClubBasicInfo = new Club();
-		this.guestClubBasicInfo = new Club();
+		this();
 		this.seasonYears = seasonYear;
 		this.round.roundNumberAsString = round;
 		this.matchDate = matchDate;

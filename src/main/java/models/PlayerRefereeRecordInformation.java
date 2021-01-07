@@ -1,9 +1,9 @@
 package models;
 
-public class PlayerCompetitionsInformation {
+public class PlayerRefereeRecordInformation {
 
-	public String competitionName;
-	public String competitionNation;
+	public Referee refereeName;
+	public String refereeNation;
 	public String matchesNumber;
 	public String goalsNumber;
 	public String startingLineUp;
@@ -13,12 +13,14 @@ public class PlayerCompetitionsInformation {
 	public String secondYellowCards;
 	public String redCards;
 	
-	public PlayerCompetitionsInformation() {}
-	public PlayerCompetitionsInformation(String competitionName , String competitionNation , String matchesNumber , String goalsNumber
+	public PlayerRefereeRecordInformation() {
+		refereeName = new Referee();
+	}
+	public PlayerRefereeRecordInformation(String refereeName , String refereeNation , String matchesNumber , String goalsNumber
 			,String startingLineUp , String substitueIn ,String subtitueOut ,String yellowCard , String secondYellowCard ,String redCards) {
-		if(competitionName.contains("∑")) {this.competitionName = competitionName.replace("∑", "Total");}
-		else{this.competitionName = competitionName;}
-		this.competitionNation = competitionNation;
+		this();
+		this.refereeName.name = refereeName;
+		this.refereeNation = refereeNation;		
 		this.matchesNumber = matchesNumber;
 		this.goalsNumber = goalsNumber;
 		this.startingLineUp = startingLineUp;
@@ -31,9 +33,11 @@ public class PlayerCompetitionsInformation {
 	}
 	
 	public String toString() {
-		return competitionName +"    " + competitionNation+"   playedGame " + matchesNumber + "  goals " + goalsNumber + "  startingLineUp  " + startingLineUp +
+		return refereeName.name +"    " + refereeNation+"   playedGame " + matchesNumber + "  goals " + goalsNumber + "  startingLineUp  " + startingLineUp +
 				"  subIN  " + substitueIn + "  subOUT  " + substitueOut + "  Yellow  " + yellowCards + "  Second Yellow  " +
 				secondYellowCards + "  Red  " + redCards;
 	}
 	
 }
+
+

@@ -10,7 +10,7 @@ public class StatisticsBestPlayerInYear {
 	}
 	public StatisticsBestPlayerInYear(String year, String playerName) {
 		
-		this.playerBasicInfo = new Player();
+		this();
 		this.year = year;
 		this.playerBasicInfo.name = playerName;
 	}

@@ -8,51 +8,43 @@ public class Goal {
 	public Player playerBasicInfo ;
 	public String information ;
 	public Player assesterBasicInfo ;
+	
 	public Goal() {
 		playerBasicInfo = new Player();
-		assesterBasicInfo =new Player();
+		assesterBasicInfo =new Player();		
+	}
+	public Goal(String result, String player ) {
+		this();
 		
 	}
-	public Goal(String result , String player , String information) {
-		playerBasicInfo = new Player();
-		assesterBasicInfo =new Player();
+	//old goal just takes three parameters , and the minutes take one of three value 0,45,90
+	public Goal(String result , String minutes , String player) {
+		this();
 		this.result = result;
 		this.playerBasicInfo.name = player;
-		if(information == null) {
-			this.information = null;
-			this.kind = KindOfGoal.NoInformation;
-		}
-		else if(information.equals("0.")) {
-			this.kind = KindOfGoal.OldGoal;
-			this.information = null;
-		}
-		else {
-			this.information = information;
-		}
-		
+		this.minute = minutes;
+		this.information = null;
+		this.assesterBasicInfo =null;
+		this.kind = KindOfGoal.OldGoal;
+				
 	}
 	public Goal(String result , String minute , String player , String information) {
-		playerBasicInfo = new Player();
-		assesterBasicInfo =new Player();
+		this();
 		this.result = result;
 		this.minute = minute;
 		this.playerBasicInfo.name = player;
 		this.information = information;
-		if(information == null) {
-			this.information = null;
-			this.kind = KindOfGoal.NoInformation;
-		}
-		else if(information.contains("own goal")) {
+		if(information.contains("own goal")) {
 			kind = KindOfGoal.Reverse;
 		}
 		else {
 			kind = KindOfGoal.Individually;
 		}
-		
+		this.assesterBasicInfo =null;
+	
 	}
 	public Goal(String result , String minute , String player , String information , String assester) {
-		playerBasicInfo = new Player();
-		assesterBasicInfo =new Player();
+		this();
 		this.result = result;
 		this.minute = minute;
 		this.playerBasicInfo.name = player;

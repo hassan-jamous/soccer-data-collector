@@ -16,7 +16,7 @@ public class PlayerTopSoccer {
 	
 	public PlayerTopSoccer(String playerRanking,  String playerName, String playerNation,String playerClubName,
 	                       String goals, String penalty) {
-		this.playerBasicInfo = new Player();
+		this();
 		this.playerRanking = playerRanking;
 		this.playerBasicInfo.name =playerName;
 		this.playerNation =playerNation;

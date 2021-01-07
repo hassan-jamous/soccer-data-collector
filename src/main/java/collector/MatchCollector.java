@@ -7,13 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import models.KindOfGoal;
-import models.KindOfReferee;
-import models.MatchDetails;
-import models.PlayerAtMatch;
-import models.PlayerEventAtMatch;
-import models.PlayerTypeAtMatch;
-import models.Referee;
+
 import util.HttpUtil;
 
 public class MatchCollector {
@@ -176,26 +170,28 @@ public class MatchCollector {
         ArrayList<GoalInMatchDetails> result = new ArrayList<>();
         for (int i = 1; i < trs.size(); i++) {
             GoalInMatchDetails goal = new GoalInMatchDetails();
+            
             if (trs.get(i).child(1).hasAttr("style")) {//second club
                 goal.clubInfo.name = secondClub;
             } else {
                 goal.clubInfo.name = firstClub;
             }
 
-            if (trs.get(i).child(1).ownText().equals("0.")) {//old league does not have any information, it only has 0.
+            if (!(trs.get(i).child(1).ownText().contains("/"))) {//old league does not have any information, it only has 0.
                 goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.OldGoal);
 
             } else {//new league
                 if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.HasAssister) {
                     goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.HasAssister);
 
-                } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.NoInformationOrIndividually) {
-                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.NoInformationOrIndividually);
-
-                } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Reverse) {
+                }
+                else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Reverse) {
                     goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Reverse);
 
                 }
+                else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Individually) {
+                	goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Individually);
+                } 
             }
             result.add(goal);
         }

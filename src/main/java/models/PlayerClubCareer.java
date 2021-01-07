@@ -11,7 +11,7 @@ public class PlayerClubCareer {
 		clubBasicInfo = new Club();
 	}
 	public PlayerClubCareer(String years ,String clubName , String clubNation , String playerPosition , String playerNumber  ) {
-		this.clubBasicInfo = new Club();
+		this();
 		this.clubBasicInfo.name = clubName;
 		this.clubNation = clubNation;
 		this.playerPosition = playerPosition;

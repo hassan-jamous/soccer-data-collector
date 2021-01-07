@@ -16,15 +16,11 @@ public class StatisticsMostGoalsInGame {
 	}
 	
 	public StatisticsMostGoalsInGame(String playerName , String matchDate , String homeClub , String matchResult ,String guestClub , String goalsNumber) {
-		this.playerBasicInfo = new Player();
-		this.guestClubBasicInfo = new Club();
-		this.homeClubBasicInfo = new Club();
-		
+		this();		
 		this.playerBasicInfo.name = playerName;
 		this.matchDate = matchDate;
 		this.homeClubBasicInfo.name =homeClub;
 		this.guestClubBasicInfo.name = guestClub;
-
 		this.matchResult = matchResult;
 		this.playerGoalsNumber = goalsNumber;
 	}

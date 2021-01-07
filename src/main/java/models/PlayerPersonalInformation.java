@@ -19,7 +19,7 @@ public class PlayerPersonalInformation {
 	}
 	public PlayerPersonalInformation(String name , String fullName , String birthDate , String birthPlace , String nationality
 			,String height ,  String weight , String position , String foot) {
-		this.playerBasicInfo = new Player();
+		this();
 		this.playerBasicInfo.name = name;
 		this.fullName = fullName;
 		this.born = birthDate;

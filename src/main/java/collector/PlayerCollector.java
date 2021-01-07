@@ -6,12 +6,16 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+
 import models.PlayerAllInformation;
 import models.PlayerClubCareer;
 import models.PlayerCompetitionInformationOverall;
-import models.PlayerCompetitionsInformation;
+import models.PlayerCompetitionInformation;
 import models.PlayerInformationRequest;
+import models.PlayerOpponentRecordInformation;
 import models.PlayerPersonalInformation;
+import models.PlayerRefereeRecordInformation;
 import models.PlayerTeamManaged;
 import util.HttpUtil;
 
@@ -27,7 +31,7 @@ public class PlayerCollector {
 
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
-        Elements divs = doc.getElementsByClass("box");
+        Elements divs = doc.select("div.box,div.data");
         PlayerAllInformation playerTotalInfo = new PlayerAllInformation();
         playerTotalInfo.teamsManaged = getPlayerTeamManaged(divs);
         playerTotalInfo.clubsCareer = getClubCareer(divs);
@@ -40,6 +44,8 @@ public class PlayerCollector {
         if (getOverallURL(divs , PlayerInformationRequest.International) != null) {
             playerTotalInfo.internationalCopmetitionsOverall = getOverallCompetitionWithClubsInformation(WORLD_FOOTBALL_SITE_URL + getOverallURL(divs ,PlayerInformationRequest.International));
         }
+        playerTotalInfo.recordOpponent = getPlayerOpponentRecord(divs);
+        playerTotalInfo.recordReferee = getPlayerRefereeRecord(divs);
         return playerTotalInfo;
     }
 
@@ -106,7 +112,7 @@ public class PlayerCollector {
         return info;
     }
 
-    private ArrayList<PlayerCompetitionsInformation> getPlayerClubsAndInternatiolsCompetitions(Elements divs , PlayerInformationRequest requerstInfo ) {
+    private ArrayList<PlayerCompetitionInformation> getPlayerClubsAndInternatiolsCompetitions(Elements divs , PlayerInformationRequest requerstInfo ) {
     	Elements div;
     	if(requerstInfo == PlayerInformationRequest.Clubs) {
         	div = divs.select("div:has(div:has(h2:contains(Club matches)))");
@@ -116,10 +122,10 @@ public class PlayerCollector {
     	}
         
         Elements trs = div.select("tr");
-        PlayerCompetitionsInformation palyerInfoInternational;
-        ArrayList<PlayerCompetitionsInformation> result = new ArrayList<>();
+        PlayerCompetitionInformation palyerInfoInternational;
+        ArrayList<PlayerCompetitionInformation> result = new ArrayList<>();
         for (int i = 1; i < trs.size(); i++) {
-            palyerInfoInternational = new PlayerCompetitionsInformation();
+            palyerInfoInternational = new PlayerCompetitionInformation();
             int rowNumber = 1;
             if (trs.get(i).child(0).text().contains("∑")) {
                 palyerInfoInternational.competitionName = trs.get(i).child(0).text().replace("∑", "Total");
@@ -184,4 +190,68 @@ public class PlayerCollector {
         }
         return result;
     }
+    private ArrayList<PlayerOpponentRecordInformation> getPlayerOpponentRecord(Elements divs ) {
+    	
+    	Elements link = divs.select("a[href*=gegner]");
+    	if(link.isEmpty()) {
+    		return null;
+    	}
+    	String htmlPage = httpUtil.sendGetHttpRequest(WORLD_FOOTBALL_SITE_URL+link.attr("href"));
+        Document doc = Jsoup.parse(htmlPage);
+        Elements table = doc.select("table:has(tbody:has(tr:has(th:contains(Opponent)))),table:has(tbody:has(tr:has(th:has(img[title=Matches]))))");
+        Elements trs = table.select("tr");
+        PlayerOpponentRecordInformation palyerInfoInternational;
+        ArrayList<PlayerOpponentRecordInformation> result = new ArrayList<>();
+        for (int i = 0; i < trs.size(); i++) {
+        	if(!(trs.get(i).child(0).tagName().equals("th"))) {
+	            palyerInfoInternational = new PlayerOpponentRecordInformation();
+	            
+	            palyerInfoInternational.opponentName.name  = trs.get(i).child(0).child(0).child(0).attr("title");
+	            palyerInfoInternational.matchesNumber = trs.get(i).child(2).text();
+				palyerInfoInternational.goalsNumber = trs.get(i).child(3).text();
+				palyerInfoInternational.startingLineUp = trs.get(i).child(4).text();
+				palyerInfoInternational.substitueIn = trs.get(i).child(5).text();
+				palyerInfoInternational.substitueOut = trs.get(i).child(6).text();
+				palyerInfoInternational.yellowCards = trs.get(i).child(7).text();
+				palyerInfoInternational.secondYellowCards = trs.get(i).child(8).text();
+				palyerInfoInternational.redCards = trs.get(i).child(9).text();
+		        System.out.println(palyerInfoInternational);
+
+				result.add(palyerInfoInternational);
+        	}
+        }
+        return result;
+    }
+        private ArrayList<PlayerRefereeRecordInformation> getPlayerRefereeRecord(Elements divs ) {
+        	
+        	Elements link = divs.select("a[href*=schiedsrichter]");
+        	if(link.isEmpty()) {
+        		return null;
+        	}
+        	String htmlPage = httpUtil.sendGetHttpRequest(WORLD_FOOTBALL_SITE_URL+link.attr("href"));
+            Document doc = Jsoup.parse(htmlPage);
+            Elements table = doc.select("table:has(tbody:has(tr:has(th:contains(Opponent)))),table:has(tbody:has(tr:has(th:has(img[title=Matches]))))");
+            Elements trs = table.select("tr");
+            PlayerRefereeRecordInformation palyerInfoInternational;
+            ArrayList<PlayerRefereeRecordInformation> result = new ArrayList<>();
+            for (int i = 0; i < trs.size(); i++) {
+            	if(!(trs.get(i).child(0).tagName().equals("th"))) {
+    	            palyerInfoInternational = new PlayerRefereeRecordInformation();
+    	            
+    	            palyerInfoInternational.refereeName.name  = trs.get(i).child(0).attr("title");
+    	            palyerInfoInternational.refereeNation = trs.get(i).child(1).child(0).attr("title");
+    	            palyerInfoInternational.matchesNumber = trs.get(i).child(2).text();
+    				palyerInfoInternational.goalsNumber = trs.get(i).child(3).text();
+    				palyerInfoInternational.startingLineUp = trs.get(i).child(4).text();
+    				palyerInfoInternational.substitueIn = trs.get(i).child(5).text();
+    				palyerInfoInternational.substitueOut = trs.get(i).child(6).text();
+    				palyerInfoInternational.yellowCards = trs.get(i).child(7).text();
+    				palyerInfoInternational.secondYellowCards = trs.get(i).child(8).text();
+    				palyerInfoInternational.redCards = trs.get(i).child(9).text();
+    				result.add(palyerInfoInternational);
+            	}
+            }
+            return result;
+        }
+    
 }

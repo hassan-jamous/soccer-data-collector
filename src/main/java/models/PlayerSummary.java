@@ -13,7 +13,7 @@ public class PlayerSummary {
 		playerBasicInfo = new Player();
 	}
 	public PlayerSummary(String number , String name , String nation , String birthDate , String information) {
-		this.playerBasicInfo = new Player();
+		this();
 		this.number = number;
 		this.playerBasicInfo.name = name;
 		this.nation = nation;

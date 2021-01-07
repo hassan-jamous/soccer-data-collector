@@ -16,8 +16,7 @@ public class Game {
 
 
     public Game(String date, String time, String firstTeam, String secondTeam, String result) {
-    	this.firstTeamBasicInfo = new Club();
-    	this.secondTeamBasicInfo = new Club();
+    	this();
     	this.date = date;
         this.time = time;
         this.firstTeamBasicInfo.name = firstTeam;

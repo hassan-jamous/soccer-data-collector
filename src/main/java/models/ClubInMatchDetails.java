@@ -13,8 +13,7 @@ public class ClubInMatchDetails{
 		players = new ArrayList<>();
 	}
 	public ClubInMatchDetails(String clubName , String manager  , ArrayList <PlayerAtMatch> players) {
-		this.clubBasicInfo = new Club();
-		this.players = new ArrayList<>();
+		this();
 		this.clubBasicInfo.name = clubName;
 		this.manager = manager;
 		this.players = players;

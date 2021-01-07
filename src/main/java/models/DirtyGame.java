@@ -12,7 +12,7 @@ public class DirtyGame {
 	} 
 	
 	public DirtyGame(String date, String firstTeam ,String result,String secondTeam , String redCards , String secondYellowCards , String yellowCards , String dirtyPoints) {
-		this.gameNormalInfo = new Game();
+		this();
 		this.gameNormalInfo.date = date;
 		this.gameNormalInfo.firstTeamBasicInfo.name = firstTeam;
 		this.gameNormalInfo.finalResult = result;

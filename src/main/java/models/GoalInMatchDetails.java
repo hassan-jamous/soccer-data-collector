@@ -11,8 +11,7 @@ public class GoalInMatchDetails {
 		goalsInfo = new Goal();
 	}
 	public GoalInMatchDetails(String clubName , Goal goalsInfo) {
-		this.clubInfo = new Club();
-		this.goalsInfo = new Goal();
+		this();
 		this.clubInfo.name = clubName;
 		this.goalsInfo = goalsInfo;
 	}

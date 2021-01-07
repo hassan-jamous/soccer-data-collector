@@ -14,11 +14,10 @@ public class PlayerAtMatch {
 		events = new ArrayList<>();
 	}
 	public PlayerAtMatch(String playerNumberAsString ,String playerName  , PlayerTypeAtMatch playerPosition , ArrayList<PlayerEventAtMatch> events) {
-		this.playerBasicInfo = new Player();
+		this();
 		this.playerBasicInfo.name = playerName;
 		this.playerNumberAsString = playerNumberAsString;
 		this.playerType = playerPosition;
-		this.events = new ArrayList<>();
 		this.events= events;
 		
 	}

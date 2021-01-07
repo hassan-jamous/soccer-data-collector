@@ -50,6 +50,9 @@ public class ClubsCollector {
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.getElementsByClass("standard_tabelle");
         Elements rows = tables.select("tr");
+        if(rows.isEmpty()) {
+        	return null;
+        }
         ArrayList<PlayerSummary> players = new ArrayList<>();
         //They organize players in groups (Goal keeper, Defender, Midfielder, ......)
         //so player's information is mentioned only once for multiple players

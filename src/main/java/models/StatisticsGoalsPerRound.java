@@ -13,7 +13,7 @@ public class StatisticsGoalsPerRound {
 			round = new Round();
 		}
 		public StatisticsGoalsPerRound(String roundRankingNumber , String seasonYears , String round ,  String goals , String matchesNumber, String goalsPerMatch) {
-			this.round =new Round(); 
+			this(); 
 			this.roundRankingNumber = roundRankingNumber;
 			this.seasonYears = seasonYears;
 			this.round.roundNumberAsString = round;

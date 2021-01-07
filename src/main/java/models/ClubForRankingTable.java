@@ -19,7 +19,7 @@ public class ClubForRankingTable{
 	public ClubForRankingTable(String clubPosition , String clubName , String playedGames , String winGames,
 			String drawGames, String lostGames , String goals , String diffirentGoals ,
 			String points) {
-		this.clubBasicInfo = new Club();
+		this();
 		this.position = clubPosition;
 		this.clubBasicInfo.name =  clubName;
 		this.playedGames =playedGames;

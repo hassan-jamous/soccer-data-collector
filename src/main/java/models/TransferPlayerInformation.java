@@ -17,9 +17,7 @@ public class TransferPlayerInformation {
 	}
 	public TransferPlayerInformation( String date, String playerName, String playerNation ,
 	 String position,  String fromClub, String toClub) {
-		 this.playerBasicInfo = new Player();
-		 this.toClub = new Club();
-		 this.fromClub = new Club();
+		 this();
 		 this.playerBasicInfo.name =playerName;
 		 this.date = date;
 		 this.playerNation= playerNation;

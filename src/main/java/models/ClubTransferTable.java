@@ -17,12 +17,10 @@ public class ClubTransferTable {
 		
 	}
 	public ClubTransferTable(String clubName , String season,  ArrayList <TransferPlayerInformation> in , ArrayList <TransferPlayerInformation> out) {
-		this.clubBasicInfo = new Club();
+		this();
 		this.clubBasicInfo.name = clubName;
 		this.season = season;
-		this.intable  = new ArrayList <>();
 		this.intable= in;
-		this.outtable  = new ArrayList <>();
 		this.outtable = out;
 		
 	}
