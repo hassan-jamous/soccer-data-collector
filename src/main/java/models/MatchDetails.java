@@ -21,8 +21,8 @@ public class MatchDetails {
 		referees = new ArrayList<>();
 	}
 	
-	public MatchDetails(ClubInMatchDetails firstClub ,ClubInMatchDetails secondClub ,  MatchSummary matchSummary , 
-			String staduim , String attendance, ArrayList <Referee> referees , ArrayList <GoalInMatchDetails> goals) {
+	public MatchDetails(String staduim , String attendance, ArrayList <GoalInMatchDetails> goals, ArrayList <Referee> referees 
+			,MatchSummary matchSummary , ClubInMatchDetails firstClub ,ClubInMatchDetails secondClub ) {
 		this();
 		this.matchSummary= matchSummary;
 		this.firstClub = firstClub;		
@@ -32,7 +32,9 @@ public class MatchDetails {
 		this.attendance =  attendance;
 		this.referees = referees;
 	}
-	
+	public void toNull() {
+		if(referees.isEmpty()) {referees=null;}
+	}
 	public String toString() {
 		String result ="";
 		result = firstClub.clubBasicInfo.name + "  vs  " + secondClub.clubBasicInfo.name +"\n" +

@@ -1,6 +1,6 @@
 package models;
 
-
+import java.util.ArrayList;
 
 public class PlayerPersonalInformation {
 
@@ -8,17 +8,20 @@ public class PlayerPersonalInformation {
 	public String fullName;
 	public String born;
 	public String birthPlace;
-	public String nationality;//or array
+	public ArrayList<String> nationality;//there are many players have more than one nationality https://www.worldfootball.net/player_summary/che-adams/
 	public String height;
 	public String weight;
-	public String positions;//or array
+	public ArrayList<String> positions;//or array
 	public String foot;
 	
 	public PlayerPersonalInformation() {
 		playerBasicInfo = new Player();
+		nationality = new ArrayList<String>();
+		positions = new ArrayList<>();
+	
 	}
-	public PlayerPersonalInformation(String name , String fullName , String birthDate , String birthPlace , String nationality
-			,String height ,  String weight , String position , String foot) {
+	public PlayerPersonalInformation(String name , String fullName , String birthDate , String birthPlace , ArrayList<String> nationality
+			,String height ,  String weight ,ArrayList <String> positions , String foot) {
 		this();
 		this.playerBasicInfo.name = name;
 		this.fullName = fullName;
@@ -27,7 +30,7 @@ public class PlayerPersonalInformation {
 		this.nationality = nationality;
 		this.height = height;
 		this.weight = weight;
-		this.positions = position;
+		this.positions = positions;
 		this.foot = foot;
 		
 	}

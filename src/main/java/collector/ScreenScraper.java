@@ -87,6 +87,9 @@ public class ScreenScraper {
     public ArrayList<Staduim> getCompetitionStadiums(String competitionName, String competitionYears) {
         return statisticsCollector.getCompetitionSatuims(competitionName, competitionYears);
     }
+    public ArrayList<PlayerTopScoreForSeason> getTopSoccerForCompetitionAllYears(String competitionName) {
+    	return topScoreCollector.getTopSoccerForCompetitionAllYears(competitionName);
+    }
 
 }
 

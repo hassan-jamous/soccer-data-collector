@@ -2,9 +2,9 @@ package models;
 
 import java.util.ArrayList;
 
+
 public class ClubInMatchDetails{
-	public Club clubBasicInfo;//may we delete it? class match contains it
-		
+	public Club clubBasicInfo;		
 	public ArrayList <PlayerAtMatch> players;
 	public String manager;//is it better to convert (class)String to (class)Player some (old) players are managers now (tony adams arsenal2002)
 	
