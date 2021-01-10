@@ -24,6 +24,7 @@ public class RoundCollector {
 		
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
 		Gson gson = new Gson();
+		//System.out.println(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
 		RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
 
 		return gamesId;

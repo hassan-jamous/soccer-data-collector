@@ -8,8 +8,8 @@ public class CompareStatisticsGoalsPerRound implements Comparator<StatisticsGoal
 		@Override
 		public int compare(StatisticsGoalsPerRound round1, StatisticsGoalsPerRound round2) {
 			
-			double goal1 = Double.parseDouble(round1.goalsPerMatch);
-			double goal2 = Double.parseDouble(round2.goalsPerMatch);
+			double goal1 = Double.parseDouble((round1.goalsPerMatch.contains("Ø"))? round1.goalsPerMatch.replace("Ø", "") : round1.goalsPerMatch);
+			double goal2 = Double.parseDouble((round2.goalsPerMatch.contains("Ø"))? round2.goalsPerMatch.replace("Ø", "") : round2.goalsPerMatch);
 			if(goal1 > goal2) {
 				return -1;
 			}
@@ -26,8 +26,8 @@ public class CompareStatisticsGoalsPerRound implements Comparator<StatisticsGoal
 						return +1;
 					}
 					else {
-						double numRound1 = Double.parseDouble(round1.round.roundNumberAsString);
-						double numRound2 = Double.parseDouble(round2.round.roundNumberAsString);
+						double numRound1 = Double.parseDouble(round1.round.roundNumberAsString.replace(". Round", ""));
+						double numRound2 = Double.parseDouble(round2.round.roundNumberAsString.replace(". Round", ""));
 						if(numRound1 >= numRound2) {
 							return -1;
 						}

@@ -1,7 +1,7 @@
 package models;
 
 public class PlayerTopSoccer {
-
+//it ok for player but for season do we need a new class contains {ArrayList<PlayerTopScore< and Strings competitionYears and competitionName}
 	public String playerRanking;
 	public Player playerBasicInfo;
 	public String playerNation;

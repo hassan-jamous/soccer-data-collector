@@ -21,6 +21,10 @@ public class PlayerAtMatch {
 		this.events= events;
 		
 	}
+	public void addEvent(PlayerEventAtMatch event) {
+		if(this.events == null) {this.events = new ArrayList<>();}
+		this.events.add(event);
+	}
 	public String toString() {
 		String result = "";
 		result = "#" + playerNumberAsString + "  " + playerBasicInfo.name  + " (" + (playerType == PlayerTypeAtMatch.Essential ? "Essential" : "Substitute")+ " )  " ;
