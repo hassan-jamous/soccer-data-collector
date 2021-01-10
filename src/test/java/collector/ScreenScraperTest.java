@@ -1081,7 +1081,6 @@ public class ScreenScraperTest {
 	
 	    //wrong IDs in google document (preimer league)
 	    RoundGamesID gamesIdActualValueEnglishPreimerLeague18_19Round5 = sofaScoreCollectorTest.getGamesIdInRound("Premier League", "18/19", "5");
-	    System.out.println(gamesIdActualValueEnglishPreimerLeague18_19Round5.events);
 	    ArrayList<GameID> gamesIdExpectedValueEnglishPreimerLeague18_19Round5 = gameIDInRoundSofaScoreValues.getEnglishPreimerLeague18_19Round5();
 	    assertSofaScoreGamesIdInRound(gamesIdActualValueEnglishPreimerLeague18_19Round5, null, gamesIdExpectedValueEnglishPreimerLeague18_19Round5, 10);  		
 	
@@ -1092,8 +1091,6 @@ public class ScreenScraperTest {
     public void assertGameStatisticsSofaScore(GameStatistic actualValue) {
     	//        assertThat(actualVlaue).usingRecursiveComparison().isEqualTo(expectedValue);
     }
-
-
 
     @Test
     public void itShouldGetGameStatisticSofaScore() {
