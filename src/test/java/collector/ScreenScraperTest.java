@@ -1086,11 +1086,11 @@ public class ScreenScraperTest {
 	
 	}
 
-	
-
     public void assertGameStatisticsSofaScore(GameStatistic actualValue) {
     	//        assertThat(actualVlaue).usingRecursiveComparison().isEqualTo(expectedValue);
     }
+
+
 
     @Test
     public void itShouldGetGameStatisticSofaScore() {
