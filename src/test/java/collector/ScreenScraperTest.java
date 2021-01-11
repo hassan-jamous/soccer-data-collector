@@ -23,6 +23,8 @@ import models.StatisticsRecordWinsAndMostGoalInGame;
 import models.StatisticsRequestKind;
 import sofaScore.SofaScoreCollector;
 import sofaScoreModels.GameID;
+import sofaScoreModels.GameIencidents;
+import sofaScoreModels.GameIencidentsGSON;
 import sofaScoreModels.GameStatistic;
 import sofaScoreModels.ItemStatisticsInGroup;
 import sofaScoreModels.RoundGamesID;
@@ -1134,6 +1136,16 @@ public class ScreenScraperTest {
 
         Assert.assertEquals(4, game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(5).statisticsItems.size());
 
+    }
+    @Test
+    public void itShouldGetGameIencidentsSofaScore() {
+        SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
+        ArrayList<GameIencidents> game1Atround3At19_20IencidentsActualValue = sofaScoreCollectorTest.getGameIencidents("Premier League", "19/20", "3", 0);
+
+       for (int j = 0; j < game1Atround3At19_20IencidentsActualValue.size() ; j++) {
+			System.out.println(j +"    "+ game1Atround3At19_20IencidentsActualValue.get(j));
+		}
+        System.out.println("size   "+game1Atround3At19_20IencidentsActualValue.size());
     }
    
  

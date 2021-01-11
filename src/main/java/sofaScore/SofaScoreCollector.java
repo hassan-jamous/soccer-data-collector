@@ -1,5 +1,9 @@
 package sofaScore;
 
+import java.util.ArrayList;
+
+import sofaScoreModels.GameIencidents;
+import sofaScoreModels.GameIencidentsGSON;
 import sofaScoreModels.GameStatistic;
 import sofaScoreModels.RoundGamesID;
 
@@ -19,6 +23,9 @@ public class SofaScoreCollector {
 	}
 	
 	public GameStatistic getGameStatistic (String competitionName, String competitionYears , String round , int gameIndex) {
-		return gameCollector.getGamegetStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+	}
+	public ArrayList<GameIencidents> getGameIencidents(String competitionName, String competitionYears , String round , int gameIndex) {
+		return gameCollector.getGameIncidents(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 }
