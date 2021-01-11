@@ -32,6 +32,8 @@ public class GameCollector {
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "incidents"));
 		Gson gson = new Gson();
 		GameIencidentsGSON gamesInfo = gson.fromJson(gsonString, GameIencidentsGSON.class);
+		if(gamesInfo == null) {System.out.println("Erorr no object " + gamesInfo);  return null;}
+		if(gamesInfo.incidents.isEmpty()) {System.out.println("Empty" + gamesInfo);  return null;}
 		ArrayList<GameIencidents> result = new ArrayList<>();
 		for(int i = 0 ; i< gamesInfo.incidents.size(); i++) {
 			if(gamesInfo.incidents.get(i).incidentType.equals("period")) {
@@ -79,7 +81,8 @@ public class GameCollector {
 				result.add(goal);
 			}
 			else if(gamesInfo.incidents.get(i).incidentType.equals("card")) {
-				InncidentInGameActionWithPlayer actioWithPlayer =new InncidentInGameActionWithPlayer();
+				System.out.println("in card i ="+i);
+				InncidentInGameActionWithPlayer actioWithPlayer = new InncidentInGameActionWithPlayer();
 				actioWithPlayer.addedTime = gamesInfo.incidents.get(i).addedTime;
 				actioWithPlayer.id = gamesInfo.incidents.get(i).id;
 				actioWithPlayer.incidentClass = gamesInfo.incidents.get(i).incidentClass;

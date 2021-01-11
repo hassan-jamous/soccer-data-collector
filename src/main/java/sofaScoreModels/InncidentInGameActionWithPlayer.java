@@ -17,7 +17,7 @@ public class InncidentInGameActionWithPlayer implements GameIencidents {
 	}
 	public String toString() {
 		String result = "";
-		result=(reason == null || reason.equals(""))? ""  :"(" +reason + ")  " +player.name + "  at " + time  + "    "+incidentClass +"  " + incidentType;
+		result=((reason == null || reason.equals(""))? ""  :"(" +reason + ")  " )+player.name + "  at " + time  + "    "+incidentClass +"  " + incidentType;
 		return result;
 	}
 

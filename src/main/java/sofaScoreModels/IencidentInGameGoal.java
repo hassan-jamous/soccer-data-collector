@@ -11,7 +11,9 @@ public class IencidentInGameGoal implements GameIencidents{
 	public IencidentInGamePlayer player;//any other place we will use class player
 	public String time;
 	
-	public IencidentInGameGoal() {}
+	public IencidentInGameGoal() {
+		player = new IencidentInGamePlayer();
+	}
 	
 	public String toString() {
 		String result ="";

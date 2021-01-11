@@ -19,7 +19,18 @@ public  class IencidentInGameGson {
 	public String id;
 	public String reason;
 	
-   public IencidentInGameGson() {}
+   public IencidentInGameGson() {
+	  playerIn =new IencidentInGamePlayer();
+	  playerOut =new IencidentInGamePlayer();
+	  player =new IencidentInGamePlayer();
+	  assist1 =new IencidentInGamePlayer();
+
+   }
+   public String toString() {
+	   String result = "";
+	   result = "gson    "+incidentType + "      "+((player.name != null)?player.name : "    ")+ "     time" + time;
+	   return result;
+   }
 
 	
 }
