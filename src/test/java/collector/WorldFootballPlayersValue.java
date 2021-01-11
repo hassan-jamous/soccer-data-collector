@@ -37,8 +37,8 @@ public class WorldFootballPlayersValue {
 	    		new PlayerCompetitionInformation("U23 Premier League Div. 2", "England", "1", "0", "1", "0", "1", "0", "0", "0"),
 	    		new PlayerCompetitionInformation("Primera División", "Spanien", "40", "0", "39", "1", "10", "15", "1", "0"),
 	    		new PlayerCompetitionInformation("Copa del Rey", "Spanien", "3", "0", "3", "0", "0", "2", "0", "0"),
-	    		new PlayerCompetitionInformation("Segunda B Grupo 3", "Spanien", "22", "0", "19", "3", "2", "6", "1", "0"),
-	    		new PlayerCompetitionInformation("∑", null, "170", "2", "154", "16", "25", "39", "4", "2")));
+	    		new PlayerCompetitionInformation("Segunda B Grupo 3", "Spanien", "22", "0", "19", "3", "2", "6",  "1", "0"),
+	    		new PlayerCompetitionInformation("∑",            null  ,    "170", "2","154", "16","25","39", "4", "2")));
 	    player1ExpectedValueInfo.clubsMatchesOverall = new ArrayList<>(Arrays.asList(
 	    		new PlayerCompetitionInformationOverall("England", "FA Cup", "2020/2021", "Manchester United", "1", "0", "1", "0", "1", "0", "0", "0"),
 	    		new PlayerCompetitionInformationOverall("England", "Pr. League", "2020/2021", "Manchester United", "5", "0", "4", "1", "0", "2", "0", "0"),

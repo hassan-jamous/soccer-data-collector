@@ -245,7 +245,7 @@ public class PlayerCollector {
             palyerInfoInternational = new PlayerCompetitionInformation();
             int rowNumber = 1;
             if (trs.get(i).child(0).text().contains("∑")) {
-                palyerInfoInternational.competitionName = trs.get(i).child(0).text().replace("∑", "Total");
+                palyerInfoInternational.competitionName = trs.get(i).child(0).text();
                 palyerInfoInternational.competitionNation = null;
             } else {
                 palyerInfoInternational.competitionName = trs.get(i).child(0).text();
