@@ -37,7 +37,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
 
-public class ScreenScraperTest1 {
+public class ScreenScraperTest {
     WorldFootballGamesInTableOfLeagueValues gamesInTableworldFootballValues = new WorldFootballGamesInTableOfLeagueValues();
     WorldFootballRankingTableValues rankingTablesWorldFootballValues = new WorldFootballRankingTableValues();
     WorldFootballGoalsValues goalsWorldFootBallValues = new WorldFootballGoalsValues();

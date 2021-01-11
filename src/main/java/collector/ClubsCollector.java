@@ -17,7 +17,6 @@ public class ClubsCollector {
     private static final String WORLD_FOOTBALL_CLUBS_URL = "https://www.worldfootball.net/teams/";
 
 
-
     public ArrayList<PlayerSummary> getAllPlayersSummaryInCompetition(String competitionName, String competitionYears) {
         String url = WORLD_FOOTBALL_PLAYERS_URL + competitionName + "-" + competitionYears;
         return getAllPlayersFromPage(url);
@@ -28,9 +27,8 @@ public class ClubsCollector {
         return getAllPlayersFromPage(url);
     }
 
-
-    public ArrayList<Club> getAllClubsInSeason(String competitionName ,String competitionYears) {
-        String url = WORLD_FOOTBALL_PLAYERS_URL + competitionName +"-" + competitionYears + "/";
+    public ArrayList<Club> getAllClubsInSeason(String competitionName, String competitionYears) {
+        String url = WORLD_FOOTBALL_PLAYERS_URL + competitionName + "-" + competitionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
 
@@ -52,8 +50,8 @@ public class ClubsCollector {
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.getElementsByClass("standard_tabelle");
         Elements rows = tables.select("tr");
-        if(rows.isEmpty()) {
-        	return null;
+        if (rows.isEmpty()) {
+            return null;
         }
         ArrayList<PlayerSummary> players = new ArrayList<>();
         //They organize players in groups (Goal keeper, Defender, Midfielder, ......)
@@ -76,7 +74,7 @@ public class ClubsCollector {
             } else if (kindHeaderOfPlayer(row) == KindOfPlayer.GoalkeeperCoach) {
                 information = "Goalkeeper-Coach";
             } else if (!(row.select("a[href*=/player_summary/]").isEmpty())) {//link to player summary
-            	String playerNumber = (row.child(1).text().equals(""))? null : row.child(1).text() ;
+                String playerNumber = (row.child(1).text().equals("")) ? null : row.child(1).text();
                 PlayerSummary player = new PlayerSummary(playerNumber, row.child(2).text(), row.child(4).text(), row.child(5).text(), information);
                 players.add(player);
             }
