@@ -15,7 +15,9 @@ public class ClubsCollector {
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_PLAYERS_URL = "https://www.worldfootball.net/players/";
     private static final String WORLD_FOOTBALL_CLUBS_URL = "https://www.worldfootball.net/teams/";
-    
+
+
+
     public ArrayList<PlayerSummary> getAllPlayersSummaryInCompetition(String competitionName, String competitionYears) {
         String url = WORLD_FOOTBALL_PLAYERS_URL + competitionName + "-" + competitionYears;
         return getAllPlayersFromPage(url);
