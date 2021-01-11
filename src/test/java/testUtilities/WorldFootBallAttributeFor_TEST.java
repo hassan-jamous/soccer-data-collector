@@ -1,11 +1,11 @@
-package collector;
+package testUtilities;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class WorldFootBallAttributeFor_TEST {
-	String attributeName;
+	public String attributeName;
 	public List <Integer> indexes;
 	public WorldFootBallAttributeFor_TEST() {
 		indexes = new ArrayList<>(Arrays.asList());	

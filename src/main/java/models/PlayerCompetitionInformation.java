@@ -16,13 +16,12 @@ public class PlayerCompetitionInformation {
 	public PlayerCompetitionInformation() {}
 	public PlayerCompetitionInformation(String competitionName , String competitionNation , String matchesNumber , String goalsNumber
 			,String startingLineUp , String substitueIn ,String subtitueOut ,String yellowCard , String secondYellowCard ,String redCards) {
+		this.competitionName = competitionName;
 		if(competitionName.contains("∑")) {
-			this.competitionName = competitionName.replace("∑", "Total");
 			this.competitionNation = null;
 
 		}
 		else{
-			this.competitionName = competitionName;
 			this.competitionNation = competitionNation;
 		}
 		this.matchesNumber = matchesNumber;

@@ -1,4 +1,4 @@
-package collector;
+package testUtilities;
 
 import java.util.Comparator;
 

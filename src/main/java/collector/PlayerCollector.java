@@ -239,28 +239,28 @@ public class PlayerCollector {
         
         Elements trs = div.select("tr");
         if(trs.size() ==0 ) {return null;}
-        PlayerCompetitionInformation palyerInfoInternational;
+        PlayerCompetitionInformation palyerInfo;
         ArrayList<PlayerCompetitionInformation> result = new ArrayList<>();
         for (int i = 1; i < trs.size(); i++) {
-            palyerInfoInternational = new PlayerCompetitionInformation();
+            palyerInfo = new PlayerCompetitionInformation();
             int rowNumber = 1;
             if (trs.get(i).child(0).text().contains("∑")) {
-                palyerInfoInternational.competitionName = trs.get(i).child(0).text();
-                palyerInfoInternational.competitionNation = null;
+                palyerInfo.competitionName = trs.get(i).child(0).text();
+                palyerInfo.competitionNation = null;
             } else {
-                palyerInfoInternational.competitionName = trs.get(i).child(0).text();
-                palyerInfoInternational.competitionNation = trs.get(i).child(1).child(0).attr("title");
+                palyerInfo.competitionName = trs.get(i).child(0).text();
+                palyerInfo.competitionNation = trs.get(i).child(1).child(0).attr("title");
                 rowNumber = 2;
             }
-			palyerInfoInternational.matchesNumber = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.goalsNumber = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.startingLineUp = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.substitueIn = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.substitueOut = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.yellowCards = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.secondYellowCards = trs.get(i).child(rowNumber++).text();
-			palyerInfoInternational.redCards = trs.get(i).child(rowNumber++).text();
-			result.add(palyerInfoInternational);
+			palyerInfo.matchesNumber = trs.get(i).child(rowNumber++).text();
+			palyerInfo.goalsNumber = trs.get(i).child(rowNumber++).text();
+			palyerInfo.startingLineUp = trs.get(i).child(rowNumber++).text();
+			palyerInfo.substitueIn = trs.get(i).child(rowNumber++).text();
+			palyerInfo.substitueOut = trs.get(i).child(rowNumber++).text();
+			palyerInfo.yellowCards = trs.get(i).child(rowNumber++).text();
+			palyerInfo.secondYellowCards = trs.get(i).child(rowNumber++).text();
+			palyerInfo.redCards = trs.get(i).child(rowNumber++).text();
+			result.add(palyerInfo);
         }
         return result;
     }
