@@ -11,6 +11,9 @@ import worldfootball.models.KindOfPlayer;
 import worldfootball.models.PlayerSummary;
 import util.HttpUtil;
 
+/**
+ *
+ */
 public class ClubsCollector {
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_PLAYERS_URL = "https://www.worldfootball.net/players/";

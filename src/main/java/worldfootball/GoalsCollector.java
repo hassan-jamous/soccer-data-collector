@@ -24,8 +24,8 @@ public class GoalsCollector {
         Element tableOfGoals = getGoalsTable(tables);
 
         Elements rowsOfGoals = tableOfGoals.select("tr");
-        if((rowsOfGoals != null)&&(rowsOfGoals.size() ==2 )&&(rowsOfGoals.get(1).text().contains("none"))) {
-        	return null;
+        if ((rowsOfGoals != null) && (rowsOfGoals.size() == 2) && (rowsOfGoals.get(1).text().contains("none"))) {
+            return null;
         }
         ArrayList<Goal> goals = new ArrayList<>();
         //the first row is the header, this is why i = 1;
@@ -37,15 +37,14 @@ public class GoalsCollector {
                 } else {//new league
                     if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.HasAssister) {
                         Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.HasAssister);
-                        goals.add(goal);                        
-                    }else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.Reverse) {
+                        goals.add(goal);
+                    } else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.Reverse) {
                         Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.Reverse);
                         goals.add(goal);
-                    } 
-                    else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.Individually) {
+                    } else if (kindOfGoal(rowsOfGoals.get(i)) == KindOfGoal.Individually) {
                         Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.Individually);
                         goals.add(goal);
-                    } 
+                    }
                 }
             }
         }
@@ -63,8 +62,7 @@ public class GoalsCollector {
             }
             if (numberOfPlayer == 2) {
                 return KindOfGoal.HasAssister;
-            }
-            else if (goal.text().contains("own goal")) {
+            } else if (goal.text().contains("own goal")) {
                 return KindOfGoal.Reverse;
             } else {
                 return KindOfGoal.Individually;
@@ -74,35 +72,35 @@ public class GoalsCollector {
     }
 
     public Goal getGoal(Element rowOfGoal, KindOfGoal kind) {
-        
+
         if (kind == KindOfGoal.OldGoal) {
-        	Goal result = new Goal(rowOfGoal.child(0).text(),
-        			rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-        			rowOfGoal.child(1).child(0).attr("title"));
-        	result.kind = kind;
-        	return result;
-        } else if (kind == KindOfGoal.HasAssister) {
-        	Goal result = new Goal(rowOfGoal.child(0).text(),
-        							rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-        							rowOfGoal.child(1).child(0).attr("title"),
-        							rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(") - 1),
-        							rowOfGoal.child(1).child(1).attr("title"));
-        	result.kind = kind;
-        	return result;
-        } else if (kind == KindOfGoal.Individually) {
             Goal result = new Goal(rowOfGoal.child(0).text(),
-            					   rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-            					   rowOfGoal.child(1).child(0).attr("title"),
-            					   rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2));
+                    rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
+                    rowOfGoal.child(1).child(0).attr("title"));
             result.kind = kind;
             return result;
-         } else if (kind == KindOfGoal.Reverse) {
-        	 Goal result = new Goal(rowOfGoal.child(0).text(),
-					   rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-					   rowOfGoal.child(1).child(0).attr("title"),
-					   "own goal");
-         	result.kind = kind;
-        	 return result;
+        } else if (kind == KindOfGoal.HasAssister) {
+            Goal result = new Goal(rowOfGoal.child(0).text(),
+                    rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
+                    rowOfGoal.child(1).child(0).attr("title"),
+                    rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(") - 1),
+                    rowOfGoal.child(1).child(1).attr("title"));
+            result.kind = kind;
+            return result;
+        } else if (kind == KindOfGoal.Individually) {
+            Goal result = new Goal(rowOfGoal.child(0).text(),
+                    rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
+                    rowOfGoal.child(1).child(0).attr("title"),
+                    rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2));
+            result.kind = kind;
+            return result;
+        } else if (kind == KindOfGoal.Reverse) {
+            Goal result = new Goal(rowOfGoal.child(0).text(),
+                    rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
+                    rowOfGoal.child(1).child(0).attr("title"),
+                    "own goal");
+            result.kind = kind;
+            return result;
         }
         throw new RuntimeException();
     }

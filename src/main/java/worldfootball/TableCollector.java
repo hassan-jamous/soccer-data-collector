@@ -19,7 +19,7 @@ public class TableCollector {
         return getRankingTable(url);
     }
 
-    public RankingTable getTableByRound(String competitionName, String competitionYears, String round , RankingTableRequest requestKind) {
+    public RankingTable getTableByRound(String competitionName, String competitionYears, String round, RankingTableRequest requestKind) {
         String url = WORLD_FOOTBALL_SCHEDULE_URL + competitionName + "-" + competitionYears + "-spieltag/" + round + requestKind.value() + "/";
         return getRankingTable(url);
     }
@@ -46,7 +46,7 @@ public class TableCollector {
                         club.drawGames = tr.child(5).text();
                         club.lostGames = tr.child(6).text();
                         club.goals = tr.child(7).text();
-                        club.diffirentGoals =tr.child(8).text();
+                        club.diffirentGoals = tr.child(8).text();
                         club.points = tr.child(9).text();
                         rankingTable.table.add(club);
                     }

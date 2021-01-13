@@ -18,19 +18,19 @@ public class ClubsCollectorTest {
 
     @Test
     public void itShouldGetClubsInSeason() {
-        ScreenScraper screenScraperUnderTest = new ScreenScraper();
+        ClubsCollector clubsCollector = new ClubsCollector();
 
-        ArrayList<Club> clubsAt2015_2016ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "2015-2016");
+        ArrayList<Club> clubsAt2015_2016ActualValue = clubsCollector.getAllClubsInSeason("eng-premier-league", "2015-2016");
         List<Integer> clubsIdAtSeason2015_2016 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19);
         List<Club> clubsAt2015_2016Expected = clubsValues.clubsAtEnglishPreimerLeague2015_2016Expected();
         assertObjectArrayToArray.assertArrayToArraySpecificIndexes(clubsAt2015_2016ActualValue,clubsIdAtSeason2015_2016, clubsAt2015_2016Expected );
 
-        ArrayList<Club> clubsAt1967_1968ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1967-1968");
+        ArrayList<Club> clubsAt1967_1968ActualValue = clubsCollector.getAllClubsInSeason("eng-premier-league", "1967-1968");
         List<Integer> clubsIdAtSeason1967_1968 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21);
         List<Club> clubsAt1967_1968Expected = clubsValues.clubsAtEnglishPreimerLeague1967_1968Expected();
         assertObjectArrayToArray.assertArrayToArraySpecificIndexes(clubsAt1967_1968ActualValue, clubsIdAtSeason1967_1968,clubsAt1967_1968Expected );
 
-        ArrayList<Club> clubsAt1889_1890ActualValue = screenScraperUnderTest.clubsCollector.getAllClubsInSeason("eng-premier-league", "1889-1890");
+        ArrayList<Club> clubsAt1889_1890ActualValue = clubsCollector.getAllClubsInSeason("eng-premier-league", "1889-1890");
         List<Integer> clubsIdAtSeason1890_1891 = Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
         List<Club> clubsAt1889_1890Expected = clubsValues.clubsAtEnglishPreimerLeague1889_1890Expected();
         assertObjectArrayToArray.assertArrayToArraySpecificIndexes(clubsAt1889_1890ActualValue,clubsIdAtSeason1890_1891, clubsAt1889_1890Expected);

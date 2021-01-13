@@ -11,6 +11,7 @@ import org.junit.Assert;
 public class AssertUtilities {
 
 	public void assertArrayToArraySpecificIndexes(ArrayList<?> actualValue, List<Integer> indexes, List<?> expectedValue) {
+
 		if (expectedValue == null) {
             Assert.assertEquals(null, actualValue);
         } else {

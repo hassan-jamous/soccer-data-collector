@@ -27,7 +27,9 @@ public class StatisticsCollector {
 
         Elements tables = doc.select("table:eq(0):has(th:contains(Ø goals))");
         Elements trs = tables.select("tr");
-        if(trs.isEmpty()) {return null;}
+        if (trs.isEmpty()) {
+            return null;
+        }
         ArrayList<StatisticsGoalsPerSeason> result = new ArrayList<>();
 
         for (int i = 1; i < trs.size(); i++) {//i=0 the header contains names of columns, so we start from 1
@@ -50,7 +52,9 @@ public class StatisticsCollector {
 
         Elements tables = doc.select("table:eq(0):has(th:contains(Ø goals))");
         Elements trs = tables.select("tr");
-        if(trs.isEmpty()) {return null;}
+        if (trs.isEmpty()) {
+            return null;
+        }
         for (int i = 1; i < trs.size(); i++) {//i=0 the the header contains names of columns, so we start from 1
             StatisticsGoalsPerRound roundInfo = new StatisticsGoalsPerRound();
             roundInfo.roundRankingNumber = (trs.get(i).child(0).text().equals("∑")) ? "TOTAL" : trs.get(i).child(0).text();
@@ -69,7 +73,7 @@ public class StatisticsCollector {
         return result;
     }
 
-    public ArrayList<StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName, StatisticsRequestKind  kindOfRequest) {
+    public ArrayList<StatisticsRecordWinsAndMostGoalInGame> getStatisticsRecordWinsOrMostGoalInGame(String competitionName, StatisticsRequestKind kindOfRequest) {
         ArrayList<StatisticsRecordWinsAndMostGoalInGame> result = new ArrayList<>();
         String url = WORLDFOOTBALL_STATS_URL + competitionName + "/" + kindOfRequest.value() + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
@@ -77,7 +81,9 @@ public class StatisticsCollector {
 
         Elements tables = doc.select("table:eq(0):has(th:contains(guest)) , table:eq(0):has(th:contains(Season))");
         Elements trs = tables.select("tr");
-        if(trs.isEmpty()) {return null;}
+        if (trs.isEmpty()) {
+            return null;
+        }
         for (int i = 1; i < trs.size(); i++) {//i=0 the the header contains names of columns, so we start from 1
             StatisticsRecordWinsAndMostGoalInGame winInfo = new StatisticsRecordWinsAndMostGoalInGame();
             winInfo.seasonYears = trs.get(i).child(0).text();
@@ -97,26 +103,28 @@ public class StatisticsCollector {
         String url = WORLDFOOTBALL_STATS_URL + competitionName + "/5/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
-        
+
         Elements divsA = doc.select("div.box");
         Elements divs = divsA.select("div:has(div:has(table:has(tbody:has(tr:has(th:contains(Player)))))) , div:has(div:has(table:has(tbody:has(tr:has(th:contains(Guest))))))");
         //we have one table for each number of goals
-        if(divs.isEmpty()) {return null;}
+        if (divs.isEmpty()) {
+            return null;
+        }
 
         for (int divIndex = 0; divIndex < divs.size(); divIndex++) {
-        	
-            String maxNumberOfGoals = divs.get(divIndex).child(0).child(0).text().substring(divs.get(divIndex).child(0).child(0).text().indexOf("»") +2 , divs.get(divIndex).child(0).child(0).text().indexOf("Goals")-1);
+
+            String maxNumberOfGoals = divs.get(divIndex).child(0).child(0).text().substring(divs.get(divIndex).child(0).child(0).text().indexOf("»") + 2, divs.get(divIndex).child(0).child(0).text().indexOf("Goals") - 1);
             Elements trs = divs.get(divIndex).select("tr");
             for (int i = 0; i < trs.size(); i++) {
                 if (trs.get(i).childrenSize() == 7) {
-                	StatisticsMostGoalsByPlayerPerGame gameAndPlayer = new StatisticsMostGoalsByPlayerPerGame();
-                	gameAndPlayer.playerInfo.name = trs.get(i).child(0).text();
+                    StatisticsMostGoalsByPlayerPerGame gameAndPlayer = new StatisticsMostGoalsByPlayerPerGame();
+                    gameAndPlayer.playerInfo.name = trs.get(i).child(0).text();
                     gameAndPlayer.gameInfo.date = trs.get(i).child(1).text();
                     gameAndPlayer.gameInfo.firstTeamBasicInfo.name = trs.get(i).child(2).text();
                     gameAndPlayer.gameInfo.finalResult = trs.get(i).child(4).text();
                     gameAndPlayer.gameInfo.secondTeamBasicInfo.name = trs.get(i).child(6).text();
                     gameAndPlayer.numberOfGoal = maxNumberOfGoals;
-                    
+
                     result.add(gameAndPlayer);
                 }
             }
@@ -132,7 +140,9 @@ public class StatisticsCollector {
 
         Elements tables = doc.select("table.standard_tabelle:has(tbody:has(tr:has(th:has(img[alt*=Red cards]))))");
         Elements trs = tables.select("tr");
-        if(trs.isEmpty()) {return null;}
+        if (trs.isEmpty()) {
+            return null;
+        }
 
         for (int i = 1; i < trs.size(); i++) {//i=0 the the header contains names of columns
             DirtyGame dirtyGameInfo = new DirtyGame();
@@ -156,7 +166,9 @@ public class StatisticsCollector {
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.select("table.standard_tabelle:has(tbody:has(tr:contains(Year))),table.standard_tabelle:has(tbody:has(tr:contains(Player)))");
         Elements trs = tables.select("tr");
-        if(trs.isEmpty()) {return null;}
+        if (trs.isEmpty()) {
+            return null;
+        }
 
         for (int i = 1; i < trs.size(); i++) {//i=0 the the header contains names of columns
             StatisticsBestPlayerInYear bestPlayerInfo = new StatisticsBestPlayerInYear();
@@ -167,5 +179,5 @@ public class StatisticsCollector {
         return result;
     }
 
-    
+
 }

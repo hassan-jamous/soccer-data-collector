@@ -35,22 +35,26 @@ public class TransferCollector {
                 if (trs.get(i).text().equals("In")) {
                     int j = i + 1;
                     while ((j < trs.size()) && (!(trs.get(j).text().equals("Out")))) {
-                    	TransferPlayerInformation player =getPlayerTransferInformation(trs.get(j) ,clubTransferTable.clubBasicInfo.name ,TransferDestination.In);
+                        TransferPlayerInformation player = getPlayerTransferInformation(trs.get(j), clubTransferTable.clubBasicInfo.name, TransferDestination.In);
                         clubTransferTable.intable.add(player);
                         j++;
                     }
                 } else if (trs.get(i).text().equals("Out")) {
                     int j = i + 1;
                     while ((j < trs.size())) {
-                    	TransferPlayerInformation player =  getPlayerTransferInformation(trs.get(j) ,clubTransferTable.clubBasicInfo.name ,TransferDestination.Out);
+                        TransferPlayerInformation player = getPlayerTransferInformation(trs.get(j), clubTransferTable.clubBasicInfo.name, TransferDestination.Out);
                         clubTransferTable.outtable.add(player);
                         j++;
                     }
 
                 }
             }
-            if(clubTransferTable.intable.isEmpty()) {clubTransferTable.intable= null;}
-            if(clubTransferTable.outtable.isEmpty()) {clubTransferTable.outtable= null;}
+            if (clubTransferTable.intable.isEmpty()) {
+                clubTransferTable.intable = null;
+            }
+            if (clubTransferTable.outtable.isEmpty()) {
+                clubTransferTable.outtable = null;
+            }
 
             result.add(clubTransferTable);
         }
@@ -58,23 +62,23 @@ public class TransferCollector {
     }
 
     //may we change TransferPlayerInformation to contain one club, table in the destination club is the same club , table out out from is the same club
-    private TransferPlayerInformation getPlayerTransferInformation(Element tr ,String clubName ,TransferDestination kindOfTransfer) {
-    	TransferPlayerInformation player = new TransferPlayerInformation();
+    private TransferPlayerInformation getPlayerTransferInformation(Element tr, String clubName, TransferDestination kindOfTransfer) {
+        TransferPlayerInformation player = new TransferPlayerInformation();
 
-    	player.date =                 tr.child(0).text();
+        player.date = tr.child(0).text();
         player.playerBasicInfo.name = tr.child(1).text();
-        player.playerNation =         tr.child(2).child(0).attr("title");
-        player.playerPosition =       tr.child(3).text();
-        if(kindOfTransfer == TransferDestination.In) {
-	        player.fromClub.name = tr.child(5).text();
-	        player.toClub.name   = clubName;
-        }
-        else {
-        	player.toClub.name   = tr.child(5).text();
+        player.playerNation = tr.child(2).child(0).attr("title");
+        player.playerPosition = tr.child(3).text();
+        if (kindOfTransfer == TransferDestination.In) {
+            player.fromClub.name = tr.child(5).text();
+            player.toClub.name = clubName;
+        } else {
+            player.toClub.name = tr.child(5).text();
             player.fromClub.name = clubName;
         }
         return player;
     }
+
     private ArrayList<Element> getTransferDivs(Elements divs) {
         ArrayList<Element> result = new ArrayList<>();
         for (Element div : divs) {

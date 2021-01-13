@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import worldfootball.testData.WorldFootballPlayerAllInformationValues;
 import worldfootball.models.PlayerAllInformation;
-import testUtilities.ArrayAttributeWithIndexesFor_TEST;
+import testUtilities.ArrayAttributeWithIndexes;
 import testUtilities.AssertUtilities;
 
 public class PlayerCollectorTest  {
@@ -18,7 +18,7 @@ public class PlayerCollectorTest  {
 	WorldFootballPlayerAllInformationValues playersInformationWorldFootballValue= new WorldFootballPlayerAllInformationValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
-	public void assertPlayerInformationWithIndexes(PlayerAllInformation actualValue, List<ArrayAttributeWithIndexesFor_TEST> attributeList, PlayerAllInformation expectedValue) {
+	public void assertPlayerInformationWithIndexes(PlayerAllInformation actualValue, List<ArrayAttributeWithIndexes> attributeList, PlayerAllInformation expectedValue) {
 
         for (int i = 0; i < attributeList.size(); i++) {
             if (attributeList.get(i).attributeName.equals("personalInfo")) {
@@ -65,82 +65,82 @@ public class PlayerCollectorTest  {
         //https://www.worldfootball.net/player_summary/eric-bailly/
         PlayerAllInformation player1ActualValueInfo = screenScraperTest.playerCollector.getAllInformationAboutPlayer("eric-bailly");
         PlayerAllInformation player1ExpectedValueInfo = playersInformationWorldFootballValue.getEricBaillyInformation();
-        List<ArrayAttributeWithIndexesFor_TEST> player1AttributeList = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("personalInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("teamsManaged"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsCareer"),
-                new ArrayAttributeWithIndexesFor_TEST("clubMatches"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsMatchesOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("recordOpponent", new ArrayList<>(Arrays.asList(0, 7, 19, 20, 40, 60, 80, 100, 109))),
-                new ArrayAttributeWithIndexesFor_TEST("recordReferee", new ArrayList<>(Arrays.asList(0, 20, 41, 61, 81, 100, 106))),
-                new ArrayAttributeWithIndexesFor_TEST("forEachCompetitionInformationOverallsClubs", new ArrayList<>(Arrays.asList(2, 3)))));
+        List<ArrayAttributeWithIndexes> player1AttributeList = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("personalInfo"),
+                new ArrayAttributeWithIndexes("teamsManaged"),
+                new ArrayAttributeWithIndexes("clubsCareer"),
+                new ArrayAttributeWithIndexes("clubMatches"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsInfo"),
+                new ArrayAttributeWithIndexes("clubsMatchesOverall"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsOverall"),
+                new ArrayAttributeWithIndexes("recordOpponent", new ArrayList<>(Arrays.asList(0, 7, 19, 20, 40, 60, 80, 100, 109))),
+                new ArrayAttributeWithIndexes("recordReferee", new ArrayList<>(Arrays.asList(0, 20, 41, 61, 81, 100, 106))),
+                new ArrayAttributeWithIndexes("forEachCompetitionInformationOverallsClubs", new ArrayList<>(Arrays.asList(2, 3)))));
         assertPlayerInformationWithIndexes(player1ActualValueInfo, player1AttributeList, player1ExpectedValueInfo);
 
         //https://www.worldfootball.net/player_summary/tony-adams/
         PlayerAllInformation player2ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("tony-adams");
         PlayerAllInformation player2ExpectedValueInfo = playersInformationWorldFootballValue.getTonyAdamsInformation();
-        List<ArrayAttributeWithIndexesFor_TEST> player2AttributeList = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("personalInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("teamsManaged"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsCareer"),
-                new ArrayAttributeWithIndexesFor_TEST("clubMatches"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsMatchesOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("recordOpponent", new ArrayList<>(Arrays.asList(0, 20, 40, 60, 80, 100, 106))),
-                new ArrayAttributeWithIndexesFor_TEST("recordReferee", new ArrayList<>(Arrays.asList(0, 140, 148)))));
+        List<ArrayAttributeWithIndexes> player2AttributeList = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("personalInfo"),
+                new ArrayAttributeWithIndexes("teamsManaged"),
+                new ArrayAttributeWithIndexes("clubsCareer"),
+                new ArrayAttributeWithIndexes("clubMatches"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsInfo"),
+                new ArrayAttributeWithIndexes("clubsMatchesOverall"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsOverall"),
+                new ArrayAttributeWithIndexes("recordOpponent", new ArrayList<>(Arrays.asList(0, 20, 40, 60, 80, 100, 106))),
+                new ArrayAttributeWithIndexes("recordReferee", new ArrayList<>(Arrays.asList(0, 140, 148)))));
         assertPlayerInformationWithIndexes(player2ActualValueInfo, player2AttributeList, player2ExpectedValueInfo);
 
         //https://www.worldfootball.net/player_summary/walter-aitkenhead/
         PlayerAllInformation player3ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("walter-aitkenhead");
         PlayerAllInformation player3ExpectedValueInfo = playersInformationWorldFootballValue.getWwalterAitkenhead();
-        List<ArrayAttributeWithIndexesFor_TEST> player3AttributeList = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("personalInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("teamsManaged"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsCareer"),
-                new ArrayAttributeWithIndexesFor_TEST("clubMatches"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsMatchesOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("recordOpponent"),
-                new ArrayAttributeWithIndexesFor_TEST("recordReferee")));
+        List<ArrayAttributeWithIndexes> player3AttributeList = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("personalInfo"),
+                new ArrayAttributeWithIndexes("teamsManaged"),
+                new ArrayAttributeWithIndexes("clubsCareer"),
+                new ArrayAttributeWithIndexes("clubMatches"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsInfo"),
+                new ArrayAttributeWithIndexes("clubsMatchesOverall"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsOverall"),
+                new ArrayAttributeWithIndexes("recordOpponent"),
+                new ArrayAttributeWithIndexes("recordReferee")));
         assertPlayerInformationWithIndexes(player3ActualValueInfo, player3AttributeList, player3ExpectedValueInfo);
 
         //https://www.worldfootball.net/player_summary/sam-johnstone/
         PlayerAllInformation player4ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("sam-johnstone");
         PlayerAllInformation player4ExpectedValueInfo = playersInformationWorldFootballValue.getSamJohnstone();
-        List<ArrayAttributeWithIndexesFor_TEST> player4AttributesToTest = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("clubsCareer", new ArrayList<Integer>(Arrays.asList(1, 5))),
-                new ArrayAttributeWithIndexesFor_TEST("clubMatches", new ArrayList<Integer>(Arrays.asList(0, 3, 6)))));
+        List<ArrayAttributeWithIndexes> player4AttributesToTest = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("clubsCareer", new ArrayList<Integer>(Arrays.asList(1, 5))),
+                new ArrayAttributeWithIndexes("clubMatches", new ArrayList<Integer>(Arrays.asList(0, 3, 6)))));
         assertPlayerInformationWithIndexes(player4ActualValueInfo, player4AttributesToTest, player4ExpectedValueInfo);
 
         //https://www.worldfootball.net/player_summary/george-timmins/
         PlayerAllInformation player5ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("george-timmins");
         PlayerAllInformation player5ExpectedValueInfo = playersInformationWorldFootballValue.getGeorgeTimmins();
-        List<ArrayAttributeWithIndexesFor_TEST> player5AttributeList = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("personalInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsCareer"),
-                new ArrayAttributeWithIndexesFor_TEST("clubMatches"),
-                new ArrayAttributeWithIndexesFor_TEST("clubsMatchesOverall"),
-                new ArrayAttributeWithIndexesFor_TEST("internationalCopmetitionsInfo")));
+        List<ArrayAttributeWithIndexes> player5AttributeList = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("personalInfo"),
+                new ArrayAttributeWithIndexes("clubsCareer"),
+                new ArrayAttributeWithIndexes("clubMatches"),
+                new ArrayAttributeWithIndexes("clubsMatchesOverall"),
+                new ArrayAttributeWithIndexes("internationalCopmetitionsInfo")));
         assertPlayerInformationWithIndexes(player5ActualValueInfo, player5AttributeList, player5ExpectedValueInfo);
 
         //https://www.worldfootball.net/player_summary/che-adams/
         PlayerAllInformation player6ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("che-adams");
         PlayerAllInformation player6ExpectedValueInfo = playersInformationWorldFootballValue.getCheAdams();
-        List<ArrayAttributeWithIndexesFor_TEST> player6AttributeList = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("personalInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("teamManaged")));
+        List<ArrayAttributeWithIndexes> player6AttributeList = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("personalInfo"),
+                new ArrayAttributeWithIndexes("teamManaged")));
         assertPlayerInformationWithIndexes(player6ActualValueInfo, player6AttributeList, player6ExpectedValueInfo);
 
         //https://www.worldfootball.net/player_summary/adam-carson/
         PlayerAllInformation player7ActualValueInfo = screenScraperTest.getAllInformationAboutPlayer("adam-carson");
         PlayerAllInformation player7ExpectedValueInfo = playersInformationWorldFootballValue.getAdamCarson();
-        List<ArrayAttributeWithIndexesFor_TEST> player7AttributeList = new ArrayList<>(Arrays.asList(
-                new ArrayAttributeWithIndexesFor_TEST("personalInfo"),
-                new ArrayAttributeWithIndexesFor_TEST("teamManaged")));
+        List<ArrayAttributeWithIndexes> player7AttributeList = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("personalInfo"),
+                new ArrayAttributeWithIndexes("teamManaged")));
         assertPlayerInformationWithIndexes(player7ActualValueInfo, player7AttributeList, player7ExpectedValueInfo);
 
     }

@@ -1,16 +1,12 @@
 package worldfootball.models;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Club {
-	public String name;
-	
-	public Club() {}
-
-	public Club (String clubName) {
-		this.name = clubName;
-	}
-	
-	public String toString() {
-		return name;
-	}
-
+    public String name;
 }

@@ -85,7 +85,9 @@ public class MatchCollector {
 
     private ArrayList<Referee> getRefereesInMatch(Elements allTablesInPage) {
         Elements refereesElement = allTablesInPage.select("tr:has(td:has(img[title=Referee]))");
-        if(refereesElement.isEmpty()) {return null;}
+        if (refereesElement.isEmpty()) {
+            return null;
+        }
         ArrayList<Referee> result = new ArrayList<>();
 
         if (refereesElement.size() > 0) {
@@ -111,12 +113,14 @@ public class MatchCollector {
     private ArrayList<PlayerAtMatch> getClubPlayersInMatch(Element table) {
         ArrayList<PlayerAtMatch> result = new ArrayList<>();
         Elements trsTeam = table.select("tr");
-        if(trsTeam.isEmpty()) {return null;}
+        if (trsTeam.isEmpty()) {
+            return null;
+        }
         int indexOfRowWithSubstitutesTitle = getIndexOfRowWithSubstitutesTitle(trsTeam);
         for (int i = 0; i < trsTeam.size(); i++) {
             if (i != indexOfRowWithSubstitutesTitle) {
                 PlayerAtMatch player = new PlayerAtMatch();
-                player.playerNumberAsString = (trsTeam.get(i).child(0).text().isEmpty())?null : trsTeam.get(i).child(0).text();
+                player.playerNumberAsString = (trsTeam.get(i).child(0).text().isEmpty()) ? null : trsTeam.get(i).child(0).text();
                 player.playerBasicInfo.name = trsTeam.get(i).child(1).child(0).text().trim();
                 player.events = getPlayerEventsInMatch(trsTeam.get(i).child(1));
                 if ((indexOfRowWithSubstitutesTitle != -1 && i < indexOfRowWithSubstitutesTitle) || indexOfRowWithSubstitutesTitle == -1) {
@@ -131,7 +135,9 @@ public class MatchCollector {
                     event.minute = trsTeam.get(i).child(2).text().substring(0, trsTeam.get(i).child(2).text().length() - 1);
                     player.events.add(event);
                 }
-                if(player.events.isEmpty()) {player.events=null;}
+                if (player.events.isEmpty()) {
+                    player.events = null;
+                }
                 result.add(player);
             }
         }
@@ -173,7 +179,7 @@ public class MatchCollector {
         ArrayList<GoalInMatchDetails> result = new ArrayList<>();
         for (int i = 1; i < trs.size(); i++) {
             GoalInMatchDetails goal = new GoalInMatchDetails();
-            
+
             if (trs.get(i).child(1).hasAttr("style")) {//second club
                 goal.clubInfo.name = secondClub;
             } else {
@@ -187,14 +193,12 @@ public class MatchCollector {
                 if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.HasAssister) {
                     goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.HasAssister);
 
-                }
-                else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Reverse) {
+                } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Reverse) {
                     goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Reverse);
 
+                } else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Individually) {
+                    goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Individually);
                 }
-                else if (goalsCollector.kindOfGoal(trs.get(i)) == KindOfGoal.Individually) {
-                	goal.goalsInfo = goalsCollector.getGoal(trs.get(i), KindOfGoal.Individually);
-                } 
             }
             result.add(goal);
         }

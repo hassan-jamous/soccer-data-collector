@@ -7,17 +7,17 @@ public class Game {
     public String resultOfFirstHalf;
     public String date;
     public String time;
-    
+
 
     public Game() {
-    	firstTeamBasicInfo = new Club();
-    	secondTeamBasicInfo = new Club();
+        firstTeamBasicInfo = new Club();
+        secondTeamBasicInfo = new Club();
     }
 
 
     public Game(String date, String time, String firstTeam, String secondTeam, String result) {
-    	this();
-    	this.date = date;
+        this();
+        this.date = date;
         this.time = time;
         this.firstTeamBasicInfo.name = firstTeam;
         this.secondTeamBasicInfo.name = secondTeam;
@@ -30,12 +30,12 @@ public class Game {
         }
     }
 
-  public String toString() {
+    public String toString() {
         String game = "";
 
-        game = date + "   " + ((time != null) ?  time : "") + "  " + firstTeamBasicInfo.name + "  vs  " + secondTeamBasicInfo.name + "  " + finalResult + 
+        game = date + "   " + ((time != null) ? time : "") + "  " + firstTeamBasicInfo.name + "  vs  " + secondTeamBasicInfo.name + "  " + finalResult +
 
-        ((resultOfFirstHalf != null) ? "(" + resultOfFirstHalf +")": "");
+                ((resultOfFirstHalf != null) ? "(" + resultOfFirstHalf + ")" : "");
         return game;
     }
 }
