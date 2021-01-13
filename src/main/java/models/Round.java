@@ -1,11 +1,10 @@
 package models;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Round {
     public String roundNumberAsString;
-    public List<Game> games;
+    public ArrayList<Game> games;
 
     public Round() {        
         games = new ArrayList<>();

@@ -1,17 +1,15 @@
 package sofaScore;
 
-import java.util.ArrayList;
-
 import com.google.gson.Gson;
-
-import sofaScoreModels.GameIencidents;
+import sofaScoreModels.GameIecidents;
 import sofaScoreModels.GameIencidentsGSON;
 import sofaScoreModels.GameStatistic;
-import sofaScoreModels.IencidentInGameChangePlayers;
-import sofaScoreModels.IencidentInGameGoal;
-import sofaScoreModels.IencidentInGameHeader;
-import sofaScoreModels.IencidentInGameInjuryTime;
-import sofaScoreModels.InncidentInGameActionWithPlayer;
+import sofaScoreModels.IencidentInGame_ChangePlayers;
+import sofaScoreModels.IencidentInGame_Goal;
+import sofaScoreModels.IencidentInGame_Header;
+import sofaScoreModels.IencidentInGame_InjuryTime;
+import sofaScoreModels.IencidentInGame_VarDecision;
+import sofaScoreModels.InncidentInGame_Card;
 import util.HttpUtil;
 
 public class GameCollector {
@@ -27,79 +25,87 @@ public class GameCollector {
 		return gamesInfo;
 		
 	}
-	public ArrayList<GameIencidents> getGameIncidents(String gameID) {
-		
+	public GameIecidents getGameIncidents(String gameID) {
+
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "incidents"));
 		Gson gson = new Gson();
-		GameIencidentsGSON gamesInfo = gson.fromJson(gsonString, GameIencidentsGSON.class);
-		if(gamesInfo == null) {System.out.println("Erorr no object " + gamesInfo);  return null;}
-		if(gamesInfo.incidents.isEmpty()) {System.out.println("Empty" + gamesInfo);  return null;}
-		ArrayList<GameIencidents> result = new ArrayList<>();
-		for(int i = 0 ; i< gamesInfo.incidents.size(); i++) {
-			if(gamesInfo.incidents.get(i).incidentType.equals("period")) {
-				IencidentInGameHeader header =  new IencidentInGameHeader();
-				header.addedTime = gamesInfo.incidents.get(i).addedTime;
-				header.awayScore = gamesInfo.incidents.get(i).awayScore;
-				header.homeScore = gamesInfo.incidents.get(i).homeScore;
-				header.isLive = gamesInfo.incidents.get(i).isLive;
-				header.text = gamesInfo.incidents.get(i).text;
-				header.time = gamesInfo.incidents.get(i).time;	
-				result.add(header);
+		GameIencidentsGSON gameInfo = gson.fromJson(gsonString, GameIencidentsGSON.class);
+		if(gameInfo == null) {System.out.println("Erorr no object " + gameInfo);  return null;}
+		if(gameInfo.incidents.isEmpty()) {System.out.println("Empty" + gameInfo);  return null;}
+		GameIecidents result = new GameIecidents();
+		for(int i = 0 ; i< gameInfo.incidents.size(); i++) {
+			if(gameInfo.incidents.get(i).incidentType.equals("period")) {
+				IencidentInGame_Header header =  new IencidentInGame_Header();
+				header.incidentType = gameInfo.incidents.get(i).incidentType;
+				header.addedTime = gameInfo.incidents.get(i).addedTime;
+				header.awayScore = gameInfo.incidents.get(i).awayScore;
+				header.homeScore = gameInfo.incidents.get(i).homeScore;
+				header.isLive = gameInfo.incidents.get(i).isLive;
+				header.text = gameInfo.incidents.get(i).text;
+				header.time = gameInfo.incidents.get(i).time;	
+				result.iecidents.add(header);
 			}
-			else if(gamesInfo.incidents.get(i).incidentType.equals("injuryTime")) {
-				IencidentInGameInjuryTime injuryTime = new IencidentInGameInjuryTime();
-				injuryTime.addedTime = gamesInfo.incidents.get(i).addedTime;
-				injuryTime.incidentType = gamesInfo.incidents.get(i).incidentType;
-				injuryTime.length = gamesInfo.incidents.get(i).length;
-				injuryTime.time = gamesInfo.incidents.get(i).time;
-				result.add(injuryTime);
+			else if(gameInfo.incidents.get(i).incidentType.equals("injuryTime")) {
+				IencidentInGame_InjuryTime injuryTime = new IencidentInGame_InjuryTime();
+				injuryTime.addedTime = gameInfo.incidents.get(i).addedTime;
+				injuryTime.incidentType = gameInfo.incidents.get(i).incidentType;
+				injuryTime.length = gameInfo.incidents.get(i).length;
+				injuryTime.time = gameInfo.incidents.get(i).time;
+				result.iecidents.add(injuryTime);
 			}
-			else if(gamesInfo.incidents.get(i).incidentType.equals("substitution")) {
-				IencidentInGameChangePlayers playerChanged = new IencidentInGameChangePlayers();
-				playerChanged.id = gamesInfo.incidents.get(i).id;
-				playerChanged.incidentClass = gamesInfo.incidents.get(i).incidentClass;
-				playerChanged.incidentType = gamesInfo.incidents.get(i).incidentType;
-				playerChanged.injury = gamesInfo.incidents.get(i).injury;
-				playerChanged.isHome = gamesInfo.incidents.get(i).isHome;
-				playerChanged.playerIn = gamesInfo.incidents.get(i).playerIn;
-				playerChanged.playerOut = gamesInfo.incidents.get(i).playerOut;
-				playerChanged.time = gamesInfo.incidents.get(i).time;
-				result.add(playerChanged);
+			else if(gameInfo.incidents.get(i).incidentType.equals("substitution")) {
+				IencidentInGame_ChangePlayers playerChanged = new IencidentInGame_ChangePlayers();
+				
+				playerChanged.addedTime = gameInfo.incidents.get(i).addedTime;
+				playerChanged.id = gameInfo.incidents.get(i).id;
+				playerChanged.incidentClass = gameInfo.incidents.get(i).incidentClass;
+				playerChanged.incidentType = gameInfo.incidents.get(i).incidentType;
+				playerChanged.injury = gameInfo.incidents.get(i).injury;
+				playerChanged.isHome = gameInfo.incidents.get(i).isHome;
+				playerChanged.playerIn = gameInfo.incidents.get(i).playerIn;
+				playerChanged.playerOut = gameInfo.incidents.get(i).playerOut;
+				playerChanged.time = gameInfo.incidents.get(i).time;
+				result.iecidents.add(playerChanged);
 
 			}
-			else if(gamesInfo.incidents.get(i).incidentType.equals("goal")) {
-				IencidentInGameGoal goal = new IencidentInGameGoal();
-				goal.assist1 = gamesInfo.incidents.get(i).assist1;
-				goal.awayScore = gamesInfo.incidents.get(i).awayScore;
-				goal.homeScore = gamesInfo.incidents.get(i).homeScore;
-				goal.id = gamesInfo.incidents.get(i).id;
-				goal.incidentClass = gamesInfo.incidents.get(i).incidentClass;
-				goal.incidentType = gamesInfo.incidents.get(i).incidentType;
-				goal.isHome = gamesInfo.incidents.get(i).isHome;
-				goal.player = gamesInfo.incidents.get(i).player;
-				goal.time = gamesInfo.incidents.get(i).time;
-				result.add(goal);
+			else if(gameInfo.incidents.get(i).incidentType.equals("goal")) {
+				IencidentInGame_Goal goal = new IencidentInGame_Goal();
+				goal.addedTime = gameInfo.incidents.get(i).addedTime;
+				goal.assist1 = gameInfo.incidents.get(i).assist1;
+				goal.awayScore = gameInfo.incidents.get(i).awayScore;
+				goal.homeScore = gameInfo.incidents.get(i).homeScore;
+				goal.id = gameInfo.incidents.get(i).id;
+				goal.incidentClass = gameInfo.incidents.get(i).incidentClass;
+				goal.incidentType = gameInfo.incidents.get(i).incidentType;
+				goal.isHome = gameInfo.incidents.get(i).isHome;
+				goal.player = gameInfo.incidents.get(i).player;
+				goal.time = gameInfo.incidents.get(i).time;
+				result.iecidents.add(goal);
 			}
-			else if(gamesInfo.incidents.get(i).incidentType.equals("card")) {
-				System.out.println("in card i ="+i);
-				InncidentInGameActionWithPlayer actioWithPlayer = new InncidentInGameActionWithPlayer();
-				actioWithPlayer.addedTime = gamesInfo.incidents.get(i).addedTime;
-				actioWithPlayer.id = gamesInfo.incidents.get(i).id;
-				actioWithPlayer.incidentClass = gamesInfo.incidents.get(i).incidentClass;
-				actioWithPlayer.incidentType = gamesInfo.incidents.get(i).incidentType;				
-				actioWithPlayer.isHome = gamesInfo.incidents.get(i).isHome;
-				actioWithPlayer.player = gamesInfo.incidents.get(i).player;
-				actioWithPlayer.reason = gamesInfo.incidents.get(i).reason;
-				actioWithPlayer.time = gamesInfo.incidents.get(i).time;
-				result.add(actioWithPlayer);
+			else if(gameInfo.incidents.get(i).incidentType.equals("card")) {
+				InncidentInGame_Card actionWithPlayer = new InncidentInGame_Card();
+				actionWithPlayer.addedTime = gameInfo.incidents.get(i).addedTime;
+				actionWithPlayer.id = gameInfo.incidents.get(i).id;
+				actionWithPlayer.incidentClass = gameInfo.incidents.get(i).incidentClass;
+				actionWithPlayer.incidentType = gameInfo.incidents.get(i).incidentType;				
+				actionWithPlayer.isHome = gameInfo.incidents.get(i).isHome;
+				actionWithPlayer.player = gameInfo.incidents.get(i).player;
+				actionWithPlayer.playerName = gameInfo.incidents.get(i).playerName;
+				actionWithPlayer.reason = gameInfo.incidents.get(i).reason;
+				actionWithPlayer.time = gameInfo.incidents.get(i).time;
+				result.iecidents.add(actionWithPlayer);
 			}
+			else if(gameInfo.incidents.get(i).incidentType.equals("substitution")) {
+				IencidentInGame_VarDecision varDecision= new IencidentInGame_VarDecision();
+			}
+			//if i do not recognize all types
 			else {
-				System.out.println("i="+i  + "     "+gamesInfo.incidents.get(i));
+				throw new RuntimeException("New Game Iecident Type i = " + i  +"   gameInfo's type is " + gameInfo.incidents.get(i).incidentType );
 			}
 
 		}
 
-		if(result ==  null || result.size() == 0) {return null;}
+		if(result ==  null || result.iecidents.size() == 0) {return null;}
 		return result;
 	}
 

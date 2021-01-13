@@ -16,13 +16,7 @@ public class ClubsCollector {
     private static final String WORLD_FOOTBALL_PLAYERS_URL = "https://www.worldfootball.net/players/";
     private static final String WORLD_FOOTBALL_CLUBS_URL = "https://www.worldfootball.net/teams/";
 
-
-    public ArrayList<PlayerSummary> getAllPlayersSummaryInCompetition(String competitionName, String competitionYears) {
-        String url = WORLD_FOOTBALL_PLAYERS_URL + competitionName + "-" + competitionYears;
-        return getAllPlayersFromPage(url);
-    }
-
-    public ArrayList<PlayerSummary> getAllPlayersSummaryInClub(String clubName, String year) {
+    public ArrayList<PlayerSummary> get_ClubSquad_AllPlayersSummaryInClub(String clubName, String year) {
         String url = WORLD_FOOTBALL_CLUBS_URL + clubName + "/" + year + "/2/";
         return getAllPlayersFromPage(url);
     }

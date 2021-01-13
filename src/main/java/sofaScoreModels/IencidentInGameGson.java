@@ -1,6 +1,7 @@
 package sofaScoreModels;
 
 public  class IencidentInGameGson {
+	public String confirmed; 
 	public String text;
 	public String homeScore;
 	public String awayScore;
@@ -9,21 +10,24 @@ public  class IencidentInGameGson {
 	public String addedTime;
 	public String incidentType;//or enum
 	public String length;//or int
-	public IencidentInGamePlayer playerIn;
-	public IencidentInGamePlayer playerOut;
+	public IencidentInGame_Player playerIn;
+	public IencidentInGame_Player playerOut;
 	public String injury;//or boolean
 	public String isHome;//or boolean
 	public String incidentClass;//or enum
-	public IencidentInGamePlayer player;
-	public IencidentInGamePlayer assist1;
+	public IencidentInGame_Player player;
+	public IencidentInGame_Player assist1;
 	public String id;
 	public String reason;
+	public String playerName;
+	public String firstName;
+	public String lastName;
 	
    public IencidentInGameGson() {
-	  playerIn =new IencidentInGamePlayer();
-	  playerOut =new IencidentInGamePlayer();
-	  player =new IencidentInGamePlayer();
-	  assist1 =new IencidentInGamePlayer();
+	  playerIn =new IencidentInGame_Player();
+	  playerOut =new IencidentInGame_Player();
+	  player =new IencidentInGame_Player();
+	  assist1 =new IencidentInGame_Player();
 
    }
    public String toString() {

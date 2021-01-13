@@ -7,26 +7,27 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import models.PlayerTopScoreForSeason;
-import models.PlayerTopSoccer;
+import models.PlayerTopSoccerAtSeason;
 import util.HttpUtil;
 
 public class TopScoreCollector {
     private HttpUtil httpUtil = new HttpUtil();
-    private static final String WORLD_FOOTBALL_SCORE_URL = "https://www.worldfootball.net/goalgetter/";
+    private static final String WORLD_FOOTBALL_SCORE_URL_AT_SEASON = "https://www.worldfootball.net/goalgetter/";
     private static final String WORRL_FOOTBALL_SCORE_FOR_ALL_YEAR = "https://www.worldfootball.net/top_scorer/";
-    public ArrayList<PlayerTopSoccer> getTopSoccerAtSeason(String competitionName, String competitionYears) {
-        String url = WORLD_FOOTBALL_SCORE_URL + competitionName + "-" + competitionYears + "/";
+   
+    public ArrayList<PlayerTopSoccerAtSeason> getTopSoccerAtSeason(String competitionName, String competitionYears) {
+        String url = WORLD_FOOTBALL_SCORE_URL_AT_SEASON + competitionName + "-" + competitionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.select("table[class=standard_tabelle]");
         Elements table = tables.select("table:has(tbody:has(tr:has(th:contains(#)))) , table:has(tbody:has(tr:has(th:contains(Goals (Penalty)))))");
         Elements trs = table.select("tr");
-        ArrayList<PlayerTopSoccer> result = new ArrayList<>();
+        ArrayList<PlayerTopSoccerAtSeason> result = new ArrayList<>();
         //some players have the same ranking , but their ranking is not written
         //so we use variable ranking to store the value
         String ranking = "";
         for (int i = 1; i < trs.size(); i++) {
-            PlayerTopSoccer player = new PlayerTopSoccer();
+            PlayerTopSoccerAtSeason player = new PlayerTopSoccerAtSeason();
             if ((trs.get(i).child(0).hasText())) {
                 ranking = trs.get(i).child(0).text();
             }

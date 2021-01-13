@@ -14,6 +14,7 @@ public class ScreenScraper {
     TransferCollector transferCollector = new TransferCollector();
     TopScoreCollector topScoreCollector = new TopScoreCollector();
     StatisticsCollector statisticsCollector = new StatisticsCollector();
+    StaduimsCollector staduimsCollector = new StaduimsCollector();
 
     public GamesTableOfLeague getAllRounds(String competitionName, String competitionYears) {
         return roundCollector.getAllRounds(competitionName, competitionYears);
@@ -31,12 +32,9 @@ public class ScreenScraper {
         return goalsCollector.getGoalsOfGame(competitionName, competitionYears, fisrtTeam, secondTeam);
     }
 
-    public ArrayList<PlayerSummary> getAllPlayersSummaryInCompetition(String competitionName, String competitionYears) {
-        return clubsCollector.getAllPlayersSummaryInCompetition(competitionName, competitionYears);
-    }
-
-    public ArrayList<PlayerSummary> getAllPlayersSummaryInClub(String clubName, String year) {
-        return clubsCollector.getAllPlayersSummaryInClub(clubName, year);
+ 
+    public ArrayList<PlayerSummary> get_ClubSquad_AllPlayersSummaryInClub(String clubName, String year) {
+        return clubsCollector.get_ClubSquad_AllPlayersSummaryInClub(clubName, year);
     }
 
     public ArrayList<Club> getAllClubsInSeason(String competitionName, String competitionYears) {
@@ -55,7 +53,7 @@ public class ScreenScraper {
         return transferCollector.getClubsTransferTableAtSeason(competitionName, competiotionYears);
     }
 
-    public ArrayList<PlayerTopSoccer> getTopSoccerAtSeason(String competitionName, String competitionYears) {
+    public ArrayList<PlayerTopSoccerAtSeason> getTopSoccerAtSeason(String competitionName, String competitionYears) {
         return topScoreCollector.getTopSoccerAtSeason(competitionName, competitionYears);
     }
 
@@ -85,7 +83,7 @@ public class ScreenScraper {
     }
 
     public ArrayList<Staduim> getCompetitionStadiums(String competitionName, String competitionYears) {
-        return statisticsCollector.getCompetitionSatuims(competitionName, competitionYears);
+        return staduimsCollector.getCompetitionSatuims(competitionName, competitionYears);
     }
     public ArrayList<PlayerTopScoreForSeason> getTopSoccerForCompetitionAllYears(String competitionName) {
     	return topScoreCollector.getTopSoccerForCompetitionAllYears(competitionName);
