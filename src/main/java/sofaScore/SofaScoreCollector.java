@@ -1,8 +1,8 @@
 package sofaScore;
 
-import sofaScoreModels.GameIecidents;
-import sofaScoreModels.GameStatistic;
-import sofaScoreModels.RoundGamesID;
+import sofaScore.models.GameIecidents;
+import sofaScore.models.GameStatistic;
+import sofaScore.models.RoundGamesID;
 
 public class SofaScoreCollector {
 

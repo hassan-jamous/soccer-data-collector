@@ -2,9 +2,9 @@ package sofaScore;
 
 import com.google.gson.Gson;
 
-import sofaScoreModels.HashMapLeaguesID;
-import sofaScoreModels.HashMapSeasonsID;
-import sofaScoreModels.RoundGamesID;
+import sofaScore.models.HashMapLeaguesID;
+import sofaScore.models.HashMapSeasonsID;
+import sofaScore.models.RoundGamesID;
 import util.HttpUtil;
 
 public class RoundCollector {

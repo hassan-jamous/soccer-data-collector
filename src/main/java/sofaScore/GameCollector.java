@@ -1,15 +1,15 @@
 package sofaScore;
 
 import com.google.gson.Gson;
-import sofaScoreModels.GameIecidents;
-import sofaScoreModels.GameIencidentsGSON;
-import sofaScoreModels.GameStatistic;
-import sofaScoreModels.IencidentInGame_ChangePlayers;
-import sofaScoreModels.IencidentInGame_Goal;
-import sofaScoreModels.IencidentInGame_Header;
-import sofaScoreModels.IencidentInGame_InjuryTime;
-import sofaScoreModels.IencidentInGame_VarDecision;
-import sofaScoreModels.InncidentInGame_Card;
+import sofaScore.models.GameIecidents;
+import sofaScore.models.GameIencidentsGSON;
+import sofaScore.models.GameStatistic;
+import sofaScore.models.IencidentInGame_ChangePlayers;
+import sofaScore.models.IencidentInGame_Goal;
+import sofaScore.models.IencidentInGame_Header;
+import sofaScore.models.IencidentInGame_InjuryTime;
+import sofaScore.models.IencidentInGame_VarDecision;
+import sofaScore.models.InncidentInGame_Card;
 import util.HttpUtil;
 
 public class GameCollector {

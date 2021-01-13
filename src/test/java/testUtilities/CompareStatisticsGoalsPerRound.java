@@ -2,7 +2,7 @@ package testUtilities;
 
 import java.util.Comparator;
 
-import models.StatisticsGoalsPerRound;
+import worldfootball.models.StatisticsGoalsPerRound;
 
 public class CompareStatisticsGoalsPerRound implements Comparator<StatisticsGoalsPerRound> {
 

@@ -2,7 +2,7 @@ package testUtilities;
 
 import java.util.Comparator;
 
-import models.PlayerAtMatch;
+import worldfootball.models.PlayerAtMatch;
 
 public class ComparePlayerNames implements Comparator<PlayerAtMatch> {
     @Override

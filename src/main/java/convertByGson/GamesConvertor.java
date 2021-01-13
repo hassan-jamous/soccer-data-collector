@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
-import collector.ScreenScraper;
-import models.GamesTableOfLeague;
+import worldfootball.ScreenScraper;
+import worldfootball.models.GamesTableOfLeague;
 
 public class GamesConvertor {
 

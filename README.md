@@ -1,1 +1,1 @@
-# soccer-data-collector
+# soccer-data-worldfootball
