@@ -26,13 +26,13 @@ public class GameCollector {
 		
 	}
 	public GameIecidents getGameIncidents(String gameID) {
-
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "incidents"));
 		Gson gson = new Gson();
 		GameIencidentsGSON gameInfo = gson.fromJson(gsonString, GameIencidentsGSON.class);
 		if(gameInfo == null) {System.out.println("Erorr no object " + gameInfo);  return null;}
 		if(gameInfo.incidents.isEmpty()) {System.out.println("Empty" + gameInfo);  return null;}
 		GameIecidents result = new GameIecidents();
+		
 		for(int i = 0 ; i< gameInfo.incidents.size(); i++) {
 			if(gameInfo.incidents.get(i).incidentType.equals("period")) {
 				IencidentInGame_Header header =  new IencidentInGame_Header();
@@ -95,8 +95,16 @@ public class GameCollector {
 				actionWithPlayer.time = gameInfo.incidents.get(i).time;
 				result.iecidents.add(actionWithPlayer);
 			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("substitution")) {
+			else if(gameInfo.incidents.get(i).incidentType.equals("varDecision")) {
 				IencidentInGame_VarDecision varDecision= new IencidentInGame_VarDecision();
+				varDecision.confirmed = gameInfo.incidents.get(i).confirmed;
+				varDecision.player = gameInfo.incidents.get(i).player;
+				varDecision.isHome = gameInfo.incidents.get(i).isHome;
+				varDecision.id = gameInfo.incidents.get(i).id;
+				varDecision.time = gameInfo.incidents.get(i).time;
+				varDecision.incidentClass = gameInfo.incidents.get(i).incidentClass;
+				varDecision.incidentType = gameInfo.incidents.get(i).incidentType;
+				result.iecidents.add(varDecision);
 			}
 			//if i do not recognize all types
 			else {
