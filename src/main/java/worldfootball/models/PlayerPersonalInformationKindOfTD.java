@@ -1,6 +1,6 @@
 package worldfootball.models;
 
-public enum PlayerPersonalInformationKindOf_TD {
+public enum PlayerPersonalInformationKindOfTD {
 
     fullName,
     Born,

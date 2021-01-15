@@ -3,7 +3,7 @@ package worldfootball.testData;
 import java.util.Arrays;
 import java.util.List;
 import worldfootball.models.Club;
-public class WorldFootballClubsInSeasonValues {
+public class ClubsInSeasonValues {
 
 public List<Club> clubsAtEnglishPreimerLeague1889_1890Expected() {
 			return Arrays.asList(

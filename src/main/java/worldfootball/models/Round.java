@@ -2,21 +2,18 @@ package worldfootball.models;
 
 import java.util.ArrayList;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+@ToString
+@NoArgsConstructor
+//StatisticsCollector use roundNumberAsString as string with value all seasons
 public class Round {
     public String roundNumberAsString;
     public ArrayList<Game> games;
 
-    public Round() {
-        games = new ArrayList<>();
-    }
-
-    public String toString() {
-        String round = "";
-        round = round + roundNumberAsString + "\n";
-        for (int i = 0; i < games.size(); i++) {
-            round = round + games.get(i).toString() + "\n";
-        }
-        return round;
+    public Round(String roundNumber ) {
+    	this();
+    	this.roundNumberAsString = roundNumber;
     }
 }
 

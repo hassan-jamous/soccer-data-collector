@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import worldfootball.models.Staduim;
 
-public class WorldFootballSataduimValues {
+public class SataduimValues {
 
 public ArrayList<Staduim> getEnglishPreimerLeagueStaduim2020_2021() {
 			return new ArrayList<>(Arrays.asList(

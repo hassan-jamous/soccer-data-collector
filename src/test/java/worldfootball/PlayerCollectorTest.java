@@ -8,21 +8,21 @@ import java.util.List;
 
 import org.junit.Test;
 
-import worldfootball.testData.WorldFootballPlayerAllInformationValues;
+import worldfootball.testData.PlayerAllInformationValues;
 import worldfootball.models.PlayerAllInformation;
 import testUtilities.ArrayAttributeWithIndexes;
 import testUtilities.AssertUtilities;
 
 public class PlayerCollectorTest  {
 
-	WorldFootballPlayerAllInformationValues playersInformationWorldFootballValue= new WorldFootballPlayerAllInformationValues();
+	PlayerAllInformationValues playersInformationWorldFootballValue= new PlayerAllInformationValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
 	public void assertPlayerInformationWithIndexes(PlayerAllInformation actualValue, List<ArrayAttributeWithIndexes> attributeList, PlayerAllInformation expectedValue) {
 
         for (int i = 0; i < attributeList.size(); i++) {
             if (attributeList.get(i).attributeName.equals("personalInfo")) {
-                assertThat(actualValue.personalInfo).usingRecursiveComparison().isEqualTo(expectedValue.personalInfo);
+            	assertThat(actualValue.personalInfo).usingRecursiveComparison().isEqualTo(expectedValue.personalInfo);
             } 
             else if (attributeList.get(i).attributeName.equals("teamsManaged")) {
             	assertObjectArrayToArray.assertArrayToArraySpecificIndexes(actualValue.teamsManaged, attributeList.get(i).indexes, expectedValue.teamsManaged);
@@ -47,6 +47,9 @@ public class PlayerCollectorTest  {
             } 
             else if (attributeList.get(i).attributeName.equals("recordOpponent")) {
             	assertObjectArrayToArray.assertArrayToArraySpecificIndexes(actualValue.recordOpponent, attributeList.get(i).indexes, expectedValue.recordOpponent);
+            	//assertThat(actualValue.recordOpponent).containsAll(expectedValue.recordOpponent);
+            	//assertThat(actualValue.recordOpponent).contains(expectedValue.recordOpponent.get(0));
+
             } 
             else if (attributeList.get(i).attributeName.equals("forEachCompetitionInformationOverallsClubs")) {
             	assertObjectArrayToArray.assertArrayToArraySpecificIndexes(actualValue.forEachCompetitionInformationOverallsClubs, attributeList.get(i).indexes, expectedValue.forEachCompetitionInformationOverallsClubs);
@@ -73,8 +76,8 @@ public class PlayerCollectorTest  {
                 new ArrayAttributeWithIndexes("internationalCopmetitionsInfo"),
                 new ArrayAttributeWithIndexes("clubsMatchesOverall"),
                 new ArrayAttributeWithIndexes("internationalCopmetitionsOverall"),
-                new ArrayAttributeWithIndexes("recordOpponent", new ArrayList<>(Arrays.asList(0, 7, 19, 20, 40, 60, 80, 100, 109))),
-                new ArrayAttributeWithIndexes("recordReferee", new ArrayList<>(Arrays.asList(0, 20, 41, 61, 81, 100, 106))),
+                new ArrayAttributeWithIndexes("recordOpponent", new ArrayList<>(Arrays.asList(0, 7, 20, 21, 40, 60, 80, 100, 109))),
+                new ArrayAttributeWithIndexes("recordReferee", new ArrayList<>(Arrays.asList(0, 21, 41, 61, 81, 100, 106))),
                 new ArrayAttributeWithIndexes("forEachCompetitionInformationOverallsClubs", new ArrayList<>(Arrays.asList(2, 3)))));
         assertPlayerInformationWithIndexes(player1ActualValueInfo, player1AttributeList, player1ExpectedValueInfo);
 

@@ -8,14 +8,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import worldfootball.models.PlayerAtMatch;
-import worldfootball.testData.WorldFootballMatchesDetailsEnglishPreimerLeagueValues;
+import worldfootball.testData.MatchesDetailsValues;
 import worldfootball.models.MatchDetails;
 import testUtilities.AssertUtilities;
 import testUtilities.ArrayAttributeWithIndexes;
 
 public class MatchCollectorTest {
 
-	WorldFootballMatchesDetailsEnglishPreimerLeagueValues matchesWorldFootballMatchDetailsValue = new WorldFootballMatchesDetailsEnglishPreimerLeagueValues();
+	MatchesDetailsValues matchesWorldFootballMatchDetailsValue = new MatchesDetailsValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
     @Test
@@ -72,7 +72,15 @@ public class MatchCollectorTest {
         List<ArrayAttributeWithIndexes> match4Attributes = new ArrayList<>(Arrays.asList(
                 new ArrayAttributeWithIndexes("goals")));
         assertMatches(match4ActualValue, match4Attributes, match4ExpectedValue);
-
+        
+		//https://www.worldfootball.net/report/premier-league-2020-2021-sheffield-united-newcastle-united/
+        MatchDetails match5ActualValue = screenScraperUnderTest.getMatchDetails("premier-league", "2020-2021", "sheffield-united", "newcastle-united");
+        MatchDetails match5ExpectedValue = matchesWorldFootballMatchDetailsValue.getGame2020_2021SheffieldUnitedNewcastleUnited();
+        List<ArrayAttributeWithIndexes> match5Attributes = new ArrayList<>(Arrays.asList(
+                new ArrayAttributeWithIndexes("firstClub" , new ArrayList<>(Arrays.asList(10,12))),
+                new ArrayAttributeWithIndexes("secondClub" , new ArrayList<>(Arrays.asList(10)))));
+        assertMatches(match5ActualValue, match5Attributes, match5ExpectedValue);
+        
     }
 	private void assertMatches(MatchDetails actualValue, List<ArrayAttributeWithIndexes> attributes, MatchDetails expectedValue) {
 

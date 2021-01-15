@@ -1,20 +1,12 @@
 package worldfootball.models;
 
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Player {
 
     public String name;
-
-    public Player() {
-    }
-
-    public Player(String playerName) {
-        this.name = playerName;
-    }
-
-    public String toString() {
-        String result = "";
-        result = name;
-        return result;
-    }
 }

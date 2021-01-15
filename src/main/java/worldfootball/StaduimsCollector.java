@@ -19,13 +19,11 @@ public class StaduimsCollector {
         String url = WORLDFOOTBALL_VENUES_URL + competitionName + "-" + competitionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
-
-        Elements tables = doc.select("table:has(tbody:has(tr:has(th:contains(stadium)))) , table:has(tbody:has(tr:has(th:contains(Country))))");
+        Elements tables = doc.select("table:has(tbody:has(tr:has(th:contains(stadium))))").select("table:has(tbody:has(tr:has(th:contains(Country))))");
         Elements trs = tables.select("tr");
         if (trs.isEmpty()) {
             return null;
         }
-
         for (int i = 1; i < trs.size(); i++) {//i=0 the the header contains names of columns
             Staduim staduimInfo = new Staduim();
             staduimInfo.name = trs.get(i).child(1).text();

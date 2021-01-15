@@ -1,31 +1,16 @@
 package worldfootball.models;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class MatchSummary {
     public Club firstClubInfo;
     public Club secondClubInfo;
+    public String resultSummary;
     public String date;
     public String time;
-    public String resultSummary;
-
-    public MatchSummary() {
-        firstClubInfo = new Club();
-        secondClubInfo = new Club();
-    }
-
-    public MatchSummary(String firstClub, String secondClub, String resultSummary, String date, String time) {
-        this();
-        this.firstClubInfo.name = firstClub;
-        this.secondClubInfo.name = secondClub;
-        this.date = date;
-        this.time = time;
-        this.resultSummary = resultSummary;
-    }
-
-    public String toString() {
-        String result = "";
-        result = firstClubInfo.name + "  vs  " + secondClubInfo.name + "  (" + resultSummary + ")" + " AT " + date + ((time != null) ? "  ON " + time : null);
-        return result;
-    }
-
 
 }

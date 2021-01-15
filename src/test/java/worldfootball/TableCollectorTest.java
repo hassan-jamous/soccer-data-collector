@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
-import worldfootball.testData.WorldFootballRankingTableValues;
+import worldfootball.testData.RankingTableValues;
 import worldfootball.models.ClubForRankingTable;
 import worldfootball.models.RankingTable;
 import worldfootball.models.RankingTableRequest;
@@ -13,7 +13,7 @@ import testUtilities.AssertUtilities;
 public class TableCollectorTest {
 	
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();    
-    WorldFootballRankingTableValues rankingTablesWorldFootballValues = new WorldFootballRankingTableValues();
+    RankingTableValues rankingTablesWorldFootballValues = new RankingTableValues();
     
     
     @Test

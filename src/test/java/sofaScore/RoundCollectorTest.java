@@ -1,4 +1,4 @@
-package worldfootball;
+package sofaScore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -6,15 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
-
-import worldfootball.testData.SofaScoreGamesIdInRoundValues;
-import sofaScore.SofaScoreCollector;
 import sofaScore.models.GameID;
 import sofaScore.models.RoundGamesID;
+import sofaScore.testData.GamesIdInRoundValues;
 
-public class ZSofaScoreGamesInRoundTest {
+public class RoundCollectorTest {
 
-	SofaScoreGamesIdInRoundValues gameIDInRoundSofaScoreValues = new worldfootball.testData.SofaScoreGamesIdInRoundValues();
+	GamesIdInRoundValues gameIDInRoundSofaScoreValues = new sofaScore.testData.GamesIdInRoundValues();
 	
 	void assertSofaScoreGamesIdInRound(RoundGamesID actualValue, List<Integer> indexes, ArrayList<GameID> expectedValue, int expectedGamesNumberInRound) {
 

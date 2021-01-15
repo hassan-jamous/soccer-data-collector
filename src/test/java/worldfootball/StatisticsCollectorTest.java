@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
-import worldfootball.testData.WorldFootballStatisticsValues;
+import worldfootball.testData.StatisticsValues;
 import worldfootball.models.DirtyGame;
 import worldfootball.models.StatisticsBestPlayerInYear;
 import worldfootball.models.StatisticsGoalsPerRound;
@@ -18,7 +18,7 @@ import testUtilities.CompareStatisticsGoalsPerRound;
 
 public class StatisticsCollectorTest {
 
-	WorldFootballStatisticsValues statisticsValues = new WorldFootballStatisticsValues();
+	StatisticsValues statisticsValues = new StatisticsValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
 	@Test

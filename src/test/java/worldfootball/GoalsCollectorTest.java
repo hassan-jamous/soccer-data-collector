@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
-import worldfootball.testData.WorldFootballEnglishPreimerLeagueGoalsValues;
+import worldfootball.testData.GamesGoalsValues;
 
 
 import worldfootball.models.Goal;
@@ -12,7 +12,7 @@ import testUtilities.AssertUtilities;
 
 public class GoalsCollectorTest {
 	
-	WorldFootballEnglishPreimerLeagueGoalsValues goalsWorldFootBallValues = new WorldFootballEnglishPreimerLeagueGoalsValues();
+	GamesGoalsValues goalsWorldFootBallValues = new GamesGoalsValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
 	@Test

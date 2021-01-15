@@ -1,17 +1,25 @@
-package worldfootball;
+package sofaScore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
-
-import sofaScore.SofaScoreCollector;
+import sofaScore.models.GameIecidents;
 import sofaScore.models.GameStatistic;
+import sofaScore.models.Iencident;
 import sofaScore.models.ItemStatisticsInGroup;
+import sofaScore.testData.GameIencidentsValues;
+import testUtilities.AssertUtilities;
 
-public class ZSofaScoreGameStatisticsTest {
+public class GameCollectorTest {
+	
+	GameIencidentsValues iencidentsValues = new GameIencidentsValues();
+	AssertUtilities assertUtily = new AssertUtilities();
+	
 	 @Test
-	    public void itShouldGetGameStatisticSofaScore() {
+	    public void itShouldGetGameStatistics() {
 
 	        SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
 
@@ -51,5 +59,22 @@ public class ZSofaScoreGameStatisticsTest {
 
 	        Assert.assertEquals(4, game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(5).statisticsItems.size());
 
+	    }
+	 @Test
+	    public void itShouldGetGameIencidents() {
+	        SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
+	        
+	        GameIecidents game3AtRound3At19_20IencidentsActualValue = sofaScoreCollectorTest.getGameIencidents("Premier League", "20/21", "17", 3);
+	        List<Iencident>  game3AtRound3At19_20IencidentsExpectedValueValue = iencidentsValues.getGameEnglishPreimerLeague20_21Crystal_Palace_Sheffield_United_IecidentsExpexted();
+	        List <Integer> game3Round3At19_20Indexes = Arrays.asList(0,1,2,3,4,5,6,7,8,9,10,11,12,13);
+	        assertUtily.assertArrayToArraySpecificIndexes(game3AtRound3At19_20IencidentsActualValue.iecidents ,game3Round3At19_20Indexes , game3AtRound3At19_20IencidentsExpectedValueValue);
+
+	        GameIecidents game10AtRound1At19_20IencidentsActualValue = sofaScoreCollectorTest.getGameIencidents("Premier League", "20/21", "1", 10);
+	        List<Iencident>  game1AtRound1At19_20IencidentsExpectedValueValue = iencidentsValues.getGameEnglishPreimerLeague20_21Burnley_Manchester_United_IecidentsExpexted();
+	        List <Integer> game10Round1At19_20Indexes = Arrays.asList(0,1,2,3,4);
+	        assertUtily.assertArrayToArraySpecificIndexes(game10AtRound1At19_20IencidentsActualValue.iecidents ,game10Round1At19_20Indexes , game1AtRound1At19_20IencidentsExpectedValueValue);
+
+
+	        
 	    }
 }

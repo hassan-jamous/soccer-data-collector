@@ -13,7 +13,7 @@ public class SofaScoreCollector {
 	 * 
 	 * @param competitionName example Premier League
 	 * @param competitionYears example 05/06
-	 * @param round
+	 * @param round round number 1 or 2
 	 */
 	public RoundGamesID getGamesIdInRound (String competitionName, String competitionYears , String round) {
 		return roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round);

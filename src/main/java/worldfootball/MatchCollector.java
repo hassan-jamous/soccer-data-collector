@@ -9,21 +9,31 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import util.HttpUtil;
-
+/**
+ * 
+ * collect match's information
+ *
+ */
 public class MatchCollector {
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_MATCH_URL = "https://www.worldfootball.net/report/";
     private GoalsCollector goalsCollector = new GoalsCollector();
 
+    /**
+     * 
+     * @param competitionName
+     * @param competitionYears
+     * @param firstClub
+     * @param secondClub
+     * @return 
+     */
     public MatchDetails getMatchDetails(String competitionName, String competitionYears, String firstClub, String secondClub) {
-        String matchURL = WORLD_FOOTBALL_MATCH_URL + competitionName + "-" + competitionYears + "-" + firstClub + "-" + secondClub + "/";
+        
+    	String matchURL = WORLD_FOOTBALL_MATCH_URL + competitionName + "-" + competitionYears + "-" + firstClub + "-" + secondClub + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(matchURL);
-
         Document doc = Jsoup.parse(htmlPage);
         Elements allTablesInPage = doc.getElementsByClass("standard_tabelle");
-
         MatchDetails result = new MatchDetails();
-
         result.matchSummary = getMatchSummary(allTablesInPage);
         result.firstClub = getClubInformation(allTablesInPage, 0, result.matchSummary.firstClubInfo.name);
         result.secondClub = getClubInformation(allTablesInPage, 1, result.matchSummary.secondClubInfo.name);
@@ -31,6 +41,8 @@ public class MatchCollector {
         result.referees = getRefereesInMatch(allTablesInPage);
         result.attendance = getMatchAttendance(allTablesInPage);
         result.staduim = getMatchStadium(allTablesInPage);
+       // result.attendance = getMatchAttendanceOrStaduim(allTablesInPage , "Attendance");
+        //result.staduim = getMatchAttendanceOrStaduim(allTablesInPage , "stadium");
         return result;
     }
 
@@ -49,6 +61,17 @@ public class MatchCollector {
         }
         return null;
     }
+   /* to ask hassan why does not work
+    * private String getMatchAttendanceOrStaduim(Elements allTablesInPage , String request) {
+    	String selectParameter = "tr:has(td:has(img[title=%s]))";
+    	String.format(selectParameter, "Attendance");
+    	System.out.println(selectParameter);
+        Elements element = allTablesInPage.select(selectParameter);
+        if (element != null) {
+            return element.text();
+        }
+        return null;
+    }*/
 
     private ClubInMatchDetails getClubInformation(Elements allTablesInPage, int teamNumber, String clubName) {
         Elements elementClubsInfo = allTablesInPage.select("table:has(td[width=10%],[width=72%],[width=18%])");
@@ -56,7 +79,7 @@ public class MatchCollector {
         ClubInMatchDetails result = new ClubInMatchDetails();
         result.players = getClubPlayersInMatch(elementClubsInfo.get(teamNumber));
         result.manager = elementManagersInfo.get(0).select("a").get(teamNumber).attr("title").trim();
-        result.clubBasicInfo.name = clubName;
+        result.clubBasicInfo = new Club( clubName);
 
         return result;
     }
@@ -67,8 +90,8 @@ public class MatchCollector {
         if (elementBasicInfo.size() > 0) {
             Elements trs = elementBasicInfo.get(0).select("tr");
             if (trs.size() == 2) {
-                result.firstClubInfo.name = trs.get(0).child(0).text();
-                result.secondClubInfo.name = trs.get(0).child(2).text();
+                result.firstClubInfo = new Club(trs.get(0).child(0).text());
+                result.secondClubInfo =  new Club(trs.get(0).child(2).text());
                 result.resultSummary = trs.get(1).child(1).text();
                 if (trs.get(0).child(1).html().contains("<")) {//new league contains time not only the date
                     result.date = trs.get(0).child(1).html().substring(0, trs.get(0).child(1).html().indexOf('<'));
@@ -121,7 +144,7 @@ public class MatchCollector {
             if (i != indexOfRowWithSubstitutesTitle) {
                 PlayerAtMatch player = new PlayerAtMatch();
                 player.playerNumberAsString = (trsTeam.get(i).child(0).text().isEmpty()) ? null : trsTeam.get(i).child(0).text();
-                player.playerBasicInfo.name = trsTeam.get(i).child(1).child(0).text().trim();
+                player.playerBasicInfo = new Player(trsTeam.get(i).child(1).child(0).text().trim());
                 player.events = getPlayerEventsInMatch(trsTeam.get(i).child(1));
                 if ((indexOfRowWithSubstitutesTitle != -1 && i < indexOfRowWithSubstitutesTitle) || indexOfRowWithSubstitutesTitle == -1) {
                     player.playerType = PlayerTypeAtMatch.Essential;
@@ -181,9 +204,9 @@ public class MatchCollector {
             GoalInMatchDetails goal = new GoalInMatchDetails();
 
             if (trs.get(i).child(1).hasAttr("style")) {//second club
-                goal.clubInfo.name = secondClub;
+                goal.clubInfo = new Club(secondClub);
             } else {
-                goal.clubInfo.name = firstClub;
+                goal.clubInfo = new Club(firstClub);
             }
 
             if (!(trs.get(i).child(1).ownText().contains("/"))) {//old league does not have any information, it only has 0.

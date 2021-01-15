@@ -6,6 +6,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import worldfootball.models.Club;
+import worldfootball.models.Player;
 import worldfootball.models.PlayerTopScoreForSeason;
 import worldfootball.models.PlayerTopSoccerAtSeason;
 import util.HttpUtil;
@@ -32,9 +34,9 @@ public class TopScoreCollector {
                 ranking = trs.get(i).child(0).text();
             }
             player.playerRanking = ranking;
-            player.playerBasicInfo.name = trs.get(i).child(1).text();
+            player.playerBasicInfo =new Player( trs.get(i).child(1).text());
             player.playerNation = trs.get(i).child(3).text();
-            player.playerClubName = trs.get(i).child(4).text();
+            player.playerClub = new Club(trs.get(i).child(4).text());
             player.goals = trs.get(i).child(5).text().substring(0, trs.get(i).child(5).text().indexOf('(') - 1);
             player.penalty = trs.get(i).child(5).text().substring(trs.get(i).child(5).text().indexOf('(') + 1, trs.get(i).child(5).text().indexOf(')'));
             result.add(player);
@@ -61,8 +63,8 @@ public class TopScoreCollector {
             }
             player.competitionYears = years;
             player.playerNation = trs.get(i).child(1).child(0).attr("title");
-            player.playerInfo.name = trs.get(i).child(2).child(0).text();
-            player.clubInfo.name = trs.get(i).child(4).child(0).attr("title");
+            player.playerInfo = new Player (trs.get(i).child(2).child(0).text());
+            player.clubInfo = new Club(trs.get(i).child(4).child(0).attr("title"));
             player.goals = trs.get(i).child(5).text();
 
             result.add(player);

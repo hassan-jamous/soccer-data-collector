@@ -34,13 +34,15 @@ public class ScreenScraper {
 
 
     public ArrayList<PlayerSummary> get_ClubSquad_AllPlayersSummaryInClub(String clubName, String year) {
-        return clubsCollector.get_ClubSquad_AllPlayersSummaryInClub(clubName, year);
+        return clubsCollector.getClubSquad(clubName, year);
     }
 
     public ArrayList<Club> getAllClubsInSeason(String competitionName, String competitionYears) {
         return clubsCollector.getAllClubsInSeason(competitionName, competitionYears);
     }
-
+    
+    //look to bruno-fernandes at manchester  united 2020 (url is bruno-fernandes_2)
+    //not just name
     public PlayerAllInformation getAllInformationAboutPlayer(String nameAsInURL) {
         return playerCollector.getAllInformationAboutPlayer(nameAsInURL);
     }

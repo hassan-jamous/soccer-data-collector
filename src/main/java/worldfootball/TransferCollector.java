@@ -7,7 +7,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import worldfootball.models.Club;
 import worldfootball.models.ClubTransferTable;
+import worldfootball.models.Player;
 import worldfootball.models.TransferDestination;
 import worldfootball.models.TransferPlayerInformation;
 import util.HttpUtil;
@@ -22,20 +24,20 @@ public class TransferCollector {
         String htmlPage = httpUtil.sendGetHttpRequest(url);
 
         Document doc = Jsoup.parse(htmlPage);
-        Elements divs1 = doc.select("div:has(div:has(h2))");
-        ArrayList<Element> divs = getTransferDivs(divs1);
+        ArrayList<Element> divs = getTransferDivs(doc.select("div:has(div:has(h2))"));
+        if(divs.isEmpty()) {throw new RuntimeException("in  " + competitionName + "  at season  " + competiotionYears + " there is no transfers ");}
         ArrayList<ClubTransferTable> result = new ArrayList<>();
         for (Element div : divs) {
             ClubTransferTable clubTransferTable = new ClubTransferTable();
-            clubTransferTable.clubBasicInfo.name = div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("» ") - 1);
+            clubTransferTable.clubBasicInfo = new Club(div.child(0).child(0).text().substring(0, div.child(0).child(0).text().indexOf("» ") - 1));
             clubTransferTable.season = competiotionYears;
             Elements trs = div.child(1).getElementsByTag("tr");
-
             for (int i = 0; i < trs.size(); i++) {
                 if (trs.get(i).text().equals("In")) {
                     int j = i + 1;
                     while ((j < trs.size()) && (!(trs.get(j).text().equals("Out")))) {
                         TransferPlayerInformation player = getPlayerTransferInformation(trs.get(j), clubTransferTable.clubBasicInfo.name, TransferDestination.In);
+                        if(clubTransferTable.intable == null ) {clubTransferTable.intable = new ArrayList<>(); }
                         clubTransferTable.intable.add(player);
                         j++;
                     }
@@ -43,19 +45,14 @@ public class TransferCollector {
                     int j = i + 1;
                     while ((j < trs.size())) {
                         TransferPlayerInformation player = getPlayerTransferInformation(trs.get(j), clubTransferTable.clubBasicInfo.name, TransferDestination.Out);
+                        if(clubTransferTable.outtable == null ) {clubTransferTable.outtable = new ArrayList<>(); }
                         clubTransferTable.outtable.add(player);
                         j++;
                     }
 
                 }
             }
-            if (clubTransferTable.intable.isEmpty()) {
-                clubTransferTable.intable = null;
-            }
-            if (clubTransferTable.outtable.isEmpty()) {
-                clubTransferTable.outtable = null;
-            }
-
+          
             result.add(clubTransferTable);
         }
         return result;
@@ -64,17 +61,16 @@ public class TransferCollector {
     //may we change TransferPlayerInformation to contain one club, table in the destination club is the same club , table out out from is the same club
     private TransferPlayerInformation getPlayerTransferInformation(Element tr, String clubName, TransferDestination kindOfTransfer) {
         TransferPlayerInformation player = new TransferPlayerInformation();
-
         player.date = tr.child(0).text();
-        player.playerBasicInfo.name = tr.child(1).text();
+        player.playerBasicInfo = new Player (tr.child(1).text());
         player.playerNation = tr.child(2).child(0).attr("title");
         player.playerPosition = tr.child(3).text();
         if (kindOfTransfer == TransferDestination.In) {
-            player.fromClub.name = tr.child(5).text();
-            player.toClub.name = clubName;
+            player.fromClub = new Club(tr.child(5).text());
+            player.toClub = new Club(clubName);
         } else {
-            player.toClub.name = tr.child(5).text();
-            player.fromClub.name = clubName;
+            player.toClub = new Club(tr.child(5).text());
+            player.fromClub = new Club(clubName);
         }
         return player;
     }

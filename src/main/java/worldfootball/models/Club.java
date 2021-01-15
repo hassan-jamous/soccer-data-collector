@@ -7,6 +7,7 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class Club {
     public String name;
 }

@@ -1,10 +1,10 @@
-package worldfootball.testData;
+package sofaScore.testData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import sofaScore.models.GameID;
 
-public class SofaScoreGamesIdInRoundValues {
+public class GamesIdInRoundValues {
 
 		public ArrayList<GameID> getEnglishPreimerLeague19_20Round3() {
 			return new ArrayList<>(Arrays.asList(

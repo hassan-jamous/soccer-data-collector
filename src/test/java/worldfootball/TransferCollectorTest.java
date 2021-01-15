@@ -7,14 +7,14 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 
-import worldfootball.testData.WorldFootballTransferTableValues;
+import worldfootball.testData.TransferTableValues;
 import worldfootball.models.ClubTransferTable;
 import testUtilities.ArrayAttributeWithIndexes;
 import testUtilities.AssertUtilities;
 
 public class TransferCollectorTest {
 	
-	WorldFootballTransferTableValues tansferTableWorldFootballTransferTableValues = new WorldFootballTransferTableValues();
+	TransferTableValues tansferTableWorldFootballTransferTableValues = new TransferTableValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
 	public void assertClubTransfer(ClubTransferTable actualValue, List<ArrayAttributeWithIndexes> tables, ClubTransferTable expectedValue) {

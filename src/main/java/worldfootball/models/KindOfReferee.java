@@ -3,5 +3,6 @@ package worldfootball.models;
 public enum KindOfReferee {
 
     Referee,
-    AssistantReferee
+    AssistantReferee,
+    unknown // when we do not know it as record referee for the player
 }

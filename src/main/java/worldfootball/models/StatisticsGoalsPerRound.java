@@ -1,5 +1,11 @@
 package worldfootball.models;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class StatisticsGoalsPerRound {
 
     public String roundRankingNumber;
@@ -8,26 +14,6 @@ public class StatisticsGoalsPerRound {
     public String goals;
     public String matchesNumber;
     public String goalsPerMatch;
-
-    public StatisticsGoalsPerRound() {
-        round = new Round();
-    }
-
-    public StatisticsGoalsPerRound(String roundRankingNumber, String seasonYears, String round, String goals, String matchesNumber, String goalsPerMatch) {
-        this();
-        this.roundRankingNumber = roundRankingNumber;
-        this.seasonYears = seasonYears;
-        this.round.roundNumberAsString = round;
-        this.goals = goals;
-        this.matchesNumber = matchesNumber;
-        this.goalsPerMatch = goalsPerMatch;
-    }
-
-    public String toString() {
-        String result = "";
-        result = "(" + roundRankingNumber + ")  " + seasonYears + "  | " + round.roundNumberAsString + "  goals: " + goals + "  matches: " + matchesNumber + "  goals per match " + goalsPerMatch;
-        return result;
-    }
 
 }
 

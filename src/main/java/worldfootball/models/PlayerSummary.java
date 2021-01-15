@@ -1,5 +1,17 @@
 package worldfootball.models;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+
+//use this class in club squad 
+//ask hassan
+	//name of attribute information
+	//do we need other class for manager for managers
 public class PlayerSummary {
 
     public String number;
@@ -7,25 +19,4 @@ public class PlayerSummary {
     public String nation;
     public String birthDate;
     public String information;
-
-
-    public PlayerSummary() {
-        playerBasicInfo = new Player();
-    }
-
-    public PlayerSummary(String number, String name, String nation, String birthDate, String information) {
-        this();
-        this.number = number;
-        this.playerBasicInfo.name = name;
-        this.nation = nation;
-        this.birthDate = birthDate;
-        this.information = information;
-
-    }
-
-    public String toString() {
-        String player = "";
-        player = "# " + number + "  " + playerBasicInfo.name + "  " + information + "  " + nation + "  " + birthDate;
-        return player;
-    }
 }

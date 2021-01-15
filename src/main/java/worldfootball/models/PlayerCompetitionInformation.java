@@ -1,9 +1,13 @@
 package worldfootball.models;
 
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+@NoArgsConstructor
+@ToString
 public class PlayerCompetitionInformation {
-
+   
+	public String competitionNation;
     public String competitionName;
-    public String competitionNation;
     public String matchesNumber;
     public String goalsNumber;
     public String startingLineUp;
@@ -13,12 +17,10 @@ public class PlayerCompetitionInformation {
     public String secondYellowCards;
     public String redCards;
 
-    public PlayerCompetitionInformation() {
-    }
-
-    public PlayerCompetitionInformation(String competitionName, String competitionNation, String matchesNumber, String goalsNumber
+    public PlayerCompetitionInformation( String competitionNation,String competitionName, String matchesNumber, String goalsNumber
             , String startingLineUp, String substitueIn, String subtitueOut, String yellowCard, String secondYellowCard, String redCards) {
-        this.competitionName = competitionName;
+        this();
+    	this.competitionName = competitionName;
         if (competitionName.contains("∑")) {
             this.competitionNation = null;
 
@@ -35,11 +37,4 @@ public class PlayerCompetitionInformation {
         this.redCards = redCards;
 
     }
-
-    public String toString() {
-        return competitionName + "    " + competitionNation + "   playedGame " + matchesNumber + "  goals " + goalsNumber + "  startingLineUp  " + startingLineUp +
-                "  subIN  " + substitueIn + "  subOUT  " + substitueOut + "  Yellow  " + yellowCards + "  Second Yellow  " +
-                secondYellowCards + "  Red  " + redCards;
-    }
-
-}
+ }

@@ -8,18 +8,22 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import worldfootball.models.Club;
 import worldfootball.models.KindOfPlayer;
+import worldfootball.models.Player;
 import worldfootball.models.PlayerSummary;
 import util.HttpUtil;
 
 /**
- *
+ *Collects 2 kind of information 
+ *club squad from  https://www.worldfootball.net/players/eng-premier-league-2020-2021/
+ *clubs in competition at the season
  */
 public class ClubsCollector {
+	
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_PLAYERS_URL = "https://www.worldfootball.net/players/";
     private static final String WORLD_FOOTBALL_CLUBS_URL = "https://www.worldfootball.net/teams/";
 
-    public ArrayList<PlayerSummary> get_ClubSquad_AllPlayersSummaryInClub(String clubName, String year) {
+    public ArrayList<PlayerSummary> getClubSquad(String clubName, String year) {
         String url = WORLD_FOOTBALL_CLUBS_URL + clubName + "/" + year + "/2/";
         return getAllPlayersFromPage(url);
     }
@@ -72,7 +76,7 @@ public class ClubsCollector {
                 information = "Goalkeeper-Coach";
             } else if (!(row.select("a[href*=/player_summary/]").isEmpty())) {//link to player summary
                 String playerNumber = (row.child(1).text().equals("")) ? null : row.child(1).text();
-                PlayerSummary player = new PlayerSummary(playerNumber, row.child(2).text(), row.child(4).text(), row.child(5).text(), information);
+                PlayerSummary player = new PlayerSummary(playerNumber, new Player(row.child(2).text()), row.child(4).text(), row.child(5).text(), information);
                 players.add(player);
             }
         }

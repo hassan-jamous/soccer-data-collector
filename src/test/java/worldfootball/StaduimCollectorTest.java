@@ -5,13 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
 
-import worldfootball.testData.WorldFootballSataduimValues;
+import worldfootball.testData.SataduimValues;
 import worldfootball.models.Staduim;
 import testUtilities.AssertUtilities;
 
 public class StaduimCollectorTest {
 
-	WorldFootballSataduimValues staduimsWorldDootballValues = new WorldFootballSataduimValues();
+	SataduimValues staduimsWorldDootballValues = new SataduimValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
 	@Test

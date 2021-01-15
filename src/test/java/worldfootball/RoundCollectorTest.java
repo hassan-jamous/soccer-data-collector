@@ -5,14 +5,14 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import worldfootball.testData.WorldFootballGamesInEnglishPreimerLeagueLeagueValues;
+import worldfootball.testData.GamesInEnglishPreimerLeagueValues;
 import worldfootball.models.Game;
 import worldfootball.models.GamesTableOfLeague;
 import testUtilities.AssertUtilities;
 
 public class RoundCollectorTest  {
 
-	WorldFootballGamesInEnglishPreimerLeagueLeagueValues gamesInTableworldFootballValues = new WorldFootballGamesInEnglishPreimerLeagueLeagueValues();
+	GamesInEnglishPreimerLeagueValues gamesInTableworldFootballValues = new GamesInEnglishPreimerLeagueValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
 	@Test

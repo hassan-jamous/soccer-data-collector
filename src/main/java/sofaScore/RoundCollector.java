@@ -18,17 +18,14 @@ public class RoundCollector {
 	 * 
 	 * @param competitionName example Premier League
 	 * @param competitionYears example 05/06
-	 * @param round
+	 * @param rounndNumber example (1 or 17 )
 	 */
 	public RoundGamesID getGamesIdInRound(String competitionName, String competitionYears , String round) {
 		
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
 		Gson gson = new Gson();
-		//System.out.println(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
 		RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
 
 		return gamesId;
 	}
-	public void getAllRounds() {}
-
 }

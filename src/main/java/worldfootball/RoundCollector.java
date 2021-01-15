@@ -1,5 +1,6 @@
 package worldfootball;
 
+import worldfootball.models.Club;
 import worldfootball.models.Game;
 import worldfootball.models.GameIformationInTDs;
 import worldfootball.models.GamesTableOfLeague;
@@ -35,7 +36,9 @@ public class RoundCollector {
                 if ((link != null) && !(link.isEmpty())) {
 
                 }
+                if(round.games == null) {round.games = new ArrayList<>();}
                 round.games.addAll(ParseGamesInRound(trs, i, link));
+                if(gamesTable.rounds == null) {gamesTable.rounds = new ArrayList<>();}
                 gamesTable.rounds.add(round);
             }
         }
@@ -60,8 +63,8 @@ public class RoundCollector {
                 }
                 Game game = new Game(date,
                         getGameValues(trs.get(j), GameIformationInTDs.Time),
-                        getGameValues(trs.get(j), GameIformationInTDs.FirstTeam),
-                        getGameValues(trs.get(j), GameIformationInTDs.SecondTeam),
+                        new Club (getGameValues(trs.get(j), GameIformationInTDs.FirstTeam)),
+                        new Club (getGameValues(trs.get(j), GameIformationInTDs.SecondTeam)),
                         getGameValues(trs.get(j), GameIformationInTDs.Result));
                 output.add(game);
             }

@@ -2,6 +2,8 @@ package worldfootball;
 
 import worldfootball.models.Goal;
 import worldfootball.models.KindOfGoal;
+import worldfootball.models.Player;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,6 +11,7 @@ import org.jsoup.select.Elements;
 import util.HttpUtil;
 
 import java.util.ArrayList;
+
 
 public class GoalsCollector {
     private HttpUtil httpUtil = new HttpUtil();
@@ -20,17 +23,11 @@ public class GoalsCollector {
         String htmlPage = httpUtil.sendGetHttpRequest(gameURL);
         Document doc = Jsoup.parse(htmlPage);
 
-        Elements tables = doc.getElementsByClass("standard_tabelle");
-        Element tableOfGoals = getGoalsTable(tables);
-
-        Elements rowsOfGoals = tableOfGoals.select("tr");
-        if ((rowsOfGoals != null) && (rowsOfGoals.size() == 2) && (rowsOfGoals.get(1).text().contains("none"))) {
-            return null;
-        }
+        Elements tables = doc.select("table.standard_tabelle").select("table:has(tbody:has(tr:has(td:contains(goals))))");
+        Elements rowsOfGoals = tables.select("tr:has(td:has(b:contains(:)))");
+        if((rowsOfGoals == null) || (rowsOfGoals.isEmpty())) {return null;}
         ArrayList<Goal> goals = new ArrayList<>();
-        //the first row is the header, this is why i = 1;
-        for (int i = 1; i < rowsOfGoals.size(); i++) {//
-            if (rowsOfGoals.get(i).text().contains(":")) {//it is goal
+        for (int i = 0; i < rowsOfGoals.size(); i++) {
                 if (!(rowsOfGoals.get(i).child(1).ownText().contains("/"))) {//old league does not have any information
                     Goal goal = getGoal(rowsOfGoals.get(i), KindOfGoal.OldGoal);
                     goals.add(goal);
@@ -46,7 +43,6 @@ public class GoalsCollector {
                         goals.add(goal);
                     }
                 }
-            }
         }
         return goals;
     }
@@ -76,41 +72,32 @@ public class GoalsCollector {
         if (kind == KindOfGoal.OldGoal) {
             Goal result = new Goal(rowOfGoal.child(0).text(),
                     rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-                    rowOfGoal.child(1).child(0).attr("title"));
+                    new Player (rowOfGoal.child(1).child(0).attr("title")));
             result.kind = kind;
             return result;
         } else if (kind == KindOfGoal.HasAssister) {
             Goal result = new Goal(rowOfGoal.child(0).text(),
                     rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-                    rowOfGoal.child(1).child(0).attr("title"),
+                    new Player (rowOfGoal.child(1).child(0).attr("title")),
                     rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2, rowOfGoal.child(1).ownText().indexOf("(") - 1),
-                    rowOfGoal.child(1).child(1).attr("title"));
+                    new Player (rowOfGoal.child(1).child(1).attr("title")));
             result.kind = kind;
             return result;
         } else if (kind == KindOfGoal.Individually) {
             Goal result = new Goal(rowOfGoal.child(0).text(),
                     rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-                    rowOfGoal.child(1).child(0).attr("title"),
+                    new Player (rowOfGoal.child(1).child(0).attr("title")),
                     rowOfGoal.child(1).ownText().substring(rowOfGoal.child(1).ownText().indexOf("/") + 2));
             result.kind = kind;
             return result;
         } else if (kind == KindOfGoal.Reverse) {
             Goal result = new Goal(rowOfGoal.child(0).text(),
                     rowOfGoal.child(1).ownText().substring(0, rowOfGoal.child(1).ownText().indexOf(".")),
-                    rowOfGoal.child(1).child(0).attr("title"),
+                    new Player (rowOfGoal.child(1).child(0).attr("title")),
                     "own goal");
             result.kind = kind;
             return result;
         }
-        throw new RuntimeException();
+        throw new RuntimeException("new goal kind we do not recognize it");
     }
-
-    private Element getGoalsTable(Elements tables) {
-        for (Element table : tables) {
-            if (table.text().contains("goals")) {
-                return table;
-            }
-        }
-        throw new RuntimeException("Unexpected input, there is no table");
-    }
-}
+ }
