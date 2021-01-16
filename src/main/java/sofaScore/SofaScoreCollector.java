@@ -5,6 +5,7 @@ import sofaScore.models.Game;
 import sofaScore.models.GameIecidents;
 import sofaScore.models.GameStatistic;
 import sofaScore.models.RoundGamesID;
+import sofaScore.models.Season;
 
 public class SofaScoreCollector {
 
@@ -53,12 +54,35 @@ public class SofaScoreCollector {
 		return gameCollector.getGameBasicInformation(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 	
-	public void writeRoundInCSVFiles(String competitionName, String competitionYears , int round) {
-		RoundGamesID gamesID = getGamesIdInRound (competitionName, competitionYears ,  String.valueOf(round));
+	public Season getAllRoundsInformationInSeason(String competitionName , String competitionYears) {
+		return roundCollerctor.getAllRoundsInformationInSeason(competitionName, competitionYears);
+	}
+	
+	public int getNumberOfFinishedRoundAtSeason(String competitionName , String competitionYears) {
+		return roundCollerctor.getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
+	}
+	
+	public void writePlayedGamesInRoundInCSVFiles(String competitionName, String competitionYears , int round) {
+		RoundGamesID gamesID =  getPlayedGamesIdInRound(competitionName, competitionYears ,  String.valueOf(round));
 		for(int i = 0 ; i < gamesID.events.size() ; i++ ) {
 			Game game = gameCollector.getGameBasicInformation(gamesID.events.get(i).id);
-			csvDealer.write(competitionName, competitionYears, round, game.toString());
+			csvDealer.writeRound(competitionName, competitionYears, round, game.toString());
 		}
 	}
-
+	
+	public void writeSeasonInCSVFiles(String competitionName, String competitionYears) {
+		int NumberOfRoundsAtSeason = getCurrentRoundNumber(competitionName, competitionYears);
+		for(int i =1; i <=NumberOfRoundsAtSeason ; i++ ) {
+			writePlayedGamesInRoundInCSVFiles(competitionName, competitionYears,i);
+		}		
+	}
+	
+	public int getCurrentRoundNumber(String competitionName, String competitionYears) {
+		return roundCollerctor.getCurrentRound(competitionName, competitionYears);
+	}
+	
+	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {
+		return 	roundCollerctor.getPlayedGamesIdInRound(competitionName,competitionYears , round) ;
+	}
+ 
 }

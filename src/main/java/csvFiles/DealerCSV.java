@@ -9,9 +9,17 @@ public class DealerCSV {
 
 	public static final String dataBasePath = "D:\\Mohammad\\MyWork\\HassanJamous\\DataBase\\%s\\%s";
 
-	public void write(String competitionName , String competitionYears , int round , String data) {
+	public void writeRound(String competitionName , String competitionYears , int round , String data) {
+		writeToFile(competitionName, competitionYears, round, data);			    		
+	}
+	
+	//to ask hassan do we need go to line gameId 
+	public void writeGame(String competitionName , String competitionYears , int round  , int gameId , String data) {
+		writeToFile(competitionName, competitionYears, round, data);			    		
+	}
+
+	private void writeToFile(String competitionName, String competitionYears, int round, String data) {
 		competitionYears = competitionYears.replace('/', '-');
-		//or file.mkdirs()
 		Path directoryPath = Path.of(String.format(dataBasePath, competitionName ,competitionYears));
 	    try {
 			Files.createDirectories(directoryPath);
@@ -30,12 +38,11 @@ public class DealerCSV {
 	    }
 		try {
 			
-			Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);
+			Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);//
 		} catch (IOException e) {
 			throw new RuntimeException("can not write the file  " + round);// is it good to add e.getStackTrace()  to the msg
 
 		}
-			    		
 	}
 	public void read() {}
 }

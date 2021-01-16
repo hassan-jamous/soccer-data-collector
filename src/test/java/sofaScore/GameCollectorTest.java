@@ -98,11 +98,5 @@ public class GameCollectorTest {
 		 assertThat(game1AtRound1At19_20ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
 		 assertThat(game1AtRound1At19_20ActualValue.event.roundInfo.round).isEqualTo(15);
 
-
-
-
-		 
-
-
 	 }
 }

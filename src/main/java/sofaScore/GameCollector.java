@@ -18,7 +18,7 @@ import util.HttpUtil;
  * collect games information like( statistics and incidents)  
  *
  */
-public class GameCollector {
+public class GameCollector {                                  
 	private final String API_SOFA_SCORE_GAME_URL_FOR_BASIC = "https://api.sofascore.com/api/v1/event/";
 	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s"; 
 	private final HttpUtil httpUtil = new HttpUtil();
@@ -75,14 +75,12 @@ public class GameCollector {
 			else {
 				throw new RuntimeException("New Game Iecident Type i = " + i  +"   gameInfo's type is " + gameInfo.incidents.get(i).incidentType );
 			}
-
 		}
 		if(result ==  null || result.iecidents.size() == 0) {return null;}
 		return result;
 	}
 	
 	public Game getGameBasicInformation(String gameId) {
-		
 		String gsonString = httpUtil.sendGetHttpRequest(API_SOFA_SCORE_GAME_URL_FOR_BASIC + gameId);
 	    Gson gson = new Gson();
 	    Game game = gson.fromJson(gsonString, Game.class) ;

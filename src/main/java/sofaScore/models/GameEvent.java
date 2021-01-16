@@ -11,5 +11,6 @@ public class GameEvent {
 	public TeamInGame awayTeam;
 	public ScoreTeamInGame homeScore;
 	public ScoreTeamInGame awayScore;
+	public Stauts status;
 	
 }

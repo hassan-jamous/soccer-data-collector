@@ -2,11 +2,13 @@ package sofaScore.testData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
 import sofaScore.models.GameID;
 
 public class GamesIdInRoundValues {
 
-		public ArrayList<GameID> getEnglishPreimerLeague19_20Round3() {
+		public List<GameID> getEnglishPreimerLeague19_20Round3() {
 			return new ArrayList<>(Arrays.asList(
 		    		new GameID("8243420"),
 		    		new GameID("8243423"),
@@ -20,7 +22,7 @@ public class GamesIdInRoundValues {
 		    		new GameID("8243435")));
 		}
 		
-		public ArrayList<GameID> getEnglishPreimerLeague18_19Round5() {
+		public List<GameID> getEnglishPreimerLeague18_19Round5() {
 			return new ArrayList<>(Arrays.asList(
 		    		new GameID("7827942"),
 		    		new GameID("7827938"),
