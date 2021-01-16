@@ -1,8 +1,8 @@
 package sofaScore;
 
 import java.util.ArrayList;
-
 import com.google.gson.Gson;
+import sofaScore.models.Game;
 import sofaScore.models.GameIecidents;
 import sofaScore.models.GameIencidentsGSON;
 import sofaScore.models.GameStatistic;
@@ -19,7 +19,7 @@ import util.HttpUtil;
  *
  */
 public class GameCollector {
-	
+	private final String API_SOFA_SCORE_GAME_URL_FOR_BASIC = "https://api.sofascore.com/api/v1/event/";
 	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s"; 
 	private final HttpUtil httpUtil = new HttpUtil();
 
@@ -79,6 +79,14 @@ public class GameCollector {
 		}
 		if(result ==  null || result.iecidents.size() == 0) {return null;}
 		return result;
+	}
+	
+	public Game getGameBasicInformation(String gameId) {
+		
+		String gsonString = httpUtil.sendGetHttpRequest(API_SOFA_SCORE_GAME_URL_FOR_BASIC + gameId);
+	    Gson gson = new Gson();
+	    Game game = gson.fromJson(gsonString, Game.class) ;
+		return game;
 	}
 
 	private IencidentInGameHeader getHeader(GameIencidentsGSON gameInfo, int i) {

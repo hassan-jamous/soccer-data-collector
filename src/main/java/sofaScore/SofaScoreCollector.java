@@ -1,5 +1,6 @@
 package sofaScore;
 
+import sofaScore.models.Game;
 import sofaScore.models.GameIecidents;
 import sofaScore.models.GameStatistic;
 import sofaScore.models.RoundGamesID;
@@ -36,4 +37,17 @@ public class SofaScoreCollector {
 	public GameIecidents getGameIencidents(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameIncidents(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
+	
+	/**
+	 * 
+	 * @param competitionName  example Premier League
+	 * @param competitionYears example 05/06
+	 * @param round
+	 * @param gameIndex
+	 * @return
+	 */
+	public Game getGameBasicInformation(String competitionName, String competitionYears , String round , int gameIndex) {
+		return gameCollector.getGameBasicInformation(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+	}
+
 }
