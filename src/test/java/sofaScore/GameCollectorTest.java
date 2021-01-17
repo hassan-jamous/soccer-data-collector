@@ -16,17 +16,16 @@ import sofaScore.testData.GameIencidentsValues;
 import testUtilities.AssertUtilities;
 
 public class GameCollectorTest {
+	//RoundCollector has gameCollector so what about getGameStatistics
     SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
-
+    GameCollector gameCollector = new GameCollector();
 	GameIencidentsValues iencidentsValues = new GameIencidentsValues();
 	AssertUtilities assertUtily = new AssertUtilities();
 	
 	 @Test
 	    public void itShouldGetGameStatistics() {
-
-	        SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
-
-	        GameStatistic game1Atround3At19_20StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameStatistic("Premier League", "19/20", "3", 1);
+ 
+	        GameStatistic game1Atround3At19_20StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "19/20", "3", 1);
 
 	        assertThat("ALL").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(0).period);
 	        assertThat("1ST").isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(1).period);
@@ -47,7 +46,7 @@ public class GameCollectorTest {
 	        ItemStatisticsInGroup game1Atround3At19_20_2ND_Long_Balls_Info = new ItemStatisticsInGroup("Long balls", "5/28 (18%)", "11/23 (48%)");
 	        assertThat(game1Atround3At19_20_2ND_Long_Balls_Info).usingRecursiveComparison().isEqualTo(game1Atround3At19_20StatisticTopScoreActualValue.statistics.get(2).groups.get(4).statisticsItems.get(2));
 
-	        GameStatistic game5Atround8At20_21StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameStatistic("Premier League", "20/21", "8", 5);
+	        GameStatistic game5Atround8At20_21StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "20/21", "8", 5);
 	        assertThat("2ND").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).period);
 	        assertThat("Shots extra").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(1).groups.get(3).groupName);
 	        assertThat("TVData").isEqualTo(game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(2).groupName);

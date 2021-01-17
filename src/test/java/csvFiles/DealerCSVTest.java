@@ -9,7 +9,7 @@ public class DealerCSVTest {
 	DealerCSV csvDealer = new DealerCSV();
 	@Test
 	public void itShouldWriteCSVFiles() {
-		sofaScoreColletor.writePlayedGamesInRoundInCSVFiles("Premier League", "20/21", 17);	
+		//sofaScoreColletor.writePlayedGamesInRoundInCSVFiles("SofaScore","Premier League", "20/21", 17);	
 	}
 	
 	@Test 

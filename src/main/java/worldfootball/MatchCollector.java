@@ -35,6 +35,10 @@ public class MatchCollector {
         Elements allTablesInPage = doc.getElementsByClass("standard_tabelle");
         MatchDetails result = new MatchDetails();
         result.matchSummary = getMatchSummary(allTablesInPage);
+        //handle isLive or in future
+        if(result.matchSummary.resultSummary.equals("-:-")) {}
+        //reschedule
+        else if(result.matchSummary.resultSummary.equals("-:- resch.")){}
         result.firstClub = getClubInformation(allTablesInPage, 0, result.matchSummary.firstClubInfo.name);
         result.secondClub = getClubInformation(allTablesInPage, 1, result.matchSummary.secondClubInfo.name);
         result.goals = getMatchGoals(allTablesInPage, result.matchSummary.firstClubInfo.name, result.matchSummary.secondClubInfo.name);

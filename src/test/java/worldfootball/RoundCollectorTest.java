@@ -11,10 +11,15 @@ import worldfootball.models.GamesTableOfLeague;
 import testUtilities.AssertUtilities;
 
 public class RoundCollectorTest  {
-
+	RoundCollector roundCollector = new RoundCollector();
 	GamesInEnglishPreimerLeagueValues gamesInTableworldFootballValues = new GamesInEnglishPreimerLeagueValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
+    @Test 
+    public void itShouldWriteCSVFilesSeason() {
+    	
+    	roundCollector.writeSeasonInCSVFiles("eng-premier-league", "2015-2016");
+    }
 	@Test
     public void itShouldGetGamesTableOfLeague() {
 

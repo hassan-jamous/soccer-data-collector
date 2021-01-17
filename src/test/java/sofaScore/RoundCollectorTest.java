@@ -48,8 +48,8 @@ public class RoundCollectorTest {
 	@Test
 	public void itShouldWriteSeasonInCSVFiles() {
         SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
-        sofaScoreCollectorTest.writeSeasonInCSVFiles("Premier League", "20/21");
-        sofaScoreCollectorTest.writeSeasonInCSVFiles("Premier League", "19/20");
+        sofaScoreCollectorTest.writeSeasonInCSVFiles("SofaScore","Premier League", "20/21");
+        sofaScoreCollectorTest.writeSeasonInCSVFiles("SofaScore","Premier League", "19/20");
 
 	}
 	

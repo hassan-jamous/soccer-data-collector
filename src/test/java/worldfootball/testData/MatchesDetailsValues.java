@@ -175,10 +175,27 @@ public class MatchesDetailsValues {
 		        											new PlayerEventAtMatch("45", "Second yellow card")))))));
 			 
 			 
-		     return expectedValue;
-
-			
+		     return expectedValue;		
 			
 		}
-	
+		//https://www.worldfootball.net/report/premier-league-2020-2021-wolverhampton-wanderers-manchester-united/
+		public MatchDetails getGame2020_2021WolverhamptonWanderersManchesterUnited() {
+			 MatchDetails expectedValue =new  MatchDetails();
+			 expectedValue.firstClub = new ClubInMatchDetails( new Club("Wolverhampton Wanderers"),"Nuno",null);
+			 expectedValue.secondClub = new ClubInMatchDetails( new Club("Manchester United"),"Ole Gunnar Solskjær",null);
+			 expectedValue.staduim ="Molineux Stadium (Wolverhampton / England)";
+			 expectedValue.referees = null;
+			 expectedValue.attendance = null;
+			 expectedValue.goals= null;
+			 expectedValue.matchSummary = new MatchSummary(new Club("Wolverhampton Wanderers"),
+					 									   new Club("Manchester United"),
+					 									   "-:-",
+					 									   "Sunday, 23. May 2021",
+					 									   "16:00 Clock");
+			 
+			 
+			 
+		     return expectedValue;		
+			
+		}
 }
