@@ -50,7 +50,7 @@ public class RoundCollectorTest {
 		
         SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
         //sofaScoreCollectorTest.writeSeasonInCSVFiles("SofaScore","Premier League", "20/21");
-        sofaScoreCollectorTest.writeSeasonInCSVFiles("SofaScore","Premier League", "19/20");
+        //sofaScoreCollectorTest.writeSeasonInCSVFiles("SofaScore","Premier League", "19/20");
 
 	}
 	

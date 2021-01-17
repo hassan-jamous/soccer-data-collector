@@ -29,7 +29,7 @@ public class SofaScoreCollector {
 	 * @param competitionYears example 05/06
 	 * @param round
 	 */
-	public GameStatistic getGameStatistic (String competitionName, String competitionYears , String round , int gameIndex) {
+	public GameStatistic getGameStatistics (String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 	/***
