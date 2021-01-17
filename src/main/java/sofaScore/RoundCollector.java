@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.google.gson.Gson;
 
-import csvFiles.DealerCSV;
 import sofaScore.models.CurrentRoundSeasonInfo;
 import sofaScore.models.Game;
 import sofaScore.models.HashMapLeaguesID;
@@ -19,7 +18,6 @@ public class RoundCollector {
 	private final HashMapLeaguesID leagueId = new HashMapLeaguesID(); 
 	private final HttpUtil httpUtil = new HttpUtil();
 	GameCollector gameCollector = new GameCollector();
-	DealerCSV csvDealer = new DealerCSV();
 	private final String API_SOFA_SCORE_CURRENT_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/rounds";
 	private final String API_SOFA_SCORE_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/events/round/%s";
 	private final String API_SOFA_SCORE_SEASON_ROUNDS_URL = "https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/team-of-the-week/rounds";
@@ -34,6 +32,7 @@ public class RoundCollector {
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
 		Gson gson = new Gson();
 		RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
+
 		return gamesId;
 	}
 	
@@ -49,7 +48,6 @@ public class RoundCollector {
 	}
 	
 	public int getNumberOfFinishedRoundInSeason(String competitionName , String competitionYears) {
-		
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_SEASON_ROUNDS_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears)));
 		Gson gson = new Gson();
 		Season season = gson.fromJson(gsonString, Season.class);
@@ -59,7 +57,7 @@ public class RoundCollector {
 		return season.rounds.size();
 	}
 	
-	public int getCurrentRoundNumber(String competitionName , String competitionYears) {
+	public int getCurrentRound(String competitionName , String competitionYears) {
 		
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_CURRENT_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears)));
 		Gson gson = new Gson();
@@ -75,7 +73,7 @@ public class RoundCollector {
 			RoundGamesID result = new RoundGamesID();
 			for(int i =0 ; i < gamesId.events.size() ; i++) {
 				Game game = gameCollector.getGameBasicInformation(String.valueOf(gamesId.events.get(i).id));
-				if(game.event.status.description.equals("Not started")) {}//there are many descriptions do u want them
+				if(game.event.status.description.equals("Not started")) {}//there are many descriptions 
 				else if(game.event.status.description.equals("Ended")) {
 					if(result.events == null) {result.events = new ArrayList<>();}
 					result.events.add(gamesId.events.get(i));
@@ -83,22 +81,5 @@ public class RoundCollector {
 			}
 			return result;
 		}
-	
-	public void writePlayedGamesInRoundInCSVFiles(String site ,String competitionName, String competitionYears , int round) {
-		
-		RoundGamesID gamesID =  getPlayedGamesIdInRound(competitionName, competitionYears ,  String.valueOf(round));
-		for(int i = 0 ; i < gamesID.events.size() ; i++ ) {
-			Game game = gameCollector.getGameBasicInformation(gamesID.events.get(i).id);
-			csvDealer.writeRound(site ,competitionName, competitionYears, round, game.toString());
-		}
-	}
-	
-	public void writeSeasonInCSVFiles(String site ,String competitionName, String competitionYears) {
-		
-		int NumberOfRoundsAtSeason = getCurrentRoundNumber(competitionName, competitionYears);
-		for(int i =1; i <=NumberOfRoundsAtSeason ; i++ ) {
-			writePlayedGamesInRoundInCSVFiles(site , competitionName, competitionYears,i);
-		}		
-	}
 }
 

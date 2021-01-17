@@ -29,7 +29,7 @@ public class SofaScoreCollector {
 	 * @param competitionYears example 05/06
 	 * @param round
 	 */
-	public GameStatistic getGameStatistics (String competitionName, String competitionYears , String round , int gameIndex) {
+	public GameStatistic getGameStatistic (String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 	/***
@@ -62,16 +62,23 @@ public class SofaScoreCollector {
 		return roundCollerctor.getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
 	}
 	
-	public void writePlayedGamesInRoundInCSVFiles(String site , String competitionName, String competitionYears , int round) {
-		roundCollerctor.writePlayedGamesInRoundInCSVFiles(site ,competitionName, competitionYears, round);
+	public void writePlayedGamesInRoundInCSVFiles(String competitionName, String competitionYears , int round) {
+		RoundGamesID gamesID =  getPlayedGamesIdInRound(competitionName, competitionYears ,  String.valueOf(round));
+		for(int i = 0 ; i < gamesID.events.size() ; i++ ) {
+			Game game = gameCollector.getGameBasicInformation(gamesID.events.get(i).id);
+			csvDealer.writeRound(competitionName, competitionYears, round, game.toString());
+		}
 	}
 	
-	public void writeSeasonInCSVFiles(String site ,String competitionName, String competitionYears) {
-		roundCollerctor.writeSeasonInCSVFiles(site , competitionName, competitionYears);
+	public void writeSeasonInCSVFiles(String competitionName, String competitionYears) {
+		int NumberOfRoundsAtSeason = getCurrentRoundNumber(competitionName, competitionYears);
+		for(int i =1; i <=NumberOfRoundsAtSeason ; i++ ) {
+			writePlayedGamesInRoundInCSVFiles(competitionName, competitionYears,i);
+		}		
 	}
 	
 	public int getCurrentRoundNumber(String competitionName, String competitionYears) {
-		return roundCollerctor.getCurrentRoundNumber(competitionName, competitionYears);
+		return roundCollerctor.getCurrentRound(competitionName, competitionYears);
 	}
 	
 	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {

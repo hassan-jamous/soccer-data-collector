@@ -81,10 +81,17 @@ public class MatchCollectorTest {
                 new ArrayAttributeWithIndexes("secondClub" , new ArrayList<>(Arrays.asList(10)))));
         assertMatches(match5ActualValue, match5Attributes, match5ExpectedValue);
         
+      //https://www.worldfootball.net/report/premier-league-2020-2021-wolverhampton-wanderers-manchester-united/
+      //  MatchDetails match6ActualValue = screenScraperUnderTest.getMatchDetails("premier-league", "2020-2021", "wolverhampton-wanderers", "manchester-united");
+        //MatchDetails match6ExpectedValue = matchesWorldFootballMatchDetailsValue.getGame2020_2021WolverhamptonWanderersManchesterUnited();
+        //assertMatches(match6ActualValue, null, match5ExpectedValue);
+
+        
     }
 	private void assertMatches(MatchDetails actualValue, List<ArrayAttributeWithIndexes> attributes, MatchDetails expectedValue) {
-
-		for (int i = 0; i < attributes.size(); i++) {
+			
+		int numberOfAttributes = (attributes == null)? 7 : attributes.size() ;
+		for (int i = 0; i < numberOfAttributes; i++) {
             if (attributes.get(i).attributeName.equals("staduim")) {
                 assertThat(actualValue.staduim).isEqualTo(expectedValue.staduim);
             } 

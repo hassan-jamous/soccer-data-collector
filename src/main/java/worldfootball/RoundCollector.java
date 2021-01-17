@@ -9,8 +9,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import csvFiles.DealerCSV;
 import util.HttpUtil;
 
 import java.util.ArrayList;
@@ -20,68 +18,6 @@ public class RoundCollector {
     private static final String WORLD_FOOTBALL_MATCHES_URL = "https://www.worldfootball.net/all_matches/";
     private static final String WORLD_FOOTBALL_SITE_URL = "https://www.worldfootball.net/";
     private HttpUtil httpUtil = new HttpUtil();
-	private DealerCSV csvDealer = new DealerCSV();//private or public
-
-	//v1 copy paste i need to know the  new data structure to store (isLive , played , reschedule)
-    public GamesTableOfLeague getAllPlayedGamesInRounds(String competitoinName, String competitionYears) {
-    	String url = WORLD_FOOTBALL_MATCHES_URL + competitoinName + "-" + competitionYears + "/";
-        String htmlPage = httpUtil.sendGetHttpRequest(url);
-        Document doc = Jsoup.parse(htmlPage);
-        Elements League = doc.getElementsByClass("standard_tabelle");
-        Elements trs = League.select("tr");
-
-        GamesTableOfLeague gamesTable = new GamesTableOfLeague(competitionYears);
-        for (int i = 0; i < trs.size(); i++) {
-            Element tr = trs.get(i);
-            if (isRound(tr)) {
-                Round round = new Round();
-                round.roundNumberAsString = tr.child(0).child(0).text();
-                Elements link = tr.select("a[href*=/schedule/]");
-                if ((link != null) && !(link.isEmpty())) {
-
-                }
-                if(round.games == null) {round.games = new ArrayList<>();}
-                round.games.addAll(ParsePlayedGamesInRound(trs, i, link));
-                if(gamesTable.rounds == null) {gamesTable.rounds = new ArrayList<>();}
-                gamesTable.rounds.add(round);
-            }
-        }
-        return gamesTable;
-    }
-    
-    private List<Game> ParsePlayedGamesInRound(Elements trs, int startFromIndex, Elements link) {
-        int j = startFromIndex + 1;
-        List<Game> output = new ArrayList<>();
-
-        //In some cases, game's date is shared among multiple game (i.e multiple games have the same date).
-        //in this case the date is mentioned once
-        //that is why we need to keep the date in a variable and use it for every game.
-        String date = "";
-        while ((j < trs.size()) && (!isRound(trs.get(j))) && (isGame((trs.get(j))))) {
-            if (isGame(trs.get(j))) {
-            	if(isPlayed(trs.get(j))) {
-	                String currentDate = getGameValues(trs.get(j), GameIformationInTDs.Date);
-	
-	                date = currentDate == null ? date : currentDate;
-	                if (date.equals("")) {//in the first game the date =="" like 3.Round in 1925-1926
-	                    date = getRoundDate(WORLD_FOOTBALL_SITE_URL + link.get(0).attr("href"));
-	                }
-                
-	                Game game = new Game(date,
-	                        getGameValues(trs.get(j), GameIformationInTDs.Time),
-	                        new Club (getGameValues(trs.get(j), GameIformationInTDs.FirstTeam)),
-	                        new Club (getGameValues(trs.get(j), GameIformationInTDs.SecondTeam)),
-	                        getGameValues(trs.get(j), GameIformationInTDs.Result));
-	                
-	                output.add(game);
-                }
-            }
-            j++;
-        }
-        if(output.isEmpty()) {return null;}
-        return output;
-    }
-
 
     public GamesTableOfLeague getAllRounds(String competitoinName, String competitionYears) {
         String url = WORLD_FOOTBALL_MATCHES_URL + competitoinName + "-" + competitionYears + "/";
@@ -107,14 +43,6 @@ public class RoundCollector {
             }
         }
         return gamesTable;
-    }
-    
-    public void writeSeasonInCSVFiles(String competitionName , String CompetitionYears) {
-    	GamesTableOfLeague gamesTable = getAllRounds(competitionName, CompetitionYears );
-    	for(int i = 0; i < gamesTable.rounds.size(); i++) {
-    		int round = Integer.valueOf( gamesTable.rounds.get(i).roundNumberAsString.substring(0, gamesTable.rounds.get(i).roundNumberAsString.indexOf('.')));
-    		csvDealer.writeRound( "WorldFootball", competitionName, CompetitionYears,round, gamesTable.rounds.get(i).games.toString());
-    	}
     }
 
     private List<Game> ParseGamesInRound(Elements trs, int startFromIndex, Elements link) {
@@ -207,12 +135,5 @@ public class RoundCollector {
         }
 
         throw new RuntimeException();
-    }
-    
-    private boolean isPlayed(Element tr) {
-    	if((tr.child(tr.childrenSize()-2).text().equals("-:-")) || (tr.child(tr.childrenSize()-2).text().equals("resch."))) {
-    		return false;
-    	}
-    	return true;
     }
 }
