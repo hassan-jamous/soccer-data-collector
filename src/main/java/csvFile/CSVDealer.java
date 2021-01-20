@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
 public class CSVDealer {
-	public static final String dataBasePath = "D:\\Mohammad\\MyWork\\HassanJamous\\DataBase\\%s\\%s";
+	public static final String dataBasePath = "./\\sources\\DataBase\\%s\\%s";
 
 
 		/**
@@ -29,11 +29,11 @@ public class CSVDealer {
 			} catch (Exception e) {
 				throw new RuntimeException("can not create the folder  " + competitionName );// is it good to add e.getStackTrace()  to the msg
 			}
-			Path filePath = Path.of(String.format(dataBasePath ,site, competitionName)  + competitionYears+dataType+".csv");
+			Path filePath = Path.of(String.format(dataBasePath ,site, competitionName)+"\\"  + competitionYears+dataType+".csv");
 		    if( ! Files.exists(filePath)) {
 				try {
 					Files.createFile(filePath);
-					if(isHeader) {Files.writeString(filePath, "the header" +"\n" );}
+					if(isHeader) {Files.writeString(filePath, data +"\n" );}
 					else {throw new RuntimeException ("the file is empty and the data is not header");}
 				} catch (Exception e) {
 					throw new RuntimeException("can not create the file  " + competitionYears+dataType);// is it good to add e.getStackTrace()  to the msg

@@ -3,6 +3,8 @@ package sofaScore;
 import java.util.ArrayList;
 import java.util.Collections;
 import com.google.gson.Gson;
+
+import csvFile.CSVDealer;
 import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.Game;
 import sofaScore.models.gameStatistics.GameStatisticNew;
@@ -16,6 +18,7 @@ public class RoundCollector {
 	private final HashMapLeaguesID leagueId = new HashMapLeaguesID(); 
 	private final HttpUtil httpUtil = new HttpUtil();
 	GameCollector gameCollector = new GameCollector();
+	CSVDealer csvDealer = new CSVDealer();
 	private final String API_SOFA_SCORE_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/events/round/%s";
 	/***
 	 * 
@@ -85,7 +88,10 @@ public class RoundCollector {
 		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
 			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
 			gameStatistic.itHaveTheSameTo(roundStatistic);
-			System.out.println(gameStatistic.write(""));
+			if(i==0) {
+				csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), true, "statistic");
+			}
+			csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("values"), false, "statistic");
 		}
 	}
 	
