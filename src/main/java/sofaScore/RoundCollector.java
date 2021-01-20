@@ -1,10 +1,11 @@
 package sofaScore;
 
 import java.util.ArrayList;
-
+import java.util.Collections;
 import com.google.gson.Gson;
 import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameStatistics.GameStatisticNew;
 import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
 import util.HttpUtil;
@@ -30,8 +31,44 @@ public class RoundCollector {
 
 		return gamesId;
 	}
+	/**
+	 * 
+	 * @param competitionName
+	 * @param competitionYears
+	 * @param round
+	 * @return the statistic for all game in this round
+	 * for example if one game has statistic for red cards with out statistic for offside
+	 * and other game has statistic offside
+	 * the result contains all (red cards and offside)
+	 */
 	
+	public GameStatisticNew getGamesStatisticNewInRound(String competitionName, String competitionYears , String round){
+		
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
+		if((gamesIdInRound == null) || (gamesIdInRound.events.isEmpty())) {
+			//not error so i can not throw an exception just to check what happened or throw an exception
+			System.out.println("no games id in this round " + round +"  at " + competitionYears );
+			return null;
+		}
+		String firstgGameId = gamesIdInRound.events.get(0).id;
+		GameStatisticNew resultGameStastiscs = gameCollector.getGameStatisticsNew(firstgGameId);
+		if(gamesIdInRound.events.size()==1) {
+			//not error so i can not throw an exception just to check what happened or throw an exception
+			System.out.println("only one game in " + round +"  at " + competitionYears );
+			return resultGameStastiscs;
+		}
+		for(int i =0; i < gamesIdInRound.events.size(); i++) {
+			String gameId = gamesIdInRound.events.get(i).id;
+			GameStatisticNew gameStastiscs = gameCollector.getGameStatisticsNew(gameId);
+			if(gameStastiscs == null) {
+				return resultGameStastiscs;
+			}
+			resultGameStastiscs.itHaveTheSameTo(gameStastiscs);
+		}
+		Collections.sort(resultGameStastiscs.statistics);
 
+		return resultGameStastiscs; 
+	} 
 	
 	
 	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {

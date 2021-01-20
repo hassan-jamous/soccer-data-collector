@@ -1,6 +1,6 @@
 package sofaScore.models.gameStatistics;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -8,5 +8,7 @@ import lombok.ToString;
 @ToString 
 public class GameStatistic {
 
-	public ArrayList<PeriodStatisticInGame> statistics;
+	public List<PeriodStatisticInGame> statistics;
+	
+
 }

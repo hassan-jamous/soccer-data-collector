@@ -1,7 +1,12 @@
 package sofaScore;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import sofaScore.models.gameBasicInformation.Game;
 import sofaScore.models.gameIecidents.GameIecidents;
 import sofaScore.models.gameIecidents.GameIencidentsGSON;
@@ -13,6 +18,8 @@ import sofaScore.models.gameIecidents.IencidentInGamePenalty;
 import sofaScore.models.gameIecidents.IencidentInGameVarDecision;
 import sofaScore.models.gameIecidents.InncidentInGameCard;
 import sofaScore.models.gameStatistics.GameStatistic;
+import sofaScore.models.gameStatistics.GameStatisticNew;
+import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
 import util.HttpUtil;
 /**
  * 
@@ -39,7 +46,42 @@ public class GameCollector {
 		return gamesInfo;
 		
 	}
-     
+	/***
+	 * 
+	 * @param gameID
+	 * the same information in the last method but here store in new class 
+	 * GameStatisticNew is array list of class contains five Strings(period , groupName , name ,home , away)
+	 * 	for example (All , shots , shots on target , 10, 8)
+	 * 	 * @return
+	 */
+
+	public GameStatisticNew getGameStatisticsNew(String gameID) {
+
+		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "statistics"));
+		JsonElement  jsonElement = JsonParser.parseString(gsonString);
+		JsonArray statisticsArray = jsonElement.getAsJsonObject().get("statistics").getAsJsonArray();
+		GameStatisticNew gamesInfo = new  GameStatisticNew();
+		for(int i =0 ; i < statisticsArray.size() ; i++) {
+			String peroid = statisticsArray.get(i).getAsJsonObject().get("period").getAsString();
+			JsonArray groupsInPeriod = statisticsArray.get(i).getAsJsonObject().getAsJsonArray("groups");
+			for(int i1 = 0 ; i1 < groupsInPeriod.size(); i1++) {
+				String groupName = groupsInPeriod.get(i1).getAsJsonObject().get("groupName").getAsString();
+				JsonArray statisticsItems = groupsInPeriod.get(i1).getAsJsonObject().getAsJsonArray("statisticsItems");
+				for(int i2 =0 ; i2 < statisticsItems.size() ; i2++) {
+					JsonElement item = statisticsItems.get(i2);
+					String name =item.getAsJsonObject().get("name").getAsString();
+					String away =item.getAsJsonObject().get("away").getAsString();
+					String home =item.getAsJsonObject().get("home").getAsString();
+					GameStatisticsForOneAttributeNew gameStatistic = new GameStatisticsForOneAttributeNew(peroid,groupName,name,home,away);
+					if(gamesInfo.statistics == null) {gamesInfo.statistics = new ArrayList<>();}
+					gamesInfo.statistics.add(gameStatistic);
+				}
+			}
+		}
+		Collections.sort((List<GameStatisticsForOneAttributeNew>)gamesInfo.statistics);
+		return gamesInfo;
+	}
+    
 	/**
 	 * 
 	 * @param gameID

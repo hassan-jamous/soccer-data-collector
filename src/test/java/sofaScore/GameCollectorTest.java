@@ -2,6 +2,7 @@ package sofaScore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
@@ -11,12 +12,13 @@ import sofaScore.models.gameBasicInformation.Game;
 import sofaScore.models.gameIecidents.GameIecidents;
 import sofaScore.models.gameIecidents.Iencident;
 import sofaScore.models.gameStatistics.GameStatistic;
+import sofaScore.models.gameStatistics.GameStatisticNew;
+import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
 import sofaScore.models.gameStatistics.ItemStatisticsInGroup;
 import sofaScore.testData.GameIencidentsValues;
 import testUtilities.AssertUtilities;
 
 public class GameCollectorTest {
-	//RoundCollector has gameCollector so what about getGameStatistics
     SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
     GameCollector gameCollector = new GameCollector();
 	GameIencidentsValues iencidentsValues = new GameIencidentsValues();
@@ -62,6 +64,13 @@ public class GameCollectorTest {
 	        Assert.assertEquals(4, game5Atround8At20_21StatisticTopScoreActualValue.statistics.get(2).groups.get(5).statisticsItems.size());
 
 	    }
+	 
+	 @Test
+	    public void itShouldGetGameStatisticsNew() {
+
+		 GameStatisticNew game1Atround3At19_20StatisticTopScoreActualValue = sofaScoreCollectorTest.getGameNewStatistics("Premier League", "19/20", "3", 1);
+	       // System.out.println(game1Atround3At19_20StatisticTopScoreActualValue.statistics);
+	    }
 	 @Test
 	    public void itShouldGetGameIencidents() {
 	        
@@ -78,6 +87,7 @@ public class GameCollectorTest {
 
 	        
 	    }
+	 
 	 
 	 @Test
 	 public void itShouldGetGameBasicInformation() {
