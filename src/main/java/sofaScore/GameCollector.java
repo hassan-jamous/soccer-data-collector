@@ -2,16 +2,17 @@ package sofaScore;
 
 import java.util.ArrayList;
 import com.google.gson.Gson;
-import sofaScore.models.Game;
-import sofaScore.models.GameIecidents;
-import sofaScore.models.GameIencidentsGSON;
-import sofaScore.models.GameStatistic;
-import sofaScore.models.IencidentInGameChangePlayers;
-import sofaScore.models.IencidentInGameGoal;
-import sofaScore.models.IencidentInGameHeader;
-import sofaScore.models.IencidentInGameInjuryTime;
-import sofaScore.models.IencidentInGameVarDecision;
-import sofaScore.models.InncidentInGameCard;
+import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameIecidents.GameIecidents;
+import sofaScore.models.gameIecidents.GameIencidentsGSON;
+import sofaScore.models.gameIecidents.IencidentInGameChangePlayers;
+import sofaScore.models.gameIecidents.IencidentInGameGoal;
+import sofaScore.models.gameIecidents.IencidentInGameHeader;
+import sofaScore.models.gameIecidents.IencidentInGameInjuryTime;
+import sofaScore.models.gameIecidents.IencidentInGamePenalty;
+import sofaScore.models.gameIecidents.IencidentInGameVarDecision;
+import sofaScore.models.gameIecidents.InncidentInGameCard;
+import sofaScore.models.gameStatistics.GameStatistic;
 import util.HttpUtil;
 /**
  * 
@@ -38,7 +39,7 @@ public class GameCollector {
 		return gamesInfo;
 		
 	}
-	
+     
 	/**
 	 * 
 	 * @param gameID
@@ -71,6 +72,9 @@ public class GameCollector {
 			else if(gameInfo.incidents.get(i).incidentType.equals("varDecision")) {
 				result.iecidents.add(getVarDecision(gameInfo, i));
 			}
+			else if(gameInfo.incidents.get(i).incidentType.equals("inGamePenalty")) {
+				result.iecidents.add(getGamePenalty(gameInfo, i));
+			}
 			//if i do not recognize all types
 			else {
 				throw new RuntimeException("New Game Iecident Type i = " + i  +"   gameInfo's type is " + gameInfo.incidents.get(i).incidentType );
@@ -87,6 +91,17 @@ public class GameCollector {
 		return game;
 	}
 
+	private IencidentInGamePenalty getGamePenalty(GameIencidentsGSON gameInfo, int i) {
+		IencidentInGamePenalty penalty = new IencidentInGamePenalty();
+		penalty.time = gameInfo.incidents.get(i).time;
+		penalty.player = gameInfo.incidents.get(i).player;
+		penalty.description = gameInfo.incidents.get(i).description;
+		penalty.id = gameInfo.incidents.get(i).id;
+		penalty.isHome = gameInfo.incidents.get(i).isHome;
+		penalty.incidentType = gameInfo.incidents.get(i).incidentType;
+		penalty.incidentClass = gameInfo.incidents.get(i).incidentClass;		
+		return penalty;
+	}
 	private IencidentInGameHeader getHeader(GameIencidentsGSON gameInfo, int i) {
 		IencidentInGameHeader header =  new IencidentInGameHeader();
 		header.incidentType = gameInfo.incidents.get(i).incidentType;
@@ -163,5 +178,4 @@ public class GameCollector {
 		varDecision.incidentType = gameInfo.incidents.get(i).incidentType;
 		return varDecision;
 	}
-
 }

@@ -7,11 +7,11 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sofaScore.models.Game;
-import sofaScore.models.GameIecidents;
-import sofaScore.models.GameStatistic;
-import sofaScore.models.Iencident;
-import sofaScore.models.ItemStatisticsInGroup;
+import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameIecidents.GameIecidents;
+import sofaScore.models.gameIecidents.Iencident;
+import sofaScore.models.gameStatistics.GameStatistic;
+import sofaScore.models.gameStatistics.ItemStatisticsInGroup;
 import sofaScore.testData.GameIencidentsValues;
 import testUtilities.AssertUtilities;
 

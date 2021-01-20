@@ -1,17 +1,16 @@
 package sofaScore;
 
-import csvFiles.DealerCSV;
-import sofaScore.models.Game;
-import sofaScore.models.GameIecidents;
-import sofaScore.models.GameStatistic;
-import sofaScore.models.RoundGamesID;
-import sofaScore.models.Season;
+import sofaScore.models.RoundInformation.RoundGamesID;
+import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameIecidents.GameIecidents;
+import sofaScore.models.gameStatistics.GameStatistic;
+import sofaScore.models.season.Season;
 
 public class SofaScoreCollector {
 
 	RoundCollector roundCollerctor = new RoundCollector();
 	GameCollector gameCollector = new GameCollector();
-	DealerCSV csvDealer = new DealerCSV();
+	SeasonCollector seasonCollector = new SeasonCollector();
 	
 	/***
 	 * 
@@ -55,34 +54,19 @@ public class SofaScoreCollector {
 	}
 	
 	public Season getAllRoundsInformationInSeason(String competitionName , String competitionYears) {
-		return roundCollerctor.getAllRoundsInformationInSeason(competitionName, competitionYears);
+		return seasonCollector.getAllRoundsInformationInSeason(competitionName, competitionYears);
 	}
 	
 	public int getNumberOfFinishedRoundAtSeason(String competitionName , String competitionYears) {
-		return roundCollerctor.getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
+		return seasonCollector.getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
 	}
 	
-	public void writePlayedGamesInRoundInCSVFiles(String competitionName, String competitionYears , int round) {
-		RoundGamesID gamesID =  getPlayedGamesIdInRound(competitionName, competitionYears ,  String.valueOf(round));
-		for(int i = 0 ; i < gamesID.events.size() ; i++ ) {
-			Game game = gameCollector.getGameBasicInformation(gamesID.events.get(i).id);
-			csvDealer.writeRound(competitionName, competitionYears, round, game.toString());
-		}
-	}
 	
-	public void writeSeasonInCSVFiles(String competitionName, String competitionYears) {
-		int NumberOfRoundsAtSeason = getCurrentRoundNumber(competitionName, competitionYears);
-		for(int i =1; i <=NumberOfRoundsAtSeason ; i++ ) {
-			writePlayedGamesInRoundInCSVFiles(competitionName, competitionYears,i);
-		}		
-	}
 	
-	public int getCurrentRoundNumber(String competitionName, String competitionYears) {
-		return roundCollerctor.getCurrentRound(competitionName, competitionYears);
-	}
 	
-	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {
-		return 	roundCollerctor.getPlayedGamesIdInRound(competitionName,competitionYears , round) ;
-	}
- 
+	
+	
+	
+	
+	 
 }
