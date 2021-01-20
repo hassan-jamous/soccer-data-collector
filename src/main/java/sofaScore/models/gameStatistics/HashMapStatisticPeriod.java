@@ -10,7 +10,7 @@ public HashMap<String, Integer> periodID ;
 		periodID = new HashMap<>();
 		periodID.put("ALL", 0);
 		periodID.put("1ST", 1);
-		periodID.put("2ND", 1);
+		periodID.put("2ND", 2);
 
 	}
 	

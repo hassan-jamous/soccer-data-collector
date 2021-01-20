@@ -70,6 +70,24 @@ public class RoundCollector {
 		return resultGameStastiscs; 
 	} 
 	
+	public void makeAllGameHasSameStatistic(String competitionName, String competitionYears , String round) {
+		GameStatisticNew  roundStatistic = getGamesStatisticNewInRound(competitionName, competitionYears , round);
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
+		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
+			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
+			gameStatistic.itHaveTheSameTo(roundStatistic);
+		}
+	}
+	
+	public void writeRound(String competitionName, String competitionYears , String round) {
+		GameStatisticNew  roundStatistic = getGamesStatisticNewInRound(competitionName, competitionYears , round);
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
+		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
+			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
+			gameStatistic.itHaveTheSameTo(roundStatistic);
+			System.out.println(gameStatistic.write(""));
+		}
+	}
 	
 	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {
 			

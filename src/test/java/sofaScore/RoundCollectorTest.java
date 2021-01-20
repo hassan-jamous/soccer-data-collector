@@ -34,12 +34,14 @@ RoundCollector roundContloler = new RoundCollector();
     }
 	@Test
 	 public void itShouldGetNameStatisticForGame() {
-		 GameStatisticNew game1 = roundContloler.getGamesStatisticNewInRound("Premier League", "19/20", "3");
-			for(int i = 0 ; i <game1.statistics.size(); i++ ) {
-				System.out.println(game1.statistics.get(i));
-			}	 
+		 
 
 	 }
+	
+	@Test 
+	public void itShouldWriteRoundStatistic() {
+		roundContloler.writeRound("Premier League", "19/20", "1");
+	}
 	
 	@Test
     public void itShouldgetAllRoundsInformationInSeason() {

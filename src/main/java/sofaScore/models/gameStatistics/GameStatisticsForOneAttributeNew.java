@@ -9,9 +9,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 public class GameStatisticsForOneAttributeNew implements Comparable <GameStatisticsForOneAttributeNew> {
-	HashMapStatisticPeriod hashMapPeriod = new HashMapStatisticPeriod();
-	HashMapStatisticGroupName hashMapGroupName = new HashMapStatisticGroupName();
-	HashMapStatisticName hashMapName = new HashMapStatisticName();
+	
 	@Expose
 	public String period;
 	@Expose
@@ -21,17 +19,13 @@ public class GameStatisticsForOneAttributeNew implements Comparable <GameStatist
 	
 	public String home;
 	public String away;
-	
-	public GameStatisticsForOneAttributeNew(String period , String groupName , String name , String home, String away) {
-		this.period = period;
-		this.groupName = groupName;
-		this.name =name;
-		this.home =home;
-		this.away =away;
-	}
+
 
 	@Override
 	public int compareTo(GameStatisticsForOneAttributeNew objecttoCompare) {
+		HashMapStatisticPeriod hashMapPeriod = new HashMapStatisticPeriod();
+		HashMapStatisticGroupName hashMapGroupName = new HashMapStatisticGroupName();
+		HashMapStatisticName hashMapName = new HashMapStatisticName();
 		if(this.period.equals(objecttoCompare.period)) {
 			if(this.groupName.equals(objecttoCompare.groupName)) {
 				return hashMapName.getNameId(name) - hashMapName.getNameId(objecttoCompare.name);

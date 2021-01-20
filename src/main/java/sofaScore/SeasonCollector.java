@@ -1,7 +1,10 @@
 package sofaScore;
 
+import java.util.Collections;
+
 import com.google.gson.Gson;
 
+import sofaScore.models.gameStatistics.GameStatisticNew;
 import sofaScore.models.season.CurrentRoundSeasonInfo;
 import sofaScore.models.season.Season;
 import sofaScore.models.utilities.HashMapLeaguesID;
@@ -47,6 +50,21 @@ public class SeasonCollector {
 		CurrentRoundSeasonInfo currentRoundInfo = gson.fromJson(gsonString, CurrentRoundSeasonInfo.class);
 		return currentRoundInfo.currentRound.round;
 	}
+	
+	public GameStatisticNew getGamesStatisticNewInSeason(String competitionName, String competitionYears){
+	
+		int limit = getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
+		GameStatisticNew seasonStatistic = roundCollerctor.getGamesStatisticNewInRound(competitionName, competitionYears , String.valueOf(1));
+		for(int i =1 ; i <= limit ; i++) {
+			GameStatisticNew roundStatistic = roundCollerctor.getGamesStatisticNewInRound(competitionName, competitionYears , String.valueOf(i));
+			seasonStatistic.itHaveTheSameTo(roundStatistic);
+		}
+		Collections.sort(seasonStatistic.statistics);
+		return seasonStatistic; 
+
+	}
+	
+
 	
 	
 }

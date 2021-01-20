@@ -1,6 +1,8 @@
 package sofaScore.models.gameStatistics;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
@@ -40,17 +42,30 @@ public class GameStatisticNew {
 	}
 	public void itHaveTheSameTo(GameStatisticNew newGameStatistic) {
 		Gson gson = new Gson().newBuilder().excludeFieldsWithoutExposeAnnotation().create();
-		String resultGameGsonString = gson.toJson(this);
-		
+		String resultGameGsonString = gson.toJson(this);		
 		String newGameGsonString = gson.toJson(newGameStatistic);			
-		if(resultGameGsonString.equals(newGameGsonString)) {}
+		if(resultGameGsonString.equals(newGameGsonString)) {
+			//remeber to delele it
+			Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);
+
+		}
 		else {
 			for(int i = 0 ; i <newGameStatistic.statistics.size(); i++) {
 					if(! this.containsSatatistic(newGameStatistic.statistics.get(i))) {
 						this.addStatistic(newGameStatistic.statistics.get(i));
 					}
 			}
-		}		
+		}
+		Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);
+
+	}
+	
+	public String write(String type) {
+		String result="";
+		for(int i =0 ; i<statistics.size(); i++) {
+			result+= statistics.get(i).period+","+statistics.get(i).groupName+","+statistics.get(i).name+","+((type.equals("value"))?statistics.get(i).home:"home")+","+((type.equals("value"))?statistics.get(i).away:"away");
+		}
+		return result;
 	}
 	
 }

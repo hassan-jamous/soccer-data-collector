@@ -58,6 +58,7 @@ public class GameCollector {
 	public GameStatisticNew getGameStatisticsNew(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "statistics"));
+		if(gsonString.contains("Not Found")) {return null;}
 		JsonElement  jsonElement = JsonParser.parseString(gsonString);
 		JsonArray statisticsArray = jsonElement.getAsJsonObject().get("statistics").getAsJsonArray();
 		GameStatisticNew gamesInfo = new  GameStatisticNew();
