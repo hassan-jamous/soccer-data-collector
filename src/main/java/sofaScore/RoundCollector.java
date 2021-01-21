@@ -94,6 +94,25 @@ public class RoundCollector {
 			csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("values"), false, "statistic");
 		}
 	}
+	//the same may i will delet one later
+	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatisticNew  roundStatistic) {
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
+		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
+			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
+			if(gameStatistic != null) {
+				gameStatistic.itHaveTheSameTo(roundStatistic);
+				if((i==0)&&(Integer.valueOf(round)==1)) {
+					csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), true, "statistic");
+				}
+				else {
+				csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), false, "statistic");// header must be values now just for test
+				}
+			}
+			else {// if the match has been canceled
+			//	csvDealer.write("SofaScore", competitionName, competitionYears, "null statistic for game "+i +"with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+			}
+		}
+	}
 	
 	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {
 			

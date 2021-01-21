@@ -4,6 +4,8 @@ import java.util.Collections;
 
 import com.google.gson.Gson;
 
+import csvFile.CSVDealer;
+import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameStatistics.GameStatisticNew;
 import sofaScore.models.season.CurrentRoundSeasonInfo;
 import sofaScore.models.season.Season;
@@ -20,6 +22,7 @@ public class SeasonCollector {
 	private final HashMapLeaguesID leagueId = new HashMapLeaguesID(); 
 	RoundCollector roundCollerctor = new RoundCollector();
 	GameCollector gameCollector = new GameCollector();
+	CSVDealer csvDealer = new CSVDealer();
 	
 	public Season getAllRoundsInformationInSeason(String competitionName , String competitionYears) {
 
@@ -64,7 +67,17 @@ public class SeasonCollector {
 
 	}
 	
-
+	public void writeSeason(String competitionName, String competitionYears) {
+		GameStatisticNew  seasonStatistic = getGamesStatisticNewInSeason(competitionName, competitionYears);
+		int limit = getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
+		for(int i =1 ; i <= limit ; i++) {
+			GameStatisticNew roundStatistic = roundCollerctor.getGamesStatisticNewInRound(competitionName, competitionYears , String.valueOf(i));
+			seasonStatistic.itHaveTheSameTo(roundStatistic);
+			Collections.sort(seasonStatistic.statistics);
+			roundCollerctor.writeRoundFromSeason(competitionName, competitionYears , String.valueOf(i), seasonStatistic);
+			
+		}
+	}
 	
 	
 }

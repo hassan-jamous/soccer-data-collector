@@ -47,7 +47,6 @@ public class GameStatisticNew {
 		if(resultGameGsonString.equals(newGameGsonString)) {
 			//remeber to delele it
 			Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);
-
 		}
 		else {
 			for(int i = 0 ; i <newGameStatistic.statistics.size(); i++) {

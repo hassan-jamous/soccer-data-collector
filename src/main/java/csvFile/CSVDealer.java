@@ -40,7 +40,9 @@ public class CSVDealer {
 				}
 		    }
 			try {
-				if(! isHeader) {Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);}
+				if(! isHeader) { 
+					Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);
+				}
 				
 			} catch (IOException e) {
 				throw new RuntimeException("can not write the file  " +  competitionYears+dataType);// is it good to add e.getStackTrace()  to the msg
