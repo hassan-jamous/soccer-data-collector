@@ -9,11 +9,4 @@ public class Stauts {
 	public int code;
 	public String description;
 	public String type;
-	
-	public String  headerToCSV() {
-		return "Stats ,";
-	}
-	public String  valuesToCSV() {
-		return description+",";
-	}
 }

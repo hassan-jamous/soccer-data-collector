@@ -12,7 +12,7 @@ public HashMap<String, Integer> nameIDs ;
 		nameIDs.put("Ball possession", 0);
 		nameIDs.put("Total shots", 1);
 		nameIDs.put("Shots on target", 2);
-		nameIDs.put("Shots off target", 3);/////////////////////////
+		nameIDs.put("Shots off target", 3);
 		nameIDs.put("Blocked shots", 4);
 		nameIDs.put("Corner kicks", 5);
 		nameIDs.put("Offsides", 6);
@@ -22,10 +22,10 @@ public HashMap<String, Integer> nameIDs ;
 		nameIDs.put("Big chances", 10);
 		nameIDs.put("Big chances missed", 11);
 		nameIDs.put("Hit woodwork", 12);
-		nameIDs.put("Counter attacks", 13);////////////////////////
+		nameIDs.put("Counter attacks", 13);
 		nameIDs.put("Shots inside box", 14);
 		nameIDs.put("Shots outside box", 15);
-		nameIDs.put("Goalkeeper saves", 16);////////////////////////////
+		nameIDs.put("Goalkeeper saves", 16);
 		nameIDs.put("Passes", 17);
 		nameIDs.put("Accurate passes", 18);
 		nameIDs.put("Long balls", 19);

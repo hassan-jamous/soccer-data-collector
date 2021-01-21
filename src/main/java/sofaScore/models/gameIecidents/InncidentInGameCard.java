@@ -10,12 +10,12 @@ public class InncidentInGameCard implements Iencident {
 	
 	public IencidentInGamePlayer player;
 	public String playerName;
-	public String reason;//or enum
+	public String reason;
 	public String id;
 	public String time;
 	public String addedTime ;
 	public String isHome ;
-	public String incidentClass;//or enum
-	public String incidentType;//or enum
+	public String incidentClass;
+	public String incidentType;
 
 }

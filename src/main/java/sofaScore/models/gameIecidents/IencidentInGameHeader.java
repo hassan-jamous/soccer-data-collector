@@ -10,7 +10,7 @@ public class IencidentInGameHeader implements Iencident{
 	public String text;
 	public String homeScore;
 	public String awayScore;
-	public String isLive;//or boolean
+	public String isLive;
 	public String time;
 	public String addedTime;
 	public String incidentType;

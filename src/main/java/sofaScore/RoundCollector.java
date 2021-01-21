@@ -31,7 +31,6 @@ public class RoundCollector {
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
 		Gson gson = new Gson();
 		RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
-
 		return gamesId;
 	}
 	/**
@@ -66,47 +65,27 @@ public class RoundCollector {
 			if(gameStastiscs == null) {
 				return resultGameStastiscs;
 			}
-			resultGameStastiscs.itHaveTheSameTo(gameStastiscs);
+			resultGameStastiscs.makeItHaveTheSameTo(gameStastiscs);
 		}
 		Collections.sort(resultGameStastiscs.statistics);
 
 		return resultGameStastiscs; 
 	} 
-	
-	public void makeAllGameHasSameStatistic(String competitionName, String competitionYears , String round) {
-		GameStatisticNew  roundStatistic = getGamesStatisticNewInRound(competitionName, competitionYears , round);
-		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
-		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
-			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
-			gameStatistic.itHaveTheSameTo(roundStatistic);
-		}
-	}
-	
-	public void writeRound(String competitionName, String competitionYears , String round) {
-		GameStatisticNew  roundStatistic = getGamesStatisticNewInRound(competitionName, competitionYears , round);
-		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
-		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
-			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
-			gameStatistic.itHaveTheSameTo(roundStatistic);
-			if(i==0) {
-				csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), true, "statistic");
-			}
-			csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("values"), false, "statistic");
-		}
-	}
-	//the same may i will delet one later
+
 	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatisticNew  roundStatistic) {
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
 			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
 			if(gameStatistic != null) {
-				gameStatistic.itHaveTheSameTo(roundStatistic);
+				gameStatistic.makeItHaveTheSameTo(roundStatistic);
 				if((i==0)&&(Integer.valueOf(round)==1)) {
 					csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), true, "statistic");
 				}
-				else {
+				//it depends on how we send the data if object so we want else , or string we do not want it
+				//else {
+				//it must be write(values) but now for test , every game has the same statistics
 				csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), false, "statistic");// header must be values now just for test
-				}
+				//}
 			}
 			else {// if the match has been canceled
 			//	csvDealer.write("SofaScore", competitionName, competitionYears, "null statistic for game "+i +"with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test

@@ -47,9 +47,6 @@ public class PlayerCollectorTest  {
             } 
             else if (attributeList.get(i).attributeName.equals("recordOpponent")) {
             	assertObjectArrayToArray.assertArrayToArraySpecificIndexes(actualValue.recordOpponent, attributeList.get(i).indexes, expectedValue.recordOpponent);
-            	//assertThat(actualValue.recordOpponent).containsAll(expectedValue.recordOpponent);
-            	//assertThat(actualValue.recordOpponent).contains(expectedValue.recordOpponent.get(0));
-
             } 
             else if (attributeList.get(i).attributeName.equals("forEachCompetitionInformationOverallsClubs")) {
             	assertObjectArrayToArray.assertArrayToArraySpecificIndexes(actualValue.forEachCompetitionInformationOverallsClubs, attributeList.get(i).indexes, expectedValue.forEachCompetitionInformationOverallsClubs);
@@ -76,8 +73,8 @@ public class PlayerCollectorTest  {
                 new ArrayAttributeWithIndexes("internationalCopmetitionsInfo"),
                 new ArrayAttributeWithIndexes("clubsMatchesOverall"),
                 new ArrayAttributeWithIndexes("internationalCopmetitionsOverall"),
-                new ArrayAttributeWithIndexes("recordOpponent", new ArrayList<>(Arrays.asList(0, 7, 20, 21, 40, 60, 80, 100, 109))),
-                new ArrayAttributeWithIndexes("recordReferee", new ArrayList<>(Arrays.asList(0, 21, 41, 61, 81, 100, 106))),
+                new ArrayAttributeWithIndexes("recordOpponent", new ArrayList<>(Arrays.asList(0, 7, 20, 21, 41, 61, 80, 100, 109))),
+                new ArrayAttributeWithIndexes("recordReferee", new ArrayList<>(Arrays.asList(1, 21, 41, 61, 81, 100, 106))),
                 new ArrayAttributeWithIndexes("forEachCompetitionInformationOverallsClubs", new ArrayList<>(Arrays.asList(2, 3)))));
         assertPlayerInformationWithIndexes(player1ActualValueInfo, player1AttributeList, player1ExpectedValueInfo);
 

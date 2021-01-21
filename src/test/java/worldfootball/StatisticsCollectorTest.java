@@ -39,7 +39,7 @@ public class StatisticsCollectorTest {
 	        ScreenScraper screenScraperUnderTest = new ScreenScraper();
 	        ArrayList<StatisticsMostGoalsByPlayerPerGame> engPremierLeagueActualValue = screenScraperUnderTest.getStatisticsMostGoalsByPlayerInGameInCompetition("eng-premier-league");
 	        ArrayList<StatisticsMostGoalsByPlayerPerGame> engPremierLeagueExpectedValue = statisticsValues.getStatisticEnglishPreimerLeagueMostGoalPerPlayerInGame();
-	        List<Integer> indexes = new ArrayList<>(Arrays.asList(0, 1, 22));
+	        List<Integer> indexes = new ArrayList<>(Arrays.asList(0, 1, 23));
 	        assertObjectArrayToArray.assertArrayToArraySpecificIndexes(engPremierLeagueActualValue, indexes, engPremierLeagueExpectedValue);
 
 	  }

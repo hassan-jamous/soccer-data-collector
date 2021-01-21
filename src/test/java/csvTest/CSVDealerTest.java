@@ -14,6 +14,5 @@ public class CSVDealerTest {
 	@Test
 	public void itShouldWrite() {
 	
-		seasonCollector.writeSeason("Premier League", "19/20");
 	}
 }

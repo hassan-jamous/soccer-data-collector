@@ -8,11 +8,5 @@ public class SeasonInGame {
 	public String name ;
 	public String year;
 	public int id;
-	
-	public String  headerToCSV() {
-		return  "Season ,";
-	}
-	public String  valuesToCSV() {
-		return  year + ",";
-	}
+
 }

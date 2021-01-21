@@ -2,9 +2,7 @@ package worldfootball.testData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import worldfootball.models.Club;
-import worldfootball.models.KindOfReferee;
 import worldfootball.models.Player;
 import worldfootball.models.PlayerAllInformation;
 import worldfootball.models.PlayerClubCareer;
@@ -34,7 +32,7 @@ public class PlayerAllInformationValues {
 		    player1ExpectedValueInfo.clubMatches = new ArrayList<>(Arrays.asList(
 		    		new PlayerCompetitionInformation( "UEFA","Champions League", "7", "0", "7", "0", "1", "2", "0", "0"),
 		    		new PlayerCompetitionInformation( "UEFA","Europa League", "24", "1", "24", "0", "2", "4", "2", "1"),
-		    		new PlayerCompetitionInformation("England","Premier League", "60", "1", "49", "11", "5", "8", "0", "1"),
+		    		new PlayerCompetitionInformation("England","Premier League", "61", "1", "50", "11", "5", "8", "0", "1"),
 		    		new PlayerCompetitionInformation( "England","FA Cup", "7", "0", "6", "1", "3", "1", "0", "0"),
 		    		new PlayerCompetitionInformation( "England", "League Cup","5", "0", "5", "0", "0", "0", "0", "0"),
 		    		new PlayerCompetitionInformation( "England","FA Community Shield", "1", "0", "1", "0", "0", "1", "0", "0"),
@@ -43,9 +41,9 @@ public class PlayerAllInformationValues {
 		    		new PlayerCompetitionInformation( "Spanien","Primera División", "40", "0", "39", "1", "10", "15", "1", "0"),
 		    		new PlayerCompetitionInformation("Spanien","Copa del Rey",  "3", "0", "3", "0", "0", "2", "0", "0"),
 		    		new PlayerCompetitionInformation( "Spanien","Segunda B Grupo 3", "22", "0", "19", "3", "2", "6",  "1", "0"),
-		    		new PlayerCompetitionInformation(null,            "∑"  ,    "171", "2","155", "16","25","39", "4", "2")));
+		    		new PlayerCompetitionInformation(null,            "∑"  ,    "172", "2","156", "16","25","39", "4", "2")));
 		    player1ExpectedValueInfo.clubsMatchesOverall = new ArrayList<>(Arrays.asList(
-		    		new PlayerCompetitionInformationOverall( "2020/2021", new Club("Manchester United"), new PlayerCompetitionInformation("England", "Pr. League", "6", "0", "5", "1", "0", "2", "0", "0")),
+		    		new PlayerCompetitionInformationOverall( "2020/2021", new Club("Manchester United"), new PlayerCompetitionInformation("England", "Pr. League", "7", "0", "6", "1", "0", "2", "0", "0")),
 		    		new PlayerCompetitionInformationOverall( "2020/2021", new Club("Manchester United"),new PlayerCompetitionInformation("England", "FA Cup", "1", "0", "1", "0", "1", "0", "0", "0")),
 		    		new PlayerCompetitionInformationOverall( "2020/2021", new Club("Manchester United"),new PlayerCompetitionInformation("England", "League Cup", "3", "0", "3", "0", "0", "0", "0", "0")),
 		    		new PlayerCompetitionInformationOverall( "2019/2020",new Club( "Manchester United"), new PlayerCompetitionInformation("UEFA", "EL","4", "0", "4", "0", "1", "1", "0", "0")),
@@ -102,7 +100,7 @@ public class PlayerAllInformationValues {
 		    		new PlayerOpponentRecordInformation(new Club("Wolverhampton Wanderers"),"1","1","0","0","0","0","0","0")));
 		    
 		    player1ExpectedValueInfo.recordReferee = new ArrayList<>(Arrays.asList(
-		    		new PlayerRefereeRecordInformation(new Referee("Jonathan Moss","England", KindOfReferee.unknown),"10","7","2","1","1","1","0","0"),
+		    		new PlayerRefereeRecordInformation(new Referee("Jonathan Moss","England"),"10","7","2","1","1","1","0","0"),
 		    		new PlayerRefereeRecordInformation(new Referee("Carlos Velasco Carballo","Spain"),"3","1","0","2","0","2","0","0"),
 		    		new PlayerRefereeRecordInformation(new Referee("Alex Muhabi",           "Uganda"),"1","1","0","0","1","0","0","0"),
 		    		new PlayerRefereeRecordInformation(new Referee("Jorge Díaz Escudero","Spain"),"1","1","0","0","0","0","0","0"),
@@ -270,14 +268,15 @@ public class PlayerAllInformationValues {
 		public PlayerAllInformation getSamJohnstone() {
 		
 			PlayerAllInformation player4ExpectedValueInfo = new PlayerAllInformation();
+			
 	        player4ExpectedValueInfo.clubsCareer = new ArrayList<>(Arrays.asList(
 	        		new PlayerClubCareer("07/2018 - 07/2018", new Club("Manchester United U23"), "England", "Goalkeeper", null),
 	         		new PlayerClubCareer("01/2016 - 01/2016", new Club("Preston North End"), "England", "Goalkeeper", null)));
 
 	        player4ExpectedValueInfo.clubMatches = new ArrayList<>(Arrays.asList(
-	        		new PlayerCompetitionInformation("England","Premier League","17","0","17","0","0","0","0","0"),
+	        		new PlayerCompetitionInformation("England","Premier League","18","0","18","0","0","0","0","0"),
 	        		new PlayerCompetitionInformation("England","League One","51","0","51","0","0","4","0","0"),
-	        		new PlayerCompetitionInformation(null, "∑","273","0","273","0","0","14","0","0")));
+	        		new PlayerCompetitionInformation(null, "∑","274","0","274","0","0","14","0","0")));
 	        
 	        return player4ExpectedValueInfo;
 		}

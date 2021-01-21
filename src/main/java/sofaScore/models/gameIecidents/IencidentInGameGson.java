@@ -5,6 +5,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public  class IencidentInGameGson {
+	//if u want use wrapper classes Integer or Boolean for accepting null
 	public String confirmed; //or boolean
 	public String text;
 	public String homeScore;// or int

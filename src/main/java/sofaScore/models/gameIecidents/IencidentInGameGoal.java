@@ -14,7 +14,7 @@ public class IencidentInGameGoal implements Iencident{
 	public String id;
 	public String time;
 	public String addedTime;
-	public String isHome;//boolean is better????????
+	public String isHome;
 	public String incidentClass;
 	public String incidentType;
 	

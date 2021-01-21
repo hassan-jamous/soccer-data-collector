@@ -11,12 +11,4 @@ import lombok.ToString;
 public class Game {
 
 	public GameEvent event;
-	
-	public String headerToCSV() {
-		return event.headerToCSV();
-	}
-
-	public String valuesToCSV() {
-		return event.valuesToCSV();
-	}
 }

@@ -13,7 +13,7 @@ public class IencidentInGamePlayer {
 	public String slug;
 	public String shortName;
 	public String position;
-	public String userCount;//
+	public String userCount;
 	public String id;
 
 }

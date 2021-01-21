@@ -59,7 +59,7 @@ public class SeasonCollector {
 		GameStatisticNew seasonStatistic = roundCollerctor.getGamesStatisticNewInRound(competitionName, competitionYears , String.valueOf(1));
 		for(int i =1 ; i <= limit ; i++) {
 			GameStatisticNew roundStatistic = roundCollerctor.getGamesStatisticNewInRound(competitionName, competitionYears , String.valueOf(i));
-			seasonStatistic.itHaveTheSameTo(roundStatistic);
+			seasonStatistic.makeItHaveTheSameTo(roundStatistic);
 		}
 		Collections.sort(seasonStatistic.statistics);
 		return seasonStatistic; 
@@ -71,7 +71,7 @@ public class SeasonCollector {
 		int limit = getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
 		for(int i =1 ; i <= limit ; i++) {
 			GameStatisticNew roundStatistic = roundCollerctor.getGamesStatisticNewInRound(competitionName, competitionYears , String.valueOf(i));
-			seasonStatistic.itHaveTheSameTo(roundStatistic);
+			seasonStatistic.makeItHaveTheSameTo(roundStatistic);
 			Collections.sort(seasonStatistic.statistics);
 			roundCollerctor.writeRoundFromSeason(competitionName, competitionYears , String.valueOf(i), seasonStatistic);
 			

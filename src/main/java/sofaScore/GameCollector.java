@@ -17,7 +17,6 @@ import sofaScore.models.gameIecidents.IencidentInGameInjuryTime;
 import sofaScore.models.gameIecidents.IencidentInGamePenalty;
 import sofaScore.models.gameIecidents.IencidentInGameVarDecision;
 import sofaScore.models.gameIecidents.InncidentInGameCard;
-import sofaScore.models.gameStatistics.GameStatistic;
 import sofaScore.models.gameStatistics.GameStatisticNew;
 import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
 import util.HttpUtil;
@@ -31,21 +30,6 @@ public class GameCollector {
 	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s"; 
 	private final HttpUtil httpUtil = new HttpUtil();
 
-	/**
-	 * 
-	 * @param gameID 
-	 * in this example gameID is 8896899 for this game English Premier League 20_21 Crystal Palace vs Sheffield United 
-	 * https://api.sofascore.com/api/v1/event/8896899/statistics 
-	 * @return object GameStatistics contains array list of statistics
-	 */
-	public GameStatistic getGameStatistics(String gameID) {
-		
-		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "statistics"));
-		Gson gson = new Gson();
-		GameStatistic gamesInfo = gson.fromJson(gsonString, GameStatistic.class);
-		return gamesInfo;
-		
-	}
 	/***
 	 * 
 	 * @param gameID
@@ -145,6 +129,7 @@ public class GameCollector {
 		penalty.incidentClass = gameInfo.incidents.get(i).incidentClass;		
 		return penalty;
 	}
+	
 	private IencidentInGameHeader getHeader(GameIencidentsGSON gameInfo, int i) {
 		IencidentInGameHeader header =  new IencidentInGameHeader();
 		header.incidentType = gameInfo.incidents.get(i).incidentType;
@@ -167,8 +152,7 @@ public class GameCollector {
 	}
 
 	private IencidentInGameChangePlayers getChangingEvent(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGameChangePlayers playerChanged = new IencidentInGameChangePlayers();
-		
+		IencidentInGameChangePlayers playerChanged = new IencidentInGameChangePlayers();		
 		playerChanged.addedTime = gameInfo.incidents.get(i).addedTime;
 		playerChanged.id = gameInfo.incidents.get(i).id;
 		playerChanged.incidentClass = gameInfo.incidents.get(i).incidentClass;

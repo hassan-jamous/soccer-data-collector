@@ -7,8 +7,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class IencidentInGameInjuryTime implements Iencident {
-	public String length;//or int
-	public String time;//or int
+	public String length;
+	public String time;
 	public String addedTime;
 	public String incidentType;
 

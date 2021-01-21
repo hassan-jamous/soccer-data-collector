@@ -6,8 +6,5 @@ import lombok.ToString;
 @ToString
 public class RoundInGame {
 	public int round;
-	
-	public String valuesToCSV() {
-		return String.valueOf(round)+",";
-	}
+
 }

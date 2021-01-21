@@ -28,6 +28,20 @@ public class GameStatisticNew {
 		return false;
 	}
 	
+	public boolean containsSatatisticWithValues(GameStatisticsForOneAttributeNew item) {
+		if((this.statistics == null) || (this.statistics.isEmpty())) {
+			return false;
+		}
+		for(int i =0; i<statistics.size();i++) {
+			if((statistics.get(i).period.equals(item.period)) && (statistics.get(i).groupName.equals(item.groupName)) 
+					&&(statistics.get(i).name.equals(item.name)) &&(statistics.get(i).home.equals(item.home))
+										&&(statistics.get(i).away.equals(item.away)))  {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void addStatistic(GameStatisticsForOneAttributeNew item) {
 		if(this.statistics == null) {this.statistics= new ArrayList<>();}
 		if(this.statistics.isEmpty()) {this.statistics.add(item);}
@@ -40,7 +54,7 @@ public class GameStatisticNew {
 			this.statistics.add(itemToAdd);			
 		}
 	}
-	public void itHaveTheSameTo(GameStatisticNew newGameStatistic) {
+	public void makeItHaveTheSameTo(GameStatisticNew newGameStatistic) {
 		Gson gson = new Gson().newBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String resultGameGsonString = gson.toJson(this);		
 		String newGameGsonString = gson.toJson(newGameStatistic);			

@@ -16,9 +16,9 @@ public class CSVDealer {
 		 * @param competitionYears
 		 * @param data the string which we want to write
 		 * @param dataType statistics or incidents
-		 * @param isHeader to know if the data is header or no
+		 * @param isHeader to know if the data is header or no :: it depends on how we send the data object which contains data or string if object i think we do not want this parameter
 		 */
-		//to ask hassan to make site and dataType enum or ..
+		//to ask hassan to make site and dataType enum
 		
 		public void write(String site , String competitionName , String competitionYears  , String data , boolean isHeader , String dataType) {
 		

@@ -13,10 +13,4 @@ public class GameEvent {
 	public ScoreTeamInGame awayScore;
 	public Stauts status;
 	
-	public String headerToCSV() {		 
-		 return "Season,Round,Status,homeTeam,awayTeam,homeScore,awayScore,";
-	}
-	public String valuesToCSV() {
-	 return  season.valuesToCSV() + roundInfo.valuesToCSV()+ status.valuesToCSV() + homeTeam.valuesToCSV() + awayTeam.valuesToCSV() +homeScore.valuesToCSV()  + awayScore.valuesToCSV();
-	}
 }

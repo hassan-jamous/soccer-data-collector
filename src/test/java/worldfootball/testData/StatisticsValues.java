@@ -13,9 +13,8 @@ import worldfootball.models.StatisticsGoalsPerRound;
 import worldfootball.models.StatisticsGoalsPerSeason;
 import worldfootball.models.StatisticsMostGoalsByPlayerPerGame;
 import worldfootball.models.StatisticsRecordWinsAndMostGoalInGame;
+
 public class StatisticsValues {
-
-
 
 		public ArrayList<StatisticsGoalsPerSeason> getStatististicsGoslsPerSeasonEnglishPriemerLeague() {
 			return new ArrayList<>(Arrays.asList(
@@ -38,8 +37,8 @@ public class StatisticsValues {
 		
 		public ArrayList<StatisticsGoalsPerRound> getStatisticsGoalsPerRoundEnglishPreimerLeague() {
 			return new ArrayList<>(Arrays.asList(
-	        		new StatisticsGoalsPerRound("1", "1891/1892",new Round( "23. Round"), "42", "6", "7.0000"),
 	        		new StatisticsGoalsPerRound("2", "1888/1889",new Round( "8. Round"), "42", "6", "7.0000"),
+	        		new StatisticsGoalsPerRound("1", "1891/1892",new Round( "23. Round"), "42", "6", "7.0000"),
 	        		new StatisticsGoalsPerRound("3", "1889/1890",new Round(  "13. Round"), "34", "5", "6.8000"),
 	        		new StatisticsGoalsPerRound("4", "1888/1889",new Round(  "4. Round"), "40", "6", "6.6667"),
 	        		new StatisticsGoalsPerRound("5", "1963/1964",new Round(  "24. Round"), "71", "11", "6.4545")));
@@ -57,7 +56,6 @@ public class StatisticsValues {
 	        		new StatisticsBestPlayerInYear("2012", new Player("Robin van Persie")),
 	        		new StatisticsBestPlayerInYear("2011", new Player("Scott Parker"))));
 		}
-
 		
 		public ArrayList<DirtyGame> getStatisticsEnglishPreimerLeageDirtiesGame() {
 			return new ArrayList<>(Arrays.asList(
