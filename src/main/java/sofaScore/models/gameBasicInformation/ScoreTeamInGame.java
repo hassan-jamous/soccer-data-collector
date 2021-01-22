@@ -11,5 +11,9 @@ public class ScoreTeamInGame {
 	public int period1;
 	public int period2;
 	public int normaltime;
+	
+	public String write() {
+		return current+", ";
+	}
 
 }

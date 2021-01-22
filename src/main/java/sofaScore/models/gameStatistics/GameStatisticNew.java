@@ -55,9 +55,11 @@ public class GameStatisticNew {
 		}
 	}
 	public void makeItHaveTheSameTo(GameStatisticNew newGameStatistic) {
+		
 		Gson gson = new Gson().newBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String resultGameGsonString = gson.toJson(this);		
-		String newGameGsonString = gson.toJson(newGameStatistic);			
+		String newGameGsonString = gson.toJson(newGameStatistic);
+		if(newGameStatistic == null) {System.out.println();}
 		if(resultGameGsonString.equals(newGameGsonString)) {
 			//remeber to delele it
 			Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);

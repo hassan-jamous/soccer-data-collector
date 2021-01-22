@@ -4,17 +4,21 @@ import java.util.HashMap;
 
 public class HashMapStatisticPeriod {
 
-public HashMap<String, Integer> periodID ;
+public HashMap<String, Integer> periodIDs ;
 	
 	public HashMapStatisticPeriod() {
-		periodID = new HashMap<>();
-		periodID.put("ALL", 0);
-		periodID.put("1ST", 1);
-		periodID.put("2ND", 2);
+		periodIDs = new HashMap<>();
+		periodIDs.put("ALL", 0);
+		periodIDs.put("1ST", 1);
+		periodIDs.put("2ND", 2);
 
 	}
 	
 	public int getPeriodID(String key) {
-		return periodID.get(key);
+		if(! periodIDs.containsKey(key)) {
+			//new name
+			throw new RuntimeException("key not found  "  + key);
+		}
+		return periodIDs.get(key);
 	}
 }

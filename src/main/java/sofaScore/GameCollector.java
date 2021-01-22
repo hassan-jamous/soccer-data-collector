@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIecidents;
 import sofaScore.models.gameIecidents.GameIencidentsGSON;
 import sofaScore.models.gameIecidents.IencidentInGameChangePlayers;
@@ -30,6 +30,12 @@ public class GameCollector {
 	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s"; 
 	private final HttpUtil httpUtil = new HttpUtil();
 
+	public GameBasicInformation getGameBasicInformation(String gameId) {
+		String gsonString = httpUtil.sendGetHttpRequest(API_SOFA_SCORE_GAME_URL_FOR_BASIC + gameId);
+	    Gson gson = new Gson();
+	    GameBasicInformation gameBasicInformation = gson.fromJson(gsonString, GameBasicInformation.class) ;
+		return gameBasicInformation;
+	}
 	/***
 	 * 
 	 * @param gameID
@@ -39,7 +45,7 @@ public class GameCollector {
 	 * 	 * @return
 	 */
 
-	public GameStatisticNew getGameStatisticsNew(String gameID) {
+	public GameStatisticNew getGameStatistics(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "statistics"));
 		if(gsonString.contains("Not Found")) {return null;}
@@ -63,6 +69,7 @@ public class GameCollector {
 				}
 			}
 		}
+		if((  (gamesInfo == null)  ||(  gamesInfo.statistics == null) || (gamesInfo.statistics.isEmpty()) )) {return null;}
 		Collections.sort((List<GameStatisticsForOneAttributeNew>)gamesInfo.statistics);
 		return gamesInfo;
 	}
@@ -104,20 +111,13 @@ public class GameCollector {
 			}
 			//if i do not recognize all types
 			else {
-				throw new RuntimeException("New Game Iecident Type i = " + i  +"   gameInfo's type is " + gameInfo.incidents.get(i).incidentType );
+				throw new RuntimeException("New GameBasicInformation Iecident Type i = " + i  +"   gameInfo's type is " + gameInfo.incidents.get(i).incidentType );
 			}
 		}
 		if(result ==  null || result.iecidents.size() == 0) {return null;}
 		return result;
 	}
 	
-	public Game getGameBasicInformation(String gameId) {
-		String gsonString = httpUtil.sendGetHttpRequest(API_SOFA_SCORE_GAME_URL_FOR_BASIC + gameId);
-	    Gson gson = new Gson();
-	    Game game = gson.fromJson(gsonString, Game.class) ;
-		return game;
-	}
-
 	private IencidentInGamePenalty getGamePenalty(GameIencidentsGSON gameInfo, int i) {
 		IencidentInGamePenalty penalty = new IencidentInGamePenalty();
 		penalty.time = gameInfo.incidents.get(i).time;

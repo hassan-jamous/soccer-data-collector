@@ -10,5 +10,4 @@ import lombok.ToString;
 public class RoundGamesID {
 
 	public ArrayList<GameID> events;
-
 }

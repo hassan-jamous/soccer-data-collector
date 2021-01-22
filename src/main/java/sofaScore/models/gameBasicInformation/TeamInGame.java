@@ -20,5 +20,9 @@ public class TeamInGame  {
 	public Country country;
 	public ArrayList<PlayerInGame> subTeams;
 	public TeamColorInGame teamColor;
+	
+	public String write() {
+		return  name +"," ;
+	}
 
 }

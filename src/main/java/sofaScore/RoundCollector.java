@@ -3,10 +3,9 @@ package sofaScore;
 import java.util.ArrayList;
 import java.util.Collections;
 import com.google.gson.Gson;
-
 import csvFile.CSVDealer;
 import sofaScore.models.RoundInformation.RoundGamesID;
-import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameStatistics.GameStatisticNew;
 import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
@@ -44,7 +43,7 @@ public class RoundCollector {
 	 * the result contains all (red cards and offside)
 	 */
 	
-	public GameStatisticNew getGamesStatisticNewInRound(String competitionName, String competitionYears , String round){
+	public GameStatisticNew getRoundGamesStatistic(String competitionName, String competitionYears , String round){
 		
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		if((gamesIdInRound == null) || (gamesIdInRound.events.isEmpty())) {
@@ -52,45 +51,80 @@ public class RoundCollector {
 			System.out.println("no games id in this round " + round +"  at " + competitionYears );
 			return null;
 		}
-		String firstgGameId = gamesIdInRound.events.get(0).id;
-		GameStatisticNew resultGameStastiscs = gameCollector.getGameStatisticsNew(firstgGameId);
-		if(gamesIdInRound.events.size()==1) {
-			//not error so i can not throw an exception just to check what happened or throw an exception
-			System.out.println("only one game in " + round +"  at " + competitionYears );
-			return resultGameStastiscs;
+		GameStatisticNew resultGameStastiscs = new GameStatisticNew();
+		int j = 0; 
+		while ((j < gamesIdInRound.events.size())&& (resultGameStastiscs == null)) {
+			String gameId = gamesIdInRound.events.get(j).id;
+			resultGameStastiscs = gameCollector.getGameStatistics(gameId);
+			j++;
 		}
-		for(int i =0; i < gamesIdInRound.events.size(); i++) {
+		if((j ==gamesIdInRound.events.size() && 
+				(((resultGameStastiscs == null)) ||(resultGameStastiscs.statistics == null)))) {
+			return null;
+		}
+		for(int i =j; i < gamesIdInRound.events.size(); i++) {
 			String gameId = gamesIdInRound.events.get(i).id;
-			GameStatisticNew gameStastiscs = gameCollector.getGameStatisticsNew(gameId);
-			if(gameStastiscs == null) {
-				return resultGameStastiscs;
+			GameStatisticNew gameStastiscs = gameCollector.getGameStatistics(gameId);
+			if((gameStastiscs != null) && (gameStastiscs.statistics != null)) {			
+				resultGameStastiscs.makeItHaveTheSameTo(gameStastiscs);
+				Collections.sort(resultGameStastiscs.statistics);
 			}
-			resultGameStastiscs.makeItHaveTheSameTo(gameStastiscs);
 		}
-		Collections.sort(resultGameStastiscs.statistics);
-
 		return resultGameStastiscs; 
 	} 
 
-	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatisticNew  roundStatistic) {
+	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatisticNew  seasonStatistic) {
+		
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
-		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
-			GameStatisticNew gameStatistic = gameCollector.getGameStatisticsNew(gamesIdInRound.events.get(i).id);
-			if(gameStatistic != null) {
-				gameStatistic.makeItHaveTheSameTo(roundStatistic);
-				if((i==0)&&(Integer.valueOf(round)==1)) {
-					csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), true, "statistic");
+		if( seasonStatistic!= null) {
+			for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
+				GameStatisticNew gameStatistic = gameCollector.getGameStatistics(gamesIdInRound.events.get(i).id);
+				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);
+				//the game was played
+				if((gameBasicInfromation.event.status.description.equals("Ended") && (gameBasicInfromation.event.status.type.equals("finished")))) {
+					if(gameStatistic == null) {gameStatistic = new GameStatisticNew();}
+					//make all game have the same statistics
+					gameStatistic.makeItHaveTheSameTo(seasonStatistic);
+					//i think we want to discuss a better solution to determine which game is the first
+					//i mean better than if(i==0)&&(round==1)
+					//it depends on how we send the data if String so we want else , or object we do not want it
+					if((i==0)&&(Integer.valueOf(round)==1)) {
+							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ gameStatistic.write("header"), true, "statistic");
+							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ gameStatistic.write("header")+"  here must be value", false, "statistic");
+					}
+					else {
+						//it must be write(values) but now for test , every game has the same statistics
+						csvDealer.write("SofaScore", competitionName, competitionYears, gameBasicInfromation.write("header")+ gameStatistic.write("header")+"  here must be value", false, "statistic");// header must be values now just for test
+					}
 				}
-				//it depends on how we send the data if object so we want else , or string we do not want it
-				//else {
-				//it must be write(values) but now for test , every game has the same statistics
-				csvDealer.write("SofaScore", competitionName, competitionYears, gameStatistic.write("header"), false, "statistic");// header must be values now just for test
-				//}
-			}
-			else {// if the match has been canceled
-			//	csvDealer.write("SofaScore", competitionName, competitionYears, "null statistic for game "+i +"with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+				else{// if the match has been canceled
+						csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+				}
 			}
 		}
+		else {//no statistics  for this season
+			for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
+				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);
+				if((gameBasicInfromation.event.status.description.equals("Ended") && (gameBasicInfromation.event.status.type.equals("finished")))) {
+					//it depends on how we send the data if String so we want else , or object we do not want it
+					//
+					if((i==0)&&(Integer.valueOf(round)==1)) {
+							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  header", true, "statistic");
+							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  here must be value", false, "statistic");
+					}
+					else {
+						//it must be write(values) but now for test , every game has the same statistics
+						csvDealer.write("SofaScore", competitionName, competitionYears, gameBasicInfromation.write("header")+" (no statistics in this season)  here must be value", false, "statistic");// header must be values now just for test
+					}
+				}
+				else{// if the match has been canceled
+					if((i==0)&&(Integer.valueOf(round)==1)) {
+						csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  header", true, "statistic");
+					}
+					csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ " the game is cancaled "+ i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+				}				
+			}
+		}		
 	}
 	
 	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {
@@ -100,9 +134,9 @@ public class RoundCollector {
 			RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
 			RoundGamesID result = new RoundGamesID();
 			for(int i =0 ; i < gamesId.events.size() ; i++) {
-				Game game = gameCollector.getGameBasicInformation(String.valueOf(gamesId.events.get(i).id));
-				if(game.event.status.description.equals("Not started")) {}//there are many descriptions 
-				else if(game.event.status.description.equals("Ended")) {
+				GameBasicInformation gameBasicInformation = gameCollector.getGameBasicInformation(String.valueOf(gamesId.events.get(i).id));
+				if(gameBasicInformation.event.status.description.equals("Not started")) {}//there are many descriptions 
+				else if(gameBasicInformation.event.status.description.equals("Ended")) {
 					if(result.events == null) {result.events = new ArrayList<>();}
 					result.events.add(gamesId.events.get(i));
 				}			

@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-import sofaScore.models.gameBasicInformation.Game;
+import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIecidents;
 import sofaScore.models.gameIecidents.Iencident;
 import sofaScore.models.gameStatistics.GameStatisticNew;
@@ -58,18 +58,18 @@ public class GameCollectorTest {
 	 @Test
 	 public void itShouldGetGameBasicInformation() {
 	        
-		 Game game1AtRound10At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "20/21", "10", 0);
+		 GameBasicInformation game1AtRound10At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "20/21", "10", 0);
 	     //game id 8896999
 		 assertThat(game1AtRound10At20_21ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
 	     assertThat(game1AtRound10At20_21ActualValue.event.awayTeam.name).isEqualTo("Newcastle United");
 	     
-		 Game game1AtRound1At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "20/21", "1", 0);
+		 GameBasicInformation game1AtRound1At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "20/21", "1", 0);
 		 //game id 8896967
 		 assertThat(game1AtRound1At20_21ActualValue.event.homeTeam.name).isEqualTo("Fulham");
 		 assertThat(game1AtRound1At20_21ActualValue.event.awayTeam.name).isEqualTo("Arsenal");
 		 assertThat(game1AtRound1At20_21ActualValue.event.homeScore.period1).isEqualTo(0);
 		 
-		 Game game1AtRound1At19_20ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "19/20", "15", 0);
+		 GameBasicInformation game1AtRound1At19_20ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "19/20", "15", 0);
 		 assertThat(game1AtRound1At19_20ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
 		 assertThat(game1AtRound1At19_20ActualValue.event.roundInfo.round).isEqualTo(15);
 

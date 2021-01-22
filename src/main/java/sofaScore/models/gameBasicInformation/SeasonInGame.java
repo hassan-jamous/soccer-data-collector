@@ -8,5 +8,9 @@ public class SeasonInGame {
 	public String name ;
 	public String year;
 	public int id;
+	
+	public String write(String dataType) {
+		return (dataType.equals("header"))? "League , Years , " : name +"," +year;
+	}
 
 }

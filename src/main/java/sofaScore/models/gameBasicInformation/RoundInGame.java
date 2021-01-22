@@ -6,5 +6,9 @@ import lombok.ToString;
 @ToString
 public class RoundInGame {
 	public int round;
+	
+	public String write(String dataType) {
+		return (dataType.equals("header"))? "Round , " : round +"," ;
+	}
 
 }

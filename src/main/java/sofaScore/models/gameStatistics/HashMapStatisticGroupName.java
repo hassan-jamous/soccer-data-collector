@@ -15,11 +15,13 @@ public HashMap<String, Integer> groupsIDs ;
 		groupsIDs.put("Passes", 4);
 		groupsIDs.put("Duels", 5);
 		groupsIDs.put("Defending", 6);
-
-
 	}
 	
 	public int getGroupNameId(String key) {
+		if(! groupsIDs.containsKey(key)) {
+			//new name
+			throw new RuntimeException("key not found  "  + key);
+		}
 		return groupsIDs.get(key);
 	}
 }
