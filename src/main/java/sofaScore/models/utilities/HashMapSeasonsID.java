@@ -37,10 +37,14 @@ public class HashMapSeasonsID {
 		seasonsID.put("Premier League 95/96","25681");
 		seasonsID.put("Premier League 94/95","29167");
 		seasonsID.put("Premier League 93/94","25680");
+		seasonsID.put("La Liga 20/21","32501");
+		seasonsID.put("La Liga 19/20","24127");
+
 
 	}
 	
 	public String get(String key) {
+		if(! seasonsID.containsKey(key)) {throw new RuntimeException("season not found");}
 		return seasonsID.get(key);
 	}
 }

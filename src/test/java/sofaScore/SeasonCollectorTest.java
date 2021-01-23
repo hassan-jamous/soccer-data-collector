@@ -11,15 +11,15 @@ public class SeasonCollectorTest {
 	
 	@Test
 	public void itShouldGetCurrentRound() {
-       int currentRound20_21  = seasonCollectorTest.getCurrentRound("Premier League", "20/21");
-       assertThat(currentRound20_21).isEqualTo(18);
+       //int currentRound20_21  = seasonCollectorTest.getCurrentRound("Premier League", "20/21");
+       //assertThat(currentRound20_21).isEqualTo(18);
 	}
 	
 	@Test 
 	public void itShouldWriteSeason() {
 			
 		//seasonCollectorTest.writeSeason("Premier League", "20/21");
-		seasonCollectorTest.writeSeason("Premier League", "19/20");
+		//seasonCollectorTest.writeSeason("Premier League", "19/20");
 		//seasonCollectorTest.writeSeason("Premier League", "18/19");
 		//seasonCollectorTest.writeSeason("Premier League", "17/18");
 		//seasonCollectorTest.writeSeason("Premier League", "16/17");
@@ -29,8 +29,9 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeSeason("Premier League", "12/13");
 		//seasonCollectorTest.writeSeason("Premier League", "11/12");
 		//seasonCollectorTest.writeSeason("Premier League", "10/11");
-		seasonCollectorTest.writeSeason("Premier League", "09/10");
-		
+		//seasonCollectorTest.writeSeason("Premier League", "09/10");
+		seasonCollectorTest.writeSeason("La Liga", "19/20");
+
 	}
 	
 	@Test
