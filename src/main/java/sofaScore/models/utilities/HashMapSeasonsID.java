@@ -50,8 +50,6 @@ public class HashMapSeasonsID {
 		seasonsID.put("La Liga 10/11","2896");
 		seasonsID.put("La Liga 09/10","2252");
 
-
-
 	}
 	
 	public String get(String key) {
