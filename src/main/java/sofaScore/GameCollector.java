@@ -20,14 +20,18 @@ import sofaScore.models.gameIecidents.InncidentInGameCard;
 import sofaScore.models.gameStatistics.GameStatisticNew;
 import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
 import util.HttpUtil;
+
+//todo give an example for the comment
 /**
- * 
  * collect games information like( statistics and incidents)  
  *
  */
-public class GameCollector {                                  
+public class GameCollector {
+	//todo change this to "https://api.sofascore.com/api/v1/event/%s"
+	//todo make Gson a private
+	//todo make 2 urls, one for incidents and another for statistics
 	private final String API_SOFA_SCORE_GAME_URL_FOR_BASIC = "https://api.sofascore.com/api/v1/event/";
-	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s"; 
+	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s";
 	private final HttpUtil httpUtil = new HttpUtil();
 
 	public GameBasicInformation getGameBasicInformation(String gameId) {
@@ -80,6 +84,9 @@ public class GameCollector {
 	 * https://api.sofascore.com/api/v1/event/8896899/incidents 
 	 * @return GameIecidents contains array list of Incident
 	 */
+
+	//todo change the typo for incidents
+	//todo use registerTypeSelector for incidentType
 	public GameIecidents getGameIncidents(String gameID) {
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "incidents"));
 		Gson gson = new Gson();
