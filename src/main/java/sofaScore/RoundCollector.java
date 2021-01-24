@@ -80,13 +80,15 @@ public class RoundCollector {
 			for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
 				GameStatisticNew gameStatistic = gameCollector.getGameStatistics(gamesIdInRound.events.get(i).id);
 				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);
-				//the game was played
-				if((gameBasicInfromation.event.status.description.equals("Ended") && (gameBasicInfromation.event.status.type.equals("finished")))) {
+				//the game was played 
+				//but in la liga 2013-2014 round 37 (description == removed , type == finished)
+				if(  (gameBasicInfromation.event.status.description.equals("Ended")||gameBasicInfromation.event.status.description.equals("Removed")) 
+						&&  gameBasicInfromation.event.status.type.equals("finished") ) {
 					if(gameStatistic == null) {gameStatistic = new GameStatisticNew();}
 					//make all game have the same statistics
 					gameStatistic.makeItHaveTheSameTo(seasonStatistic);
 					//i think we want to discuss a better solution to determine which game is the first
-					//i mean better than if(i==0)&&(round==1)
+					//i mean better than if(i==0)&&(round==1) ,the solution i suggest is to print seasonStatistic if the first match from the first round is canceled 
 					//it depends on how we send the data if String so we want else , or object we do not want it
 					if((i==0)&&(Integer.valueOf(round)==1)) {
 							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ gameStatistic.write("header"), true, "statistic");
@@ -98,16 +100,19 @@ public class RoundCollector {
 					}
 				}
 				else{// if the match has been canceled
-						csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+					if((i==0)&&(Integer.valueOf(round)==1)) {
+						csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ seasonStatistic.write("header"), true, "statistic");// header must be values now just for test
+					}
+					csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
 				}
 			}
 		}
 		else {//no statistics  for this season
 			for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
 				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);
-				if((gameBasicInfromation.event.status.description.equals("Ended") && (gameBasicInfromation.event.status.type.equals("finished")))) {
+				if(  (gameBasicInfromation.event.status.description.equals("Ended")||gameBasicInfromation.event.status.description.equals("Removed")) 
+						&&  gameBasicInfromation.event.status.type.equals("finished") ) {					
 					//it depends on how we send the data if String so we want else , or object we do not want it
-					//
 					if((i==0)&&(Integer.valueOf(round)==1)) {
 							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  header", true, "statistic");
 							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  here must be value", false, "statistic");

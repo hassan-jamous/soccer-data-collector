@@ -39,6 +39,17 @@ public class HashMapSeasonsID {
 		seasonsID.put("Premier League 93/94","25680");
 		seasonsID.put("La Liga 20/21","32501");
 		seasonsID.put("La Liga 19/20","24127");
+		seasonsID.put("La Liga 18/19","18020");
+		seasonsID.put("La Liga 17/18","13662");
+		seasonsID.put("La Liga 16/17","11906");
+		seasonsID.put("La Liga 15/16","10495");
+		seasonsID.put("La Liga 14/15","8578");
+		seasonsID.put("La Liga 13/14","6559");
+		seasonsID.put("La Liga 12/13","4959");
+		seasonsID.put("La Liga 11/12","3502");
+		seasonsID.put("La Liga 10/11","2896");
+		seasonsID.put("La Liga 09/10","2252");
+
 
 
 	}
