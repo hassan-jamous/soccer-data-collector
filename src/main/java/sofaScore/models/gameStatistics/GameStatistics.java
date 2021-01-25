@@ -10,7 +10,7 @@ import com.google.gson.annotations.Expose;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-public class GameStatisticNew {
+public class GameStatistics {
 
 	@Expose
 	public ArrayList<GameStatisticsForOneAttributeNew> statistics;
@@ -54,7 +54,7 @@ public class GameStatisticNew {
 			this.statistics.add(itemToAdd);			
 		}
 	}
-	public void makeItHaveTheSameTo(GameStatisticNew newGameStatistic) {
+	public void makeItHaveTheSameTo(GameStatistics newGameStatistic) {
 		
 		Gson gson = new Gson().newBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String resultGameGsonString = gson.toJson(this);		

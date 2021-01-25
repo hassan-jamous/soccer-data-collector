@@ -20,7 +20,6 @@ public class GameStatisticsForOneAttributeNew implements Comparable <GameStatist
 	public String home;
 	public String away;
 
-
 	@Override
 	public int compareTo(GameStatisticsForOneAttributeNew objecttoCompare) {
 		HashMapStatisticPeriod hashMapPeriod = new HashMapStatisticPeriod();

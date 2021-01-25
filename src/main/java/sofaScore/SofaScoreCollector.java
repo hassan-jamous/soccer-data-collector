@@ -2,8 +2,8 @@ package sofaScore;
 
 import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
-import sofaScore.models.gameIecidents.GameIecidents;
-import sofaScore.models.gameStatistics.GameStatisticNew;
+import sofaScore.models.gameIecidents.GameIncidents;
+import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.season.Season;
 
 public class SofaScoreCollector {
@@ -28,7 +28,7 @@ public class SofaScoreCollector {
 	 * @param competitionYears example 05/06
 	 * @param round
 	 */
-	public GameIecidents getGameIencidents(String competitionName, String competitionYears , String round , int gameIndex) {
+	public GameIncidents getGameIencidents(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameIncidents(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 	
@@ -52,7 +52,7 @@ public class SofaScoreCollector {
 		return seasonCollector.getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
 	}
 	
-	public GameStatisticNew getGameNewStatisticsNew(String competitionName, String competitionYears , String round , int gameIndex) {
+	public GameStatistics getGameNewStatisticsNew(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
 	 

@@ -6,7 +6,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class IencidentInGamePlayer {
+public class IncidentInGamePlayer {
 	public String name;
 	public String firstName;
 	public String lastName;

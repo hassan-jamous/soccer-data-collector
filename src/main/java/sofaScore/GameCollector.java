@@ -4,58 +4,57 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
-import sofaScore.models.gameIecidents.GameIecidents;
-import sofaScore.models.gameIecidents.GameIencidentsGSON;
-import sofaScore.models.gameIecidents.IencidentInGameChangePlayers;
-import sofaScore.models.gameIecidents.IencidentInGameGoal;
-import sofaScore.models.gameIecidents.IencidentInGameHeader;
-import sofaScore.models.gameIecidents.IencidentInGameInjuryTime;
-import sofaScore.models.gameIecidents.IencidentInGamePenalty;
-import sofaScore.models.gameIecidents.IencidentInGameVarDecision;
-import sofaScore.models.gameIecidents.InncidentInGameCard;
-import sofaScore.models.gameStatistics.GameStatisticNew;
+import sofaScore.models.gameIecidents.GameIncidents;
+import sofaScore.models.gameIecidents.IncidentInGame;
+import sofaScore.models.gameIecidents.IncidentInGameCard;
+import sofaScore.models.gameIecidents.IncidentInGameSubstitution;
+import sofaScore.models.gameIecidents.IncidentInGameGoal;
+import sofaScore.models.gameIecidents.IncidentInGamePeriod;
+import sofaScore.models.gameIecidents.IncidentInGameInjuryTime;
+import sofaScore.models.gameIecidents.IncidentInGamePenalty;
+import sofaScore.models.gameIecidents.IncidentInGameVarDecision;
+import sofaScore.models.gameIecidents.IncidentsGameDeserializer;
+import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
 import util.HttpUtil;
 
-//todo give an example for the comment
 /**
- * collect games information like( statistics and incidents)  
- *
+ * collect games information like( statistics , incidentInGames  and basic information)
+ * for example arsenal vs new castle united in round 19 at season 2020-2021 (game id is 8897048) 
+ *  
+ * from this url [  https://api.sofascore.com/api/v1/event/8897048/statistics  ] we extract the statistics
+ * for example statistics likes [ (Ball possession: home =66% , away=34%),(Shots off target: home=6 away=1)] 
+ * this statistics for all periods (ALL= the game , 1ST = first half , 2ND = second half) if the site provides these information
+ * old leagues do not contains any information
+ * 
+ * from this url [  https://api.sofascore.com/api/v1/event/8897048/incidentInGames  ] we extract the incidentInGames
+ * incidentInGames likes( goal , substitution , red card....)
+ * 
+ * from this url [  https://api.sofascore.com/api/v1/event/8897048  ] we extract basic information
+ * basic information likes ( home team arsenal , away team new castle united , in round 19 
+ * season .. , home score .. , away score .. , status the game is played or postponed) 
  */
 public class GameCollector {
-	//todo change this to "https://api.sofascore.com/api/v1/event/%s"
-	//todo make Gson a private
-	//todo make 2 urls, one for incidents and another for statistics
-	private final String API_SOFA_SCORE_GAME_URL_FOR_BASIC = "https://api.sofascore.com/api/v1/event/";
-	private final String API_SOFA_SCORE_GAME_URL ="https://api.sofascore.com/api/v1/event/%s/%s";
+
+	private final String API_SOFA_SCORE_GAME_URL_FOR_BASIC = "https://api.sofascore.com/api/v1/event/%s";
+	private final String API_SOFA_SCORE_GAME_URL_FOR_STATISTICS ="https://api.sofascore.com/api/v1/event/%s/statistics";
+	private final String API_SOFA_SCORE_GAME_URL_FOR_INCIDENTS ="https://api.sofascore.com/api/v1/event/%s/incidents";
 	private final HttpUtil httpUtil = new HttpUtil();
+    private Gson gson = new Gson();
+    
+    public GameStatistics getGameStatistics(String gameID) {
 
-	public GameBasicInformation getGameBasicInformation(String gameId) {
-		String gsonString = httpUtil.sendGetHttpRequest(API_SOFA_SCORE_GAME_URL_FOR_BASIC + gameId);
-	    Gson gson = new Gson();
-	    GameBasicInformation gameBasicInformation = gson.fromJson(gsonString, GameBasicInformation.class) ;
-		return gameBasicInformation;
-	}
-	/***
-	 * 
-	 * @param gameID
-	 * the same information in the last method but here store in new class 
-	 * GameStatisticNew is array list of class contains five Strings(period , groupName , name ,home , away)
-	 * 	for example (All , shots , shots on target , 10, 8)
-	 * 	 * @return
-	 */
-
-	public GameStatisticNew getGameStatistics(String gameID) {
-
-		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "statistics"));
+		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_STATISTICS, gameID ));
 		if(gsonString.contains("Not Found")) {return null;}
 		JsonElement  jsonElement = JsonParser.parseString(gsonString);
 		JsonArray statisticsArray = jsonElement.getAsJsonObject().get("statistics").getAsJsonArray();
-		GameStatisticNew gamesInfo = new  GameStatisticNew();
+		GameStatistics gamesInfo = new  GameStatistics();
 		for(int i =0 ; i < statisticsArray.size() ; i++) {
 			String peroid = statisticsArray.get(i).getAsJsonObject().get("period").getAsString();
 			JsonArray groupsInPeriod = statisticsArray.get(i).getAsJsonObject().getAsJsonArray("groups");
@@ -78,138 +77,33 @@ public class GameCollector {
 		return gamesInfo;
 	}
     
-	/**
-	 * 
-	 * @param gameID
-	 * https://api.sofascore.com/api/v1/event/8896899/incidents 
-	 * @return GameIecidents contains array list of Incident
-	 */
-
-	//todo change the typo for incidents
-	//todo use registerTypeSelector for incidentType
-	public GameIecidents getGameIncidents(String gameID) {
-		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL, gameID , "incidents"));
-		Gson gson = new Gson();
-		GameIencidentsGSON gameInfo = gson.fromJson(gsonString, GameIencidentsGSON.class);
-		GameIecidents result = new GameIecidents();	
-		if(result.iecidents == null) {result.iecidents = new ArrayList<>();}
-		for(int i = 0 ; i< gameInfo.incidents.size(); i++) {
-			if(gameInfo.incidents.get(i).incidentType.equals("period")) {
-				IencidentInGameHeader header = getHeader(gameInfo, i);
-				result.iecidents.add(header);
-			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("injuryTime")) {
-				result.iecidents.add(getInjuryTime(gameInfo, i));
-			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("substitution")) {
-				result.iecidents.add(getChangingEvent(gameInfo, i));
-			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("goal")) {
-				result.iecidents.add(getGoal(gameInfo, i));
-			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("card")) {
-				result.iecidents.add(getCard(gameInfo, i));
-			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("varDecision")) {
-				result.iecidents.add(getVarDecision(gameInfo, i));
-			}
-			else if(gameInfo.incidents.get(i).incidentType.equals("inGamePenalty")) {
-				result.iecidents.add(getGamePenalty(gameInfo, i));
-			}
-			//if i do not recognize all types
-			else {
-				throw new RuntimeException("New GameBasicInformation Iecident Type i = " + i  +"   gameInfo's type is " + gameInfo.incidents.get(i).incidentType );
-			}
-		}
-		if(result ==  null || result.iecidents.size() == 0) {return null;}
+ 	public GameIncidents getGameIncidents(String gameID) {
+		
+		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_INCIDENTS, gameID ));		
+		IncidentsGameDeserializer deserializer = new IncidentsGameDeserializer("incidentType");
+		deserializer.registerIncidentType("card", IncidentInGameCard.class);
+		deserializer.registerIncidentType("goal", IncidentInGameGoal.class);
+		deserializer.registerIncidentType("injuryTime", IncidentInGameInjuryTime.class);
+		deserializer.registerIncidentType("inGamePenalty", IncidentInGamePenalty.class);
+		deserializer.registerIncidentType("period", IncidentInGamePeriod.class);
+		deserializer.registerIncidentType("substitution", IncidentInGameSubstitution.class);
+		deserializer.registerIncidentType("varDecision", IncidentInGameVarDecision.class);
+		JsonElement  jsonElement = JsonParser.parseString(gsonString);
+		JsonArray incidents = jsonElement.getAsJsonObject().getAsJsonArray("incidents");
+		Gson gson = new GsonBuilder().registerTypeAdapter(IncidentInGame.class, deserializer).create();
+		GameIncidents  result = new GameIncidents();
+		if(result.incidentInGames == null) {result.incidentInGames = new ArrayList<>();}
+		result.incidentInGames = gson.fromJson(incidents, new TypeToken<List<IncidentInGame>>(){}.getType());
+		if((result == null)||(result.incidentInGames.isEmpty())) {return null;}
 		return result;
-	}
-	
-	private IencidentInGamePenalty getGamePenalty(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGamePenalty penalty = new IencidentInGamePenalty();
-		penalty.time = gameInfo.incidents.get(i).time;
-		penalty.player = gameInfo.incidents.get(i).player;
-		penalty.description = gameInfo.incidents.get(i).description;
-		penalty.id = gameInfo.incidents.get(i).id;
-		penalty.isHome = gameInfo.incidents.get(i).isHome;
-		penalty.incidentType = gameInfo.incidents.get(i).incidentType;
-		penalty.incidentClass = gameInfo.incidents.get(i).incidentClass;		
-		return penalty;
-	}
-	
-	private IencidentInGameHeader getHeader(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGameHeader header =  new IencidentInGameHeader();
-		header.incidentType = gameInfo.incidents.get(i).incidentType;
-		header.addedTime = gameInfo.incidents.get(i).addedTime;
-		header.awayScore = gameInfo.incidents.get(i).awayScore;
-		header.homeScore = gameInfo.incidents.get(i).homeScore;
-		header.isLive = gameInfo.incidents.get(i).isLive;
-		header.text = gameInfo.incidents.get(i).text;
-		header.time = gameInfo.incidents.get(i).time;
-		return header;
+
 	}
 
-	private IencidentInGameInjuryTime getInjuryTime(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGameInjuryTime injuryTime = new IencidentInGameInjuryTime();
-		injuryTime.addedTime = gameInfo.incidents.get(i).addedTime;
-		injuryTime.incidentType = gameInfo.incidents.get(i).incidentType;
-		injuryTime.length = gameInfo.incidents.get(i).length;
-		injuryTime.time = gameInfo.incidents.get(i).time;
-		return injuryTime;
+    public GameBasicInformation getGameBasicInformation(String gameID) {
+		
+		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_BASIC , gameID));
+	    GameBasicInformation gameBasicInformation = gson.fromJson(gsonString, GameBasicInformation.class) ;
+		return gameBasicInformation;
 	}
 
-	private IencidentInGameChangePlayers getChangingEvent(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGameChangePlayers playerChanged = new IencidentInGameChangePlayers();		
-		playerChanged.addedTime = gameInfo.incidents.get(i).addedTime;
-		playerChanged.id = gameInfo.incidents.get(i).id;
-		playerChanged.incidentClass = gameInfo.incidents.get(i).incidentClass;
-		playerChanged.incidentType = gameInfo.incidents.get(i).incidentType;
-		playerChanged.injury = gameInfo.incidents.get(i).injury;
-		playerChanged.isHome = gameInfo.incidents.get(i).isHome;
-		playerChanged.playerIn = gameInfo.incidents.get(i).playerIn;
-		playerChanged.playerOut = gameInfo.incidents.get(i).playerOut;
-		playerChanged.time = gameInfo.incidents.get(i).time;
-		return playerChanged;
-	}
-
-	private IencidentInGameGoal getGoal(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGameGoal goal = new IencidentInGameGoal();
-		goal.addedTime = gameInfo.incidents.get(i).addedTime;
-		goal.assist1 = gameInfo.incidents.get(i).assist1;
-		goal.awayScore = gameInfo.incidents.get(i).awayScore;
-		goal.homeScore = gameInfo.incidents.get(i).homeScore;
-		goal.id = gameInfo.incidents.get(i).id;
-		goal.incidentClass = gameInfo.incidents.get(i).incidentClass;
-		goal.incidentType = gameInfo.incidents.get(i).incidentType;
-		goal.isHome = gameInfo.incidents.get(i).isHome;
-		goal.player = gameInfo.incidents.get(i).player;
-		goal.time = gameInfo.incidents.get(i).time;
-		return goal;
-	}
-
-	private InncidentInGameCard getCard(GameIencidentsGSON gameInfo, int i) {
-		InncidentInGameCard actionWithPlayer = new InncidentInGameCard();
-		actionWithPlayer.addedTime = gameInfo.incidents.get(i).addedTime;
-		actionWithPlayer.id = gameInfo.incidents.get(i).id;
-		actionWithPlayer.incidentClass = gameInfo.incidents.get(i).incidentClass;
-		actionWithPlayer.incidentType = gameInfo.incidents.get(i).incidentType;				
-		actionWithPlayer.isHome = gameInfo.incidents.get(i).isHome;
-		actionWithPlayer.player = gameInfo.incidents.get(i).player;
-		actionWithPlayer.playerName = gameInfo.incidents.get(i).playerName;
-		actionWithPlayer.reason = gameInfo.incidents.get(i).reason;
-		actionWithPlayer.time = gameInfo.incidents.get(i).time;
-		return actionWithPlayer;
-	}
-
-	private IencidentInGameVarDecision getVarDecision(GameIencidentsGSON gameInfo, int i) {
-		IencidentInGameVarDecision varDecision= new IencidentInGameVarDecision();
-		varDecision.confirmed = gameInfo.incidents.get(i).confirmed;
-		varDecision.player = gameInfo.incidents.get(i).player;
-		varDecision.isHome = gameInfo.incidents.get(i).isHome;
-		varDecision.id = gameInfo.incidents.get(i).id;
-		varDecision.time = gameInfo.incidents.get(i).time;
-		varDecision.incidentClass = gameInfo.incidents.get(i).incidentClass;
-		varDecision.incidentType = gameInfo.incidents.get(i).incidentType;
-		return varDecision;
-	}
 }

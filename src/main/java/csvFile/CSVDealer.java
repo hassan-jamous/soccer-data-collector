@@ -15,7 +15,7 @@ public class CSVDealer {
 		 * @param competitionName
 		 * @param competitionYears
 		 * @param data the string which we want to write
-		 * @param dataType statistics or incidents
+		 * @param dataType statistics or incidentInGames
 		 * @param isHeader to know if the data is header or no :: it depends on how we send the data object which contains data or string if object i think we do not want this parameter
 		 */
 		//to ask hassan to make site and dataType enum

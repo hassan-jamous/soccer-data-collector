@@ -16,7 +16,6 @@ public HashMap<String, Integer> periodIDs ;
 	
 	public int getPeriodID(String key) {
 		if(! periodIDs.containsKey(key)) {
-			//new name
 			throw new RuntimeException("key not found  "  + key);
 		}
 		return periodIDs.get(key);

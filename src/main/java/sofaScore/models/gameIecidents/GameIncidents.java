@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
+import lombok.experimental.SuperBuilder;
+@SuperBuilder
 @NoArgsConstructor
 @ ToString
-public class GameIecidents {
+public class GameIncidents {
 
-	public ArrayList<Iencident> iecidents;
+	public ArrayList<IncidentInGame> incidentInGames;
 }

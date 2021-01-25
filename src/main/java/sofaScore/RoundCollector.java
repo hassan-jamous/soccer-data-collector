@@ -6,11 +6,20 @@ import com.google.gson.Gson;
 import csvFile.CSVDealer;
 import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
-import sofaScore.models.gameStatistics.GameStatisticNew;
+import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
 import util.HttpUtil;
 
+/**
+ * 
+ * collect rounds information like games' ids in this round from this url [https://api.sofascore.com/api/v1/unique-tournament/competition's ID/season/season's ID/events/round/round's number]
+ * for example from this url [ https://api.sofascore.com/api/v1/unique-tournament/17/season/29415/events/round/3  ]
+ * competition's ID =17 English Premier League
+ * season's ID = 29415 season 20/21
+ * round's number = 3
+ * 
+ */
 public class RoundCollector {
 
 	private final HashMapSeasonsID seasonId = new HashMapSeasonsID();
@@ -19,11 +28,13 @@ public class RoundCollector {
 	GameCollector gameCollector = new GameCollector();
 	CSVDealer csvDealer = new CSVDealer();
 	private final String API_SOFA_SCORE_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/events/round/%s";
+	
 	/***
 	 * 
 	 * @param competitionName example Premier League
 	 * @param competitionYears example 05/06
 	 * @param rounndNumber example (1 or 17 )
+	 * @return RoundGamesID (list of String as games' ids) to use them in class GameCollector as parameters for his methods as(gameID)
 	 */
 	public RoundGamesID getGamesIdInRound(String competitionName, String competitionYears , String round) {
 		
@@ -33,7 +44,7 @@ public class RoundCollector {
 		return gamesId;
 	}
 	/**
-	 * 
+	 *  
 	 * @param competitionName
 	 * @param competitionYears
 	 * @param round
@@ -43,7 +54,7 @@ public class RoundCollector {
 	 * the result contains all (red cards and offside)
 	 */
 	
-	public GameStatisticNew getRoundGamesStatistic(String competitionName, String competitionYears , String round){
+	public GameStatistics getRoundGamesStatistic(String competitionName, String competitionYears , String round){
 		
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		if((gamesIdInRound == null) || (gamesIdInRound.events.isEmpty())) {
@@ -51,7 +62,7 @@ public class RoundCollector {
 			System.out.println("no games id in this round " + round +"  at " + competitionYears );
 			return null;
 		}
-		GameStatisticNew resultGameStastiscs = new GameStatisticNew();
+		GameStatistics resultGameStastiscs = new GameStatistics();
 		int j = 0; 
 		while ((j < gamesIdInRound.events.size())&& (resultGameStastiscs == null)) {
 			String gameId = gamesIdInRound.events.get(j).id;
@@ -64,7 +75,7 @@ public class RoundCollector {
 		}
 		for(int i =j; i < gamesIdInRound.events.size(); i++) {
 			String gameId = gamesIdInRound.events.get(i).id;
-			GameStatisticNew gameStastiscs = gameCollector.getGameStatistics(gameId);
+			GameStatistics gameStastiscs = gameCollector.getGameStatistics(gameId);
 			if((gameStastiscs != null) && (gameStastiscs.statistics != null)) {			
 				resultGameStastiscs.makeItHaveTheSameTo(gameStastiscs);
 				Collections.sort(resultGameStastiscs.statistics);
@@ -73,18 +84,18 @@ public class RoundCollector {
 		return resultGameStastiscs; 
 	} 
 
-	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatisticNew  seasonStatistic) {
+	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatistics  seasonStatistic) {
 		
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		if( seasonStatistic!= null) {
 			for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
-				GameStatisticNew gameStatistic = gameCollector.getGameStatistics(gamesIdInRound.events.get(i).id);
+				GameStatistics gameStatistic = gameCollector.getGameStatistics(gamesIdInRound.events.get(i).id);
 				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);
 				//the game was played 
 				//but in la liga 2013-2014 round 37 (description == removed , type == finished)
 				if(  (gameBasicInfromation.event.status.description.equals("Ended")||gameBasicInfromation.event.status.description.equals("Removed")) 
 						&&  gameBasicInfromation.event.status.type.equals("finished") ) {
-					if(gameStatistic == null) {gameStatistic = new GameStatisticNew();}
+					if(gameStatistic == null) {gameStatistic = new GameStatistics();}
 					//make all game have the same statistics
 					gameStatistic.makeItHaveTheSameTo(seasonStatistic);
 					//i think we want to discuss a better solution to determine which game is the first

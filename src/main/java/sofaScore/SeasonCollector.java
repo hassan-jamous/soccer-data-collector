@@ -5,7 +5,7 @@ import java.util.Collections;
 import com.google.gson.Gson;
 
 import csvFile.CSVDealer;
-import sofaScore.models.gameStatistics.GameStatisticNew;
+import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.season.CurrentRoundSeasonInfo;
 import sofaScore.models.season.Season;
 import sofaScore.models.utilities.HashMapLeaguesID;
@@ -55,10 +55,10 @@ public class SeasonCollector {
 		return currentRoundInfo.currentRound.round;
 	}
 	
-	public GameStatisticNew getGamesStatisticNewInSeason(String competitionName, String competitionYears){
+	public GameStatistics getGamesStatisticNewInSeason(String competitionName, String competitionYears){
 	
 		int limit = getCurrentRound(competitionName, competitionYears);
-		GameStatisticNew seasonStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(1));
+		GameStatistics seasonStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(1));
 		int j =2;
 		while ((j <= limit) && (seasonStatistic == null)) {
 			seasonStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(j));
@@ -69,7 +69,7 @@ public class SeasonCollector {
 		}
 		for(int i =j ; i <= limit ; i++) {
 			
-			GameStatisticNew roundStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(i));
+			GameStatistics roundStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(i));
 			if((roundStatistic != null) && (roundStatistic.statistics != null)) {
 				seasonStatistic.makeItHaveTheSameTo(roundStatistic);
 			}
@@ -80,7 +80,7 @@ public class SeasonCollector {
 	
 	public void writeSeason(String competitionName, String competitionYears) {
 		
-		GameStatisticNew  seasonStatistic = getGamesStatisticNewInSeason(competitionName, competitionYears);
+		GameStatistics  seasonStatistic = getGamesStatisticNewInSeason(competitionName, competitionYears);
 		//no statistics for this season so just print the basic information
 		//must delete if and else they are the same
 		if(seasonStatistic == null) {
