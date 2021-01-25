@@ -16,8 +16,4 @@ public class GameBasicInformation {
 
 	public GameEvent event;
 	
-	//dataType is  header or values
-	public String write(String dataType) {
-		return event.write(dataType);
-	}
 }

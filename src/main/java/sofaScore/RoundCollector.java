@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import com.google.gson.Gson;
 import csvFile.CSVDealer;
+import csvFile.CSVDealerForGetInforamtion;
 import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameStatistics.GameStatistics;
@@ -13,8 +14,8 @@ import util.HttpUtil;
 
 /**
  * 
- * collect rounds information like games' ids in this round from this url [https://api.sofascore.com/api/v1/unique-tournament/competition's ID/season/season's ID/events/round/round's number]
- * for example from this url [ https://api.sofascore.com/api/v1/unique-tournament/17/season/29415/events/round/3  ]
+ * collect rounds information like games' ids in this round from this url [https://api.sofascore.com/api/v1/unique-tournamentInGame/competition's ID/season/season's ID/events/round/round's number]
+ * for example from this url [ https://api.sofascore.com/api/v1/unique-tournamentInGame/17/season/29415/events/round/3  ]
  * competition's ID =17 English Premier League
  * season's ID = 29415 season 20/21
  * round's number = 3
@@ -26,6 +27,7 @@ public class RoundCollector {
 	private final HashMapLeaguesID leagueId = new HashMapLeaguesID(); 
 	private final HttpUtil httpUtil = new HttpUtil();
 	GameCollector gameCollector = new GameCollector();
+	CSVDealerForGetInforamtion csvGetterString = new CSVDealerForGetInforamtion();
 	CSVDealer csvDealer = new CSVDealer();
 	private final String API_SOFA_SCORE_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/events/round/%s";
 	
@@ -58,9 +60,9 @@ public class RoundCollector {
 		
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		if((gamesIdInRound == null) || (gamesIdInRound.events.isEmpty())) {
+			//but we must return null
 			//not error so i can not throw an exception just to check what happened or throw an exception
-			System.out.println("no games id in this round " + round +"  at " + competitionYears );
-			return null;
+			throw new RuntimeException("no games id in this round " + round +"  at " + competitionYears );
 		}
 		GameStatistics resultGameStastiscs = new GameStatistics();
 		int j = 0; 
@@ -102,19 +104,19 @@ public class RoundCollector {
 					//i mean better than if(i==0)&&(round==1) ,the solution i suggest is to print seasonStatistic if the first match from the first round is canceled 
 					//it depends on how we send the data if String so we want else , or object we do not want it
 					if((i==0)&&(Integer.valueOf(round)==1)) {
-							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ gameStatistic.write("header"), true, "statistic");
-							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ gameStatistic.write("header")+"  here must be value", false, "statistic");
+							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
+							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation) +csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");
 					}
 					else {
 						//it must be write(values) but now for test , every game has the same statistics
-						csvDealer.write("SofaScore", competitionName, competitionYears, gameBasicInfromation.write("header")+ gameStatistic.write("header")+"  here must be value", false, "statistic");// header must be values now just for test
+						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");// header must be values now just for test
 					}
 				}
 				else{// if the match has been canceled
 					if((i==0)&&(Integer.valueOf(round)==1)) {
-						csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ seasonStatistic.write("header"), true, "statistic");// header must be values now just for test
+						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");// header must be values now just for test
 					}
-					csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+					csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
 				}
 			}
 		}
@@ -125,19 +127,19 @@ public class RoundCollector {
 						&&  gameBasicInfromation.event.status.type.equals("finished") ) {					
 					//it depends on how we send the data if String so we want else , or object we do not want it
 					if((i==0)&&(Integer.valueOf(round)==1)) {
-							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  header", true, "statistic");
-							csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  here must be value", false, "statistic");
+							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) +" (no statistics in this season)  header", true, "statistic");
+							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation) +"(no statistics in this season)  here must be value", false, "statistic");
 					}
 					else {
 						//it must be write(values) but now for test , every game has the same statistics
-						csvDealer.write("SofaScore", competitionName, competitionYears, gameBasicInfromation.write("header")+" (no statistics in this season)  here must be value", false, "statistic");// header must be values now just for test
+						csvDealer.write("SofaScore", competitionName, competitionYears, csvGetterString.getValuesStringForCSV(gameBasicInfromation)+" (no statistics in this season)  here must be value", false, "statistic");// header must be values now just for test
 					}
 				}
 				else{// if the match has been canceled
 					if((i==0)&&(Integer.valueOf(round)==1)) {
-						csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+"(no statistics in this season)  header", true, "statistic");
+						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+"(no statistics in this season)  header", true, "statistic");
 					}
-					csvDealer.write("SofaScore", competitionName, competitionYears,gameBasicInfromation.write("header")+ " the game is cancaled "+ i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+					csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ " the game is cancaled "+ i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
 				}				
 			}
 		}		

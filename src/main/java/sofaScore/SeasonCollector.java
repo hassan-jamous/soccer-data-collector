@@ -16,7 +16,7 @@ public class SeasonCollector {
 	
 	private final HttpUtil httpUtil = new HttpUtil();
 	private final String API_SOFA_SCORE_SEASON_ROUNDS_URL = "https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/team-of-the-week/rounds";
-	private final String API_SOFA_SCORE_CURRENT_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/rounds";
+	private final String API_SOFA_SCORE_CURRENT_ROUND_URL = "https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/rounds";
 	private final HashMapSeasonsID seasonId = new HashMapSeasonsID();
 	private final HashMapLeaguesID leagueId = new HashMapLeaguesID(); 
 	RoundCollector roundCollerctor = new RoundCollector();

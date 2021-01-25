@@ -9,8 +9,5 @@ public class Stauts {
 	public int code;
 	public String description;
 	public String type;
-	
-	public String write(String dataType) {
-		return (dataType.equals("header"))? "Description , " : description +",";
-	}
+
 }

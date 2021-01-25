@@ -74,14 +74,6 @@ public class GameStatistics {
 		Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);
 
 	}
-	
-	public String write(String type) {
-		String result="";
-		for(int i =0 ; i<statistics.size(); i++) {
-			result+= statistics.get(i).period+"  "+statistics.get(i).groupName+"  "+statistics.get(i).name+"  "+((type.equals("values"))?statistics.get(i).home:"home")+"  "+((type.equals("values"))?statistics.get(i).away:"away")+",";
-		}
-		return result;
-	}
-	
+
 }
 
