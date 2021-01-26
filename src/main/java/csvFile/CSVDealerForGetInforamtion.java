@@ -40,7 +40,6 @@ public class CSVDealerForGetInforamtion {
 	
 	public String getHeaderStringForCSV(GameBasicInformation obj) {
 		String result ="League , Years ,Round , Home Team , Away Team , HomeScore , Away Score ,";
-		
 		return result;
 	}
 }

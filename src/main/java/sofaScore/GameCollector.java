@@ -21,7 +21,7 @@ import sofaScore.models.gameIecidents.IncidentInGamePenalty;
 import sofaScore.models.gameIecidents.IncidentInGameVarDecision;
 import sofaScore.models.gameIecidents.IncidentsGameDeserializer;
 import sofaScore.models.gameStatistics.GameStatistics;
-import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
+import sofaScore.models.gameStatistics.GameStatisticsForOneItem;
 import util.HttpUtil;
 
 /**
@@ -47,6 +47,40 @@ public class GameCollector {
 	private final String API_SOFA_SCORE_GAME_URL_FOR_INCIDENTS ="https://api.sofascore.com/api/v1/event/%s/incidents";
 	private final HttpUtil httpUtil = new HttpUtil();
     private Gson gson = new Gson();
+ 
+   //i prefer my solution for these Reasons
+   //1 - we want the statistics are ranked in groups like the site
+   //2 - when add item to statistics(as HashTree not only HashSet -ranking in groups-) the item is added at the end , that breaks "group"
+   //		for example we will see yellow cards' statistics at the middle and red cards' statistics at the end !!!
+  
+  //  public TreeSet<String> getGameStatisticsASString(String gameID) {
+    //	String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_STATISTICS, gameID ));
+	//	if(gsonString.contains("Not Found")) {return null;}
+	//	JsonElement  jsonElement = JsonParser.parseString(gsonString);
+	//	JsonArray statisticsArray = jsonElement.getAsJsonObject().get("statistics").getAsJsonArray();
+//		TreeSet<String> result = new TreeSet<String>();
+	//	for(int i =0 ; i < statisticsArray.size() ; i++) {
+		//	String peroid = statisticsArray.get(i).getAsJsonObject().get("period").getAsString();
+		//	if(peroid.equals("1ST")) {peroid = "FirstHalf";}
+			//if(peroid.equals("2ND")) {peroid = "SecondHalf";}
+			//JsonArray groupsInPeriod = statisticsArray.get(i).getAsJsonObject().getAsJsonArray("groups");
+		//	for(int i1 = 0 ; i1 < groupsInPeriod.size(); i1++) {
+			//	String groupName = groupsInPeriod.get(i1).getAsJsonObject().get("groupName").getAsString();
+		//		JsonArray statisticsItems = groupsInPeriod.get(i1).getAsJsonObject().getAsJsonArray("statisticsItems");
+			//	for(int i2 =0 ; i2 < statisticsItems.size() ; i2++) {
+				//	JsonElement item = statisticsItems.get(i2);
+					//String name =item.getAsJsonObject().get("name").getAsString();
+	//				String away =item.getAsJsonObject().get("away").getAsString();
+		//			String home =item.getAsJsonObject().get("home").getAsString();
+			//		String statisticAsStringHome = peroid+groupName+name;
+				//	statisticAsStringHome = statisticAsStringHome.replaceAll("\\s+", "");
+					//result.add(statisticAsStringHome);
+//				}
+	//		}
+		//}
+//		if((  (result == null)   || (result.isEmpty()) )) {return null;}
+	//	return result;
+   // }
     
     public GameStatistics getGameStatistics(String gameID) {
 
@@ -66,14 +100,14 @@ public class GameCollector {
 					String name =item.getAsJsonObject().get("name").getAsString();
 					String away =item.getAsJsonObject().get("away").getAsString();
 					String home =item.getAsJsonObject().get("home").getAsString();
-					GameStatisticsForOneAttributeNew gameStatistic = new GameStatisticsForOneAttributeNew(peroid,groupName,name,home,away);
+					GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid,groupName,name,home,away);
 					if(gamesInfo.statistics == null) {gamesInfo.statistics = new ArrayList<>();}
 					gamesInfo.statistics.add(gameStatistic);
 				}
 			}
 		}
 		if((  (gamesInfo == null)  ||(  gamesInfo.statistics == null) || (gamesInfo.statistics.isEmpty()) )) {return null;}
-		Collections.sort((List<GameStatisticsForOneAttributeNew>)gamesInfo.statistics);
+		Collections.sort((List<GameStatisticsForOneItem>)gamesInfo.statistics);
 		return gamesInfo;
 	}
     

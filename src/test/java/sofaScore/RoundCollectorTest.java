@@ -10,6 +10,7 @@ import testUtilities.AssertUtilities;
 public class RoundCollectorTest {
     SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
+    RoundCollector roundCollector = new RoundCollector();
 	GamesIdInRoundValues gameIDInRoundSofaScoreValues = new sofaScore.testData.GamesIdInRoundValues();
 	
 	@Test

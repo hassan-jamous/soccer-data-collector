@@ -8,7 +8,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @NoArgsConstructor
-public class GameStatisticsForOneAttributeNew implements Comparable <GameStatisticsForOneAttributeNew> {
+public class GameStatisticsForOneItem implements Comparable <GameStatisticsForOneItem> {
 	
 	@Expose
 	public String period;
@@ -21,7 +21,7 @@ public class GameStatisticsForOneAttributeNew implements Comparable <GameStatist
 	public String away;
 
 	@Override
-	public int compareTo(GameStatisticsForOneAttributeNew objecttoCompare) {
+	public int compareTo(GameStatisticsForOneItem objecttoCompare) {
 		HashMapStatisticPeriod hashMapPeriod = new HashMapStatisticPeriod();
 		HashMapStatisticGroupName hashMapGroupName = new HashMapStatisticGroupName();
 		HashMapStatisticName hashMapName = new HashMapStatisticName();

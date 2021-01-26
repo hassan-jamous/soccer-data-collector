@@ -1,0 +1,391 @@
+League , Years ,Round , Home Team , Away Team , HomeScore , Away Score ,(no statistics in this season)  header
+LaLiga ,11/12 ,1 ,Espanyol ,Granada ,null ,null , the game is cancaled 0  with id 1794360 at round 1
+LaLiga ,11/12 ,1 ,Levante ,Real Zaragoza ,null ,null , the game is cancaled 1  with id 1794361 at round 1
+LaLiga ,11/12 ,1 ,Villarreal ,Sporting Gijón ,null ,null , the game is cancaled 2  with id 1794356 at round 1
+LaLiga ,11/12 ,1 ,Osasuna ,Valencia ,null ,null , the game is cancaled 3  with id 1794358 at round 1
+LaLiga ,11/12 ,1 ,Rayo Vallecano ,RCD Mallorca ,null ,null , the game is cancaled 4  with id 1794362 at round 1
+LaLiga ,11/12 ,1 ,Racing de Santander ,Getafe ,null ,null , the game is cancaled 5  with id 1794359 at round 1
+LaLiga ,11/12 ,1 ,Real Madrid ,Athletic Bilbao ,null ,null , the game is cancaled 6  with id 1794354 at round 1
+LaLiga ,11/12 ,1 ,Málaga ,Barcelona ,null ,null , the game is cancaled 7  with id 1794355 at round 1
+LaLiga ,11/12 ,1 ,Real Betis ,Sevilla ,null ,null , the game is cancaled 8  with id 1794357 at round 1
+LaLiga ,11/12 ,1 ,Real Sociedad ,Atlético Madrid ,null ,null , the game is cancaled 9  with id 1794353 at round 1
+LaLiga ,11/12 ,1 ,Espanyol ,Granada ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Racing de Santander ,Getafe ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Real Sociedad ,Atlético Madrid ,0 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Real Betis ,Sevilla ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Osasuna ,Valencia ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Rayo Vallecano ,RCD Mallorca ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Málaga ,Barcelona ,1 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Levante ,Real Zaragoza ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Real Madrid ,Athletic Bilbao ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,1 ,Villarreal ,Sporting Gijón ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Sporting Gijón ,Real Sociedad ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Valencia ,Racing de Santander ,4 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Granada ,Real Betis ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Atlético Madrid ,Osasuna ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Athletic Bilbao ,Rayo Vallecano ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Getafe ,Levante ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,RCD Mallorca ,Espanyol ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Real Zaragoza ,Real Madrid ,0 ,6 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Sevilla ,Málaga ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,2 ,Barcelona ,Villarreal ,5 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Real Sociedad ,Barcelona ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Villarreal ,Sevilla ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Real Madrid ,Getafe ,4 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Valencia ,Atlético Madrid ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Real Betis ,RCD Mallorca ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Racing de Santander ,Levante ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Osasuna ,Sporting Gijón ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Rayo Vallecano ,Real Zaragoza ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Espanyol ,Athletic Bilbao ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,3 ,Málaga ,Granada ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Granada ,Villarreal ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,RCD Mallorca ,Málaga ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Sporting Gijón ,Valencia ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Barcelona ,Osasuna ,8 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Sevilla ,Real Sociedad ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Getafe ,Rayo Vallecano ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Real Zaragoza ,Espanyol ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Atlético Madrid ,Racing de Santander ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Levante ,Real Madrid ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,4 ,Athletic Bilbao ,Real Betis ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Osasuna ,Sevilla ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Real Sociedad ,Granada ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Villarreal ,RCD Mallorca ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Atlético Madrid ,Sporting Gijón ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Málaga ,Athletic Bilbao ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Racing de Santander ,Real Madrid ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Rayo Vallecano ,Levante ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Valencia ,Barcelona ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Espanyol ,Getafe ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,5 ,Real Betis ,Real Zaragoza ,4 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Athletic Bilbao ,Villarreal ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Sevilla ,Valencia ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Real Madrid ,Rayo Vallecano ,6 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Barcelona ,Atlético Madrid ,5 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,RCD Mallorca ,Real Sociedad ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Levante ,Espanyol ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Granada ,Osasuna ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Sporting Gijón ,Racing de Santander ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Real Zaragoza ,Málaga ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,6 ,Getafe ,Real Betis ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Osasuna ,RCD Mallorca ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Racing de Santander ,Rayo Vallecano ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Villarreal ,Real Zaragoza ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Valencia ,Granada ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Málaga ,Getafe ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Real Sociedad ,Athletic Bilbao ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Real Betis ,Levante ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Atlético Madrid ,Sevilla ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Sporting Gijón ,Barcelona ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,7 ,Espanyol ,Real Madrid ,0 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Getafe ,Villarreal ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,RCD Mallorca ,Valencia ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Real Madrid ,Real Betis ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Barcelona ,Racing de Santander ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Granada ,Atlético Madrid ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Rayo Vallecano ,Espanyol ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Real Zaragoza ,Real Sociedad ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Levante ,Málaga ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Sevilla ,Sporting Gijón ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,8 ,Athletic Bilbao ,Osasuna ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Racing de Santander ,Espanyol ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Sporting Gijón ,Granada ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Málaga ,Real Madrid ,0 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Barcelona ,Sevilla ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Real Betis ,Rayo Vallecano ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Real Sociedad ,Getafe ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Atlético Madrid ,RCD Mallorca ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Osasuna ,Real Zaragoza ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Valencia ,Athletic Bilbao ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,9 ,Villarreal ,Levante ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Granada ,Barcelona ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Sevilla ,Racing de Santander ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Getafe ,Osasuna ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Levante ,Real Sociedad ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Rayo Vallecano ,Málaga ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Real Zaragoza ,Valencia ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,RCD Mallorca ,Sporting Gijón ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Real Madrid ,Villarreal ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Espanyol ,Real Betis ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,10 ,Athletic Bilbao ,Atlético Madrid ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Valencia ,Getafe ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Villarreal ,Rayo Vallecano ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Barcelona ,RCD Mallorca ,5 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Real Sociedad ,Real Madrid ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Sporting Gijón ,Athletic Bilbao ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Osasuna ,Levante ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Racing de Santander ,Real Betis ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Atlético Madrid ,Real Zaragoza ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Málaga ,Espanyol ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,11 ,Sevilla ,Granada ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,RCD Mallorca ,Sevilla ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Real Betis ,Málaga ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Levante ,Valencia ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Real Madrid ,Osasuna ,7 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Granada ,Racing de Santander ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Real Zaragoza ,Sporting Gijón ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Espanyol ,Villarreal ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Rayo Vallecano ,Real Sociedad ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Athletic Bilbao ,Barcelona ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,12 ,Getafe ,Atlético Madrid ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Villarreal ,Real Betis ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Barcelona ,Real Zaragoza ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Valencia ,Real Madrid ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Real Sociedad ,Espanyol ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Osasuna ,Rayo Vallecano ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Sporting Gijón ,Getafe ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Sevilla ,Athletic Bilbao ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Atlético Madrid ,Levante ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Granada ,RCD Mallorca ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,13 ,Racing de Santander ,Málaga ,1 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Rayo Vallecano ,Valencia ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Real Madrid ,Atlético Madrid ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Getafe ,Barcelona ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Real Betis ,Real Sociedad ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Levante ,Sporting Gijón ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Espanyol ,Osasuna ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,RCD Mallorca ,Racing de Santander ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Athletic Bilbao ,Granada ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Real Zaragoza ,Sevilla ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,14 ,Málaga ,Villarreal ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Racing de Santander ,Villarreal ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Sporting Gijón ,Real Madrid ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Barcelona ,Levante ,5 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Valencia ,Espanyol ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Atlético Madrid ,Rayo Vallecano ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Real Sociedad ,Málaga ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Osasuna ,Real Betis ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,RCD Mallorca ,Athletic Bilbao ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Granada ,Real Zaragoza ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,15 ,Sevilla ,Getafe ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Levante ,Sevilla ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Real Betis ,Valencia ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Real Madrid ,Barcelona ,1 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Rayo Vallecano ,Sporting Gijón ,1 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Getafe ,Granada ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Villarreal ,Real Sociedad ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Málaga ,Osasuna ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Real Zaragoza ,RCD Mallorca ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Athletic Bilbao ,Racing de Santander ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,16 ,Espanyol ,Atlético Madrid ,4 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Barcelona ,Rayo Vallecano ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,RCD Mallorca ,Getafe ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Sporting Gijón ,Espanyol ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Athletic Bilbao ,Real Zaragoza ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Sevilla ,Real Madrid ,2 ,6 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Atlético Madrid ,Real Betis ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Granada ,Levante ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Osasuna ,Villarreal ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Racing de Santander ,Real Sociedad ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,17 ,Valencia ,Málaga ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Levante ,RCD Mallorca ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Racing de Santander ,Real Zaragoza ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Real Sociedad ,Osasuna ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Real Madrid ,Granada ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Málaga ,Atlético Madrid ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Rayo Vallecano ,Sevilla ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Getafe ,Athletic Bilbao ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Villarreal ,Valencia ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Real Betis ,Sporting Gijón ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,18 ,Espanyol ,Barcelona ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Granada ,Rayo Vallecano ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Real Zaragoza ,Getafe ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Sevilla ,Espanyol ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,RCD Mallorca ,Real Madrid ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Valencia ,Real Sociedad ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Atlético Madrid ,Villarreal ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Osasuna ,Racing de Santander ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Athletic Bilbao ,Levante ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Sporting Gijón ,Málaga ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,19 ,Barcelona ,Real Betis ,4 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Getafe ,Racing de Santander ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Granada ,Espanyol ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Sporting Gijón ,Villarreal ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Atlético Madrid ,Real Sociedad ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Barcelona ,Málaga ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,RCD Mallorca ,Rayo Vallecano ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Real Zaragoza ,Levante ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Sevilla ,Real Betis ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Athletic Bilbao ,Real Madrid ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,20 ,Valencia ,Osasuna ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Espanyol ,RCD Mallorca ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Rayo Vallecano ,Athletic Bilbao ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Real Madrid ,Real Zaragoza ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Villarreal ,Barcelona ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Real Betis ,Granada ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Levante ,Getafe ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Real Sociedad ,Sporting Gijón ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Racing de Santander ,Valencia ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Málaga ,Sevilla ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,21 ,Osasuna ,Atlético Madrid ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Athletic Bilbao ,Espanyol ,3 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Levante ,Racing de Santander ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,RCD Mallorca ,Real Betis ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Getafe ,Real Madrid ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Barcelona ,Real Sociedad ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Sporting Gijón ,Osasuna ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Sevilla ,Villarreal ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Real Zaragoza ,Rayo Vallecano ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Atlético Madrid ,Valencia ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,22 ,Granada ,Málaga ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Racing de Santander ,Atlético Madrid ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Osasuna ,Barcelona ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Real Betis ,Athletic Bilbao ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Espanyol ,Real Zaragoza ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Málaga ,RCD Mallorca ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Rayo Vallecano ,Getafe ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Valencia ,Sporting Gijón ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Villarreal ,Granada ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Real Madrid ,Levante ,4 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,23 ,Real Sociedad ,Sevilla ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Getafe ,Espanyol ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Real Madrid ,Racing de Santander ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Sevilla ,Osasuna ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Granada ,Real Sociedad ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Athletic Bilbao ,Málaga ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,RCD Mallorca ,Villarreal ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Sporting Gijón ,Atlético Madrid ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Levante ,Rayo Vallecano ,3 ,5 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Barcelona ,Valencia ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,24 ,Real Zaragoza ,Real Betis ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Racing de Santander ,Sporting Gijón ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Real Betis ,Getafe ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Málaga ,Real Zaragoza ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Espanyol ,Levante ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Villarreal ,Athletic Bilbao ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Rayo Vallecano ,Real Madrid ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Osasuna ,Granada ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Real Sociedad ,RCD Mallorca ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Valencia ,Sevilla ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,25 ,Atlético Madrid ,Barcelona ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Getafe ,Málaga ,1 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Rayo Vallecano ,Racing de Santander ,4 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,RCD Mallorca ,Osasuna ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Barcelona ,Sporting Gijón ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Sevilla ,Atlético Madrid ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Real Zaragoza ,Villarreal ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Athletic Bilbao ,Real Sociedad ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Granada ,Valencia ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Real Madrid ,Espanyol ,5 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,26 ,Levante ,Real Betis ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Málaga ,Levante ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Real Sociedad ,Real Zaragoza ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Sporting Gijón ,Sevilla ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Real Betis ,Real Madrid ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Atlético Madrid ,Granada ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Espanyol ,Rayo Vallecano ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Valencia ,RCD Mallorca ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Racing de Santander ,Barcelona ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Osasuna ,Athletic Bilbao ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,27 ,Villarreal ,Getafe ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Getafe ,Real Sociedad ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Granada ,Sporting Gijón ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Real Zaragoza ,Osasuna ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Sevilla ,Barcelona ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Rayo Vallecano ,Real Betis ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Levante ,Villarreal ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,RCD Mallorca ,Atlético Madrid ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Athletic Bilbao ,Valencia ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Real Madrid ,Málaga ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,28 ,Espanyol ,Racing de Santander ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Osasuna ,Getafe ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Barcelona ,Granada ,5 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Atlético Madrid ,Athletic Bilbao ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Real Sociedad ,Levante ,1 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Sporting Gijón ,RCD Mallorca ,2 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Valencia ,Real Zaragoza ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Villarreal ,Real Madrid ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Racing de Santander ,Sevilla ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Real Betis ,Espanyol ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,29 ,Málaga ,Rayo Vallecano ,4 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,RCD Mallorca ,Barcelona ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Real Madrid ,Real Sociedad ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Getafe ,Valencia ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Real Zaragoza ,Atlético Madrid ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Espanyol ,Málaga ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Levante ,Osasuna ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Athletic Bilbao ,Sporting Gijón ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Rayo Vallecano ,Villarreal ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Real Betis ,Racing de Santander ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,30 ,Granada ,Sevilla ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Racing de Santander ,Granada ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Sporting Gijón ,Real Zaragoza ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Osasuna ,Real Madrid ,1 ,5 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Barcelona ,Athletic Bilbao ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Málaga ,Real Betis ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Atlético Madrid ,Getafe ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Valencia ,Levante ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Real Sociedad ,Rayo Vallecano ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Villarreal ,Espanyol ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,31 ,Sevilla ,RCD Mallorca ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Espanyol ,Real Sociedad ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Getafe ,Sporting Gijón ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Rayo Vallecano ,Osasuna ,6 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Real Zaragoza ,Barcelona ,1 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Real Betis ,Villarreal ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Levante ,Atlético Madrid ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,RCD Mallorca ,Granada ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Athletic Bilbao ,Sevilla ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Real Madrid ,Valencia ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,32 ,Málaga ,Racing de Santander ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Osasuna ,Espanyol ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Real Sociedad ,Real Betis ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Barcelona ,Getafe ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Granada ,Athletic Bilbao ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Sporting Gijón ,Levante ,3 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Valencia ,Rayo Vallecano ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Atlético Madrid ,Real Madrid ,1 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Villarreal ,Málaga ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Racing de Santander ,RCD Mallorca ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,33 ,Sevilla ,Real Zaragoza ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Real Madrid ,Sporting Gijón ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Levante ,Barcelona ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Espanyol ,Valencia ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Málaga ,Real Sociedad ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Real Betis ,Osasuna ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Real Zaragoza ,Granada ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Villarreal ,Racing de Santander ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Athletic Bilbao ,RCD Mallorca ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Rayo Vallecano ,Atlético Madrid ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,34 ,Getafe ,Sevilla ,5 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,RCD Mallorca ,Real Zaragoza ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Sporting Gijón ,Rayo Vallecano ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Barcelona ,Real Madrid ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Sevilla ,Levante ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Granada ,Getafe ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Real Sociedad ,Villarreal ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Racing de Santander ,Athletic Bilbao ,0 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Atlético Madrid ,Espanyol ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Valencia ,Real Betis ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,35 ,Osasuna ,Málaga ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Espanyol ,Sporting Gijón ,0 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Getafe ,RCD Mallorca ,1 ,3 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Levante ,Granada ,3 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Real Sociedad ,Racing de Santander ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Villarreal ,Osasuna ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Real Madrid ,Sevilla ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Real Zaragoza ,Athletic Bilbao ,2 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Málaga ,Valencia ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Real Betis ,Atlético Madrid ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,36 ,Rayo Vallecano ,Barcelona ,0 ,7 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Athletic Bilbao ,Getafe ,0 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Atlético Madrid ,Málaga ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Barcelona ,Espanyol ,4 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Granada ,Real Madrid ,1 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Osasuna ,Real Sociedad ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,RCD Mallorca ,Levante ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Real Zaragoza ,Racing de Santander ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Sevilla ,Rayo Vallecano ,5 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Sporting Gijón ,Real Betis ,2 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,37 ,Valencia ,Villarreal ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Real Sociedad ,Valencia ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Real Betis ,Barcelona ,2 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Espanyol ,Sevilla ,1 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Getafe ,Real Zaragoza ,0 ,2 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Levante ,Athletic Bilbao ,3 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Málaga ,Sporting Gijón ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Racing de Santander ,Osasuna ,2 ,4 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Rayo Vallecano ,Granada ,1 ,0 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Real Madrid ,RCD Mallorca ,4 ,1 , (no statistics in this season)  here must be value
+LaLiga ,11/12 ,38 ,Villarreal ,Atlético Madrid ,0 ,1 , (no statistics in this season)  here must be value

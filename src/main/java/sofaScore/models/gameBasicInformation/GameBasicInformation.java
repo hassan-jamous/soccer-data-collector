@@ -5,13 +5,16 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
-//contains all information about the game {https://api.sofascore.com/api/v1/event/gameid }     
-//for example gameid 7828251 
-//https://www.sofascore.com/brighton-and-hove-albion-manchester-city/rsF 13 Jan 2021, 20:00
+/**
+ * 
+ * https://www.sofascore.com/brighton-and-hove-albion-manchester-city/rsF , for this game 
+ * the basic information are in this page {https://api.sofascore.com/api/v1/event/7828251 }
+ * gameID is 7828251
+ * that page contains all information about the game contains event which contains season information 
+ * , round information  , home team information , ...etc 
+ * 
+ */
 
-//it contains event which contains season information , round information  , home team information , ...etc 
-//to ask hassan is this data structure good?
-//i mean we can delete class event , so class game will have the information
 public class GameBasicInformation {
 
 	public GameEvent event;

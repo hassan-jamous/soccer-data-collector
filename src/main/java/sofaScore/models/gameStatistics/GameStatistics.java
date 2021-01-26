@@ -3,19 +3,24 @@ package sofaScore.models.gameStatistics;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
-
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * the class GameStatistics contains the games' statistics in array list of GamestatisticsForOneItem  
+ * GamestatisticsForOneItem contains information about one item ,in five Strings
+ * period , groupName , name , away , home
+ * ALL , Shots , Shots on target , 5 ,6
+ */
 @NoArgsConstructor
 public class GameStatistics {
 
 	@Expose
-	public ArrayList<GameStatisticsForOneAttributeNew> statistics;
+	public ArrayList<GameStatisticsForOneItem> statistics;
 	
-	public boolean containsSatatistic(GameStatisticsForOneAttributeNew item) {
+	public boolean containsSatatistic(GameStatisticsForOneItem item) {
 		if((this.statistics == null) || (this.statistics.isEmpty())) {
 			return false;
 		}
@@ -28,7 +33,7 @@ public class GameStatistics {
 		return false;
 	}
 	
-	public boolean containsSatatisticWithValues(GameStatisticsForOneAttributeNew item) {
+	public boolean containsSatatisticWithValues(GameStatisticsForOneItem item) {
 		if((this.statistics == null) || (this.statistics.isEmpty())) {
 			return false;
 		}
@@ -42,11 +47,11 @@ public class GameStatistics {
 		return false;
 	}
 	
-	public void addStatistic(GameStatisticsForOneAttributeNew item) {
+	public void addStatistic(GameStatisticsForOneItem item) {
 		if(this.statistics == null) {this.statistics= new ArrayList<>();}
 		if(this.statistics.isEmpty()) {this.statistics.add(item);}
 		else {
-			GameStatisticsForOneAttributeNew  itemToAdd = new GameStatisticsForOneAttributeNew();
+			GameStatisticsForOneItem  itemToAdd = new GameStatisticsForOneItem();
 			itemToAdd.period = item.period;
 			itemToAdd.groupName = item.groupName;
 			itemToAdd.name = item.name;
@@ -59,10 +64,10 @@ public class GameStatistics {
 		Gson gson = new Gson().newBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String resultGameGsonString = gson.toJson(this);		
 		String newGameGsonString = gson.toJson(newGameStatistic);
-		if(newGameStatistic == null) {System.out.println();}
+		//if(newGameStatistic == null) {System.out.println();}
 		if(resultGameGsonString.equals(newGameGsonString)) {
 			//remeber to delele it
-			Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);
+			//Collections.sort((List<GameStatisticsForOneItem>)this.statistics);
 		}
 		else {
 			for(int i = 0 ; i <newGameStatistic.statistics.size(); i++) {
@@ -71,7 +76,7 @@ public class GameStatistics {
 					}
 			}
 		}
-		Collections.sort((List<GameStatisticsForOneAttributeNew>)this.statistics);
+		Collections.sort((List<GameStatisticsForOneItem>)this.statistics);
 
 	}
 

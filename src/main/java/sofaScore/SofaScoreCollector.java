@@ -4,7 +4,6 @@ import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameStatistics.GameStatistics;
-import sofaScore.models.season.Season;
 
 public class SofaScoreCollector {
 
@@ -43,17 +42,9 @@ public class SofaScoreCollector {
 	public GameBasicInformation getGameBasicInformation(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameBasicInformation(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
-	
-	public Season getAllRoundsInformationInSeason(String competitionName , String competitionYears) {
-		return seasonCollector.getAllRoundsInformationInSeason(competitionName, competitionYears);
-	}
-	
-	public int getNumberOfFinishedRoundAtSeason(String competitionName , String competitionYears) {
-		return seasonCollector.getNumberOfFinishedRoundInSeason(competitionName, competitionYears);
-	}
-	
+
 	public GameStatistics getGameNewStatisticsNew(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
-	 
+
 }

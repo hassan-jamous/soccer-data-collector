@@ -10,7 +10,7 @@ import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameIecidents.IncidentInGame;
 import sofaScore.models.gameStatistics.GameStatistics;
-import sofaScore.models.gameStatistics.GameStatisticsForOneAttributeNew;
+import sofaScore.models.gameStatistics.GameStatisticsForOneItem;
 import sofaScore.testData.GameIencidentsValues;
 import testUtilities.AssertUtilities;
 
@@ -26,20 +26,20 @@ public class GameCollectorTest {
 		    //https://api.sofascore.com/api/v1/event/8243423/statistics
 		    //https://www.sofascore.com/chelsea-norwich-city/Nnf
 		    GameStatistics gameStatistics1Atround3At19_20ActualValue = sofaScoreCollectorTest.getGameNewStatisticsNew("Premier League", "19/20", "3", 1);
-		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("ALL","Possession","Ball possession","46%","54%")));
-		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("ALL","Shots","Total shots","6","23")));
-		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("1ST","Shots extra","Hit woodwork","0","0")));
-		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("1ST","Duels","Dribbles","2/10 (20%)","9/11 (82%)")));
-		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("2ND","Passes","Passes","210","255")));
+		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","46%","54%")));
+		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Total shots","6","23")));
+		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("1ST","Shots extra","Hit woodwork","0","0")));
+		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("1ST","Duels","Dribbles","2/10 (20%)","9/11 (82%)")));
+		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("2ND","Passes","Passes","210","255")));
 		    
 		    // https://www.sofascore.com/everton-leeds-united/JsY
 		    //https://api.sofascore.com/api/v1/event/8896979/incidents
 		    GameStatistics gameStatistics3Atround10At20_21ActualValue = sofaScoreCollectorTest.getGameNewStatisticsNew("Premier League", "20/21", "10", 3);
-		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("ALL","Possession","Ball possession","41%","59%")));
-		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("ALL","Shots","Total shots","15","23")));
-		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("2ND","TVData","Yellow cards","1","1")));
-		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("2ND","Shots extra","Counter attacks","1","1")));
-		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneAttributeNew("2ND","Duels","Possession lost","66","70")));
+		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","41%","59%")));
+		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Total shots","15","23")));
+		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("2ND","TVData","Yellow cards","1","1")));
+		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("2ND","Shots extra","Counter attacks","1","1")));
+		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("2ND","Duels","Possession lost","66","70")));
 
 	    }
 	 @Test

@@ -12,15 +12,7 @@ import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
 import util.HttpUtil;
 
-/**
- * 
- * collect rounds information like games' ids in this round from this url [https://api.sofascore.com/api/v1/unique-tournamentInGame/competition's ID/season/season's ID/events/round/round's number]
- * for example from this url [ https://api.sofascore.com/api/v1/unique-tournamentInGame/17/season/29415/events/round/3  ]
- * competition's ID =17 English Premier League
- * season's ID = 29415 season 20/21
- * round's number = 3
- * 
- */
+
 public class RoundCollector {
 
 	private final HashMapSeasonsID seasonId = new HashMapSeasonsID();
@@ -32,12 +24,15 @@ public class RoundCollector {
 	private final String API_SOFA_SCORE_ROUND_URL ="https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/events/round/%s";
 	
 	/***
+	 * from this url  https://api.sofascore.com/api/v1/unique-tournament/Competition's ID/season/Season's ID/events/round/ Round Number
+	 * we extract games' ids for the round
+	 * @param competition's id = 17 English Premier League
+	 * @param season's id = 23776 for season 2019/2020
+	 * @param round's number  =3 the third round in league
 	 * 
-	 * @param competitionName example Premier League
-	 * @param competitionYears example 05/06
-	 * @param rounndNumber example (1 or 17 )
-	 * @return RoundGamesID (list of String as games' ids) to use them in class GameCollector as parameters for his methods as(gameID)
+	 * @return arraylist of game' id
 	 */
+	
 	public RoundGamesID getGamesIdInRound(String competitionName, String competitionYears , String round) {
 		
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_ROUND_URL,leagueId.getLeagueID(competitionName), seasonId.get(competitionName + " " + competitionYears),round));
@@ -45,25 +40,56 @@ public class RoundCollector {
 		RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
 		return gamesId;
 	}
-	/**
-	 *  
-	 * @param competitionName
-	 * @param competitionYears
-	 * @param round
-	 * @return the statistic for all game in this round
-	 * for example if one game has statistic for red cards with out statistic for offside
-	 * and other game has statistic offside
-	 * the result contains all (red cards and offside)
-	 */
-	
-	public GameStatistics getRoundGamesStatistic(String competitionName, String competitionYears , String round){
+
+	/*
+	public TreeSet<String> getRoundStatisticsAsString(String competitionName, String competitionYears , String round) {
 		
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		if((gamesIdInRound == null) || (gamesIdInRound.events.isEmpty())) {
-			//but we must return null
-			//not error so i can not throw an exception just to check what happened or throw an exception
-			throw new RuntimeException("no games id in this round " + round +"  at " + competitionYears );
+			return null;
 		}
+		TreeSet<String> resultRoundStastiscs = new TreeSet<>();
+		int j = 0; 
+		while (j < gamesIdInRound.events.size()) {
+			String gameId = gamesIdInRound.events.get(j).id;
+			TreeSet<String> gameStastiscs = gameCollector.getGameStatisticsASString(gameId);
+			if(gameStastiscs != null) {
+				for(String statistic : gameStastiscs ) {
+					resultRoundStastiscs.add(statistic);
+				}
+			}
+			j++;
+		}
+		if(resultRoundStastiscs == null || resultRoundStastiscs.isEmpty()) {return null;}
+		
+		return resultRoundStastiscs;
+		
+	}
+	
+// the problem is how to sort statistics ignoring the value home and away (55% 45%) 
+	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , TreeSet<String> seasonStatistics) {
+		
+		
+	}
+	
+	
+*/	
+	/**
+	 * 
+	 * @param competitionName  for example (Premier League  , La Liga , ...)
+	 * @param competitionYears for example (20/21 , 19/20 , 14/15 , ....) 
+	 * @param round for example 1 , 2 ...10
+	 * @return round's statistics contains every statistic in every game in this round
+	 * for example :
+	 * game 1 contains statistics for yellow cards and shots on target
+	 * game 2 contains statistics for offside and shots on target
+	 * the result contains 3 statistics yellow card , shots on target and offside
+	 */
+	public GameStatistics getRoundGamesStatistic(String competitionName, String competitionYears , String round ){
+		
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
+		
+		if((gamesIdInRound == null) || (gamesIdInRound.events.isEmpty())) {return null;	}
 		GameStatistics resultGameStastiscs = new GameStatistics();
 		int j = 0; 
 		while ((j < gamesIdInRound.events.size())&& (resultGameStastiscs == null)) {
@@ -71,7 +97,7 @@ public class RoundCollector {
 			resultGameStastiscs = gameCollector.getGameStatistics(gameId);
 			j++;
 		}
-		if((j ==gamesIdInRound.events.size() && 
+		if((j == gamesIdInRound.events.size() && 
 				(((resultGameStastiscs == null)) ||(resultGameStastiscs.statistics == null)))) {
 			return null;
 		}
@@ -84,7 +110,15 @@ public class RoundCollector {
 			}
 		}
 		return resultGameStastiscs; 
-	} 
+	}
+	
+	/**
+	 * 
+	 * @param competitionName for example (Premier League  , La Liga , .....)
+	 * @param competitionYears for example (20/21 , 19/20 , 13/14 , ....)
+	 * @param round for example (1 , 3 , 15 , ...)
+	 * @param seasonStatistic the statistics for all games in the season
+	 */
 
 	public void writeRoundFromSeason(String competitionName, String competitionYears , String round , GameStatistics  seasonStatistic) {
 		
@@ -100,21 +134,14 @@ public class RoundCollector {
 					if(gameStatistic == null) {gameStatistic = new GameStatistics();}
 					//make all game have the same statistics
 					gameStatistic.makeItHaveTheSameTo(seasonStatistic);
-					//i think we want to discuss a better solution to determine which game is the first
-					//i mean better than if(i==0)&&(round==1) ,the solution i suggest is to print seasonStatistic if the first match from the first round is canceled 
-					//it depends on how we send the data if String so we want else , or object we do not want it
-					if((i==0)&&(Integer.valueOf(round)==1)) {
+					if((i==0)&&(Integer.valueOf(round)==1)) {//first game to write the header
 							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
-							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation) +csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");
 					}
-					else {
-						//it must be write(values) but now for test , every game has the same statistics
-						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");// header must be values now just for test
-					}
+						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");
 				}
 				else{// if the match has been canceled
-					if((i==0)&&(Integer.valueOf(round)==1)) {
-						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");// header must be values now just for test
+					if((i==0)&&(Integer.valueOf(round)==1)) {//first game to write the header
+						csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
 					}
 					csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
 				}
@@ -125,15 +152,10 @@ public class RoundCollector {
 				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);
 				if(  (gameBasicInfromation.event.status.description.equals("Ended")||gameBasicInfromation.event.status.description.equals("Removed")) 
 						&&  gameBasicInfromation.event.status.type.equals("finished") ) {					
-					//it depends on how we send the data if String so we want else , or object we do not want it
 					if((i==0)&&(Integer.valueOf(round)==1)) {
 							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getHeaderStringForCSV(gameBasicInfromation) +" (no statistics in this season)  header", true, "statistic");
-							csvDealer.write("SofaScore", competitionName, competitionYears,csvGetterString.getValuesStringForCSV(gameBasicInfromation) +"(no statistics in this season)  here must be value", false, "statistic");
 					}
-					else {
-						//it must be write(values) but now for test , every game has the same statistics
 						csvDealer.write("SofaScore", competitionName, competitionYears, csvGetterString.getValuesStringForCSV(gameBasicInfromation)+" (no statistics in this season)  here must be value", false, "statistic");// header must be values now just for test
-					}
 				}
 				else{// if the match has been canceled
 					if((i==0)&&(Integer.valueOf(round)==1)) {
@@ -144,6 +166,17 @@ public class RoundCollector {
 			}
 		}		
 	}
+	/**
+	 * 
+	 * @param competitionName for example (Premier League  , La Liga , .....)
+	 * @param competitionYears for example (20/21 , 19/20 , 13/14 , ....)
+	 * @param round for example (1 , 3 , 15 , ...)
+	 * @return played games' ids
+	 * from this url https://api.sofascore.com/api/v1/unique-tournament/League's ID/season/season's ID/events/round/round's number
+     * English primer league id is 17 , la liga id is 8
+ 	 * for season 2019/2020 id in english primer league is 23776 
+	 */
+	
 	
 	public RoundGamesID getPlayedGamesIdInRound(String competitionName, String competitionYears , String round) {
 			
