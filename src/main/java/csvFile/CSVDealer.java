@@ -17,44 +17,8 @@ public class CSVDealer {
 		 * @param dataType statistics or incidentInGames
 		 * @param isHeader to know if the data is header or no :: it depends on how we send the data object which contains data or string if object i think we do not want this parameter
 		 */
-		//to ask hassan to make site and dataType enum
-//£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££
-//£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££
-/*
-		public void write(String site , String competitionName , String competitionYears  , String data , boolean isHeader , String dataType) {
-	
-			competitionName = competitionName.replaceAll("\\s+", "");
-			if(site.equals("SofaScore")) {competitionYears = competitionYears.replace('/', '-');}
-			Path directoryPath = Path.of(String.format(dataBasePath,site, competitionName ));
-		    try {
-				Files.createDirectories(directoryPath);
-			} catch (Exception e) {
-				throw new RuntimeException("can not create the folder  " + competitionName );// is it good to add e.getStackTrace()  to the msg
-			}
-			Path filePath = Path.of(String.format(dataBasePath ,site, competitionName)+"\\"  + competitionYears+dataType+".csv");
-		    if( ! Files.exists(filePath)) {
-				try {
-					Files.createFile(filePath);
-					if(isHeader) {Files.writeString(filePath, data +"\n" );}
-					else {throw new RuntimeException ("the file is empty and the data is not header");}
-				} catch (Exception e) {
-					throw new RuntimeException("can not create the file  " + competitionYears+dataType);// is it good to add e.getStackTrace()  to the msg
-				}
-		    }
-			try {
-				if(! isHeader) { 
-					Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);
-				}
-			} catch (IOException e) {
-				throw new RuntimeException("can not write the file  " +  competitionYears+dataType);// is it good to add e.getStackTrace()  to the msg
-			}
-		}
-		*/
-//£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££
-//£££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££££	
-		
 
-		public void write2(String site , String competitionName , String data , boolean isHeader , String fileType) {
+		public void write(String site , String competitionName , String data , boolean isHeader , String fileType) {
 			
 			competitionName = competitionName.replaceAll("\\s+", "");
 			Path directoryPath = Path.of(String.format(dataBasePath,site, competitionName ));

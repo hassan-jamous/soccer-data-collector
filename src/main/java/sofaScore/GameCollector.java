@@ -29,13 +29,16 @@ import util.HttpUtil;
  * collect games information like( statistics , incidentInGames  and basic information)
  * for example arsenal vs new castle united in round 19 at season 2020-2021 (game id is 8897048) 
  *  
- * from this url [  https://api.sofascore.com/api/v1/event/8897048/statistics  ] we extract the statistics
- * for example statistics likes [ (Ball possession: home =66% , away=34%),(Shots off target: home=6 away=1)] 
- * this statistics for all periods (ALL= the game , 1ST = first half , 2ND = second half) if the site provides these information
- * old leagues do not contains any information
+ * from this url [  https://api.sofascore.com/api/v1/event/8897048/statistics  ] we extract the 
+ * statistics .
+ * for example statistics likes [(Ball possession: home =66% , away=34%),
+ * (Shots off target: home=6 away=1)] 
+ * this statistics for all periods (ALL= the game , FirstHalf = first half , SecondHalf = second half) 
  * 
+ *  
  * from this url [  https://api.sofascore.com/api/v1/event/8897048/incidentInGames  ] we extract the incidentInGames
  * incidentInGames likes( goal , substitution , red card....)
+ * 
  * 
  * from this url [  https://api.sofascore.com/api/v1/event/8897048  ] we extract basic information
  * basic information likes ( home team arsenal , away team new castle united , in round 19 
@@ -49,6 +52,14 @@ public class GameCollector {
 	private final HttpUtil httpUtil = new HttpUtil();
     private Gson gson = new Gson();
 
+    /**
+     * this url ( https://www.sofascore.com/fulham-manchester-united/KsT ) is for the game 
+     * Fulham vs Manchester United in English primer league season 2020/2021 round 18 , and it's statistics
+     * are in this url ( https://api.sofascore.com/api/v1/event/8897060/statistics )
+     * @param gameID = 8897060 in this example
+     * @return GameStatistics which contains the statistics in the url (https://api.sofascore.com/api/v1/event/gameID/statistics
+     * after comparing it with LeaguesStatisticForAllTime
+     */
     public GameStatistics getGameStatistics(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_STATISTICS, gameID ));
@@ -85,9 +96,9 @@ public class GameCollector {
 			}
 			for(LeagueStatisticsForAllTime statistic : LeagueStatisticsForAllTime.values()) {
 				String[] s = (statistic.value()).split(",");
-				GameStatisticsForOneItem test = new GameStatisticsForOneItem(s[0],s[1],s[2],null,null);
-				if(! gamesInfo.containsSatatistic(test)) {
-					gamesInfo.addStatistic(test);
+				GameStatisticsForOneItem itemInLeaguesStatisticsForAllTime = new GameStatisticsForOneItem(s[0],s[1],s[2],null,null);
+				if(! gamesInfo.containsSatatistic(itemInLeaguesStatisticsForAllTime)) {
+					gamesInfo.addStatistic(itemInLeaguesStatisticsForAllTime);
 				}
 			}
 		}

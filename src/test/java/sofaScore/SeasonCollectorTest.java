@@ -18,8 +18,8 @@ public class SeasonCollectorTest {
 	@Test 
 	public void itShouldWriteSeason() {
 		//seasonCollectorTest.writeSeasonNew("Premier League", "20/21");
-		seasonCollectorTest.writeSeasonNew("Premier League", "19/20");
-		seasonCollectorTest.writeSeasonNew("Premier League", "18/19");
+		seasonCollectorTest.writeSeason("Premier League", "19/20");
+		seasonCollectorTest.writeSeason("Premier League", "18/19");
 		//seasonCollectorTest.writeSeason("Premier League", "17/18");
 		//seasonCollectorTest.writeSeason("Premier League", "16/17");
 		//seasonCollectorTest.writeSeason("Premier League", "15/16");

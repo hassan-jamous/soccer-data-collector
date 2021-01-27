@@ -25,7 +25,7 @@ public class SeasonCollector {
 		return currentRoundInfo.currentRound.round;
 	}
 
-	public void writeSeasonNew(String competitionName, String competitionYears) {
+	public void writeSeason(String competitionName, String competitionYears) {
 		int limit = getCurrentRound(competitionName, competitionYears);
 		for(int i =1 ; i <= limit ; i++) {
 			roundCollerctor.writeRound(competitionName, competitionYears , String.valueOf(i));

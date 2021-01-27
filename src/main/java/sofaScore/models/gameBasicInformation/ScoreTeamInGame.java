@@ -5,6 +5,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 //i recommend to change all primitives to objects (int to Integer) to accept null
+//to check what every attribute means
 public class ScoreTeamInGame {
 	
 	public Integer current ;

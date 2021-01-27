@@ -26,6 +26,7 @@ public class SofaScoreCollector {
 	 * @param competitionName example Premier League
 	 * @param competitionYears example 05/06
 	 * @param round
+	 * @param gameIndex in round
 	 */
 	public GameIncidents getGameIencidents(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameIncidents(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
@@ -36,15 +37,32 @@ public class SofaScoreCollector {
 	 * @param competitionName  example Premier League
 	 * @param competitionYears example 05/06
 	 * @param round
-	 * @param gameIndex
+	 * @param gameIndex in round
 	 * @return
 	 */
 	public GameBasicInformation getGameBasicInformation(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameBasicInformation(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
 	}
+	/**
+	 * 
+	 * @param competitionName
+	 * @param competitionYears
+	 * @param round
+	 * @param gameIndex in round
+	 * @return
+	 */
 
-	public GameStatistics getGameNewStatisticsNew(String competitionName, String competitionYears , String round , int gameIndex) {
+	public GameStatistics getGameStatistics(String competitionName, String competitionYears , String round , int gameIndex) {
 		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+	}
+	
+	/**
+	 * 
+	 * @param competitionName
+	 * @param competitionYears
+	 */
+	public void writeSeason(String competitionName, String competitionYears) {
+		seasonCollector.writeSeason(competitionName, competitionYears);
 	}
 
 }

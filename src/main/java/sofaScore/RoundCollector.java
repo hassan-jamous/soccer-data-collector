@@ -40,7 +40,11 @@ public class RoundCollector {
 		return gamesId;
 	}
 	
- void writeRound(String competitionName, String competitionYears , String round) {
+	/**
+	 * 
+	 * write round's games (game basic information and game statistics) into file
+	 */
+	public void writeRound(String competitionName, String competitionYears , String round) {
 	
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName , competitionYears , round);
 		for(int i =0 ; i < gamesIdInRound.events.size(); i++) {
@@ -51,15 +55,15 @@ public class RoundCollector {
 			if(  (gameBasicInfromation.event.status.description.equals("Ended")||gameBasicInfromation.event.status.description.equals("Removed")) 
 					&&  gameBasicInfromation.event.status.type.equals("finished") ) {
 				if((i==0)&&(Integer.valueOf(round)==1)) {//first game to write the header
-						csvDealer.write2("SofaScore", competitionName, csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
+						csvDealer.write("SofaScore", competitionName, csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
 				}
-					csvDealer.write2("SofaScore", competitionName, csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");
+					csvDealer.write("SofaScore", competitionName, csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic), false, "statistic");
 			}
 			else{// if the match has been canceled
 				if((i==0)&&(Integer.valueOf(round)==1)) {//first game to write the header
-					csvDealer.write2("SofaScore", competitionName, csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
+					csvDealer.write("SofaScore", competitionName, csvGetterString.getHeaderStringForCSV(gameBasicInfromation) + csvGetterString.getHeaderStringForCSV(gameStatistic), true, "statistic");
 				}
-				csvDealer.write2("SofaScore", competitionName, csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
+				csvDealer.write("SofaScore", competitionName, csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  null statistic for game "+i +"  with id "+ gamesIdInRound.events.get(i).id+" at round "+ round, false, "statistic");// header must be values now just for test
 			}
 		}
 	}

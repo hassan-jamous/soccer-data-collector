@@ -18,15 +18,13 @@ public class IncidentsGameDeserializer implements JsonDeserializer<IncidentInGam
 	  Gson gson;
 	  Map<String, Class<? extends IncidentInGame>> incidentsTypeRegistry;
 
-	  public IncidentsGameDeserializer(String incidentTypeElementName)
-	  {
+	  public IncidentsGameDeserializer(String incidentTypeElementName) {
 	    this.incidentTypeElementName = incidentTypeElementName;
 	    gson = new Gson();
 	    incidentsTypeRegistry = new HashMap<>();
 	  }
 
-	  public void registerIncidentType(String incidentTypeName, Class<? extends IncidentInGame> incidentType)
-	  {
+	  public void registerIncidentType(String incidentTypeName, Class<? extends IncidentInGame> incidentType) {
 		  incidentsTypeRegistry.put(incidentTypeName, incidentType);
 	  }
 

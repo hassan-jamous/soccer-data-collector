@@ -25,7 +25,7 @@ public class GameCollectorTest {
 
 		    //https://api.sofascore.com/api/v1/event/8243423/statistics
 		    //https://www.sofascore.com/chelsea-norwich-city/Nnf
-		    GameStatistics gameStatistics1Atround3At19_20ActualValue = sofaScoreCollectorTest.getGameNewStatisticsNew("Premier League", "19/20", "3", 1);
+		    GameStatistics gameStatistics1Atround3At19_20ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "19/20", "3", 1);
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","46%","54%")));
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Total shots","6","23")));
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Hit woodwork","0","0")));
@@ -34,7 +34,7 @@ public class GameCollectorTest {
 		    
 		    // https://www.sofascore.com/everton-leeds-united/JsY
 		    //https://api.sofascore.com/api/v1/event/8896979/incidents
-		    GameStatistics gameStatistics3Atround10At20_21ActualValue = sofaScoreCollectorTest.getGameNewStatisticsNew("Premier League", "20/21", "10", 3);
+		    GameStatistics gameStatistics3Atround10At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "20/21", "10", 3);
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","41%","59%")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Total shots","15","23")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","TVData","Yellow cards","1","1")));
