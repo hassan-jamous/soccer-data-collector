@@ -1,9 +1,7 @@
 package sofaScore;
 
-import java.util.Collections;
 import com.google.gson.Gson;
 import csvFile.CSVDealer;
-import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.season.CurrentRoundSeasonInfo;
 import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
@@ -18,26 +16,6 @@ public class SeasonCollector {
 	RoundCollector roundCollerctor = new RoundCollector();
 	GameCollector gameCollector = new GameCollector();
 	CSVDealer csvDealer = new CSVDealer();
-/*	
-public TreeSet<String> getSeasonStatisticsAsString(String competitionName, String competitionYears) {
-		
-	int limit = getCurrentRound(competitionName, competitionYears);
-	TreeSet<String> resultSeasonStatistic =  new TreeSet<>();
-	int j =1;
-	while (j <= limit)  {
-		TreeSet<String> roundStatistic = roundCollerctor.getRoundStatisticsAsString(competitionName, competitionYears , String.valueOf(j));
-		if(roundStatistic != null) {
-			for(String statistic : roundStatistic ) {
-				resultSeasonStatistic.add(statistic);
-			}
-		}
-		j++;			
-	}
-	if ((resultSeasonStatistic == null) || (resultSeasonStatistic.isEmpty())) {return null;}
-	
-	return resultSeasonStatistic; 
-	}
-*/	
 
 	public int getCurrentRound(String competitionName , String competitionYears) {
 		
@@ -46,48 +24,12 @@ public TreeSet<String> getSeasonStatisticsAsString(String competitionName, Strin
 		CurrentRoundSeasonInfo currentRoundInfo = gson.fromJson(gsonString, CurrentRoundSeasonInfo.class);
 		return currentRoundInfo.currentRound.round;
 	}
-	
-	public GameStatistics getGamesStatisticNewInSeason(String competitionName, String competitionYears){
-	
+
+	public void writeSeasonNew(String competitionName, String competitionYears) {
 		int limit = getCurrentRound(competitionName, competitionYears);
-		GameStatistics seasonStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(1));
-		int j =2;
-		while ((j <= limit) && (seasonStatistic == null)) {
-			seasonStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(j));
-			j++;			
-		}
-		if ((seasonStatistic == null) || (seasonStatistic.statistics == null)) {
-			return null;
-		}
-		for(int i =j ; i <= limit ; i++) {
-			
-			GameStatistics roundStatistic = roundCollerctor.getRoundGamesStatistic(competitionName, competitionYears , String.valueOf(i));
-			if((roundStatistic != null) && (roundStatistic.statistics != null)) {
-				seasonStatistic.makeItHaveTheSameTo(roundStatistic);
-			}
-		}
-		Collections.sort(seasonStatistic.statistics);
-		return seasonStatistic; 
-	}
-	
-	public void writeSeason(String competitionName, String competitionYears) {
-		
-		GameStatistics  seasonStatistic = getGamesStatisticNewInSeason(competitionName, competitionYears);
-		//no statistics for this season so just print the basic information
-		//must delete if and else they are the same
-		if(seasonStatistic == null) {
-			int limit = getCurrentRound(competitionName, competitionYears);
-			for(int i =1 ; i <= limit ; i++) {
-				roundCollerctor.writeRoundFromSeason(competitionName, competitionYears , String.valueOf(i), seasonStatistic);
-			}
-		}
-		else {
-			int limit = getCurrentRound(competitionName, competitionYears);
-			for(int i =1 ; i <= limit ; i++) {
-				roundCollerctor.writeRoundFromSeason(competitionName, competitionYears , String.valueOf(i), seasonStatistic);
-			}
+		for(int i =1 ; i <= limit ; i++) {
+			roundCollerctor.writeRound(competitionName, competitionYears , String.valueOf(i));
 		}
 	}
-	
 	
 }

@@ -19,7 +19,6 @@ public HashMap<String, Integer> groupsIDs ;
 	
 	public int getGroupNameId(String key) {
 		if(! groupsIDs.containsKey(key)) {
-			//new name
 			throw new RuntimeException("key not found  "  + key);
 		}
 		return groupsIDs.get(key);

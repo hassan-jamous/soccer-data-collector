@@ -9,8 +9,8 @@ public HashMap<String, Integer> periodIDs ;
 	public HashMapStatisticPeriod() {
 		periodIDs = new HashMap<>();
 		periodIDs.put("ALL", 0);
-		periodIDs.put("1ST", 1);
-		periodIDs.put("2ND", 2);
+		periodIDs.put("FirstHalf", 1);
+		periodIDs.put("SecondHalf", 2);
 
 	}
 	

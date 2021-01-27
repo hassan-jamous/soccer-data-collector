@@ -17,10 +17,9 @@ public class SeasonCollectorTest {
 	
 	@Test 
 	public void itShouldWriteSeason() {
-			
-		//seasonCollectorTest.writeSeason("Premier League", "20/21");
-		seasonCollectorTest.writeSeason("Premier League", "19/20");
-		//seasonCollectorTest.writeSeason("Premier League", "18/19");
+		//seasonCollectorTest.writeSeasonNew("Premier League", "20/21");
+		seasonCollectorTest.writeSeasonNew("Premier League", "19/20");
+		seasonCollectorTest.writeSeasonNew("Premier League", "18/19");
 		//seasonCollectorTest.writeSeason("Premier League", "17/18");
 		//seasonCollectorTest.writeSeason("Premier League", "16/17");
 		//seasonCollectorTest.writeSeason("Premier League", "15/16");
@@ -39,9 +38,9 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeSeason("La Liga", "14/15");
 		//seasonCollectorTest.writeSeason("La Liga", "13/14");
 		//seasonCollectorTest.writeSeason("La Liga", "12/13");
-		seasonCollectorTest.writeSeason("La Liga", "11/12");
-		seasonCollectorTest.writeSeason("La Liga", "10/11");
-		seasonCollectorTest.writeSeason("La Liga", "09/10");
+		//seasonCollectorTest.writeSeason("La Liga", "11/12");
+		//seasonCollectorTest.writeSeason("La Liga", "10/11");
+		//seasonCollectorTest.writeSeason("La Liga", "09/10");
 
 	}
 

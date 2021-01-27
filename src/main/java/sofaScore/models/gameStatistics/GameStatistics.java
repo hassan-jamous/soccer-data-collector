@@ -56,7 +56,8 @@ public class GameStatistics {
 			itemToAdd.groupName = item.groupName;
 			itemToAdd.name = item.name;
 			itemToAdd.home = itemToAdd.away = null;
-			this.statistics.add(itemToAdd);			
+			this.statistics.add(itemToAdd);
+			Collections.sort((List<GameStatisticsForOneItem>)this.statistics);
 		}
 	}
 	public void makeItHaveTheSameTo(GameStatistics newGameStatistic) {
@@ -64,10 +65,8 @@ public class GameStatistics {
 		Gson gson = new Gson().newBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		String resultGameGsonString = gson.toJson(this);		
 		String newGameGsonString = gson.toJson(newGameStatistic);
-		//if(newGameStatistic == null) {System.out.println();}
 		if(resultGameGsonString.equals(newGameGsonString)) {
-			//remeber to delele it
-			//Collections.sort((List<GameStatisticsForOneItem>)this.statistics);
+
 		}
 		else {
 			for(int i = 0 ; i <newGameStatistic.statistics.size(); i++) {

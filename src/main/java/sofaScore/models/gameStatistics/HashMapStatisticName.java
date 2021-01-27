@@ -45,7 +45,6 @@ public HashMap<String, Integer> nameIDs ;
 	
 	public int getNameId(String key) {
 		if(! nameIDs.containsKey(key)) {
-			//new name
 			throw new RuntimeException("key not found  "  + key);
 		}
 		return nameIDs.get(key);
