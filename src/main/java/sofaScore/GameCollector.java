@@ -63,46 +63,59 @@ public class GameCollector {
     public GameStatistics getGameStatistics(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_STATISTICS, gameID ));
-		if(gsonString.contains("Not Found")) {return null;}
-		JsonElement  jsonElement = JsonParser.parseString(gsonString);
-		JsonArray statisticsArray = jsonElement.getAsJsonObject().get("statistics").getAsJsonArray();
 		GameStatistics gamesInfo = new  GameStatistics();
-		for(int i =0 ; i < statisticsArray.size() ; i++) {
-			String peroid = statisticsArray.get(i).getAsJsonObject().get("period").getAsString();
-			if(peroid.equals("1ST")) {peroid="FirstHalf";}
-			if(peroid.equals("2ND")) {peroid="SecondHalf";}
-			JsonArray groupsInPeriod = statisticsArray.get(i).getAsJsonObject().getAsJsonArray("groups");
-			for(int i1 = 0 ; i1 < groupsInPeriod.size(); i1++) {
-				String groupName = groupsInPeriod.get(i1).getAsJsonObject().get("groupName").getAsString();
-				JsonArray statisticsItems = groupsInPeriod.get(i1).getAsJsonObject().getAsJsonArray("statisticsItems");
-				for(int i2 =0 ; i2 < statisticsItems.size() ; i2++) {
-					JsonElement item = statisticsItems.get(i2);
-					String name =item.getAsJsonObject().get("name").getAsString();
-					String away =item.getAsJsonObject().get("away").getAsString();
-					String home =item.getAsJsonObject().get("home").getAsString();
-					try{
-						String allString = peroid+groupName+name;
-						String statisticAsInEnum = allString.replaceAll("\\s", "");
-						LeagueStatisticsForAllTime.valueOf(statisticAsInEnum);
-					}catch(Exception e) {
-						throw new RuntimeException("season statistic does not have this statistic " +peroid +"  "+ groupName +"  "+ name);
-					}
-					
-					GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid,groupName,name,home,away);
-					
-					if(gamesInfo.statistics == null) {gamesInfo.statistics = new ArrayList<>();}
-					gamesInfo.statistics.add(gameStatistic);
-				}
-			}
-			for(LeagueStatisticsForAllTime statistic : LeagueStatisticsForAllTime.values()) {
-				String[] s = (statistic.value()).split(",");
-				GameStatisticsForOneItem itemInLeaguesStatisticsForAllTime = new GameStatisticsForOneItem(s[0],s[1],s[2],null,null);
-				if(! gamesInfo.containsSatatistic(itemInLeaguesStatisticsForAllTime)) {
-					gamesInfo.addStatistic(itemInLeaguesStatisticsForAllTime);
+		if(gsonString.contains("Not Found")) {
+			return makeItEqualToSeasonStatisticsForAllTime(gameID, gamesInfo);
+		}
+		else {
+			JsonElement  jsonElement = JsonParser.parseString(gsonString);
+			JsonArray statisticsArray = jsonElement.getAsJsonObject().get("statistics").getAsJsonArray();
+			for(int i =0 ; i < statisticsArray.size() ; i++) {
+				String peroid = statisticsArray.get(i).getAsJsonObject().get("period").getAsString();
+				if(peroid.equals("1ST")) {peroid="FirstHalf";}
+				if(peroid.equals("2ND")) {peroid="SecondHalf";}
+				JsonArray groupsInPeriod = statisticsArray.get(i).getAsJsonObject().getAsJsonArray("groups");
+				for(int i1 = 0 ; i1 < groupsInPeriod.size(); i1++) {
+					String groupName = groupsInPeriod.get(i1).getAsJsonObject().get("groupName").getAsString();
+					JsonArray statisticsItems = groupsInPeriod.get(i1).getAsJsonObject().getAsJsonArray("statisticsItems");
+					for(int i2 =0 ; i2 < statisticsItems.size() ; i2++) {
+						JsonElement item = statisticsItems.get(i2);
+						String name =item.getAsJsonObject().get("name").getAsString();
+						String away =item.getAsJsonObject().get("away").getAsString();
+						String home =item.getAsJsonObject().get("home").getAsString();
+						try{
+							String allString = peroid+groupName+name;
+							String statisticAsInEnum = allString.replaceAll("\\s", "");
+							LeagueStatisticsForAllTime.valueOf(statisticAsInEnum);
+						}catch(Exception e) {
+							throw new RuntimeException("season statistic does not have this statistic " +peroid +"  "+ groupName +"  "+ name);
+						}
+						
+						GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid,groupName,name,home,away);
+						
+						if(gamesInfo.statistics == null) {gamesInfo.statistics = new ArrayList<>();}
+						gamesInfo.statistics.add(gameStatistic);
 				}
 			}
 		}
-		if((  (gamesInfo == null)  ||(  gamesInfo.statistics == null) || (gamesInfo.statistics.isEmpty()) )) {return null;}
+			return makeItEqualToSeasonStatisticsForAllTime(gameID, gamesInfo);
+		}
+		
+		
+	}
+
+	private GameStatistics makeItEqualToSeasonStatisticsForAllTime(String gameID, GameStatistics gamesInfo) {
+		
+		for(LeagueStatisticsForAllTime statistic : LeagueStatisticsForAllTime.values()) {
+			String[] s = (statistic.value()).split(",");
+			GameStatisticsForOneItem itemInLeaguesStatisticsForAllTime = new GameStatisticsForOneItem(s[0],s[1],s[2],null,null);
+			if(! gamesInfo.containsSatatistic(itemInLeaguesStatisticsForAllTime)) {
+				gamesInfo.addStatistic(itemInLeaguesStatisticsForAllTime);
+			}
+		}
+		if((  (gamesInfo == null)  ||(  gamesInfo.statistics == null) || (gamesInfo.statistics.isEmpty()) )) {
+			throw new RuntimeException("can not build stattistic for game with id  " + gameID);
+		}
 		Collections.sort((List<GameStatisticsForOneItem>)gamesInfo.statistics);
 		return gamesInfo;
 	}

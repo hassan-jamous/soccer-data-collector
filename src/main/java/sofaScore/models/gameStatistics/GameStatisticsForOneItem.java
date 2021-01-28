@@ -1,6 +1,6 @@
 package sofaScore.models.gameStatistics;
 
-import com.google.gson.annotations.Expose;
+//import com.google.gson.annotations.Expose;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -10,11 +10,11 @@ import lombok.ToString;
 @NoArgsConstructor
 public class GameStatisticsForOneItem implements Comparable <GameStatisticsForOneItem> {
 	
-	@Expose
+	//@Expose
 	public String period;
-	@Expose
+	//@Expose
 	public String groupName;
-	@Expose
+	//@Expose
 	public String name;
 	
 	public String home;

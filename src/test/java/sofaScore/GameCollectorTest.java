@@ -31,15 +31,30 @@ public class GameCollectorTest {
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Hit woodwork","0","0")));
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Duels","Dribbles","2/10 (20%)","9/11 (82%)")));
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Passes","Passes","210","255")));
-		    
+		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","TVData","Offsides",null,null)));
+
 		    // https://www.sofascore.com/everton-leeds-united/JsY
-		    //https://api.sofascore.com/api/v1/event/8896979/incidents
+		    //https://api.sofascore.com/api/v1/event/8896979/statistics
 		    GameStatistics gameStatistics3Atround10At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "20/21", "10", 3);
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","41%","59%")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Total shots","15","23")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","TVData","Yellow cards","1","1")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attacks","1","1")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Possession lost","66","70")));
+
+		    //https://www.sofascore.com/birmingham-city-bolton-wanderers/fsj
+		    //https://api.sofascore.com/api/v1/event/1062836/statistics
+		    GameStatistics gameStatistics2Atround38At09_10ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "09/10", "38", 2);
+		    assertTrue(gameStatistics2Atround38At09_10ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession",null,null)));
+		    assertTrue(gameStatistics2Atround38At09_10ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attacks",null,null)));
+
+		    //https://www.sofascore.com/liverpool-aston-villa/PU
+		    //https://api.sofascore.com/api/v1/event/5582852/statistics
+		    GameStatistics gameStatistics0Atround22At14_15ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "14/15", "22", 0);
+		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","46%","54%")));
+		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Possession","Ball possession",null,null)));
+		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Possession","Ball possession",null,null)));
+		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots","Total shots",null,null)));
 
 	    }
 	 @Test

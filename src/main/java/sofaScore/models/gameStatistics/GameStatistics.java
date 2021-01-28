@@ -3,7 +3,7 @@ package sofaScore.models.gameStatistics;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import com.google.gson.annotations.Expose;
+//import com.google.gson.annotations.Expose;
 import lombok.NoArgsConstructor;
 
 /**
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GameStatistics {
 
-	@Expose
+	//@Expose
 	public ArrayList<GameStatisticsForOneItem> statistics;
 	
 	public boolean containsSatatistic(GameStatisticsForOneItem item) {
@@ -55,8 +55,9 @@ public class GameStatistics {
 			}
 			for(int i =0; i<statistics.size();i++) {
 				if((statistics.get(i).period.equals(item.period)) && (statistics.get(i).groupName.equals(item.groupName)) 
-						&&(statistics.get(i).name.equals(item.name)) &&(statistics.get(i).home.equals(item.home))
-											&&(statistics.get(i).away.equals(item.away)))  {
+						&&(statistics.get(i).name.equals(item.name)) &&
+						((statistics.get(i).home == null && statistics.get(i).away == null && item.away == null && item.home==null)||
+								((statistics.get(i).home.equals(item.home))&&(statistics.get(i).away.equals(item.away))) )) {
 					return true;
 				}
 			}
