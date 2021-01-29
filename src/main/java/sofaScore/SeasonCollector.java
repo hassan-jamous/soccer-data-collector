@@ -32,4 +32,8 @@ public class SeasonCollector {
 		}
 	}
 	
+	public void writeCompetition(String competition) {
+		
+	}
+	
 }

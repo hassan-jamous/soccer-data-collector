@@ -1,6 +1,9 @@
 package sofaScore.models.utilities;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+
 
 public class HashMapSeasonsID {
 
@@ -21,22 +24,22 @@ public class HashMapSeasonsID {
 		seasonsID.put("Premier League 11/12","3391");
 		seasonsID.put("Premier League 10/11","2746");
 		seasonsID.put("Premier League 09/10","2139");
-		seasonsID.put("Premier League 08/09","1544");
-		seasonsID.put("Premier League 07/08","581");
-		seasonsID.put("Premier League 06/07","4");
-		seasonsID.put("Premier League 05/06","3");
-		seasonsID.put("Premier League 04/05","2");
-		seasonsID.put("Premier League 03/04","1");
-		seasonsID.put("Premier League 02/03","46");
-		seasonsID.put("Premier League 01/02","47");
-		seasonsID.put("Premier League 00/01","48");
-		seasonsID.put("Premier League 99/00","49");
-		seasonsID.put("Premier League 98/99","50");
-		seasonsID.put("Premier League 97/98","51");
-		seasonsID.put("Premier League 96/97","25682");
-		seasonsID.put("Premier League 95/96","25681");
-		seasonsID.put("Premier League 94/95","29167");
-		seasonsID.put("Premier League 93/94","25680");
+		//seasonsID.put("Premier League 08/09","1544");
+		//seasonsID.put("Premier League 07/08","581");
+		//seasonsID.put("Premier League 06/07","4");
+		//seasonsID.put("Premier League 05/06","3");
+		//seasonsID.put("Premier League 04/05","2");
+		//seasonsID.put("Premier League 03/04","1");
+		//seasonsID.put("Premier League 02/03","46");
+		//seasonsID.put("Premier League 01/02","47");
+		//seasonsID.put("Premier League 00/01","48");
+		//seasonsID.put("Premier League 99/00","49");
+		//seasonsID.put("Premier League 98/99","50");
+		//seasonsID.put("Premier League 97/98","51");
+		//seasonsID.put("Premier League 96/97","25682");
+		//seasonsID.put("Premier League 95/96","25681");
+		//seasonsID.put("Premier League 94/95","29167");
+		//seasonsID.put("Premier League 93/94","25680");
 		seasonsID.put("La Liga 20/21","32501");
 		seasonsID.put("La Liga 19/20","24127");
 		seasonsID.put("La Liga 18/19","18020");
@@ -55,6 +58,32 @@ public class HashMapSeasonsID {
 	public String get(String key) {
 		if(! seasonsID.containsKey(key)) {throw new RuntimeException("season not found");}
 		return seasonsID.get(key);
+	}
+	
+	public ArrayList<String> getAllSeasonForCompetition(String competitionName){
+		ArrayList<String> result = new ArrayList<>();
+		for(String key : seasonsID.keySet()) {
+			if(key.contains(competitionName)) {
+				result.add(key);
+			}
+		}
+		if(result == null || result.isEmpty()) {throw new RuntimeException("there is no competition with this name  "+ competitionName);}
+		return result;
+	}
+	
+	public ArrayList<String> getAllSeasonForCompetition(String competitionName , int startYear){
+		ArrayList<String> result = new ArrayList<>();
+		for(String key : seasonsID.keySet()) {
+			if(key.contains(competitionName)) {
+				String year = key.substring(competitionName.length()+1, key.indexOf('/'));
+				if(Integer.valueOf(year) >= startYear) {
+					result.add(key);
+				}
+			}
+		}
+		if(result == null || result.isEmpty()) {throw new RuntimeException("there is no competition with this name  "+ competitionName +"  in this year" + startYear);}
+		Collections.sort(result);
+		return result;
 	}
 }
 

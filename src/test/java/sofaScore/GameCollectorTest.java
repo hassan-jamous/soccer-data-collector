@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+
+import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameIecidents.IncidentInGame;
@@ -19,6 +21,18 @@ public class GameCollectorTest {
     SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
 	GameIencidentsValues iencidentsValues = new GameIencidentsValues();
 	AssertUtilities assertUtily = new AssertUtilities();
+	
+	//delet it after test
+	RoundCollector roundtes = new RoundCollector();
+	@Test
+	public void getGameID() {
+		/*
+		RoundGamesID s = roundtes.getGamesIdInRound("Premier League", "19/20", "15");
+		for(int i =0 ; i < s.events.size(); i++) {
+			System.out.println("i ="+i+"   id="+s.events.get(i));
+		}
+		*/
+	}
  
 	 @Test
 	    public void itShouldGetGameStatisticsNew() {
@@ -33,6 +47,17 @@ public class GameCollectorTest {
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Passes","Passes","210","255")));
 		    assertTrue(gameStatistics1Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","TVData","Offsides",null,null)));
 
+		    //https://www.sofascore.com/southampton-chelsea/NV
+		    //https://api.sofascore.com/api/v1/event/8896911/statistics
+		    GameStatistics gameStatistics1Atround5At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "20/21", "5", 1);
+		    assertTrue(gameStatistics1Atround5At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Blocked shots","3","2")));
+		    assertTrue(gameStatistics1Atround5At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots extra","Big chances","2","2")));
+		    assertTrue(gameStatistics1Atround5At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Goalkeeper saves","1","2")));
+		    assertTrue(gameStatistics1Atround5At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","TVData","Red cards",null,null)));
+		    assertTrue(gameStatistics1Atround5At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Shots outside box","0","3")));
+		    assertTrue(gameStatistics1Atround5At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attack goals",null,null)));
+
+		    
 		    // https://www.sofascore.com/everton-leeds-united/JsY
 		    //https://api.sofascore.com/api/v1/event/8896979/statistics
 		    GameStatistics gameStatistics3Atround10At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "20/21", "10", 3);
@@ -42,12 +67,25 @@ public class GameCollectorTest {
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attacks","1","1")));
 		    assertTrue(gameStatistics3Atround10At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Possession lost","66","70")));
 
-		    //https://www.sofascore.com/birmingham-city-bolton-wanderers/fsj
-		    //https://api.sofascore.com/api/v1/event/1062836/statistics
-		    GameStatistics gameStatistics2Atround38At09_10ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "09/10", "38", 2);
-		    assertTrue(gameStatistics2Atround38At09_10ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession",null,null)));
-		    assertTrue(gameStatistics2Atround38At09_10ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attacks",null,null)));
+		    //https://www.sofascore.com/newcastle-united-tottenham/IO
+		    //https://api.sofascore.com/api/v1/event/8243433/statistics
+		    GameStatistics gameStatistics8Atround3At19_20ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "19/20", "3", 8);
+		    assertTrue(gameStatistics8Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots extra","Big chances missed","1","0")));
+		    assertTrue(gameStatistics8Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots extra","Hit woodwork",null,null)));
+		    assertTrue(gameStatistics8Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Defending","Clearances","2","22")));
+		    assertTrue(gameStatistics8Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","TVData","Red cards",null,null)));
+		    assertTrue(gameStatistics8Atround3At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Possession lost",null,null)));
 
+		    //https://www.sofascore.com/west-ham-united-wolverhampton/dsM
+		    //https://api.sofascore.com/api/v1/event/8243543/statistics
+		    GameStatistics gameStatistics6Atround15At19_20ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "19/20", "15", 6);
+		    assertTrue(gameStatistics6Atround15At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Passes","Passes","479","496")));
+		    assertTrue(gameStatistics6Atround15At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Duels","Dribbles","16/28 (57%)","17/21 (81%)")));
+		    assertTrue(gameStatistics6Atround15At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Counter attack shots",null,null)));
+		    assertTrue(gameStatistics6Atround15At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","TVData","Red cards",null,null)));
+		    assertTrue(gameStatistics6Atround15At19_20ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Possession lost","71","71")));
+
+		 
 		    //https://www.sofascore.com/liverpool-aston-villa/PU
 		    //https://api.sofascore.com/api/v1/event/5582852/statistics
 		    GameStatistics gameStatistics0Atround22At14_15ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "14/15", "22", 0);
@@ -55,8 +93,31 @@ public class GameCollectorTest {
 		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Possession","Ball possession",null,null)));
 		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Possession","Ball possession",null,null)));
 		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots","Total shots",null,null)));
+		    assertTrue(gameStatistics0Atround22At14_15ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Possession","Ball possession",null,null)));
 
+		    
+		    //https://www.sofascore.com/birmingham-city-bolton-wanderers/fsj
+		    //https://api.sofascore.com/api/v1/event/1062836/statistics
+		    GameStatistics gameStatistics2Atround38At09_10ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "09/10", "38", 2);
+		    assertTrue(gameStatistics2Atround38At09_10ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession",null,null)));
+		    assertTrue(gameStatistics2Atround38At09_10ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attacks",null,null)));
+
+		    
+		    
+
+		    
 	    }
+
+	private void printStatistics(GameStatistics game) {
+		for(int i =0 ; i <game.statistics.size(); i++) {
+			System.out.println(
+					game.statistics.get(i).period+"    "+
+					game.statistics.get(i).groupName+"    "+
+					game.statistics.get(i).name+"    "+
+					game.statistics.get(i).home+"    "+
+					game.statistics.get(i).away);
+		}
+	}
 	 @Test
 	    public void itShouldGetGameIencidents() {
 		 
