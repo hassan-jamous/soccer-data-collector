@@ -11,6 +11,8 @@ public HashMap<String, Integer> periodIDs ;
 		periodIDs.put("ALL", 0);
 		periodIDs.put("FirstHalf", 1);
 		periodIDs.put("SecondHalf", 2);
+		periodIDs.put("ET1", 3);
+		periodIDs.put("ET2", 4);
 
 	}
 	

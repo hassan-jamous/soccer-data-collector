@@ -9,7 +9,12 @@ public class HashMapLeaguesID {
 	public HashMapLeaguesID() {
 		leaguesID = new HashMap<>();
 		leaguesID.put("Premier League", "17");
-		leaguesID.put("La Liga", "8");
+		leaguesID.put("LaLiga", "8");
+		leaguesID.put("Bundesliga", "35");
+		leaguesID.put("Serie A", "23");
+		leaguesID.put("Ligue 1", "34");//France
+		leaguesID.put("Division 1", "34");//France
+
 
 	}
 	

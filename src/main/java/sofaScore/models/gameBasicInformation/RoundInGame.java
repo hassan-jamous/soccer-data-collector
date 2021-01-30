@@ -5,5 +5,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class RoundInGame {
-	public int round;
+	public Integer round;
+	public String name;
+	public String slug;
 }

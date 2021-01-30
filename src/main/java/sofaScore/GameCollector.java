@@ -88,7 +88,7 @@ public class GameCollector {
 							String statisticAsInEnum = allString.replaceAll("\\s", "");
 							LeagueStatisticsForAllTime.valueOf(statisticAsInEnum);
 						}catch(Exception e) {
-							throw new RuntimeException("season statistic does not have this statistic " +peroid +"  "+ groupName +"  "+ name);
+							throw new RuntimeException("season statistic does not have this statistic " +peroid +"  "+ groupName +"  "+ name + " in this game "+gameID);
 						}
 						
 						GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid,groupName,name,home,away);

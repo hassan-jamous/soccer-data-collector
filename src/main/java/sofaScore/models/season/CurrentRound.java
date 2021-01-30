@@ -7,4 +7,6 @@ import lombok.ToString;
 public class CurrentRound {
 
 	public int round;
+	public String name;
+	public String slug;
 }

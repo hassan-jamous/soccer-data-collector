@@ -31,14 +31,24 @@ public class CSVDealer {
 		    if( ! Files.exists(filePath)) {
 				try {
 					Files.createFile(filePath);
-					if(isHeader) {Files.writeString(filePath, data +"\n" );}
-					else {throw new RuntimeException ("the file is empty and the data is not header");}
+					if(fileType.equals("Statistic")) {
+						if(isHeader) {Files.writeString(filePath, data +"\n" );}
+						else {throw new RuntimeException ("the file is empty and the data is not header");}
+					}
+					else {
+						Files.writeString(filePath, data +"\n" );
+					}
 				} catch (Exception e) {
 					throw new RuntimeException("can not create the file  " + competitionName+fileType);// is it good to add e.getStackTrace()  to the msg
 				}
 		    }
 			try {
-				if(! isHeader) { 
+				if(fileType.equals("Statistic")) {
+					if(! isHeader) { 
+						Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);
+					}
+				}
+				else{
 					Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);
 				}
 			} catch (IOException e) {

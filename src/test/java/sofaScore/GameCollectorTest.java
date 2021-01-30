@@ -34,6 +34,16 @@ public class GameCollectorTest {
 		*/
 	}
  
+	private void printStatistics(GameStatistics game) {
+		for(int i =0 ; i <game.statistics.size(); i++) {
+			System.out.println(
+					game.statistics.get(i).period+"    "+
+					game.statistics.get(i).groupName+"    "+
+					game.statistics.get(i).name+"    "+
+					game.statistics.get(i).home+"    "+
+					game.statistics.get(i).away);
+		}
+	}
 	 @Test
 	    public void itShouldGetGameStatisticsNew() {
 
@@ -108,16 +118,7 @@ public class GameCollectorTest {
 		    
 	    }
 
-	private void printStatistics(GameStatistics game) {
-		for(int i =0 ; i <game.statistics.size(); i++) {
-			System.out.println(
-					game.statistics.get(i).period+"    "+
-					game.statistics.get(i).groupName+"    "+
-					game.statistics.get(i).name+"    "+
-					game.statistics.get(i).home+"    "+
-					game.statistics.get(i).away);
-		}
-	}
+	
 	 @Test
 	    public void itShouldGetGameIencidents() {
 		 

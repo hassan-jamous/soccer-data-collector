@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GameStatistics {
 
-	//@Expose
 	public ArrayList<GameStatisticsForOneItem> statistics;
 	
 	public boolean containsSatatistic(GameStatisticsForOneItem item) {

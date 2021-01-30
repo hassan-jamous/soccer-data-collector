@@ -10,4 +10,5 @@ import lombok.ToString;
 public class TournamentInGame {
 
 	public String name;
+	public UniqueTournamentInGame uniqueTournament;
 }

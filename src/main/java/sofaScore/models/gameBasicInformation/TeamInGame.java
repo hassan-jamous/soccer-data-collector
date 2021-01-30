@@ -8,4 +8,5 @@ import lombok.ToString;
 @NoArgsConstructor
 public class TeamInGame  {
 	public String name;
+	public String shortName;
 }
