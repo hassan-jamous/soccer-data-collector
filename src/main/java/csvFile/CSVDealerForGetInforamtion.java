@@ -12,7 +12,7 @@ import sofaScore.models.gameStatistics.GameStatistics;
 public class CSVDealerForGetInforamtion {
 
 	public String getValuesStringForCSV(GameStatistics obj) {
-		String result ="";
+		String result =String.valueOf(obj.hasFivePeriods);
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
 			result +=obj.statistics.get(i).home+" ,"+obj.statistics.get(i).away+" ,";
 		}
@@ -20,7 +20,7 @@ public class CSVDealerForGetInforamtion {
 	}
 	
 	public String getHeaderStringForCSV(GameStatistics obj) {
-		String result ="";
+		String result ="Has Extra Time ,";
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
 			result += obj.statistics.get(i).period+" "+obj.statistics.get(i).groupName+" "+
 					obj.statistics.get(i).name+" Home ,"+
@@ -43,7 +43,7 @@ public class CSVDealerForGetInforamtion {
 	}
 	
 	public String getHeaderStringForCSV(GameBasicInformation obj) {
-		String result ="League , Years ,Type Of League ,Round , Home Team , Away Team , HomeScore , Away Score ,";
+		String result ="League , Years ,Type Of League ,Round , Home Team , Away Team ,  HomeScore , Away Score ,";
 		return result;
 	}
 }

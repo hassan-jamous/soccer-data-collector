@@ -22,7 +22,7 @@ import sofaScore.models.gameIecidents.IncidentInGameVarDecision;
 import sofaScore.models.gameIecidents.IncidentsGameDeserializer;
 import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.gameStatistics.GameStatisticsForOneItem;
-import sofaScore.models.gameStatistics.LeagueStatisticsForAllTime;
+import sofaScore.models.gameStatistics.LeagueStatisticsForAllTime3Periods;
 import util.HttpUtil;
 
 /**
@@ -64,8 +64,9 @@ public class GameCollector {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_STATISTICS, gameID ));
 		GameStatistics gamesInfo = new  GameStatistics();
+		boolean hasFivePeroid = false;
 		if(gsonString.contains("Not Found")) {
-			return makeItEqualToSeasonStatisticsForAllTime(gameID, gamesInfo);
+			return makeItEqualToSeasonStatisticsForAllTime(gameID, gamesInfo , hasFivePeroid);
 		}
 		else {
 			JsonElement  jsonElement = JsonParser.parseString(gsonString);
@@ -84,40 +85,43 @@ public class GameCollector {
 						String away =item.getAsJsonObject().get("away").getAsString();
 						String home =item.getAsJsonObject().get("home").getAsString();
 						try{
-							String allString = peroid+groupName+name;
-							String statisticAsInEnum = allString.replaceAll("\\s", "");
-							LeagueStatisticsForAllTime.valueOf(statisticAsInEnum);
+							if(peroid.equals("ET1") || peroid.equals("ET2")) {hasFivePeroid = true;}
+							else {
+								String allString = peroid+groupName+name;
+								String statisticAsInEnum = allString.replaceAll("\\s", "");
+								LeagueStatisticsForAllTime3Periods.valueOf(statisticAsInEnum);
+								GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid,groupName,name,home,away);
+								if(gamesInfo.statistics == null) {gamesInfo.statistics = new ArrayList<>();}
+								gamesInfo.statistics.add(gameStatistic);
+							}
 						}catch(Exception e) {
 							throw new RuntimeException("season statistic does not have this statistic " +peroid +"  "+ groupName +"  "+ name + " in this game "+gameID);
-						}
-						
-						GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid,groupName,name,home,away);
-						
-						if(gamesInfo.statistics == null) {gamesInfo.statistics = new ArrayList<>();}
-						gamesInfo.statistics.add(gameStatistic);
+						}						
 				}
 			}
 		}
-			return makeItEqualToSeasonStatisticsForAllTime(gameID, gamesInfo);
+			return makeItEqualToSeasonStatisticsForAllTime(gameID, gamesInfo , hasFivePeroid);
 		}
 		
 		
 	}
 
-	private GameStatistics makeItEqualToSeasonStatisticsForAllTime(String gameID, GameStatistics gamesInfo) {
+	private GameStatistics makeItEqualToSeasonStatisticsForAllTime(String gameID, GameStatistics gameInfo , boolean hasFivePeroid) {
 		
-		for(LeagueStatisticsForAllTime statistic : LeagueStatisticsForAllTime.values()) {
+		for(LeagueStatisticsForAllTime3Periods statistic : LeagueStatisticsForAllTime3Periods.values()) {
 			String[] s = (statistic.value()).split(",");
+			
 			GameStatisticsForOneItem itemInLeaguesStatisticsForAllTime = new GameStatisticsForOneItem(s[0],s[1],s[2],null,null);
-			if(! gamesInfo.containsSatatistic(itemInLeaguesStatisticsForAllTime)) {
-				gamesInfo.addStatistic(itemInLeaguesStatisticsForAllTime);
+			if(! gameInfo.containsSatatistic(itemInLeaguesStatisticsForAllTime)) {
+				gameInfo.addStatistic(itemInLeaguesStatisticsForAllTime);
 			}
 		}
-		if((  (gamesInfo == null)  ||(  gamesInfo.statistics == null) || (gamesInfo.statistics.isEmpty()) )) {
+		if((  (gameInfo == null)  ||(  gameInfo.statistics == null) || (gameInfo.statistics.isEmpty()) )) {
 			throw new RuntimeException("can not build stattistic for game with id  " + gameID);
 		}
-		Collections.sort((List<GameStatisticsForOneItem>)gamesInfo.statistics);
-		return gamesInfo;
+		Collections.sort((List<GameStatisticsForOneItem>)gameInfo.statistics);
+		gameInfo.hasFivePeriods = hasFivePeroid;
+		return gameInfo;
 	}
     
  	public GameIncidents getGameIncidents(String gameID) {

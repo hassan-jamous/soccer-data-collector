@@ -16,13 +16,12 @@ public class SeasonCollectorTest {
 	}
 	
 	@Test
-	public void itShouldWriteCompetition() {
-		
+	public void itShouldWriteCompetition() {		
 
 		//seasonCollectorTest.writeCompetition("Ligue 1", "1997/1998", "2004/2005");
 		//seasonCollectorTest.writeCompetition("Ligue 1", "2005/2006", "2009/2010");
 		//seasonCollectorTest.writeCompetition("Ligue 1", "2010/2011", "2015/2016");
-		seasonCollectorTest.writeCompetition("Ligue 1", "2016/2017", "2020/2021");
+		//seasonCollectorTest.writeCompetition("Ligue 1", "2016/2017", "2020/2021");
 
 	}
 	

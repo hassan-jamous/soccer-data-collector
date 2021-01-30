@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 public class GameStatistics {
 
 	public ArrayList<GameStatisticsForOneItem> statistics;
+	public boolean hasFivePeriods;
 	
 	public boolean containsSatatistic(GameStatisticsForOneItem item) {
 		if((this.statistics == null) || (this.statistics.isEmpty())) {

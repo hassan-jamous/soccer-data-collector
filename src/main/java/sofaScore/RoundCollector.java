@@ -103,9 +103,6 @@ public class RoundCollector {
 	public RoundGamesID getGamesIdInRound222(String competitionName, String competitionYears , String round , String roundKind) {
 		
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_ROUND_URL222,leagueId.getLeagueID(competitionName), seasonId.getSeasonID(competitionName , competitionYears),round,roundKind));
-		System.out.println(competitionName + "   " + competitionYears + "  round " + round);
-		System.out.println(String.format(API_SOFA_SCORE_ROUND_URL222,leagueId.getLeagueID(competitionName), seasonId.getSeasonID(competitionName , competitionYears),round,roundKind));
-
 		if(gsonString.contains("Not Found")) {return null;}
 		Gson gson = new Gson();
 		RoundGamesID gamesId = gson.fromJson(gsonString, RoundGamesID.class);
