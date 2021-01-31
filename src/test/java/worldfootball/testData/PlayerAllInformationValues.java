@@ -274,9 +274,9 @@ public class PlayerAllInformationValues {
 	         		new PlayerClubCareer("01/2016 - 01/2016", new Club("Preston North End"), "England", "Goalkeeper", null)));
 
 	        player4ExpectedValueInfo.clubMatches = new ArrayList<>(Arrays.asList(
-	        		new PlayerCompetitionInformation("England","Premier League","19","0","19","0","0","0","0","0"),
+	        		new PlayerCompetitionInformation("England","Premier League","20","0","20","0","0","0","0","0"),
 	        		new PlayerCompetitionInformation("England","League One","51","0","51","0","0","4","0","0"),
-	        		new PlayerCompetitionInformation(null, "∑","275","0","275","0","0","14","0","0")));
+	        		new PlayerCompetitionInformation(null, "∑","276","0","276","0","0","14","0","0")));
 	        
 	        return player4ExpectedValueInfo;
 		}

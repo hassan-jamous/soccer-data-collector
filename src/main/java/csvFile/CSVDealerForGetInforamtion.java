@@ -12,7 +12,7 @@ import sofaScore.models.gameStatistics.GameStatistics;
 public class CSVDealerForGetInforamtion {
 
 	public String getValuesStringForCSV(GameStatistics obj) {
-		String result =String.valueOf(obj.hasFivePeriods);
+		String result =String.valueOf(obj.hasFivePeriods)+" ,";
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
 			result +=obj.statistics.get(i).home+" ,"+obj.statistics.get(i).away+" ,";
 		}

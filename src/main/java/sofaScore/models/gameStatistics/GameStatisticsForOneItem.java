@@ -10,13 +10,9 @@ import lombok.ToString;
 @NoArgsConstructor
 public class GameStatisticsForOneItem implements Comparable <GameStatisticsForOneItem> {
 	
-	//@Expose
 	public String period;
-	//@Expose
 	public String groupName;
-	//@Expose
 	public String name;
-	
 	public String home;
 	public String away;
 

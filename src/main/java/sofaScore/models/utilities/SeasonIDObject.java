@@ -19,14 +19,17 @@ public class SeasonIDObject implements Comparable <SeasonIDObject>  {
 	}
 	@Override
 	public boolean equals(Object obj) {
-        if (obj != null && obj instanceof SeasonIDObject)
+        if (obj != null && obj instanceof SeasonIDObject) {
             return (competitionName.equals(((SeasonIDObject)obj).competitionName)) &&
             		(years.equals(((SeasonIDObject)obj).years));
-        else
+        }
+        else {
             return false;
+        }
     }
 	
 	 public int hashCode() {
 	        return competitionName.hashCode()+years.hashCode();
 	    }
+	    
 }

@@ -7,6 +7,7 @@ public class HashMapStatisticPeriod {
 public HashMap<String, Integer> periodIDs ;
 	
 	public HashMapStatisticPeriod() {
+		
 		periodIDs = new HashMap<>();
 		periodIDs.put("ALL", 0);
 		periodIDs.put("FirstHalf", 1);

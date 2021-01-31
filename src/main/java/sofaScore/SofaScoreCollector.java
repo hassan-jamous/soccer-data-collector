@@ -1,6 +1,5 @@
 package sofaScore;
 
-import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameStatistics.GameStatistics;
@@ -9,17 +8,6 @@ public class SofaScoreCollector {
 
 	RoundCollector roundCollerctor = new RoundCollector();
 	GameCollector gameCollector = new GameCollector();
-	SeasonCollector seasonCollector = new SeasonCollector();
-	
-	/***
-	 * 
-	 * @param competitionName example Premier League
-	 * @param competitionYears example 05/06
-	 * @param round round number 1 or 2
-	 */
-	public RoundGamesID getGamesIdInRound (String competitionName, String competitionYears , String round) {
-		return roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round);
-	}
 	
 	/***
 	 * 
@@ -29,7 +17,7 @@ public class SofaScoreCollector {
 	 * @param gameIndex in round
 	 */
 	public GameIncidents getGameIencidents(String competitionName, String competitionYears , String round , int gameIndex) {
-		return gameCollector.getGameIncidents(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+		return gameCollector.getGameIncidents(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round,"").events.get(gameIndex).id);
 	}
 	
 	/**
@@ -41,7 +29,7 @@ public class SofaScoreCollector {
 	 * @return
 	 */
 	public GameBasicInformation getGameBasicInformation(String competitionName, String competitionYears , String round , int gameIndex) {
-		return gameCollector.getGameBasicInformation(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
+		return gameCollector.getGameBasicInformation(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round,"").events.get(gameIndex).id);
 	}
 	/**
 	 * 
@@ -53,16 +41,7 @@ public class SofaScoreCollector {
 	 */
 
 	public GameStatistics getGameStatistics(String competitionName, String competitionYears , String round , int gameIndex) {
-		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round).events.get(gameIndex).id);
-	}
-	
-	/**
-	 * 
-	 * @param competitionName
-	 * @param competitionYears
-	 */
-	public void writeSeason(String competitionName, String competitionYears) {
-		seasonCollector.writeSeason(competitionName, competitionYears);
+		return gameCollector.getGameStatistics(roundCollerctor.getGamesIdInRound(competitionName, competitionYears, round,"").events.get(gameIndex).id);
 	}
 
 }
