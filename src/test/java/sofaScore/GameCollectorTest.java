@@ -27,7 +27,7 @@ public class GameCollectorTest {
 	@Test
 	public void getGameID() {
 		
-		RoundGamesID s = roundtes.getGamesIdInRound("Premier League", "19/20", "15","");
+		RoundGamesID s = roundtes.getGamesIdInRound("Premier League", "2019/2020", "15","");
 		for(int i =0 ; i < s.events.size(); i++) {
 			System.out.println("i ="+i+"   id="+s.events.get(i));
 		}
