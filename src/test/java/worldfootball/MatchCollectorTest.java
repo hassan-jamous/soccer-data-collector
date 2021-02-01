@@ -1,6 +1,7 @@
 package worldfootball;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 import java.util.*;
 
@@ -9,6 +10,9 @@ import org.junit.Test;
 
 import worldfootball.models.PlayerAtMatch;
 import worldfootball.testData.MatchesDetailsValues;
+import worldfootball.models.Club;
+import worldfootball.models.Game;
+import worldfootball.models.HistoyGame;
 import worldfootball.models.MatchDetails;
 import testUtilities.AssertUtilities;
 import testUtilities.ArrayAttributeWithIndexes;
@@ -80,13 +84,22 @@ public class MatchCollectorTest {
                 new ArrayAttributeWithIndexes("firstClub" , new ArrayList<>(Arrays.asList(10,12))),
                 new ArrayAttributeWithIndexes("secondClub" , new ArrayList<>(Arrays.asList(10)))));
         assertMatches(match5ActualValue, match5Attributes, match5ExpectedValue);
-        
-      //https://www.worldfootball.net/report/premier-league-2020-2021-wolverhampton-wanderers-manchester-united/
-      //  MatchDetails match6ActualValue = screenScraperUnderTest.getMatchDetails("premier-league", "2020-2021", "wolverhampton-wanderers", "manchester-united");
-        //MatchDetails match6ExpectedValue = matchesWorldFootballMatchDetailsValue.getGame2020_2021WolverhamptonWanderersManchesterUnited();
-        //assertMatches(match6ActualValue, null, match5ExpectedValue);
+     
+    }
+    
+    @Test 
+    public void itShouldGetHistoryOFMatch() {
+    
+    	MatchCollector matchCollector = new MatchCollector();
+    	ArrayList<HistoyGame> historyGame1ActualValue = matchCollector.getHistoryOfGame("liverpool-fc", "manchester-united");
+        assertThat(historyGame1ActualValue.get(0)).usingRecursiveComparison().isEqualTo(new HistoyGame("Premier League","2020/2021","19. Round", new Game(null,null,new Club("Liverpool FC"), new Club("Manchester United"),"0:0 (0:0)")));
 
-        
+    }
+    
+    @Test
+    public void getRankingTableForClub() {
+    	MatchCollector matchCollector = new MatchCollector();
+    	assertEquals(Integer.valueOf( matchCollector.getRankingClub("eng-premier-league", "2020-2021", 10, "Manchester United")),Integer.valueOf(7));
     }
 	private void assertMatches(MatchDetails actualValue, List<ArrayAttributeWithIndexes> attributes, MatchDetails expectedValue) {
 			
