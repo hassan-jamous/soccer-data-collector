@@ -4,7 +4,8 @@ import lombok.NoArgsConstructor;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameStatistics.GameStatistics;
 import worldfootball.models.Game;
-import worldfootball.models.HistoyGame;
+import worldfootball.models.HistoryGame;
+import worldfootball.models.HistoryGameWithRanking;
 /**
  * 
  * to get the information as string to be written in the file
@@ -20,8 +21,14 @@ public class CSVDealerForGetInforamtion {
 		}
 		return result;
 	}
+	public String getValueStringForCSV(HistoryGameWithRanking game) {
+		
+		String result ="";
+		result = getValueStringForCSV( game.game)+" Ranking {"+game.firstTeamRanking+","+game.secondTeamRanking+"},";
+		return result;
+	}
 	
-	public String getValueStringForCSV(HistoyGame game) {
+	public String getValueStringForCSV(HistoryGame game) {
 	
 		String result ="";
 		result = game.competitionName+" ,"+game.year+" ,"+game.roundInfo+" ,"+getValueStringForCSV(game.gameInfo);

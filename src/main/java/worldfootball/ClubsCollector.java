@@ -10,6 +10,7 @@ import worldfootball.models.Club;
 import worldfootball.models.KindOfPlayer;
 import worldfootball.models.Player;
 import worldfootball.models.PlayerSummary;
+import worldfootball.util.ConvertWorldToWorldFootball;
 import util.HttpUtil;
 
 /**
@@ -20,16 +21,19 @@ import util.HttpUtil;
 public class ClubsCollector {
 	
     private HttpUtil httpUtil = new HttpUtil();
-    private static final String WORLD_FOOTBALL_URL = "https://www.worldfootball.net";
     private static final String WORLD_FOOTBALL_PLAYERS_URL = "https://www.worldfootball.net/players/";
     private static final String WORLD_FOOTBALL_CLUBS_URL = "https://www.worldfootball.net/teams/";
     private static final String WORLD_FOOTBALL_ROUND_URL ="https://www.worldfootball.net/schedule/";
+    ConvertWorldToWorldFootball convertor = new ConvertWorldToWorldFootball();
+    
     public ArrayList<PlayerSummary> getClubSquad(String clubName, String year) {
         String url = WORLD_FOOTBALL_CLUBS_URL + clubName + "/" + year + "/2/";
         return getAllPlayersFromPage(url);
     }
 
-    public int getNumberOfRoundInCompetition(String competitionRoundsURL ) {
+    	
+ 
+ /*   public int getNumberOfRoundInCompetition(String competitionRoundsURL ) {
     	
     	String url = WORLD_FOOTBALL_URL+"/players/"+competitionRoundsURL;
     	String htmlPage = httpUtil.sendGetHttpRequest(url);
@@ -37,11 +41,12 @@ public class ClubsCollector {
         Elements table = doc.select("table.standard_tabelle").select("table:has(tbody:has(tr:has(td:contains(Appearances))))").select("table:has(tbody:has(tr:has(td:contains(Squad [))))");
         Elements trs = table.select("tr");
         return (trs.size()-1)*2;
-    }
+    }*/
     
     public String getCompetitionLeagueForClubInYear(String club , String year) {
+    	String clubtoURL = convertor.convertWorldToUseInURL(club);
     	String leagueYear = (year.length()>6)?year:Integer.valueOf(year)-1+"/"+Integer.valueOf(year);
-    	String url = WORLD_FOOTBALL_CLUBS_URL+club+"/"+leagueYear.substring(5,9)+"/3/";
+    	String url = WORLD_FOOTBALL_CLUBS_URL+clubtoURL+"/"+leagueYear.substring(5,9)+"/3/";
     	String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
         Elements tables = doc.select("table.standard_tabelle").select("table:has(tbody:has(tr:has(td:has(a[href*=/all_matches]))))");

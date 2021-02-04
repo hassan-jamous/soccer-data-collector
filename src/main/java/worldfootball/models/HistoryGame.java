@@ -8,7 +8,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 //to save head to head between two clubs
-public class HistoyGame implements Comparable <HistoyGame>{
+public class HistoryGame implements Comparable <HistoryGame>{
 
 	public String competitionName;
 	public String year;
@@ -16,7 +16,7 @@ public class HistoyGame implements Comparable <HistoyGame>{
 	public Game gameInfo;
 	
 	@Override
-	public int compareTo(HistoyGame objecttoCompare) {
+	public int compareTo(HistoryGame objecttoCompare) {
 		
 		if(objecttoCompare == null) {return 1;}
 		String[] thisStrings = this.gameInfo.date.split("/");

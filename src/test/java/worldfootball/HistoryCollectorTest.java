@@ -6,9 +6,11 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import csvFile.CSVDealerForGetInforamtion;
 import worldfootball.models.Club;
 import worldfootball.models.Game;
-import worldfootball.models.HistoyGame;
+import worldfootball.models.HistoryGame;
+import worldfootball.models.HistoryGameWithRanking;
 
 public class HistoryCollectorTest {
 
@@ -16,9 +18,9 @@ public class HistoryCollectorTest {
     public void itShouldGetHistoryOFMatch() {
     /*
     	HistoryCollector historyCollector = new HistoryCollector();
-    	ArrayList<HistoyGame> historyGame1ActualValue = historyCollector.getAllHeadToHeadBetween("liverpool-fc", "manchester-united");
-        assertThat(historyGame1ActualValue.get(0)).usingRecursiveComparison().isEqualTo(new HistoyGame("FA Cup","2020/2021","4. Round", new Game("24/01/2021","17:00",new Club("Manchester United"), new Club("Liverpool FC"),"3:2 (1:1)")));
-    	assertThat(historyGame1ActualValue.get(1)).usingRecursiveComparison().isEqualTo(new HistoyGame("Premier League","2020/2021","19. Round", new Game("17/01/2021","16:30",new Club("Liverpool FC"), new Club("Manchester United"),"0:0 (0:0)")));
+    	ArrayList<HistoryGame> historyGame1ActualValue = historyCollector.getAllHeadToHeadBetween("liverpool-fc", "manchester-united");
+        assertThat(historyGame1ActualValue.get(0)).usingRecursiveComparison().isEqualTo(new HistoryGame("FA Cup","2020/2021","4. Round", new Game("24/01/2021","17:00",new Club("Manchester United"), new Club("Liverpool FC"),"3:2 (1:1)")));
+    	assertThat(historyGame1ActualValue.get(1)).usingRecursiveComparison().isEqualTo(new HistoryGame("Premier League","2020/2021","19. Round", new Game("17/01/2021","16:30",new Club("Liverpool FC"), new Club("Manchester United"),"0:0 (0:0)")));
 
         
         for(int i =0 ; i <historyGame1ActualValue.size(); i++) {
@@ -34,15 +36,26 @@ public class HistoryCollectorTest {
         }
         */
     }
+	@Test
+	 public void itShouldGetHistoryOFMatchWithRanking() {
+		    	HistoryCollector historyCollector = new HistoryCollector();
+		    	ArrayList<HistoryGameWithRanking> historyGame1ActualValue = historyCollector.getHeadToHeadWithRankingUntil("liverpool-fc", "manchester-united","2018");
+		    	CSVDealerForGetInforamtion x = new CSVDealerForGetInforamtion();
+		        
+		        for(int i =0 ; i <historyGame1ActualValue.size(); i++) {
+		        	System.out.println(x.getValueStringForCSV(historyGame1ActualValue.get(i)));
+		        }
+		        
+		    }
 	
 
 	@Test 
     public void itShouldGetHistoryOFMatchUntil() {
-    
+    /*
     	HistoryCollector historyCollector = new HistoryCollector();
-    	ArrayList<HistoyGame> historyGame1ActualValue = historyCollector.getHeadToHeadUntil("liverpool-fc", "manchester-united","2000/2001");
-        assertThat(historyGame1ActualValue.get(0)).usingRecursiveComparison().isEqualTo(new HistoyGame("FA Cup","2020/2021","4. Round", new Game("24/01/2021","17:00",new Club("Manchester United"), new Club("Liverpool FC"),"3:2 (1:1)")));
-    	assertThat(historyGame1ActualValue.get(1)).usingRecursiveComparison().isEqualTo(new HistoyGame("Premier League","2020/2021","19. Round", new Game("17/01/2021","16:30",new Club("Liverpool FC"), new Club("Manchester United"),"0:0 (0:0)")));
+    	ArrayList<HistoryGame> historyGame1ActualValue = historyCollector.getHeadToHeadUntil("liverpool-fc", "manchester-united","2000/2001");
+        assertThat(historyGame1ActualValue.get(0)).usingRecursiveComparison().isEqualTo(new HistoryGame("FA Cup","2020/2021","4. Round", new Game("24/01/2021","17:00",new Club("Manchester United"), new Club("Liverpool FC"),"3:2 (1:1)")));
+    	assertThat(historyGame1ActualValue.get(1)).usingRecursiveComparison().isEqualTo(new HistoryGame("Premier League","2020/2021","19. Round", new Game("17/01/2021","16:30",new Club("Liverpool FC"), new Club("Manchester United"),"0:0 (0:0)")));
     	historyCollector.writeHeadToHeadInCSV("PreimerLeague", "liverpool-fc", "manchester-united", "2000/2001");
-    }
+   */ }
 }

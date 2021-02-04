@@ -4,6 +4,8 @@ import worldfootball.models.Club;
 import worldfootball.models.ClubForRankingTable;
 import worldfootball.models.RankingTable;
 import worldfootball.models.RankingTableRequest;
+import worldfootball.util.ConvertWorldToWorldFootball;
+
 import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,6 +14,7 @@ import org.jsoup.select.Elements;
 import util.HttpUtil;
 
 public class TableCollector {
+    ConvertWorldToWorldFootball convertor = new  ConvertWorldToWorldFootball();
     private HttpUtil httpUtil = new HttpUtil();
     private static final String WORLD_FOOTBALL_SCHEDULE_URL = "https://www.worldfootball.net/schedule/";
 
@@ -25,22 +28,35 @@ public class TableCollector {
         return getRankingTable(url);
     }
 
+
+    public int getRankingClub(String roundURL ,int round , String club ){
+    	if(roundURL.contains("spieltag")) {
+	    	RankingTable roundTable= getRankingTable(WORLD_FOOTBALL_SCHEDULE_URL+roundURL);
+	    	if(round ==1) {return 1;}
+			for(int i =0 ; i < roundTable.table.size(); i++) {
+				if(roundTable.table.get(i).clubBasicInfo.name.equals(club)) {
+					return(Integer.valueOf(roundTable.table.get(i).position));
+				}
+			}
+			throw new RuntimeException(club+" do not found in this url "+ roundURL);
+    	}
+		return -1;
+	}
     
     public int getRankingClub(String competitionName , String competitionYear, int round , String club ){
 		
-		if(round == 1) {return 1;}
-		RankingTable table = getTableByRound(competitionName, competitionYear,String.valueOf(round-1), RankingTableRequest.Normal);
-		int result = -1;
-		for(int i =0 ; i < table.table.size(); i++) {
-			if(table.table.get(i).clubBasicInfo.name.equals(club)) {
-				return(Integer.valueOf(table.table.get(i).position));
+    	if(round ==1) {return 1;}
+    	String competitionNameURL = convertor.convertWorldToUseInURL(competitionName);
+    	String competitoinYearURL = convertor.convertWorldToUseInURL(competitionYear);
+    	RankingTable roundTable= getTableByRound(competitionNameURL,competitoinYearURL,String.valueOf(round-1),RankingTableRequest.Normal);
+		for(int i =0 ; i < roundTable.table.size(); i++) {
+			if(roundTable.table.get(i).clubBasicInfo.name.equals(club)) {
+				return(Integer.valueOf(roundTable.table.get(i).position));
 			}
 		}
-		if(result == -1) {
-			throw new RuntimeException("can not find "+club +" in "+ competitionName +" "+competitionYear+" round "+round);
-		}
-		return result;
+		throw new RuntimeException("error club not found");	
 	}
+    
     private RankingTable getRankingTable(String url) {
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);
