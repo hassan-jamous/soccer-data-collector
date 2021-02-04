@@ -1,9 +1,6 @@
 package worldfootball;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-
 import worldfootball.models.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,8 +16,6 @@ import util.HttpUtil;
 public class MatchCollector {
 	private HttpUtil httpUtil = new HttpUtil();
 	private static final String WORLD_FOOTBALL_MATCH_URL = "https://www.worldfootball.net/report/";
-	private static final String WORLD_FOOTBALL_HISTORY_MATCH_URL = "https://www.worldfootball.net/teams/%s/%s/11/";
-
 	private GoalsCollector goalsCollector = new GoalsCollector();
 
 	/**
@@ -240,52 +235,10 @@ public class MatchCollector {
 			}
 			result.add(goal);
 		}
-
 		return result;
 	}
 
-	public ArrayList<HistoyGame> getHistoryOfGame(String firstClub, String secondClub) {
-
-		String url = String.format(WORLD_FOOTBALL_HISTORY_MATCH_URL, firstClub, secondClub);
-		String htmlPage = httpUtil.sendGetHttpRequest(url);
-		Document doc = Jsoup.parse(htmlPage);
-		Elements tables = doc.select("table.standard_tabelle")
-				.select("table:has(tbody:has(tr:has(a[href*=/competition/])))");
-		ArrayList<HistoyGame> result = new ArrayList<>(Arrays.asList());
-		for (int i = 1; i < tables.size(); i++) {// first table contains overall information about every competition and overall of all competitions
-			Elements trs = tables.get(i).select("tr");
-			String competitionName = trs.get(0).child(0).child(0).attr("title");
-			for (int j = 1; j < trs.size(); j++) {
-				HistoyGame game = new HistoyGame();
-				game.competitionName = competitionName;
-				game.year = trs.get(j).child(0).child(0).text();
-				game.roundInfo = trs.get(j).child(1).child(0).text();
-				
-				Club firstClubInfo = new Club(trs.get(j).child(2).child(0).attr("title"));
-				Club secondClubInfo = new Club(trs.get(j).child(4).child(0).attr("title"));
-				String gameResult = (trs.get(j).child(5).childrenSize() > 0)?trs.get(j).child(5).child(0).text():trs.get(j).child(5).text();
-				game.gameInfo = new Game(null , null , firstClubInfo, secondClubInfo, gameResult );
-				result.add(game);
-			}
-		}
-		Collections.sort(result);
-		return result;
-	}
 	
-	public int getRankingClub(String competitionName , String competitionYear, int round , String club ){
-		
-		TableCollector tableCollector = new TableCollector();
-		if(round == 1) {return 1;}
-		RankingTable table = tableCollector.getTableByRound(competitionName, competitionYear,String.valueOf(round-1), RankingTableRequest.Normal);
-		int result = -1;
-		for(int i =0 ; i < table.table.size(); i++) {
-			if(table.table.get(i).clubBasicInfo.name.equals(club)) {
-				return(Integer.valueOf(table.table.get(i).position));
-			}
-		}
-		if(result == -1) {
-			throw new RuntimeException("can not find "+club +" in "+ competitionName +" "+competitionYear+" round "+round);
-		}
-		return result;
-	}
+	
+	
 }

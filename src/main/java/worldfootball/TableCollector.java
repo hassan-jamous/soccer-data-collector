@@ -4,9 +4,7 @@ import worldfootball.models.Club;
 import worldfootball.models.ClubForRankingTable;
 import worldfootball.models.RankingTable;
 import worldfootball.models.RankingTableRequest;
-
 import java.util.ArrayList;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,6 +25,22 @@ public class TableCollector {
         return getRankingTable(url);
     }
 
+    
+    public int getRankingClub(String competitionName , String competitionYear, int round , String club ){
+		
+		if(round == 1) {return 1;}
+		RankingTable table = getTableByRound(competitionName, competitionYear,String.valueOf(round-1), RankingTableRequest.Normal);
+		int result = -1;
+		for(int i =0 ; i < table.table.size(); i++) {
+			if(table.table.get(i).clubBasicInfo.name.equals(club)) {
+				return(Integer.valueOf(table.table.get(i).position));
+			}
+		}
+		if(result == -1) {
+			throw new RuntimeException("can not find "+club +" in "+ competitionName +" "+competitionYear+" round "+round);
+		}
+		return result;
+	}
     private RankingTable getRankingTable(String url) {
         String htmlPage = httpUtil.sendGetHttpRequest(url);
         Document doc = Jsoup.parse(htmlPage);

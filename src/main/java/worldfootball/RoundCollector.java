@@ -10,7 +10,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import util.HttpUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +31,7 @@ public class RoundCollector {
             if (isRound(tr)) {
                 Round round = new Round();
                 round.roundNumberAsString = tr.child(0).child(0).text();
-                Elements link = tr.select("a[href*=/schedule/]");
-                if ((link != null) && !(link.isEmpty())) {
-
-                }
+                String link = tr.select("a[href*=/schedule/]").attr("href");
                 if(round.games == null) {round.games = new ArrayList<>();}
                 round.games.addAll(ParseGamesInRound(trs, i, link));
                 if(gamesTable.rounds == null) {gamesTable.rounds = new ArrayList<>();}
@@ -43,9 +39,9 @@ public class RoundCollector {
             }
         }
         return gamesTable;
-    }
-
-    private List<Game> ParseGamesInRound(Elements trs, int startFromIndex, Elements link) {
+    }   
+    
+    private List<Game> ParseGamesInRound(Elements trs, int startFromIndex, String link) {
         int j = startFromIndex + 1;
         List<Game> output = new ArrayList<>();
 
@@ -59,7 +55,7 @@ public class RoundCollector {
 
                 date = currentDate == null ? date : currentDate;
                 if (date.equals("")) {//in the first game the date =="" like 3.Round in 1925-1926
-                    date = getRoundDate(WORLD_FOOTBALL_SITE_URL + link.get(0).attr("href"));
+                    date = getRoundDate(WORLD_FOOTBALL_SITE_URL + link);
                 }
                 Game game = new Game(date,
                         getGameValues(trs.get(j), GameIformationInTDs.Time),
@@ -129,11 +125,11 @@ public class RoundCollector {
         Elements roundTable = tables.select("table:has(tbody:has(tr:has(td[nowrap=nowrap]):contains(/)))");
 
         Elements trs = roundTable.select("tr");
-
         if (isGame(trs.get(0))) {
             return trs.get(0).child(0).text();
         }
 
         throw new RuntimeException();
     }
+
 }

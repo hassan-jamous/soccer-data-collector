@@ -9,16 +9,20 @@ public HashMap<String, Integer> nameIDs ;
 	public HashMapStatisticName() {
 		
 		nameIDs = new HashMap<>();
+		//Possession
 		nameIDs.put("Ball possession", 0);
+		//Shots
 		nameIDs.put("Total shots", 1);
 		nameIDs.put("Shots on target", 2);
 		nameIDs.put("Shots off target", 3);
 		nameIDs.put("Blocked shots", 4);
+		//TVData
 		nameIDs.put("Corner kicks", 5);
 		nameIDs.put("Offsides", 6);
 		nameIDs.put("Fouls", 7);
 		nameIDs.put("Yellow cards", 8);
 		nameIDs.put("Red cards", 9);
+		//Shots extra
 		nameIDs.put("Big chances", 10);
 		nameIDs.put("Big chances missed", 11);
 		nameIDs.put("Hit woodwork", 12);
@@ -28,14 +32,17 @@ public HashMap<String, Integer> nameIDs ;
 		nameIDs.put("Shots inside box", 16);
 		nameIDs.put("Shots outside box", 17);
 		nameIDs.put("Goalkeeper saves", 18);
+		//Passes
 		nameIDs.put("Passes", 19);
 		nameIDs.put("Accurate passes", 20);
 		nameIDs.put("Long balls", 21);
 		nameIDs.put("Crosses", 22);
+		//Duels
 		nameIDs.put("Dribbles", 23);
 		nameIDs.put("Possession lost", 24);
 		nameIDs.put("Duels won", 25);
 		nameIDs.put("Aerials won", 26);
+		//Defending
 		nameIDs.put("Tackles", 27);
 		nameIDs.put("Interceptions", 28);
 		nameIDs.put("Clearances", 29);

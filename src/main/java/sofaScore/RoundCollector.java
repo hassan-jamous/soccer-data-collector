@@ -71,7 +71,7 @@ public class RoundCollector {
 
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName, competitionYears, round, stringToAddToURL);
 		if ((gamesIdInRound == null) || (gamesIdInRound.events == null) || (gamesIdInRound.events.isEmpty())) {
-			csvDealer.write(Sites.SofaScore_Com, competitionName,"no information about this season " + competitionYears + " at round " + round, true,
+			csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,"no information about this season " + competitionYears + " at round " + round, true,
 					FileTypes.NoInformation);
 		} else {
 			for (int i = 0; i < gamesIdInRound.events.size(); i++) {
@@ -84,22 +84,22 @@ public class RoundCollector {
 						|| (gameBasicInfromation.event.status.description.equals("AP")))
 						&& gameBasicInfromation.event.status.type.equals("finished")) {
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
-						csvDealer.write(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
+						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
-					csvDealer.write(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic),false, FileTypes.Statistics);
+					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic),false, FileTypes.Statistics);
 				} else if (gameBasicInfromation.event.status.type.equals("inprogress")) {
 				} 
 				else if (gameBasicInfromation.event.status.description.equals("Not started")
 						&& gameBasicInfromation.event.status.type.equals("notstarted")) {
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
-						csvDealer.write(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
+						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
-					csvDealer.write(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  no statrted yet", false,FileTypes.Statistics);
+					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  no statrted yet", false,FileTypes.Statistics);
 				} else {// if the match has been canceled
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
-						csvDealer.write(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
+						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
-					csvDealer.write(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  the game " +i+ "  with id " + gamesIdInRound.events.get(i).id + " at round " + round + "  is cancelled",false, FileTypes.Statistics);
+					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  the game " +i+ "  with id " + gamesIdInRound.events.get(i).id + " at round " + round + "  is cancelled",false, FileTypes.Statistics);
 				}
 			}
 		}

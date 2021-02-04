@@ -18,8 +18,23 @@ public class HistoyGame implements Comparable <HistoyGame>{
 	@Override
 	public int compareTo(HistoyGame objecttoCompare) {
 		
-		int thisYear = Integer.valueOf(this.year.substring(0, 4));
-		int objYear  = Integer.valueOf(objecttoCompare.year.substring(0, 4));
-		return  objYear - thisYear;				
+		if(objecttoCompare == null) {return 1;}
+		String[] thisStrings = this.gameInfo.date.split("/");
+		String[] otherStrings = objecttoCompare.gameInfo.date.split("/");				
+		int thisYear = Integer.valueOf(thisStrings[2]);
+		int otherYear = Integer.valueOf(otherStrings[2]);
+		if(thisYear == otherYear) {
+			int thisMonth = Integer.valueOf(thisStrings[1]);
+			int otherMonth = Integer.valueOf(otherStrings[1]);
+			if(thisMonth == otherMonth) {
+				int thisDay = Integer.valueOf(thisStrings[0]);
+				int otherDay = Integer.valueOf(otherStrings[0]);
+				return otherDay-thisDay;
+			}else {
+				return otherMonth-thisMonth;
+			}
+		}else {
+			return  otherYear-thisYear;
+		}
 	}
 }

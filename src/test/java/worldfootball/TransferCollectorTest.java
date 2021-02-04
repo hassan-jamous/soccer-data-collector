@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-
 import worldfootball.testData.TransferTableValues;
 import worldfootball.models.ClubTransferTable;
 import testUtilities.ArrayAttributeWithIndexes;

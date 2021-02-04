@@ -1,5 +1,7 @@
 package worldfootball;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Assert;
@@ -14,11 +16,11 @@ public class TableCollectorTest {
 	
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();    
     RankingTableValues rankingTablesWorldFootballValues = new RankingTableValues();
-    
+    TableCollector tableCollector = new TableCollector();
+
     
     @Test
     public void itShouldGetLastRankingTableOfLeague() {
-        
     	ScreenScraper screenScraperUnderTest = new ScreenScraper();
         
         RankingTable rankingTable1889_1890ActualValue = screenScraperUnderTest.getLastTable("eng-premier-league", "1889-1890");
@@ -145,6 +147,11 @@ public class TableCollectorTest {
         assertObjectArrayToArray.assertArrayToArraySpecificIndexes(rankingTableActualValue1891_1892ByRound18Home.table, clubsIdInRankingTable1891_1892ByRound18Home , rankingTable1891_1892ByRound12HomeExpected);
         Assert.assertEquals(14, rankingTableActualValue1891_1892ByRound18Home.table.size());
 
+    }   
+    
+    @Test
+    public void itShoildGetRankingTableForClub() {
+    	assertEquals(Integer.valueOf( tableCollector.getRankingClub("eng-premier-league", "2020-2021", 10, "Manchester United")),Integer.valueOf(7));
     }
 
 }

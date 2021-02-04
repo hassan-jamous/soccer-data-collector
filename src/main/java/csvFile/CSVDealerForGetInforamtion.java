@@ -3,6 +3,8 @@ package csvFile;
 import lombok.NoArgsConstructor;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameStatistics.GameStatistics;
+import worldfootball.models.Game;
+import worldfootball.models.HistoyGame;
 /**
  * 
  * to get the information as string to be written in the file
@@ -16,6 +18,21 @@ public class CSVDealerForGetInforamtion {
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
 			result +=obj.statistics.get(i).home+" ,"+obj.statistics.get(i).away+" ,";
 		}
+		return result;
+	}
+	
+	public String getValueStringForCSV(HistoyGame game) {
+	
+		String result ="";
+		result = game.competitionName+" ,"+game.year+" ,"+game.roundInfo+" ,"+getValueStringForCSV(game.gameInfo);
+		return result;
+	}
+	
+	public String getValueStringForCSV(Game game) {
+		
+		String result ="";
+		result = game.date+" ,"+game.time+" ,"+game.firstTeamBasicInfo.name+" ,"+game.secondTeamBasicInfo.name+" ,"+
+		game.finalResult+((game.resultOfFirstHalf==null)?" ,":("("+game.resultOfFirstHalf+") ,"));
 		return result;
 	}
 	

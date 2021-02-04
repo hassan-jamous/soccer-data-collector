@@ -3,7 +3,12 @@ package worldfootball;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeSet;
+
+import org.junit.Assert;
 import org.junit.Test;
+
+import worldfootball.testData.ClubsInCompetitionValues;
 import worldfootball.testData.ClubsInSeasonValues;
 import worldfootball.testData.ClubsSquadValues;
 import worldfootball.models.Club;
@@ -11,11 +16,20 @@ import worldfootball.models.PlayerSummary;
 import testUtilities.AssertUtilities;
 
 public class ClubsCollectorTest {
-	
+    ClubsCollector clubsCollector = new ClubsCollector();
 	ClubsInSeasonValues clubsValues = new ClubsInSeasonValues();
     ClubsSquadValues playersInClubs_Squad_Values = new ClubsSquadValues();
     AssertUtilities assertObjectArrayToArray = new AssertUtilities();
 
+   
+    @Test
+    public void itShouldGetClubsInCompetition() {
+    
+       ClubsCollector clubsCollector = new ClubsCollector();
+       TreeSet <String> clubs1 =clubsCollector.getAllClubsInCompetition("eng-premier-league", "2000-2001", "2020-2021");
+       Assert.assertEquals(clubs1, ClubsInCompetitionValues.clubsInEnglishPriemerLeague2000To2021());
+               
+    }
     @Test
     public void itShouldGetClubsInSeason() {
         ClubsCollector clubsCollector = new ClubsCollector();

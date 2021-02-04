@@ -6,7 +6,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import worldfootball.models.Club;
 import worldfootball.models.ClubTransferTable;
 import worldfootball.models.Player;
@@ -19,6 +18,7 @@ public class TransferCollector {
     private static final String WORLD_FOOTBALL_TRANSFER_URL = "https://www.worldfootball.net/transfers/";
 
 
+    
     public ArrayList<ClubTransferTable> getClubsTransferTableAtSeason(String competitionName, String competiotionYears) {
         String url = WORLD_FOOTBALL_TRANSFER_URL + competitionName + "-" + competiotionYears + "/";
         String htmlPage = httpUtil.sendGetHttpRequest(url);

@@ -4,7 +4,8 @@ public enum FileTypes {
 	
 	Statistics ("Statistics"),
 	NoInformation ("NoInformation"),
-	Incidents ("Incidents");
+	Incidents ("Incidents"),
+	HeadToHead("H2H");
 	
 	private String value;
 	
