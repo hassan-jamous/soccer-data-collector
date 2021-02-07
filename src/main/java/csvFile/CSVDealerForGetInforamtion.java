@@ -3,9 +3,7 @@ package csvFile;
 import lombok.NoArgsConstructor;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameStatistics.GameStatistics;
-import worldfootball.models.Game;
-import worldfootball.models.HistoryGame;
-import worldfootball.models.HistoryGameWithRanking;
+
 /**
  * 
  * to get the information as string to be written in the file
@@ -21,28 +19,7 @@ public class CSVDealerForGetInforamtion {
 		}
 		return result;
 	}
-	public String getValueStringForCSV(HistoryGameWithRanking game) {
-		
-		String result ="";
-		result = getValueStringForCSV( game.game)+" Ranking {"+game.firstTeamRanking+","+game.secondTeamRanking+"},";
-		return result;
-	}
-	
-	public String getValueStringForCSV(HistoryGame game) {
-	
-		String result ="";
-		result = game.competitionName+" ,"+game.year+" ,"+game.roundInfo+" ,"+getValueStringForCSV(game.gameInfo);
-		return result;
-	}
-	
-	public String getValueStringForCSV(Game game) {
-		
-		String result ="";
-		result = game.date+" ,"+game.time+" ,"+game.firstTeamBasicInfo.name+" ,"+game.secondTeamBasicInfo.name+" ,"+
-		game.finalResult+((game.resultOfFirstHalf==null)?" ,":("("+game.resultOfFirstHalf+") ,"));
-		return result;
-	}
-	
+
 	public String getHeaderStringForCSV(GameStatistics obj) {
 		String result ="Has Extra Time ,";
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
@@ -61,13 +38,13 @@ public class CSVDealerForGetInforamtion {
 	public String getValuesStringForCSV(GameBasicInformation obj) {
 		String result ="";
 		result = obj.event.tournament.uniqueTournament.name+" ,"+obj.event.season.year+" ,"+ obj.event.tournament.name+" ,"+obj.event.roundInfo.round+" ,"
-		+obj.event.homeTeam.shortName+" ,"+obj.event.awayTeam.shortName +" ,"+obj.event.homeScore.current+" ,"+
+		+obj.event.getDateToPrint()+" ,"+obj.event.homeTeam.shortName+" ,"+obj.event.awayTeam.shortName +" ,"+obj.event.homeScore.current+" ,"+
 				obj.event.awayScore.current+" ,";
 		return result;
 	}
 	
 	public String getHeaderStringForCSV(GameBasicInformation obj) {
-		String result ="League , Years ,Type Of League ,Round , Home Team , Away Team ,  HomeScore , Away Score ,";
+		String result ="League , Years ,Type Of League ,Round ,Date ,Home Team , Away Team ,  HomeScore , Away Score ,";
 		return result;
 	}
 }

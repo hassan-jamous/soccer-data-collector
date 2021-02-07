@@ -1,5 +1,8 @@
 package sofaScore.models.gameBasicInformation;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 @ToString
@@ -14,5 +17,15 @@ public class GameEvent {
 	public ScoreTeamInGame homeScore;
 	public ScoreTeamInGame awayScore;
 	public Stauts status;
+	//public Date currentPeriodStartTimestamp;
+	public Long startTimestamp;
 	
+	public Date getDate() {	
+		return new Date(this.startTimestamp*1000L);
+	}
+	
+	public String getDateToPrint() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy HH:mm");
+		return  sdf.format(getDate());
+	}	
 }

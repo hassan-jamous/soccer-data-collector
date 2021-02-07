@@ -30,20 +30,9 @@ public class ClubsCollector {
         String url = WORLD_FOOTBALL_CLUBS_URL + clubName + "/" + year + "/2/";
         return getAllPlayersFromPage(url);
     }
-
-    	
- 
- /*   public int getNumberOfRoundInCompetition(String competitionRoundsURL ) {
-    	
-    	String url = WORLD_FOOTBALL_URL+"/players/"+competitionRoundsURL;
-    	String htmlPage = httpUtil.sendGetHttpRequest(url);
-        Document doc = Jsoup.parse(htmlPage);
-        Elements table = doc.select("table.standard_tabelle").select("table:has(tbody:has(tr:has(td:contains(Appearances))))").select("table:has(tbody:has(tr:has(td:contains(Squad [))))");
-        Elements trs = table.select("tr");
-        return (trs.size()-1)*2;
-    }*/
     
     public String getCompetitionLeagueForClubInYear(String club , String year) {
+    	
     	String clubtoURL = convertor.convertWorldToUseInURL(club);
     	String leagueYear = (year.length()>6)?year:Integer.valueOf(year)-1+"/"+Integer.valueOf(year);
     	String url = WORLD_FOOTBALL_CLUBS_URL+clubtoURL+"/"+leagueYear.substring(5,9)+"/3/";

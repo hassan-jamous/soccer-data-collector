@@ -54,7 +54,6 @@ public class GameCollector {
 	private final String API_SOFA_SCORE_GAME_URL_FOR_STATISTICS = "https://api.sofascore.com/api/v1/event/%s/statistics";
 	private final String API_SOFA_SCORE_GAME_URL_FOR_INCIDENTS = "https://api.sofascore.com/api/v1/event/%s/incidents";
 	private final HttpUtil httpUtil = new HttpUtil();
-	private Gson gson = new Gson();
 
 	/**
 	 * this url ( https://www.sofascore.com/fulham-manchester-united/KsT ) is for
@@ -166,6 +165,7 @@ public class GameCollector {
 	public GameBasicInformation getGameBasicInformation(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_BASIC, gameID));
+		Gson gson = new Gson();
 		GameBasicInformation gameBasicInformation = gson.fromJson(gsonString, GameBasicInformation.class);
 		return gameBasicInformation;
 	}

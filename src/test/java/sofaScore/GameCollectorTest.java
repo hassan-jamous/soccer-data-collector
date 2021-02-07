@@ -2,12 +2,10 @@ package sofaScore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
-
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
-
-import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameIecidents.IncidentInGame;
@@ -15,38 +13,20 @@ import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.gameStatistics.GameStatisticsForOneItem;
 import sofaScore.testData.GameIencidentsValues;
 import testUtilities.AssertUtilities;
+import testUtilities.SofaScoreTestHelper;
 
 public class GameCollectorTest {
 	
+	SofaScoreTestHelper  heleper = new SofaScoreTestHelper(); 
     SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
 	GameIencidentsValues iencidentsValues = new GameIencidentsValues();
 	AssertUtilities assertUtily = new AssertUtilities();
 	
-	//delet it after test
-	RoundCollector roundtes = new RoundCollector();
-	@Test
-	public void getGameID() {
-		
-		RoundGamesID s = roundtes.getGamesIdInRound("LaLiga", "2020/2021", "2","");
-		for(int i =0 ; i < s.events.size(); i++) {
-			//System.out.println("i ="+i+"   id="+s.events.get(i));
-		}
-		
-	}
- 
-	private void printStatistics(GameStatistics game) {
-		for(int i =0 ; i <game.statistics.size(); i++) {
-			System.out.println(
-					game.statistics.get(i).period+"    "+
-					game.statistics.get(i).groupName+"    "+
-					game.statistics.get(i).name+"    "+
-					game.statistics.get(i).home+"    "+
-					game.statistics.get(i).away);
-		}
-	}
+	
 	 @Test
 	    public void itShouldGetGameStatistics() {
 
+		
 		    //https://www.sofascore.com/southampton-chelsea/NV
 		    //https://api.sofascore.com/api/v1/event/8896911/statistics
 		    GameStatistics gameStatistics1Atround5At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "2020/2021", "5", 1);
@@ -121,6 +101,20 @@ public class GameCollectorTest {
 		    assertTrue(gameStatistics9Atround19At17_18ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Possession lost",null,null)));
 		    assertTrue(gameStatistics9Atround19At17_18ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Defending","Tackles",null,null)));
 
+		    GameStatistics gameStatistics6Atround18At15_16ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "2015/2016", "18", 6);
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","55%","45%")));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Total shots","7","9")));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Shots off target","3","3")));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","TVData","Corner kicks","0","7")));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots extra","Big chances",null,null)));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Counter attack shots",null,null)));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","TVData","Yellow cards","0","1")));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","TVData","Red cards",null,null)));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","TVData","Red cards",null,null)));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Possession lost",null,null)));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Defending","Tackles",null,null)));
+		    assertTrue(gameStatistics6Atround18At15_16ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Duels","Duels won","29","22")));
+		    
 		    //https://www.sofascore.com/swansea-city-manchester-united/JdCg
 		    //https://api.sofascore.com/api/v1/event/6768341/statistics
 		    GameStatistics gameStatistics3Atround20At15_16ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "2015/2016", "20", 3);
@@ -192,12 +186,12 @@ public class GameCollectorTest {
 		    //https://www.sofascore.com/cadiz-huesca/NObspKj
 		    //https://api.sofascore.com/api/v1/event/8966517/statistics
 		    GameStatistics laLiagaGameStatistics6Atround2At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("LaLiga", "2020/2021", "2", 6);
-		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","70%","30")));
-		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Blocked shots","3","2")));
-		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots extra","Big chances","2","2")));
+		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Possession","Ball possession","70%","30%")));
+		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots","Blocked shots","1","0")));
+		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","Shots extra","Big chances","0","2")));
 		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("ALL","TVData","Red cards",null,null)));
-		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Goalkeeper saves","1","2")));
-		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Shots outside box","0","3")));
+		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("FirstHalf","Shots extra","Goalkeeper saves","0","0")));
+		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Shots outside box","2","3")));
 		    assertTrue(laLiagaGameStatistics6Atround2At20_21ActualValue.containsSatatisticWithValues(new GameStatisticsForOneItem("SecondHalf","Shots extra","Counter attack goals",null,null)));
 		    
 	    }
@@ -223,26 +217,29 @@ public class GameCollectorTest {
 	    }
 	 
 	 @Test
-	 public void itShouldGetGameBasicInformation() {
+	 public void itShouldGetGameBasicInformation() throws ParseException {
 	      
 		 //https://www.sofascore.com/crystal-palace-newcastle-united/hO
 		 //https://api.sofascore.com/api/v1/event/8896999
-		 GameBasicInformation game1AtRound10At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "2020/2021", "10", 0);
-		 assertThat(game1AtRound10At20_21ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
-	     assertThat(game1AtRound10At20_21ActualValue.event.awayTeam.name).isEqualTo("Newcastle United");
-	     
+		 GameBasicInformation game0AtRound10At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "2020/2021", "10", 0);
+		 assertThat(game0AtRound10At20_21ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
+		 assertThat(game0AtRound10At20_21ActualValue.event.awayTeam.name).isEqualTo("Newcastle United");
+		 assertThat(game0AtRound10At20_21ActualValue.event.getDateToPrint()).isEqualTo("27/Nov/2020 22:00");
+		 
 	     //https://www.sofascore.com/fulham-arsenal/RsT
 	     //https://mobile.sofascore.com/api/v1/event/8896967
-		 GameBasicInformation game1AtRound1At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "2020/2021", "1", 0);
-		 assertThat(game1AtRound1At20_21ActualValue.event.homeTeam.name).isEqualTo("Fulham");
-		 assertThat(game1AtRound1At20_21ActualValue.event.awayTeam.name).isEqualTo("Arsenal");
-		 assertThat(game1AtRound1At20_21ActualValue.event.homeScore.period1).isEqualTo(0);
+		 GameBasicInformation game0AtRound1At20_21ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "2020/2021", "1", 0);
+		 assertThat(game0AtRound1At20_21ActualValue.event.homeTeam.name).isEqualTo("Fulham");
+		 assertThat(game0AtRound1At20_21ActualValue.event.awayTeam.name).isEqualTo("Arsenal");
+		 assertThat(game0AtRound1At20_21ActualValue.event.homeScore.period1).isEqualTo(0);
+		 assertThat(game0AtRound1At20_21ActualValue.event.getDateToPrint()).isEqualTo("12/Sep/2020 13:30");
 
 		 //https://www.sofascore.com/crystal-palace-bournemouth/hkb
 		 //https://api.sofascore.com/api/v1/event/8243556
-		 GameBasicInformation game1AtRound1At19_20ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "2019/2020", "15", 0);
-		 assertThat(game1AtRound1At19_20ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
-		 assertThat(game1AtRound1At19_20ActualValue.event.roundInfo.round).isEqualTo(15);
+		 GameBasicInformation game0AtRound15At19_20ActualValue = sofaScoreCollectorTest.getGameBasicInformation("Premier League", "2019/2020", "15", 0);
+		 assertThat(game0AtRound15At19_20ActualValue.event.homeTeam.name).isEqualTo("Crystal Palace");
+		 assertThat(game0AtRound15At19_20ActualValue.event.roundInfo.round).isEqualTo(15);
+		 assertThat(game0AtRound15At19_20ActualValue.event.getDateToPrint()).isEqualTo("03/Dec/2019 21:30");
 
 	 }
 }
