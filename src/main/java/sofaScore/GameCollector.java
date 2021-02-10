@@ -1,5 +1,6 @@
 package sofaScore;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -10,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
+import sofaScore.models.gameBasicInformation.TimestampAdapter;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameIecidents.IncidentInGame;
 import sofaScore.models.gameIecidents.IncidentInGameCard;
@@ -99,8 +101,10 @@ public class GameCollector {
 								hasFivePeroid = true;
 							} else {
 								String allString = peroid + groupName + name;
-								String statisticAsInEnum = allString.replaceAll("\\s", "");
+								String statisticAsInEnum = allString.replaceAll("\\s", "_");
 								LeagueStatisticsForAllTime3Periods.valueOf(statisticAsInEnum);
+								name = name.replaceAll("\\s",  "_");
+								groupName = groupName.replaceAll("\\s", "_");
 								GameStatisticsForOneItem gameStatistic = new GameStatisticsForOneItem(peroid, groupName,
 										name, home, away);
 								if (gamesInfo.statistics == null) {
@@ -165,7 +169,9 @@ public class GameCollector {
 	public GameBasicInformation getGameBasicInformation(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_BASIC, gameID));
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder()
+		        .registerTypeAdapter(Timestamp.class, new TimestampAdapter())
+		        .create();
 		GameBasicInformation gameBasicInformation = gson.fromJson(gsonString, GameBasicInformation.class);
 		return gameBasicInformation;
 	}

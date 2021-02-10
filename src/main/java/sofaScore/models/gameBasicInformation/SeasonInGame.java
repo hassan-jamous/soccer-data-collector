@@ -6,4 +6,6 @@ import lombok.ToString;
 @ToString
 public class SeasonInGame {
 	public String year;
+	
+	
 }

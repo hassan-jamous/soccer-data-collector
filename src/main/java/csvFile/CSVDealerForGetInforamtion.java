@@ -13,20 +13,20 @@ import sofaScore.models.gameStatistics.GameStatistics;
 public class CSVDealerForGetInforamtion {
 
 	public String getValuesStringForCSV(GameStatistics obj) {
-		String result =String.valueOf(obj.hasFivePeriods)+" ,";
+		String result =String.valueOf(obj.hasFivePeriods)+",";
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
-			result +=obj.statistics.get(i).home+" ,"+obj.statistics.get(i).away+" ,";
+			result +=obj.statistics.get(i).home+","+obj.statistics.get(i).away+((i==obj.statistics.size()-1)?"":",");
 		}
 		return result;
 	}
 
 	public String getHeaderStringForCSV(GameStatistics obj) {
-		String result ="Has Extra Time ,";
+		String result ="HasExtraTime,";
 		for(int i = 0 ; i < obj.statistics.size() ; i++) {
-			result += obj.statistics.get(i).period+" "+obj.statistics.get(i).groupName+" "+
-					obj.statistics.get(i).name+" Home ,"+
-					obj.statistics.get(i).period+" "+obj.statistics.get(i).groupName+" "+
-					obj.statistics.get(i).name+" Away ,";
+			result += obj.statistics.get(i).period+obj.statistics.get(i).groupName+
+					obj.statistics.get(i).name+"Home,"+
+					obj.statistics.get(i).period+obj.statistics.get(i).groupName+
+					obj.statistics.get(i).name+"Away"+((i==obj.statistics.size()-1)?"":",");
 		}
 		return result;
 	}
@@ -37,14 +37,14 @@ public class CSVDealerForGetInforamtion {
 	//https://api.sofascore.com/api/v1/event/7805352
 	public String getValuesStringForCSV(GameBasicInformation obj) {
 		String result ="";
-		result = obj.event.tournament.uniqueTournament.name+" ,"+obj.event.season.year+" ,"+ obj.event.tournament.name+" ,"+obj.event.roundInfo.round+" ,"
-		+obj.event.getDateToPrint()+" ,"+obj.event.homeTeam.shortName+" ,"+obj.event.awayTeam.shortName +" ,"+obj.event.homeScore.current+" ,"+
-				obj.event.awayScore.current+" ,";
+		result = obj.event.tournament.uniqueTournament.name+","+obj.event.season.year+","+ obj.event.tournament.name+","+obj.event.roundInfo.round+","
+		+obj.event.getDateToDataBase()+","+obj.event.homeTeam.shortName+","+obj.event.awayTeam.shortName +","+obj.event.homeScore.current+","+
+				obj.event.awayScore.current;
 		return result;
 	}
 	
 	public String getHeaderStringForCSV(GameBasicInformation obj) {
-		String result ="League , Years ,Type Of League ,Round ,Date ,Home Team , Away Team ,  HomeScore , Away Score ,";
+		String result ="League,Years,TypeOfLeague,Round,Date,HomeTeam,AwayTeam,HomeScore,AwayScore";
 		return result;
 	}
 }

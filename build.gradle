@@ -13,7 +13,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
-	
+	compile 'mysql:mysql-connector-java:5.1.+'
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'org.danilopianini:gson-extras:0.2.1'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'

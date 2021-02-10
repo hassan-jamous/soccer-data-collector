@@ -84,22 +84,20 @@ public class RoundCollector {
 						|| (gameBasicInfromation.event.status.description.equals("AP")))
 						&& gameBasicInfromation.event.status.type.equals("finished")) {
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
-						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
+						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+","+csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
-					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+ csvGetterString.getValuesStringForCSV(gameStatistic),false, FileTypes.Statistics);
+					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation)+","+csvGetterString.getValuesStringForCSV(gameStatistic),false, FileTypes.Statistics);
+					//to ask hassan now all types except (finished) are equal i asked about canceled what about other
 				} else if (gameBasicInfromation.event.status.type.equals("inprogress")) {
-				} 
-				else if (gameBasicInfromation.event.status.description.equals("Not started")
+				} else if (gameBasicInfromation.event.status.description.equals("Not started")
 						&& gameBasicInfromation.event.status.type.equals("notstarted")) {
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
-						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
+						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+","+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
-					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  no statrted yet", false,FileTypes.Statistics);
 				} else {// if the match has been canceled
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
-						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
+						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+","+ csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
-					csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameBasicInfromation) + "  the game " +i+ "  with id " + gamesIdInRound.events.get(i).id + " at round " + round + "  is cancelled",false, FileTypes.Statistics);
 				}
 			}
 		}

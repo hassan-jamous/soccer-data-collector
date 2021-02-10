@@ -11,7 +11,7 @@ public HashMap<String, Integer> groupsIDs ;
 		groupsIDs.put("Possession", 0);
 		groupsIDs.put("Shots", 1);
 		groupsIDs.put("TVData", 2);
-		groupsIDs.put("Shots extra", 3);
+		groupsIDs.put("Shots_extra", 3);
 		groupsIDs.put("Passes", 4);
 		groupsIDs.put("Duels", 5);
 		groupsIDs.put("Defending", 6);
