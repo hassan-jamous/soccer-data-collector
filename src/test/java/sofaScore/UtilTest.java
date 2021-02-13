@@ -61,7 +61,6 @@ public class UtilTest {
         assertThat(ManUtd_Liverpool2019_8_1TO2021_2_1.get(2).event.homeTeam.name).isEqualTo("Liverpool");
         assertThat(ManUtd_Liverpool2019_8_1TO2021_2_1.size()).isEqualTo(3);
 
-
 	}
 
 }

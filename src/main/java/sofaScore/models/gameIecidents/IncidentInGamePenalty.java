@@ -28,5 +28,7 @@ public class IncidentInGamePenalty extends IncidentInGame{
 		this.incidentType = incidentType;
 		
 	}
-	
+	public String getName() {
+    	return "Penalty";
+    }
 }

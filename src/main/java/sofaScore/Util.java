@@ -19,7 +19,7 @@ public class Util {
 			}
 			leagueRankingTable.getClubsRanking();
 			return leagueRankingTable;
-		}	
+	}	
 	
 	//where can i bring clubs' names from this function or from worldfootball? ClubsCollector.getAllClubsInSeason 
 	public List<String> getClubsNames(String competitionName , String competitionYears){

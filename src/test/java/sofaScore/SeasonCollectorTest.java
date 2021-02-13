@@ -9,22 +9,36 @@ public class SeasonCollectorTest {
 	@Test
 	public void itShouldWriteCompetition() {
 		
-		//seasonCollectorTest.writeCompetition("Premier League", "2005/2006", "2008/2009");
-		//seasonCollectorTest.writeCompetition("Premier League", "2009/2010", "2012/2013");
-		//seasonCollectorTest.writeCompetition("Premier League", "2013/2014", "2015/2016");
-		seasonCollectorTest.writeCompetition("Premier League", "2016/2017", "2018/2019");
-		//seasonCollectorTest.writeCompetition("Premier League", "2019/2020", "2020/2021");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2005/2006", "2006/2007");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2007/2008", "2008/2009");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2009/2010", "2010/2011");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2011/2012", "2012/2013");
+		//remember season 13/14 round 11 there are 9 games not 10 the site missed game aston villa vs cardiff
+		//but this league has statistic ??????
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2013/2014", "2014/2015");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2015/2016", "2016/2017");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2017/2018", "2018/2019");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Premier League", "2019/2020", "2020/2021");
 
-		//seasonCollectorTest.writeCompetition("LaLiga", "2009/2010", "2012/2013");
-		//seasonCollectorTest.writeCompetition("LaLiga", "2013/2014", "2015/2016");
-		//seasonCollectorTest.writeCompetition("LaLiga", "2016/2017", "2018/2019");
-		//seasonCollectorTest.writeCompetition("LaLiga", "2019/2020", "2020/2021");
 		
-		//seasonCollectorTest.writeCompetition("Bundesliga", "2009/2010", "2012/2013");
-		//seasonCollectorTest.writeCompetition("Bundesliga", "2013/2014", "2015/2016");
-		//seasonCollectorTest.writeCompetition("Bundesliga", "2016/2017", "2018/2019");
-		//seasonCollectorTest.writeCompetition("Bundesliga", "2019/2020", "2020/2021");
-
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2005/2006", "2006/2007");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2007/2008", "2008/2009");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2009/2010", "2010/2011");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2011/2012", "2012/2013");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2013/2014", "2014/2015");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2015/2016", "2016/2017");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2017/2018", "2018/2019");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2019/2020", "2020/2021");
+	
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2005/2006", "2006/2007");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2007/2008", "2008/2009");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2009/2010", "2010/2011");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2011/2012", "2012/2013");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2013/2014", "2014/2015");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2015/2016", "2016/2017");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2017/2018", "2018/2019");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2019/2020", "2020/2021");
+		
 		//seasonCollectorTest.writeCompetition("Serie A", "2009/2010", "2012/2013");
 		//seasonCollectorTest.writeCompetition("Serie A", "2013/2014", "2015/2016");
 		//seasonCollectorTest.writeCompetition("Serie A", "2016/2017", "2018/2019");
@@ -36,10 +50,11 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeCompetition("Ligue 1", "2019/2020", "2020/2021");
 	}
 	
+	
 	@Test
-	public void itShouldWriteSeason() {
+	public void itShouldWriteSeasonIncidents() {
 		
-		//seasonCollectorTest.roundCollerctor.writeRound("Premier League", "2019/2020", "1", "");
-		//seasonCollectorTest.writeSeason("Premier League", "2019/2020");
+		//seasonCollectorTest.roundCollerctor.writeRoundIncidents("Premier League", "2019/2020", "1", "");
+		seasonCollectorTest.writeSeasonIncidents("Premier League", "2019/2020");
 	}	
 }

@@ -6,6 +6,7 @@ import csvFile.FileTypes;
 import csvFile.CSVDealerForGetInforamtion;
 import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
+import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameStatistics.GameStatistics;
 import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
@@ -67,7 +68,7 @@ public class RoundCollector {
 	 *                         write round's games (game basic information and game
 	 *                         statistics) into file
 	 */
-	public void writeRound(String competitionName, String competitionYears, String round, String stringToAddToURL) {
+	public void writeRoundBasicInfoAndStatistics(String competitionName, String competitionYears, String round, String stringToAddToURL) {
 
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName, competitionYears, round, stringToAddToURL);
 		if ((gamesIdInRound == null) || (gamesIdInRound.events == null) || (gamesIdInRound.events.isEmpty())) {
@@ -79,10 +80,15 @@ public class RoundCollector {
 				GameBasicInformation gameBasicInfromation = gameCollector
 						.getGameBasicInformation(gamesIdInRound.events.get(i).id);
 				// we must know all values gameBasicInfromation.event.status.type and gameBasicInfromation.event.status.description
+				//https://api.sofascore.com/api/v1/event/269529
+				//Premier League,2006/2007  round 21,2006-12-30 17:00:00,Watford vs Wigan there are 2 games
+				//https://api.sofascore.com/api/v1/event/269580
+				//Premier League,2006/2007, round 25,2007-02-14 21:45:00,Arsenal vs Man City,null,null, there are 2 games
 				if ((gameBasicInfromation.event.status.description.equals("Ended")
 						|| gameBasicInfromation.event.status.description.equals("Removed")
 						|| (gameBasicInfromation.event.status.description.equals("AP")))
-						&& gameBasicInfromation.event.status.type.equals("finished")) {
+						&& gameBasicInfromation.event.status.type.equals("finished")
+						&&(gameBasicInfromation.event.homeScore!=null && gameBasicInfromation.event.homeScore.current!=null)) {
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
 						csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameBasicInfromation)+","+csvGetterString.getHeaderStringForCSV(gameStatistic),true, FileTypes.Statistics);
 					}
@@ -102,4 +108,27 @@ public class RoundCollector {
 			}
 		}
 	}
+	public void writeRoundIncidents(String competitionName, String competitionYears, String round, String stringToAddToURL) {
+
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName, competitionYears, round, stringToAddToURL);
+		if ((gamesIdInRound == null) || (gamesIdInRound.events == null) || (gamesIdInRound.events.isEmpty())) {
+			csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,"no information about this season " + competitionYears + " at round " + round, true,
+					FileTypes.NoIncidents);
+		} else {
+			for (int i = 0; i < gamesIdInRound.events.size(); i++) {
+				GameIncidents gameIncidents = gameCollector.getGameIncidents(gamesIdInRound.events.get(i).id);
+				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);				
+				if (gameBasicInfromation.event.status.type.equals("finished") && gameBasicInfromation.event.homeScore!=null && 
+						gameBasicInfromation.event.homeScore.current!=null && gameIncidents != null)  {
+						for(int incident =0; incident<gameIncidents.incidentInGames.size(); incident++) {
+							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameIncidents.incidentInGames.get(incident)),true, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
+							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameIncidents.incidentInGames.get(incident)),false, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
+						}						
+					}
+				} 
+			}
+	}
+	
 }
+
+

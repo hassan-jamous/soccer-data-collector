@@ -31,4 +31,8 @@ public class IncidentInGameCard extends IncidentInGame {
 		this.incidentClass = incidentClass;
 		this.incidentType = incidentType;
 	}
+	
+	public String getName() {
+    	return "Card";
+    }
 }

@@ -18,6 +18,8 @@ public class IncidentInGameInjuryTime extends IncidentInGame {
 		this.addedTime =addedTime;
 		this.incidentType =incidentType;
 	}
-	
+	public String getName() {
+    	return "InjuryTime";
+    }
 
 }

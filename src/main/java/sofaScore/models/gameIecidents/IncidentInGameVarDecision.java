@@ -28,4 +28,7 @@ public class IncidentInGameVarDecision extends IncidentInGame {
     	this.incidentType = incidentType;
     }
 
+    public String getName() {
+    	return "VarDecision";
+    }
 }

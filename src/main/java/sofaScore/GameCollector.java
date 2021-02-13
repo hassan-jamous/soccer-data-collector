@@ -144,26 +144,30 @@ public class GameCollector {
 	public GameIncidents getGameIncidents(String gameID) {
 
 		String gsonString = httpUtil.sendGetHttpRequest(String.format(API_SOFA_SCORE_GAME_URL_FOR_INCIDENTS, gameID));
-		IncidentsGameDeserializer deserializer = new IncidentsGameDeserializer("incidentType");
-		deserializer.registerIncidentType("card", IncidentInGameCard.class);
-		deserializer.registerIncidentType("goal", IncidentInGameGoal.class);
-		deserializer.registerIncidentType("injuryTime", IncidentInGameInjuryTime.class);
-		deserializer.registerIncidentType("inGamePenalty", IncidentInGamePenalty.class);
-		deserializer.registerIncidentType("period", IncidentInGamePeriod.class);
-		deserializer.registerIncidentType("substitution", IncidentInGameSubstitution.class);
-		deserializer.registerIncidentType("varDecision", IncidentInGameVarDecision.class);
-		JsonElement jsonElement = JsonParser.parseString(gsonString);
-		JsonArray incidents = jsonElement.getAsJsonObject().getAsJsonArray("incidents");
-		Gson gson = new GsonBuilder().registerTypeAdapter(IncidentInGame.class, deserializer).create();
-		GameIncidents result = new GameIncidents();
-		if (result.incidentInGames == null) {
-			result.incidentInGames = new ArrayList<>();
+		if(! gsonString.contains("Not Found")) {
+			IncidentsGameDeserializer deserializer = new IncidentsGameDeserializer("incidentType");
+			deserializer.registerIncidentType("card", IncidentInGameCard.class);
+			deserializer.registerIncidentType("goal", IncidentInGameGoal.class);
+			deserializer.registerIncidentType("injuryTime", IncidentInGameInjuryTime.class);
+			deserializer.registerIncidentType("inGamePenalty", IncidentInGamePenalty.class);
+			deserializer.registerIncidentType("period", IncidentInGamePeriod.class);
+			deserializer.registerIncidentType("substitution", IncidentInGameSubstitution.class);
+			deserializer.registerIncidentType("varDecision", IncidentInGameVarDecision.class);
+			JsonElement jsonElement = JsonParser.parseString(gsonString);
+			JsonArray incidents = jsonElement.getAsJsonObject().getAsJsonArray("incidents");
+			Gson gson = new GsonBuilder().registerTypeAdapter(IncidentInGame.class, deserializer).create();
+			GameIncidents result = new GameIncidents();
+			if (result.incidentInGames == null) {
+				result.incidentInGames = new ArrayList<>();
+			}
+			result.incidentInGames = gson.fromJson(incidents, new TypeToken<List<IncidentInGame>>() {}.getType());
+			System.out.println(gameID + "    "+(result==null)+"     "+(result.incidentInGames == null));
+			if ((result == null) || (result.incidentInGames == null) || (result.incidentInGames.isEmpty())) {
+				return null;
+			}
+			return result;
 		}
-		result.incidentInGames = gson.fromJson(incidents, new TypeToken<List<IncidentInGame>>() {}.getType());
-		if ((result == null) || (result.incidentInGames.isEmpty())) {
-			return null;
-		}
-		return result;
+		return null;
 	}
 
 	public GameBasicInformation getGameBasicInformation(String gameID) {

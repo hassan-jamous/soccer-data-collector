@@ -48,16 +48,32 @@ public class SeasonCollector {
 	 *                         ....)
 	 * 
 	 */
-	public void writeSeason(String competitionName, String competitionYears) {
+	public void writeSeasonBasicInfoAndStatistics(String competitionName, String competitionYears) {
 
 		PageOfSeasonRounds seasonRounds = getSeasonRounds(competitionName, competitionYears);
 		if ((seasonRounds.currentRound.name == null) || (seasonRounds.currentRound.name == "Not Found")) {
 			for (int i = 1; i <= seasonRounds.currentRound.round; i++) {
-				roundCollerctor.writeRound(competitionName, competitionYears, String.valueOf(i), "");
+				roundCollerctor.writeRoundBasicInfoAndStatistics(competitionName, competitionYears, String.valueOf(i), "");
 			}
 		} else {
 			for (int i = 0; i < seasonRounds.rounds.size(); i++) {
-				roundCollerctor.writeRound(competitionName, competitionYears,
+				roundCollerctor.writeRoundBasicInfoAndStatistics(competitionName, competitionYears,
+						String.valueOf(seasonRounds.rounds.get(i).round),
+						(seasonRounds.rounds.get(i).slug == null) ? "" : "/slug/" + seasonRounds.rounds.get(i).slug);
+			}
+		}
+	}
+	
+	public void writeSeasonIncidents(String competitionName, String competitionYears) {
+
+		PageOfSeasonRounds seasonRounds = getSeasonRounds(competitionName, competitionYears);
+		if ((seasonRounds.currentRound.name == null) || (seasonRounds.currentRound.name == "Not Found")) {
+			for (int i = 1; i <= seasonRounds.currentRound.round; i++) {
+				roundCollerctor.writeRoundIncidents(competitionName, competitionYears, String.valueOf(i), "");
+			}
+		} else {
+			for (int i = 0; i < seasonRounds.rounds.size(); i++) {
+				roundCollerctor.writeRoundIncidents(competitionName, competitionYears,
 						String.valueOf(seasonRounds.rounds.get(i).round),
 						(seasonRounds.rounds.get(i).slug == null) ? "" : "/slug/" + seasonRounds.rounds.get(i).slug);
 			}
@@ -71,11 +87,11 @@ public class SeasonCollector {
 	 * @param startYear       for example ( 2009/2010 , 2013/2014 , 2007/2008 ,
 	 *                        2015/2016 , ......)
 	 */
-	public void writeCompetition(String competitionName, String startYear) {
+	public void writeCompetitionBasicInfoAndStatistics(String competitionName, String startYear) {
 
 		List<SeasonIDObject> competitions = seasonId.getAllSeasonInfo(competitionName, startYear);
 		for (int i = 0; i < competitions.size(); i++) {
-			writeSeason(competitions.get(i).competitionName, competitions.get(i).years);
+			writeSeasonBasicInfoAndStatistics(competitions.get(i).competitionName, competitions.get(i).years);
 		}
 
 	}
@@ -88,11 +104,11 @@ public class SeasonCollector {
 	 *                        2015/2016 , ......)
 	 * @param endYears
 	 */
-	public void writeCompetition(String competitionName, String startYear, String endYear) {
+	public void writeCompetitionBasicInfoAndStatistics(String competitionName, String startYear, String endYear) {
 
 		List<SeasonIDObject> competitions = seasonId.getAllSeasonInfo(competitionName, startYear, endYear);
 		for (int i = 0; i < competitions.size(); i++) {
-			writeSeason(competitions.get(i).competitionName, competitions.get(i).years);
+			writeSeasonBasicInfoAndStatistics(competitions.get(i).competitionName, competitions.get(i).years);
 		}
 
 	}

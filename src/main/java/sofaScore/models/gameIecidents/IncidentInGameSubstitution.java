@@ -30,5 +30,7 @@ public class IncidentInGameSubstitution extends IncidentInGame{
 		this.incidentClass = incidentClass;
 		this.incidentType =incidentType;
 	}
-	
+	public String getName() {
+    	return "Substitution";
+    }
 }

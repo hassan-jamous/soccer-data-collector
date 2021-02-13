@@ -25,4 +25,7 @@ public class IncidentInGamePeriod extends IncidentInGame{
 		this.incidentType =incidentType;
 
 	}	
+	public String getName() {
+    	return "Period";
+    }
 }

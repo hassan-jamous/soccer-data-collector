@@ -30,4 +30,7 @@ public class IncidentInGameGoal extends IncidentInGame{
 		this.incidentClass = incidentClass;
 		this.incidentType = incidentType;
 	}
+	public String getName() {
+    	return "Goal";
+    }
 }

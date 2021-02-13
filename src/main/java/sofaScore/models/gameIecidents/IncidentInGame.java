@@ -9,5 +9,7 @@ import lombok.experimental.SuperBuilder;
 public class IncidentInGame {
 
     public String incidentType;
-
+    public String getName() {
+    	return "IncidentInGame";
+    }
 }
