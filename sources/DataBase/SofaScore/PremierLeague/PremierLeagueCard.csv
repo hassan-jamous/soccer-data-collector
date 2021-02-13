@@ -1,0 +1,1347 @@
+PlayerName,FirstName,LastName,ShortName,Slug,Position,Reason,Time,AddedTime,IsHome,IncidentClass,IncidentType
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Foul,65,null,false,yellow,card
+Moritz Leitner,,,M. Leitner,moritz-leitner,M,Foul,60,null,false,yellow,card
+Raheem Sterling,,,R. Sterling,raheem-sterling,F,Foul,90,3,false,yellow,card
+Kyle Walker,,,K. Walker,kyle-walker,D,Foul,87,null,false,yellow,card
+Felipe Anderson,,,F. Anderson,felipe-anderson,M,Foul,62,null,true,yellow,card
+Fabián Balbuena,,,F. Balbuena,fabian-balbuena,D,Foul,61,null,true,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,78,null,false,yellow,card
+Ryan Fraser,,,R. Fraser,ryan-fraser,M,Argument,64,null,true,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,43,null,true,yellow,card
+Morgan Schneiderlin,,,M. Schneiderlin,morgan-schneiderlin,M,Foul,76,null,false,yellowRed,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Persistent fouling,55,null,true,yellow,card
+Morgan Schneiderlin,,,M. Schneiderlin,morgan-schneiderlin,M,Argument,54,null,false,yellow,card
+Bernard,,,Bernard,bernard,F,Foul,52,null,false,yellow,card
+Max Meyer,,,M. Meyer,max-meyer,M,Foul,38,null,true,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,88,null,false,yellow,card
+Érik Lamela,,,É. Lamela,erik-lamela,M,Time wasting,87,null,true,yellow,card
+Ruben Neves,,,R. Neves,ruben-neves,M,Argument,60,null,false,yellow,card
+Jonny Castro,,,J. Otto,jonny-otto,M,Foul,31,null,false,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,81,null,false,yellow,card
+Henrikh Mkhitaryan,,,H. Mkhitaryan,henrikh-mkhitaryan,F,Foul,37,null,false,yellow,card
+Reiss Nelson,,,R. Nelson,reiss-nelson,F,Foul,25,null,false,yellow,card
+Miguel Almirón,,,M. Almirón,miguel-almiron,M,Simulation,18,null,true,yellow,card
+N'Golo Kanté,,,N. Kanté,ngolo-kante,M,Foul,90,null,false,yellow,card
+Anthony Martial,,,A. Martial,anthony-martial,F,Argument,80,null,true,yellow,card
+Victor Lindelöf,,,V. Lindelöf,victor-lindelof,D,Time wasting,69,null,true,yellow,card
+Tammy Abraham,,,T. Abraham,tammy-abraham,F,Foul,57,null,false,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,52,null,false,yellow,card
+Jesse Lingard,,,J. Lingard,jesse-lingard,M,Foul,48,null,true,yellow,card
+Kurt Zouma,,,K. Zouma,kurt-zouma,D,Foul,36,null,false,yellow,card
+Ashley Barnes,,,A. Barnes,ashley-barnes,F,Off the ball foul,90,5,false,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Time wasting,90,1,true,yellow,card
+Pierre-Emerick Aubameyang,,,P. Aubameyang,pierre-emerick-aubameyang,F,null,38,null,true,yellow,card
+Nathan Aké,,,N. Aké,nathan-ake,D,Foul,59,null,false,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,36,null,false,yellow,card
+Declan Rice,,,D. Rice,declan-rice,M,Foul,90,4,false,yellow,card
+Arthur Masuaku,,,A. Masuaku,arthur-masuaku,D,Foul,76,null,false,yellow,card
+Roberto Pereyra,,,R. Pereyra,roberto-pereyra,M,Simulation,62,null,false,yellow,card
+José Holebas,,,J. Holebas,jose-holebas,D,Foul,59,null,false,yellow,card
+André Gomes,,,A. Gomes,andre-gomes,M,Foul,47,null,true,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,31,null,false,yellow,card
+Séamus Coleman,,,S. Coleman,seamus-coleman,D,Foul,14,null,true,yellow,card
+Sean Longstaff,,,S. Longstaff,sean-longstaff,M,Foul,90,1,false,yellow,card
+Paul Dummett,,,P. Dummett,paul-dummett,D,Foul,85,null,false,yellow,card
+Joelinton,,,Joelinton,joelinton,F,Foul,44,null,false,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Foul,37,null,true,yellow,card
+Moussa Djenepo,,,M. Djenepo,moussa-djenepo,M,Foul,84,null,true,yellow,card
+Trent Alexander-Arnold,,,T. Alexander-Arnold,trent-alexander-arnold,D,Foul,79,null,false,yellow,card
+Oriol Romeu,,,O. Romeu,oriol-romeu,M,Foul,36,null,true,yellow,card
+Raheem Sterling,,,R. Sterling,raheem-sterling,F,Foul,26,null,true,yellow,card
+Luke Freeman,,,L. Freeman,luke-freeman,M,Foul,85,null,true,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Argument,74,null,false,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Foul,74,null,true,yellow,card
+John Lundstram,,,J. Lundstram,john-lundstram,M,Foul,7,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,37,null,true,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Handball,84,null,false,yellow,card
+Ryan Bennett,,,R. Bennett,ryan-bennett,D,Foul,67,null,true,yellow,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Persistent fouling,51,null,true,yellow,card
+Daniel James,,,D. James,james-daniel,M,Simulation,24,null,false,yellow,card
+Séamus Coleman,,,S. Coleman,seamus-coleman,D,Argument,85,null,false,yellow,card
+Mahmoud Trezeguet,,,Trezeguet,trezeguet,M,null,85,null,true,yellow,card
+André Gomes,,,A. Gomes,andre-gomes,M,null,80,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Foul,52,null,false,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,5,null,true,yellow,card
+Marco Stiepermann,,,M. Stiepermann,marco-stiepermann,M,Persistent fouling,43,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,33,null,false,yellow,card
+Martín Montoya,,,M. Montoya,martin-montoya,D,Foul,89,null,true,yellow,card
+Pierre-Emile Højbjerg,,,P. Højbjerg,pierre-emile-hojbjerg,M,Foul,82,null,false,yellow,card
+Moussa Djenepo,,,M. Djenepo,moussa-djenepo,M,Foul,62,null,false,yellow,card
+Florin Andone,,,F. Andone,florin-andone,F,Foul,30,null,true,red,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,21,null,false,yellow,card
+Vicente Guaita,,,V. Guaita,vicente-guaita,G,Time wasting,86,null,false,yellow,card
+Wilfried Zaha,,,W. Zaha,wilfried-zaha,F,Foul,79,null,false,yellow,card
+Daniel James,,,D. James,james-daniel,M,Simulation,71,null,true,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Foul,46,null,true,yellow,card
+Gary Cahill,,,G. Cahill,gary-cahill,D,Foul,41,null,false,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,38,null,false,yellow,card
+John Lundstram,,,J. Lundstram,john-lundstram,M,Foul,57,null,true,yellow,card
+Angelo Ogbonna,,,A. Ogbonna,angelo-ogbonna,D,Foul,76,null,false,yellow,card
+José Holebas,,,J. Holebas,jose-holebas,D,Foul,63,null,true,yellow,card
+Fabinho,,,Fabinho,fabinho,M,Foul,90,3,true,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Foul,48,null,false,yellow,card
+Nicolás Otamendi,,,N. Otamendi,nicolas-otamendi,D,Foul,90,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,56,null,true,yellow,card
+Ederson,,,Ederson,ederson,G,Foul,13,null,false,yellow,card
+Kyle Walker,,,K. Walker,kyle-walker,D,Foul,10,null,false,yellow,card
+Joelinton,,,Joelinton,joelinton,F,Time wasting,87,null,false,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,66,null,true,yellow,card
+Matt Ritchie,,,M. Ritchie,matt-ritchie,M,Foul,47,null,false,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Foul,11,null,true,yellow,card
+Aaron Lennon,,,A. Lennon,aaron-lennon,M,Foul,88,null,false,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,59,null,false,yellow,card
+Stuart Armstrong,,,S. Armstrong,stuart-armstrong,M,Foul,90,6,true,yellow,card
+Ashley Young,,,A. Young,ashley-young,M,Argument,90,4,false,yellow,card
+Kevin Danso,,,K. Danso,danso-kevin,D,Foul,73,null,true,yellowRed,card
+Harry Maguire,,,H. Maguire,harry-maguire,D,Foul,40,null,false,yellow,card
+Kevin Danso,,,K. Danso,danso-kevin,D,Foul,19,null,true,yellow,card
+Oliver McBurnie,,,O. McBurnie,oliver-mcburnie,F,Argument,45,1,false,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Simulation,90,6,false,yellow,card
+Cheikhou Kouyaté,,,C. Kouyaté,cheikhou-kouyate,D,Persistent fouling,71,null,true,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Persistent fouling,58,null,true,yellow,card
+Mahmoud Trezeguet,,,Trezeguet,trezeguet,M,Foul,54,null,false,yellowRed,card
+Mahmoud Trezeguet,,,Trezeguet,trezeguet,M,Foul,44,null,false,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,40,null,false,yellow,card
+Neil Taylor,,,N. Taylor,neil-taylor,D,Foul,35,null,false,yellow,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Foul,17,null,false,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Simulation,69,null,false,yellow,card
+Marc Albrighton,,,M. Albrighton,marc-albrighton,M,Foul,40,null,true,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,32,null,false,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,21,null,false,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Argument,83,null,false,yellow,card
+Aymeric Laporte,,,A. Laporte,aymeric-laporte,D,Foul,36,null,true,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Foul,55,null,false,yellow,card
+Craig Dawson,,,C. Dawson,craig-dawson,D,Foul,44,null,false,yellow,card
+Paul Dummett,,,P. Dummett,paul-dummett,D,Foul,44,null,true,yellow,card
+Isaac Hayden,,,I. Hayden,isaac-hayden,M,Foul,31,null,true,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,29,null,false,yellow,card
+Robert Snodgrass,,,R. Snodgrass,robert-snodgrass,M,Foul,74,null,true,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Foul,62,null,false,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,60,null,true,yellow,card
+Willy Boly,,,W. Boly,willy-boly,D,Foul,90,5,false,yellowRed,card
+Pedro Neto,,,P. Neto,pedro-neto,F,Foul,90,4,false,yellow,card
+Fabian Delph,,,F. Delph,fabian-delph,M,Foul,63,null,true,yellow,card
+Ryan Bennett,,,R. Bennett,ryan-bennett,D,Foul,58,null,false,yellow,card
+Willy Boly,,,W. Boly,willy-boly,D,Foul,49,null,false,yellow,card
+Raúl Jiménez,,,R. Jiménez,raul-jimenez,F,Time wasting,44,null,false,yellow,card
+Rúben Vinagre,,,R. Vinagre,ruben-vinagre,M,Foul,38,null,false,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,90,2,true,yellow,card
+Sokratis,,,Sokratis,sokratis,D,Argument,87,null,true,yellow,card
+Davinson Sánchez,,,D. Sánchez,davinson-sanchez,D,Foul,78,null,false,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Time wasting,74,null,false,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Foul,63,null,true,yellow,card
+Christian Eriksen,,,C. Eriksen,christian-eriksen,M,Time wasting,57,null,false,yellow,card
+Érik Lamela,,,É. Lamela,erik-lamela,M,Foul,32,null,false,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,28,null,false,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Foul,83,null,false,yellow,card
+Aaron Lennon,,,A. Lennon,aaron-lennon,M,Foul,27,null,false,yellow,card
+Ben Chilwell,,,B. Chilwell,ben-chilwell,D,Argument,90,5,false,yellow,card
+Daniel James,,,D. James,james-daniel,M,Foul,84,null,true,yellow,card
+James Maddison,,,J. Maddison,james-maddison,M,Foul,75,null,false,yellow,card
+Billy Sharp,,,B. Sharp,billy-sharp,F,Foul,85,null,true,red,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,65,null,true,yellow,card
+Jannik Vestergaard,,,J. Vestergaard,jannik-vestergaard,D,Foul,51,null,false,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,90,1,false,yellow,card
+Joel Ward,,,J. Ward,joel-ward,D,Foul,89,null,false,yellow,card
+Jordan Ayew,,,J. Ayew,jordan-ayew,F,Argument,61,null,false,yellow,card
+Christian Eriksen,,,C. Eriksen,christian-eriksen,M,Foul,60,null,true,yellow,card
+Jan Vertonghen,,,J. Vertonghen,jan-vertonghen,D,Foul,53,null,true,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,50,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Foul,45,2,true,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,79,null,true,yellow,card
+Andreas Christensen,,,A. Christensen,andreas-christensen,D,Foul,64,null,false,yellow,card
+Tammy Abraham,,,T. Abraham,tammy-abraham,F,Foul,62,null,false,yellow,card
+Todd Cantwell,,,T. Cantwell,todd-cantwell,M,Foul,87,null,true,yellow,card
+Bernardo Silva,,,B. Silva,bernardo-silva,M,Foul,69,null,false,yellow,card
+Kenny McLean,,,K. McLean,kenny-mclean,M,Foul,64,null,true,yellow,card
+Sam Byram,,,S. Byram,sam-byram,D,Foul,45,2,true,yellow,card
+Morgan Schneiderlin,,,M. Schneiderlin,morgan-schneiderlin,M,Foul,90,5,false,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Foul,66,null,false,yellow,card
+Lucas Digne,,,L. Digne,lucas-digne,D,Foul,58,null,false,yellow,card
+Fabian Delph,,,F. Delph,fabian-delph,M,Foul,40,null,false,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,90,1,true,yellow,card
+Bernd Leno,,,B. Leno,bernd-leno,G,Time wasting,76,null,false,yellow,card
+Kiko Femenia,,,Kiko,kiko-femenia,D,Foul,56,null,true,yellow,card
+Mattéo Guendouzi,,,M. Guendouzi,matteo-guendouzi,M,Argument,45,2,false,yellow,card
+José Holebas,,,J. Holebas,jose-holebas,D,Argument,45,2,true,yellow,card
+Sead Kolašinac,,,S. Kolašinac,sead-kolasinac,D,Foul,43,null,false,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Foul,77,null,true,yellow,card
+Arthur Masuaku,,,A. Masuaku,arthur-masuaku,D,Foul,67,null,false,yellowRed,card
+Mark Noble,,,M. Noble,mark-noble,M,Persistent fouling,29,null,false,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Foul,28,null,true,yellow,card
+Arthur Masuaku,,,A. Masuaku,arthur-masuaku,D,Foul,23,null,false,yellow,card
+Oriol Romeu,,,O. Romeu,oriol-romeu,M,Foul,80,null,true,yellow,card
+Jack Stacey,,,J. Stacey,jack-stacey,D,Foul,64,null,false,yellow,card
+Harry Wilson,,,H. Wilson,harry-wilson,M,Foul,54,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,20,null,false,yellow,card
+Demarai Gray,,,D. Gray,demarai-gray,M,Foul,83,null,true,yellow,card
+Victor Wanyama,,,V. Wanyama,victor-wanyama,M,Foul,71,null,false,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Foul,19,null,false,yellow,card
+Ibrahim Amadou,,,I. Amadou,ibrahim-amadou,M,Foul,33,null,false,yellow,card
+Dean Henderson,,,D. Henderson,dean-henderson,G,Argument,21,null,false,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Argument,21,null,false,yellow,card
+Bernard,,,Bernard,bernard,F,Argument,21,null,true,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,16,null,false,yellow,card
+Angeliño,,,Angeliño,angelino,M,Foul,81,null,true,yellow,card
+Kiko Femenia,,,Kiko,kiko-femenia,D,Foul,59,null,false,yellow,card
+Gerard Deulofeu,,,G. Deulofeu,gerard-deulofeu,F,Argument,59,null,false,yellow,card
+Bernardo Silva,,,B. Silva,bernardo-silva,M,Foul,19,null,true,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,88,null,false,yellow,card
+Christian Atsu,,,C. Atsu,christian-atsu,M,Foul,79,null,true,yellow,card
+Javier Manquillo,,,J. Manquillo,javier-manquillo,D,Foul,44,null,true,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,73,null,false,yellowRed,card
+Jordan Ayew,,,J. Ayew,jordan-ayew,F,Time wasting,62,null,true,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,48,null,false,yellow,card
+James McArthur,,,J. McArthur,james-mcarthur,M,Foul,45,null,true,yellow,card
+Conor Coady,,,C. Coady,conor-coady,D,Foul,44,null,false,yellow,card
+Ashley Young,,,A. Young,ashley-young,M,Foul,83,null,false,yellow,card
+Mark Noble,,,M. Noble,mark-noble,M,Foul,74,null,true,yellow,card
+Juan Mata,,,J. Mata,juan-mata,M,Foul,48,null,false,yellow,card
+Angelo Ogbonna,,,A. Ogbonna,angelo-ogbonna,D,Foul,14,null,true,yellow,card
+Pierre-Emerick Aubameyang,,,P. Aubameyang,pierre-emerick-aubameyang,F,Foul,90,5,true,yellow,card
+Bernd Leno,,,B. Leno,bernd-leno,G,Time wasting,90,2,true,yellow,card
+Nicolas Pépé,,,N. Pépé,nicolas-pepe,F,Time wasting,85,null,true,yellow,card
+Björn Engels,,,B. Engels,bjorn-engels,D,Foul,83,null,false,yellow,card
+Mattéo Guendouzi,,,M. Guendouzi,matteo-guendouzi,M,Argument,44,null,true,yellow,card
+Ainsley Maitland-Niles,,,A. Maitland-Niles,ainsley-maitland-niles,M,Foul,41,null,true,yellowRed,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,35,null,true,yellow,card
+Ainsley Maitland-Niles,,,A. Maitland-Niles,ainsley-maitland-niles,M,Foul,11,null,true,yellow,card
+Marcos Alonso,,,M. Alonso,marcos-alonso,D,Foul,90,4,true,yellow,card
+James Milner,,,J. Milner,james-milner,M,Foul,86,null,false,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Argument,84,null,true,yellow,card
+Fabinho,,,Fabinho,fabinho,M,Foul,78,null,false,yellow,card
+Trent Alexander-Arnold,,,T. Alexander-Arnold,trent-alexander-arnold,D,Time wasting,57,null,false,yellow,card
+Fikayo Tomori,,,F. Tomori,fikayo-tomori,D,Foul,20,null,true,yellow,card
+Adrián,,,Adrián,adrian,G,Time wasting,83,null,false,yellow,card
+Jack O'Connell,,,J. O'Connell,jack-oconnell,D,Time wasting,63,null,true,yellow,card
+Jay Rodriguez,,,J. Rodriguez,jay-rodriguez,F,Foul,90,7,false,yellow,card
+Mahmoud Trezeguet,,,Trezeguet,trezeguet,M,Argument,86,null,true,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Time wasting,77,null,false,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,44,null,false,yellow,card
+Ashley Barnes,,,A. Barnes,ashley-barnes,F,Argument,23,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,90,null,true,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Foul,88,null,true,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,79,null,false,yellow,card
+Diego Rico,,,D. Rico,diego-rico,D,Foul,32,null,true,yellow,card
+Adam Webster,,,A. Webster,adam-webster,D,Foul,49,null,false,yellow,card
+Steven Alzate,,,S. Alzate,steven-alzate,M,Simulation,33,null,false,yellow,card
+Marcos Alonso,,,M. Alonso,marcos-alonso,D,Foul,31,null,true,yellow,card
+Neal Maupay,,,N. Maupay,neal-maupay,F,Dangerous play,28,null,false,yellow,card
+Andreas Christensen,,,A. Christensen,andreas-christensen,D,Off the ball foul,23,null,true,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,90,4,true,yellow,card
+Jeffrey Schlupp,,,J. Schlupp,jeffrey-schlupp,M,Time wasting,89,null,true,yellow,card
+Marco Stiepermann,,,M. Stiepermann,marco-stiepermann,M,Foul,64,null,false,yellow,card
+Jordan Ayew,,,J. Ayew,jordan-ayew,F,Foul,58,null,true,yellow,card
+Jan Bednarek,,,J. Bednarek,jan-bednarek,D,Foul,82,null,false,yellow,card
+Maya Yoshida,,,M. Yoshida,maya-yoshida,D,Foul,68,null,false,yellow,card
+Serge Aurier,,,S. Aurier,serge-aurier,D,Foul,31,null,true,yellowRed,card
+Serge Aurier,,,S. Aurier,serge-aurier,D,Foul,27,null,true,yellow,card
+José Holebas,,,J. Holebas,jose-holebas,D,Foul,68,null,false,yellow,card
+Yerry Mina,,,Y. Mina,yerry-mina,D,Foul,70,null,true,yellow,card
+Morgan Schneiderlin,,,M. Schneiderlin,morgan-schneiderlin,M,Foul,59,null,true,yellow,card
+Nicolás Otamendi,,,N. Otamendi,nicolas-otamendi,D,Foul,51,null,false,yellow,card
+Rodri,,,Rodri,rodri,M,Foul,38,null,false,yellow,card
+Fabian Schär,,,F. Schär,fabian-schar,D,Foul,88,null,false,yellow,card
+Isaac Hayden,,,I. Hayden,isaac-hayden,M,Foul,43,null,false,red,card
+Jamie Vardy,,,J. Vardy,jamie-vardy,F,Foul,24,null,true,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Persistent fouling,77,null,false,yellow,card
+Jesse Lingard,,,J. Lingard,jesse-lingard,M,Foul,68,null,true,yellow,card
+Ashley Young,,,A. Young,ashley-young,M,Foul,41,null,true,yellow,card
+Andreas Pereira,,,A. Pereira,andreas-pereira,M,Foul,32,null,true,yellow,card
+Marcus Rashford,,,M. Rashford,marcus-rashford,M,Foul,27,null,true,yellow,card
+Calum Chambers,,,C. Chambers,calum-chambers,D,Foul,10,null,false,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Off the ball foul,89,null,true,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,null,57,null,true,yellow,card
+Eric Dier,,,E. Dier,eric-dier,D,Off the ball foul,55,null,false,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Foul,90,4,true,yellow,card
+Djibril Sidibé,,,D. Sidibé,djibril-sidibe,D,Foul,86,null,false,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,64,null,true,yellow,card
+Séamus Coleman,,,S. Coleman,seamus-coleman,D,Foul,56,null,false,yellowRed,card
+Séamus Coleman,,,S. Coleman,seamus-coleman,D,Foul,43,null,false,yellow,card
+Hamza Choudhury,,,H. Choudhury,hamza-choudhury,M,Foul,89,null,false,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,69,null,false,yellow,card
+Çağlar Söyüncü,,,Ç. Söyüncü,caglar-soyuncu,D,Foul,53,null,false,yellow,card
+Fabinho,,,Fabinho,fabinho,M,Foul,39,null,true,yellow,card
+Wilfred Ndidi,,,W. Ndidi,wilfred-ndidi,M,Foul,30,null,false,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,70,null,false,yellow,card
+Conor Hourihane,,,C. Hourihane,conor-hourihane,M,Foul,62,null,false,yellow,card
+John McGinn,,,J. McGinn,john-mcginn,M,Foul,42,null,false,yellow,card
+Teemu Pukki,,,T. Pukki,teemu-pukki,F,Foul,32,null,true,yellow,card
+John Lundstram,,,J. Lundstram,john-lundstram,M,Foul,90,1,false,yellow,card
+Oliver McBurnie,,,O. McBurnie,oliver-mcburnie,F,Foul,57,null,false,yellow,card
+Christian Benteke,,,C. Benteke,christian-benteke,F,Time wasting,90,6,false,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,86,null,true,yellow,card
+Sébastien Haller,,,S. Haller,sebastien-haller,F,Foul,61,null,true,yellow,card
+Joel Ward,,,J. Ward,joel-ward,D,Foul,51,null,false,yellow,card
+Andriy Yarmolenko,,,A. Yarmolenko,andriy-yarmolenko,M,Foul,44,null,true,yellow,card
+Gabriel Martinelli,,,G. Martinelli,gabriel-martinelli,M,Foul,72,null,true,yellow,card
+Jack Stacey,,,J. Stacey,jack-stacey,D,Foul,29,null,false,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,13,null,false,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Persistent fouling,86,null,false,yellow,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Foul,84,null,false,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,76,null,true,yellow,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,71,null,true,yellow,card
+Ederson,,,Ederson,ederson,G,Argument,62,null,true,yellow,card
+João Cancelo,,,J. Cancelo,joao-cancelo,D,Foul,50,null,true,yellow,card
+Rodri,,,Rodri,rodri,M,Foul,50,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,12,null,false,yellow,card
+Marcos Rojo,,,M. Rojo,marcos-rojo,D,Foul,78,null,false,yellow,card
+Miguel Almirón,,,M. Almirón,miguel-almiron,M,Simulation,65,null,true,yellow,card
+Fabian Schär,,,F. Schär,fabian-schar,D,Time wasting,47,null,true,yellow,card
+Scott McTominay,,,S. McTominay,scott-mctominay,M,Foul,30,null,false,yellow,card
+DeAndre Yedlin,,,D. Yedlin,deandre-yedlin,D,Foul,15,null,true,yellow,card
+Fred,,,Fred,fred,M,Foul,3,null,false,yellow,card
+André Gomes,,,A. Gomes,andre-gomes,M,Foul,89,null,true,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,78,null,false,yellow,card
+Declan Rice,,,D. Rice,declan-rice,M,Foul,70,null,false,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Time wasting,45,3,true,yellow,card
+Solly March,,,S. March,solly-march,M,null,87,null,false,yellow,card
+Martín Montoya,,,M. Montoya,martin-montoya,D,Foul,53,null,false,yellow,card
+Aaron Mooy,,,A. Mooy,aaron-mooy,M,Foul,35,null,false,yellowRed,card
+Aaron Mooy,,,A. Mooy,aaron-mooy,M,Argument,30,null,false,yellow,card
+Conor Hourihane,,,C. Hourihane,conor-hourihane,M,Foul,19,null,true,yellow,card
+Teemu Pukki,,,T. Pukki,teemu-pukki,F,Foul,86,null,false,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,70,null,true,yellow,card
+Kenny McLean,,,K. McLean,kenny-mclean,M,Foul,68,null,false,yellow,card
+Jamal Lewis,,,J. Lewis,jamal-lewis,D,Foul,29,null,false,yellow,card
+Fikayo Tomori,,,F. Tomori,fikayo-tomori,D,Foul,45,1,true,yellow,card
+Ciaran Clark,,,C. Clark,ciaran-clark,D,Foul,43,null,false,yellow,card
+Marcos Alonso,,,M. Alonso,marcos-alonso,D,Foul,23,null,true,yellow,card
+Matthew Lowton,,,M. Lowton,matthew-lowton,D,Argument,90,4,false,yellow,card
+Chris Wood,,,C. Wood,chris-wood,F,Argument,62,null,false,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,2,null,false,yellow,card
+José Holebas,,,J. Holebas,jose-holebas,D,Argument,90,null,false,yellow,card
+Dele Alli,,,D. Alli,dele-alli,M,Argument,90,null,true,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,89,null,true,yellow,card
+Kiko Femenia,,,Kiko,kiko-femenia,D,Foul,88,null,false,yellow,card
+Roberto Pereyra,,,R. Pereyra,roberto-pereyra,M,Time wasting,84,null,false,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Foul,77,null,true,yellow,card
+Davinson Sánchez,,,D. Sánchez,davinson-sanchez,D,Foul,13,null,true,yellow,card
+Ryan Bertrand,,,R. Bertrand,ryan-bertrand,D,Foul,90,3,false,yellow,card
+Jesús Vallejo,,,J. Vallejo,jesus-vallejo,D,Foul,68,null,true,yellow,card
+Conor Coady,,,C. Coady,conor-coady,D,Foul,45,1,true,yellow,card
+Raúl Jiménez,,,R. Jiménez,raul-jimenez,F,Handball,29,null,true,yellow,card
+Yan Valery,,,Y. Valery,yan-valery,D,Persistent fouling,10,null,false,yellow,card
+Raheem Sterling,,,R. Sterling,raheem-sterling,F,Foul,46,null,false,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,13,null,true,yellow,card
+Fabinho,,,Fabinho,fabinho,M,Foul,70,null,false,yellow,card
+Calum Chambers,,,C. Chambers,calum-chambers,D,Argument,90,3,false,yellow,card
+Sokratis,,,Sokratis,sokratis,D,Foul,86,null,false,yellow,card
+Dean Henderson,,,D. Henderson,dean-henderson,G,Time wasting,75,null,true,yellow,card
+Sead Kolašinac,,,S. Kolašinac,sead-kolasinac,D,Argument,67,null,false,yellow,card
+David McGoldrick,,,D. McGoldrick,david-mcgoldrick,F,Simulation,66,null,true,yellow,card
+Jack O'Connell,,,J. O'Connell,jack-oconnell,D,Foul,39,null,true,yellow,card
+Bukayo Saka,,,B. Saka,bukayo-saka,M,Simulation,35,null,false,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,15,null,true,yellow,card
+Ryan Bertrand,,,R. Bertrand,ryan-bertrand,D,Foul,12,null,true,red,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,87,null,true,yellowRed,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,81,null,true,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,57,null,true,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Foul,36,null,false,yellow,card
+Davy Pröpper,,,D. Pröpper,davy-propper,M,Foul,90,3,true,yellow,card
+Mason Holgate,,,M. Holgate,mason-holgate,D,Foul,86,null,false,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Foul,33,null,true,yellow,card
+Roberto Pereyra,,,R. Pereyra,roberto-pereyra,M,Foul,89,null,true,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,87,null,true,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,85,null,true,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,80,null,false,yellow,card
+Gerard Deulofeu,,,G. Deulofeu,gerard-deulofeu,F,Argument,77,null,true,yellow,card
+Diego Rico,,,D. Rico,diego-rico,D,Foul,73,null,false,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Argument,65,null,false,yellow,card
+Craig Dawson,,,C. Dawson,craig-dawson,D,Foul,41,null,true,yellow,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,90,2,false,yellow,card
+Fabián Balbuena,,,F. Balbuena,fabian-balbuena,D,Foul,62,null,true,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Foul,58,null,false,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,28,null,true,yellow,card
+Robbie Brady,,,R. Brady,robbie-brady,M,Foul,90,2,true,yellow,card
+Callum Hudson-Odoi,,,C. Hudson-Odoi,callum-hudson-odoi,F,Simulation,77,null,false,yellow,card
+Erik Pieters,,,E. Pieters,erik-pieters,D,Foul,67,null,true,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,65,null,true,yellow,card
+Willian,,,Willian,willian,F,Foul,53,null,false,yellow,card
+Sean Longstaff,,,S. Longstaff,sean-longstaff,M,Foul,82,null,true,red,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Foul,75,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,69,null,false,yellow,card
+Jamaal Lascelles,,,J. Lascelles,jamaal-lascelles,D,Foul,66,null,true,yellow,card
+Ciaran Clark,,,C. Clark,ciaran-clark,D,Foul,55,null,true,yellow,card
+Mattéo Guendouzi,,,M. Guendouzi,matteo-guendouzi,M,Foul,90,7,true,yellow,card
+Calum Chambers,,,C. Chambers,calum-chambers,D,Foul,51,null,true,yellow,card
+James Milner,,,J. Milner,james-milner,M,Foul,90,1,true,yellow,card
+Tanguy Ndombélé,,,T. Ndombélé,tanguy-ndombele,M,Foul,72,null,false,yellow,card
+Trent Alexander-Arnold,,,T. Alexander-Arnold,trent-alexander-arnold,D,Foul,64,null,true,yellow,card
+Dejan Lovren,,,D. Lovren,dejan-lovren,D,Foul,50,null,true,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,37,null,false,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,null,36,null,false,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Argument,90,3,true,yellow,card
+Ashley Young,,,A. Young,ashley-young,M,Foul,60,null,false,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Foul,45,1,false,yellow,card
+Ben Godfrey,,,B. Godfrey,ben-godfrey,D,Foul,27,null,true,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Simulation,90,1,true,yellow,card
+Ashley Young,,,A. Young,ashley-young,M,Foul,67,null,false,yellow,card
+Victor Lindelöf,,,V. Lindelöf,victor-lindelof,D,Foul,64,null,false,yellow,card
+Ryan Fraser,,,R. Fraser,ryan-fraser,M,Foul,62,null,true,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Foul,55,null,true,yellow,card
+Fred,,,Fred,fred,M,Argument,35,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Argument,35,null,true,yellow,card
+Diogo Jota,,,D. Jota,diogo-jota,F,Foul,89,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,67,null,false,yellow,card
+Anwar El Ghazi,,,A. E. Ghazi,anwar-el-ghazi,F,Foul,81,null,true,yellow,card
+Virgil van Dijk,,,V. v. Dijk,virgil-van-dijk,D,Foul,58,null,false,yellow,card
+Sadio Mané,,,S. Mané,sadio-mane,F,Simulation,37,null,false,yellow,card
+Marco Stiepermann,,,M. Stiepermann,marco-stiepermann,M,Foul,63,null,false,yellow,card
+Ederson,,,Ederson,ederson,G,Time wasting,90,5,true,yellow,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,89,null,true,yellow,card
+Raheem Sterling,,,R. Sterling,raheem-sterling,F,Foul,40,null,true,yellow,card
+Pierre-Emile Højbjerg,,,P. Højbjerg,pierre-emile-hojbjerg,M,Foul,18,null,false,yellow,card
+Chris Basham,,,C. Basham,chris-basham,D,Foul,89,null,true,yellow,card
+Ashley Barnes,,,A. Barnes,ashley-barnes,F,Argument,68,null,false,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,34,null,false,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Time wasting,90,4,false,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Foul,49,null,true,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,14,null,true,yellow,card
+Mason Mount,,,M. Mount,mason-mount,M,Time wasting,90,6,false,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Time wasting,89,null,false,yellow,card
+Adrian Mariappa,,,A. Mariappa,adrian-mariappa,D,Foul,88,null,true,yellow,card
+Craig Dawson,,,C. Dawson,craig-dawson,D,Foul,82,null,true,yellow,card
+Daryl Janmaat,,,D. Janmaat,daryl-janmaat,D,Foul,70,null,true,yellow,card
+Christian Kabasele,,,C. Kabasele,christian-kabasele,D,Foul,46,null,true,yellow,card
+Çağlar Söyüncü,,,Ç. Söyüncü,caglar-soyuncu,D,Foul,81,null,false,yellow,card
+James Tomkins,,,J. Tomkins,james-tomkins,D,Handball,63,null,true,yellow,card
+Jeffrey Schlupp,,,J. Schlupp,jeffrey-schlupp,M,Foul,54,null,true,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,48,null,false,yellow,card
+Heung-Min Son,,,H. M. Son,heung-min-son,F,Foul,79,null,false,red,card
+Tanguy Ndombélé,,,T. Ndombélé,tanguy-ndombele,M,Foul,65,null,false,yellow,card
+Christian Eriksen,,,C. Eriksen,christian-eriksen,M,Foul,31,null,false,yellow,card
+Theo Walcott,,,T. Walcott,theo-walcott,M,Foul,30,null,true,yellow,card
+Adam Masina,,,A. Masina,adam-masina,D,Foul,90,3,false,yellow,card
+Mario Vrančić,,,M. Vrančić,mario-vrancic,M,Foul,86,null,true,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,69,null,false,yellow,card
+Christian Kabasele,,,C. Kabasele,christian-kabasele,D,Foul,65,null,false,yellowRed,card
+Christian Kabasele,,,C. Kabasele,christian-kabasele,D,Foul,49,null,false,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,90,3,false,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Foul,33,null,true,yellow,card
+Emerson Palmieri,,,Emerson,emerson-palmieri,D,Foul,31,null,true,yellow,card
+Wilfried Zaha,,,W. Zaha,wilfried-zaha,F,Foul,21,null,false,yellow,card
+Willian,,,Willian,willian,F,Foul,17,null,true,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Foul,88,null,true,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,69,null,false,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Foul,45,3,true,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Foul,75,null,true,yellow,card
+Isaac Hayden,,,I. Hayden,isaac-hayden,M,Foul,37,null,true,yellow,card
+Sofiane Boufal,,,S. Boufal,sofiane-boufal,M,Foul,88,null,true,yellow,card
+Djibril Sidibé,,,D. Sidibé,djibril-sidibe,D,Foul,65,null,false,yellow,card
+Chris Basham,,,C. Basham,chris-basham,D,Foul,90,1,false,yellow,card
+Juan Foyth,,,J. Foyth,juan-foyth,D,Foul,80,null,true,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,18,null,false,yellow,card
+Eric Dier,,,E. Dier,eric-dier,D,Foul,2,null,true,yellow,card
+Héctor Bellerín,,,H. Bellerín,hector-bellerin,D,Off the ball foul,88,null,false,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,55,null,true,yellow,card
+Davy Pröpper,,,D. Pröpper,davy-propper,M,Foul,74,null,false,yellow,card
+Brandon Williams,,,B. Williams,williams-brandon,D,Foul,58,null,true,yellow,card
+Dan Burn,,,D. Burn,dan-burn,D,Foul,45,2,false,yellow,card
+Marcus Rashford,,,M. Rashford,marcus-rashford,M,Foul,45,null,true,yellow,card
+Martín Montoya,,,M. Montoya,martin-montoya,D,Foul,30,null,false,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,19,null,false,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Foul,5,null,false,yellow,card
+Jonny Castro,,,J. Otto,jonny-otto,M,Foul,90,1,true,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Foul,86,null,true,yellow,card
+Diogo Jota,,,D. Jota,diogo-jota,F,Argument,74,null,true,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Foul,40,null,false,yellow,card
+Marvelous Nakamba,,,M. Nakamba,marvelous-nakamba,M,Foul,27,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,12,null,true,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,10,null,false,yellow,card
+Gabriel Jesus,,,Gabriel,gabriel-jesus,F,Argument,90,5,false,yellow,card
+Rodri,,,Rodri,rodri,M,Argument,65,null,false,yellow,card
+Robert Snodgrass,,,R. Snodgrass,robert-snodgrass,M,Argument,87,null,true,yellow,card
+Harry Kane,,,H. Kane,harry-kane,F,Foul,87,null,false,yellow,card
+Ben Davies,,,B. Davies,ben-davies,D,Foul,70,null,false,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,39,null,true,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Handball,11,null,true,yellow,card
+Mattéo Guendouzi,,,M. Guendouzi,matteo-guendouzi,M,Argument,89,null,true,yellow,card
+Ryan Bertrand,,,R. Bertrand,ryan-bertrand,D,Time wasting,81,null,false,yellow,card
+Kieran Tierney,,,K. Tierney,kieran-tierney,D,Foul,69,null,true,yellow,card
+Nicolas Pépé,,,N. Pépé,nicolas-pepe,F,Foul,65,null,true,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Foul,45,2,true,yellow,card
+Danny Ings,,,D. Ings,danny-ings,F,Foul,31,null,false,yellow,card
+Sokratis,,,Sokratis,sokratis,D,Argument,28,null,true,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Foul,23,null,true,yellow,card
+Diego Rico,,,D. Rico,diego-rico,D,Foul,90,null,true,yellow,card
+Simon Francis,,,S. Francis,simon-francis,D,Foul,37,null,true,yellowRed,card
+Simon Francis,,,S. Francis,simon-francis,D,Foul,21,null,true,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,17,null,true,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,4,null,false,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Off the ball foul,48,null,true,yellow,card
+Adam Webster,,,A. Webster,adam-webster,D,Foul,16,null,true,yellow,card
+Fabinho,,,Fabinho,fabinho,M,Foul,54,null,false,yellow,card
+Séamus Coleman,,,S. Coleman,seamus-coleman,D,Argument,90,3,true,yellow,card
+Kenny McLean,,,K. McLean,kenny-mclean,M,Foul,87,null,false,yellow,card
+Alexander Tettey,,,A. Tettey,alexander-tettey,M,Time wasting,84,null,false,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Argument,81,null,false,yellow,card
+Mason Holgate,,,M. Holgate,mason-holgate,D,Argument,81,null,true,yellow,card
+Sam Byram,,,S. Byram,sam-byram,D,Time wasting,47,null,false,yellow,card
+Christoph Zimmermann,,,C. Zimmermann,christoph-zimmermann,D,Foul,23,null,false,yellow,card
+Morgan Schneiderlin,,,M. Schneiderlin,morgan-schneiderlin,M,Handball,20,null,true,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,null,60,null,false,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,45,4,false,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Argument,30,null,false,yellow,card
+Andre Gray,,,A. Gray,andre-gray,F,Foul,25,null,true,yellow,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,90,1,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,61,null,false,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Foul,60,null,false,yellow,card
+John Lundstram,,,J. Lundstram,john-lundstram,M,Foul,51,null,true,yellow,card
+Brandon Williams,,,B. Williams,williams-brandon,D,Foul,50,null,false,yellow,card
+Wesley,,,Wesley,wesley,F,Foul,80,null,true,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Foul,35,null,false,yellow,card
+Javier Manquillo,,,J. Manquillo,javier-manquillo,D,Time wasting,73,null,true,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,53,null,false,yellow,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,24,null,false,yellow,card
+Dwight McNeil,,,D. McNeil,dwight-mcneil,M,Foul,67,null,true,yellow,card
+Phil Bardsley,,,P. Bardsley,phil-bardsley,D,Argument,55,null,true,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Time wasting,90,5,false,yellow,card
+Andriy Yarmolenko,,,A. Yarmolenko,andriy-yarmolenko,M,Foul,88,null,false,yellow,card
+Pablo Fornals,,,P. Fornals,pablo-fornals,M,Foul,65,null,false,yellow,card
+Alisson,,,Alisson,alisson,G,Professional handball,76,null,true,red,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Argument,90,null,false,yellow,card
+Diego Rico,,,D. Rico,diego-rico,D,Foul,67,null,false,yellow,card
+Nathan Redmond,,,N. Redmond,nathan-redmond,M,Foul,48,null,true,yellow,card
+Calum Chambers,,,C. Chambers,calum-chambers,D,Foul,66,null,false,yellow,card
+Kenny McLean,,,K. McLean,kenny-mclean,M,Foul,44,null,true,yellow,card
+Tim Krul,,,T. Krul,tim-krul,G,Argument,26,null,true,yellow,card
+John Egan,,,J. Egan,john-egan,D,Foul,90,null,false,yellow,card
+Jack O'Connell,,,J. O'Connell,jack-oconnell,D,Foul,63,null,false,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Foul,54,null,false,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,42,null,false,yellow,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,15,null,false,yellow,card
+Leander Dendoncker,,,L. Dendoncker,leander-dendoncker,M,Foul,3,null,true,yellow,card
+Gylfi Sigurðsson,,,G. Sigurðsson,gylfi-sigurdsson,M,Argument,45,2,false,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Foul,89,null,true,yellow,card
+Brandon Williams,,,B. Williams,williams-brandon,D,Foul,62,null,true,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,45,3,false,yellow,card
+Fred,,,Fred,fred,M,Foul,24,null,true,yellow,card
+Harry Maguire,,,H. Maguire,harry-maguire,D,Foul,7,null,true,yellow,card
+James McArthur,,,J. McArthur,james-mcarthur,M,Foul,85,null,true,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,78,null,false,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,72,null,true,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,71,null,true,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,68,null,false,yellow,card
+Dominic Solanke,,,D. Solanke,dominic-solanke,F,Foul,63,null,false,yellow,card
+Mamadou Sakho,,,M. Sakho,mamadou-sakho,D,Foul,19,null,true,red,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,86,null,true,yellow,card
+Bernardo Silva,,,B. Silva,bernardo-silva,M,Foul,15,null,false,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Foul,81,null,true,yellow,card
+Matt Targett,,,M. Targett,matt-targett,D,Foul,64,null,false,yellow,card
+Mason Mount,,,M. Mount,mason-mount,M,Foul,45,null,true,yellow,card
+Adam Masina,,,A. Masina,adam-masina,D,Foul,90,null,false,yellow,card
+Wilfred Ndidi,,,W. Ndidi,wilfred-ndidi,M,Foul,63,null,true,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Time wasting,46,null,false,yellow,card
+Çağlar Söyüncü,,,Ç. Söyüncü,caglar-soyuncu,D,Foul,41,null,true,yellow,card
+Jamie Vardy,,,J. Vardy,jamie-vardy,F,Simulation,38,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Foul,13,null,false,yellow,card
+Sam Byram,,,S. Byram,sam-byram,D,Foul,62,null,false,yellow,card
+Moussa Djenepo,,,M. Djenepo,moussa-djenepo,M,Foul,59,null,true,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Foul,78,null,false,yellow,card
+Declan Rice,,,D. Rice,declan-rice,M,Foul,67,null,false,yellow,card
+Diogo Jota,,,D. Jota,diogo-jota,F,Foul,30,null,true,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Persistent fouling,67,null,false,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Foul,31,null,false,yellow,card
+Trent Alexander-Arnold,,,T. Alexander-Arnold,trent-alexander-arnold,D,Foul,27,null,true,yellow,card
+Luke Freeman,,,L. Freeman,luke-freeman,M,Foul,87,null,true,yellow,card
+Billy Sharp,,,B. Sharp,billy-sharp,F,Foul,49,null,true,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Foul,68,null,true,yellow,card
+Pascal Groß,,,P. Groß,pascal-gross,M,Handball,60,null,false,yellow,card
+Sokratis,,,Sokratis,sokratis,D,Foul,45,1,true,yellow,card
+Héctor Bellerín,,,H. Bellerín,hector-bellerin,D,Foul,20,null,true,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Foul,68,null,true,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Foul,42,null,true,yellow,card
+Lucas Digne,,,L. Digne,lucas-digne,D,Foul,30,null,true,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,39,null,false,yellow,card
+Eric Dier,,,E. Dier,eric-dier,D,Foul,72,null,true,yellow,card
+Matthew Lowton,,,M. Lowton,matthew-lowton,D,Off the ball foul,22,null,false,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,90,3,true,yellow,card
+Kiko Femenia,,,Kiko,kiko-femenia,D,Foul,87,null,true,yellow,card
+James Tomkins,,,J. Tomkins,james-tomkins,D,Foul,72,null,false,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Foul,40,null,true,yellow,card
+Wilfried Zaha,,,W. Zaha,wilfried-zaha,F,Off the ball foul,38,null,false,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,34,null,true,yellow,card
+Kyle Walker,,,K. Walker,kyle-walker,D,Foul,90,4,true,yellow,card
+Kevin De Bruyne,,,K. D. Bruyne,kevin-de-bruyne,M,Foul,79,null,true,yellow,card
+Andreas Pereira,,,A. Pereira,andreas-pereira,M,Foul,74,null,false,yellow,card
+David De Gea,,,D. D. Gea,david-de-gea,G,Time wasting,54,null,false,yellow,card
+Bernardo Silva,,,B. Silva,bernardo-silva,M,Foul,22,null,true,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Off the ball foul,90,1,true,yellow,card
+John McGinn,,,J. McGinn,john-mcginn,M,Foul,60,null,true,yellow,card
+Matt Targett,,,M. Targett,matt-targett,D,Foul,50,null,true,yellow,card
+Wesley,,,Wesley,wesley,F,Argument,45,3,true,yellow,card
+Ricardo Pereira,,,R. Pereira,ricardo-pereira,D,Persistent fouling,45,1,false,yellow,card
+Kelechi Iheanacho,,,K. Iheanacho,kelechi-iheanacho,F,Foul,38,null,false,yellow,card
+Marvelous Nakamba,,,M. Nakamba,marvelous-nakamba,M,Foul,36,null,true,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Foul,13,null,true,yellow,card
+Cédric Soares,,,C. Soares,cedric-soares,D,Foul,67,null,false,yellow,card
+Pierre-Emile Højbjerg,,,P. Højbjerg,pierre-emile-hojbjerg,M,Foul,62,null,false,yellow,card
+Jonjo Shelvey,,,J. Shelvey,jonjo-shelvey,M,Foul,48,null,true,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,44,null,false,yellow,card
+Callum Robinson,,,C. Robinson,callum-robinson,F,Time wasting,90,5,false,yellow,card
+Chris Basham,,,C. Basham,chris-basham,D,Foul,74,null,false,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,40,null,false,yellow,card
+John Egan,,,J. Egan,john-egan,D,Time wasting,37,null,false,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Foul,90,2,true,yellow,card
+Dan Burn,,,D. Burn,dan-burn,D,Foul,82,null,true,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,75,null,true,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Foul,49,null,true,yellow,card
+Robert Snodgrass,,,R. Snodgrass,robert-snodgrass,M,Foul,24,null,true,yellow,card
+James Milner,,,J. Milner,james-milner,M,Foul,57,null,true,yellow,card
+Jordan Henderson,,,J. Henderson,jordan-henderson,M,Foul,43,null,true,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,24,null,false,yellow,card
+Andy Carroll,,,A. Carroll,andy-carroll,F,Foul,59,null,false,yellow,card
+Joelinton,,,Joelinton,joelinton,F,Foul,41,null,false,yellow,card
+Dan Gosling,,,D. Gosling,dan-gosling,M,Foul,82,null,false,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Foul,81,null,true,yellow,card
+Lewis Cook,,,L. Cook,lewis-cook,M,Foul,50,null,false,yellow,card
+Tim Krul,,,T. Krul,tim-krul,G,Time wasting,90,3,false,yellow,card
+Alexander Tettey,,,A. Tettey,alexander-tettey,M,Handball,78,null,false,yellow,card
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Argument,60,null,false,yellow,card
+Tom Trybull,,,T. Trybull,tom-trybull,M,Foul,52,null,false,yellow,card
+Todd Cantwell,,,T. Cantwell,todd-cantwell,M,Argument,33,null,false,yellow,card
+Matt Targett,,,M. Targett,matt-targett,D,Foul,69,null,false,yellow,card
+Kortney Hause,,,K. Hause,kortney-hause,D,Foul,64,null,false,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,16,null,true,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Persistent fouling,12,null,true,yellow,card
+David Martin,,,D. Martin,david-martin,G,Time wasting,90,4,false,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,56,null,false,yellow,card
+Robert Snodgrass,,,R. Snodgrass,robert-snodgrass,M,Foul,45,2,false,yellow,card
+Pierre-Emile Højbjerg,,,P. Højbjerg,pierre-emile-hojbjerg,M,Foul,37,null,true,yellow,card
+Victor Lindelöf,,,V. Lindelöf,victor-lindelof,D,Foul,66,null,true,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Time wasting,57,null,false,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Foul,5,null,false,yellow,card
+Leander Dendoncker,,,L. Dendoncker,leander-dendoncker,M,Foul,89,null,true,yellow,card
+Harry Kane,,,H. Kane,harry-kane,F,Foul,83,null,false,yellow,card
+Eric Dier,,,E. Dier,eric-dier,D,Foul,77,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,75,null,true,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Foul,69,null,false,yellow,card
+Jonny Castro,,,J. Otto,jonny-otto,M,Foul,65,null,true,yellow,card
+Davinson Sánchez,,,D. Sánchez,davinson-sanchez,D,Foul,64,null,false,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Foul,60,null,true,yellow,card
+Sokratis,,,Sokratis,sokratis,D,Foul,72,null,true,yellow,card
+Benjamin Mendy,,,B. Mendy,benjamin-mendy,D,Foul,62,null,false,yellow,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,61,null,false,yellow,card
+Rodri,,,Rodri,rodri,M,Foul,35,null,false,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,17,null,false,yellow,card
+Davy Pröpper,,,D. Pröpper,davy-propper,M,Foul,86,null,false,yellow,card
+Christian Benteke,,,C. Benteke,christian-benteke,F,Foul,35,null,true,yellow,card
+Joseph Willock,,,J. Willock,joseph-willock,M,Foul,90,1,false,yellow,card
+Calum Chambers,,,C. Chambers,calum-chambers,D,Foul,87,null,false,yellow,card
+Gylfi Sigurðsson,,,G. Sigurðsson,gylfi-sigurdsson,M,Foul,75,null,true,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Foul,45,null,true,yellow,card
+Bukayo Saka,,,B. Saka,bukayo-saka,M,Time wasting,28,null,false,yellow,card
+Jonathan Kodjia,,,J. Kodjia,jonathan-kodjia,F,Argument,87,null,true,yellow,card
+Anwar El Ghazi,,,A. E. Ghazi,anwar-el-ghazi,F,Foul,67,null,true,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,44,null,false,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,62,null,false,yellow,card
+Simon Francis,,,S. Francis,simon-francis,D,Foul,61,null,true,yellow,card
+Dwight McNeil,,,D. McNeil,dwight-mcneil,M,Foul,56,null,false,yellow,card
+Ashley Barnes,,,A. Barnes,ashley-barnes,F,Argument,56,null,false,yellow,card
+Diego Rico,,,D. Rico,diego-rico,D,Argument,56,null,true,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Foul,45,1,false,yellow,card
+Yves Bissouma,,,Y. Bissouma,yves-bissouma,M,Simulation,87,null,true,yellow,card
+David McGoldrick,,,D. McGoldrick,david-mcgoldrick,F,Foul,85,null,false,yellow,card
+Chris Basham,,,C. Basham,chris-basham,D,Foul,83,null,false,yellow,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,75,null,false,yellow,card
+Fabian Schär,,,F. Schär,fabian-schar,D,Foul,87,null,true,yellow,card
+Miguel Almirón,,,M. Almirón,miguel-almiron,M,null,83,null,true,yellow,card
+Matt Doherty,,,M. Doherty,matt-doherty,M,Foul,90,6,false,yellow,card
+Grant Hanley,,,G. Hanley,grant-hanley,D,Foul,90,1,true,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Foul,70,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,57,null,false,yellow,card
+Sam Byram,,,S. Byram,sam-byram,D,Foul,53,null,true,yellow,card
+Jonny Castro,,,J. Otto,jonny-otto,M,Foul,33,null,false,yellow,card
+İlkay Gündoğan,,,İ. Gündoğan,ilkay-gundogan,M,Foul,71,null,true,yellow,card
+Kevin De Bruyne,,,K. D. Bruyne,kevin-de-bruyne,M,Argument,59,null,true,yellow,card
+Wilfred Ndidi,,,W. Ndidi,wilfred-ndidi,M,Foul,51,null,false,yellow,card
+Çağlar Söyüncü,,,Ç. Söyüncü,caglar-soyuncu,D,Foul,35,null,false,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Handball,90,2,true,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,51,null,true,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Foul,38,null,false,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,36,null,true,yellow,card
+Antonio Rüdiger,,,A. Rüdiger,antonio-rudiger,D,Foul,78,null,false,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Handball,67,null,true,yellow,card
+Heung-Min Son,,,H. M. Son,heung-min-son,F,Violent conduct,62,null,true,red,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Foul,58,null,true,yellow,card
+Paulo Gazzaniga,,,P. Gazzaniga,paulo-gazzaniga,G,Foul,45,3,true,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Argument,43,null,false,yellow,card
+Dele Alli,,,D. Alli,dele-alli,M,Argument,43,null,true,yellow,card
+Kurt Zouma,,,K. Zouma,kurt-zouma,D,null,31,null,false,yellow,card
+Mark Noble,,,M. Noble,mark-noble,M,Foul,43,null,true,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,34,null,true,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Argument,84,null,true,yellow,card
+Lucas Moura,,,L. Moura,lucas-moura,F,Foul,74,null,true,yellow,card
+Pascal Groß,,,P. Groß,pascal-gross,M,Foul,42,null,false,yellow,card
+Davinson Sánchez,,,D. Sánchez,davinson-sanchez,D,Foul,39,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Foul,36,null,true,yellow,card
+Dan Burn,,,D. Burn,dan-burn,D,Foul,30,null,false,yellow,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Time wasting,89,null,true,yellow,card
+Wesley,,,Wesley,wesley,F,Time wasting,88,null,true,yellow,card
+Tom Trybull,,,T. Trybull,tom-trybull,M,Foul,74,null,false,yellow,card
+Teemu Pukki,,,T. Pukki,teemu-pukki,F,Foul,42,null,false,yellow,card
+Alexander Tettey,,,A. Tettey,alexander-tettey,M,Foul,35,null,false,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Dangerous play,90,4,true,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Foul,90,3,false,yellow,card
+Lewis Cook,,,L. Cook,lewis-cook,M,Foul,85,null,true,yellow,card
+Chris Mepham,,,C. Mepham,chris-mepham,D,Argument,84,null,true,yellow,card
+Pierre-Emerick Aubameyang,,,P. Aubameyang,pierre-emerick-aubameyang,F,null,64,null,false,yellow,card
+Ainsley Maitland-Niles,,,A. Maitland-Niles,ainsley-maitland-niles,M,Foul,55,null,false,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Foul,54,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,53,null,true,yellow,card
+Sofiane Boufal,,,S. Boufal,sofiane-boufal,M,Argument,90,4,false,yellow,card
+N'Golo Kanté,,,N. Kanté,ngolo-kante,M,Foul,62,null,true,yellow,card
+Fikayo Tomori,,,F. Tomori,fikayo-tomori,D,Argument,62,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,58,null,true,yellow,card
+Ryan Bertrand,,,R. Bertrand,ryan-bertrand,D,Time wasting,30,null,false,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Foul,90,3,false,yellow,card
+Pablo Zabaleta,,,P. Zabaleta,pablo-zabaleta,D,Foul,89,null,false,yellow,card
+Nathaniel Chalobah,,,N. Chalobah,nathaniel-chalobah,M,Time wasting,88,null,false,yellow,card
+Gerard Deulofeu,,,G. Deulofeu,gerard-deulofeu,F,Argument,74,null,false,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Foul,46,null,false,yellow,card
+DeAndre Yedlin,,,D. Yedlin,deandre-yedlin,D,Foul,81,null,false,yellow,card
+Fabian Schär,,,F. Schär,fabian-schar,D,Foul,38,null,false,yellow,card
+Andreas Pereira,,,A. Pereira,andreas-pereira,M,Foul,35,null,true,yellow,card
+Scott McTominay,,,S. McTominay,scott-mctominay,M,Foul,1,null,true,yellow,card
+James Maddison,,,J. Maddison,james-maddison,M,Argument,73,null,true,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,62,null,false,yellow,card
+Nicolás Otamendi,,,N. Otamendi,nicolas-otamendi,D,Foul,60,null,false,yellow,card
+Ederson,,,Ederson,ederson,G,Professional foul last man,12,null,false,red,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,67,null,false,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Foul,22,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Time wasting,90,3,false,yellow,card
+Isaac Hayden,,,I. Hayden,isaac-hayden,M,Foul,80,null,true,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Foul,55,null,false,yellow,card
+Joelinton,,,Joelinton,joelinton,F,Argument,45,1,true,yellow,card
+James McArthur,,,J. McArthur,james-mcarthur,M,Foul,85,null,false,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Persistent fouling,79,null,true,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,32,null,false,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Argument,90,6,false,yellow,card
+Troy Deeney,,,T. Deeney,troy-deeney,F,Foul,90,2,true,yellow,card
+Ismaila Sarr,,,I. Sarr,ismaila-sarr,M,null,84,null,true,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,74,null,true,yellow,card
+Adrian Mariappa,,,A. Mariappa,adrian-mariappa,D,Foul,57,null,true,yellowRed,card
+Adrian Mariappa,,,A. Mariappa,adrian-mariappa,D,Foul,51,null,true,yellow,card
+Christian Eriksen,,,C. Eriksen,christian-eriksen,M,Foul,90,6,false,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Foul,90,3,false,yellow,card
+Lucas Moura,,,L. Moura,lucas-moura,F,Foul,69,null,false,yellow,card
+Tim Krul,,,T. Krul,tim-krul,G,Argument,55,null,true,yellow,card
+Jamal Lewis,,,J. Lewis,jamal-lewis,D,Handball,54,null,true,yellow,card
+Mario Vrančić,,,M. Vrančić,mario-vrancic,M,Foul,22,null,true,yellow,card
+Hamza Choudhury,,,H. Choudhury,hamza-choudhury,M,Foul,90,null,false,yellow,card
+Declan Rice,,,D. Rice,declan-rice,M,Foul,77,null,true,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,56,null,true,yellow,card
+Arthur Masuaku,,,A. Masuaku,arthur-masuaku,D,Foul,49,null,true,yellow,card
+Łukasz Fabiański,,,Ł. Fabiański,lukasz-fabianski,G,Foul,9,null,true,yellow,card
+Jesse Lingard,,,J. Lingard,jesse-lingard,M,Foul,90,4,false,yellow,card
+Fred,,,Fred,fred,M,Time wasting,90,4,false,yellow,card
+Brandon Williams,,,B. Williams,williams-brandon,D,Simulation,90,2,false,yellow,card
+Dwight McNeil,,,D. McNeil,dwight-mcneil,M,Argument,89,null,true,yellow,card
+Charlie Taylor,,,C. Taylor,charlie-taylor,D,Foul,71,null,true,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Foul,61,null,true,yellow,card
+Phil Bardsley,,,P. Bardsley,phil-bardsley,D,Foul,23,null,true,yellow,card
+Ainsley Maitland-Niles,,,A. Maitland-Niles,ainsley-maitland-niles,M,Foul,90,1,true,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Argument,77,null,true,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Foul,73,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,55,null,false,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Foul,47,null,true,yellow,card
+Antonio Rüdiger,,,A. Rüdiger,antonio-rudiger,D,Foul,34,null,false,yellow,card
+N'Golo Kanté,,,N. Kanté,ngolo-kante,M,Foul,30,null,false,yellow,card
+Mason Mount,,,M. Mount,mason-mount,M,Foul,30,null,false,yellow,card
+Mattéo Guendouzi,,,M. Guendouzi,matteo-guendouzi,M,Foul,10,null,true,yellow,card
+Adam Lallana,,,A. Lallana,adam-lallana,M,Foul,45,1,true,yellow,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,85,null,false,yellow,card
+Bernardo Silva,,,B. Silva,bernardo-silva,M,Foul,59,null,true,yellow,card
+Reece James,,,R. James,reece-james,D,Foul,90,4,false,yellow,card
+Neal Maupay,,,N. Maupay,neal-maupay,F,null,90,1,true,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Foul,82,null,false,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,71,null,true,yellow,card
+Kurt Zouma,,,K. Zouma,kurt-zouma,D,Foul,69,null,false,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,60,null,true,yellow,card
+Neil Taylor,,,N. Taylor,neil-taylor,D,Foul,48,null,false,yellow,card
+Youri Tielemans,,,Y. Tielemans,youri-tielemans,M,Foul,59,null,false,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Foul,31,null,true,yellow,card
+null,,,,,,null,-5,null,false,yellow,card
+Christian Eriksen,,,C. Eriksen,christian-eriksen,M,Argument,90,2,false,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,72,null,true,yellow,card
+Serge Aurier,,,S. Aurier,serge-aurier,D,Argument,70,null,false,yellow,card
+Jan Bednarek,,,J. Bednarek,jan-bednarek,D,Foul,68,null,true,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Foul,61,null,false,yellow,card
+Moussa Djenepo,,,M. Djenepo,moussa-djenepo,M,Foul,53,null,true,yellow,card
+Giovani Lo Celso,,,G. Lo Celso,lo-celso-giovani,M,Argument,36,null,false,yellow,card
+Ben Foster,,,B. Foster,ben-foster,G,Time wasting,90,6,true,yellow,card
+Troy Deeney,,,T. Deeney,troy-deeney,F,Time wasting,90,4,true,yellow,card
+Christian Kabasele,,,C. Kabasele,christian-kabasele,D,Professional foul last man,71,null,true,red,card
+Pedro Neto,,,P. Neto,pedro-neto,F,Simulation,26,null,false,yellow,card
+Craig Dawson,,,C. Dawson,craig-dawson,D,Foul,21,null,true,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Foul,86,null,false,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Foul,79,null,false,yellow,card
+Fabian Delph,,,F. Delph,fabian-delph,M,Foul,69,null,false,yellow,card
+Yerry Mina,,,Y. Mina,yerry-mina,D,Foul,30,null,false,yellow,card
+Alexander Tettey,,,A. Tettey,alexander-tettey,M,Foul,89,null,true,yellow,card
+Marco Stiepermann,,,M. Stiepermann,marco-stiepermann,M,null,83,null,true,yellow,card
+Grant Hanley,,,G. Hanley,grant-hanley,D,Foul,76,null,true,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Foul,74,null,true,yellow,card
+Christoph Zimmermann,,,C. Zimmermann,christoph-zimmermann,D,Foul,42,null,true,yellow,card
+Lewis Cook,,,L. Cook,lewis-cook,M,Foul,88,null,false,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Foul,76,null,true,yellow,card
+Diego Rico,,,D. Rico,diego-rico,D,Foul,23,null,false,yellow,card
+Bukayo Saka,,,B. Saka,bukayo-saka,M,Time wasting,82,null,true,yellow,card
+Sead Kolašinac,,,S. Kolašinac,sead-kolasinac,D,Foul,3,null,true,yellow,card
+Muhamed Bešić,,,M. Bešić,muhamed-besic,M,Foul,86,null,true,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Persistent fouling,90,null,false,yellow,card
+James Tomkins,,,J. Tomkins,james-tomkins,D,Foul,85,null,true,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,71,null,true,yellow,card
+Pierre-Emerick Aubameyang,,,P. Aubameyang,pierre-emerick-aubameyang,F,Foul,67,null,false,red,card
+Ainsley Maitland-Niles,,,A. Maitland-Niles,ainsley-maitland-niles,M,Foul,51,null,false,yellow,card
+Nicolas Pépé,,,N. Pépé,nicolas-pepe,F,Argument,44,null,false,yellow,card
+Aaron Lennon,,,A. Lennon,aaron-lennon,M,Foul,59,null,false,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Foul,54,null,false,yellow,card
+Dwight McNeil,,,D. McNeil,dwight-mcneil,M,Foul,45,2,false,yellow,card
+Jordan Pickford,,,J. Pickford,jordan-pickford,G,Argument,90,4,true,yellow,card
+Shane Duffy,,,S. Duffy,shane-duffy,D,Foul,79,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Handball,78,null,true,yellow,card
+Danny Ings,,,D. Ings,danny-ings,F,null,81,null,false,yellow,card
+Pierre-Emile Højbjerg,,,P. Højbjerg,pierre-emile-hojbjerg,M,Foul,72,null,false,yellow,card
+Stuart Armstrong,,,S. Armstrong,stuart-armstrong,M,Foul,16,null,false,yellow,card
+Matthew Longstaff,,,M. Longstaff,matthew-longstaff,M,Foul,87,null,false,yellow,card
+Christian Atsu,,,C. Atsu,christian-atsu,M,Foul,67,null,false,yellow,card
+Miguel Almirón,,,M. Almirón,miguel-almiron,M,Foul,65,null,false,yellow,card
+Alex Oxlade-Chamberlain,,,A. Oxlade-Chamberlain,alex-oxlade-chamberlain,M,Foul,39,null,false,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,23,null,false,yellow,card
+Troy Deeney,,,T. Deeney,troy-deeney,F,Foul,57,null,false,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,13,null,true,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Argument,80,null,true,yellow,card
+Anwar El Ghazi,,,A. E. Ghazi,anwar-el-ghazi,F,Foul,53,null,true,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,50,null,false,yellow,card
+Jan Vertonghen,,,J. Vertonghen,jan-vertonghen,D,Handball,69,null,false,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Argument,60,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Argument,60,null,false,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,35,null,true,yellow,card
+Japhet Tanganga,,,J. Tanganga,japhet-tanganga,D,Foul,19,null,false,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,90,1,true,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Foul,51,null,false,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,4,null,false,yellow,card
+Conor Hourihane,,,C. Hourihane,conor-hourihane,M,Foul,90,5,false,yellow,card
+Neal Maupay,,,N. Maupay,neal-maupay,F,Argument,90,5,true,yellow,card
+Adam Webster,,,A. Webster,adam-webster,D,Foul,90,1,true,yellow,card
+Marvelous Nakamba,,,M. Nakamba,marvelous-nakamba,M,Foul,81,null,false,yellow,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,43,null,true,yellow,card
+Danny Drinkwater,,,D. Drinkwater,danny-drinkwater,M,Foul,14,null,false,yellow,card
+Benjamin Mendy,,,B. Mendy,benjamin-mendy,D,Foul,58,null,true,yellow,card
+Jordan Ayew,,,J. Ayew,jordan-ayew,F,Foul,26,null,false,yellow,card
+James McArthur,,,J. McArthur,james-mcarthur,M,Foul,13,null,false,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,90,5,false,yellow,card
+Tim Krul,,,T. Krul,tim-krul,G,Argument,77,null,true,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Argument,77,null,false,yellow,card
+Ben Godfrey,,,B. Godfrey,ben-godfrey,D,Foul,76,null,true,red,card
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Foul,50,null,true,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Professional handball,31,null,false,red,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Foul,88,null,false,yellow,card
+Jan Bednarek,,,J. Bednarek,jan-bednarek,D,Foul,57,null,true,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Persistent fouling,29,null,true,yellow,card
+Pablo Zabaleta,,,P. Zabaleta,pablo-zabaleta,D,Foul,90,3,true,yellow,card
+Emerson Palmieri,,,Emerson,emerson-palmieri,D,Simulation,84,null,false,yellow,card
+Isaac Hayden,,,I. Hayden,isaac-hayden,M,Foul,55,null,true,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Foul,67,null,true,yellow,card
+Mohamed Salah,,,M. Salah,mohamed-salah,F,null,90,4,true,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Foul,72,null,false,yellow,card
+David De Gea,,,D. D. Gea,david-de-gea,G,Argument,25,null,false,yellow,card
+Nemanja Matić,,,N. Matić,nemanja-matic,M,Foul,8,null,false,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,81,null,false,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Foul,77,null,false,yellow,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,null,68,null,true,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Foul,45,1,true,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,90,1,true,yellow,card
+Bernardo,,,Bernardo,bernardo,D,Foul,28,null,false,yellow,card
+Nathan Redmond,,,N. Redmond,nathan-redmond,M,Argument,74,null,false,yellow,card
+James Tomkins,,,J. Tomkins,james-tomkins,D,Argument,74,null,true,yellow,card
+Oriol Romeu,,,O. Romeu,oriol-romeu,M,Foul,71,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Foul,68,null,true,yellow,card
+Ciaran Clark,,,C. Clark,ciaran-clark,D,Foul,62,null,false,yellow,card
+Oliver McBurnie,,,O. McBurnie,oliver-mcburnie,F,Argument,84,null,true,yellow,card
+Sergio Agüero,,,S. Agüero,sergio-aguero,F,Time wasting,83,null,false,yellow,card
+Rodri,,,Rodri,rodri,M,Foul,53,null,false,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Persistent fouling,45,2,false,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,43,null,true,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,24,null,true,yellow,card
+Muhamed Bešić,,,M. Bešić,muhamed-besic,M,Foul,13,null,true,yellow,card
+Mattéo Guendouzi,,,M. Guendouzi,matteo-guendouzi,M,Foul,76,null,false,yellow,card
+Andreas Christensen,,,A. Christensen,andreas-christensen,D,Foul,59,null,true,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Professional foul last man,26,null,false,red,card
+Emerson Palmieri,,,Emerson,emerson-palmieri,D,Foul,21,null,true,yellow,card
+Angelo Ogbonna,,,A. Ogbonna,angelo-ogbonna,D,Foul,79,null,false,yellow,card
+Kasper Schmeichel,,,K. Schmeichel,kasper-schmeichel,G,Argument,50,null,true,yellow,card
+Todd Cantwell,,,T. Cantwell,todd-cantwell,M,Foul,47,null,false,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,null,68,null,false,yellow,card
+Charlie Taylor,,,C. Taylor,charlie-taylor,D,Foul,67,null,false,yellow,card
+Andrew Robertson,,,A. Robertson,andrew-robertson,D,Foul,55,null,false,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,90,3,true,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Foul,76,null,false,yellow,card
+James Maddison,,,J. Maddison,james-maddison,M,Foul,61,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,56,null,false,yellow,card
+Kortney Hause,,,K. Hause,kortney-hause,D,Foul,90,1,false,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Persistent fouling,65,null,true,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,51,null,true,yellowRed,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Foul,43,null,false,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Foul,36,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,18,null,true,yellow,card
+Joel Ward,,,J. Ward,joel-ward,D,Foul,74,null,true,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,68,null,false,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,67,null,true,yellow,card
+James Tomkins,,,J. Tomkins,james-tomkins,D,Foul,24,null,true,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Off the ball foul,18,null,false,yellow,card
+Jack Stephens,,,J. Stephens,jack-stephens,D,Foul,89,null,false,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,65,null,false,yellow,card
+Nabil Bentaleb,,,N. Bentaleb,nabil-bentaleb,M,Foul,80,null,true,yellow,card
+DeAndre Yedlin,,,D. Yedlin,deandre-yedlin,D,Foul,52,null,true,yellow,card
+Todd Cantwell,,,T. Cantwell,todd-cantwell,M,Foul,44,null,false,yellow,card
+Mason Holgate,,,M. Holgate,mason-holgate,D,Foul,86,null,false,yellow,card
+Yerry Mina,,,Y. Mina,yerry-mina,D,Foul,84,null,false,yellow,card
+Isaac Success,,,S. Isaac,isaac-success,F,Foul,78,null,true,yellow,card
+Fabian Delph,,,F. Delph,fabian-delph,M,Foul,71,null,false,yellowRed,card
+Adam Masina,,,A. Masina,adam-masina,D,Foul,68,null,true,yellow,card
+Fabian Delph,,,F. Delph,fabian-delph,M,Foul,58,null,false,yellow,card
+Angelo Ogbonna,,,A. Ogbonna,angelo-ogbonna,D,Foul,90,null,true,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Foul,52,null,false,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Foul,84,null,true,yellow,card
+Victor Lindelöf,,,V. Lindelöf,victor-lindelof,D,Foul,79,null,true,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Handball,71,null,false,yellow,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Foul,57,null,false,yellow,card
+Bruno Fernandes,,,B. Fernandes,bruno-fernandes,M,Foul,55,null,true,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,82,null,true,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Foul,57,null,false,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,55,null,false,yellow,card
+Mesut Özil,,,M. Özil,mesut-ozil,M,Argument,44,null,false,yellow,card
+Rodri,,,Rodri,rodri,M,Foul,90,4,false,yellow,card
+Giovani Lo Celso,,,G. Lo Celso,lo-celso-giovani,M,Foul,66,null,true,yellow,card
+Oleksandr Zinchenko,,,O. Zinchenko,oleksandr-zinchenko,D,Foul,60,null,false,yellowRed,card
+Oleksandr Zinchenko,,,O. Zinchenko,oleksandr-zinchenko,D,Argument,42,null,false,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Argument,42,null,true,yellow,card
+Kyle Walker,,,K. Walker,kyle-walker,D,Foul,33,null,false,yellow,card
+Raheem Sterling,,,R. Sterling,raheem-sterling,F,Foul,12,null,false,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,10,null,false,yellow,card
+Solly March,,,S. March,solly-march,M,Argument,90,3,true,yellow,card
+Adrian Mariappa,,,A. Mariappa,adrian-mariappa,D,Foul,65,null,false,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,64,null,false,yellow,card
+Ezequiel Schelotto,,,E. M. Schelotto,ezequiel-schelotto,D,Foul,35,null,true,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Argument,90,4,false,yellow,card
+Simon Francis,,,S. Francis,simon-francis,D,Foul,90,4,false,yellow,card
+Lys Mousset,,,L. Mousset,lys-mousset,F,Foul,89,null,true,yellow,card
+Andrew Surman,,,A. Surman,andrew-surman,M,Argument,53,null,false,yellow,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,39,null,true,yellow,card
+Ben Chilwell,,,B. Chilwell,ben-chilwell,D,Foul,88,null,false,yellow,card
+Hamza Choudhury,,,H. Choudhury,hamza-choudhury,M,Foul,76,null,false,yellowRed,card
+Leander Dendoncker,,,L. Dendoncker,leander-dendoncker,M,Foul,55,null,true,yellow,card
+Hamza Choudhury,,,H. Choudhury,hamza-choudhury,M,Foul,51,null,false,yellow,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Argument,45,1,true,yellow,card
+James Maddison,,,J. Maddison,james-maddison,M,Foul,36,null,false,yellow,card
+Michael Obafemi,,,M. Obafemi,michael-obafemi,F,Foul,88,null,true,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Foul,44,null,false,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,26,null,false,yellow,card
+Jannik Vestergaard,,,J. Vestergaard,jannik-vestergaard,D,Foul,16,null,true,yellow,card
+Sadio Mané,,,S. Mané,sadio-mane,F,Time wasting,90,null,false,yellow,card
+Naby Keïta,,,N. Keïta,naby-keita,M,Foul,83,null,false,yellow,card
+Grant Hanley,,,G. Hanley,grant-hanley,D,Foul,41,null,true,yellow,card
+Marvelous Nakamba,,,M. Nakamba,marvelous-nakamba,M,Foul,90,2,true,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,86,null,true,yellow,card
+Bukayo Saka,,,B. Saka,bukayo-saka,M,Foul,82,null,true,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,9,null,true,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Argument,79,null,false,yellow,card
+Brandon Williams,,,B. Williams,williams-brandon,D,Foul,76,null,false,yellow,card
+Pedro,,,Pedro,pedro,F,Foul,64,null,true,yellow,card
+Kurt Zouma,,,K. Zouma,kurt-zouma,D,Foul,59,null,true,yellow,card
+Fred,,,Fred,fred,M,Argument,59,null,false,yellow,card
+Antonio Rüdiger,,,A. Rüdiger,antonio-rudiger,D,Foul,48,null,true,yellow,card
+Willian,,,Willian,willian,F,Simulation,35,null,true,yellow,card
+Arthur Masuaku,,,A. Masuaku,arthur-masuaku,D,Foul,45,null,false,yellow,card
+Giovani Lo Celso,,,G. Lo Celso,lo-celso-giovani,M,Persistent fouling,81,null,false,yellow,card
+Andreas Christensen,,,A. Christensen,andreas-christensen,D,Foul,65,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Foul,23,null,false,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Foul,90,4,true,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Argument,90,null,false,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,90,null,false,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,89,null,true,yellow,card
+Aaron Lennon,,,A. Lennon,aaron-lennon,M,Foul,83,null,true,yellow,card
+Phil Bardsley,,,P. Bardsley,phil-bardsley,D,Foul,64,null,true,yellow,card
+Simon Francis,,,S. Francis,simon-francis,D,Foul,43,null,false,yellow,card
+Sean Longstaff,,,S. Longstaff,sean-longstaff,M,Argument,90,6,false,yellow,card
+Valentino Lazaro,,,V. Lazaro,valentino-lazaro,M,Professional foul last man,90,5,false,red,card
+Joelinton,,,Joelinton,joelinton,F,Argument,88,null,false,yellow,card
+Matt Ritchie,,,M. Ritchie,matt-ritchie,M,Foul,83,null,false,yellow,card
+James McArthur,,,J. McArthur,james-mcarthur,M,Foul,74,null,true,yellow,card
+Jamaal Lascelles,,,J. Lascelles,jamaal-lascelles,D,Foul,40,null,false,yellow,card
+Miguel Almirón,,,M. Almirón,miguel-almiron,M,Foul,32,null,false,yellow,card
+Nabil Bentaleb,,,N. Bentaleb,nabil-bentaleb,M,Argument,21,null,false,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,14,null,true,yellow,card
+Davy Pröpper,,,D. Pröpper,davy-propper,M,Foul,23,null,false,yellow,card
+Yves Bissouma,,,Y. Bissouma,yves-bissouma,M,Foul,10,null,false,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Argument,90,6,false,yellow,card
+Stuart Armstrong,,,S. Armstrong,stuart-armstrong,M,null,90,6,true,yellow,card
+Frédéric Guilbert,,,F. Guilbert,frederic-guilbert,D,Foul,90,null,false,yellow,card
+Pepe Reina,,,P. Reina,pepe-reina,G,Foul,72,null,false,yellow,card
+Ezri Konsa,,,E. Konsa,ezri-konsa,D,Foul,45,4,false,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Foul,67,null,false,yellow,card
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Argument,87,null,false,yellow,card
+Ben Godfrey,,,B. Godfrey,ben-godfrey,D,Foul,77,null,false,yellow,card
+Conor Coady,,,C. Coady,conor-coady,D,Foul,68,null,true,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Foul,45,null,false,yellow,card
+Raúl Jiménez,,,R. Jiménez,raul-jimenez,F,Foul,41,null,true,yellow,card
+André Gomes,,,A. Gomes,andre-gomes,M,Foul,90,4,false,yellow,card
+Gylfi Sigurðsson,,,G. Sigurðsson,gylfi-sigurdsson,M,Foul,73,null,false,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Foul,45,2,false,yellow,card
+Morgan Schneiderlin,,,M. Schneiderlin,morgan-schneiderlin,M,Foul,31,null,false,yellow,card
+Mark Noble,,,M. Noble,mark-noble,M,Foul,80,null,false,yellow,card
+Issa Diop,,,I. Diop,issa-diop,D,Foul,66,null,false,yellow,card
+Declan Rice,,,D. Rice,declan-rice,M,Argument,51,null,false,yellow,card
+Kasper Schmeichel,,,K. Schmeichel,kasper-schmeichel,G,Argument,87,null,false,yellow,card
+Dennis Praet,,,D. Praet,dennis-praet,M,Foul,62,null,false,yellow,card
+Grant Hanley,,,G. Hanley,grant-hanley,D,Foul,53,null,true,yellow,card
+Martín Montoya,,,M. Montoya,martin-montoya,D,Foul,57,null,true,yellow,card
+Christian Benteke,,,C. Benteke,christian-benteke,F,Foul,33,null,false,yellow,card
+Ezequiel Schelotto,,,E. M. Schelotto,ezequiel-schelotto,D,Argument,27,null,true,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Time wasting,88,null,true,yellow,card
+Andreas Christensen,,,A. Christensen,andreas-christensen,D,Foul,71,null,false,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,59,null,true,yellow,card
+Jorginho,,,Jorginho,jorginho,M,Foul,17,null,false,yellow,card
+Ben Mee,,,B. Mee,ben-mee,D,Foul,90,3,false,yellow,card
+Javier Manquillo,,,J. Manquillo,javier-manquillo,D,Foul,88,null,true,yellow,card
+Jonjo Shelvey,,,J. Shelvey,jonjo-shelvey,M,Foul,70,null,true,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Persistent fouling,64,null,false,yellow,card
+Dwight Gayle,,,D. Gayle,dwight-gayle,F,Foul,59,null,true,yellow,card
+Phil Bardsley,,,P. Bardsley,phil-bardsley,D,Foul,39,null,false,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,34,null,true,yellow,card
+Aaron Cresswell,,,A. Cresswell,aaron-cresswell,D,Foul,65,null,true,yellow,card
+Jack Stephens,,,J. Stephens,jack-stephens,D,Handball,45,1,false,yellow,card
+Djibril Sidibé,,,D. Sidibé,djibril-sidibe,D,Unallowed field entering,80,null,true,yellow,card
+Fred,,,Fred,fred,M,Argument,70,null,false,yellow,card
+Victor Lindelöf,,,V. Lindelöf,victor-lindelof,D,Foul,56,null,false,yellow,card
+Harry Maguire,,,H. Maguire,harry-maguire,D,Foul,45,null,false,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Foul,43,null,true,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Argument,41,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Foul,41,null,true,yellow,card
+Leander Dendoncker,,,L. Dendoncker,leander-dendoncker,M,Foul,90,5,false,yellow,card
+Ben Davies,,,B. Davies,ben-davies,D,Foul,84,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Argument,84,null,true,yellow,card
+Willy Boly,,,W. Boly,willy-boly,D,Foul,71,null,false,yellow,card
+Giovani Lo Celso,,,G. Lo Celso,lo-celso-giovani,M,Foul,59,null,true,yellow,card
+John Lundstram,,,J. Lundstram,john-lundstram,M,null,36,null,false,yellow,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Foul,27,null,true,yellow,card
+Rodri,,,Rodri,rodri,M,Foul,79,null,true,yellow,card
+Kieran Tierney,,,K. Tierney,kieran-tierney,D,Foul,76,null,false,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Professional foul last man,49,null,false,red,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Foul,90,2,false,yellow,card
+Michail Antonio,,,M. Antonio,michail-antonio,F,Foul,90,3,false,yellow,card
+Sokratis,,,Sokratis,sokratis,D,Foul,63,null,true,yellow,card
+Pablo Fornals,,,P. Fornals,pablo-fornals,M,Foul,9,null,false,yellow,card
+Jordan Ayew,,,J. Ayew,jordan-ayew,F,Argument,90,4,true,yellow,card
+Ignacio Pussetto,,,I. Pussetto,ignacio-pussetto,F,Foul,85,null,false,yellow,card
+Christian Benteke,,,C. Benteke,christian-benteke,F,Foul,59,null,true,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,52,null,false,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Argument,50,null,false,yellow,card
+Cheikhou Kouyaté,,,C. Kouyaté,cheikhou-kouyate,D,Argument,50,null,true,yellow,card
+Wilfried Zaha,,,W. Zaha,wilfried-zaha,F,Foul,41,null,true,yellow,card
+Kiko Femenia,,,Kiko,kiko-femenia,D,Foul,31,null,false,yellow,card
+Joelinton,,,Joelinton,joelinton,F,Time wasting,90,null,false,yellow,card
+Matt Ritchie,,,M. Ritchie,matt-ritchie,M,Foul,56,null,false,yellow,card
+Javier Manquillo,,,J. Manquillo,javier-manquillo,D,Foul,45,3,false,yellow,card
+Moussa Djenepo,,,M. Djenepo,moussa-djenepo,M,Foul,28,null,true,red,card
+Lewis Dunk,,,L. Dunk,lewis-dunk,D,Foul,54,null,false,yellow,card
+Dan Burn,,,D. Burn,dan-burn,D,Foul,54,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,45,1,true,yellow,card
+Martín Montoya,,,M. Montoya,martin-montoya,D,Foul,37,null,false,yellow,card
+Ashley Westwood,,,A. Westwood,ashley-westwood,M,Argument,90,3,true,yellow,card
+Giovani Lo Celso,,,G. Lo Celso,lo-celso-giovani,M,Foul,90,2,false,yellow,card
+Steven Bergwijn,,,S. Bergwijn,steven-bergwijn,F,Foul,78,null,false,yellow,card
+Jeff Hendrick,,,J. Hendrick,jeff-hendrick,M,Foul,75,null,true,yellow,card
+Jack Cork,,,J. Cork,jack-cork,M,Foul,59,null,true,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,57,null,true,yellow,card
+Davinson Sánchez,,,D. Sánchez,davinson-sanchez,D,Foul,56,null,false,yellow,card
+Charlie Taylor,,,C. Taylor,charlie-taylor,D,Foul,51,null,true,yellow,card
+Érik Lamela,,,É. Lamela,erik-lamela,M,Foul,19,null,false,yellow,card
+Mason Holgate,,,M. Holgate,mason-holgate,D,Foul,90,1,false,yellow,card
+Kurt Zouma,,,K. Zouma,kurt-zouma,D,Foul,82,null,true,yellow,card
+André Gomes,,,A. Gomes,andre-gomes,M,Argument,53,null,false,yellow,card
+Gabriel Jesus,,,Gabriel,gabriel-jesus,F,Argument,90,8,false,yellow,card
+Harry Maguire,,,H. Maguire,harry-maguire,D,Time wasting,90,5,true,yellow,card
+João Cancelo,,,J. Cancelo,joao-cancelo,D,Foul,59,null,false,yellow,card
+Fred,,,Fred,fred,M,Simulation,42,null,true,yellow,card
+Rodri,,,Rodri,rodri,M,Argument,30,null,false,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Argument,29,null,false,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,76,null,true,yellow,card
+Dennis Praet,,,D. Praet,dennis-praet,M,Foul,71,null,true,yellow,card
+Conor Hourihane,,,C. Hourihane,conor-hourihane,M,Foul,43,null,false,yellow,card
+Max Aarons,,,M. Aarons,max-aarons,D,Foul,90,2,true,yellow,card
+Danny Ings,,,D. Ings,danny-ings,F,Foul,73,null,false,yellow,card
+Daniel James,,,D. James,james-daniel,M,Foul,41,null,false,yellow,card
+Youri Tielemans,,,Y. Tielemans,youri-tielemans,M,Foul,40,null,false,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Foul,54,null,false,yellow,card
+Aaron Mooy,,,A. Mooy,aaron-mooy,M,Foul,44,null,true,yellow,card
+Dan Burn,,,D. Burn,dan-burn,D,Foul,30,null,true,yellow,card
+Michail Antonio,,,M. Antonio,michail-antonio,F,Foul,62,null,true,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Foul,57,null,false,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Foul,86,null,true,yellow,card
+Joel Ward,,,J. Ward,joel-ward,D,Foul,71,null,false,yellow,card
+Lewis Cook,,,L. Cook,lewis-cook,M,Foul,67,null,true,yellow,card
+Adam Smith,,,A. Smith,adam-smith,D,Foul,45,2,true,yellow,card
+Jordan Ayew,,,J. Ayew,jordan-ayew,F,Foul,45,null,false,yellow,card
+Jamaal Lascelles,,,J. Lascelles,jamaal-lascelles,D,Foul,70,null,true,yellow,card
+John Egan,,,J. Egan,john-egan,D,Foul,50,null,false,yellowRed,card
+John Egan,,,J. Egan,john-egan,D,Argument,31,null,false,yellow,card
+Joelinton,,,Joelinton,joelinton,F,Argument,31,null,true,yellow,card
+Jack Grealish,,,J. Grealish,jack-grealish,F,Argument,90,6,true,yellow,card
+N'Golo Kanté,,,N. Kanté,ngolo-kante,M,Foul,90,4,false,yellow,card
+Ezri Konsa,,,E. Konsa,ezri-konsa,D,Time wasting,45,null,true,yellow,card
+Divock Origi,,,D. Origi,divock-origi,F,Foul,85,null,false,yellow,card
+Lucas Digne,,,L. Digne,lucas-digne,D,Foul,61,null,true,yellow,card
+Michael Keane,,,M. Keane,michael-keane,D,Foul,40,null,true,yellow,card
+James Milner,,,J. Milner,james-milner,M,Foul,20,null,false,yellow,card
+João Cancelo,,,J. Cancelo,joao-cancelo,D,Foul,62,null,true,yellow,card
+Josh Brownhill,,,J. Brownhill,josh-brownhill,M,Foul,43,null,false,yellow,card
+Shane Duffy,,,S. Duffy,shane-duffy,D,Foul,80,null,false,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Foul,36,null,false,yellow,card
+Wilfred Ndidi,,,W. Ndidi,wilfred-ndidi,M,Foul,34,null,true,yellow,card
+James Justin,,,J. Justin,james-justin,D,Foul,12,null,true,yellow,card
+Ben Davies,,,B. Davies,ben-davies,D,Foul,67,null,true,yellow,card
+Harry Kane,,,H. Kane,harry-kane,F,Foul,51,null,true,yellow,card
+Mark Noble,,,M. Noble,mark-noble,M,Foul,26,null,false,yellow,card
+Pablo Fornals,,,P. Fornals,pablo-fornals,M,Foul,14,null,false,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Foul,67,null,true,yellow,card
+Kortney Hause,,,K. Hause,kortney-hause,D,Foul,90,null,false,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Foul,74,null,true,yellow,card
+Jamaal Lascelles,,,J. Lascelles,jamaal-lascelles,D,Foul,59,null,true,yellow,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Argument,45,1,false,yellow,card
+Moise Kean,,,M. Kean,moise-kean,F,Foul,80,null,false,yellow,card
+João Moutinho,,,J. Moutinho,joao-moutinho,M,Foul,87,null,true,yellow,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Foul,41,null,true,yellow,card
+Callum Wilson,,,C. Wilson,callum-wilson,F,Foul,39,null,false,yellow,card
+Steve Cook,,,S. Cook,steve-cook,D,Foul,36,null,false,yellow,card
+David Brooks,,,D. Brooks,david-brooks,M,Foul,34,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,27,null,true,yellow,card
+Dwight McNeil,,,D. McNeil,dwight-mcneil,M,Foul,71,null,true,yellow,card
+Jack Stephens,,,J. Stephens,jack-stephens,D,Professional foul last man,85,null,true,red,card
+Bukayo Saka,,,B. Saka,bukayo-saka,M,Foul,47,null,false,yellow,card
+Shkodran Mustafi,,,S. Mustafi,shkodran-mustafi,D,Foul,11,null,false,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Professional handball,77,null,false,red,card
+Kevin De Bruyne,,,K. D. Bruyne,kevin-de-bruyne,M,Foul,76,null,false,yellow,card
+Marcos Alonso,,,M. Alonso,marcos-alonso,D,Foul,38,null,true,yellow,card
+Rúben Neves,,,R. Neves,ruben-neves,M,Time wasting,90,4,false,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Foul,18,null,true,yellow,card
+Craig Cathcart,,,C. Cathcart,craig-cathcart,D,Foul,90,6,true,yellow,card
+Abdoulaye Doucouré,,,A. Doucouré,abdoulaye-doucoure,M,Foul,90,5,true,yellow,card
+Craig Dawson,,,C. Dawson,craig-dawson,D,Foul,32,null,true,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,61,null,true,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,58,null,false,yellow,card
+Luke Shaw,,,L. Shaw,luke-shaw,D,Foul,49,null,false,yellow,card
+Marco Stiepermann,,,M. Stiepermann,marco-stiepermann,M,Foul,90,2,false,yellow,card
+Mario Vrančić,,,M. Vrančić,mario-vrancic,M,Foul,86,null,false,yellow,card
+Emiliano Martínez,,,E. Martínez,emiliano-martinez,G,Time wasting,63,null,true,yellow,card
+Lukas Rupp,,,L. Rupp,lukas-rupp,M,Foul,31,null,false,yellow,card
+Kenny McLean,,,K. McLean,kenny-mclean,M,Foul,27,null,false,yellow,card
+Nathan Aké,,,N. Aké,nathan-ake,D,Foul,45,2,true,yellow,card
+Lloyd Kelly,,,L. Kelly,lloyd-kelly,D,Foul,23,null,true,yellow,card
+Jordan Pickford,,,J. Pickford,jordan-pickford,G,Time wasting,74,null,true,yellow,card
+Wilfred Ndidi,,,W. Ndidi,wilfred-ndidi,M,Foul,54,null,false,yellow,card
+Willian,,,Willian,willian,F,Foul,82,null,false,yellow,card
+Declan Rice,,,D. Rice,declan-rice,M,Foul,70,null,true,yellow,card
+Manuel Lanzini,,,M. Lanzini,manuel-lanzini,M,Foul,65,null,true,yellow,card
+Oliver McBurnie,,,O. McBurnie,oliver-mcburnie,F,Argument,89,null,true,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,39,null,true,yellow,card
+Jordan Henderson,,,J. Henderson,jordan-henderson,M,Argument,90,1,false,yellow,card
+Kyle Walker,,,K. Walker,kyle-walker,D,Foul,56,null,true,yellow,card
+Benjamin Mendy,,,B. Mendy,benjamin-mendy,D,Time wasting,41,null,true,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,24,null,false,yellow,card
+Todd Cantwell,,,T. Cantwell,todd-cantwell,M,Foul,90,1,true,yellow,card
+Pascal Groß,,,P. Groß,pascal-gross,M,Time wasting,89,null,false,yellow,card
+Tariq Lamptey,,,T. Lamptey,lamptey-tariq,M,Time wasting,88,null,false,yellow,card
+Jamal Lewis,,,J. Lewis,jamal-lewis,D,Foul,38,null,true,yellow,card
+James McArthur,,,J. McArthur,james-mcarthur,M,Foul,57,null,false,yellow,card
+Marc Albrighton,,,M. Albrighton,marc-albrighton,M,Foul,50,null,true,yellow,card
+Ben Chilwell,,,B. Chilwell,ben-chilwell,D,Foul,45,3,true,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Foul,31,null,false,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,90,1,false,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Time wasting,88,null,false,yellow,card
+Conor Coady,,,C. Coady,conor-coady,D,Foul,84,null,true,yellow,card
+Ainsley Maitland-Niles,,,A. Maitland-Niles,ainsley-maitland-niles,M,Foul,79,null,false,yellow,card
+Romain Saïss,,,R. Saiss,romain-saiss,D,Foul,75,null,true,yellow,card
+David Luiz,,,D. Luiz,david-luiz,D,Foul,32,null,false,yellow,card
+Adrian Mariappa,,,A. Mariappa,adrian-mariappa,D,Foul,49,null,false,yellow,card
+Étienne Capoue,,,É. Capoue,etienne-capoue,M,Foul,21,null,false,yellow,card
+Dwight Gayle,,,D. Gayle,dwight-gayle,F,Foul,37,null,true,yellow,card
+John McGinn,,,J. McGinn,john-mcginn,M,Foul,36,null,false,yellow,card
+Andrew Robertson,,,A. Robertson,andrew-robertson,D,Foul,20,null,true,yellow,card
+Gabriel Jesus,,,Gabriel,gabriel-jesus,F,Argument,86,null,false,yellow,card
+Fernandinho,,,Fernandinho,fernandinho,M,Foul,57,null,false,yellow,card
+Oriol Romeu,,,O. Romeu,oriol-romeu,M,Foul,45,null,true,yellow,card
+André Gomes,,,A. Gomes,andre-gomes,M,Foul,87,null,false,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Time wasting,83,null,true,yellow,card
+Ben Davies,,,B. Davies,ben-davies,D,Foul,76,null,true,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Foul,48,null,true,yellow,card
+Mason Holgate,,,M. Holgate,mason-holgate,D,Foul,28,null,false,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,35,null,true,yellow,card
+Tom Cleverley,,,T. Cleverley,tom-cleverley,M,Foul,90,5,true,yellow,card
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Foul,90,4,false,yellow,card
+Ben Godfrey,,,B. Godfrey,ben-godfrey,D,Foul,88,null,false,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,23,null,true,yellow,card
+Alexander Tettey,,,A. Tettey,alexander-tettey,M,Foul,11,null,false,yellow,card
+Jamal Lewis,,,J. Lewis,jamal-lewis,D,Foul,9,null,false,yellow,card
+Shkodran Mustafi,,,S. Mustafi,shkodran-mustafi,D,Foul,88,null,true,yellow,card
+Edward Nketiah,,,E. Nketiah,edward-nketiah,F,Foul,75,null,true,red,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,63,null,true,yellow,card
+Jack O'Connell,,,J. O'Connell,jack-oconnell,D,Foul,30,null,true,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,64,null,true,yellow,card
+James Tarkowski,,,J. Tarkowski,james-tarkowski,D,Foul,58,null,false,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,89,null,false,yellow,card
+Tariq Lamptey,,,T. Lamptey,lamptey-tariq,M,Foul,85,null,true,yellow,card
+Fabinho,,,Fabinho,fabinho,M,Foul,78,null,false,yellow,card
+Sadio Mané,,,S. Mané,sadio-mane,F,Foul,62,null,false,yellow,card
+Neco Williams,,,N. Williams,williams-neco,D,Foul,41,null,false,yellow,card
+Harry Wilson,,,H. Wilson,harry-wilson,M,Foul,90,5,true,yellow,card
+Dan Gosling,,,D. Gosling,dan-gosling,M,Foul,87,null,true,yellow,card
+Tanguy Ndombélé,,,T. Ndombélé,tanguy-ndombele,M,Foul,87,null,false,yellow,card
+Jefferson Lerma,,,J. Lerma,jefferson-lerma,M,Argument,31,null,true,yellow,card
+Moussa Sissoko,,,M. Sissoko,moussa-sissoko,M,Argument,31,null,false,yellow,card
+Lucas Digne,,,L. Digne,lucas-digne,D,Argument,90,1,true,yellow,card
+Jan Bednarek,,,J. Bednarek,jan-bednarek,D,Foul,61,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Argument,45,1,true,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Foul,45,1,true,yellow,card
+Jack Stephens,,,J. Stephens,jack-stephens,D,Foul,34,null,false,yellow,card
+Stuart Armstrong,,,S. Armstrong,stuart-armstrong,M,Foul,14,null,false,yellow,card
+Fred,,,Fred,fred,M,Foul,87,null,false,yellow,card
+Marvelous Nakamba,,,M. Nakamba,marvelous-nakamba,M,Foul,81,null,true,yellow,card
+Ezri Konsa,,,E. Konsa,ezri-konsa,D,Foul,52,null,true,yellow,card
+Nemanja Matić,,,N. Matić,nemanja-matic,M,Persistent fouling,45,3,false,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Foul,40,null,false,yellow,card
+Marco Stiepermann,,,M. Stiepermann,marco-stiepermann,M,Foul,33,null,true,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,90,null,true,yellow,card
+Fabian Schär,,,F. Schär,fabian-schar,D,Foul,84,null,false,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Foul,77,null,false,yellow,card
+Javier Manquillo,,,J. Manquillo,javier-manquillo,D,Foul,63,null,false,yellow,card
+Jamaal Lascelles,,,J. Lascelles,jamaal-lascelles,D,Foul,45,2,false,yellow,card
+Nick Pope,,,N. Pope,nick-pope,G,Time wasting,89,null,false,yellow,card
+Phil Bardsley,,,P. Bardsley,phil-bardsley,D,Foul,88,null,false,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,80,null,true,yellow,card
+George Baldock,,,G. Baldock,george-baldock,M,Foul,3,null,true,yellow,card
+Yves Bissouma,,,Y. Bissouma,yves-bissouma,M,Foul,83,null,true,yellow,card
+Michael Keane,,,M. Keane,michael-keane,D,Foul,58,null,false,yellow,card
+Lucas Digne,,,L. Digne,lucas-digne,D,Foul,19,null,false,yellow,card
+Christian Benteke,,,C. Benteke,christian-benteke,F,Violent conduct,90,6,false,red,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Foul,90,1,true,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,67,null,false,yellow,card
+Cheikhou Kouyaté,,,C. Kouyaté,cheikhou-kouyate,D,Foul,54,null,false,yellow,card
+Mamadou Sakho,,,M. Sakho,mamadou-sakho,D,Argument,27,null,false,yellow,card
+Tyrone Mings,,,T. Mings,tyrone-mings,D,Argument,27,null,true,yellow,card
+Wilfried Zaha,,,W. Zaha,wilfried-zaha,F,Argument,27,null,false,yellow,card
+Bukayo Saka,,,B. Saka,bukayo-saka,M,Argument,90,null,false,yellow,card
+Steven Bergwijn,,,S. Bergwijn,steven-bergwijn,F,Foul,87,null,true,yellow,card
+Harry Winks,,,H. Winks,harry-winks,M,Foul,76,null,true,yellow,card
+Nicolas Pépé,,,N. Pépé,nicolas-pepe,F,Foul,61,null,false,yellow,card
+Ben Davies,,,B. Davies,ben-davies,D,Foul,45,2,true,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Foul,45,null,false,yellow,card
+Serge Aurier,,,S. Aurier,serge-aurier,D,Foul,34,null,true,yellow,card
+Giovani Lo Celso,,,G. Lo Celso,lo-celso-giovani,M,Foul,15,null,true,yellow,card
+Junior Stanislas,,,J. Stanislas,junior-stanislas,M,Time wasting,86,null,true,yellow,card
+Çağlar Söyüncü,,,Ç. Söyüncü,caglar-soyuncu,D,Violent conduct,67,null,false,red,card
+Wilfred Ndidi,,,W. Ndidi,wilfred-ndidi,M,Foul,64,null,false,yellow,card
+Dan Gosling,,,D. Gosling,dan-gosling,M,Foul,32,null,true,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Foul,86,null,true,yellow,card
+Kyle Walker-Peters,,,K. Walker-Peters,kyle-walker-peters,D,Handball,56,null,false,yellow,card
+Jack Stephens,,,J. Stephens,jack-stephens,D,Foul,53,null,false,yellow,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,44,null,false,yellow,card
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Foul,88,null,false,yellow,card
+Mateo Kovačić,,,M. Kovačić,mateo-kovacic,M,Foul,62,null,true,yellow,card
+Kurt Zouma,,,K. Zouma,kurt-zouma,D,Foul,60,null,true,yellow,card
+Todd Cantwell,,,T. Cantwell,todd-cantwell,M,Foul,58,null,false,yellow,card
+Eric García,,,E. García,eric-garcia,D,Foul,90,4,true,yellow,card
+Lloyd Kelly,,,L. Kelly,lloyd-kelly,D,Foul,17,null,false,yellow,card
+Ben Davies,,,B. Davies,ben-davies,D,Foul,85,null,false,yellow,card
+Harry Kane,,,H. Kane,harry-kane,F,Foul,74,null,false,yellow,card
+Jonjo Shelvey,,,J. Shelvey,jonjo-shelvey,M,Foul,65,null,true,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Foul,35,null,true,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Foul,30,null,false,yellow,card
+Dani Ceballos,,,D. Ceballos,dani-ceballos,M,Foul,90,1,true,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Foul,81,null,true,yellow,card
+Trent Alexander-Arnold,,,T. Alexander-Arnold,trent-alexander-arnold,D,Foul,48,null,false,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Foul,46,null,true,yellow,card
+Ahmed El-Mohamady,,,A. El-Mohamady,ahmed-el-mohamady,D,Foul,70,null,false,yellow,card
+Richarlison,,,Richarlison,richarlison,F,Foul,61,null,true,yellow,card
+Lucas Digne,,,L. Digne,lucas-digne,D,Foul,56,null,true,yellow,card
+John Fleck,,,J. Fleck,john-fleck,M,Foul,90,3,false,yellow,card
+John Egan,,,J. Egan,john-egan,D,Foul,80,null,false,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,75,null,true,yellow,card
+Luka Milivojević,,,L. Milivojević,luka-milivojevic,M,Foul,90,3,true,yellow,card
+Harry Maguire,,,H. Maguire,harry-maguire,D,Foul,65,null,false,yellow,card
+Aaron Wan-Bissaka,,,A. Wan-Bissaka,aaron-wan-bissaka,D,Foul,36,null,false,yellow,card
+Oriol Romeu,,,O. Romeu,oriol-romeu,M,Foul,7,null,true,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,35,null,false,yellow,card
+Tom Cleverley,,,T. Cleverley,tom-cleverley,M,Foul,9,null,false,yellow,card
+Josip Drmić,,,J. Drmić,josip-drmic,F,Foul,45,3,true,red,card
+Emiliano Buendía,,,E. Buendía,emiliano-buendia,M,Violent conduct,35,null,true,red,card
+James Ward-Prowse,,,J. Ward-Prowse,james-ward-prowse,M,Foul,90,3,false,yellow,card
+Lewis Cook,,,L. Cook,lewis-cook,M,Foul,78,null,true,yellow,card
+Philip Billing,,,P. Billing,philip-billing,M,Foul,47,null,true,yellow,card
+Jannik Vestergaard,,,J. Vestergaard,jannik-vestergaard,D,Foul,34,null,false,yellow,card
+Davinson Sánchez,,,D. Sánchez,davinson-sanchez,D,Foul,86,null,true,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,73,null,false,yellow,card
+Lucas Moura,,,L. Moura,lucas-moura,F,Foul,57,null,true,yellow,card
+Adam Webster,,,A. Webster,adam-webster,D,Foul,87,null,true,yellow,card
+Danny Rose,,,D. Rose,danny-rose,D,Foul,63,null,false,yellow,card
+Dale Stephens,,,D. Stephens,dale-stephens,M,Foul,46,null,true,yellow,card
+Matt Ritchie,,,M. Ritchie,matt-ritchie,M,Foul,31,null,false,yellow,card
+Pascal Groß,,,P. Groß,pascal-gross,M,Foul,26,null,true,yellow,card
+Yves Bissouma,,,Y. Bissouma,yves-bissouma,M,Foul,23,null,true,yellow,card
+Richarlison,,,Richarlison,richarlison,F,null,89,null,false,yellow,card
+Dominic Calvert-Lewin,,,D. Calvert-Lewin,dominic-calvert-lewin,F,Foul,78,null,false,yellow,card
+Oliver Norwood,,,O. Norwood,oliver-norwood,M,Foul,45,2,true,yellow,card
+Tom Davies,,,T. Davies,tom-davies,M,Foul,33,null,false,yellow,card
+Adama Traoré,,,A. Traoré,adama-traore,F,Argument,78,null,true,yellow,card
+Conor Coady,,,C. Coady,conor-coady,D,Foul,65,null,true,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,64,null,false,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,90,1,true,yellow,card
+Adrian Mariappa,,,A. Mariappa,adrian-mariappa,D,Foul,80,null,true,yellow,card
+Joseph Willock,,,J. Willock,joseph-willock,M,Foul,90,1,false,yellow,card
+Matt Targett,,,M. Targett,matt-targett,D,Foul,87,null,true,yellow,card
+Sead Kolašinac,,,S. Kolašinac,sead-kolasinac,D,Foul,80,null,false,yellow,card
+Douglas Luiz,,,D. Luiz,douglas-luiz,M,Foul,71,null,true,yellow,card
+Alexandre Lacazette,,,A. Lacazette,alexandre-lacazette,F,Foul,61,null,false,yellow,card
+Lucas Torreira,,,L. Torreira,lucas-torreira,M,Foul,35,null,false,yellow,card
+Arthur Masuaku,,,A. Masuaku,arthur-masuaku,D,Argument,81,null,false,yellow,card
+Bruno Fernandes,,,B. Fernandes,bruno-fernandes,M,Argument,81,null,true,yellow,card
+Marcus Rashford,,,M. Rashford,marcus-rashford,M,Foul,70,null,true,yellow,card
+Timothy Fosu-Mensah,,,T. Fosu-Mensah,timothy-fosu-mensah,D,Foul,44,null,true,yellow,card
+Joe Gomez,,,J. Gomez,joe-gomez,D,Foul,83,null,true,yellow,card
+Emiliano Martínez,,,E. Martínez,emiliano-martinez,G,Time wasting,74,null,true,yellow,card
+Rob Holding,,,R. Holding,rob-holding,D,Foul,72,null,true,yellow,card
+Craig Dawson,,,C. Dawson,craig-dawson,D,Foul,51,null,false,yellow,card
+Will Hughes,,,W. Hughes,will-hughes,M,Foul,45,5,false,yellow,card
+Granit Xhaka,,,G. Xhaka,granit-xhaka,M,Argument,45,null,true,yellow,card
+Roberto Pereyra,,,R. Pereyra,roberto-pereyra,M,Foul,35,null,false,yellow,card
+Erik Pieters,,,E. Pieters,erik-pieters,D,Foul,90,4,true,yellow,card
+Phil Bardsley,,,P. Bardsley,phil-bardsley,D,Foul,85,null,true,yellow,card
+Josh Brownhill,,,J. Brownhill,josh-brownhill,M,Foul,5,null,true,yellow,card
+César Azpilicueta,,,C. Azpilicueta,cesar-azpilicueta,D,Foul,90,2,true,yellow,card
+Leander Dendoncker,,,L. Dendoncker,leander-dendoncker,M,Foul,83,null,false,yellow,card
+Olivier Giroud,,,O. Giroud,olivier-giroud,F,Foul,45,3,true,yellow,card
+Pedro Neto,,,P. Neto,pedro-neto,F,Argument,45,1,false,yellow,card
+Diogo Jota,,,D. Jota,diogo-jota,F,Foul,22,null,false,yellow,card
+Eric Dier,,,E. Dier,eric-dier,D,Foul,90,1,false,yellow,card
+Cheikhou Kouyaté,,,C. Kouyaté,cheikhou-kouyate,D,Foul,75,null,true,yellow,card
+Toby Alderweireld,,,T. Alderweireld,toby-alderweireld,D,Foul,61,null,false,yellow,card
+Tyrick Mitchell,,,T. Mitchell,tyrick-mitchell,D,Foul,49,null,true,yellow,card
+James McCarthy,,,J. McCarthy,james-mccarthy,M,Foul,17,null,true,yellow,card
+Michael Keane,,,M. Keane,michael-keane,D,Foul,79,null,true,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,90,4,true,red,card
+Brandon Williams,,,B. Williams,williams-brandon,D,Foul,90,2,false,yellow,card
+Paul Pogba,,,P. Pogba,paul-pogba,M,null,90,null,false,yellow,card
+Nemanja Matić,,,N. Matić,nemanja-matic,M,Foul,83,null,false,yellow,card
+Jonny Evans,,,J. Evans,jonny-evans,D,Foul,68,null,true,yellow,card
+Victor Lindelöf,,,V. Lindelöf,victor-lindelof,D,Foul,63,null,false,yellow,card
+Harry Maguire,,,H. Maguire,harry-maguire,D,Foul,9,null,false,yellow,card
+Christoph Zimmermann,,,C. Zimmermann,christoph-zimmermann,D,Foul,90,2,false,yellow,card
+João Cancelo,,,J. Cancelo,joao-cancelo,D,Foul,51,null,true,yellow,card
+Federico Fernández,,,F. Fernández,federico-fernandez,D,Time wasting,33,null,true,yellow,card
+Enda Stevens,,,E. Stevens,enda-stevens,M,Foul,90,3,false,yellow,card
+Ryan Fredericks,,,R. Fredericks,ryan-fredericks,D,Foul,51,null,true,yellow,card
+Mbwana Samatta,,,M. Samatta,mbwana-samatta,F,Foul,41,null,false,yellow,card
+Michail Antonio,,,M. Antonio,michail-antonio,F,Foul,23,null,true,yellow,card

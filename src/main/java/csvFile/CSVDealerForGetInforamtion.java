@@ -91,8 +91,11 @@ public class CSVDealerForGetInforamtion {
 		String result="";
 		if(incident instanceof IncidentInGameCard) {
 			IncidentInGameCard card = 	(IncidentInGameCard)incident;
-		 result = card.playerName+","+card.player.firstName+","+card.player.lastName+","+card.player.shortName+","+card.player.slug+","+
-				 card.player.position+","+card.reason+","+card.time+","+card.addedTime+","+card.isHome+","+card.incidentClass+","+card.incidentType;
+		 result = card.playerName+","+((card.player != null && card.player.firstName!= null)?card.player.firstName :"")+","+
+			((card.player != null && card.player.lastName!= null)?card.player.lastName:"")+","+
+				 ((card.player != null && card.player.shortName!= null)?card.player.shortName:"")+","+
+			((card.player != null && card.player.slug!= null)?card.player.slug:"")+","+
+				((card.player != null && card.player.position!= null)? card.player.position:"")+","+card.reason+","+card.time+","+card.addedTime+","+card.isHome+","+card.incidentClass+","+card.incidentType;
 		}
 		else if(incident instanceof IncidentInGameGoal) {
 			IncidentInGameGoal goal = 	(IncidentInGameGoal)incident;
