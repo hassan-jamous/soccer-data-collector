@@ -161,7 +161,6 @@ public class GameCollector {
 				result.incidentInGames = new ArrayList<>();
 			}
 			result.incidentInGames = gson.fromJson(incidents, new TypeToken<List<IncidentInGame>>() {}.getType());
-			System.out.println(gameID + "    "+(result==null)+"     "+(result.incidentInGames == null));
 			if ((result == null) || (result.incidentInGames == null) || (result.incidentInGames.isEmpty())) {
 				return null;
 			}

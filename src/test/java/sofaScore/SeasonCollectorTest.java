@@ -38,16 +38,25 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2015/2016", "2016/2017");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2017/2018", "2018/2019");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2019/2020", "2020/2021");
+
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2005/2006", "2006/2007");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2007/2008", "2008/2009");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2009/2010", "2010/2011");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2011/2012", "2012/2013");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2013/2014", "2014/2015");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2015/2016", "2016/2017");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2017/2018", "2018/2019");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2019/2020", "2020/2021");
 		
-		//seasonCollectorTest.writeCompetition("Serie A", "2009/2010", "2012/2013");
-		//seasonCollectorTest.writeCompetition("Serie A", "2013/2014", "2015/2016");
-		//seasonCollectorTest.writeCompetition("Serie A", "2016/2017", "2018/2019");
-		//seasonCollectorTest.writeCompetition("Serie A", "2019/2020", "2020/2021");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2005/2006", "2006/2007");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2007/2008", "2008/2009");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2009/2010", "2010/2011");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2011/2012", "2012/2013");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2013/2014", "2014/2015");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2015/2016", "2016/2017");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2017/2018", "2018/2019");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2019/2020", "2020/2021");
 		
-		//seasonCollectorTest.writeCompetition("Ligue 1", "2009/2010", "2012/2013");
-		//seasonCollectorTest.writeCompetition("Ligue 1", "2013/2014", "2015/2016");
-		//seasonCollectorTest.writeCompetition("Ligue 1", "2016/2017", "2018/2019");
-		//seasonCollectorTest.writeCompetition("Ligue 1", "2019/2020", "2020/2021");
 	}
 	
 	

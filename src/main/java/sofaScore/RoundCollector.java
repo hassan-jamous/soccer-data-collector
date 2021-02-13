@@ -1,6 +1,8 @@
 package sofaScore;
 
 import com.google.gson.Gson;
+
+import connectionWithDataBase.DataBaseDealer;
 import csvFile.CSVFilesDealer;
 import csvFile.FileTypes;
 import csvFile.CSVDealerForGetInforamtion;
@@ -20,6 +22,7 @@ public class RoundCollector {
 	private final HttpUtil httpUtil = new HttpUtil();
 	GameCollector gameCollector = new GameCollector();
 	CSVDealerForGetInforamtion csvGetterString = new CSVDealerForGetInforamtion();
+	DataBaseDealer  dataBaseDealer = new DataBaseDealer(); 
 	CSVFilesDealer csvDealer = new CSVFilesDealer();
 	private final String API_SOFA_SCORE_ROUND_URL = "https://api.sofascore.com/api/v1/unique-tournament/%s/season/%s/events/round/%s%s";
 
@@ -121,12 +124,17 @@ public class RoundCollector {
 				if (gameBasicInfromation.event.status.type.equals("finished") && gameBasicInfromation.event.homeScore!=null && 
 						gameBasicInfromation.event.homeScore.current!=null && gameIncidents != null)  {
 						for(int incident =0; incident<gameIncidents.incidentInGames.size(); incident++) {
+							int GameID= dataBaseDealer.getGameID(gameBasicInfromation.event.tournament.uniqueTournament.name, 
+									gameBasicInfromation.event.season.year, 
+									gameBasicInfromation.event.getDateToDataBase(), 
+									gameBasicInfromation.event.homeTeam.shortName,
+									gameBasicInfromation.event.awayTeam.shortName) ;
 							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameIncidents.incidentInGames.get(incident)),true, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
-							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameIncidents.incidentInGames.get(incident)),false, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
+							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameIncidents.incidentInGames.get(incident))+","+GameID,false, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
 						}						
-					}
-				} 
-			}
+				}
+			} 
+		}
 	}
 	
 }

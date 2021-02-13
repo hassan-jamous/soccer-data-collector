@@ -35,4 +35,8 @@ public class IncidentInGameCard extends IncidentInGame {
 	public String getName() {
     	return "Card";
     }
+	
+	public void initialize() {
+		player = new IncidentInGamePlayer();
+	}
 }

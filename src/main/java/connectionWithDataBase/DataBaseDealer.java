@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
+import sofaScore.models.gameIecidents.IncidentInGameCard;
 
 public class DataBaseDealer {
 	Connection dataBaseConnection;
@@ -25,7 +26,48 @@ public class DataBaseDealer {
 		String query =String.format("SELECT * FROM %1$s  WHERE Date BETWEEN '%2$s' AND '%3$s' AND(  ( HomeTeam='%4$s' AND AwayTeam='%5$s') OR ( HomeTeam='%5$s' AND AwayTeam='%4$s'))",tableNames.getTableName(competitionName),since,until ,firstClub,secondClub);
 		return getGamesBaiscInfoFromDataBase(query);
 	}
+	
+	public int getGameID(String competitionName, String competitionYears,String date ,String firstClub, String secondClub) {
+		String query =String.format("SELECT GameID FROM %1s WHERE League='%2s' AND Years='%3s' AND Date='%4s' AND HomeTeam='%5s' AND AwayTeam='%6s'",tableNames.getTableName(competitionName),competitionName,competitionYears,date,firstClub,secondClub);
+		return getGameID(query);
+	}
 
+	private int getGameID(String query) {
+		int result= -1;
+		ResultSet resultFromDataBase= getDataFromDataBase(query);
+		try {
+			if(resultFromDataBase.next())  {
+				int GameID = resultFromDataBase.getInt("GameID");
+				result= GameID;
+			}
+		}
+		 catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		closeDataBase();		
+		if(result == -1) {throw new RuntimeException("do not find game id for "+query);}
+		return result;
+	}
+	public List<IncidentInGameCard> getCardsInGame(int GameID) {
+		String query =String.format("SELECT * FROM %1s WHERE GameID='%2s'","premierleaguecard",GameID);
+		return getCardsInGameFromDataBase(query);
+	}
+	private List<IncidentInGameCard> getCardsInGameFromDataBase(String query) {
+		List<IncidentInGameCard> result= new ArrayList<>(Arrays.asList());
+		ResultSet resultFromDataBase= getDataFromDataBase(query);
+		try {
+			while(resultFromDataBase.next())  {
+				IncidentInGameCard card = getCardsInGameValuesFromDataBase(resultFromDataBase);
+				result.add(card);
+			}
+		}
+		 catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		closeDataBase();		
+		if(result == null || result.isEmpty()) {return null;}
+		return result;
+	}
 	private List<String> getClubsNamesFromDataBase(String query){
 		List<String> result = new ArrayList<>( Arrays.asList());		
 		ResultSet resultFromDataBase= getDataFromDataBase(query);
@@ -55,6 +97,28 @@ public class DataBaseDealer {
 		}
 		closeDataBase();			
 		return result;
+	}
+	
+	private IncidentInGameCard getCardsInGameValuesFromDataBase(ResultSet resultFromDataBase) {
+		IncidentInGameCard card = new IncidentInGameCard();
+		try {
+			card.playerName = resultFromDataBase.getString("PlayerName");
+			card.initialize();
+			card.player.firstName = resultFromDataBase.getString("FirstName");
+			card.player.lastName = resultFromDataBase.getString("LastName");
+			card.player.shortName = resultFromDataBase.getString("ShortName");
+			card.player.slug = resultFromDataBase.getString("Slug");
+			card.player.position = resultFromDataBase.getString("Position");
+			card.reason = resultFromDataBase.getString("Reason");
+			card.time = resultFromDataBase.getString("Time");
+			card.addedTime = resultFromDataBase.getString("AddedTime");
+			card.isHome = resultFromDataBase.getString("IsHome"); 
+			card.incidentClass = resultFromDataBase.getString("IncidentClass"); 
+			card.incidentType = resultFromDataBase.getString("IncidentType");
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}
+		return card;
 	}
 
 	private GameBasicInformation getGameValuesFromDataBase(ResultSet resultFromDataBase) {

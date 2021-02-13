@@ -59,30 +59,30 @@ public class CSVDealerForGetInforamtion {
 	public String getHeaderStringForCSV(IncidentInGame incident) {
 		String result="";
 		if(incident instanceof IncidentInGameCard) {
-			result ="PlayerName,FirstName,LastName,ShortName,Slug,Position,Reason,Time,AddedTime,IsHome,IncidentClass,IncidentType";
+			result ="PlayerName,FirstName,LastName,ShortName,Slug,Position,Reason,Time,AddedTime,IsHome,IncidentClass,IncidentType,GameID";
 		}
 		else if(incident instanceof IncidentInGameGoal) {
 			result ="HomeScore,AwayScore,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,PlayerPosition,"
 				+"AssistName,AssistFirstName,AssistLastName,AssistShortName,AssistSlug,AssistPosition,"+
-				"Time,AddedTime,IsHome,IncidentClass,IncidentType";
+				"Time,AddedTime,IsHome,IncidentClass,IncidentType,GameID";
 		}
 		else if(incident instanceof IncidentInGameInjuryTime) {
-			result = "Length,Time,AddedTime,IncidentType";
+			result = "Length,Time,AddedTime,IncidentType,GameID";
 		}
 		else if(incident instanceof IncidentInGamePenalty) {
-			result = "Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,PlayerPosition,Description,IsHome,IncidentClass,IncidentType";
+			result = "Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,PlayerPosition,Description,IsHome,IncidentClass,IncidentType,GameID";
 		}
 		else if(incident instanceof IncidentInGamePeriod) {
-			result = "Text,HomeScore,AwayScore,IsLive,Time,AddedTime,IncidentType";
+			result = "Text,HomeScore,AwayScore,IsLive,Time,AddedTime,IncidentType,GameID";
 		}
 		else if(incident instanceof IncidentInGameSubstitution) {
 			result = "PlayerInFirstName,playerInLastName,PlayerInShortName,PlayerInSlug,playerInPosition,"+
 					"PlayerOutFirstName,PlayerOutLastName,PlayerOutShortName,PlayerOutSlug,PlayerOutPosition,"+
-					"Injury,Time,AddedTime,IsHome,IncidentClass,IncidentType";
+					"Injury,Time,AddedTime,IsHome,IncidentClass,IncidentType,GameID";
 		}
 		else if(incident instanceof IncidentInGameVarDecision) {
 			result ="Confirmed,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,PlayerPosition,"+
-					"Time,IsHome,IncidentClass,IncidentType";
+					"Time,IsHome,IncidentClass,IncidentType,GameID";
 		}
 		return result;
 	}

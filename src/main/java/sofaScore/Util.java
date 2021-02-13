@@ -4,6 +4,7 @@ import java.util.List;
 import connectionWithDataBase.DataBaseDealer;
 import sofaScore.models.basicModels.GamePoints;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
+import sofaScore.models.gameIecidents.IncidentInGameCard;
 import sofaScore.models.ranking.ClubRanking;
 import sofaScore.models.ranking.RankingTable;
 
@@ -25,7 +26,15 @@ public class Util {
 	public List<String> getClubsNames(String competitionName , String competitionYears){
 		return dataBaseDealer.getClubsNamesInCompetition(competitionName, competitionYears);
 	}
-
+	//
+	public List<IncidentInGameCard> getCardsInGame(String competitionName, String competitionYears,String date ,String firstClub, String secondClub) {
+		int GameID = dataBaseDealer.getGameID(competitionName, competitionYears, date, firstClub, secondClub);
+		return dataBaseDealer.getCardsInGame(GameID);
+	}//////////////////////////////////
+	
+	public int getGameID(String competitionName, String competitionYears,String date ,String firstClub, String secondClub) {
+		return dataBaseDealer.getGameID(competitionName, competitionYears, date, firstClub, secondClub);
+	}
 	public ClubRanking parseGamesInSeasonUntil(String competitionName , String competitionYears , String clubName ,String until) {
 		ClubRanking clubRanking = new ClubRanking(clubName);
 		List<GameBasicInformation> games = dataBaseDealer.getClubGamesBasicInfoFromDataBaseInSeasonUntil(competitionName,competitionYears,clubName,until);

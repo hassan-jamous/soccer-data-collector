@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
+import sofaScore.models.gameIecidents.IncidentInGameCard;
 import sofaScore.models.ranking.ClubRanking;
 import sofaScore.models.ranking.RankingTable;
 
@@ -28,6 +29,33 @@ public class UtilTest {
         assertThat(leaguePremierLeague20_21.table.get(10)).usingRecursiveComparison().isEqualTo(new ClubRanking(11,"Arsenal",23,9,4,10,27,23,31));
       
 	}
+	
+	@Test
+	public void itShouldGetGameCards() {
+	
+		List<IncidentInGameCard> game1Cards =	util.getCardsInGame("Premier League", "05/06", "2005-08-13 14:45:00","Everton","Man Utd");
+        assertThat(game1Cards).isEqualTo(null);
+        List<IncidentInGameCard> game2Cards =	util.getCardsInGame("Premier League", "05/06", "2005-08-27 14:15:00","West Brom","Birmingham");
+        assertThat(game2Cards).isEqualTo(null);
+        List<IncidentInGameCard> game3Cards =	util.getCardsInGame("Premier League", "09/10", "2009-08-29 18:15:00","Man Utd","Arsenal");
+        assertThat(game3Cards).isEqualTo(null);
+        List<IncidentInGameCard> game4Cards =	util.getCardsInGame("Premier League", "19/20", "2019-08-11 17:30:00","Man Utd","Chelsea");
+        assertThat(game4Cards.size()).isEqualTo(7);
+        assertThat(game4Cards.get(6).time).isEqualTo("36");
+
+	}
+	
+	@Test
+	public void itShouldGetGameIDFormBasicInfoAnsStatisticTable() {
+	
+		int game1ID =	util.getGameID("Premier League", "05/06", "2005-08-13 14:45:00","Everton","Man Utd");
+        assertThat(game1ID).isEqualTo(1);
+        int game2ID =	util.getGameID("Premier League", "05/06", "2005-08-27 14:15:00","West Brom","Birmingham");
+        assertThat(game2ID).isEqualTo(31);
+        int game3ID =	util.getGameID("Premier League", "09/10", "2009-08-29 18:15:00","Man Utd","Arsenal");
+        assertThat(game3ID).isEqualTo(1557);
+	}
+
 	
 	@Test
 	public void itShouldGetClubRankingAt() {
