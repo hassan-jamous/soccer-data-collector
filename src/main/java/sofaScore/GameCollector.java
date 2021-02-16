@@ -178,7 +178,4 @@ public class GameCollector {
 		GameBasicInformation gameBasicInformation = gson.fromJson(gsonString, GameBasicInformation.class);
 		return gameBasicInformation;
 	}
-	
-	
-
 }

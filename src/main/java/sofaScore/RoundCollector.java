@@ -89,7 +89,8 @@ public class RoundCollector {
 				//Premier League,2006/2007, round 25,2007-02-14 21:45:00,Arsenal vs Man City,null,null, there are 2 games
 				if ((gameBasicInfromation.event.status.description.equals("Ended")
 						|| gameBasicInfromation.event.status.description.equals("Removed")
-						|| (gameBasicInfromation.event.status.description.equals("AP")))
+						|| (gameBasicInfromation.event.status.description.equals("AP"))
+						|| (gameBasicInfromation.event.status.description.equals("AET")))
 						&& gameBasicInfromation.event.status.type.equals("finished")
 						&&(gameBasicInfromation.event.homeScore!=null && gameBasicInfromation.event.homeScore.current!=null)) {
 					if ((i == 0) && (Integer.valueOf(round) == 1)) {
@@ -111,6 +112,19 @@ public class RoundCollector {
 			}
 		}
 	}
+	
+	/**
+	 * 
+	 * for example ( Premier League , LaLiga , Bundesliga ,
+	 *                         .....)
+	 * @param competitionYears for example (2020/2021 , 2009/2021 , ....)
+	 * @param round            for example 1 , 4 , 10 , 20 , .......
+	 * @param stringToAddToURL if normal round this will be empty string or equals
+	 *                         to /slug/final or /slug/qualification-round-2
+	 *                         according to round's kind
+	 * 
+	 *                         write round's games (game's incidents like red cards ,goals , var ,substitution , .....) into file
+	 */
 	public void writeRoundIncidents(String competitionName, String competitionYears, String round, String stringToAddToURL) {
 
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName, competitionYears, round, stringToAddToURL);

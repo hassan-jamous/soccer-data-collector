@@ -64,6 +64,14 @@ public class SeasonCollector {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param competitionName  for example ( Premier League , LaLiga , Bundesliga ,
+	 *                         Seria A .....)
+	 * @param competitionYears for example (2020/2021 , 2009/2021 , 1999/1998 ,
+	 *                         ....)
+	 * 
+	 */
 	public void writeSeasonIncidents(String competitionName, String competitionYears) {
 
 		PageOfSeasonRounds seasonRounds = getSeasonRounds(competitionName, competitionYears);

@@ -2,8 +2,12 @@ package sofaScore;
 
 import org.junit.Test;
 
+import sofaScore.models.RoundInformation.RoundGamesID;
+import sofaScore.models.season.PageOfSeasonRounds;
+
+
 public class SeasonCollectorTest {
-    
+
 	SeasonCollector seasonCollectorTest = new SeasonCollector();
 		
 	@Test
@@ -28,7 +32,7 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2013/2014", "2014/2015");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2015/2016", "2016/2017");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2017/2018", "2018/2019");
-		seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2019/2020", "2020/2021");
+		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("LaLiga", "2019/2020", "2020/2021");
 	
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2005/2006", "2006/2007");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2007/2008", "2008/2009");
@@ -39,6 +43,7 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2017/2018", "2018/2019");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Bundesliga", "2019/2020", "2020/2021");
 
+		seasonCollectorTest.writeSeasonBasicInfoAndStatistics("Serie A", "2020/2021");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2005/2006", "2006/2007");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2007/2008", "2008/2009");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2009/2010", "2010/2011");
@@ -58,8 +63,22 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2019/2020", "2020/2021");
 		
 	}
+/*	
+	@Test
+	public void itShouldGetSeasonRounds() {
+		
+		PageOfSeasonRounds seasonRounds =seasonCollectorTest.getSeasonRounds("Bundesliga", "2014/2015");
+		for(int i =0 ; i < seasonRounds.rounds.size(); i++) {
+			
+			if(seasonRounds.rounds.get(i).slug != null) {
+				RoundGamesID gamesIDS = seasonCollectorTest.roundCollerctor.getGamesIdInRound("Bundesliga", "2014/2015", String.valueOf(seasonRounds.rounds.get(i).round), (seasonRounds.rounds.get(i).slug == null) ? "" : "/slug/" + seasonRounds.rounds.get(i).slug);
+				System.out.println(gamesIDS);
+			}
+		}
+		seasonCollectorTest.writeSeasonBasicInfoAndStatistics("Bundesliga", "2014/2015");
+	}	
 	
-	
+	*/
 	@Test
 	public void itShouldWriteSeasonIncidents() {
 		

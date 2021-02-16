@@ -26,11 +26,11 @@ public class Util {
 	public List<String> getClubsNames(String competitionName , String competitionYears){
 		return dataBaseDealer.getClubsNamesInCompetition(competitionName, competitionYears);
 	}
-	//
+	
 	public List<IncidentInGameCard> getCardsInGame(String competitionName, String competitionYears,String date ,String firstClub, String secondClub) {
 		int GameID = dataBaseDealer.getGameID(competitionName, competitionYears, date, firstClub, secondClub);
-		return dataBaseDealer.getCardsInGame(GameID);
-	}//////////////////////////////////
+		return dataBaseDealer.getCardsInGame(competitionName,GameID);
+	}
 	
 	public int getGameID(String competitionName, String competitionYears,String date ,String firstClub, String secondClub) {
 		return dataBaseDealer.getGameID(competitionName, competitionYears, date, firstClub, secondClub);

@@ -14,11 +14,11 @@ public class DataBaseDealer {
 	HashMapTableName tableNames = new HashMapTableName();
 
 	public List<String> getClubsNamesInCompetition(String competitionName , String competitionYears){
-		String query =String.format("SELECT DISTINCT HomeTeam FROM %s WHERE League='%s'  AND Years='%s'",tableNames.getTableName(competitionName),competitionName,competitionYears);
+		String query =String.format("SELECT DISTINCT HomeTeam FROM %s WHERE League='%s' AND League=TypeOfLeague  AND Years='%s'",tableNames.getTableName(competitionName),competitionName,competitionYears);
 		return getClubsNamesFromDataBase(query);
 	}
 	public List<GameBasicInformation> getClubGamesBasicInfoFromDataBaseInSeasonUntil(String competitionName,String competitionYears,String clubName ,String until) {
-		String query =String.format("SELECT * FROM %s  WHERE League='%s' AND Years='%s' AND Date<'%s' AND  ( HomeTeam='%s' OR AwayTeam='%s')",tableNames.getTableName(competitionName),competitionName,competitionYears,until,clubName,clubName);
+		String query =String.format("SELECT * FROM %s  WHERE League='%s' AND League=TypeOfLeague AND Years='%s' AND Date<'%s' AND  ( HomeTeam='%s' OR AwayTeam='%s')",tableNames.getTableName(competitionName),competitionName,competitionYears,until,clubName,clubName);
 		return getGamesBaiscInfoFromDataBase(query);
 	}
 	
@@ -32,6 +32,11 @@ public class DataBaseDealer {
 		return getGameID(query);
 	}
 
+	public List<IncidentInGameCard> getCardsInGame(String competitionName,int GameID) {
+		String query =String.format("SELECT * FROM %1s WHERE GameID='%2s'",tableNames.getTableName(competitionName),GameID);
+		return getCardsInGameFromDataBase(query);
+	}
+	
 	private int getGameID(String query) {
 		int result= -1;
 		ResultSet resultFromDataBase= getDataFromDataBase(query);
@@ -48,10 +53,7 @@ public class DataBaseDealer {
 		if(result == -1) {throw new RuntimeException("do not find game id for "+query);}
 		return result;
 	}
-	public List<IncidentInGameCard> getCardsInGame(int GameID) {
-		String query =String.format("SELECT * FROM %1s WHERE GameID='%2s'","premierleaguecard",GameID);
-		return getCardsInGameFromDataBase(query);
-	}
+	
 	private List<IncidentInGameCard> getCardsInGameFromDataBase(String query) {
 		List<IncidentInGameCard> result= new ArrayList<>(Arrays.asList());
 		ResultSet resultFromDataBase= getDataFromDataBase(query);
@@ -145,7 +147,7 @@ public class DataBaseDealer {
 		ResultSet resultFromDataBase;
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");
-			dataBaseConnection=DriverManager.getConnection( "jdbc:mysql://localhost:3306/test?useSSL=false","root","HassanJamous");  
+			dataBaseConnection=DriverManager.getConnection( "jdbc:mysql://localhost:3306/test?allowPublicKeyRetrieval=true&useSSL=false","root","HassanJamous");  
 			dataBaseStatement=dataBaseConnection.createStatement();			
 			resultFromDataBase=dataBaseStatement.executeQuery(query); 			
 			}catch(Exception e){ 
