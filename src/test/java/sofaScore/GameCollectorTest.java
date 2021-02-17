@@ -10,6 +10,8 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+
+import csvFile.CSVDealerForGetInforamtion;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameIecidents.IncidentInGame;
@@ -25,11 +27,10 @@ public class GameCollectorTest {
     SofaScoreCollector sofaScoreCollectorTest = new SofaScoreCollector();
 	GameIencidentsValues iencidentsValues = new GameIencidentsValues();
 	AssertUtilities assertUtily = new AssertUtilities();
-
+	CSVDealerForGetInforamtion get = new CSVDealerForGetInforamtion();
 	 @Test
 	    public void itShouldGetGameStatistics() {
 
-		
 		    //https://www.sofascore.com/southampton-chelsea/NV
 		    //https://api.sofascore.com/api/v1/event/8896911/statistics
 		    GameStatistics gameStatistics1Atround5At20_21ActualValue = sofaScoreCollectorTest.getGameStatistics("Premier League", "2020/2021", "5", 1);
