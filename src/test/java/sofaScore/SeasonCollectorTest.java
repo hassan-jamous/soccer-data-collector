@@ -52,7 +52,7 @@ public class SeasonCollectorTest {
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2017/2018", "2018/2019");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Serie A", "2019/2020", "2020/2021");
 		
-		seasonCollectorTest.writeSeasonBasicInfoAndStatistics("Ligue 1", "2020/2021");
+		//seasonCollectorTest.writeSeasonBasicInfoAndStatistics("Premier League", "2020/2021");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2005/2006", "2006/2007");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2007/2008", "2008/2009");
 		//seasonCollectorTest.writeCompetitionBasicInfoAndStatistics("Ligue 1", "2009/2010", "2010/2011");
@@ -83,6 +83,6 @@ public class SeasonCollectorTest {
 	public void itShouldWriteSeasonIncidents() {
 		
 		//seasonCollectorTest.roundCollerctor.writeRoundIncidents("Premier League", "2019/2020", "1", "");
-		//seasonCollectorTest.writeSeasonIncidents("Premier League", "2019/2020");
+		seasonCollectorTest.writeSeasonIncidents("Premier League", "2020/2021");
 	}	
 }

@@ -130,7 +130,7 @@ public class RoundCollector {
 		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName, competitionYears, round, stringToAddToURL);
 		if ((gamesIdInRound == null) || (gamesIdInRound.events == null) || (gamesIdInRound.events.isEmpty())) {
 			csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,"no information about this season " + competitionYears + " at round " + round, true,
-					FileTypes.NoIncidents);
+					FileTypes.NoInformation);
 		} else {
 			for (int i = 0; i < gamesIdInRound.events.size(); i++) {
 				GameIncidents gameIncidents = gameCollector.getGameIncidents(gamesIdInRound.events.get(i).id);
@@ -138,11 +138,13 @@ public class RoundCollector {
 				if (gameBasicInfromation.event.status.type.equals("finished") && gameBasicInfromation.event.homeScore!=null && 
 						gameBasicInfromation.event.homeScore.current!=null && gameIncidents != null)  {
 						for(int incident =0; incident<gameIncidents.incidentInGames.size(); incident++) {
+
 							int GameID= dataBaseDealer.getGameID(gameBasicInfromation.event.tournament.uniqueTournament.name, 
 									gameBasicInfromation.event.season.year, 
 									gameBasicInfromation.event.getDateToDataBase(), 
 									gameBasicInfromation.event.homeTeam.shortName,
 									gameBasicInfromation.event.awayTeam.shortName) ;
+							System.out.println(gameBasicInfromation);
 							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameIncidents.incidentInGames.get(incident)),true, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
 							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameIncidents.incidentInGames.get(incident))+","+GameID,false, FileTypes.getFileType(gameIncidents.incidentInGames.get(incident)));
 						}						

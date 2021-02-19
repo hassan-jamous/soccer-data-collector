@@ -28,7 +28,7 @@ public class DataBaseDealer {
 	}
 	
 	public int getGameID(String competitionName, String competitionYears,String date ,String firstClub, String secondClub) {
-		String query =String.format("SELECT GameID FROM %1s WHERE League='%2s' AND Years='%3s' AND Date='%4s' AND HomeTeam='%5s' AND AwayTeam='%6s'",tableNames.getTableName(competitionName),competitionName,competitionYears,date,firstClub,secondClub);
+		String query =String.format("SELECT GameID FROM %s WHERE League='%s' AND Years='%s' AND Date='%s' AND HomeTeam='%s' AND AwayTeam='%s'",tableNames.getTableName(competitionName),competitionName,competitionYears,date,firstClub,secondClub);
 		return getGameID(query);
 	}
 

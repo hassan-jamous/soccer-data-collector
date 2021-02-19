@@ -73,7 +73,6 @@ public class SeasonCollector {
 	 * 
 	 */
 	public void writeSeasonIncidents(String competitionName, String competitionYears) {
-
 		PageOfSeasonRounds seasonRounds = getSeasonRounds(competitionName, competitionYears);
 		if ((seasonRounds.currentRound.name == null) || (seasonRounds.currentRound.name == "Not Found")) {
 			for (int i = 1; i <= seasonRounds.currentRound.round; i++) {

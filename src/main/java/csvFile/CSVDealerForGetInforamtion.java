@@ -91,11 +91,11 @@ public class CSVDealerForGetInforamtion {
 		String result="";
 		if(incident instanceof IncidentInGameCard) {
 			IncidentInGameCard card = 	(IncidentInGameCard)incident;
-		 result = card.playerName+","+((card.player != null && card.player.firstName!= null)?card.player.firstName :"")+","+
-			((card.player != null && card.player.lastName!= null)?card.player.lastName:"")+","+
-				 ((card.player != null && card.player.shortName!= null)?card.player.shortName:"")+","+
-			((card.player != null && card.player.slug!= null)?card.player.slug:"")+","+
-				((card.player != null && card.player.position!= null)? card.player.position:"")+","+card.reason+","+card.time+","+card.addedTime+","+card.isHome+","+card.incidentClass+","+card.incidentType;
+		 result = card.playerName+","+((card.player != null && card.player.firstName!= null && !card.player.firstName.isEmpty())?card.player.firstName :"null")+","+
+			((card.player != null && card.player.lastName!= null && !card.player.lastName.isEmpty())?card.player.lastName:"null")+","+
+				 ((card.player != null && card.player.shortName!= null && !card.player.shortName.isEmpty() )?card.player.shortName:"null")+","+
+			((card.player != null && card.player.slug!= null && !card.player.slug.isEmpty() )?card.player.slug:"null")+","+
+				((card.player != null && card.player.position!= null)? card.player.position:"null")+","+card.reason+","+card.time+","+card.addedTime+","+card.isHome+","+card.incidentClass+","+card.incidentType;
 		}
 		else if(incident instanceof IncidentInGameGoal) {
 			IncidentInGameGoal goal = 	(IncidentInGameGoal)incident;
@@ -112,8 +112,12 @@ public class CSVDealerForGetInforamtion {
 		}
 		else if(incident instanceof IncidentInGamePenalty) {
 			IncidentInGamePenalty penalty = 	(IncidentInGamePenalty)incident;
-			result = penalty.time+","+penalty.player.firstName+","+penalty.player.lastName+","+penalty.player.shortName+","+penalty.player.slug+","+penalty.player.position+","+
-					penalty.description+","+penalty.isHome+","+penalty.incidentClass+","+penalty.incidentType;
+			result = penalty.time+",";
+			if(penalty.player == null) {result+="null,null,null,null,null,";}
+			else{
+				result+=penalty.player.firstName +","+penalty.player.lastName+","+penalty.player.shortName+","+penalty.player.slug+","+penalty.player.position+",";
+			}
+			result+=penalty.description+","+penalty.isHome+","+penalty.incidentClass+","+penalty.incidentType;
 		}
 		else if(incident instanceof IncidentInGamePeriod) {
 			IncidentInGamePeriod period = 	(IncidentInGamePeriod)incident;
@@ -122,7 +126,9 @@ public class CSVDealerForGetInforamtion {
 		}
 		else if(incident instanceof IncidentInGameSubstitution) {
 			IncidentInGameSubstitution substitution = 	(IncidentInGameSubstitution)incident;
-			result = substitution.playerIn.firstName+","+substitution.playerIn.lastName+","+substitution.playerIn.shortName+","+substitution.playerIn.slug+","+substitution.playerIn.position+","+
+			result = ((substitution.playerIn.firstName==null || substitution.playerIn.firstName.isEmpty())?"null":substitution.playerIn.firstName)+","+
+					((substitution.playerIn.lastName== null ||substitution.playerIn.lastName.isEmpty()?"null":substitution.playerIn.lastName))+","+
+					substitution.playerIn.shortName+","+substitution.playerIn.slug+","+substitution.playerIn.position+","+
 					substitution.playerOut.firstName+","+substitution.playerOut.lastName+","+substitution.playerOut.shortName+","+substitution.playerOut.slug+","+substitution.playerOut.position+","+
 					substitution.injury+","+substitution.time+","+substitution.addedTime+","+substitution.isHome+","+substitution.incidentClass+","+
 					substitution.incidentType;
