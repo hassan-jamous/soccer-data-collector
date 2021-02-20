@@ -87,6 +87,20 @@ public class SeasonCollector {
 		}
 	}
 
+	public void writeSeasonPlayers(String competitionName, String competitionYears) {
+		PageOfSeasonRounds seasonRounds = getSeasonRounds(competitionName, competitionYears);
+		if ((seasonRounds.currentRound.name == null) || (seasonRounds.currentRound.name == "Not Found")) {
+			for (int i = 1; i <= seasonRounds.currentRound.round; i++) {
+				roundCollerctor.writeRoundPlayers(competitionName, competitionYears, String.valueOf(i), "");
+			}
+		} else {
+			for (int i = 0; i < seasonRounds.rounds.size(); i++) {
+				roundCollerctor.writeRoundPlayers(competitionName, competitionYears,
+						String.valueOf(seasonRounds.rounds.get(i).round),
+						(seasonRounds.rounds.get(i).slug == null) ? "" : "/slug/" + seasonRounds.rounds.get(i).slug);
+			}
+		}
+	}
 	/**
 	 * 
 	 * @param competitionName for example ( Premier League , LaLiga , Bundesliga ,

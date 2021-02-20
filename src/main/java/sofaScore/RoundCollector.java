@@ -1,5 +1,7 @@
 package sofaScore;
 
+import java.util.List;
+
 import com.google.gson.Gson;
 
 import connectionWithDataBase.DataBaseDealer;
@@ -10,6 +12,8 @@ import sofaScore.models.RoundInformation.RoundGamesID;
 import sofaScore.models.gameBasicInformation.GameBasicInformation;
 import sofaScore.models.gameIecidents.GameIncidents;
 import sofaScore.models.gameStatistics.GameStatistics;
+import sofaScore.models.statisticsPlayer.PlayerInLineups;
+import sofaScore.models.statisticsPlayer.TeamKindInGame;
 import sofaScore.models.utilities.HashMapLeaguesID;
 import sofaScore.models.utilities.HashMapSeasonsID;
 import util.HttpUtil;
@@ -21,6 +25,7 @@ public class RoundCollector {
 	private final HashMapLeaguesID leagueId = new HashMapLeaguesID();
 	private final HttpUtil httpUtil = new HttpUtil();
 	GameCollector gameCollector = new GameCollector();
+	PlayerCollector playerCollector = new PlayerCollector();
 	CSVDealerForGetInforamtion csvGetterString = new CSVDealerForGetInforamtion();
 	DataBaseDealer  dataBaseDealer = new DataBaseDealer(); 
 	CSVFilesDealer csvDealer = new CSVFilesDealer();
@@ -152,6 +157,39 @@ public class RoundCollector {
 			} 
 		}
 	}
+	
+	public void writeRoundPlayers(String competitionName, String competitionYears, String round, String stringToAddToURL) {
+
+		RoundGamesID gamesIdInRound = getGamesIdInRound(competitionName, competitionYears, round, stringToAddToURL);
+		if ((gamesIdInRound == null) || (gamesIdInRound.events == null) || (gamesIdInRound.events.isEmpty())) {
+			csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,"no information about this season " + competitionYears + " at round " + round, true,
+					FileTypes.NoInformation);
+		} else {
+			for (int i = 0; i < gamesIdInRound.events.size(); i++) {
+				List<PlayerInLineups> gameHomePlayersRating = playerCollector.getPlayerStatisticsInTeam(gamesIdInRound.events.get(i).id,TeamKindInGame.Home);
+				List<PlayerInLineups> gameAwayPlayersRating = playerCollector.getPlayerStatisticsInTeam(gamesIdInRound.events.get(i).id,TeamKindInGame.Away);
+				GameBasicInformation gameBasicInfromation = gameCollector.getGameBasicInformation(gamesIdInRound.events.get(i).id);				
+				if (gameBasicInfromation.event.status.type.equals("finished") && gameBasicInfromation.event.homeScore!=null && 
+						gameBasicInfromation.event.homeScore.current!=null && gameHomePlayersRating != null && gameAwayPlayersRating!=null)  {
+
+							int GameID= dataBaseDealer.getGameID(gameBasicInfromation.event.tournament.uniqueTournament.name, 
+									gameBasicInfromation.event.season.year, 
+									gameBasicInfromation.event.getDateToDataBase(), 
+									gameBasicInfromation.event.homeTeam.shortName,
+									gameBasicInfromation.event.awayTeam.shortName) ;
+							System.out.println(gameBasicInfromation);
+							csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getHeaderStringForCSV(gameHomePlayersRating.get(0)),true, FileTypes.PlayersRating);
+							for(int homePlayer =0 ; homePlayer<gameHomePlayersRating.size();homePlayer++) {
+								csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameHomePlayersRating.get(homePlayer))+","+gameBasicInfromation.event.homeTeam.shortName+","+GameID,false, FileTypes.PlayersRating);
+							}
+							for(int awayPlayer =0 ; awayPlayer<gameAwayPlayersRating.size();awayPlayer++) {
+								csvDealer.writeInFileWithHeader(Sites.SofaScore_Com, competitionName,csvGetterString.getValuesStringForCSV(gameAwayPlayersRating.get(awayPlayer))+","+gameBasicInfromation.event.awayTeam.shortName+","+GameID,false, FileTypes.PlayersRating);
+							}
+						}						
+				}
+			} 
+		}
+	
 	
 }
 

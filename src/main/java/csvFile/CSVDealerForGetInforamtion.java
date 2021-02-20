@@ -11,6 +11,7 @@ import sofaScore.models.gameIecidents.IncidentInGamePeriod;
 import sofaScore.models.gameIecidents.IncidentInGameSubstitution;
 import sofaScore.models.gameIecidents.IncidentInGameVarDecision;
 import sofaScore.models.gameStatistics.GameStatistics;
+import sofaScore.models.statisticsPlayer.PlayerInLineups;
 
 /**
  * 
@@ -53,6 +54,16 @@ public class CSVDealerForGetInforamtion {
 	
 	public String getHeaderStringForCSV(GameBasicInformation obj) {
 		String result ="League,Years,TypeOfLeague,Round,Date,HomeTeam,AwayTeam,HomeScore,AwayScore";
+		return result;
+	}
+	
+	public String getHeaderStringForCSV(PlayerInLineups obj) {
+		String result ="Name,Slug,ShortName,PositionInGame,ShirtNumber,Substitute,Rating,Team,GameID";
+		return result;
+	}
+	public String getValuesStringForCSV(PlayerInLineups obj) {
+		String result ="";
+		result += obj.player.name+","+obj.player.slug+","+obj.position+","+obj.shirtNumber+","+obj.substitute+","+((obj.statistics == null || obj.statistics.rating == null)?"null":obj.statistics.rating);
 		return result;
 	}
 	
@@ -100,11 +111,19 @@ public class CSVDealerForGetInforamtion {
 		else if(incident instanceof IncidentInGameGoal) {
 			IncidentInGameGoal goal = 	(IncidentInGameGoal)incident;
 			result = goal.homeScore+","+goal.awayScore+","+
-					goal.player.firstName+","+goal.player.lastName+","+goal.player.shortName+","+goal.player.slug+","+goal.player.position+","+
-					((goal.assist1 != null)?
-					goal.assist1.firstName+","+goal.assist1.lastName+","+goal.assist1.shortName+","+goal.assist1.slug+","+goal.assist1.position+","
-					:"null,null,null,null,null,")+
-					goal.time+","+goal.addedTime+","+goal.isHome+","+goal.incidentClass+","+goal.incidentType;
+					((goal.player.firstName == null || goal.player.firstName.isEmpty())?"null":goal.player.firstName)+","+
+					((goal.player.lastName == null || goal.player.lastName.isEmpty())?"null":goal.player.lastName)+","+
+					((goal.player.shortName == null || goal.player.shortName.isEmpty())?"null":goal.player.shortName)+","+
+					((goal.player.slug == null || goal.player.slug.isEmpty())?"null":goal.player.slug)+","+
+					((goal.player.position == null || goal.player.position.isEmpty())?"null":goal.player.position)+",";
+					if(goal.assist1 != null) {
+						result+=((goal.assist1.firstName == null || goal.assist1.firstName.isEmpty())?"null":goal.assist1.firstName)+","+
+								((goal.assist1.lastName == null || goal.assist1.lastName.isEmpty())?"null":goal.assist1.lastName)+","+
+								((goal.assist1.shortName == null || goal.assist1.shortName.isEmpty())?"null":goal.assist1.shortName)+","+
+								((goal.assist1.slug == null || goal.assist1.slug.isEmpty())?"null":goal.assist1.slug)+","+
+								((goal.assist1.position == null || goal.assist1.position.isEmpty())?"null":goal.assist1.position)+",";
+					}else{result+="null,null,null,null,null,";}
+					result+=goal.time+","+goal.addedTime+","+goal.isHome+","+goal.incidentClass+","+goal.incidentType;
 		}
 		else if(incident instanceof IncidentInGameInjuryTime) {
 			IncidentInGameInjuryTime injuryTime = 	(IncidentInGameInjuryTime)incident;
@@ -115,7 +134,11 @@ public class CSVDealerForGetInforamtion {
 			result = penalty.time+",";
 			if(penalty.player == null) {result+="null,null,null,null,null,";}
 			else{
-				result+=penalty.player.firstName +","+penalty.player.lastName+","+penalty.player.shortName+","+penalty.player.slug+","+penalty.player.position+",";
+				result+=((penalty.player.firstName == null || penalty.player.firstName.isEmpty())?"null":penalty.player.firstName)+","+
+						((penalty.player.lastName == null || penalty.player.lastName.isEmpty())?"null":penalty.player.lastName)+","+
+						((penalty.player.shortName == null || penalty.player.shortName.isEmpty())?"null":penalty.player.shortName)+","+
+						((penalty.player.slug == null || penalty.player.slug.isEmpty())?"null":penalty.player.slug)+","+
+						((penalty.player.position == null || penalty.player.position.isEmpty())?"null":penalty.player.position)+",";
 			}
 			result+=penalty.description+","+penalty.isHome+","+penalty.incidentClass+","+penalty.incidentType;
 		}
@@ -128,14 +151,25 @@ public class CSVDealerForGetInforamtion {
 			IncidentInGameSubstitution substitution = 	(IncidentInGameSubstitution)incident;
 			result = ((substitution.playerIn.firstName==null || substitution.playerIn.firstName.isEmpty())?"null":substitution.playerIn.firstName)+","+
 					((substitution.playerIn.lastName== null ||substitution.playerIn.lastName.isEmpty()?"null":substitution.playerIn.lastName))+","+
-					substitution.playerIn.shortName+","+substitution.playerIn.slug+","+substitution.playerIn.position+","+
-					substitution.playerOut.firstName+","+substitution.playerOut.lastName+","+substitution.playerOut.shortName+","+substitution.playerOut.slug+","+substitution.playerOut.position+","+
+					((substitution.playerIn.shortName==null || substitution.playerIn.shortName.isEmpty())?"null":substitution.playerIn.shortName)+","+
+					((substitution.playerIn.slug==null || substitution.playerIn.slug.isEmpty())?"null":substitution.playerIn.slug)+","+
+					((substitution.playerIn.position==null || substitution.playerIn.position.isEmpty())?"null":substitution.playerIn.position)+","+
+					((substitution.playerOut.firstName==null || substitution.playerOut.firstName.isEmpty())?"null":substitution.playerOut.firstName)+","+
+					((substitution.playerOut.lastName==null || substitution.playerOut.lastName.isEmpty())?"null":substitution.playerOut.lastName)+","+
+					((substitution.playerOut.shortName==null || substitution.playerOut.shortName.isEmpty())?"null":substitution.playerOut.shortName)+","+
+					((substitution.playerOut.slug==null || substitution.playerOut.slug.isEmpty())?"null":substitution.playerOut.slug)+","+
+					((substitution.playerOut.position==null || substitution.playerOut.position.isEmpty())?"null":substitution.playerOut.position)+","+
 					substitution.injury+","+substitution.time+","+substitution.addedTime+","+substitution.isHome+","+substitution.incidentClass+","+
 					substitution.incidentType;
 		}
 		else if(incident instanceof IncidentInGameVarDecision) {
 			IncidentInGameVarDecision varDecision = 	(IncidentInGameVarDecision)incident;
-			result =varDecision.confirmed+","+ varDecision.player.firstName+","+varDecision.player.lastName+","+varDecision.player.shortName+","+varDecision.player.slug+","+varDecision.player.position+","+
+			result =varDecision.confirmed+","+ 
+					((varDecision.player.firstName==null || varDecision.player.firstName.isEmpty())?"null":varDecision.player.firstName)+","+
+					((varDecision.player.lastName==null || varDecision.player.lastName.isEmpty())?"null":varDecision.player.lastName)+","+
+					((varDecision.player.shortName==null || varDecision.player.shortName.isEmpty())?"null":varDecision.player.shortName)+","+
+					((varDecision.player.slug==null || varDecision.player.slug.isEmpty())?"null":varDecision.player.slug)+","+
+					((varDecision.player.position==null || varDecision.player.position.isEmpty())?"null":varDecision.player.position)+","+
 					varDecision.time+","+varDecision.isHome+","+varDecision.incidentClass+","+varDecision.incidentType;
 		}
 		return result;

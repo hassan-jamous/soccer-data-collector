@@ -80,9 +80,14 @@ public class SeasonCollectorTest {
 	
 	*/
 	@Test
-	public void itShouldWriteSeasonIncidents() {
+	public void itShouldWriteSeasonPlayerRating() {
 		
-		//seasonCollectorTest.roundCollerctor.writeRoundIncidents("Premier League", "2019/2020", "1", "");
-		seasonCollectorTest.writeSeasonIncidents("Premier League", "2020/2021");
+		// start rating at season Premier League "2014/2015"
+		seasonCollectorTest.writeSeasonPlayers("Premier League", "2020/2021");
+	}	
+	@Test
+	public void itShouldWriteSeasonIncidents() {
+		// start rating at season Premier League "2012/2013"
+		//seasonCollectorTest.writeSeasonIncidents("Premier League", "2020/2021");
 	}	
 }

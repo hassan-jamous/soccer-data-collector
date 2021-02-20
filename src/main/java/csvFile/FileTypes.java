@@ -22,7 +22,8 @@ public enum FileTypes {
 	Substitution("Substitution"),
 	VarDecision("VarDecision"),
 	NoIncidents ("NoIncidents"),
-	HeadToHead("H2H");
+	HeadToHead("H2H"),
+	PlayersRating("PlayersRating");
 	
 	private String value;
 	

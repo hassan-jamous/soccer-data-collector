@@ -12,11 +12,11 @@ Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,Player
 85,null,null,D. Gayle,dwight-gayle,F,null,false,missed,inGamePenalty,3453
 45,null,null,L. Baines,leighton-baines,D,null,false,missed,inGamePenalty,3487
 62,null,null,R. Soldado,roberto-soldado,F,null,false,missed,inGamePenalty,3491
-32,,,S. Agüero,sergio-aguero,F,null,true,missed,inGamePenalty,3491
+32,null,null,S. Agüero,sergio-aguero,F,null,true,missed,inGamePenalty,3491
 10,null,null,G. Dorrans,graham-dorrans,M,null,false,missed,inGamePenalty,3562
 62,null,null,D. Tadić,dusan-tadic,F,null,false,missed,inGamePenalty,3571
-9,,,A. Sánchez,alexis-sanchez,F,null,true,missed,inGamePenalty,3600
-44,,,K. Mirallas,kevin-mirallas,M,null,true,missed,inGamePenalty,3640
+9,null,null,A. Sánchez,alexis-sanchez,F,null,true,missed,inGamePenalty,3600
+44,null,null,K. Mirallas,kevin-mirallas,M,null,true,missed,inGamePenalty,3640
 90,null,null,H. Kane,harry-kane,F,null,true,missed,inGamePenalty,3678
 90,null,null,W. Rooney,wayne-rooney,M,null,false,missed,inGamePenalty,3718
 15,null,null,D. Nugent,david-nugent,F,null,true,missed,inGamePenalty,3723
@@ -24,7 +24,7 @@ Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,Player
 59,null,null,M. Taylor,matthew-taylor,D,Woodwork,true,missed,inGamePenalty,3752
 23,null,null,C. Austin,charlie-austin,F,Goalkeeper save,true,missed,inGamePenalty,3755
 79,null,null,S. Gerrard,steven-gerrard,M,Goalkeeper save,true,missed,inGamePenalty,3763
-74,,,R. v. Persie,robin-van-persie,F,Goalkeeper save,true,missed,inGamePenalty,3767
+74,null,null,R. v. Persie,robin-van-persie,F,Goalkeeper save,true,missed,inGamePenalty,3767
 45,null,null,E. Hazard,eden-hazard,F,Goalkeeper save,true,missed,inGamePenalty,3768
 90,null,null,G. Murray,glenn-murray,F,Goalkeeper save,false,missed,inGamePenalty,3787
 14,null,null,J. Morrison,james-morrison,M,Goalkeeper save,true,missed,inGamePenalty,3827
@@ -36,28 +36,28 @@ Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,Player
 59,null,null,R. Mahrez,riyad-mahrez,F,Goalkeeper save,true,missed,inGamePenalty,3993
 33,null,null,R. Mahrez,riyad-mahrez,F,Goalkeeper save,false,missed,inGamePenalty,4017
 69,null,null,R. Lukaku,romelu-lukaku,F,Goalkeeper save,true,missed,inGamePenalty,4083
-73,,,S. Agüero,sergio-aguero,F,Woodwork,true,missed,inGamePenalty,4084
+73,null,null,S. Agüero,sergio-aguero,F,Woodwork,true,missed,inGamePenalty,4084
 90,null,null,T. Deeney,troy-deeney,F,Goalkeeper save,false,missed,inGamePenalty,4096
 50,null,null,S. Mané,sadio-mane,F,Goalkeeper save,true,missed,inGamePenalty,4108
 87,null,null,S. Berahino,saido-berahino,F,Goalkeeper save,true,missed,inGamePenalty,4135
 67,null,null,S. Berahino,saido-berahino,F,Goalkeeper save,true,missed,inGamePenalty,4135
 70,null,null,Y. Cabaye,yohan-cabaye,M,Goalkeeper save,false,missed,inGamePenalty,4152
 43,null,null,C. Gardner,craig-gardner,M,Goalkeeper save,false,missed,inGamePenalty,4163
-72,,,J. Vardy,jamie-vardy,F,Off target,true,missed,inGamePenalty,4167
-30,,,T. Walcott,theo-walcott,M,Goalkeeper save,true,missed,inGamePenalty,4189
+72,null,null,J. Vardy,jamie-vardy,F,Off target,true,missed,inGamePenalty,4167
+30,null,null,T. Walcott,theo-walcott,M,Goalkeeper save,true,missed,inGamePenalty,4189
 16,null,null,Y. Cabaye,yohan-cabaye,M,Goalkeeper save,true,missed,inGamePenalty,4203
 56,null,null,R. Mahrez,riyad-mahrez,F,Goalkeeper save,true,missed,inGamePenalty,4205
-41,,,A. Sánchez,alexis-sanchez,F,Goalkeeper save,false,missed,inGamePenalty,4222
+41,null,null,A. Sánchez,alexis-sanchez,F,Goalkeeper save,false,missed,inGamePenalty,4222
 65,null,null,É. Lamela,erik-lamela,M,Goalkeeper save,true,missed,inGamePenalty,4249
-70,,,S. Agüero,sergio-aguero,F,Goalkeeper save,true,missed,inGamePenalty,4254
-43,,,K. D. Bruyne,kevin-de-bruyne,M,Goalkeeper save,true,missed,inGamePenalty,4254
-45,,,C. Benteke,christian-benteke,F,Off target,true,missed,inGamePenalty,4257
-49,,,Bojan,bojan,F,Woodwork,true,missed,inGamePenalty,4295
+70,null,null,S. Agüero,sergio-aguero,F,Goalkeeper save,true,missed,inGamePenalty,4254
+43,null,null,K. D. Bruyne,kevin-de-bruyne,M,Goalkeeper save,true,missed,inGamePenalty,4254
+45,null,null,C. Benteke,christian-benteke,F,Off target,true,missed,inGamePenalty,4257
+49,null,null,Bojan,bojan,F,Woodwork,true,missed,inGamePenalty,4295
 45,null,null,M. Noble,mark-noble,M,Goalkeeper save,true,missed,inGamePenalty,4335
-37,,,C. Benteke,christian-benteke,F,Goalkeeper save,false,missed,inGamePenalty,4351
+37,null,null,C. Benteke,christian-benteke,F,Goalkeeper save,false,missed,inGamePenalty,4351
 58,null,null,H. Kane,harry-kane,F,Off target,false,missed,inGamePenalty,4360
 77,null,null,D. Costa,diego-costa,F,Goalkeeper save,false,missed,inGamePenalty,4407
-72,,,Z. Ibrahimović,zlatan-ibrahimovic,F,Goalkeeper save,true,missed,inGamePenalty,4441
+72,null,null,Z. Ibrahimović,zlatan-ibrahimovic,F,Goalkeeper save,true,missed,inGamePenalty,4441
 37,null,null,B. Afobe,benik-afobe,F,Goalkeeper save,true,missed,inGamePenalty,4452
 9,null,null,J. King,joshua-king,F,Off target,true,missed,inGamePenalty,4452
 6,null,null,M. Gabbiadini,manolo-gabbiadini,F,Goalkeeper save,true,missed,inGamePenalty,4460
@@ -69,22 +69,22 @@ Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,Player
 77,null,null,R. Mahrez,riyad-mahrez,F,Off target,false,missed,inGamePenalty,4543
 64,null,null,S. Long,shane-long,F,Woodwork,false,missed,inGamePenalty,4545
 53,null,null,R. Lukaku,romelu-lukaku,F,Goalkeeper save,true,missed,inGamePenalty,4586
-73,,,J. Vardy,jamie-vardy,F,Goalkeeper save,true,missed,inGamePenalty,4618
+73,null,null,J. Vardy,jamie-vardy,F,Goalkeeper save,true,missed,inGamePenalty,4618
 43,null,null,S. Berahino,saido-berahino,F,Goalkeeper save,true,missed,inGamePenalty,4624
-42,,,M. Salah,mohamed-salah,F,Goalkeeper save,true,missed,inGamePenalty,4654
+42,null,null,M. Salah,mohamed-salah,F,Goalkeeper save,true,missed,inGamePenalty,4654
 90,null,null,T. Cleverley,tom-cleverley,M,Off target,false,missed,inGamePenalty,4670
 59,null,null,M. Lanzini,manuel-lanzini,M,Goalkeeper save,false,missed,inGamePenalty,4698
 18,null,null,W. Rooney,wayne-rooney,M,Goalkeeper save,true,missed,inGamePenalty,4698
-90,,,C. Benteke,christian-benteke,F,Goalkeeper save,true,missed,inGamePenalty,4713
+90,null,null,C. Benteke,christian-benteke,F,Goalkeeper save,true,missed,inGamePenalty,4713
 36,null,null,G. Murray,glenn-murray,F,Off target,true,missed,inGamePenalty,4733
 75,null,null,Gabriel,gabriel-jesus,F,Woodwork,true,missed,inGamePenalty,4737
 45,null,null,W. Rooney,wayne-rooney,M,Goalkeeper save,true,missed,inGamePenalty,4740
 56,null,null,A. Ayew,andre-ayew,F,Goalkeeper save,true,missed,inGamePenalty,4748
 90,null,null,L. Milivojević,luka-milivojevic,M,Goalkeeper save,true,missed,inGamePenalty,4768
 34,null,null,Joselu,joselu,F,Goalkeeper save,true,missed,inGamePenalty,4806
-68,,,A. Sánchez,alexis-sanchez,F,Goalkeeper save,true,missed,inGamePenalty,4815
+68,null,null,A. Sánchez,alexis-sanchez,F,Goalkeeper save,true,missed,inGamePenalty,4815
 87,null,null,H. Kane,harry-kane,F,Goalkeeper save,false,missed,inGamePenalty,4819
-90,,,C. Adam,charlie-adam,M,Goalkeeper save,true,missed,inGamePenalty,4823
+90,null,null,C. Adam,charlie-adam,M,Goalkeeper save,true,missed,inGamePenalty,4823
 53,null,null,P. Aubameyang,pierre-emerick-aubameyang,F,Goalkeeper save,true,missed,inGamePenalty,4840
 88,null,null,W. Rooney,wayne-rooney,M,Goalkeeper save,true,missed,inGamePenalty,4852
 62,null,null,T. Deeney,troy-deeney,F,Goalkeeper save,false,missed,inGamePenalty,4858
@@ -96,50 +96,52 @@ Time,PlayerName,PlayerFirstName,PlayerLastName,PlayerShortName,PlayerSlug,Player
 90,null,null,Kenedy,kenedy,M,Goalkeeper save,false,missed,inGamePenalty,4951
 25,null,null,P. Groß,pascal-gross,M,Goalkeeper save,true,missed,inGamePenalty,4972
 65,null,null,C. Austin,charlie-austin,F,Goalkeeper save,false,missed,inGamePenalty,4974
-69,,,P. Pogba,paul-pogba,M,Goalkeeper save,false,missed,inGamePenalty,4979
+69,null,null,P. Pogba,paul-pogba,M,Goalkeeper save,false,missed,inGamePenalty,4979
 52,null,null,G. Sigurðsson,gylfi-sigurdsson,M,Woodwork,true,missed,inGamePenalty,5003
 86,null,null,R. Mahrez,riyad-mahrez,F,Off target,false,missed,inGamePenalty,5020
 60,null,null,L. Milivojević,luka-milivojevic,M,Goalkeeper save,false,missed,inGamePenalty,5029
-27,,,P. Pogba,paul-pogba,M,Goalkeeper save,true,missed,inGamePenalty,5039
+27,null,null,P. Pogba,paul-pogba,M,Goalkeeper save,true,missed,inGamePenalty,5039
 35,null,null,J. Ralls,joe-ralls,M,Goalkeeper save,false,missed,inGamePenalty,5083
 68,null,null,G. Sigurðsson,gylfi-sigurdsson,M,Goalkeeper save,true,missed,inGamePenalty,5100
 82,null,null,A. Kamara,aboubakar-kamara,F,Goalkeeper save,true,missed,inGamePenalty,5132
 75,null,null,J. Maddison,james-maddison,M,Goalkeeper save,true,missed,inGamePenalty,5133
-60,,,J. Vardy,jamie-vardy,F,Goalkeeper save,false,missed,inGamePenalty,5198
+60,null,null,J. Vardy,jamie-vardy,F,Goalkeeper save,false,missed,inGamePenalty,5198
 85,null,null,J. King,joshua-king,F,Woodwork,true,missed,inGamePenalty,5205
 90,null,null,P. Aubameyang,pierre-emerick-aubameyang,F,Goalkeeper save,false,missed,inGamePenalty,5221
-90,,,P. Pogba,paul-pogba,M,Goalkeeper save,true,missed,inGamePenalty,5225
+90,null,null,P. Pogba,paul-pogba,M,Goalkeeper save,true,missed,inGamePenalty,5225
 31,null,null,M. Ritchie,matt-ritchie,M,Goalkeeper save,true,missed,inGamePenalty,5235
 72,null,null,G. Sigurðsson,gylfi-sigurdsson,M,Goalkeeper save,true,missed,inGamePenalty,5245
-68,,,P. Pogba,paul-pogba,M,Goalkeeper save,false,missed,inGamePenalty,5340
-70,,,M. Rashford,marcus-rashford,M,Woodwork,true,missed,inGamePenalty,5344
+68,null,null,P. Pogba,paul-pogba,M,Goalkeeper save,false,missed,inGamePenalty,5340
+70,null,null,M. Rashford,marcus-rashford,M,Woodwork,true,missed,inGamePenalty,5344
 38,null,null,Wesley,wesley,F,Goalkeeper save,false,missed,inGamePenalty,5394
-44,,,A. Martial,anthony-martial,F,Goalkeeper save,false,missed,inGamePenalty,5420
-29,,,M. Rashford,marcus-rashford,M,Goalkeeper save,false,missed,inGamePenalty,5420
-71,,,J. Ward-Prowse,james-ward-prowse,M,Goalkeeper save,false,missed,inGamePenalty,5442
+44,null,null,A. Martial,anthony-martial,F,Goalkeeper save,false,missed,inGamePenalty,5420
+29,null,null,M. Rashford,marcus-rashford,M,Goalkeeper save,false,missed,inGamePenalty,5420
+71,null,null,J. Ward-Prowse,james-ward-prowse,M,Goalkeeper save,false,missed,inGamePenalty,5442
 78,null,null,J. Grealish,jack-grealish,F,Woodwork,false,missed,inGamePenalty,5485
 25,null,null,R. Sterling,raheem-sterling,F,Goalkeeper save,false,missed,inGamePenalty,5510
-12,,,D. Gray,demarai-gray,M,Goalkeeper save,false,missed,inGamePenalty,5516
+12,null,null,D. Gray,demarai-gray,M,Goalkeeper save,false,missed,inGamePenalty,5516
 70,null,null,T. Deeney,troy-deeney,F,Goalkeeper save,true,missed,inGamePenalty,5541
-68,,,J. Vardy,jamie-vardy,F,Goalkeeper save,false,missed,inGamePenalty,5549
+68,null,null,J. Vardy,jamie-vardy,F,Goalkeeper save,false,missed,inGamePenalty,5549
 36,null,null,Gabriel,gabriel-jesus,F,Goalkeeper save,false,missed,inGamePenalty,5555
-40,,,İ. Gündoğan,ilkay-gundogan,M,Goalkeeper save,false,missed,inGamePenalty,5570
+40,null,null,İ. Gündoğan,ilkay-gundogan,M,Goalkeeper save,false,missed,inGamePenalty,5570
 45,null,null,H. M. Son,heung-min-son,F,Goalkeeper save,false,missed,inGamePenalty,5577
-62,,,S. Agüero,sergio-aguero,F,Goalkeeper save,false,missed,inGamePenalty,5586
+62,null,null,S. Agüero,sergio-aguero,F,Goalkeeper save,false,missed,inGamePenalty,5586
 45,null,null,M. Ritchie,matt-ritchie,M,Goalkeeper save,false,missed,inGamePenalty,5605
 14,null,null,N. Maupay,neal-maupay,F,Goalkeeper save,false,missed,inGamePenalty,5621
-28,,,J. Ward-Prowse,james-ward-prowse,M,Woodwork,false,missed,inGamePenalty,5659
+28,null,null,J. Ward-Prowse,james-ward-prowse,M,Woodwork,false,missed,inGamePenalty,5659
 59,null,null,D. Ings,danny-ings,F,Goalkeeper save,false,missed,inGamePenalty,5682
 40,null,null,R. Sterling,raheem-sterling,F,Goalkeeper save,false,missed,inGamePenalty,5687
 75,null,null,Jorginho,jorginho,M,Goalkeeper save,true,missed,inGamePenalty,5717
 36,null,null,J. Lundstram,john-lundstram,M,Goalkeeper save,false,missed,inGamePenalty,5719
-58,,,B. Fernandes,bruno-fernandes,M,Goalkeeper save,false,missed,inGamePenalty,5744
+58,null,null,B. Fernandes,bruno-fernandes,M,Goalkeeper save,false,missed,inGamePenalty,5744
 57,null,null,A. Mitrović,aleksandar-mitrovic,F,Woodwork,false,missed,inGamePenalty,5745
 90,null,null,A. Lookman,ademola-lookman,F,Goalkeeper save,false,missed,inGamePenalty,5776
-39,,,J. Vardy,jamie-vardy,F,Goalkeeper save,true,missed,inGamePenalty,5778
-42,,,K. D. Bruyne,kevin-de-bruyne,M,Off target,true,missed,inGamePenalty,5779
+39,null,null,J. Vardy,jamie-vardy,F,Goalkeeper save,true,missed,inGamePenalty,5778
+42,null,null,K. D. Bruyne,kevin-de-bruyne,M,Off target,true,missed,inGamePenalty,5779
 68,null,null,I. Cavaleiro,ivan-cavaleiro,F,Off target,true,missed,inGamePenalty,5785
 20,null,null,N. Maupay,neal-maupay,F,Off target,true,missed,inGamePenalty,5792
 74,null,null,O. Watkins,ollie-watkins,F,Woodwork,false,missed,inGamePenalty,5800
 90,null,null,Jorginho,jorginho,M,Goalkeeper save,false,missed,inGamePenalty,5844
-19,,,K. Iheanacho,kelechi-iheanacho,F,Goalkeeper save,false,missed,inGamePenalty,5851
+19,null,null,K. Iheanacho,kelechi-iheanacho,F,Goalkeeper save,false,missed,inGamePenalty,5851
+90,null,null,R. Sterling,raheem-sterling,F,Off target,true,missed,inGamePenalty,5873
+37,null,null,İ. Gündoğan,ilkay-gundogan,M,Off target,false,missed,inGamePenalty,5925

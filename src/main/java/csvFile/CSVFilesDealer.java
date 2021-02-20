@@ -56,7 +56,7 @@ public class CSVFilesDealer {
 		    if( ! Files.exists(filePath)) {
 				try {
 					Files.createFile(filePath);
-					if(fileType == FileTypes.Statistics || fileType.isIncident()) {//this file contains data which need header
+					if(fileType == FileTypes.Statistics || fileType.isIncident() || fileType == FileTypes.PlayersRating) {//this file contains data which need header
 						if(isHeader) {Files.writeString(filePath, data +"\n" );}
 						else {throw new RuntimeException ("the file is empty and the data is not header");}
 					}
@@ -68,7 +68,7 @@ public class CSVFilesDealer {
 				}
 		    }
 			try {
-				if(fileType == FileTypes.Statistics  || fileType.isIncident()) {
+				if(fileType == FileTypes.Statistics  || fileType.isIncident() || fileType == FileTypes.PlayersRating) {
 					if(! isHeader) { //in this type we distinguish between header or data 
 						Files.writeString(filePath, data + "\n", StandardOpenOption.APPEND);
 					}
